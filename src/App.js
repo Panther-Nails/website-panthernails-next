@@ -95,6 +95,7 @@ import LoginPage from "pages/Login.js";
 import SignupPage from "pages/Signup.js";
 import ProductsPage from "pages/Products.js";
 import RasikLoyaltyPage from "pages/RasikLoyalty.js";
+import CLMPage from "pages/CLM.js";
 
 import AboutUsPage from "pages/AboutUs.js";
 import ContactUsPage from "pages/ContactUs.js";
@@ -128,6 +129,7 @@ export default function App() {
           <Route path="/Signup" element={<SignupPage />} />
           <Route path="/Products" element={<ProductsPage />} />
           <Route path="/RasikLoyalty" element={<RasikLoyaltyPage />} />
+          <Route path="/CLM" element={<CLMPage />} />
           <Route path="/AboutUs" element={<AboutUsPage />} />
           <Route path="/ContactUs" element={<ContactUsPage />} />
           <Route path="/Blog" element={<BlogIndexPage />} />

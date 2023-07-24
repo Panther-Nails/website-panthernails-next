@@ -42,14 +42,6 @@ const Actions = styled.div`
 `;
 
 export default ({
-  navLinks = [
-    <NavLinks key={1}>
-      <NavLink href="#">About</NavLink>
-      <NavLink href="#">Blog</NavLink>
-      <NavLink href="#">Pricing</NavLink>
-      <NavLink href="#">Login</NavLink>
-    </NavLinks>
-  ],
   heading = (
     <>
       Find Perfect Hotels
@@ -68,7 +60,7 @@ export default ({
     <Container>
       <TwoColumn>
         <LeftColumn>
-          <StyledHeader links={navLinks} collapseBreakpointClass="sm" />
+          <StyledHeader collapseBreakpointClass="sm" />
           <Content>
             <Heading>{heading}</Heading>
             <Paragraph>{description}</Paragraph>

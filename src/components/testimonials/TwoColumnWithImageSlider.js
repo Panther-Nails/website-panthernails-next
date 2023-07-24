@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
 import tw from "twin.macro";
@@ -10,6 +10,8 @@ import { ReactComponent as ArrowLeftIcon } from "../../images/arrow-left-2-icon.
 import { ReactComponent as ArrowRightIcon } from "../../images/arrow-right-2-icon.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-4.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-5.svg";
+import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
+
 
 import "slick-carousel/slick/slick.css";
 
@@ -18,39 +20,24 @@ const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
 const HeadingInfoContainer = tw.div`flex flex-col items-center`;
 const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w-sm`;
 
-const SlideshowDiv = tw.div`mx-auto overflow-hidden max-w-5xl`;
-const SlideshowSliderDiv = tw.div`whitespace-nowrap`;
+const SlideshowDiv = tw.div`mx-auto overflow-hidden w-72`;
+//const SlideshowSliderDiv = tw.div`whitespace-nowrap`;
+const SlideshowSliderDiv = styled.div((props) => [
+  tw`whitespace-nowrap ease-in-out`,
+]);
 
+const SlideDiv = styled.div((props) => [
+  tw`h-40 w-72 border inline-block aspect-video`,
+  `background-color: ${props.bgColor}`,
+]);
 
-const SlideDiv = tw.div`h-40 w-full border inline-block`;
 const SlideshowDotsDiv = tw.div`text-center`;
 const SlideshowDotDiv = tw.div`inline-block h-4 w-4 rounded-full cursor-pointer  bg-gray-500 m-2`;
 
 // const SlideDiv = tw.div((props) => [
 //   tw`h-40 w-full border`,
-//   tw`background-color: ${props.bgColor};`, 
+//   tw`background-color: ${props.bgColor};`,
 // ]);
-
-
-const TestimonialSliderContainer = tw.div`mt-24`;
-const TestimonialSlider = styled(Slider)` white-space-nowrap`;
-const Testimonial = tw.div`flex! flex-col items-center md:items-stretch md:flex-row md:justify-center outline-none`;
-const ImageContainer = styled.div`
-  ${tw`md:mx-3 lg:mx-6 w-2/3 md:w-4/12 rounded flex items-center max-w-xs md:max-w-none`}
-  img {
-    ${tw`rounded`}
-  }
-`;
-
-const TextContainer = tw.div`md:mx-3 lg:mx-6 md:w-6/12 py-4 flex flex-col justify-between`;
-const QuoteContainer = tw.div`relative p-6 md:p-8 lg:p-10 mt-4 md:mt-0`;
-const Quote = tw.blockquote`text-center md:text-left font-medium text-xl lg:text-2xl xl:text-3xl`;
-const CustomerInfo = tw.div`px-5 lg:px-10 text-center md:text-left mt-4 md:mt-0`;
-const CustomerName = tw.h5`font-bold text-lg lg:text-xl xl:text-2xl text-primary-500`;
-const CustomerTitle = tw.p`font-medium text-sm`;
-
-const QuotesLeft = tw(QuotesLeftIcon)`w-8 h-8 lg:w-10 lg:h-10 text-primary-500 absolute top-0 left-0`;
-const QuotesRight = tw(QuotesRightIcon)`w-8 h-8 lg:w-10 lg:h-10 text-primary-500 absolute bottom-0 right-0`;
 
 const SliderControlButtonContainer = styled.div`
   ${tw`absolute top-0 h-full flex items-end md:items-center z-20`}
@@ -62,6 +49,14 @@ const SliderControlButtonContainer = styled.div`
   }
 `;
 
+
+const PlanAction = tw.div`mt-4 flex`;
+const ActionButton = styled(PrimaryButtonBase)`
+  ${tw`block text-center text-sm font-semibold tracking-wider w-full text-gray-700 bg-gray-200 px-6 py-4 rounded hover:bg-primary-700 focus:shadow-outline focus:outline-none transition-colors duration-300`}
+`;
+
+
+
 const NextArrow = ({ currentSlide, slideCount, ...props }) => (
   <SliderControlButtonContainer tw="right-0">
     <button {...props}>
@@ -69,6 +64,7 @@ const NextArrow = ({ currentSlide, slideCount, ...props }) => (
     </button>
   </SliderControlButtonContainer>
 );
+
 const PreviousArrow = ({ currentSlide, slideCount, ...props }) => (
   <SliderControlButtonContainer tw="left-0">
     <button {...props}>
@@ -84,88 +80,61 @@ const DecoratorBlob2 = tw(
   SvgDecoratorBlob2
 )`absolute w-32 bottom-0 right-0 -z-10 text-pink-500 opacity-15 transform translate-x-2/3 translate-y-8`;
 
-const colors = ["bg-red-500", "bg-green-500", "bg-blue-500"];
-
+const colors = ["red", "green", "blue"];
+const delay = 1000;
 
 export default () => {
-  /*
-   * You can modify the testimonials shown by modifying the array below
-   * You can add or remove objects from the array as you need.
-   */
-  const testimonials = [
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80",
-      quote:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-      customerName: "Charlotte Hale",
-      customerTitle: "CEO, Delos Inc."
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=512&h=512&q=80",
-      quote:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-      customerName: "Adam Cuppy",
-      customerTitle: "Founder, EventsNYC"
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1580852300654-03c803a14e24?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4.25&w=512&h=512&q=80",
-      quote:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-      customerName: "Steven Marcetti",
-      customerTitle: "Event Manager, Brite"
-    }
-  ];
+  const [index, setIndex] = React.useState(0);
 
-  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    setTimeout(() => {
+      setIndex((prevIndex) =>
+        prevIndex === colors.length - 1 ? 0 : prevIndex + 1
+      );
+    }, delay);
+
+    return () => {};
+  }, [index]);
+
+  const handleOnNextClick = () => {console.log("Next")};
+
+  const handleOnPrevClick = () => {console.log("Prev")};
 
   return (
     <Container>
       <Content>
-      
-        <SlideshowDiv className="slideshow">
-          <SlideshowSliderDiv className="slideshowSlider">
+        <>{index}</>
+        <SlideshowDiv>
+          <SlideshowSliderDiv id="slideshowSlider">
             {colors.map((backgroundColor, index) => (
-              <SlideDiv className="slide" key={index}  >
-                {backgroundColor}
+              <SlideDiv key={index} index={index} bgColor={backgroundColor}>
+                <>
+                  <p>{index}</p>
+                  <p>{backgroundColor}</p>
+                </>
               </SlideDiv>
             ))}
           </SlideshowSliderDiv>
           <SlideshowDotsDiv>
-            {colors.map((_, index) => (
-              <SlideshowDotDiv />
+            {colors.map((_, idx) => (
+              <SlideshowDotDiv
+                onClick={() => {
+                  setIndex(idx);
+                }}
+              />
             ))}
           </SlideshowDotsDiv>
-        </SlideshowDiv>
 
-        <HeadingInfoContainer>
-          <HeadingTitle>Our Awesome Customers</HeadingTitle>
-          <HeadingDescription></HeadingDescription>
-        </HeadingInfoContainer>
-        <TestimonialSliderContainer className="slideshow">
-          <TestimonialSlider nextArrow={<NextArrow />} prevArrow={<PreviousArrow />} className="slideshowSlider">
-            {testimonials.map((testimonial, index) => (
-              <Testimonial key={index} className="slide">
-                <ImageContainer>
-                  <img src={testimonial.imageSrc} alt={testimonial.customerName} />
-                </ImageContainer>
-                <TextContainer>
-                  <QuoteContainer>
-                    <QuotesLeft />
-                    <Quote>{testimonial.quote}</Quote>
-                    <QuotesRight />
-                  </QuoteContainer>
-                  <CustomerInfo>
-                    <CustomerName>{testimonial.customerName}</CustomerName>
-                    <CustomerTitle>{testimonial.customerTitle}</CustomerTitle>
-                  </CustomerInfo>
-                </TextContainer>
-              </Testimonial>
-            ))}
-          </TestimonialSlider>
-        </TestimonialSliderContainer>
+          <PlanAction>
+              <ActionButton as="a" href="">
+                { <> next </>}
+              </ActionButton>
+              <ActionButton as="a" href="">
+                { <> prev </>}
+              </ActionButton>
+
+          </PlanAction>
+        </SlideshowDiv>
       </Content>
       <DecoratorBlob1 />
       <DecoratorBlob2 />

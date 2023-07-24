@@ -28,24 +28,24 @@ export default ({
   testimonials = [
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80",
+        "https://cdn-icons-png.flaticon.com/512/4312/4312405.png",
       quote:
         "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-      customerName: "Charlotte Hale"
+      customerName: "Influencers"
     },
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=512&h=512&q=80",
+        "https://cdn-icons-png.flaticon.com/512/3733/3733121.png",
       quote:
         "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-      customerName: "Adam Cuppy"
+      customerName: "Channel Partners"
     },
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1580852300654-03c803a14e24?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4.25&w=512&h=512&q=80",
+        "https://cdn-icons-png.flaticon.com/512/3270/3270911.png",
       quote:
         "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-      customerName: "Steven Marcetti"
+      customerName: "Professionals"
     }
   ]
 }) => {
@@ -58,9 +58,9 @@ export default ({
           {testimonials.map((testimonial, index) => (
             <TestimonialContainer key={index}>
               <Testimonial>
+                <CustomerName>{testimonial.customerName}</CustomerName>
                 <Image src={testimonial.imageSrc} />
                 <Quote>"{testimonial.quote}"</Quote>
-                <CustomerName>- {testimonial.customerName}</CustomerName>
               </Testimonial>
             </TestimonialContainer>
           ))}

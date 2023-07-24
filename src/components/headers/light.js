@@ -39,7 +39,7 @@ export const LogoLink = styled(NavLink)`
   ${tw`flex items-center font-black border-b-0 text-2xl! ml-0!`};
 
   img {
-    ${tw`w-64 mr-3`}
+    ${tw`w-64 mr-3 m-10 `}
   }
 `;
 
@@ -64,7 +64,6 @@ export default ({
   className,
   collapseBreakpointClass = "lg",
   links
-
   }) => {
   /*
    * This header component accepts an optionals "links" prop that specifies the links to render in the navbar.

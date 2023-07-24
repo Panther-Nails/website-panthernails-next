@@ -1,5 +1,6 @@
 module.exports = {
   prefix: '',
+  mode: 'jit',
   important: false,
   separator: ':',
   theme: {

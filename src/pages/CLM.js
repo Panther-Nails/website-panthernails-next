@@ -4,8 +4,8 @@ import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/TwoColumnWithInput.js";
 import Features from "components/features/VerticalWithAlternateImageAndText.js";
 import Pricing from "components/pricing/TwoPlansWithDurationSwitcher";
-import CTA from "components/cta/GetStarted";
-import Testimonial from "components/testimonials/ThreeColumnWithProfileImage.js";
+import CTA from "components/cta/DownloadApp";
+import Testimonial from "components/testimonials/TwoColumnWithImageSlider.js";
 import Footer from "components/footers/FiveColumnWithInputForm.js";
 import FAQ from "components/faqs/SingleCol.js";
 
@@ -62,17 +62,12 @@ export default ({
       <Hero
         heading={
           <>
-            Rasik <HighlightedText>Loyalty Platform!</HighlightedText>
+            One App <HighlightedText>Contract Labour Management!</HighlightedText>
           </>
         }        
         description = { <> We focus on building products that are capable of delivering superior stakeholder value by helping people to make the most of each moment.  </>}
       />
-
-      <Testimonial
-        subheading= "Whom do you want to incentive loyalty?"
-        heading= "" //{<>Customers <HighlightedText>Love Us.</HighlightedText></>}
-      />
-
+      
       <Features 
         products={products} 
         heading={<></>} 
@@ -81,13 +76,17 @@ export default ({
 
 
 
+      {/* <Pricing /> */}
+
       <CTA 
-         text = { <>Build relationships with influencers to make your <HighlightedText>Business grow</HighlightedText></> }
-         primaryLinkText = "Schedule a meeting"
-         primaryLinkUrl = "http://panthernails.com"
-         secondaryLinkText = "Call us"
-         secondaryLinkUrl = "https://wa.me/918087144244"
-         pushDownFooter = {false}
+        subheading = "Download App"
+        text = "Developers all over the world are happily using Treact."
+        link1Text = "App Store"
+        link1Url = "http://apple.com"
+        link2Text = "Google Play"
+        link2Url = "http://play.google.com"  
+        pushDownFooter = {false}
+        imageSrc ={PhoneImageRasikLoyalty} 
       />
 
       <Testimonial heading="Our Esteemed Customers" />
