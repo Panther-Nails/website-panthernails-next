@@ -83,7 +83,7 @@ export default ({
 
       <MainFeature1
         subheading={<Subheading>Vision</Subheading>}
-        heading="We aim to disrupt the business routine."
+        heading="We aim to disrupt the business routine"
         description="We provide a fresh approach to re-evaluate and transform Company’s business towards modern digital era. We keep on seeking the opportunity to influence and transform your company's business strategies for betterment. We exist to create a purposeful innovation that helps to run business smoothly, focusing on consumer needs, industry trends that fuels growth, and updates in industry around the country."        
         buttonRounded={false}
       
