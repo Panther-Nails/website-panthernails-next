@@ -133,6 +133,7 @@ export default function App() {
           <Route path="/AboutUs" element={<AboutUsPage />} />
           <Route path="/ContactUs" element={<ContactUsPage />} />
           <Route path="/Blog" element={<BlogIndexPage />} />
+          <Route path="/MainLandingPage" element={<MainLandingPage />} />
           
           <Route path="/" element={<Home  />} />
         </Routes>
