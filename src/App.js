@@ -110,6 +110,10 @@ import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "pages/Home";
+import Gaurav from './pages/Gaurav'
+import ParellexanimG from "pages/ParellexanimG";
+
+
 
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
@@ -134,8 +138,10 @@ export default function App() {
           <Route path="/ContactUs" element={<ContactUsPage />} />
           <Route path="/Blog" element={<BlogIndexPage />} />
           <Route path="/MainLandingPage" element={<MainLandingPage />} />
-          
           <Route path="/" element={<Home  />} />
+          <Route path="/Gaurav" element={<Gaurav />} />
+          <Route path="/ParellexanimG" element={<ParellexanimG />} />
+          
         </Routes>
       </Router>
     </>

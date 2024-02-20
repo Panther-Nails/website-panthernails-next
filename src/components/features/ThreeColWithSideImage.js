@@ -17,12 +17,15 @@ import FastIconImage from "images/fast-icon.svg";
 import ReliableIconImage from "images/reliable-icon.svg";
 import SimpleIconImage from "images/simple-icon.svg";
 
-const Container = tw.div`relative`;
+//self created effect add
+const Hovereffect=tw.div`hover:(scale-102 duration-500 shadow-2xl rounded-full)`
+
+const Container = tw.div`relative bg-gray-200 mt-4`;//chenge no bg to bg gray,add margin-4 in 14-2-24
 
 const ThreeColumnContainer = styled.div`
   ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-24`}
 `;
-const Subheading = tw(SubheadingBase)`mb-4`;
+const Subheading = tw(SubheadingBase)`mb-4 `;
 const Heading = tw(SectionHeading)`w-full`;
 const Description = tw(SectionDescription)`w-full text-center`;
 
@@ -90,7 +93,9 @@ export default ({ cards = null, heading = "Amazing Features", subheading = "Feat
         {description && <Description>{description}</Description>}
         <VerticalSpacer />
         {cards.map((card, i) => (
+          
           <Column key={i}>
+            <Hovereffect>
             <Card>
               <span className="imageContainer">
                 <img src={card.imageSrc || defaultCardImage} alt="" />
@@ -102,7 +107,9 @@ export default ({ cards = null, heading = "Amazing Features", subheading = "Feat
                 </p>
               </span>
             </Card>
+            </Hovereffect>
           </Column>
+          
         ))}
       </ThreeColumnContainer>
       <DecoratorBlob />

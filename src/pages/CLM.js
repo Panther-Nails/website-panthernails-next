@@ -1,6 +1,12 @@
 import React from "react";
-import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 
+
+
+
+
+
+//official imports
+import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/TwoColumnWithInput.js";
 import Features from "components/features/VerticalWithAlternateImageAndText.js";
 import Pricing from "components/pricing/TwoPlansWithDurationSwitcher";
@@ -71,7 +77,7 @@ export default ({
       <Features 
         products={products} 
         heading={<></>} 
-        description={ <> </>}
+        description={ <></>}
         />
 
 
@@ -89,7 +95,7 @@ export default ({
         imageSrc ={PhoneImageRasikLoyalty} 
       />
 
-      <Testimonial heading="Our Esteemed Customers" />
+      {/* <Testimonial heading="Our Esteemed Customers" /> */}
 
       <FAQ />
 

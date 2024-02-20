@@ -14,7 +14,7 @@ import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 
 const Header = tw.header`
   flex justify-between items-center
-  max-w-screen-xl mx-auto
+  max-w-screen-xl mx-auto 
 `;     
 
 export const NavLinks = tw.div`inline-block`;
@@ -23,16 +23,17 @@ export const NavLinks = tw.div`inline-block`;
  * hocus:bg-primary-700 will apply the bg-primary-700 class on hover or focus
  */
 export const NavLink = tw.a`
-  text-sm my-2 lg:mx-6 lg:my-0
+  text-sm my-2 lg:mx-4 lg:my-0
   font-semibold tracking-wide transition duration-300
   pb-5 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
+  
 `;
 
 
 export const PrimaryLink = tw(NavLink)`
   lg:mx-0   px-8 py-3 rounded bg-primary-500 text-gray-100
   hocus:bg-primary-700 hocus:text-gray-200 focus:shadow-outline
-  border-b-0
+  border-b-0 
 `;
 
 export const LogoLink = styled(NavLink)`
@@ -101,7 +102,7 @@ export default ({
   links = links || defaultLinks;
 
   return (
-    <Header className={className || "header-light"}>
+    <Header className={className || "header-ligh"}>
       <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
         {logoLink}
         {links}
