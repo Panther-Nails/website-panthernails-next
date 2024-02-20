@@ -17,22 +17,19 @@ const Heading = tw.h1`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-5xl tex
 const Paragraph = tw.p`my-5 lg:my-8 text-base xl:text-lg`;
 
 // Random Decorator Blobs (shapes that you see in background)
-const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
-  ${tw`pointer-events-none opacity-5 absolute left-0 bottom-0 h-64 w-64 transform -translate-x-2/3 -z-10`}
-`;
+const DecoratorBlob1 = styled(SvgDecoratorBlob1);//`
+//   ${tw`pointer-events-none opacity-5 absolute left-0 bottom-0 h-64 w-64 transform -translate-x-2/3 -z-10`}
+// `;
 
 export default ({
   heading = <></>,
-  description = (
-    <>      
-    </>
-  ),
+  description = <></>,
   roundedHeaderButton,
 }) => {
   return (
     <>
       <Header roundedHeaderButton={roundedHeaderButton} />
-      <Container>
+      {/* <Container>
         <Content>
           <Heading>
             {heading}
@@ -42,7 +39,7 @@ export default ({
           </Paragraph>
         </Content>
         <DecoratorBlob1 />
-      </Container>
+      </Container> */}
     </>
   );
 };

@@ -702,6 +702,7 @@ module.exports = {
       '1000': '1000ms',
     },
   },
+  
   variants: {
     accessibility: ['responsive', 'focus'],
     alignContent: ['responsive'],

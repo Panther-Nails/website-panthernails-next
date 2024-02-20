@@ -90,7 +90,7 @@ export default ({ cards = null, heading = "Amazing Features", subheading = "Feat
   return (
     <Container>
       <Content>
-        <Heading>Our Esteemed <HighlightedText>Clients</HighlightedText></Heading>
+        <Heading>Our Esteemed<HighlightedText>Clients</HighlightedText></Heading>
       </Content>
       <ThreeColumnContainer>
         <VerticalSpacer />        

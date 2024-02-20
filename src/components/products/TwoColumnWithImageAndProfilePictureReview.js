@@ -17,15 +17,25 @@ import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-
 
 import "slick-carousel/slick/slick.css";
 
-const Container = tw.div`relative`;
-const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
-const ProductsContainer = tw.div`mt-16 lg:mt-0`;
-const Products = styled.div``;
-const Testimonial = tw.div`max-w-md lg:max-w-none mx-auto lg:mx-0 flex flex-col items-center lg:items-stretch lg:flex-row`;
+//Changes
+import ProductImageRasikLoyalty from "images/ProductRasikLoyalty.png";
+import OneAppLogo from "images/ONEAPP.png";
+import ProfileImageRasikLoyaltyLogo from "images/Loyalty.png";
+import DownloadApp from "components/cta/DownloadApp.js";
+import GetStarted from "components/cta/GetStarted.js";
 
-const TestimonialImageSlider = tw(Slider)`w-full lg:w-5/12 flex-shrink-0 `;
-const TestimonialTextSlider = tw(Slider)``;
-const TestimonialText = tw.div`outline-none`;
+
+
+
+const Container = tw.div`relative text-white bg-transparent`;
+const Content = tw.div`max-w-screen-xl text-white bg-transparent`;
+const ProductsContainer = tw.div`mt-16 lg:mt-0 bg-transparent`;
+const Products = styled.div`bg-transparent`;
+const Testimonial = tw.div`max-w-md lg:max-w-none mx-auto lg:mx-0 flex flex-col items-center lg:items-stretch lg:flex-row bg-transparent`;
+
+const TestimonialImageSlider = tw(Slider)`w-full lg:w-5/12 flex-shrink-0 bg-transparent`;
+const TestimonialTextSlider = tw(Slider)`bg-transparent`;
+const TestimonialText = tw.div`outline-none bg-transparent`;
 
 const ImageAndControlContainer = tw.div`relative outline-none`;
 const Image = styled.div((props) => [
@@ -33,7 +43,7 @@ const Image = styled.div((props) => [
   tw`rounded bg-cover bg-center h-80 sm:h-96 lg:h-144`,
 ]);
 
-const ControlContainer = tw.div`absolute bottom-0 right-0 bg-gray-100 px-6 py-4 rounded-tl-3xl border`;
+const ControlContainer = tw.div`absolute bottom-0 right-0 bg-transparent px-6 py-4 rounded-tl-3xl border`;
 const ControlButton = styled(PrimaryButton)`
   ${tw`mx-3 rounded-full text-gray-100 p-2`}
   svg {
@@ -48,15 +58,15 @@ const TextContainer = styled.div((props) => [
 
 const Subheading = tw(SubheadingBase)`mb-4`;
 const HeadingTitle = tw(SectionHeading)`lg:text-left leading-tight`;
-const Description = tw.p`max-w-md text-center mx-auto lg:mx-0 lg:text-left lg:max-w-none leading-relaxed text-sm sm:text-base lg:text-lg font-medium mt-4 text-secondary-100`;
+const Description = tw.p`max-w-md text-center mx-auto lg:mx-0 lg:text-left lg:max-w-none leading-relaxed text-sm sm:text-base lg:text-lg font-medium mt-4 text-secondary-100 text-white`;
 
-const QuoteContainer = tw.div`relative mt-10`;
-const Quote = tw.blockquote`text-center lg:text-left text-sm sm:text-lg lg:text-xl xl:text-2xl`;
+const QuoteContainer = tw.div`relative mt-10 `;
+const Quote = tw.blockquote`text-center lg:text-left text-sm sm:text-lg lg:text-xl xl:text-2xl text-white`;
 const CustomerInfo = tw.div`mt-6 flex flex-col sm:flex-row items-center justify-center lg:justify-start`;
 const CustomerProfilePicture = tw.img`rounded-full w-20 h-20`;
-const CustomerTextInfo = tw.div`text-center lg:text-left sm:ml-6 mt-2 sm:mt-0`;
-const CustomerName = tw.h5`font-semibold text-xl lg:text-2xl xl:text-3xl text-primary-500`;
-const CustomerTitle = tw.p`font-medium text-secondary-100`;
+const CustomerTextInfo = tw.div`text-center lg:text-left sm:ml-6 mt-2 sm:mt-0 text-white`;
+const CustomerName = tw.h5`font-semibold text-xl lg:text-2xl xl:text-3xl text-primary-500 text-white`;
+const CustomerTitle = tw.p`font-medium text-secondary-100 text-white`;
 
 const QuotesLeft = tw(
   QuotesLeftIcon
@@ -65,7 +75,6 @@ const QuotesRight = tw(
   QuotesRightIcon
 )`w-6 h-6 opacity-75 text-primary-500 inline-block ml-1 -mt-3`;
 
-
 export const Links = tw.div`inline-block`;
 
 export const Link = tw.a`
@@ -73,23 +82,24 @@ export const Link = tw.a`
   text-primary-500 hover:border-secondary-500 hocus:text-secondary-500
   text-lg my-2 
   font-bold tracking-wide transition duration-300
-  pb-1 border-b-2 border-transparent 
+  pb-1 border-b-2 border-transparent text-teal-400
 `;
 
-const DecoratorBlob1 = tw(
-  SvgDecoratorBlob1
-)`absolute w-32 top-0 left-0 -z-10 text-primary-500 opacity-25 transform -translate-x-full`;
-const DecoratorBlob2 = tw(
-  SvgDecoratorBlob2
-)`absolute w-32 bottom-0 right-0 -z-10 text-pink-500 opacity-15 transform translate-x-2/3 translate-y-8`;
-
+// const DecoratorBlob1 = tw(
+//   SvgDecoratorBlob1
+// )`absolute w-32 top-0 left-0 -z-10 text-primary-500 opacity-25 transform -translate-x-full`;
+// const DecoratorBlob2 = tw(
+//   SvgDecoratorBlob2
+// )`absolute w-32 bottom-0 right-0 -z-10 text-pink-500 opacity-15 transform translate-x-2/3 translate-y-8`;
 
 export default ({
   subheading = "",
-  heading = "Products",
+  heading = " Our Products",
   description = "Here are what some of our amazing customers are saying about our hotels & tours. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   products,
   textOnLeft = false,
+
+  
 }) => {
   /*
    * You can modify the products shown by modifying the array below or passing in the products prop above
@@ -100,24 +110,22 @@ export default ({
 
   const defaultProducts = [
     {
-      imageSrc:
-        "https://images.unsplash.com/photo-1512100356356-de1b84283e18?ixlib=rb-1.2.1&auto=format&fit=crop&w=1024&q=80",
-      profileImageSrc:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80",
-      customerName: "Charlotte Hale",
-      customerTitle: "CEO, Delos Inc.",
-      redirectUrl: "/"
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1523952578875-e6bb18b26645?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
-      profileImageSrc:
-        "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=512&h=512&q=80",
+      imageSrc: ProductImageRasikLoyalty,
+      profileImageSrc: ProfileImageRasikLoyaltyLogo,
       quote:
         "Sinor Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-      customerName: "Adam Cuppy",
-      customerTitle: "Founder, EventsNYC",
-      redirectUrl: "/"
+      customerName: "Rasik Store",
+      // customerTitle: "CEO, Delos Inc.",
+      redirectUrl: "/",
+    },
+    {
+      imageSrc:OneAppLogo,
+      profileImageSrc:OneAppLogo,
+      quote:
+        "Sinor Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+      customerName: "One App",
+      // customerTitle: "Founder, EventsNYC",
+      redirectUrl: "/",
     },
   ];
 
@@ -126,6 +134,7 @@ export default ({
   // useState is used instead of useRef below because we want to re-render when sliderRef becomes available (not null)
   const [imageSliderRef, setImageSliderRef] = useState(null);
   const [textSliderRef, setTextSliderRef] = useState(null);
+  
 
   return (
     <Container>
@@ -159,7 +168,7 @@ export default ({
                   </ImageAndControlContainer>
                 ))}
               </TestimonialImageSlider>
-              
+
               <TextContainer textOnLeft={textOnLeft}>
                 <HeadingInfo
                   tw="hidden lg:block"
@@ -192,12 +201,11 @@ export default ({
                       <QuoteContainer>
                         <Quote>
                           <QuotesLeft />
-                            {testimonial.quote}
+                          {testimonial.quote}
                           <QuotesRight />
-                          
                         </Quote>
                       </QuoteContainer>
-                      <Link href={testimonial.redirectUrl}>Know more</Link>
+                      <Link href={testimonial.redirectUrl}>More Info</Link>
                     </TestimonialText>
                   ))}
                 </TestimonialTextSlider>
@@ -206,8 +214,8 @@ export default ({
           </Products>
         </ProductsContainer>
       </Content>
-      <DecoratorBlob1 />
-      <DecoratorBlob2 />
+      {/* <DecoratorBlob1 />
+      <DecoratorBlob2 /> */}
     </Container>
   );
 };

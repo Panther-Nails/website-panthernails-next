@@ -34,6 +34,72 @@ export const NavLink = tw.a`
 const HighlightedText = tw.span`text-primary-500`;
 
 
+var newProducts = [
+  {
+    imageSrc: ProductImageRasikLoyalty,
+    profileImageSrc: ProfileImageRasikLoyalty,
+    subtitle: "Customer Loyalty Platform",
+    title: "Rasik Loyalty",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    url: "/RasikLoyalty"
+  },
+  {
+    imageSrc: ProductImageRasikLoyalty,
+    profileImageSrc: ProfileImageRasikLoyalty,
+    subtitle: "Customer Loyalty Platform",
+    title: "Rasik Loyalty",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    url: "/RasikLoyalty"
+  },
+  {
+    imageSrc: ProductImageRasikLoyalty,
+    profileImageSrc: ProfileImageRasikLoyalty,
+    subtitle: "Customer Loyalty Platform",
+    title: "Rasik Loyalty",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    url: "/RasikLoyalty"
+  },
+  {
+    imageSrc: ProductImageRasikLoyalty,
+    profileImageSrc: ProfileImageRasikLoyalty,
+    subtitle: "Customer Loyalty Platform",
+    title: "Rasik Loyalty",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    url: "/RasikLoyalty"
+  },
+  {
+    imageSrc: ProductImageRasikLoyalty,
+    profileImageSrc: ProfileImageRasikLoyalty,
+    subtitle: "Customer Loyalty Platform",
+    title: "Rasik Loyalty",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    url: "/RasikLoyalty"
+  },
+  {
+    imageSrc: ProductImageRasikLoyalty,
+    profileImageSrc: ProfileImageRasikLoyalty,
+    subtitle: "Customer Loyalty Platform",
+    title: "Rasik Loyalty",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    url: "/RasikLoyalty"
+  },
+  {
+    imageSrc: ProductImageCLM,
+    profileImageSrc: ProfileImageCLM,
+    subtitle: "Contract Labour Management",
+    title: "Panther Nails One App",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    url: "/OneApp"
+  },]
+
+
 export default ({
   
   products = [
@@ -74,7 +140,7 @@ export default ({
       />
 
       <Features 
-        products={products} 
+        products={newProducts} 
         heading={<></>} 
         description={ <> </>}
         />
