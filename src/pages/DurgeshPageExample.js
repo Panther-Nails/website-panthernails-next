@@ -12,9 +12,9 @@ import ScrollingAnimationUpSide from "components/durgesh/ScrollingAnimationUpSid
 import GridWithFeaturedPost from "components/blogs/GridWithFeaturedPost";
 
 //change tailwind css
-const PrimaryButtonForDurgeshPage = tw.a`px-5 py-3 font-bold bg-black rounded bg-pink-500 text-gray-100 hocus:bg-pink-500 shadow-gray-700  hocus:text-gray-900 focus:shadow-inner focus:outline-none transition duration-300 shadow-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500  animate-bounce hover:animate-none`;
+const PrimaryButtonForDurgeshPage = tw.a`px-5 py-3 font-bold bg-black rounded bg-pink-500 text-gray-100 hocus:bg-pink-500 shadow-gray-700  hocus:text-gray-900 focus:shadow-inner focus:outline-none transition duration-300 shadow-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500  animate-bounce hover:animate-none sticky`;
 const Body = tw.div`bg-fixed bg-cover bg-center h-full bg-gray-900 scroll-smooth bg-black`; //bg-[url('https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&w=600')]`//bg-gradient-to-r from-purple-300 to-indigo-400 text-black `;
-const ContainerForButton = tw.div` flex justify-center mb-16 relative bg-transparent`;
+const ContainerForButton = tw.div` flex justify-center mb-16 relative bg-transparent sticky`;
 
 // const DecoratorBlob1 = tw(SvgDotPatternIcon)`absolute bottom-0 left-0 w-32 h-32 mb-48 ml-16 transform -translate-x-1/2 translate-y-1/2 fill-current text-gray-500 opacity-50`
 const DecoratorBlob2 = tw(

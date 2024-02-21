@@ -3,8 +3,13 @@ import gsap from "gsap";
 import _ScrollTrigger from "gsap/ScrollTrigger";
 
 let isScrollRegistered = false
-export default ({children,y}) => {
+export default ({children,y,duration}) => {
     const containerRef = useRef(null)
+    if(duration == null){
+        duration = 0.5
+       
+    }
+    
     useEffect(()=>{
         if(typeof window !== 'undefined' && !isScrollRegistered){
             gsap.registerPlugin(_ScrollTrigger);
@@ -15,7 +20,7 @@ export default ({children,y}) => {
         //    rotate:360,
             y:y,
             opacity:0,
-            duration:0.5,
+            duration:duration,
             scrollTrigger:{
                 trigger:containerRef.current,
                 start:"top 80%",

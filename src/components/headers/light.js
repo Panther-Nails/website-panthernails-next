@@ -26,7 +26,7 @@ export const NavLink = tw.a`
   text-sm my-2 lg:mx-6 lg:my-0
   font-semibold tracking-wide transition duration-300
   pb-5 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
-  text-sm mx-0 font-medium font-bold text-white
+  text-sm mx-0 font-medium font-bold 
 `;
 
 export const PrimaryLink = tw(NavLink)`

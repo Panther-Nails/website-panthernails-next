@@ -23,12 +23,12 @@ import OneAppLogo from "images/ONEAPP.png";
 import ProfileImageRasikLoyaltyLogo from "images/Loyalty.png";
 import DownloadApp from "components/cta/DownloadApp.js";
 import GetStarted from "components/cta/GetStarted.js";
+import ScrollingAnimationUpSide from "components/durgesh/ScrollingAnimationUpSide.js";
 
 
 
-
-const Container = tw.div`relative text-white bg-transparent`;
-const Content = tw.div`max-w-screen-xl text-white bg-transparent`;
+const Container = tw.div`relative text-black bg-transparent`;
+const Content = tw.div`max-w-screen-xl text-black bg-transparent`;
 const ProductsContainer = tw.div`mt-16 lg:mt-0 bg-transparent`;
 const Products = styled.div`bg-transparent`;
 const Testimonial = tw.div`max-w-md lg:max-w-none mx-auto lg:mx-0 flex flex-col items-center lg:items-stretch lg:flex-row bg-transparent`;
@@ -58,15 +58,15 @@ const TextContainer = styled.div((props) => [
 
 const Subheading = tw(SubheadingBase)`mb-4`;
 const HeadingTitle = tw(SectionHeading)`lg:text-left leading-tight`;
-const Description = tw.p`max-w-md text-center mx-auto lg:mx-0 lg:text-left lg:max-w-none leading-relaxed text-sm sm:text-base lg:text-lg font-medium mt-4 text-secondary-100 text-white`;
+const Description = tw.p`max-w-md text-center mx-auto lg:mx-0 lg:text-left lg:max-w-none leading-relaxed text-sm sm:text-base lg:text-lg font-medium mt-4 text-secondary-100 text-black`;
 
 const QuoteContainer = tw.div`relative mt-10 `;
-const Quote = tw.blockquote`text-center lg:text-left text-sm sm:text-lg lg:text-xl xl:text-2xl text-white`;
+const Quote = tw.blockquote`text-center lg:text-left text-sm sm:text-lg lg:text-xl xl:text-2xl text-black`;
 const CustomerInfo = tw.div`mt-6 flex flex-col sm:flex-row items-center justify-center lg:justify-start`;
 const CustomerProfilePicture = tw.img`rounded-full w-20 h-20`;
-const CustomerTextInfo = tw.div`text-center lg:text-left sm:ml-6 mt-2 sm:mt-0 text-white`;
-const CustomerName = tw.h5`font-semibold text-xl lg:text-2xl xl:text-3xl text-primary-500 text-white`;
-const CustomerTitle = tw.p`font-medium text-secondary-100 text-white`;
+const CustomerTextInfo = tw.div`text-center lg:text-left sm:ml-6 mt-2 sm:mt-0 text-black`;
+const CustomerName = tw.h5`font-semibold text-xl lg:text-2xl xl:text-3xl text-primary-500 text-black`;
+const CustomerTitle = tw.p`font-medium text-secondary-100 text-black`;
 
 const QuotesLeft = tw(
   QuotesLeftIcon
@@ -82,7 +82,7 @@ export const Link = tw.a`
   text-primary-500 hover:border-secondary-500 hocus:text-secondary-500
   text-lg my-2 
   font-bold tracking-wide transition duration-300
-  pb-1 border-b-2 border-transparent text-teal-400
+  pb-1 border-b-2 border-transparent text-teal-900
 `;
 
 // const DecoratorBlob1 = tw(
@@ -139,12 +139,14 @@ export default ({
   return (
     <Container>
       <Content>
+      <ScrollingAnimationUpSide y={500} duration={5.0}>
         <HeadingInfo
           tw="text-center lg:hidden"
           subheading={subheading}
           heading={heading}
           description={description}
         />
+        </ScrollingAnimationUpSide>
         <ProductsContainer>
           <Products>
             <Testimonial>

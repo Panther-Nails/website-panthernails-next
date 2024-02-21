@@ -30,19 +30,19 @@ const ThreeColumnContainer = styled.div`
   ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:pb-24 pt-0 `}
 `;
 const Subheading = tw(SubheadingBase)`mb-4`;
-const Heading = tw(SectionHeading)`w-full text-white text-5xl font-bold`;
+const Heading = tw(SectionHeading)`w-full text-black text-5xl font-bold`;
 const Description = tw(
   SectionDescription
-)`w-full text-center text-white text-lg font-semibold`;
+)`w-full text-center text-black text-lg font-semibold`;
 
 const VerticalSpacer = tw.div`mt-10 w-full  `;
 
 const Column = styled.div`
-  ${tw`md:w-1/2 lg:w-1/3 max-w-sm `}
+  ${tw`md:w-1/2 lg:w-1/3 max-w-sm mb-5`}
 `;
 
 const Card = styled.div`
-  ${tw`flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8 bg-teal-400 rounded-lg`}
+  ${tw`flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8 bg-teal-300 rounded-lg shadow-xl shadow-gray-500`}
 
   animation: cardAnimation 1s ease-in-out;
 
@@ -103,7 +103,7 @@ export default ({
   cards = null,
   heading = "Company Capability",
   subheading = "Features",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  description = "We understand the importance of building strong relationships with your customers and keeping them engaged. That's why we offer a range of innovative solutions to help you drive loyalty and boost sales.",
 }) => {
   /*
    * This componets has an array of object denoting the cards defined below. Each object in the cards array can have the key (Change it according to your need, you can also add more objects to have more cards in this feature component) or you can directly pass this using the cards prop:

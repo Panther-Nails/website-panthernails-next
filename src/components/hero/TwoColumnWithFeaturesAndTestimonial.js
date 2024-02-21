@@ -15,9 +15,9 @@ const Header = tw(HeaderBase)`max-w-none`;
 const Row = tw.div`flex flex-col lg:flex-row justify-between items-center lg:pt-16 max-w-screen-2xl mx-auto sm:px-8`;
 const Column = tw.div``;
 const TextColumn = tw(Column)`mr-auto lg:mr-0 max-w-lg lg:max-w-xl xl:max-w-2xl`;
-const Heading = tw(SectionHeading)`text-left text-primary-900 leading-snug xl:text-6xl`;
+const Heading = tw(SectionHeading)`text-left text-primary-900 leading-snug xl:text-5xl `;
 const Description = tw(SectionDescription)`mt-4 lg:text-base text-gray-700 max-w-lg`;
-const PrimaryButton = tw(PrimaryButtonBase)`mt-8 inline-block w-56 tracking-wide text-center py-5`;
+const PrimaryButton = tw(PrimaryButtonBase)`mt-8 inline-block w-56 tracking-wide text-center py-5 px-5 py-3 font-bold bg-black rounded bg-pink-500 text-gray-100 hocus:bg-pink-500 shadow-gray-700  hocus:text-gray-900 focus:shadow-inner focus:outline-none transition duration-300 shadow-lg bg-gradient-to-r from-blue-700 to-purple-700 hover:from-pink-500 hover:to-yellow-500  animate-bounce hover:animate-none w-56`;
 const FeatureList = tw.ul`mt-12 leading-loose`;
 const Feature = tw.li`flex items-center`;
 const FeatureIcon = tw(CheckboxIcon)`w-5 h-5 text-primary-500`;
@@ -38,15 +38,15 @@ const CustomerCompany = tw.p`mt-1 text-sm text-gray-500`
 
 export default ({
   heading = "Better, Faster and Cheaper Cloud.",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+  description = "At Panther Nails , we understand the importance of building strong relationships with your customers and keeping them engaged. That's why we offer a range of innovative solutions to help you drive loyalty and boost sales.",
   imageSrc = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
   imageDecoratorBlob = true,
   primaryButtonUrl = "https://google.com",
   primaryButtonText = "Get Started",
   buttonRounded = true,
-  features = ["Available in 7 Locations", "Premium Internet Backbone", "99.99% Uptime SLA"],
+  features = ["Available in 2 Locations", "Premium Internet Backbone", "99.99% Uptime SLA"],
   testimonial = {
-    quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    quote: "At Panther Nails , we understand the importance of building strong relationships with your customers and keeping them engaged. That's why we offer a range of innovative solutions to help you drive loyalty and boost sales.",
     customerName: "Charlotte Hale",
     customerCompany: "Delos Inc."
   },
@@ -84,14 +84,14 @@ export default ({
               <PrimaryButton as="a" href={primaryButtonUrl} css={buttonRoundedCss}>
                 {primaryButtonText}
               </PrimaryButton>
-              <FeatureList>
+              {/* <FeatureList>
                 {features.map((feature, index) => (
                   <Feature key={index}>
                     <FeatureIcon />
                     <FeatureText>{feature}</FeatureText>
                   </Feature>
                 ))}
-              </FeatureList>
+              </FeatureList> */}
             </TextColumn>
             <ImageColumn>
               <ImageContainer>
@@ -100,8 +100,8 @@ export default ({
                 <Testimonial>
                   <QuotesLeftIcon/>
                   <Quote>{testimonial.quote}</Quote>
-                  <CustomerName>{testimonial.customerName}</CustomerName>
-                  <CustomerCompany>{testimonial.customerCompany}</CustomerCompany>
+                  {/* <CustomerName>{testimonial.customerName}</CustomerName>
+                  <CustomerCompany>{testimonial.customerCompany}</CustomerCompany> */}
                 </Testimonial>
               </ImageContainer>
               <Offsetbackground />
