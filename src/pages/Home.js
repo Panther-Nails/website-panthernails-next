@@ -65,7 +65,7 @@ const serviceCards = [
     imageSrc: CustomizeIconImage,
     description:
       "A Rapid & Stable Development Based on Panther Nails After8 Framework makes it easy. ",
-    title: "Customizable",
+    title: "Customizable", 
   },
   {
     imageSrc: ReliableIconImage,

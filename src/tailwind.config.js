@@ -10,6 +10,7 @@ module.exports = {
       lg: '1024px',
       xl: '1280px',
       "2xl": "1440px",
+      
     },
     colors: {
       transparent: 'transparent',
@@ -793,6 +794,7 @@ module.exports = {
     transitionTimingFunction: ['responsive'],
     transitionDuration: ['responsive'],
   },
+
   corePlugins: {},
   plugins: [],
 }
