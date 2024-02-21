@@ -12,6 +12,10 @@ import ProfileImageCLM from "images/CLM.png";
 import ProfileImageRasikLoyalty from "images/Loyalty.png";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 
+import ProductFeatures from "../components/faqs/SimpleWithSideImage.js";
+import PlatforWeProvide from "../components/features/GauravTwoColWithButton copy.js";
+import RevordSystem from "../components/testimonials/GauravThreeColumnWithProfileImage copy.js";
+
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 
 import Features1 from "components/features/ThreeColWithSideImage.js";
@@ -37,9 +41,9 @@ export const Hovereffect=tw.div`hover:(scale-150 duration-500 shadow-2xl)`
 const buttonRoundedCss = tw`rounded-full  w-32 ml-40  flex overflow-hidden hover:( w-80)`;
 const HighlightedText = tw.span`text-green-300`;
 const imageCss =tw`rounded-4xl bg-black`;
-const Container = tw.div` scroll-smooth relative  min-h-screen w-screen flex-col md:(flex flex-row ) items-center justify-center   `;//hover:scale-110
-const Left = tw.div` h-screen w-screen md:w-1/3 -mt-8  bg-gray-200 flex items-center justify-evenly flex-col  `;
-const Right = styled.div`${tw` h-screen bg-gray-1000 w-screen  md:w-2/3 -mt-8 flex items-center justify-center ` }
+const Container = tw.div` relative  min-h-screen w-full flex-col md:(flex flex-row ) items-center justify-center   `;//hover:scale-110
+const Left = tw.div` h-screen w-screen md:w-1/2 -mt-8  bg-gray-200 flex items-center justify-evenly flex-col  `;
+const Right = styled.div`${tw` h-screen bg-gray-1000 w-screen  md:w-1/2 -mt-8 flex items-center justify-center ` }
 
 `;
 
@@ -54,9 +58,9 @@ const Right1 = styled.div(({variable})=>[
 
 ])
 // origin-bottom-left
-const Rightimg = tw.img` w-10/12 h-10/12 hover:scale-110 duration-500  `;
+const Rightimg = tw.img` w-full h-10/12 hover:scale-110 duration-500  `;
 const PrimaryButton1 = tw.button` animate-bounce px-8 py-3 font-bold rounded-full bg-green-600 text-gray-100 hocus:(bg-green-900 animate-none) hocus:text-gray-200 focus:shadow-outline focus:outline-none transition duration-300`;
-const Subheading1 = tw.h5`font-bold text-black text-center`;
+const Subheading1 = tw.h5`font-bold text-black text-center w-10/12`;
 const Icone = tw.img`w-12 h-12 rounded-full ml-16 `;
 const buttonRoundedCss1 = tw`rounded-full  w-32 ml-40  flex overflow-hidden hover:( w-80)`;
 
@@ -118,7 +122,7 @@ export default ({
        </Hero> */}
 
         <Header />
-        <Container>
+         <Container>
           <Left>
             <SectionHeading>
               Run your entire <HighlightedText>business</HighlightedText> in one
@@ -135,8 +139,8 @@ export default ({
             >
               {primaryButtonText}
               {/* <Icone src={ProfileImageCLM}/>
-            <Icone src={ProfileImageRasikLoyalty}/> */}
-            </PrimaryButton1>
+            <Icone src={ProfileImageRasikLoyalty}/>  */}
+             </PrimaryButton1>
           </Left>
           <Right>
             
@@ -155,6 +159,9 @@ export default ({
           description="a genial technology company delivering insightful enterprise software that foster your business."
           cards={serviceCards}
         />
+        <ProductFeatures></ProductFeatures>
+        <PlatforWeProvide/>
+        <RevordSystem></RevordSystem>
         
         <Testimonial />
         <Footer />
@@ -162,7 +169,7 @@ export default ({
         
       {/* </AnimationRevealPage> */}
 
-      <Right1 ></Right1>
+      {/* <Right1 ></Right1> */}
     </>
   );
 };

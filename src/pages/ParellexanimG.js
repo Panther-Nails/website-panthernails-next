@@ -5,7 +5,7 @@ import Demo2 from "../Gsvgs/Demo2";
 import Demo3 from "../Gsvgs/Demo3";
 const Heading = tw.h1`text-4xl font-bold w-full text-center`;
 const Description = tw.p`text-2xl mt-8`;
-const Main = tw.div`min-h-screen w-screen bg-gray-200 flex  `;
+const Main = tw.div`min-h-screen w-full bg-gray-200 flex  `;
 // let Left = tw.div`h-screen w-1/2   sticky top-0 flex items-center justify-center   `;
 const Right = tw.div`min-h-screen  w-1/2  `;
 let Items = tw.div`h-screen w-full   flex flex-col items-center justify-center   `;

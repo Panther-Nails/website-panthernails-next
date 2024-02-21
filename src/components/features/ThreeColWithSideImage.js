@@ -20,7 +20,7 @@ import SimpleIconImage from "images/simple-icon.svg";
 //self created effect add
 const Hovereffect=tw.div`hover:(scale-102 duration-500 shadow-2xl rounded-full)`
 
-const Container = tw.div`relative bg-gray-200 mt-4`;//chenge no bg to bg gray,add margin-4 in 14-2-24
+const Container = tw.div`relative bg-gray-200 mt-4 overflow-hidden`;//chenge no bg to bg gray,add margin-4 in 14-2-24
 
 const ThreeColumnContainer = styled.div`
   ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-24`}
