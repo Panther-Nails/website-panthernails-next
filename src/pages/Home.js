@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import tw from "twin.macro";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/TwoColumnWithFeaturesAndTestimonial.js";
@@ -26,7 +26,7 @@ import FastIconImage from "images/fast-icon.svg";
 import ReliableIconImage from "images/reliable-icon.svg";
 import SimpleIconImage from "images/simple-icon.svg";
 import ScrollingAnimationUpSide from "components/durgesh/ScrollingAnimationUpSide";
-
+import { Body, HighlightedTextSpan } from "components/misc/Layouts";
 const productList = [
   {
     imageSrc: ProductImageRasikLoyalty,
@@ -51,9 +51,9 @@ const productList = [
 const serviceCards = [
   {
     imageSrc: ShieldIconImage,
-    title: "Secure",
+    title: "HRM",
     description:
-      "Cloud Infrastructure with a safe & secured credentials enabled with SSO.",
+      "Employee Expence | Visitor Management | Time Office | Leaves & Overtime Control | Payroll | Policy Control.",
   },
   {
     imageSrc: SupportIconImage,
@@ -65,7 +65,7 @@ const serviceCards = [
     imageSrc: CustomizeIconImage,
     description:
       "A Rapid & Stable Development Based on Panther Nails After8 Framework makes it easy. ",
-    title: "Customizable", 
+    title: "Customizable",
   },
   {
     imageSrc: ReliableIconImage,
@@ -90,17 +90,17 @@ const serviceCards = [
 export default () => {
   const Subheading = tw.span`tracking-wider text-sm font-medium`;
   const HighlightedText = tw.span`text-primary-500`;
+
   const HighlightedTextInverse = tw.span`bg-gray-100 text-primary-500 px-4 transform -skew-x-12 inline-block`;
   const Description = tw.span`inline-block mt-8`;
 
   //changes from durgesh
-  // const Body = tw.div`bg-no-repeat (-10) opacity-50  bg-[url('https://img.freepik.com/free-photo/software-development-operations-system-concept_107791-17423.jpg?w=900&t=st=1708516672~exp=1708517272~hmac=6812de4c393177f6393feecdb5fac06b1f1f2851670f9bf3927ca6110f826f11')]`;
   // const ContainerForButton = tw.div` flex justify-center mb-16 relative bg-transparent z-50 fixed`;
   // const PrimaryButtonForDurgeshPage = tw.a`px-5 py-3 font-bold bg-black rounded bg-pink-500 text-gray-100 hocus:bg-pink-500 shadow-gray-700  hocus:text-gray-900 focus:shadow-inner focus:outline-none transition duration-300 shadow-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500  animate-bounce hover:animate-none sticky`;
   const imageCss = tw`rounded-4xl`;
   return (
     <>
-    
+    <Body>
       <Hero
         heading={
           <>
@@ -108,7 +108,7 @@ export default () => {
             <HighlightedText>your business</HighlightedText>
           </>
         }
-        description="."
+        description=""
         imageSrc="https://images.unsplash.com/photo-1508385082359-f38ae991e8f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
         imageCss={imageCss}
         imageDecoratorBlob={true}
@@ -159,18 +159,23 @@ export default () => {
             cards={serviceCards}
           />
         </ScrollingAnimationUpSide>
-        <ScrollingAnimationUpSide y={200}>
-          <Clients />
-        </ScrollingAnimationUpSide>
 
-        <CTA
-          text="Give us an opportunity for us to present our skills and expertise."
-          primaryLinkText="Get Started"
-          primaryLinkUrl="http://panthernails.com"
-          secondaryLinkText="Contact Us"
-          secondaryLinkUrl="http://google.com"
-          pushDownFooter={true}
-        />
+        {/* To Show our Client Section or Component uncommnet this */}
+        {/* <ScrollingAnimationUpSide y={200}>
+          <Clients />
+        </ScrollingAnimationUpSide> */}
+        <ScrollingAnimationUpSide y={100}>
+          <CTA
+            // text="Let's Develop Your Next Great App! And Make your business grow."
+            backgroundColor = {tw`bg-purple-800`}
+
+            primaryLinkText="Get Started"
+            primaryLinkUrl="http://panthernails.com"
+            secondaryLinkText="Contact Us"
+            secondaryLinkUrl="http://google.com"
+            pushDownFooter={true}
+          />
+        </ScrollingAnimationUpSide>
         <ScrollingAnimationUpSide y={200}>
           <FeatureStats
             subheading="Technology Innovations That Transform Your Business"
@@ -194,6 +199,7 @@ export default () => {
         </ScrollingAnimationUpSide>
         <Footer />
       </AnimationRevealPage>
+      </Body>
     </>
   );
 };

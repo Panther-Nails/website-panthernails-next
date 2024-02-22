@@ -17,7 +17,12 @@ module.exports = {
 
       black: '#000',
       white: '#fff',
-
+      rasik: {
+        100:'#B8448C',
+        200:'#9D2D7B',
+        300:'#69264F',
+      },
+      
       // primary: {
       //   100: '#a273ff',
       //   200: '#935bff',

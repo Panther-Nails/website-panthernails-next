@@ -18,6 +18,7 @@ import ProfileImageCLM from "images/CLM.png";
 
 import ProductImageRasikLoyalty from "images/ProductRasikLoyalty.png";
 import ProductImageCLM from "images/ProductCLM.png";
+import { Body } from "components/misc/Layouts";
 
 
 export const NavLinks = tw.div`inline-block`;
@@ -124,6 +125,7 @@ export default ({
   ]
 }) => {
   return (
+    <Body>
     <AnimationRevealPage>
       <Hero
         heading={
@@ -140,7 +142,7 @@ export default ({
       />
 
       <Features 
-        products={newProducts} 
+        products={products} 
         heading={<></>} 
         description={ <> </>}
         />
@@ -148,6 +150,7 @@ export default ({
 
 
       <CTA 
+         backgroundColor={tw`bg-rasik-200`}
          text = { <>Build relationships with influencers to make your <HighlightedText>Business grow</HighlightedText></> }
          primaryLinkText = "Schedule a meeting"
          primaryLinkUrl = "http://panthernails.com"
@@ -163,5 +166,6 @@ export default ({
       <Footer />
 
     </AnimationRevealPage>
+    </Body>
   );
 };

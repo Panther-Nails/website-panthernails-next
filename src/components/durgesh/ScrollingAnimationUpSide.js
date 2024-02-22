@@ -16,7 +16,9 @@ export default ({children,y,duration}) => {
             isScrollRegistered = true
 
         }
+        // console.log(containerRef.current.children,'containerRef.current.children')
         gsap.from(containerRef.current.children,{
+            
         //    rotate:360,
             y:y,
             opacity:0,

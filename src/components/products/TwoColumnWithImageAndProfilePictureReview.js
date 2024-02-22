@@ -57,7 +57,7 @@ const TextContainer = styled.div((props) => [
 ]);
 
 const Subheading = tw(SubheadingBase)`mb-4`;
-const HeadingTitle = tw(SectionHeading)`lg:text-left leading-tight`;
+const HeadingTitle = tw(SectionHeading)`lg:text-left leading-tight text-purple-900`;
 const Description = tw.p`max-w-md text-center mx-auto lg:mx-0 lg:text-left lg:max-w-none leading-relaxed text-sm sm:text-base lg:text-lg font-medium mt-4 text-secondary-100 text-black`;
 
 const QuoteContainer = tw.div`relative mt-10 `;
@@ -135,18 +135,18 @@ export default ({
   const [imageSliderRef, setImageSliderRef] = useState(null);
   const [textSliderRef, setTextSliderRef] = useState(null);
   
-
   return (
+    <>
     <Container>
       <Content>
-      <ScrollingAnimationUpSide y={500} duration={5.0}>
+      {/* <ScrollingAnimationUpSide y={500} duration={5.0}> */}
         <HeadingInfo
           tw="text-center lg:hidden"
           subheading={subheading}
           heading={heading}
           description={description}
         />
-        </ScrollingAnimationUpSide>
+        {/* </ScrollingAnimationUpSide> */}
         <ProductsContainer>
           <Products>
             <Testimonial>
@@ -157,7 +157,8 @@ export default ({
                 fade={true}
               >
                 {products.map((testimonial, index) => (
-                  <ImageAndControlContainer key={index}>
+                  <ImageAndControlContainer key={index} >
+                    
                     <Image imageSrc={testimonial.imageSrc} />
                     <ControlContainer>
                       <ControlButton onClick={imageSliderRef?.slickPrev}>
@@ -219,6 +220,7 @@ export default ({
       {/* <DecoratorBlob1 />
       <DecoratorBlob2 /> */}
     </Container>
+    </>
   );
 };
 

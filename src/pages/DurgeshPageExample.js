@@ -37,7 +37,7 @@ export default ({}) => {
             <TwoColumnWithImageAndProfilePictureReview />
           </ScrollingAnimationUpSide>
           <ScrollingAnimationUpSide y={100}>
-            <GetStarted />
+            <GetStarted></GetStarted>
           </ScrollingAnimationUpSide>
           <ScrollingAnimationUpSide y={200}>
             <GridWithFeaturedPost />
