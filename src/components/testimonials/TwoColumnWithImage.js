@@ -13,7 +13,7 @@ import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-
 
 import "slick-carousel/slick/slick.css";
 
-const Container = tw.div`relative bg-gray-200 mt-4 overflow-hidden` ; //chenge no bg to gray bg,add maring-4  14-2-24
+const Container = tw.div`relative bg-gray-200 mt-4 overflow-hidden bg-sitecolor-100` ; //chenge no bg to gray bg,add maring-4  14-2-24
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
 const HeadingInfoContainer = tw.div`flex flex-col items-center`;
 const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w-sm`;

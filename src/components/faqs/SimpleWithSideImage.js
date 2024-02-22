@@ -7,7 +7,7 @@ import { SectionHeading, Subheading as SubheadingBase } from "components/misc/He
 import { ReactComponent as PlusIcon } from "feather-icons/dist/icons/plus.svg";
 import { ReactComponent as MinusIcon } from "feather-icons/dist/icons/minus.svg";
 
-const Container = tw.div`relative px-4`;
+const Container = tw.div`relative px-4 bg-sitecolor-100`;
 const Content = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20`;
 
 const TwoColumn = tw.div`flex`;
@@ -21,16 +21,16 @@ const Image = styled.div(props => [
 ]);
 
 const FAQContent = tw.div`lg:ml-12`;
-const Subheading = tw(SubheadingBase)`mb-4 text-center lg:text-left`;
-const Heading = tw(SectionHeading)`lg:text-left`;
+const Subheading = tw(SubheadingBase)`mb-4 text-center lg:text-left text-sitecolor-900`;
+const Heading = tw(SectionHeading)`lg:text-left text-sitecolor-300`;
 const Description = tw.p`max-w-xl text-center mx-auto lg:mx-0 lg:text-left lg:max-w-none leading-relaxed text-sm sm:text-base lg:text-lg font-medium mt-4 text-secondary-100`;
 
 const FAQSContainer = tw.dl`mt-12`;
-const FAQ = tw.div`cursor-pointer mt-8 select-none border lg:border-0 px-8 py-4 lg:p-0 rounded-lg lg:rounded-none`;
+const FAQ = tw.div`mt-8 select-none border lg:border-0 px-8 py-4 lg:p-0 rounded-lg lg:rounded-none`;
 const Question = tw.dt`flex justify-between items-center`;
-const QuestionText = tw.span`text-lg lg:text-xl font-semibold`;
+const QuestionText = tw.span`text-lg lg:text-xl font-semibold text-sitecolor-900`;
 const QuestionToggleIcon = styled.span`
-  ${tw`ml-2 bg-primary-500 text-gray-100 p-1 rounded-full group-hover:bg-primary-700 group-hover:text-gray-200 transition duration-300`}
+  ${tw`ml-2 bg-sitecolor-200 text-gray-100 p-1 rounded-full group-hover:bg-sitecolor-900 group-hover:text-gray-200 transition duration-300`}
   svg {
     ${tw`w-4 h-4`}
   }

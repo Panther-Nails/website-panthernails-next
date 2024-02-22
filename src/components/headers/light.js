@@ -13,9 +13,9 @@ import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 
 const Header = tw.header`
-  flex justify-between items-center
-  max-w-screen-xl mx-auto 
-`;     
+  flex justify-between items-center bg-sitecolor-500 w-full 
+ pr-8
+`;//chenge bg color 22-2-24     
 
 export const NavLinks = tw.div`inline-block`;
 
@@ -25,9 +25,7 @@ export const NavLinks = tw.div`inline-block`;
 export const NavLink = tw.a`
   text-sm my-2 lg:mx-4 lg:my-0
   font-semibold tracking-wide transition duration-300
-  pb-5 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
-  
-`;
+  pb-5 border-b-2 border-transparent hover:border-sitecolor-900 hocus:text-sitecolor-900`;
 
 
 export const PrimaryLink = tw(NavLink)`
@@ -40,23 +38,23 @@ export const LogoLink = styled(NavLink)`
   ${tw`flex items-center font-black border-b-0 text-2xl! ml-0!`};
 
   img {
-    ${tw`w-64 mr-3 m-10 `}
+    ${tw`w-64 mr-3 ml-8 mt-6 `}
   }
 `;
 
-export const MobileNavLinksContainer = tw.nav`flex flex-1 items-center justify-between`;
+export const MobileNavLinksContainer = tw.nav`flex flex-1 items-center justify-between `;
 export const NavToggle = tw.button`
   lg:hidden z-20 focus:outline-none hocus:text-primary-500 transition duration-300
 `;
 export const MobileNavLinks = motion(styled.div`
   ${tw`lg:hidden z-10 fixed top-0 inset-x-0 mx-4 my-6 p-8 border text-center rounded-lg text-gray-900 bg-white`}
   ${NavLinks} {
-    ${tw`flex flex-col items-center`}
+    ${tw`flex flex-col items-center `}
   }
 `);
 
 export const DesktopNavLinks = tw.nav`
-  hidden lg:flex flex-1 justify-between items-center
+  hidden lg:flex flex-1 justify-between items-center 
 `;
 
 export default ({
@@ -94,7 +92,7 @@ export default ({
 
   const defaultLogoLink = (
     <LogoLink href="/">
-      <img src={pnlogo} alt="logo" />      
+      <img  src={pnlogo} alt="logo" />      
     </LogoLink>
   );
 

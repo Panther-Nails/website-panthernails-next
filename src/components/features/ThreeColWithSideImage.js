@@ -20,23 +20,23 @@ import SimpleIconImage from "images/simple-icon.svg";
 //self created effect add
 const Hovereffect=tw.div`hover:(scale-102 duration-500 shadow-2xl rounded-full)`
 
-const Container = tw.div`relative bg-gray-200 mt-4 overflow-hidden`;//chenge no bg to bg gray,add margin-4 in 14-2-24
+const Container = tw.div`relative bg-sitecolor-100  overflow-hidden`;//chenge no bg to bg gray, in 14-2-24
 
 const ThreeColumnContainer = styled.div`
   ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-24`}
 `;
-const Subheading = tw(SubheadingBase)`mb-4 `;
-const Heading = tw(SectionHeading)`w-full`;
-const Description = tw(SectionDescription)`w-full text-center`;
+const Subheading = tw(SubheadingBase)`mb-4 text-sitecolor-300 `;
+const Heading = tw(SectionHeading)`w-full text-sitecolor-300`;
+const Description = tw(SectionDescription)`w-full text-center text-sitecolor-300`;
 
 const VerticalSpacer = tw.div`mt-10 w-full`
 
 const Column = styled.div`
-  ${tw`md:w-1/2 lg:w-1/3 max-w-sm`}
+  ${tw`md:w-1/2 lg:w-1/3 max-w-sm  p-2 text-sitecolor-300`}
 `;
 
 const Card = styled.div`
-  ${tw`flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8`}
+  ${tw`flex flex-col bg-sitecolor-500 hover:bg-sitecolor-200 rounded-lg sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8`}
   .imageContainer {
     ${tw`border text-center rounded-full p-5 flex-shrink-0`}
     img {
@@ -95,7 +95,7 @@ export default ({ cards = null, heading = "Amazing Features", subheading = "Feat
         {cards.map((card, i) => (
           
           <Column key={i}>
-            <Hovereffect>
+            {/* <Hovereffect> */}
             <Card>
               <span className="imageContainer">
                 <img src={card.imageSrc || defaultCardImage} alt="" />
@@ -107,7 +107,7 @@ export default ({ cards = null, heading = "Amazing Features", subheading = "Feat
                 </p>
               </span>
             </Card>
-            </Hovereffect>
+            {/* </Hovereffect> */}
           </Column>
           
         ))}
