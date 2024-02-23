@@ -4,10 +4,10 @@ import Demo1 from "../Gsvgs/Demo1";
 import Demo2 from "../Gsvgs/Demo2";
 import Demo3 from "../Gsvgs/Demo3";
 const Heading = tw.h1`text-4xl font-bold w-full text-center text-sitecolor-900`;
-const Description = tw.p`text-2xl mt-8 w-10/12   text-sitecolor-300`;
+const Description = tw.p`lg:text-2xl text-lg mt-8 w-10/12   text-sitecolor-300`;
 const Main = tw.div`md:(min-h-screen w-full bg-sitecolor-100  flex-row) flex flex-col min-h-screen w-full  `;
 // let Left = tw.div`h-screen w-1/2   sticky top-0 flex items-center justify-center   `;
-const Right = tw.div`md:w-1/2 min-h-screen w-full  `;
+const Right = tw.div`md:w-1/2 bg-sitecolor-100 min-h-screen w-full  `;
 let Items = tw.div`lg:(h-screen w-full  flex-col items-center justify-center mt-0)  mt-12 text-center  h-1/2 flex flex-col items-center  `;
 let Images = tw.img`h-full w-full`;
 

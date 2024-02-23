@@ -38,7 +38,7 @@ const Subheading = tw(SubheadingBase)`text-center mt-8 text-sitecolor-900 `;
 const Heading = tw(
   SectionHeading
 )`mt-4 font-black text-sitecolor-900 text-center w-full text-3xl sm:text-4xl lg:text-5xl text-center  leading-tight`;
-const Description = tw.p`mt-4 w-full px-4 text-center text-sm md:text-base lg:text-lg  font-medium leading-relaxed text-secondary-100`;
+const Description = tw.p`mt-4 w-full  lg:ml-8 px-4 text-center text-sm md:text-base lg:text-lg  font-medium leading-relaxed text-secondary-100`;
 
 const PrimaryButton = styled(PrimaryButtonBase)((props) => [
   tw`mt-8 md:mt-8 text-sm inline-block mx-auto md:mx-0`,

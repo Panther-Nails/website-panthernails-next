@@ -59,8 +59,8 @@ const Right1 = styled.div(({variable})=>[
 ])
 // origin-bottom-left
 const Rightimg = tw.img`md:(h-10/12)  w-full h-4/12 hover:scale-110 duration-500  `;
-const PrimaryButton1 = tw.button`mt-4 animate-bounce px-8 py-3 font-bold rounded-full bg-green-600 text-gray-100 hocus:(bg-green-900 animate-none) hocus:text-gray-200 focus:shadow-outline focus:outline-none transition duration-300`;
-const Subheading1 = tw.h5`font-bold text-sitecolor-300   text-center w-10/12`;
+const PrimaryButton1 = tw.button`mt-8 animate-bounce px-8 py-3 font-bold rounded-full bg-green-600 text-gray-100 hocus:(bg-green-900 animate-none) hocus:text-gray-200 focus:shadow-outline focus:outline-none transition duration-300`;
+const Subheading1 = tw.h5`font-bold text-sitecolor-300  mt-4 text-center w-10/12`;
 const Icone = tw.img`w-12 h-12 rounded-full ml-16 `;
 const buttonRoundedCss1 = tw`rounded-full  w-32 ml-40  flex overflow-hidden hover:( w-80)`;
 

@@ -27,7 +27,7 @@ const ThreeColumnContainer = styled.div`
 `;
 const Subheading = tw(SubheadingBase)`mb-4 text-sitecolor-300 `;
 const Heading = tw(SectionHeading)`w-full text-sitecolor-300`;
-const Description = tw(SectionDescription)`w-full text-center text-sitecolor-300`;
+const Description = tw(SectionDescription)`lg:w-full w-10/12  text-center text-sitecolor-300`;
 
 const VerticalSpacer = tw.div`mt-10 w-full`
 
@@ -36,7 +36,7 @@ const Column = styled.div`
 `;
 
 const Card = styled.div`
-  ${tw`flex flex-col bg-sitecolor-500 hover:bg-sitecolor-200 rounded-lg sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8`}
+  ${tw`flex flex-col bg-sitecolor-500 hover:(bg-sitecolor-200 text-sitecolor-100) rounded-lg sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8`}
   .imageContainer {
     ${tw`border text-center rounded-full p-5 flex-shrink-0`}
     img {
@@ -45,7 +45,7 @@ const Card = styled.div`
   }
 
   .textContainer {
-    ${tw`sm:ml-4 mt-4 sm:mt-2`}
+    ${tw`sm:ml-4 mt-4 sm:mt-2  `}
   }
 
   .title {
@@ -53,7 +53,7 @@ const Card = styled.div`
   }
 
   .description {
-    ${tw`mt-1 sm:mt-4 font-medium text-secondary-100 leading-loose`}
+    ${tw`mt-1 sm:mt-4 font-medium text-secondary-100 hover:text-black  leading-loose`}
   }
 `;
 

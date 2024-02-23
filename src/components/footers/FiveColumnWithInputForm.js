@@ -37,7 +37,7 @@ const SubscribeNewsletterColumn = tw(Column)`text-center lg:text-left w-full! lg
 const SubscribeNewsletterContainer = tw.div`max-w-sm mx-auto lg:mx-0 `;
 const SubscribeText = tw.p`mt-2 lg:mt-6 text-sm font-medium text-black`;//chenge text-color gray-500 to black on 22-2-24
 const SubscribeForm = tw.form`mt-4 lg:mt-6 text-sm sm:flex max-w-xs sm:max-w-none mx-auto sm:mx-0`;
-const Input = tw.input`bg-gray-900 px-6 py-3 rounded sm:rounded-r-none border-2 sm:border-r-0 border-sitecolor-300 hover:border-primary-500 focus:outline-none transition duration-300 w-full`;//chenge bg gary-300 to 9000,chenge border color gary-500 to green 14-2-24
+const Input = tw.input`bg-gray-900 px-6 py-3 rounded text-center sm:rounded-r-none border-2 sm:border-r-0 border-sitecolor-300 hover:border-primary-500 focus:outline-none transition duration-300 w-full`;//chenge bg gary-300 to 9000,chenge border color gary-500 to green 14-2-24
 const SubscribeButton = tw(PrimaryButtonBase)`mt-4 bg-sitecolor-300 sm:mt-0 w-full sm:w-auto rounded sm:rounded-l-none px-8 py-3`;
 
 const CopywrightNotice = tw.p`text-center text-sm sm:text-base mt-8 md:mt-0 font-medium text-sitecolor-900`;//chenge text-color gray-500 to white on 14-2-24
