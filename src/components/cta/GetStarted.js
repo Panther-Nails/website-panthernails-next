@@ -7,7 +7,7 @@ import { ContentWithPaddingXl, Container } from "components/misc/Layouts";
 import Signup from "pages/Signup";
 import ScrollingAnimationUpSide from "components/durgesh/ScrollingAnimationUpSide";
 
-const PrimaryBackgroundContainer = tw.div`py-20 lg:py-24 bg-secondary-500 rounded-lg relative bg-purple-800 `
+const PrimaryBackgroundContainer = tw.div`py-20 lg:py-24 bg-secondary-500 rounded-lg relative bg-purple-500 `
 const Row = tw.div`px-8 max-w-screen-lg mx-auto flex items-center relative z-10 flex-col lg:flex-row text-center lg:text-left`;
 
 const ColumnContainer = tw.div`lg:w-1/2 max-w-lg`
@@ -25,7 +25,7 @@ const DecoratorBlobContainer = tw.div`absolute inset-0 overflow-hidden rounded-l
 const DecoratorBlob1 = tw(SvgDecoratorBlob1)`absolute bottom-0 left-0 w-80 h-80 transform -translate-x-20 translate-y-32 text-primary-700 opacity-50`
 const DecoratorBlob2 = tw(SvgDecoratorBlob1)`absolute top-0 right-0 w-80 h-80 transform  translate-x-20 -translate-y-64 text-primary-700 opacity-50`
 
-const HighlightedText = tw.span`text-primary-500`;
+const HighlightedText = tw.span`text-primary-900 font-bold`;
 
 export default ({
   text = <> Let's Develop Your Next Great App! And Make your  <HighlightedText>business grow</HighlightedText></> ,
@@ -34,7 +34,8 @@ export default ({
   secondaryLinkText = "Contact Us",
   secondaryLinkUrl = "https://calendly.com/panthernails/influencer-engagement-platform-demo",
   pushDownFooter = true,
-  backgroundColor=tw`bg-purple-800`
+  backgroundColor=tw`bg-purple-500`,
+  textCss=tw`text-white`
 }) => {
 
   return (
@@ -43,7 +44,7 @@ export default ({
       <PrimaryBackgroundContainer css={backgroundColor}>
         <Row>
           <TextContainer>
-            <Text>{text}</Text>
+            <Text css={textCss}>{text}</Text>
           </TextContainer>
           <LinksContainer>
           <ScrollingAnimationUpSide y={400}>

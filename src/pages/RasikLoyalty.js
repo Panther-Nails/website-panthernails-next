@@ -19,6 +19,7 @@ import ProfileImageCLM from "images/CLM.png";
 import ProductImageRasikLoyalty from "images/ProductRasikLoyalty.png";
 import ProductImageCLM from "images/ProductCLM.png";
 import { Body } from "components/misc/Layouts";
+import DashedBorderSixFeatures from "components/features/DashedBorderSixFeatures";
 
 
 export const NavLinks = tw.div`inline-block`;
@@ -35,72 +36,6 @@ export const NavLink = tw.a`
 const HighlightedText = tw.span`text-primary-500`;
 
 
-var newProducts = [
-  {
-    imageSrc: ProductImageRasikLoyalty,
-    profileImageSrc: ProfileImageRasikLoyalty,
-    subtitle: "Customer Loyalty Platform",
-    title: "Rasik Loyalty",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    url: "/RasikLoyalty"
-  },
-  {
-    imageSrc: ProductImageRasikLoyalty,
-    profileImageSrc: ProfileImageRasikLoyalty,
-    subtitle: "Customer Loyalty Platform",
-    title: "Rasik Loyalty",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    url: "/RasikLoyalty"
-  },
-  {
-    imageSrc: ProductImageRasikLoyalty,
-    profileImageSrc: ProfileImageRasikLoyalty,
-    subtitle: "Customer Loyalty Platform",
-    title: "Rasik Loyalty",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    url: "/RasikLoyalty"
-  },
-  {
-    imageSrc: ProductImageRasikLoyalty,
-    profileImageSrc: ProfileImageRasikLoyalty,
-    subtitle: "Customer Loyalty Platform",
-    title: "Rasik Loyalty",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    url: "/RasikLoyalty"
-  },
-  {
-    imageSrc: ProductImageRasikLoyalty,
-    profileImageSrc: ProfileImageRasikLoyalty,
-    subtitle: "Customer Loyalty Platform",
-    title: "Rasik Loyalty",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    url: "/RasikLoyalty"
-  },
-  {
-    imageSrc: ProductImageRasikLoyalty,
-    profileImageSrc: ProfileImageRasikLoyalty,
-    subtitle: "Customer Loyalty Platform",
-    title: "Rasik Loyalty",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    url: "/RasikLoyalty"
-  },
-  {
-    imageSrc: ProductImageCLM,
-    profileImageSrc: ProfileImageCLM,
-    subtitle: "Contract Labour Management",
-    title: "Panther Nails One App",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    url: "/OneApp"
-  },]
-
-
 export default ({
   
   products = [
@@ -113,33 +48,33 @@ export default ({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       url: "/RasikLoyalty"
     },
-    {
-      imageSrc: ProductImageCLM,
-      profileImageSrc: ProfileImageCLM,
-      subtitle: "Contract Labour Management",
-      title: "Panther Nails One App",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      url: "/OneApp"
-    },
+    // {
+    //   imageSrc: ProductImageCLM,
+    //   profileImageSrc: ProfileImageCLM,
+    //   subtitle: "Contract Labour Management",
+    //   title: "Panther Nails One App",
+    //   description:
+    //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    //   url: "/OneApp"
+    // },
   ]
 }) => {
   return (
     <Body>
-    <AnimationRevealPage>
       <Hero
+      //  bgColor={tw`bg-rasik-300`}
         heading={
           <>
             Rasik <HighlightedText>Loyalty Platform!</HighlightedText>
           </>
         }        
         description = { <> We focus on building products that are capable of delivering superior stakeholder value by helping people to make the most of each moment.  </>}
+       
       />
 
-      <Testimonial
-        subheading= "Whom do you want to incentive loyalty?"
-        heading= "" //{<>Customers <HighlightedText>Love Us.</HighlightedText></>}
-      />
+    <AnimationRevealPage>
+      
+     
 
       <Features 
         products={products} 
@@ -147,7 +82,7 @@ export default ({
         description={ <> </>}
         />
 
-
+      <DashedBorderSixFeatures headTitle='Rasik ' bgColor={tw`bg-transparent`} textCss={tw`text-rasik-200`}/>
 
       <CTA 
          backgroundColor={tw`bg-rasik-200`}
@@ -159,11 +94,11 @@ export default ({
          pushDownFooter = {false}
       />
 
-      <Testimonial heading="Our Esteemed Customers" />
+      <Testimonial Heading="Our Esteemed Customers" textCss={tw`text-rasik-300`} />
 
-      <FAQ />
+      <FAQ textCss={tw`text-rasik-200`}/>
 
-      <Footer />
+      <Footer bgColor={tw`bg-rasik-200`}/>
 
     </AnimationRevealPage>
     </Body>

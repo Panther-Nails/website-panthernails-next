@@ -28,7 +28,7 @@ import ScrollingAnimationUpSide from "components/durgesh/ScrollingAnimationUpSid
 
 
 const Container = tw.div`relative text-black bg-transparent`;
-const Content = tw.div`max-w-screen-xl text-black bg-transparent`;
+const Content = tw.div`max-w-screen-xl text-black bg-transparent mr-8 ml-8`;
 const ProductsContainer = tw.div`mt-16 lg:mt-0 bg-transparent`;
 const Products = styled.div`bg-transparent`;
 const Testimonial = tw.div`max-w-md lg:max-w-none mx-auto lg:mx-0 flex flex-col items-center lg:items-stretch lg:flex-row bg-transparent`;

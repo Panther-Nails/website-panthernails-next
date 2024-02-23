@@ -12,7 +12,7 @@ import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9
 
 
 
-const Container = tw.div`relative bg-primary-900 text-gray-100 -mb-8 -mx-8 px-8 py-20 lg:py-24`;
+const Container = tw.div`relative bg-primary-900 text-gray-100 -mb-8 -mx-8 px-8 py-20 lg:py-24 `;
 const Content = tw.div`max-w-screen-xl mx-auto relative z-10 `;
 const SixColumns = tw.div`flex flex-wrap text-center sm:text-left justify-center sm:justify-start md:justify-between -mt-12`;
 
@@ -63,6 +63,7 @@ const DecoratorBlob2 = tw(
 
 export default ( 
   {
+    bgColor=tw``,
     footerMenus = [
       {
         title: "Site links",
@@ -105,7 +106,7 @@ export default (
   }  
 ) => {
   return (
-    <Container>
+    <Container css={bgColor}>
       <Content>
         <SixColumns>              
         {footerMenus.map((footerMenu, index) => (

@@ -6,7 +6,7 @@ import tw from "twin.macro";
 import { motion } from "framer-motion";
 import useInView from "helpers/useInView";
 
-const StyledDiv = tw.div`font-display min-h-screen text-secondary-500 p-8 overflow-hidden`;
+const StyledDiv = tw.div`font-display min-h-screen text-secondary-500 p-8 overflow-hidden pt-0 pr-0 pl-0`;
 function AnimationReveal({ disabled, children }) {
   if (disabled) {
     return <>{children}</>;

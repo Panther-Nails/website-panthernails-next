@@ -25,10 +25,11 @@ export default ({
   heading = <></>,
   description = <></>,
   roundedHeaderButton,
+  bgColor=tw``,
 }) => {
   return (
     <>
-      <Header roundedHeaderButton={roundedHeaderButton} />
+      <Header roundedHeaderButton={roundedHeaderButton}  css={bgColor}/>
       {/* <Container>
         <Content>
           <Heading>

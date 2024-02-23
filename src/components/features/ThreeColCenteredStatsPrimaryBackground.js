@@ -7,14 +7,14 @@ import { SectionDescription } from "components/misc/Typography";
 
 const Container = tw(ContainerBase)`my-8 lg:my-10  text-gray-100 -mx-8 px-8`;
 const HeadingContainer = tw.div``;
-const Heading = tw(SectionHeading)`sm:text-3xl md:text-4xl lg:text-5xl text-black`;
-const Subheading = tw(SubheadingBase)`text-gray-100 text-center text-black`;
-const Description = tw(SectionDescription)`text-gray-400 text-center mx-auto max-w-screen-md text-black`;
+const Heading = tw(SectionHeading)`sm:text-3xl md:text-4xl lg:text-5xl text-black font-bold`;
+const Subheading = tw(SubheadingBase)`text-gray-100 text-center text-black font-bold`;
+const Description = tw(SectionDescription)`text-gray-400 text-center mx-auto max-w-screen-md text-black font-bold`;
 
 const StatsContainer = tw.div`mt-8 flex flex-col sm:flex-row items-center justify-center flex-wrap max-w-screen-md justify-between mx-auto`
 const Stat = tw.div`flex flex-col text-center p-4 tracking-wide`
-const StatKey = tw.div`text-xl font-medium text-black`
-const StatValue = tw.div`text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-black`
+const StatKey = tw.div`text-xl font-medium text-black font-bold`
+const StatValue = tw.div`text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-black font-bold`
 
 export default ({
   subheading = "",

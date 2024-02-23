@@ -89,7 +89,7 @@ const serviceCards = [
 
 export default () => {
   const Subheading = tw.span`tracking-wider text-sm font-medium`;
-  const HighlightedText = tw.span`text-primary-500`;
+  const HighlightedText = tw.span`text-primary-500 text-black`;
 
   const HighlightedTextInverse = tw.span`bg-gray-100 text-primary-500 px-4 transform -skew-x-12 inline-block`;
   const Description = tw.span`inline-block mt-8`;
@@ -100,105 +100,108 @@ export default () => {
   const imageCss = tw`rounded-4xl`;
   return (
     <>
-    <Body>
-      <Hero
-        heading={
-          <>
-            Elevating Engagement, Empowering Growth for{" "}
-            <HighlightedText>your business</HighlightedText>
-          </>
-        }
-        description=""
-        imageSrc="https://images.unsplash.com/photo-1508385082359-f38ae991e8f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-        imageCss={imageCss}
-        imageDecoratorBlob={true}
-        primaryButtonText="Book a Meeting"
-        primaryButtonUrl="https://calendly.com/panthernails/influencer-engagement-platform-demo"
-        watchVideoButtonText="Watch it live"
-        watchVideoYoutubeUrl=""
-        links={[
-          { title: "About Us", href: "/AboutUs" },
-          { title: "Rasik Loyalty Platform", href: "/RasikLoyalty" },
-          { title: "Contract Labour Management", href: "/CLM" },
-          { title: "Blog", href: "/blog" },
-          { title: "Contact Us", href: "/contactus" },
-        ]}
-      />
-      {/* <ContainerForButton>
+      <Body>
+        <Hero
+          heading={
+            <>
+              Elevating Engagement, Empowering Growth for{" "}
+              <HighlightedText>your business</HighlightedText>
+            </>
+          }
+          description=""
+          imageSrc="https://www.xrmroi.com.au/wp-content/uploads/2023/05/img-2.png"
+          imageCss={imageCss}
+          imageDecoratorBlob={true}
+          primaryButtonText="Book a Meeting"
+          primaryButtonUrl="https://calendly.com/panthernails/influencer-engagement-platform-demo"
+          watchVideoButtonText="Watch it live"
+          watchVideoYoutubeUrl=""
+          links={[
+            { title: "About Us", href: "/AboutUs" },
+            { title: "Rasik Loyalty Platform", href: "/RasikLoyalty" },
+            { title: "Contract Labour Management", href: "/CLM" },
+            { title: "Blog", href: "/blog" },
+            { title: "Contact Us", href: "/contactus" },
+          ]}
+          // bgColor={tw`bg-purple-400`}
+        />
+        <br></br>
+        <br></br>
+        {/* <ContainerForButton>
         <PrimaryButtonForDurgeshPage href="https://calendly.com/panthernails/influencer-engagement-platform-demo">
           Book a Demo
         </PrimaryButtonForDurgeshPage>
       </ContainerForButton> */}
-      <AnimationRevealPage>
-        <ScrollingAnimationUpSide y={200}>
-          <Products
-            // subheading="Products"
-            heading={
-              <>
-                Our Robust <HighlightedText>Products</HighlightedText>
-              </>
-            }
-            description="Our Products that are built with Business Analytics & Intelligence, Automated Query Response System, Automated Analysis Emails, Voice Intelligence System provides you enhanced accessibility to run your business."
-            textOnLeft={false}
-            products={productList}
-          />
-        </ScrollingAnimationUpSide>
-        <br></br>
-        <br></br>
-        <br></br>
+        <AnimationRevealPage>
+          <ScrollingAnimationUpSide y={200}>
+            <Products
+              // subheading="Products"
+              heading={
+                <>
+                  Our Robust <HighlightedText>Products</HighlightedText>
+                </>
+              }
+              description="Our Products that are built with Business Analytics & Intelligence, Automated Query Response System, Automated Analysis Emails, Voice Intelligence System provides you enhanced accessibility to run your business."
+              textOnLeft={false}
+              products={productList}
+            />
+          </ScrollingAnimationUpSide>
+          <br></br>
+          <br></br>
+          <br></br>
 
-        <ScrollingAnimationUpSide y={200}>
-          <Features
-            subheading={<Subheading>Keeping customers on top</Subheading>}
-            heading={
-              <>
-                We have Amazing <HighlightedText>Service.</HighlightedText>
-              </>
-            }
-            description="a genial technology company delivering insightful enterprise software that foster your business."
-            cards={serviceCards}
-          />
-        </ScrollingAnimationUpSide>
+          <ScrollingAnimationUpSide y={200}>
+            <Features
+              subheading={<Subheading>Keeping customers on top</Subheading>}
+              heading={
+                <>
+                  We have Amazing <HighlightedText>Service.</HighlightedText>
+                </>
+              }
+              description="a genial technology company delivering insightful enterprise software that foster your business."
+              cards={serviceCards}
+            />
+          </ScrollingAnimationUpSide>
 
-        {/* To Show our Client Section or Component uncommnet this */}
-        {/* <ScrollingAnimationUpSide y={200}>
+          {/* To Show our Client Section or Component uncommnet this */}
+          {/* <ScrollingAnimationUpSide y={200}>
           <Clients />
         </ScrollingAnimationUpSide> */}
-        <ScrollingAnimationUpSide y={100}>
-          <CTA
-            // text="Let's Develop Your Next Great App! And Make your business grow."
-            backgroundColor = {tw`bg-purple-800`}
-
-            primaryLinkText="Get Started"
-            primaryLinkUrl="http://panthernails.com"
-            secondaryLinkText="Contact Us"
-            secondaryLinkUrl="http://google.com"
-            pushDownFooter={true}
-          />
-        </ScrollingAnimationUpSide>
-        <ScrollingAnimationUpSide y={200}>
-          <FeatureStats
-            subheading="Technology Innovations That Transform Your Business"
-            heading="Served 3,000,000+ End costumers"
-            description="We focus on building a company culture capable of delivering superior stakeholder value by helping people to make the most of each moment."
-            stats={[
-              {
-                key: "Locations",
-                value: "2",
-              },
-              {
-                key: "Clients",
-                value: "35+",
-              },
-              {
-                key: "Hard Workers",
-                value: "50+",
-              },
-            ]}
-          />
-        </ScrollingAnimationUpSide>
-        <Footer />
-      </AnimationRevealPage>
+          <ScrollingAnimationUpSide y={100}>
+            <CTA
+              // text="Let's Develop Your Next Great App! And Make your business grow."
+              backgroundColor={tw`bg-purple-500`}
+              textCss={tw`text-black font-bold`}
+              primaryLinkText="Get Started"
+              primaryLinkUrl="http://panthernails.com"
+              secondaryLinkText="Contact Us"
+              secondaryLinkUrl="http://google.com"
+              pushDownFooter={true}
+            />
+          </ScrollingAnimationUpSide>
+          <ScrollingAnimationUpSide y={200}>
+            <FeatureStats
+              subheading="Technology Innovations That Transform Your Business"
+              heading="Served 3,000,000+ End costumers"
+              description="We focus on building a company culture capable of delivering superior stakeholder value by helping people to make the most of each moment."
+              stats={[
+                {
+                  key: "Locations",
+                  value: "2",
+                },
+                {
+                  key: "Clients",
+                  value: "35+",
+                },
+                {
+                  key: "Hard Workers",
+                  value: "50+",
+                },
+              ]}
+            />
+          </ScrollingAnimationUpSide>
+          <Footer />
+        </AnimationRevealPage>
       </Body>
     </>
   );

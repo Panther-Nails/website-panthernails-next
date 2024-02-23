@@ -42,6 +42,7 @@ export default ({
   subheading = "FAQS",
   heading = "You have Questions ?",
   description = "And we have got answers to all of them. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  textCss=tw``,
   faqs = [
     {
       question: "Is lunch provided free of cost ?",
@@ -78,7 +79,7 @@ export default ({
         <Column>
           <HeaderContent>
             {subheading && <Subheading>{subheading}</Subheading>}
-            <Heading>{heading}</Heading>
+            <Heading css={textCss}>{heading}</Heading>
             {description && <Description>{description}</Description>}
           </HeaderContent>
           <FAQSContainer>

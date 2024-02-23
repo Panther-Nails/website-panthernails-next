@@ -17,11 +17,13 @@ module.exports = {
 
       black: '#000',
       white: '#fff',
+      clm:'#1E90FF',
       rasik: {
         100:'#B8448C',
         200:'#9D2D7B',
         300:'#69264F',
       },
+      
       
       // primary: {
       //   100: '#a273ff',

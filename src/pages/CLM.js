@@ -4,8 +4,8 @@ import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/TwoColumnWithInput.js";
 import Features from "components/features/VerticalWithAlternateImageAndText.js";
 import Pricing from "components/pricing/TwoPlansWithDurationSwitcher";
-import CTA from "components/cta/DownloadApp";
-import Testimonial from "components/testimonials/TwoColumnWithImageSlider.js";
+import CTA from "components/cta/GetStarted";
+import Testimonial from "components/testimonials/ThreeColumnWithProfileImage";
 import Footer from "components/footers/FiveColumnWithInputForm.js";
 import FAQ from "components/faqs/SingleCol.js";
 
@@ -37,15 +37,15 @@ const HighlightedText = tw.span`text-primary-500`;
 export default ({
   
   products = [
-    {
-      imageSrc: ProductImageRasikLoyalty,
-      profileImageSrc: ProfileImageRasikLoyalty,
-      subtitle: "Customer Loyalty Platform",
-      title: "Rasik Loyalty",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      url: "/RasikLoyalty"
-    },
+    // {
+    //   imageSrc: ProductImageRasikLoyalty,
+    //   profileImageSrc: ProfileImageRasikLoyalty,
+    //   subtitle: "Customer Loyalty Platform",
+    //   title: "Rasik Loyalty",
+    //   description:
+    //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    //   url: "/RasikLoyalty"
+    // },
     {
       imageSrc: ProductImageCLM,
       profileImageSrc: ProfileImageCLM,
@@ -58,15 +58,17 @@ export default ({
   ]
 }) => {
   return (
-    <AnimationRevealPage>
-      <Hero
-        heading={
-          <>
+    <>
+    <Hero
+    heading={
+      <>
             One App <HighlightedText>Contract Labour Management!</HighlightedText>
           </>
         }        
         description = { <> We focus on building products that are capable of delivering superior stakeholder value by helping people to make the most of each moment.  </>}
-      />
+        // bgColor={tw`bg-blue-500`}
+        />
+        <AnimationRevealPage>
       
       <Features 
         products={products} 
@@ -78,7 +80,7 @@ export default ({
 
       {/* <Pricing /> */}
 
-      <CTA 
+      {/* <CTA 
         subheading = "Download App"
         text = "Developers all over the world are happily using Treact."
         link1Text = "App Store"
@@ -87,14 +89,22 @@ export default ({
         link2Url = "http://play.google.com"  
         pushDownFooter = {false}
         imageSrc ={PhoneImageRasikLoyalty} 
+      /> */}
+
+      <CTA
+        backgroundColor={tw`bg-blue-500 text-black`}
+        textCss={tw`text-black`}
+      />
+        
+      <Testimonial heading="Our Esteemed Customers"
+      textCss={tw`text-blue-500`}
       />
 
-      <Testimonial heading="Our Esteemed Customers" />
+      <FAQ textCss={tw`text-clm`}/>
 
-      <FAQ />
-
-      <Footer />
+      <Footer bgColor={tw`bg-blue-500`}/>
 
     </AnimationRevealPage>
+    </>
   );
 };

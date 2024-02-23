@@ -14,10 +14,10 @@ import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 
 const Header = tw.header`
   flex justify-between items-center
-  max-w-screen-xl mx-auto 
+  mx-auto mr-0 ml-0 w-full 
 `;//bg-gradient-to-r from-blue-500 to-indigo-500 //For background shade
 
-export const NavLinks = tw.div`inline-block `;
+export const NavLinks = tw.div`inline-block text-black`;
 
 /* hocus: stands for "on hover or focus"
  * hocus:bg-primary-700 will apply the bg-primary-700 class on hover or focus

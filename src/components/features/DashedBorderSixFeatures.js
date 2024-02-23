@@ -52,8 +52,14 @@ const Card = styled.div`
 const DecoratorBlob = styled(SvgDecoratorBlob3)`
   ${tw`pointer-events-none absolute right-0 bottom-0 w-64 opacity-25 transform translate-x-32 translate-y-48 `}
 `;
+const Span=styled.span` ${tw`mt-2 font-bold text-xl leading-none text-primary-500`}`
 
-export default () => {
+export default ({bgColor,textCss,
+  headTitle = 'Default ',
+  
+  }) => {
+  
+
   /*
    * This componets has an array of object denoting the cards defined below. Each object in the cards array can have the key (Change it according to your need, you can also add more objects to have more cards in this feature component):
    *  1) imageSrc - the image shown at the top of the card
@@ -78,16 +84,16 @@ export default () => {
   return (
     <Container>
       <ThreeColumnContainer>
-        <Heading>Our Professional <span tw="text-primary-500">Services</span></Heading>
+        <Heading css={textCss}>{headTitle}<span tw="text-primary-500">Services</span></Heading>
         {cards.map((card, i) => (
           <Column key={i}>
-            <Card>
-              <span className="imageContainer">
+            <Card css={bgColor}>
+              <Span className="imageContainer">
                 <img src={card.imageSrc || defaultCardImage} alt="" />
-              </span>
+              </Span>
               <span className="textContainer">
-                <span className="title">{card.title || "Fully Secure"}</span>
-                <p className="description">
+                <span className="title" >{card.title || "Fully Secure"}</span>
+                <p className="description" >
                   {card.description || "Lorem ipsum donor amet siti ceali ut enim ad minim veniam, quis nostrud. Sic Semper Tyrannis. Neoas Calie artel."}
                 </p>
               </span>
