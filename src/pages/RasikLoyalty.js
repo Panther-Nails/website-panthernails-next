@@ -94,7 +94,7 @@ export default ({
          pushDownFooter = {false}
       />
 
-      <Testimonial Heading="Our Esteemed Customers" textCss={tw`text-rasik-300`} />
+      <Testimonial Heading="Our Esteemed Customers" textCss={tw`text-rasik-200`} />
 
       <FAQ textCss={tw`text-rasik-200`}/>
 

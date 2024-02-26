@@ -28,7 +28,7 @@ const Column = styled.div`
 `;
 
 const Card = styled.div`
-  ${tw`flex flex-col mx-auto max-w-xs items-center px-6 py-10 border-2 border-dashed border-primary-500 rounded-lg mt-12`}
+  ${tw`flex flex-col mx-auto max-w-xs items-center px-6 py-10 border-2 border-dashed border-primary-500 rounded-lg mt-12 hover:shadow-[0_10px_20px_rgba(240,_46,_170,_0.7)] hover:scale-105`}
   .imageContainer {
     ${tw`border-2 border-primary-500 text-center rounded-full p-6 flex-shrink-0 relative`}
     img {

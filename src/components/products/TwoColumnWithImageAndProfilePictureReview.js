@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
+
 import {
   SectionHeading,
   Subheading as SubheadingBase,
@@ -23,17 +24,18 @@ import OneAppLogo from "images/ONEAPP.png";
 import ProfileImageRasikLoyaltyLogo from "images/Loyalty.png";
 import DownloadApp from "components/cta/DownloadApp.js";
 import GetStarted from "components/cta/GetStarted.js";
-import ScrollingAnimationUpSide from "components/durgesh/ScrollingAnimationUpSide.js";
 
 
 
-const Container = tw.div`relative text-black bg-transparent`;
+const Container = tw.div`relative text-black bg-gray-300`;
 const Content = tw.div`max-w-screen-xl text-black bg-transparent mr-8 ml-8`;
 const ProductsContainer = tw.div`mt-16 lg:mt-0 bg-transparent`;
 const Products = styled.div`bg-transparent`;
 const Testimonial = tw.div`max-w-md lg:max-w-none mx-auto lg:mx-0 flex flex-col items-center lg:items-stretch lg:flex-row bg-transparent`;
 
-const TestimonialImageSlider = tw(Slider)`w-full lg:w-5/12 flex-shrink-0 bg-transparent`;
+const TestimonialImageSlider = tw(
+  Slider
+)`w-full lg:w-5/12 flex-shrink-0 bg-transparent`;
 const TestimonialTextSlider = tw(Slider)`bg-transparent`;
 const TestimonialText = tw.div`outline-none bg-transparent`;
 
@@ -57,7 +59,9 @@ const TextContainer = styled.div((props) => [
 ]);
 
 const Subheading = tw(SubheadingBase)`mb-4`;
-const HeadingTitle = tw(SectionHeading)`lg:text-left leading-tight text-purple-900`;
+const HeadingTitle = tw(
+  SectionHeading
+)`lg:text-left leading-tight text-purple-900`;
 const Description = tw.p`max-w-md text-center mx-auto lg:mx-0 lg:text-left lg:max-w-none leading-relaxed text-sm sm:text-base lg:text-lg font-medium mt-4 text-secondary-100 text-black`;
 
 const QuoteContainer = tw.div`relative mt-10 `;
@@ -98,8 +102,6 @@ export default ({
   description = "Here are what some of our amazing customers are saying about our hotels & tours. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   products,
   textOnLeft = false,
-
-  
 }) => {
   /*
    * You can modify the products shown by modifying the array below or passing in the products prop above
@@ -119,8 +121,8 @@ export default ({
       redirectUrl: "/",
     },
     {
-      imageSrc:OneAppLogo,
-      profileImageSrc:OneAppLogo,
+      imageSrc: OneAppLogo,
+      profileImageSrc: OneAppLogo,
       quote:
         "Sinor Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
       customerName: "One App",
@@ -134,92 +136,93 @@ export default ({
   // useState is used instead of useRef below because we want to re-render when sliderRef becomes available (not null)
   const [imageSliderRef, setImageSliderRef] = useState(null);
   const [textSliderRef, setTextSliderRef] = useState(null);
-  
+
   return (
     <>
-    <Container>
-      <Content>
-      {/* <ScrollingAnimationUpSide y={500} duration={5.0}> */}
-        <HeadingInfo
-          tw="text-center lg:hidden"
-          subheading={subheading}
-          heading={heading}
-          description={description}
-        />
-        {/* </ScrollingAnimationUpSide> */}
-        <ProductsContainer>
-          <Products>
-            <Testimonial>
-              <TestimonialImageSlider
-                arrows={false}
-                ref={setImageSliderRef}
-                asNavFor={textSliderRef}
-                fade={true}
-              >
-                {products.map((testimonial, index) => (
-                  <ImageAndControlContainer key={index} >
-                    
-                    <Image imageSrc={testimonial.imageSrc} />
-                    <ControlContainer>
-                      <ControlButton onClick={imageSliderRef?.slickPrev}>
-                        <ChevronLeftIcon />
-                      </ControlButton>
-                      <ControlButton onClick={imageSliderRef?.slickNext}>
-                        <ChevronRightIcon />
-                      </ControlButton>
-                    </ControlContainer>
-                  </ImageAndControlContainer>
-                ))}
-              </TestimonialImageSlider>
-
-              <TextContainer textOnLeft={textOnLeft}>
-                <HeadingInfo
-                  tw="hidden lg:block"
-                  subheading={subheading}
-                  heading={heading}
-                  description={description}
-                />
-                <TestimonialTextSlider
+      <Container>
+        <Content>
+          {/* <ScrollingAnimationUpSide y={500} duration={5.0}> */}
+         
+          <HeadingInfo
+            tw="text-center lg:hidden"
+            subheading={subheading}
+            heading={heading}
+            description={description}
+          />
+       
+          {/* </ScrollingAnimationUpSide> */}
+          <ProductsContainer>
+            <Products>
+              <Testimonial>
+                <TestimonialImageSlider
                   arrows={false}
-                  ref={setTextSliderRef}
-                  asNavFor={imageSliderRef}
+                  ref={setImageSliderRef}
+                  asNavFor={textSliderRef}
                   fade={true}
                 >
                   {products.map((testimonial, index) => (
-                    <TestimonialText key={index}>
-                      <CustomerInfo>
-                        <CustomerProfilePicture
-                          src={testimonial.profileImageSrc}
-                          alt={testimonial.customerName}
-                        />
-                        <CustomerTextInfo>
-                          <CustomerName>
-                            {testimonial.customerName}
-                          </CustomerName>
-                          <CustomerTitle>
-                            {testimonial.customerTitle}
-                          </CustomerTitle>
-                        </CustomerTextInfo>
-                      </CustomerInfo>
-                      <QuoteContainer>
-                        <Quote>
-                          <QuotesLeft />
-                          {testimonial.quote}
-                          <QuotesRight />
-                        </Quote>
-                      </QuoteContainer>
-                      <Link href={testimonial.redirectUrl}>More Info</Link>
-                    </TestimonialText>
+                    <ImageAndControlContainer key={index}>
+                      <Image imageSrc={testimonial.imageSrc} />
+                      <ControlContainer>
+                        <ControlButton onClick={imageSliderRef?.slickPrev}>
+                          <ChevronLeftIcon />
+                        </ControlButton>
+                        <ControlButton onClick={imageSliderRef?.slickNext}>
+                          <ChevronRightIcon />
+                        </ControlButton>
+                      </ControlContainer>
+                    </ImageAndControlContainer>
                   ))}
-                </TestimonialTextSlider>
-              </TextContainer>
-            </Testimonial>
-          </Products>
-        </ProductsContainer>
-      </Content>
-      {/* <DecoratorBlob1 />
+                </TestimonialImageSlider>
+
+                <TextContainer textOnLeft={textOnLeft}>
+                  <HeadingInfo
+                    tw="hidden lg:block"
+                    subheading={subheading}
+                    heading={heading}
+                    description={description}
+                  />
+                  <TestimonialTextSlider
+                    arrows={false}
+                    ref={setTextSliderRef}
+                    asNavFor={imageSliderRef}
+                    fade={true}
+                  >
+                    {products.map((testimonial, index) => (
+                      <TestimonialText key={index}>
+                        <CustomerInfo>
+                          <CustomerProfilePicture
+                            src={testimonial.profileImageSrc}
+                            alt={testimonial.customerName}
+                          />
+                          <CustomerTextInfo>
+                            <CustomerName>
+                              {testimonial.customerName}
+                            </CustomerName>
+                            <CustomerTitle>
+                              {testimonial.customerTitle}
+                            </CustomerTitle>
+                          </CustomerTextInfo>
+                        </CustomerInfo>
+                        <QuoteContainer>
+                          <Quote>
+                            <QuotesLeft />
+                            {testimonial.quote}
+                            <QuotesRight />
+                          </Quote>
+                        </QuoteContainer>
+                        <Link href={testimonial.redirectUrl}>More Info</Link>
+                      </TestimonialText>
+                    ))}
+                  </TestimonialTextSlider>
+                </TextContainer>
+              </Testimonial>
+            </Products>
+          </ProductsContainer>
+        </Content>
+        {/* <DecoratorBlob1 />
       <DecoratorBlob2 /> */}
-    </Container>
+      </Container>
     </>
   );
 };

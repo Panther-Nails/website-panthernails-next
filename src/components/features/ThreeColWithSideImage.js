@@ -23,14 +23,17 @@ import SimpleIconImage from "images/simple-icon.svg";
 import GetStarted from "components/cta/GetStarted";
 import { PrimaryButton } from "components/misc/Buttons";
 import PopupForCards from "components/durgesh/PopupForCards";
-
+import AnimatedHeading from "components/durgesh/AnimatedHeading";
 const Container = tw.div`relative bg-purple-500`;
 
 const ThreeColumnContainer = styled.div`
   ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:pb-24 pt-0 `}
 `;
+
 const Subheading = tw(SubheadingBase)`mb-4`;
-const Heading = tw(SectionHeading)`w-full text-black text-5xl font-bold text-black`;
+const Heading = tw(
+  SectionHeading
+)`w-full text-black text-5xl font-bold text-black`;
 const Description = tw(
   SectionDescription
 )`w-full text-center text-black text-lg font-semibold`;
@@ -42,7 +45,7 @@ const Column = styled.div`
 `;
 
 const Card = styled.div`
-  ${tw`flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8 bg-blue-300 rounded-lg shadow-xl shadow-gray-900 bg-blue-300`}
+  ${tw`flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8 bg-blue-300 rounded-lg shadow-xl shadow-gray-900 bg-blue-300 hover:bg-blue-400`}
 
   animation: cardAnimation 1s ease-in-out;
 
@@ -153,7 +156,9 @@ export default ({
     <>
       <Container>
         <ThreeColumnContainer>
-          <Heading>{heading}</Heading>
+          <AnimatedHeading>
+            <Heading>{heading}</Heading>
+          </AnimatedHeading>
           {description && <Description>{description}</Description>}
           <VerticalSpacer />
           {cards.map((card, i) => (

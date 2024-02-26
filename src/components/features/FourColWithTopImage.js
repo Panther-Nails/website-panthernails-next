@@ -49,8 +49,10 @@ const Card = styled.div`
 const DecoratorBlob = styled(SvgDecoratorBlob3)`
   ${tw`pointer-events-none absolute right-0 bottom-0 w-64 opacity-25 transform translate-x-32 translate-y-48 `}
 `;
+const HighlightedText = tw.span`text-primary-500`;
 
 export default ({
+  textCss = tw``,
   cards = null,
   heading = "Amazing Features",
   subheading = "Features",
@@ -146,14 +148,13 @@ export default ({
     },
   ];
 
-  const HighlightedText = tw.span`text-primary-500`;
-
+  
   if (!cards) cards = defaultCards;
 
   return (
     <Container>
       <Content>
-        <Heading>
+        <Heading css={textCss}>
           Our Esteemed<HighlightedText>Clients</HighlightedText>
         </Heading>
       </Content>

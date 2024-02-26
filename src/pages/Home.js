@@ -27,6 +27,9 @@ import ReliableIconImage from "images/reliable-icon.svg";
 import SimpleIconImage from "images/simple-icon.svg";
 import ScrollingAnimationUpSide from "components/durgesh/ScrollingAnimationUpSide";
 import { Body, HighlightedTextSpan } from "components/misc/Layouts";
+import ScrollingAnimationUpSideYaxis from "components/durgesh/ScrollYaxis";
+import AnimatedHeading from "components/durgesh/AnimatedHeading";
+
 const productList = [
   {
     imageSrc: ProductImageRasikLoyalty,
@@ -109,7 +112,7 @@ export default () => {
             </>
           }
           description=""
-          imageSrc="https://www.xrmroi.com.au/wp-content/uploads/2023/05/img-2.png"
+          imageSrc="https://cutesolution.com/html/techvio/assets/img/home-font.png"
           imageCss={imageCss}
           imageDecoratorBlob={true}
           primaryButtonText="Book a Meeting"
@@ -125,14 +128,11 @@ export default () => {
           ]}
           // bgColor={tw`bg-purple-400`}
         />
+       
         <br></br>
         <br></br>
-        {/* <ContainerForButton>
-        <PrimaryButtonForDurgeshPage href="https://calendly.com/panthernails/influencer-engagement-platform-demo">
-          Book a Demo
-        </PrimaryButtonForDurgeshPage>
-      </ContainerForButton> */}
-        <AnimationRevealPage>
+       
+        {/* <AnimationRevealPage> */}
           <ScrollingAnimationUpSide y={200}>
             <Products
               // subheading="Products"
@@ -146,11 +146,11 @@ export default () => {
               products={productList}
             />
           </ScrollingAnimationUpSide>
-          <br></br>
-          <br></br>
+          {/* <br></br>
+          <br></br> */}
           <br></br>
 
-          <ScrollingAnimationUpSide y={200}>
+          {/* <ScrollingAnimationUpSide y={200}> */}
             <Features
               subheading={<Subheading>Keeping customers on top</Subheading>}
               heading={
@@ -161,12 +161,9 @@ export default () => {
               description="a genial technology company delivering insightful enterprise software that foster your business."
               cards={serviceCards}
             />
-          </ScrollingAnimationUpSide>
-
-          {/* To Show our Client Section or Component uncommnet this */}
-          {/* <ScrollingAnimationUpSide y={200}>
-          <Clients />
-        </ScrollingAnimationUpSide> */}
+          {/* </ScrollingAnimationUpSide> */}
+          
+          
           <ScrollingAnimationUpSide y={100}>
             <CTA
               // text="Let's Develop Your Next Great App! And Make your business grow."
@@ -187,22 +184,26 @@ export default () => {
               stats={[
                 {
                   key: "Locations",
-                  value: "2",
+                  value: 2, //"2",
                 },
                 {
                   key: "Clients",
-                  value: "35+",
+                  value: 35, //"35+",
                 },
                 {
                   key: "Hard Workers",
-                  value: "50+",
+                  value: 50//"50+",
                 },
               ]}
             />
           </ScrollingAnimationUpSide>
+          {/* To Show our Client Section or Component uncommnet this */}
+          {/* <ScrollingAnimationUpSide y={200}>
+          <Clients textCss={tw`text-purple-800`} />
+        </ScrollingAnimationUpSide> */}
           <Footer />
-        </AnimationRevealPage>
-      </Body>
+        {/* </AnimationRevealPage> */}
+        </Body>
     </>
   );
 };
