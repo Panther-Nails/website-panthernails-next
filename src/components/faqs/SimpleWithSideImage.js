@@ -8,7 +8,7 @@ import { ReactComponent as PlusIcon } from "feather-icons/dist/icons/plus.svg";
 import { ReactComponent as MinusIcon } from "feather-icons/dist/icons/minus.svg";
 
 const Container = tw.div`relative px-4 bg-sitecolor-100`;
-const Content = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20`;
+const Content = tw.div`max-w-screen-xl mx-auto py-0 lg:py-20`;  //chenge py-16 to py-0 26-2-24
 
 const TwoColumn = tw.div`flex`;
 const Column = tw.div``;

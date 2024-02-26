@@ -12,7 +12,8 @@ import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 
 const Container = tw.div`relative bg-sitecolor-100`;
 const Container1 = tw.div`relative flex flex-col justify-around w-full md:flex-row`;
-const TwoColumn = tw.div`flex  flex-col md:flex-col text-center justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
+const TwoColumn = tw.div`flex  flex-col md:flex-col text-center justify-between max-w-screen-xl mx-auto py-5 md:py-0 items-center`; //chenge  md:py-24 to py-0 26-02-24
+
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0 `;
 const ImageColumn = tw(Column)`w-3/12 md:w-2/12 flex-shrink-0 relative mt-12 `;
 const TextColumn = styled(Column)((props) => [

@@ -23,8 +23,8 @@ const Hovereffect=tw.div`hover:(scale-102 duration-500 shadow-2xl rounded-full)`
 const Container = tw.div`relative bg-sitecolor-100  overflow-hidden`;//chenge no bg to bg gray, in 14-2-24
 
 const ThreeColumnContainer = styled.div`
-  ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-24`}
-`;
+  ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-0`}`; //chenge  md:py-24 to py-0 26-02-24
+
 const Subheading = tw(SubheadingBase)`mb-4 text-sitecolor-300 `;
 const Heading = tw(SectionHeading)`w-full text-sitecolor-300`;
 const Description = tw(SectionDescription)`lg:w-full w-10/12  text-center text-sitecolor-300`;

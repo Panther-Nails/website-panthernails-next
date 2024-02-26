@@ -1,5 +1,7 @@
-import { useState } from "react";
+
 import { useAnimation, useCycle } from "framer-motion";
+import React, { useEffect, useState } from "react";
+
 
 //Below logic is for toggling the navbar when toggleNavbar is called. It is used on mobile toggling of navbar.
 export default function useAnimatedNavToggler() {
@@ -7,11 +9,29 @@ export default function useAnimatedNavToggler() {
   const [x, cycleX] = useCycle("0%", "150%");
   const animation = useAnimation();
 
-  const toggleNavbar = () => {
+  
+
+  let toggleNavbar = () => {
+    
     setShowNavLinks(!showNavLinks);
-    animation.start({ x: x, display: "block" });
+    animation.start({ x:x, display: "block" });
+    
+    
     cycleX();
+    // animation.stop();
+
+   
+    
   };
 
+ 
+
+  
+
+  
+
   return {showNavLinks,animation, toggleNavbar }
+
+
+  
 }

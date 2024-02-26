@@ -40,7 +40,7 @@ export default ({}) => {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     let a=elementRef.current.getBoundingClientRect()
-    console.log(a.height);
+    // console.log(a.height);
     setHeight(a.height);
 
     return () => {
@@ -52,17 +52,17 @@ export default ({}) => {
   // console.log(compheaightfromtop);
 
   if (compheightfromtop < 0) {
-    console.log(compheightfromtop);
+    // console.log(compheightfromtop);
     Svg = <Demo1 />;
   }
   if (compheightfromtop + height < 0) {
-    console.log(compheightfromtop + height);
+    // console.log(compheightfromtop + height);
     Svg = <Demo2 />;
    
   }
   if (compheightfromtop + 2 * height < 0) {
     Svg = <Demo3 />;
-    console.log(compheightfromtop + 2 * height);
+    // console.log(compheightfromtop + 2 * height);
     
   }
 
