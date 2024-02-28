@@ -90,6 +90,8 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 // import ServiceLandingPage from "demos/ServiceLandingPage.js";
 // import HostingCloudLandingPage from "demos/HostingCloudLandingPage.js";
 
+// import Link from 'next/link'
+
 /* Inner Pages */
 import LoginPage from "pages/Login.js";
 import SignupPage from "pages/Signup.js";
@@ -123,6 +125,7 @@ export default function App() {
   return (
     <>
       <GlobalStyles />
+
       <Router>
         <Routes>
           <Route path="/components/:type/:subtype/:name" element={<ComponentRenderer />} />
@@ -141,6 +144,7 @@ export default function App() {
           <Route path="/" element={<Home  />} />
           <Route path="/Gaurav" element={<Gaurav />} />
           <Route path="/ParellexanimG" element={<ParellexanimG />} />
+          
           
         </Routes>
       </Router>

@@ -84,11 +84,11 @@ export default ({
       <NavLink href="/contactus">Contact Us</NavLink>
     </NavLinks>,
   ];
-
+  
   const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
   const collapseBreakpointCss =
-    collapseBreakPointCssMap[collapseBreakpointClass];
-
+  collapseBreakPointCssMap[collapseBreakpointClass];
+  
   const defaultLogoLink = (
     <LogoLink href="/">
       <img src={pnlogo} alt="logo" />
@@ -111,6 +111,10 @@ export default ({
        
       
     }
+    return()=>{
+      window.removeEventListener("scroll", handleScroll, { passive: true });
+    }
+
   }, [close]);
 
   logoLink = logoLink || defaultLogoLink;

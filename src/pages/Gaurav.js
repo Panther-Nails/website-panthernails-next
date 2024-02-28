@@ -42,7 +42,7 @@ const buttonRoundedCss = tw`rounded-full  w-32 ml-40  flex overflow-hidden hover
 const HighlightedText = tw.span`text-sitecolor-900`;
 const imageCss =tw`rounded-4xl bg-black`;
 const Container = tw.div`bg-sitecolor-100 text-sitecolor-300 relative  min-h-full w-full flex-col md:(flex flex-row ) items-center justify-center   `;//hover:scale-110
-const Left = tw.div` h-1/2 w-screen  md:(w-1/2 h-screen -mt-8 )   flex items-center justify-evenly flex-col  `;
+const Left = tw.div` h-1/2 w-screen  md:(w-1/2 h-screen -mt-8 )   flex items-center justify-center md:gap-y-4 flex-col  `;
 const Right = styled.div`${tw`hidden w-8/12 bg-gray-1000 w-screen  md:(w-1/2 h-screen block) overflow-hidden flex items-center justify-center ` }
 
 `;
@@ -60,7 +60,7 @@ const Right1 = styled.div(({variable})=>[
 // origin-bottom-left
 const Rightimg = tw.img`md:(h-10/12)  w-full h-4/12 hover:scale-110 duration-500  `;
 const PrimaryButton1 = tw.button`mt-8 animate-bounce px-8 py-3 font-bold rounded-full bg-green-600 text-gray-100 hocus:(bg-green-900 animate-none) hocus:text-gray-200 focus:shadow-outline focus:outline-none transition duration-300`;
-const Subheading1 = tw.h5`font-bold text-sitecolor-300  mt-4 text-center w-10/12`;
+const Subheading1 = tw.h5`font-bold text-sitecolor-300  mt-2   text-center w-10/12`;
 const Icone = tw.img`w-12 h-12 rounded-full ml-16 `;
 const buttonRoundedCss1 = tw`rounded-full  w-32 ml-40  flex overflow-hidden hover:( w-80)`;
 
@@ -129,8 +129,12 @@ export default ({
               place
             </SectionHeading>
             <Subheading1>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            panthernails is a one-stop solution for evary entrpricesn who want to
+            level up their business and set a standard for another business who want to grow
+            </Subheading1>
+            <Subheading1> 
+            we are Serves the solution related<HighlightedText> loyalty,HRM,Travelling & Expence Management, </HighlightedText>
+            we are the hidden layers between you and our customers
             </Subheading1>
             <PrimaryButton1
               as="a"

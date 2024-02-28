@@ -178,6 +178,8 @@ module.exports = {
         900: '#702459',
       },
       sitecolor: {
+        success:"#9CFA3E",
+        background: '#FF0000',
         100: '#F3EEEA',
         200: '#B0A695',
         300: '#776B5D',
@@ -187,8 +189,9 @@ module.exports = {
         700: '#b83280',
         800: '#97266d',
         900: '#B0926A',
-       
       },
+
+      
     },
     spacing: {
       px: '1px',

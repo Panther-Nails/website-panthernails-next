@@ -3,12 +3,13 @@ import React, { useRef, useState, useEffect } from "react";
 import Demo1 from "../Gsvgs/Demo1";
 import Demo2 from "../Gsvgs/Demo2";
 import Demo3 from "../Gsvgs/Demo3";
-const Heading = tw.h1`text-4xl font-bold w-full text-center text-sitecolor-900`;
-const Description = tw.p`lg:text-2xl text-lg mt-8 w-10/12   text-sitecolor-300`;
+const HighlightedTextHeading = tw.h1`text-sitecolor-900 text-4xl bg-sitecolor-100 mt-4 text-center w-full` ;
+const Heading = tw.h1`md:text-4xl  text-2xl font-bold w-full text-center text-sitecolor-900`;
+const Description = tw.p`lg:text-2xl text-lg mt-2 w-10/12   text-sitecolor-300`;
 const Main = tw.div`md:(min-h-screen w-full bg-sitecolor-100  flex-row) flex flex-col min-h-screen w-full  `;
 // let Left = tw.div`h-screen w-1/2   sticky top-0 flex items-center justify-center   `;
 const Right = tw.div`md:w-1/2 bg-sitecolor-100 min-h-screen w-full  `;
-let Items = tw.div`lg:(h-screen w-full  flex-col items-center justify-center mt-0)  mt-12 text-center  h-1/2 flex flex-col items-center  `;
+let Items = tw.div`lg:(h-screen w-full  flex-col items-center justify-center mt-0)  mt-4 text-center  h-1/2 flex flex-col items-center  `;
 let Images = tw.img`h-full w-full`;
 
 const  Left = styled.div(({variable})=>[
@@ -40,7 +41,7 @@ export default ({}) => {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     let a=elementRef.current.getBoundingClientRect()
-    // console.log(a.height);
+    console.log(a.height);
     setHeight(a.height);
 
     return () => {
@@ -48,28 +49,31 @@ export default ({}) => {
     };
   }, []);
 
+ 
   let compheightfromtop = height - scrollPosition;
   // console.log(compheaightfromtop);
 
   if (compheightfromtop < 0) {
-    // console.log(compheightfromtop);
+    console.log(compheightfromtop);
     Svg = <Demo1 />;
   }
   if (compheightfromtop + height < 0) {
-    // console.log(compheightfromtop + height);
+    console.log(compheightfromtop + height);
     Svg = <Demo2 />;
    
   }
   if (compheightfromtop + 2 * height < 0) {
     Svg = <Demo3 />;
-    // console.log(compheightfromtop + 2 * height);
+    console.log(compheightfromtop + 2 * height);
     
   }
 
   return (
     <>
       {/* <Main><Heading>upper page</Heading></Main> */}
+      <HighlightedTextHeading>Products</HighlightedTextHeading>
       <Main>
+        
         {/* <Heading>heading</Heading> */}
         <Left>
           {/* <Images src={imgpath}></Images> */}
@@ -78,7 +82,7 @@ export default ({}) => {
         </Left>
         <Right>
           <Items ref={elementRef}>
-            <Heading>First page</Heading>
+            <Heading>Rasik Loyalty</Heading>
             <Description>
               You can also use variant modifiers to target media queries like
               responsive breakpoints, dark mode, prefers-reduced-motion, and
@@ -87,7 +91,7 @@ export default ({}) => {
             </Description>
           </Items>
           <Items>
-            <Heading>Secend page</Heading>
+            <Heading>Panther Nails One App</Heading>
             <Description>
               You can also use variant modifiers to target media queries like
               responsive breakpoints, dark mode, prefers-reduced-motion, and

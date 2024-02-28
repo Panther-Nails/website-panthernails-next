@@ -39,7 +39,7 @@ const Answer = motion(tw.dd`pointer-events-none text-sm sm:text-base leading-rel
 
 export default ({
   subheading = "Product Features",
-  heading = "Product Name",//chenges in headings Questions to product Name
+  heading = "Rasik Loyalty",//chenges in headings Questions to product Name
   description = "Here are some frequently asked questions about our hotels from our loving customers. Should you have any other questions, feel free to reach out via the contact form below.",
   imageSrc = "https://images.unsplash.com/photo-1579427421635-a0015b804b2e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
   imageContain = false,
@@ -52,25 +52,60 @@ export default ({
    */
   const defaultFaqs = [
     {
-      question: "Is lunch provided free of cost ?",
+      question: "Loayalty On Scan",
       answer:
-        "Yes, it is, if you have a membership with us. Otherwise it is charged as per the menu. Some limits do apply as to how much items can be included in your lunch. This limit is enough for any one person and merely exists to discourage abusal of the system."
+        "The loyalty points are rewarded on scanning the unique QR associated with coupon codes."
     },
     {
-      question: "Do you have 2 Bedroom suites ?",
-      answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      question: "Loyalty On Bill Amount",
+      answer:"The Loyalty points are rewarded on the sale amount to the distributors, retailers, wholesalers, dealers & influencers."
     },
     {
-      question: "Are Wi-Fi costs included in the price ?",
+      question: "Loyalty On Bill Quantity",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "The Loyalty points are rewarded on the sale quantity to the distributors, retailers, wholesalers, dealers & influencers"
     },
     {
-      question: "Where can I reach you for support ?",
+      question: "Onboarding",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    }
+        "Hassle free sign up. With minimal details sign up is completed & all other information can be filled when needed."
+    },
+    {
+      question: "Multiple Redemption Options",
+      answer:
+        "Get Discount On Next Purchase,IMPS Bank Transfer, E-Vouchers / Brand Vouchers ,UPI Transfer, Electronic Goods, Trips"
+    },
+    {
+      question: "Engagement Options",
+      answer:
+        " Events & Meetups, Product Training Videos, Surveys, Certification, Product Catalogue"
+    },
+    {
+      question: "Gamification",
+      answer:
+        " Annual Targets, Run the Streak, Surprise Earning, BONUS POINTS, Scratch & Win, Refer & Earn, Monthly Target"
+    },
+    {
+      question: "Empowering Workforce",
+      answer:
+        " New Customer Analysis, Host Events & Analyze Survey Report, Search,Dealer Stock & Sale, Target Tracking"
+    },
+    {
+      question: "Tranceability & Identification",
+      answer:
+        " Product Genuinity Check, Cross Market Sale Tracking"
+    },
+    {
+      question: "Empowering Administration",
+      answer:
+        "Reports & Dashboards, Excel Add-ins, Region-wise Top Trending Products & Customers,Points Distribution, Payout Details"
+    },
+    {
+      question: "Social Link & Notifiction",
+      answer:
+        "Social Handler (Connected In-App),In-App Marketing & Promotional Videos, Notification (New Products, Schemes & Festive etc.)"
+    },
+    
   ];
 
   if (!faqs || faqs.length === 0) faqs = defaultFaqs;
