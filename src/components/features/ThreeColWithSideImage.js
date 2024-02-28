@@ -119,7 +119,7 @@ export default ({
   const defaultCards = [
     {
       imageSrc: ShieldIconImage,
-      title: "HRM",
+      title: "Human Resource Management",
       description:
         "Employee Expence | Visitor Management | Time Office | Leaves & Overtime Control | Payroll | Policy Control",
     },
@@ -177,13 +177,15 @@ export default ({
               </Card>
             </Column>
           ))}
-          <PopupForCards
+
+          {/* For card click popup uncomment PopupForCards component below */}
+          {/* <PopupForCards
             isOpen={isOpen}
             onClose={handleClosePopup}
             selectedCard={selectedCard}
           >
+          </PopupForCards> */}
             {/* { selectedCard == 1? <GetStarted /> : null } */}
-          </PopupForCards>
         </ThreeColumnContainer>
         {/* <DecoratorBlob /> */}
       </Container>

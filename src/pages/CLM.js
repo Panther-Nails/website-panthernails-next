@@ -60,6 +60,7 @@ export default ({
   return (
     <>
     <Hero
+    headingTextColor={tw`text-blue-700`}
     heading={
       <>
             One App <HighlightedText>Contract Labour Management!</HighlightedText>

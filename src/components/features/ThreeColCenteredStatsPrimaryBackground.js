@@ -50,7 +50,7 @@ export default ({
     from: { displayValue: 0 },
     config: { duration: 2000 },
   });
- 
+
   return (
     <Container ref={ref}> {/* Attach the ref to the Container */}
       <ContentWithPaddingForHomePage>
@@ -63,7 +63,7 @@ export default ({
           {animatedStats.map((stat, index) => (
             <Stats key={index}>
               <StatValue>{animatedProps.displayValue.interpolate((val) => Math.round((val / totalValue) * stat.value))}</StatValue>
-              <StatKey>{stat.key}</StatKey>
+              <StatKey>{stat.key }</StatKey>
             </Stats>
           ))}
         </StatsContainer>

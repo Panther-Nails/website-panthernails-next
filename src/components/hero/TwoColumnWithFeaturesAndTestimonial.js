@@ -43,21 +43,21 @@ const ImageColumn = tw(Column)`ml-auto lg:mr-0 relative mt-16 lg:mt-0 lg:ml-32`;
 const ImageContainer = tw.div`relative z-40 transform xl:-translate-x-24 xl:-translate-y-16`;
 
 const Image = styled.img`
-  max-width: 100%;
-  width: 24rem;
-  border-radius: 0.5rem;
-  position: relative;
-  z-index: 20;
-  height: auto;
-  transition: transform 0.3s ease-in-out;
-  &:hover {
-    transform: scale(1.05) rotateX(5deg) rotateY(5deg);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
-  }
+  // max-width: 100%;
+  // width: 24rem;
+  // border-radius: 0.5rem;
+  // position: relative;
+  // z-index: 20;
+  // height: auto;
+  // transition: transform 0.3s ease-in-out;
+  // &:hover {
+  //   transform: scale(1.05) rotateX(5deg) rotateY(5deg);
+  //   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  // }
   
 `;
 
-const Offsetbackground = tw.div`absolute inset-0 bg-gray-300 rounded xl:-mb-8 bg-transparent`;
+const Offsetbackground = tw.div`absolute inset-0 bg-gray-300 rounded xl:-mb-8 bg-transparent` //bg-[url('https://www.imast.in/assets/images/iphone-imast-baner-4.svg')] bg-no-repeat`;
 const ImageDecoratorBlob = styled(SvgDecoratorBlob1)`
   ${tw`pointer-events-none z-10 absolute right-0 bottom-0 transform translate-x-10 translate-y-10 h-32 w-32 opacity-25 text-gray-900 fill-current`}
 `;
@@ -68,7 +68,7 @@ const QuotesLeftIcon = tw(
 const Quote = tw.blockquote`text-black font-bold`;
 const CustomerName = tw.p`mt-4 font-bold`;
 const CustomerCompany = tw.p`mt-1 text-sm text-gray-500`;
-export const BackgroundForHeader = tw.div`bg-blue-300 h-full w-screen mr-0`;
+export const BackgroundForHeader = tw.div`h-full w-screen mr-0`; //bg-blue-300 
 
 export default ({
   heading = "Better, Faster and Cheaper Cloud.",
@@ -145,20 +145,20 @@ export default ({
               <ImageContainer>
                 <Image src={imageSrc} />
                 {/* {imageDecoratorBlob && <ImageDecoratorBlob />} */}
+                {/* <br></br>
                 <br></br>
                 <br></br>
                 <br></br>
-                <br></br>
-                <br></br>
+                <br></br> */}
 
-                <Testimonial>
+                {/* <Testimonial>
                   <QuotesLeftIcon />
-                  <Quote>{testimonial.quote}</Quote>
+                  <Quote>{testimonial.quote}</Quote> */}
                   {/* <CustomerName>{testimonial.customerName}</CustomerName>
                   <CustomerCompany>{testimonial.customerCompany}</CustomerCompany> */}
-                </Testimonial>
+                {/* </Testimonial> */}
               </ImageContainer>
-              <Offsetbackground />
+              {/* <Offsetbackground /> */}
             </ImageColumn>
           </Row>
           {/* </ContentWithVerticalPadding> */}

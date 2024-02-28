@@ -8,6 +8,7 @@ import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 
 import logo from "../../images/logo.svg";
 import pnlogo from "../../images/pnlogo.svg";
+// import fuchsLogo from "../../images/Fuchs.svg";
 
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";

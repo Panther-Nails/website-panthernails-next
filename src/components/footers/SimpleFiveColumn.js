@@ -34,7 +34,7 @@ const SocialLink = styled.a`
   }
 `;
 
-export default () => {
+export default ({companyDescription = "Treact is an Internet Technology company providing design resources such as website templates and themes."}) => {
   return (
     <Container>
       <FiveColumns>
@@ -43,8 +43,7 @@ export default () => {
             <LogoImg src={LogoImage} />
             
           </LogoContainer>
-          <CompanyDescription>
-            Treact is an Internet Technology company providing design resources such as website templates and themes.
+          <CompanyDescription> {companyDescription}
           </CompanyDescription>
           <SocialLinksContainer>
             <SocialLink href="https://facebook.com">

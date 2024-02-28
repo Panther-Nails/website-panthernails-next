@@ -27,7 +27,7 @@ import GetStarted from "components/cta/GetStarted.js";
 
 
 
-const Container = tw.div`relative text-black bg-gray-300`;
+const Container = tw.div`relative text-black `; //bg-gray-300
 const Content = tw.div`max-w-screen-xl text-black bg-transparent mr-8 ml-8`;
 const ProductsContainer = tw.div`mt-16 lg:mt-0 bg-transparent`;
 const Products = styled.div`bg-transparent`;

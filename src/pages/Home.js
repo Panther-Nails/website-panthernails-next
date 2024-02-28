@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import tw from "twin.macro";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/TwoColumnWithFeaturesAndTestimonial.js";
@@ -29,6 +29,9 @@ import ScrollingAnimationUpSide from "components/durgesh/ScrollingAnimationUpSid
 import { Body, HighlightedTextSpan } from "components/misc/Layouts";
 import ScrollingAnimationUpSideYaxis from "components/durgesh/ScrollYaxis";
 import AnimatedHeading from "components/durgesh/AnimatedHeading";
+import { PrimaryButton } from "components/misc/Buttons";
+import GetStarted from "components/cta/GetStarted";
+import Login from "./Login";
 
 const productList = [
   {
@@ -54,7 +57,7 @@ const productList = [
 const serviceCards = [
   {
     imageSrc: ShieldIconImage,
-    title: "HRM",
+    title: "Human Resource Management",
     description:
       "Employee Expence | Visitor Management | Time Office | Leaves & Overtime Control | Payroll | Policy Control.",
   },
@@ -62,48 +65,89 @@ const serviceCards = [
     imageSrc: SupportIconImage,
     description:
       "Prudence customer success team that can converse in major indian languages.",
-    title: "Support",
+    title: "Loyalty & Promotions",
   },
   {
     imageSrc: CustomizeIconImage,
     description:
       "A Rapid & Stable Development Based on Panther Nails After8 Framework makes it easy. ",
-    title: "Customizable",
+    title: "Travelling & Expence Management",
   },
   {
     imageSrc: ReliableIconImage,
     description:
       "The application provides uninterrupted access to the system and 99% up time.",
-    title: "Reliable",
+    title: "Accounting & Valuations",
   },
   {
     imageSrc: FastIconImage,
     description:
       "Robust & Scalable Cloud Infrastructure where you get ready to grow with your business.",
-    title: "Fast",
+    title: "Production & Planning",
   },
   {
     imageSrc: SimpleIconImage,
     description:
       "Features that are designed to serve indeed requirement of the users",
-    title: "Easy",
+    title: "Goods Traceability",
   },
 ];
 
+const AutoPopup = tw.div`absolute h-full w-full z-50 backdrop-blur-sm flex flex-col items-center`;
+const PopupCloseButton = tw.button`bg-red-500 mb-0 text-white font-bold mt-0 hocus:text-gray-900 focus:shadow-inner focus:outline-none transition duration-300 shadow-md  hover:from-pink-500 hover:to-yellow-500`;
 export default () => {
   const Subheading = tw.span`tracking-wider text-sm font-medium`;
-  const HighlightedText = tw.span`text-primary-500 text-black`;
+  const HighlightedText = tw.span`text-primary-500 text-black `; //bg-[url('https://w7.pngwing.com/pngs/378/777/png-transparent-pink-paint-illustration-ink-brush-pen-red-hair-brush-purple-ink-text-thumbnail.png')] bg-center bg-cover`;
 
   const HighlightedTextInverse = tw.span`bg-gray-100 text-primary-500 px-4 transform -skew-x-12 inline-block`;
   const Description = tw.span`inline-block mt-8`;
 
-  //changes from durgesh
-  // const ContainerForButton = tw.div` flex justify-center mb-16 relative bg-transparent z-50 fixed`;
-  // const PrimaryButtonForDurgeshPage = tw.a`px-5 py-3 font-bold bg-black rounded bg-pink-500 text-gray-100 hocus:bg-pink-500 shadow-gray-700  hocus:text-gray-900 focus:shadow-inner focus:outline-none transition duration-300 shadow-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500  animate-bounce hover:animate-none sticky`;
   const imageCss = tw`rounded-4xl`;
+
+  // //auto popup
+  // const [showPopup, setShowPopup] = useState(false);
+  // const scrollPositionRef = useRef(0);
+  // const popupRef = useRef(null);
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setShowPopup(true);
+  //     document.body.style.overflow = "auto";
+  //     scrollPositionRef.current = window.scrollY;
+  //   }, 5000);
+
+  //   return () => clearTimeout(timer);
+  // }, []);
+
+  // useEffect(() => {
+  //   if (showPopup && popupRef.current) {
+  //     const windowHeight = window.innerHeight;
+  //     const popupHeight = popupRef.current.offsetHeight;
+  //     const topOffset = (windowHeight - popupHeight) / 2;
+  //     popupRef.current.style.top = `${topOffset}px`;
+  //     popupRef.current.style.left = "50%";
+  //     popupRef.current.style.transform = "translateX(-50%)";
+  //   }
+  // }, [showPopup]);
+
+  // const handleClosePopup = () => {
+  //   setShowPopup(false);
+  //   document.body.style.overflow = "auto";
+  //   window.scrollTo(0, scrollPositionRef.current);
+  // };
+  // //auto popup
+
   return (
     <>
       <Body>
+        {/* {showPopup ? (
+          <AutoPopup ref={popupRef} style={{ position: "fixed", zIndex: 999 }}>
+            <PopupCloseButton onClick={handleClosePopup}>
+              Close
+            </PopupCloseButton>
+            <GetStarted />
+          </AutoPopup>
+        ) : null} */}
         <Hero
           heading={
             <>
@@ -111,7 +155,7 @@ export default () => {
               <HighlightedText>your business</HighlightedText>
             </>
           }
-          description=""
+          description="Embark on a journey of transformation with our bespoke enterprise software solutions, meticulously crafted to amplify your business potential."
           imageSrc="https://cutesolution.com/html/techvio/assets/img/home-font.png"
           imageCss={imageCss}
           imageDecoratorBlob={true}
@@ -128,82 +172,82 @@ export default () => {
           ]}
           // bgColor={tw`bg-purple-400`}
         />
-       
-        <br></br>
-        <br></br>
-       
-        {/* <AnimationRevealPage> */}
-          <ScrollingAnimationUpSide y={200}>
-            <Products
-              // subheading="Products"
-              heading={
-                <>
-                  Our Robust <HighlightedText>Products</HighlightedText>
-                </>
-              }
-              description="Our Products that are built with Business Analytics & Intelligence, Automated Query Response System, Automated Analysis Emails, Voice Intelligence System provides you enhanced accessibility to run your business."
-              textOnLeft={false}
-              products={productList}
-            />
-          </ScrollingAnimationUpSide>
-          {/* <br></br>
-          <br></br> */}
-          <br></br>
 
-          {/* <ScrollingAnimationUpSide y={200}> */}
-            <Features
-              subheading={<Subheading>Keeping customers on top</Subheading>}
-              heading={
-                <>
-                  We have Amazing <HighlightedText>Service.</HighlightedText>
-                </>
-              }
-              description="a genial technology company delivering insightful enterprise software that foster your business."
-              cards={serviceCards}
-            />
-          {/* </ScrollingAnimationUpSide> */}
+        <br></br>
+        <br></br>
+
+        {/* <AnimationRevealPage> */}
+        <ScrollingAnimationUpSide y={200}>
+          <Products
+            // subheading="Products"
+            heading={
+              <>
+                Our Robust <HighlightedText>Products</HighlightedText>
+              </>
+            }
+            description="Our Products that are built with Business Analytics & Intelligence, Automated Query Response System, Automated Analysis Emails, Voice Intelligence System provides you enhanced accessibility to run your business."
+            textOnLeft={false}
+            products={productList}
+          />
+        </ScrollingAnimationUpSide>
+        {/* <br></br>
+          <br></br> */}
+        <br></br>
+
+        {/* <ScrollingAnimationUpSide y={200}> */}
+        <Features
+          subheading={<Subheading>Keeping customers on top</Subheading>}
+          heading={
+            <>
+              We have Amazing <HighlightedText>Service.</HighlightedText>
+            </>
+          }
+          description="a genial technology company delivering insightful enterprise software that foster your business."
+          cards={serviceCards}
+        />
+        {/* </ScrollingAnimationUpSide> */}
+
+        <ScrollingAnimationUpSide y={100}>
+          <CTA
+            // text="Let's Develop Your Next Great App! And Make your business grow."
+            backgroundColor={tw`bg-purple-500`}
+            textCss={tw`text-black font-bold`}
+            primaryLinkText="Get Started"
+            primaryLinkUrl="http://panthernails.com"
+            secondaryLinkText="Contact Us"
+            secondaryLinkUrl="http://google.com"
+            pushDownFooter={true}
+          />
           
-          
-          <ScrollingAnimationUpSide y={100}>
-            <CTA
-              // text="Let's Develop Your Next Great App! And Make your business grow."
-              backgroundColor={tw`bg-purple-500`}
-              textCss={tw`text-black font-bold`}
-              primaryLinkText="Get Started"
-              primaryLinkUrl="http://panthernails.com"
-              secondaryLinkText="Contact Us"
-              secondaryLinkUrl="http://google.com"
-              pushDownFooter={true}
-            />
-          </ScrollingAnimationUpSide>
-          <ScrollingAnimationUpSide y={200}>
-            <FeatureStats
-              subheading="Technology Innovations That Transform Your Business"
-              heading="Served 3,000,000+ End costumers"
-              description="We focus on building a company culture capable of delivering superior stakeholder value by helping people to make the most of each moment."
-              stats={[
-                {
-                  key: "Locations",
-                  value: 2, //"2",
-                },
-                {
-                  key: "Clients",
-                  value: 35, //"35+",
-                },
-                {
-                  key: "Hard Workers",
-                  value: 50//"50+",
-                },
-              ]}
-            />
-          </ScrollingAnimationUpSide>
-          {/* To Show our Client Section or Component uncommnet this */}
-          {/* <ScrollingAnimationUpSide y={200}>
+        </ScrollingAnimationUpSide>
+        <ScrollingAnimationUpSide y={200}>
+          <FeatureStats
+            subheading="Technology Innovations That Transform Your Business"
+            heading="Served 3,000,000+ End costumers"
+            description="We focus on building a company culture capable of delivering superior stakeholder value by helping people to make the most of each moment."
+            stats={[
+              {
+                key: "Locations",
+                value: 2, //"2",
+              },
+              {
+                key: "Clients",
+                value: 35, //"35+",
+              },
+              {
+                key: "Hard Workers",
+                value: 50, //"50+",
+              },
+            ]}
+          />
+        </ScrollingAnimationUpSide>
+        {/* To Show our Client Section or Component uncommnet this */}
+        {/* <ScrollingAnimationUpSide y={200}>
           <Clients textCss={tw`text-purple-800`} />
         </ScrollingAnimationUpSide> */}
-          <Footer />
+        <Footer />
         {/* </AnimationRevealPage> */}
-        </Body>
+      </Body>
     </>
   );
 };

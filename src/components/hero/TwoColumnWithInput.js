@@ -26,21 +26,22 @@ export default ({
   description = <></>,
   roundedHeaderButton,
   bgColor=tw``,
+  headingTextColor=tw``
 }) => {
   return (
     <>
       <Header roundedHeaderButton={roundedHeaderButton}  css={bgColor}/>
-      {/* <Container>
+      <Container>
         <Content>
-          <Heading>
+          <Heading css={headingTextColor}>
             {heading}
           </Heading>
           <Paragraph>
             {description}
           </Paragraph>
         </Content>
-        <DecoratorBlob1 />
-      </Container> */}
+        {/* <DecoratorBlob1 /> */}
+      </Container>
     </>
   );
 };

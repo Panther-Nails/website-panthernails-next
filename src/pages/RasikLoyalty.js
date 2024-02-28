@@ -21,7 +21,6 @@ import ProductImageCLM from "images/ProductCLM.png";
 import { Body } from "components/misc/Layouts";
 import DashedBorderSixFeatures from "components/features/DashedBorderSixFeatures";
 
-
 export const NavLinks = tw.div`inline-block`;
 
 /* hocus: stands for "on hover or focus"
@@ -35,9 +34,7 @@ export const NavLink = tw.a`
 
 const HighlightedText = tw.span`text-primary-500`;
 
-
 export default ({
-  
   products = [
     {
       imageSrc: ProductImageRasikLoyalty,
@@ -46,7 +43,7 @@ export default ({
       title: "Rasik Loyalty",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      url: "/RasikLoyalty"
+      url: "/RasikLoyalty",
     },
     // {
     //   imageSrc: ProductImageCLM,
@@ -57,50 +54,62 @@ export default ({
     //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     //   url: "/OneApp"
     // },
-  ]
+  ],
 }) => {
   return (
     <Body>
       <Hero
-      //  bgColor={tw`bg-rasik-300`}
+        //  bgColor={tw`bg-rasik-300`}
+        headingTextColor={tw`text-rasik-200`}
         heading={
           <>
             Rasik <HighlightedText>Loyalty Platform!</HighlightedText>
           </>
-        }        
-        description = { <> We focus on building products that are capable of delivering superior stakeholder value by helping people to make the most of each moment.  </>}
-       
+        }
+        description={
+          <>
+            {" "}
+            We focus on building products that are capable of delivering
+            superior stakeholder value by helping people to make the most of
+            each moment.{" "}
+          </>
+        }
       />
 
-    <AnimationRevealPage>
-      
-     
+      <AnimationRevealPage>
+        <Features products={products} heading={<></>} description={<> </>} />
 
-      <Features 
-        products={products} 
-        heading={<></>} 
-        description={ <> </>}
+        <DashedBorderSixFeatures
+          headTitle="Rasik "
+          bgColor={tw`bg-transparent`}
+          textCss={tw`text-rasik-200`}
         />
 
-      <DashedBorderSixFeatures headTitle='Rasik ' bgColor={tw`bg-transparent`} textCss={tw`text-rasik-200`}/>
+        <CTA
+          backgroundColor={tw`bg-rasik-200`}
+          containerBg={tw`bg-black`}
+          text={
+            <>
+              Build relationships with influencers to make your{" "}
+              <HighlightedText>Business grow</HighlightedText>
+            </>
+          }
+          primaryLinkText="Schedule a meeting"
+          primaryLinkUrl="http://panthernails.com"
+          secondaryLinkText="Call us"
+          secondaryLinkUrl="https://wa.me/918087144244"
+          pushDownFooter={false}
+        />
 
-      <CTA 
-         backgroundColor={tw`bg-rasik-200`}
-         text = { <>Build relationships with influencers to make your <HighlightedText>Business grow</HighlightedText></> }
-         primaryLinkText = "Schedule a meeting"
-         primaryLinkUrl = "http://panthernails.com"
-         secondaryLinkText = "Call us"
-         secondaryLinkUrl = "https://wa.me/918087144244"
-         pushDownFooter = {false}
-      />
+        <Testimonial
+          Heading="Our Esteemed Customers"
+          textCss={tw`text-rasik-200`}
+        />
 
-      <Testimonial Heading="Our Esteemed Customers" textCss={tw`text-rasik-200`} />
+        <FAQ textCss={tw`text-rasik-200`} />
 
-      <FAQ textCss={tw`text-rasik-200`}/>
-
-      <Footer bgColor={tw`bg-rasik-200`}/>
-
-    </AnimationRevealPage>
+        <Footer bgColor={tw`bg-rasik-200`} />
+      </AnimationRevealPage>
     </Body>
   );
 };

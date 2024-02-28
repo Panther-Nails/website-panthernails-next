@@ -9,6 +9,6 @@ export const Content2Xl= tw.div`max-w-screen-2xl mx-auto`;
 //Durgesh 
 //For Home.js page FeatureStats
 export const ContentWithPaddingForHomePage= tw.div`max-w-screen-xl mx-auto py-20 lg:py-24 bg-blue-300 rounded-lg bg-blue-300`;
-export const Body = tw.div`bg-gray-300 h-full w-screen`;
+export const Body = tw.div`h-full w-screen`;
 export const HighlightedTextSpan = tw.span`text-primary-500`;
 
