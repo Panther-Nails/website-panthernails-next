@@ -10,14 +10,15 @@ import { ReactComponent as MinusIcon } from "feather-icons/dist/icons/minus.svg"
 const Container = tw.div`relative px-4 bg-sitecolor-100`;
 const Content = tw.div`max-w-screen-xl mx-auto py-0 lg:py-20`;  //chenge py-16 to py-0 26-2-24
 
-const TwoColumn = tw.div`flex`;
-const Column = tw.div``;
+const TwoColumn = tw.div`flex  `;
+const Column1 = tw.div`  `;
+const Column = tw.div` `;
 
 const Image = styled.div(props => [
   `background-image: url("${props.imageSrc}");`,
-  props.imageContain ? tw`bg-contain bg-no-repeat` : tw`bg-cover`,
+  props.imageContain ? tw`bg-contain  bg-no-repeat` : tw`bg-cover`,
   props.imageShadow ? tw`shadow` : tw`shadow-none`,
-  tw`hidden lg:block rounded h-144 bg-center`
+  tw`hidden lg:block rounded mt-32 h-8/12 bg-center `
 ]);
 
 const FAQContent = tw.div`lg:ml-12`;
@@ -50,6 +51,7 @@ export default ({
    * You can modify FAQs either by modifying the below defaultFaqs array or by passing a custom array of FAQs using
    * the faqs prop
    */
+  
   const defaultFaqs = [
     {
       question: "Loayalty On Scan",
@@ -108,22 +110,51 @@ export default ({
     
   ];
 
-  if (!faqs || faqs.length === 0) faqs = defaultFaqs;
+  if (!faqs || faqs.length === 0){
+     faqs = defaultFaqs;
+     
+  }
 
+  const [img, setimg] = useState(imageSrc);
+  
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
 
+  const images=[
+    {url:'https://images.pexels.com/photos/20330740/pexels-photo-20330740/free-photo-of-a-dog-with-light-brown-fur-sitting-on-a-meadow.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'},
+    {url:'https://images.pexels.com/photos/12672768/pexels-photo-12672768.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'},
+    {url:'https://images.pexels.com/photos/18624829/pexels-photo-18624829/free-photo-of-a-tree-on-a-meadow-in-the-countryside.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'},
+    {url:'https://images.pexels.com/photos/15306706/pexels-photo-15306706/free-photo-of-rocks-on-hill.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'},
+    {url:'https://images.pexels.com/photos/20272801/pexels-photo-20272801/free-photo-of-joshua-tree-national-park-engagement-session.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'},
+    {url:'https://images.pexels.com/photos/20326814/pexels-photo-20326814/free-photo-of-a-view-of-a-city-from-above-with-tall-buildings.png?auto=compress&cs=tinysrgb&w=600&lazy=load'},
+    {url:'https://images.pexels.com/photos/1293260/pexels-photo-1293260.jpeg?auto=compress&cs=tinysrgb&w=600'},
+    {url:'https://images.pexels.com/photos/20141313/pexels-photo-20141313/free-photo-of-stirling-castle.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'},
+    {url:'https://images.pexels.com/photos/18627571/pexels-photo-18627571/free-photo-of-mirror-among-plants.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'},
+    {url:'https://images.pexels.com/photos/1028225/pexels-photo-1028225.jpeg?auto=compress&cs=tinysrgb&w=600'},
+    {url:'https://images.pexels.com/photos/2088172/pexels-photo-2088172.jpeg?auto=compress&cs=tinysrgb&w=600'}]
+  
+
   const toggleQuestion = questionIndex => {
-    if (activeQuestionIndex === questionIndex) setActiveQuestionIndex(null);
-    else setActiveQuestionIndex(questionIndex);
+    setimg(images[questionIndex].url);
+    if (activeQuestionIndex === questionIndex){
+       setActiveQuestionIndex(null);
+       setimg(imageSrc);
+       
+      }
+    else{
+       setActiveQuestionIndex(questionIndex);
+       
+      }
+
+    
   };
 
   return (
     <Container id="faq">
       <Content>
         <TwoColumn>
-          <Column tw="hidden lg:block w-5/12 flex-shrink-0">
-            <Image imageContain={imageContain} imageShadow={imageShadow} imageSrc={imageSrc} />
-          </Column>
+          <Column1 tw="hidden lg:block w-5/12  flex-shrink-0 md:(h-screen ) bg-sitecolor-100  sticky top-0 flex flex items-center justify-center">
+            <Image imageContain={imageContain} imageShadow={imageShadow} imageSrc={img} />
+          </Column1>
           <Column>
             <FAQContent>
               {subheading ? <Subheading>{subheading}</Subheading> : null}

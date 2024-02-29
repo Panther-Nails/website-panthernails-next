@@ -84,10 +84,8 @@ export default ({}) => {
           <Items ref={elementRef}>
             <Heading>Rasik Loyalty</Heading>
             <Description>
-              You can also use variant modifiers to target media queries like
-              responsive breakpoints, dark mode, prefers-reduced-motion, and
-              more. For example, use md:font-bold to apply the font-bold utility
-              at only medium screen sizes and above.
+            rasik loyalty is help you to bring the loyal influencer and then
+            influencer bring a loyal customers for you 
             </Description>
           </Items>
           <Items>
@@ -95,8 +93,7 @@ export default ({}) => {
             <Description>
               You can also use variant modifiers to target media queries like
               responsive breakpoints, dark mode, prefers-reduced-motion, and
-              more. For example, use md:font-bold to apply the font-bold utility
-              at only medium screen sizes and above.
+              more. For example
             </Description>
           </Items>
           <Items>
