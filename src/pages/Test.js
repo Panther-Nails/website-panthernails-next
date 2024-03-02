@@ -1,10 +1,14 @@
 import React from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 
-import Hero from "components/hero/TwoColumnWithInput.js";
-import Features from "components/features/VerticalWithAlternateImageAndText.js";
+import Hero from "components/hero/TwoColumnWithVideo";
+import MainFeature from "components/features/TwoColWithButton.js";
+import Features from "components/features/ThreeColWithSideImage.js";
+import Statistics from "components/features/TwoColWithStat";
+
 import Pricing from "components/pricing/TwoPlansWithDurationSwitcher";
-import CTA from "components/cta/DownloadApp";
+
+import CTA from "components/cta/GetStarted";
 import Testimonial from "components/testimonials/TwoColumnWithImageSlider.js";
 import Footer from "components/footers/FiveColumnWithInputForm.js";
 import FAQ from "components/faqs/SingleCol.js";
@@ -19,6 +23,8 @@ import ProfileImageCLM from "images/CLM.png";
 import ProductImageRasikLoyalty from "images/ProductRasikLoyalty.png";
 import ProductImageCLM from "images/ProductCLM.png";
 
+import serverRedundancyIllustrationImageSrc from "images/server-redundancy-illustration.svg";
+import serverSecureIllustrationImageSrc from "images/server-secure-illustration.svg";
 
 export const NavLinks = tw.div`inline-block`;
 
@@ -33,9 +39,9 @@ export const NavLink = tw.a`
 
 const HighlightedText = tw.span`text-primary-500`;
 
+const Subheading = tw.span`tracking-wider text-sm font-medium`;
 
 export default ({
-  
   products = [
     {
       imageSrc: ProductImageRasikLoyalty,
@@ -44,7 +50,7 @@ export default ({
       title: "Rasik Loyalty",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      url: "/RasikLoyalty"
+      url: "/RasikLoyalty",
     },
     {
       imageSrc: ProductImageCLM,
@@ -53,27 +59,68 @@ export default ({
       title: "Panther Nails One App",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      url: "/OneApp"
+      url: "/OneApp",
     },
-  ]
+  ],
 }) => {
   return (
     <AnimationRevealPage>
       <Hero
         heading={
           <>
-            Rasik <HighlightedText>Loyalty Platform!</HighlightedText>
+            Astute <HighlightedText>Solutions!</HighlightedText>
           </>
-        }        
-        description = { <> We focus on building products that are capable of delivering superior stakeholder value by helping people to make the most of each moment.  </>}
+        }
+        description={
+          <>
+            {" "}
+            We focus on building products that are capable of delivering
+            superior stakeholder value by helping people to make the most of
+            each moment.{" "}
+          </>
+        }
       />
 
-      <Testimonial />
+      <Features
+        subheading={<Subheading>Keeping customers on top</Subheading>}
+        heading={
+          <>
+            We have Amazing <HighlightedText>Service.</HighlightedText>
+          </>
+        }
+        description="a genial technology company delivering insightful enterprise software that foster your business."
+        cards={[]}
+      />
 
-      
+      <Statistics
+        subheading={<Subheading>Keeping customers on top</Subheading>}
+        heading={
+          <>
+            We have Amazing <HighlightedText>Service.</HighlightedText>
+          </>
+        }
+        description="a genial technology company delivering insightful enterprise software that foster your business."
+        cards={[]}
+      />
+
+      <MainFeature
+        subheading="Reliable"
+        heading="Highly Redundant Servers With Backup"
+        imageSrc={serverRedundancyIllustrationImageSrc}
+        buttonRounded={false}
+      />
+
+      <MainFeature
+        subheading="Secure"
+        heading="State of the Art Computer Security"
+        imageSrc={serverSecureIllustrationImageSrc}
+        buttonRounded={false}
+        textOnLeft={false}
+      />
+
+      <CTA />
 
       <Footer />
-
     </AnimationRevealPage>
   );
 };

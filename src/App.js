@@ -1,5 +1,5 @@
 import React from "react";
-import GlobalStyles from 'styles/GlobalStyles';
+import GlobalStyles from "styles/GlobalStyles";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
 /*
@@ -101,8 +101,6 @@ import AboutUsPage from "pages/AboutUs.js";
 import ContactUsPage from "pages/ContactUs.js";
 import BlogIndexPage from "pages/BlogIndex.js";
 
-
-
 import ComponentRenderer from "ComponentRenderer.js";
 import MainLandingPage from "MainLandingPage.js";
 import TermsOfServicePage from "pages/TermsOfService.js";
@@ -110,19 +108,25 @@ import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "pages/Home";
+import Test from "pages/Test";
 
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
   // return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
-
 
   return (
     <>
       <GlobalStyles />
       <Router>
         <Routes>
-          <Route path="/components/:type/:subtype/:name" element={<ComponentRenderer />} />
-          <Route path="/components/:type/:name" element={<ComponentRenderer />} />
+          <Route
+            path="/components/:type/:subtype/:name"
+            element={<ComponentRenderer />}
+          />
+          <Route
+            path="/components/:type/:name"
+            element={<ComponentRenderer />}
+          />
           <Route path="/TermsOfService" element={<TermsOfServicePage />} />
           <Route path="/PrivacyPolicy" element={<PrivacyPolicyPage />} />
           <Route path="/Login" element={<LoginPage />} />
@@ -134,8 +138,9 @@ export default function App() {
           <Route path="/ContactUs" element={<ContactUsPage />} />
           <Route path="/Blog" element={<BlogIndexPage />} />
           <Route path="/MainLandingPage" element={<MainLandingPage />} />
-          
-          <Route path="/" element={<Home  />} />
+          <Route path="/Test" element={<Test />} />
+
+          <Route path="/" element={<Home />} />
         </Routes>
       </Router>
     </>
