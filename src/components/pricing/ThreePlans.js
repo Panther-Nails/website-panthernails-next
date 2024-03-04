@@ -135,7 +135,7 @@ export default ({
     <Container>
       <ContentWithPaddingXl>
         <HeaderContainer>
-          {subheading && <Subheading>{subheading}</Subheading>}
+          {/* {subheading && <Subheading>{subheading}</Subheading>} */}
           <Heading>{heading}</Heading>
           {description && <Description>{description}</Description>}
         </HeaderContainer>

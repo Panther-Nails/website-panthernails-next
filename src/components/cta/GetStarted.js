@@ -38,6 +38,7 @@ const DecoratorBlob2 = tw(
 const HighlightedText = tw.span`text-primary-900 font-bold`;
 
 export default ({
+  leftFirst=true,
   text = (
     <>
       {" "}
@@ -55,7 +56,10 @@ export default ({
   containerBg = tw``,
 }) => {
   return (
+
     <Container css={containerBg}>
+       {leftFirst ? (
+        <>
       {/* && pushDownFooter && tw`mb-20 lg:mb-24` */}
       <ContentWithPaddingXl>
         <PrimaryBackgroundContainer css={backgroundColor}>
@@ -80,6 +84,34 @@ export default ({
           </DecoratorBlobContainer>
         </PrimaryBackgroundContainer>
       </ContentWithPaddingXl>
+      </>
+       ) : (
+        <>
+        <ContentWithPaddingXl>
+        <PrimaryBackgroundContainer css={backgroundColor}>
+          <Row css={tw``}>            
+            <LinksContainer >
+              <ScrollingAnimationUpSide y={400}>
+                <PrimaryLink href={primaryLinkUrl}>
+                  {primaryLinkText}
+                </PrimaryLink>
+                <SecondaryLink href={secondaryLinkUrl} target="_black">
+                  {secondaryLinkText}
+                </SecondaryLink>
+              </ScrollingAnimationUpSide>
+            </LinksContainer>
+            <TextContainer css={tw`ml-32`}>
+              <Text css={textCss}>{text}</Text>
+            </TextContainer>
+          </Row>
+          <DecoratorBlobContainer>
+            <DecoratorBlob1 />
+            <DecoratorBlob2 />
+          </DecoratorBlobContainer>
+        </PrimaryBackgroundContainer>
+      </ContentWithPaddingXl>
+      </>
+      )}
     </Container>
   );
 };

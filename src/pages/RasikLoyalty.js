@@ -20,6 +20,7 @@ import ProductImageRasikLoyalty from "images/ProductRasikLoyalty.png";
 import ProductImageCLM from "images/ProductCLM.png";
 import { Body } from "components/misc/Layouts";
 import DashedBorderSixFeatures from "components/features/DashedBorderSixFeatures";
+import ThreePlans from "components/pricing/ThreePlans";
 
 export const NavLinks = tw.div`inline-block`;
 
@@ -99,6 +100,9 @@ export default ({
           secondaryLinkText="Call us"
           secondaryLinkUrl="https://wa.me/918087144244"
           pushDownFooter={false}
+        />
+        <ThreePlans
+        heading='Redeemption opations'
         />
 
         <Testimonial

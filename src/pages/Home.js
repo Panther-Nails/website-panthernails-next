@@ -26,12 +26,16 @@ import FastIconImage from "images/fast-icon.svg";
 import ReliableIconImage from "images/reliable-icon.svg";
 import SimpleIconImage from "images/simple-icon.svg";
 import ScrollingAnimationUpSide from "components/durgesh/ScrollingAnimationUpSide";
-import { Body, HighlightedTextSpan } from "components/misc/Layouts";
+import { Body, Container, HighlightedTextSpan } from "components/misc/Layouts";
 import ScrollingAnimationUpSideYaxis from "components/durgesh/ScrollYaxis";
 import AnimatedHeading from "components/durgesh/AnimatedHeading";
 import { PrimaryButton } from "components/misc/Buttons";
 import GetStarted from "components/cta/GetStarted";
 import Login from "./Login";
+import ServicesSection from "components/durgesh/ServicesSection";
+import TwoColSingleFeatureWithStats2 from "components/features/TwoColSingleFeatureWithStats2";
+import ServicesSectionDetails from "components/durgesh/ServicesSectionDetails";
+import gsap from "gsap";
 
 const productList = [
   {
@@ -93,9 +97,23 @@ const serviceCards = [
   },
 ];
 
+//Durgesh
+//Auto Popup
 const AutoPopup = tw.div`absolute h-full w-full z-50 backdrop-blur-sm flex flex-col items-center`;
 const PopupCloseButton = tw.button`bg-red-500 mb-0 text-white font-bold mt-0 hocus:text-gray-900 focus:shadow-inner focus:outline-none transition duration-300 shadow-md  hover:from-pink-500 hover:to-yellow-500`;
-export default () => {
+
+//For Slide Animation for ServicesSectionDetails
+const SlideInLeftAnimation = tw.div`transform -translate-x-full transition-transform duration-1000 ease-in-out`;
+const SlideInRightAnimation = tw.div`transform translate-x-full transition-transform duration-1000 ease-in-out`;
+const ContainerForAnimation = tw.div`flex flex-col`;
+export default ({
+  services = [
+    { id: 1, leftFirst: true },
+    { id: 2, leftFirst: false },
+    { id: 3, leftFirst: true },
+  ],
+  textingCss = tw`bg-black`,
+}) => {
   const Subheading = tw.span`tracking-wider text-sm font-medium`;
   const HighlightedText = tw.span`text-primary-500 text-black `; //bg-[url('https://w7.pngwing.com/pngs/378/777/png-transparent-pink-paint-illustration-ink-brush-pen-red-hair-brush-purple-ink-text-thumbnail.png')] bg-center bg-cover`;
 
@@ -137,6 +155,42 @@ export default () => {
   // };
   // //auto popup
 
+  //For Slide Animation for ServicesSectionDetails
+  // const sectionRefs = useRef([]);
+  // const [isVisible, setIsVisible] = useState(false);
+
+  // const isInView = (element) => {
+  //   if (!element) return false;
+  //   const rect = element.getBoundingClientRect();
+  //   return rect.top >= 0 && rect.bottom <= window.innerHeight;
+  // };
+
+  // const handleScroll = () => {
+  //   setIsVisible(isInView(containerRef.current));
+  // };
+
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
+
+  // useEffect(() => {
+  //   // Slide in animation using GSAP
+  //   if (isVisible) {
+  //     sectionRefs.current.forEach((ref, index) => {
+  //       gsap.fromTo(
+  //         ref,
+  //         { y: index % 2 === 0 ? -100 : 100, opacity: 0 },
+  //         { y: 0, opacity: 1, duration: 1, ease: "power2.out" }
+  //       );
+  //     });
+  //   }
+  // }, [isVisible]);
+
+  // const containerRef = useRef(null);
+
   return (
     <>
       <Body>
@@ -173,10 +227,8 @@ export default () => {
           // bgColor={tw`bg-purple-400`}
         />
 
-        <br></br>
-        <br></br>
-
         {/* <AnimationRevealPage> */}
+
         <ScrollingAnimationUpSide y={200}>
           <Products
             // subheading="Products"
@@ -195,6 +247,7 @@ export default () => {
         <br></br>
 
         {/* <ScrollingAnimationUpSide y={200}> */}
+
         <Features
           subheading={<Subheading>Keeping customers on top</Subheading>}
           heading={
@@ -205,6 +258,7 @@ export default () => {
           description="a genial technology company delivering insightful enterprise software that foster your business."
           cards={serviceCards}
         />
+
         {/* </ScrollingAnimationUpSide> */}
 
         <ScrollingAnimationUpSide y={100}>
@@ -218,9 +272,23 @@ export default () => {
             secondaryLinkUrl="http://google.com"
             pushDownFooter={true}
           />
-          
         </ScrollingAnimationUpSide>
+
+        <ServicesSection
+          heading="Rewards Options"
+          subheading="At PANTHER NAILS, we're dedicated to enhancing your partnership experience. That's why we're thrilled to introduce our exclusive loyalty program, designed to reward your loyalty like never before"
+        />
+
+        <ContainerForAnimation>
+          {services.map((section, index) => (
+            <ServicesSectionDetails
+              services={services}
+            />
+          ))}
+        </ContainerForAnimation>
+
         <ScrollingAnimationUpSide y={200}>
+          <TwoColSingleFeatureWithStats2 />
           <FeatureStats
             subheading="Technology Innovations That Transform Your Business"
             heading="Served 3,000,000+ End costumers"
@@ -241,12 +309,8 @@ export default () => {
             ]}
           />
         </ScrollingAnimationUpSide>
-        {/* To Show our Client Section or Component uncommnet this */}
-        {/* <ScrollingAnimationUpSide y={200}>
-          <Clients textCss={tw`text-purple-800`} />
-        </ScrollingAnimationUpSide> */}
+
         <Footer />
-        {/* </AnimationRevealPage> */}
       </Body>
     </>
   );

@@ -24,7 +24,7 @@ import GetStarted from "components/cta/GetStarted";
 import { PrimaryButton } from "components/misc/Buttons";
 import PopupForCards from "components/durgesh/PopupForCards";
 import AnimatedHeading from "components/durgesh/AnimatedHeading";
-const Container = tw.div`relative bg-purple-500`;
+const Container = tw.div`relative bg-gray-300`;
 
 const ThreeColumnContainer = styled.div`
   ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:pb-24 pt-0 `}
@@ -45,37 +45,37 @@ const Column = styled.div`
 `;
 
 const Card = styled.div`
-  ${tw`flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8 bg-blue-300 rounded-lg shadow-xl shadow-gray-900 bg-blue-300 hover:bg-blue-400`}
+  ${tw`flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8 bg-blue-300 rounded-lg shadow-xl shadow-gray-500 bg-blue-300 `} //hover:bg-blue-400
 
-  animation: cardAnimation 1s ease-in-out;
+  // animation: cardAnimation 1s ease-in-out;
 
-  @keyframes cardAnimation {
-    0% {
-      transform: translateY(0px);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  &:hover {
-    animation: cardHoverAnimation 0.9s ease-in-out forwards;
-  }
-  @keyframes cardHoverAnimation {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.05);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
+  // @keyframes cardAnimation {
+  //   0% {
+  //     transform: translateY(0px);
+  //     opacity: 1;
+  //   }
+  //   100% {
+  //     transform: translateY(0);
+  //     opacity: 1;
+  //   }
+  // }
+  // &:hover {
+  //   animation: cardHoverAnimation 0.9s ease-in-out forwards;
+  // }
+  // @keyframes cardHoverAnimation {
+  //   0% {
+  //     transform: scale(1);
+  //   }
+  //   50% {
+  //     transform: scale(1.05);
+  //   }
+  //   100% {
+  //     transform: scale(1);
+  //   }
+  // }
 
   .imageContainer {
-    ${tw`border-black text-center rounded-full p-5 flex-shrink-0 bg-gray-900`}
+    ${tw`border-black text-center rounded-full p-5 flex-shrink-0 bg-gray-900 bg-gray-300 `}
     img {
       ${tw`w-6 h-6`}
     }

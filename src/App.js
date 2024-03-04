@@ -111,6 +111,7 @@ import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "pages/Home";
 import DurgeshPageExample from "pages/DurgeshPageExample";
+import DurgeshNewTheme from "pages/DurgeshNewTheme";
 
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
@@ -138,6 +139,7 @@ export default function App() {
           <Route path="/" element={<Home  />} />
           
           {/* Example */}
+          <Route path="/DurgeshNewTheme" element={<DurgeshNewTheme />}/>
           <Route path="/DurgeshPageExample" element={<DurgeshPageExample />}/>
           <Route path="MainLandingPage" element={<MainLandingPage  />} />
 
