@@ -7,6 +7,9 @@ import Cards from "../components/cards/GauravThreeColSlider copy.js";
 import Features from "components/features/VerticalWithAlternateImageAndText.js";
 import Hero from "components/hero/GauravTwoColumnWithInput copy.js";
 // import { SectionHeading as HeadingTitle } from "../misc/Headings.js";
+
+import Feature11, { Icons } from '../components/features/GauravTwoColSingleFeatureWithStats copy.js'
+
 import { SectionHeading } from "components/misc/Headings.js";
 import ProfileImageCLM from "images/CLM.png";
 import ProfileImageRasikLoyalty from "images/Loyalty.png";
@@ -35,6 +38,7 @@ import SimpleIconImage from "images/simple-icon.svg";
 import ThreeColSimpleWithImage from "components/blogs/ThreeColSimpleWithImage.js";
 import ThreeColWithSideImage from "components/features/ThreeColWithSideImage.js";
 
+import Product from "../components/pricing/GauravThreePlans .js";
 
 export const Hovereffect=tw.div`hover:(scale-150 duration-500 shadow-2xl)`
 
@@ -113,6 +117,13 @@ export default ({
       title: "Easy",
     },
   ],
+   Faqs = [
+    {
+      question: "Gaurav",
+      answer:
+        "The loyalty points are rewarded on scanning the unique QR associated with coupon codes."
+    }
+  ],
 }) => {
   return (
     <>
@@ -151,6 +162,11 @@ export default ({
             <Rightimg src="https://cdn.dribbble.com/userupload/12468591/file/original-4c59268356fb18e647e1e0847ba82d14.png?resize=1024x768&vertical=center" />
           </Right>
         </Container>
+        <Feature11/>
+
+        <Product ></Product>
+
+
         <ParellexanimG/>
         {/* <Cards /> */}
         <Features1
@@ -163,7 +179,7 @@ export default ({
           description="a genial technology company delivering insightful enterprise software that foster your business."
           cards={serviceCards}
         />
-        <ProductFeatures></ProductFeatures>
+        <ProductFeatures ></ProductFeatures>
         <PlatforWeProvide/>
         <RevordSystem></RevordSystem>
         
@@ -174,6 +190,7 @@ export default ({
       {/* </AnimationRevealPage> */}
 
       {/* <Right1 ></Right1> */}
+      
     </>
   );
 };

@@ -41,7 +41,7 @@ const Answer = motion(tw.dd`pointer-events-none text-sm sm:text-base leading-rel
 export default ({
   subheading = "Product Features",
   heading = "Rasik Loyalty",//chenges in headings Questions to product Name
-  description = "Here are some frequently asked questions about our hotels from our loving customers. Should you have any other questions, feel free to reach out via the contact form below.",
+  description = "we have bunch of features that help you to establish the pure relation with influencers and you can connect anytime with influencers using rasik loyalty app features. ",
   imageSrc = "https://images.unsplash.com/photo-1579427421635-a0015b804b2e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
   imageContain = false,
   imageShadow = true,
@@ -56,56 +56,67 @@ export default ({
     {
       question: "Loayalty On Scan",
       answer:
-        "The loyalty points are rewarded on scanning the unique QR associated with coupon codes."
+        "The loyalty points are rewarded on scanning the unique QR associated with coupon codes.",
+        url:'https://images.pexels.com/photos/20330740/pexels-photo-20330740/free-photo-of-a-dog-with-light-brown-fur-sitting-on-a-meadow.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'
     },
     {
       question: "Loyalty On Bill Amount",
-      answer:"The Loyalty points are rewarded on the sale amount to the distributors, retailers, wholesalers, dealers & influencers."
+      answer:"The Loyalty points are rewarded on the sale amount to the distributors, retailers, wholesalers, dealers & influencers.",
+      url:'https://images.pexels.com/photos/12672768/pexels-photo-12672768.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'
     },
     {
       question: "Loyalty On Bill Quantity",
       answer:
-        "The Loyalty points are rewarded on the sale quantity to the distributors, retailers, wholesalers, dealers & influencers"
+        "The Loyalty points are rewarded on the sale quantity to the distributors, retailers, wholesalers, dealers & influencers",
+        url:'https://images.pexels.com/photos/18624829/pexels-photo-18624829/free-photo-of-a-tree-on-a-meadow-in-the-countryside.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
     },
     {
       question: "Onboarding",
       answer:
-        "Hassle free sign up. With minimal details sign up is completed & all other information can be filled when needed."
+        "Hassle free sign up. With minimal details sign up is completed & all other information can be filled when needed.",
+        url:'https://images.pexels.com/photos/15306706/pexels-photo-15306706/free-photo-of-rocks-on-hill.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'
     },
     {
       question: "Multiple Redemption Options",
       answer:
-        "Get Discount On Next Purchase,IMPS Bank Transfer, E-Vouchers / Brand Vouchers ,UPI Transfer, Electronic Goods, Trips"
+        "Get Discount On Next Purchase,IMPS Bank Transfer, E-Vouchers / Brand Vouchers ,UPI Transfer, Electronic Goods, Trips",
+        url:'https://images.pexels.com/photos/20272801/pexels-photo-20272801/free-photo-of-joshua-tree-national-park-engagement-session.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'
     },
     {
       question: "Engagement Options",
       answer:
-        " Events & Meetups, Product Training Videos, Surveys, Certification, Product Catalogue"
+        " Events & Meetups, Product Training Videos, Surveys, Certification, Product Catalogue",
+        url:'https://images.pexels.com/photos/20326814/pexels-photo-20326814/free-photo-of-a-view-of-a-city-from-above-with-tall-buildings.png?auto=compress&cs=tinysrgb&w=600&lazy=load'
     },
     {
       question: "Gamification",
       answer:
-        " Annual Targets, Run the Streak, Surprise Earning, BONUS POINTS, Scratch & Win, Refer & Earn, Monthly Target"
+        " Annual Targets, Run the Streak, Surprise Earning, BONUS POINTS, Scratch & Win, Refer & Earn, Monthly Target",
+        url:'https://images.pexels.com/photos/1293260/pexels-photo-1293260.jpeg?auto=compress&cs=tinysrgb&w=600'
     },
     {
       question: "Empowering Workforce",
       answer:
-        " New Customer Analysis, Host Events & Analyze Survey Report, Search,Dealer Stock & Sale, Target Tracking"
+        " New Customer Analysis, Host Events & Analyze Survey Report, Search,Dealer Stock & Sale, Target Tracking",
+        url:'https://images.pexels.com/photos/20141313/pexels-photo-20141313/free-photo-of-stirling-castle.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'
     },
     {
       question: "Tranceability & Identification",
       answer:
-        " Product Genuinity Check, Cross Market Sale Tracking"
+        " Product Genuinity Check, Cross Market Sale Tracking",
+        url:'https://images.pexels.com/photos/18627571/pexels-photo-18627571/free-photo-of-mirror-among-plants.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'
     },
     {
       question: "Empowering Administration",
       answer:
-        "Reports & Dashboards, Excel Add-ins, Region-wise Top Trending Products & Customers,Points Distribution, Payout Details"
+        "Reports & Dashboards, Excel Add-ins, Region-wise Top Trending Products & Customers,Points Distribution, Payout Details",
+        url:'https://images.pexels.com/photos/1028225/pexels-photo-1028225.jpeg?auto=compress&cs=tinysrgb&w=600'
     },
     {
       question: "Social Link & Notifiction",
       answer:
-        "Social Handler (Connected In-App),In-App Marketing & Promotional Videos, Notification (New Products, Schemes & Festive etc.)"
+        "Social Handler (Connected In-App),In-App Marketing & Promotional Videos, Notification (New Products, Schemes & Festive etc.)",
+        url:'https://images.pexels.com/photos/2088172/pexels-photo-2088172.jpeg?auto=compress&cs=tinysrgb&w=600'
     },
     
   ];
@@ -119,22 +130,11 @@ export default ({
   
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
 
-  const images=[
-    {url:'https://images.pexels.com/photos/20330740/pexels-photo-20330740/free-photo-of-a-dog-with-light-brown-fur-sitting-on-a-meadow.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'},
-    {url:'https://images.pexels.com/photos/12672768/pexels-photo-12672768.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'},
-    {url:'https://images.pexels.com/photos/18624829/pexels-photo-18624829/free-photo-of-a-tree-on-a-meadow-in-the-countryside.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'},
-    {url:'https://images.pexels.com/photos/15306706/pexels-photo-15306706/free-photo-of-rocks-on-hill.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'},
-    {url:'https://images.pexels.com/photos/20272801/pexels-photo-20272801/free-photo-of-joshua-tree-national-park-engagement-session.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'},
-    {url:'https://images.pexels.com/photos/20326814/pexels-photo-20326814/free-photo-of-a-view-of-a-city-from-above-with-tall-buildings.png?auto=compress&cs=tinysrgb&w=600&lazy=load'},
-    {url:'https://images.pexels.com/photos/1293260/pexels-photo-1293260.jpeg?auto=compress&cs=tinysrgb&w=600'},
-    {url:'https://images.pexels.com/photos/20141313/pexels-photo-20141313/free-photo-of-stirling-castle.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'},
-    {url:'https://images.pexels.com/photos/18627571/pexels-photo-18627571/free-photo-of-mirror-among-plants.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'},
-    {url:'https://images.pexels.com/photos/1028225/pexels-photo-1028225.jpeg?auto=compress&cs=tinysrgb&w=600'},
-    {url:'https://images.pexels.com/photos/2088172/pexels-photo-2088172.jpeg?auto=compress&cs=tinysrgb&w=600'}]
+  
   
 
   const toggleQuestion = questionIndex => {
-    setimg(images[questionIndex].url);
+    
     if (activeQuestionIndex === questionIndex){
        setActiveQuestionIndex(null);
        setimg(imageSrc);
@@ -142,6 +142,7 @@ export default ({
       }
     else{
        setActiveQuestionIndex(questionIndex);
+       setimg(defaultFaqs[questionIndex].url);
        
       }
 

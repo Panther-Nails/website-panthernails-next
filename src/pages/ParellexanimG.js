@@ -8,8 +8,8 @@ const Heading = tw.h1`md:text-4xl  text-2xl font-bold w-full text-center text-si
 const Description = tw.p`lg:text-2xl text-lg mt-2 w-10/12   text-sitecolor-300`;
 const Main = tw.div`md:(min-h-screen w-full bg-sitecolor-100  flex-row) flex flex-col min-h-screen w-full  `;
 // let Left = tw.div`h-screen w-1/2   sticky top-0 flex items-center justify-center   `;
-const Right = tw.div`md:w-1/2 bg-sitecolor-100 min-h-screen w-full  `;
-let Items = tw.div`lg:(h-screen w-full  flex-col items-center justify-center mt-0)  mt-4 text-center  h-1/2 flex flex-col items-center  `;
+const Right = tw.div`md:w-1/2 bg-sitecolor-100 min-h-full w-full  `;
+let Items = tw.div`lg:(h-screen w-full  flex-col items-center justify-center mt-0)   mt-4 text-center  h-1/2 flex flex-col items-center  `;
 let Images = tw.img`h-full w-full`;
 
 const  Left = styled.div(({variable})=>[
@@ -37,32 +37,43 @@ export default ({}) => {
     const position = window.scrollY;
     setScrollPosition(position);
   };
-
+  const [width, setwidth] = useState(0);
+  
+  let addheight=0;
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
+    
     let a=elementRef.current.getBoundingClientRect()
-    console.log(a.height);
+    console.log(a.width);
     setHeight(a.height);
+    setwidth(a.width)
+
 
     return () => {
-      // window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
+  if(width<400)
+  {
+    addheight=450;
+  }
+   
  
+
   let compheightfromtop = height - scrollPosition;
   // console.log(compheaightfromtop);
 
-  if (compheightfromtop < 0) {
+  if (compheightfromtop+addheight < 0) {
     console.log(compheightfromtop);
     Svg = <Demo1 />;
   }
-  if (compheightfromtop + height < 0) {
+  if (compheightfromtop + height+addheight < 0) {
     console.log(compheightfromtop + height);
     Svg = <Demo2 />;
    
   }
-  if (compheightfromtop + 2 * height < 0) {
+  if (compheightfromtop + 2 * height+addheight < 0) {
     Svg = <Demo3 />;
     console.log(compheightfromtop + 2 * height);
     
