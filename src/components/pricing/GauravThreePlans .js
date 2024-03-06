@@ -13,15 +13,15 @@ import ProductImageRasikLoyalty from "images/ProductRasikLoyalty.png";
 
 const Icons=tw.img`w-16 h-16 bg-white` 
 const Image=tw.img`w-full h-8/12 bg-white`
-
+const Raper=tw.div` w-full h-full items-center justify-center flex    `
 const HeaderContainer = tw.div`mt-10 w-full flex flex-col items-center justify-between`;
 const Subheading = tw(SubheadingBase)`mb-4`;
 const Heading = tw(SectionHeading)`w-full`;
-const Description = tw(SectionDescription)`w-full text-center`;
+const Description = tw(SectionDescription)`w-full text-center py-4`;
 
-const PlansContainer = tw.div`flex justify-around flex-col lg:flex-row items-center lg:items-stretch relative`;
+const PlansContainer = tw.div`flex justify-around overflow-hidden  flex-col lg:flex-row items-center lg:items-stretch relative`;
 const Plan = styled.div`
-  ${tw`w-full max-w-lg h-full mt-16 lg:mr-8 lg:last:mr-0 text-center px-8 rounded-lg shadow relative pt-2 text-gray-900 bg-white flex flex-col`}
+  ${tw`w-full max-w-lg hover:-translate-y-full duration-1000 h-screen mt-0 lg:mr-8 z-30 lg:last:mr-0 text-center px-8 rounded-lg shadow relative  text-gray-900 bg-white flex flex-col`}
   .planHighlight {
     ${tw`rounded-t-lg absolute top-0 inset-x-0 h-2`}
   }
@@ -31,10 +31,9 @@ const Plan = styled.div`
     css`
       background: rgb(100,21,255);
       background: linear-gradient(135deg, rgba(100,21,255,1) 0%, rgba(128,64,252,1) 100%);
-  background: rgb(85,60,154);
-  background: linear-gradient(135deg, rgba(85,60,154,1) 0%, rgba(128,90,213,1) 100%);
-  background: rgb(76,81,191);
-  background: linear-gradient(135deg, rgba(76,81,191,1) 0%, rgba(102,126,234,1) 100%);
+      background: rgb(78,11,52);
+      background: linear-gradient(90deg, rgba(78,11,52,1) 49%, rgba(245,242,242,1) 1000%);
+      
       ${tw`bg-primary-100 text-gray-100`}
       .planHighlight {
         ${tw`hidden`}
@@ -49,12 +48,49 @@ const Plan = styled.div`
         ${tw`text-gray-300!`}
       }
       ${BuyNowButton} {
-        ${tw`bg-gray-100 text-primary-500 hocus:bg-gray-300 hocus:text-primary-800`}
+        ${tw`bg-sitecolor-1000  text-gray-100  `}
+    `}
+`;
+//car hover component
+
+const Planhover=styled.div`
+  ${tw`w-full max-w-lg h-full   bg-black  z-10 lg:last:mr-0 text-center  rounded-lg shadow absolute bg-transparent  `}
+  .planHighlight {
+    ${tw`rounded-t-lg absolute top-0 inset-x-0 h-2`}
+  }
+  
+
+  ${props =>
+    props.featured &&
+    css`
+      background: rgb(100,21,255);
+      background: linear-gradient(135deg, rgba(100,21,255,1) 0%, rgba(128,64,252,1) 100%);
+      background: rgb(78,11,52);
+      background: linear-gradient(90deg, rgba(78,11,52,1) 49%, rgba(245,242,242,1) 1000%);
+      
+      ${tw`bg-primary-100 text-gray-100`}
+      .planHighlight {
+        ${tw`hidden`}
+      }
+      .duration {
+        ${tw`text-gray-200!`}
+      }
+      ${PlanFeatures} {
+        ${tw`border-indigo-500`}
+      }
+      .feature:not(.mainFeature) {
+        ${tw`text-gray-300!`}
+      }
+      ${BuyNowButton} {
+        ${tw`bg-sitecolor-1000 text-primary-500 hocus:bg-gray-300 hocus:text-primary-800`}
     `}
 `;
 
+
+
+
 const PlanHeader = styled.div`
-  ${tw`flex flex-col items-center uppercase leading-relaxed py-8`}
+  ${tw`flex flex-col items-center  uppercase leading-relaxed py-4`}
   .name {
     ${tw`font-bold text-xl`}
   }
@@ -66,7 +102,7 @@ const PlanHeader = styled.div`
   }
 `;
 const PlanFeatures = styled.div`
-  ${tw`flex flex-col -mx-8 px-8 py-8 border-t-2 border-b-2 flex-1`}
+  ${tw`flex flex-col -mx-8   sticky border-t-2 border-b-2 flex-1`}
   .feature {
     ${tw`mt-5 first:mt-0 font-medium`}
     &:not(.mainFeature) {
@@ -80,7 +116,7 @@ const PlanFeatures = styled.div`
 
 const PlanAction = tw.div`px-4 sm:px-8 xl:px-16 py-8`;
 const BuyNowButton = styled(PrimaryButtonBase)`
-  ${tw`rounded-full uppercase tracking-wider py-4 w-full text-sm hover:shadow-xl transform hocus:translate-x-px hocus:-translate-y-px focus:shadow-outline`}
+  ${tw`rounded-full  uppercase tracking-wider py-4 w-full text-sm hover:shadow-xl transform hocus:translate-x-px hocus:-translate-y-px focus:shadow-outline`}
 `;
 
 const DecoratorBlob = styled(SvgDecoratorBlob)`
@@ -93,7 +129,7 @@ export default ({
   heading = "Our Products",
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   plans = null,
-  primaryButtonText = "Buy Now",
+  primaryButtonText = "click for more",
   icons
 }) => {
   const defaultPlans = [
@@ -103,6 +139,7 @@ export default ({
       // duration: "Monthly",
       mainFeature: ProductImageCLM,
       features: ["30 Templates", "7 Landing Pages", "12 Internal Pages", "Basic Assistance"],
+      productinfo:'Our Products that are built with Business Analytics & Intelligence, Automated Query Response System, Automated Analysis Emails, Voice Intelligence System provides you enhanced accessibility to run your business.',
     },
     {
       name: "Rasik Loyalty",
@@ -110,6 +147,8 @@ export default ({
       // duration: "Monthly",
       mainFeature:ProductImageRasikLoyalty,
       features: ["60 Templates", "8 Landing Pages", "22 Internal Pages", "Priority Assistance"],
+      productinfo:'Our Products that are built with Business Analytics & Intelligence, Automated Query Response System, Automated Analysis Emails, Voice Intelligence System provides you enhanced accessibility to run your business.',
+
       featured: true,
     },
   
@@ -123,12 +162,12 @@ export default ({
       background: linear-gradient(115deg, rgba(56, 178, 172, 1) 0%, rgba(129, 230, 217, 1) 100%);
     `,
     css`
-      background: rgb(56, 178, 172);
-      background: linear-gradient(115deg, rgba(56, 178, 172, 1) 0%, rgba(129, 230, 217, 1) 100%);
+      background: rgb(78,11,52);
+      background: linear-gradient(90deg, rgba(78,11,52,1) 49%, rgba(245,242,242,1) 1000%);
     `,
     css`
-      background: rgb(245, 101, 101);
-      background: linear-gradient(115deg, rgba(245, 101, 101, 1) 0%, rgba(254, 178, 178, 1) 100%);
+    background: rgb(78,11,52);
+    background: linear-gradient(90deg, rgba(78,11,52,1) 49%, rgba(245,242,242,1) 1000%);
     `
   ];
 
@@ -141,27 +180,66 @@ export default ({
           {description && <Description>{description}</Description>}
         </HeaderContainer>
         <PlansContainer>
+          
           {plans.map((plan, index) => (
-            <Plan key={index} featured={plan.featured}>
-              {!plan.featured && <div className="planHighlight" css={highlightGradientsCss[index % highlightGradientsCss.length]} />}
-              <PlanHeader>
-                <span className="name">{plan.name}</span>
-                <span className="img"><Icons src={plan.img}></Icons></span>
-                <span className="duration">{plan.duration}</span>
+
+            <Raper  >
+              {/* <Planhover >
+              {/* <PlanHeader>
+                  <span className="name">{plan.name}</span>
+                  <span className="img"><Icons src={plan.img}></Icons></span>
+                  <span className="duration">{plan.duration}</span>
+                  
+                </PlanHeader>  */}
+                {/* <PlanFeatures className="">
+                  <span className="feature mainFeature"><Image src={plan.mainFeature}></Image></span> */}
+                  {/* {plan.features.map((feature, index) => (
+                    <span key={index} className="feature">
+                      
+                    </span>
+                  ))} */}
+                  {/* <BuyNowButton css={!plan.featured && highlightGradientsCss[index]}>{primaryButtonText}</BuyNowButton> */}
+                {/* </PlanFeatures>
+                <PlanAction>
+                  <BuyNowButton css={!plan.featured && highlightGradientsCss[index]}>{primaryButtonText}</BuyNowButton>
+                </PlanAction>
+              </Planhover> *
+
+              {/* dublicate the card */}
+              <Plan  key={index} featured={plan.featured}>
+                {!plan.featured && <div className="planHighlight" css={highlightGradientsCss[index % highlightGradientsCss.length]} />}
+                  
                 
-              </PlanHeader>
-              <PlanFeatures>
-                <span className="feature mainFeature"><Image src={plan.mainFeature}></Image></span>
-                {/* {plan.features.map((feature, index) => (
-                  <span key={index} className="feature">
-                    
-                  </span>
-                ))} */}
-              </PlanFeatures>
-              {/* <PlanAction>
-                <BuyNowButton css={!plan.featured && highlightGradientsCss[index]}>{primaryButtonText}</BuyNowButton>
-              </PlanAction> */}
-            </Plan>
+
+                <PlanHeader>
+                  <span className="name">{plan.name}</span>
+                  <span className="img"><Icons src={plan.img}></Icons></span>
+                  <span className="duration">{plan.duration}</span>
+                  
+                </PlanHeader>
+                <PlanFeatures>
+                  <span className="feature mainFeature"><Image src={plan.mainFeature}></Image></span>
+                  
+                  {/* {plan.features.map((feature, index) => (
+                    <span key={index} className="feature">
+                      
+                    </span>
+                  ))} */}
+                </PlanFeatures>
+                {/* <PlanAction>
+                  <BuyNowButton css={!plan.featured && highlightGradientsCss[index]}>{primaryButtonText}</BuyNowButton>
+                </PlanAction> */}
+                 <PlanHeader>
+                 <Description>{plan.productinfo}</Description>
+                 <PlanAction>
+                  <BuyNowButton css={!plan.featured && highlightGradientsCss[index]}>{primaryButtonText}</BuyNowButton>
+                </PlanAction>
+                </PlanHeader>
+
+                
+                
+              </Plan>
+            </Raper>
           ))}
           <DecoratorBlob/>
         </PlansContainer>

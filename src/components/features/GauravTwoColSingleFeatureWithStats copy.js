@@ -26,7 +26,7 @@ const Image = styled.div(props => [
 ]);
 const TextContent = tw.div`lg:py-8`;
 
-const Heading = tw(SectionHeading)` text-3xl sm:text-4xl lg:text-5xl text-center  leading-tight`;
+const Heading = tw(SectionHeading)`  text-3xl sm:text-4xl lg:text-5xl text-center  leading-tight`;
 const Description = tw.p`text-center  md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100 mt-4`
 
 const Statistics = tw.div`mt-6 lg:mt-8 xl:mt-16 md:flex-row flex flex-col `
