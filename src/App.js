@@ -1,5 +1,5 @@
 import React from "react";
-import GlobalStyles from 'styles/GlobalStyles';
+import GlobalStyles from "styles/GlobalStyles";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
 /*
@@ -101,8 +101,6 @@ import AboutUsPage from "pages/AboutUs.js";
 import ContactUsPage from "pages/ContactUs.js";
 import BlogIndexPage from "pages/BlogIndex.js";
 
-
-
 import ComponentRenderer from "ComponentRenderer.js";
 import MainLandingPage from "MainLandingPage.js";
 import TermsOfServicePage from "pages/TermsOfService.js";
@@ -110,21 +108,31 @@ import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "pages/Home";
+
+//Changes (Added new Example pages) from Durgesh.
 import DurgeshPageExample from "pages/DurgeshPageExample";
 import DurgeshNewTheme from "pages/DurgeshNewTheme";
+import DurgeshAbout from "pages/DurgeshAbout";
+import DurgeshLoyalty from "pages/DurgeshLoyalty";
+
 
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
   // return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
 
-
   return (
     <>
       <GlobalStyles />
       <Router>
-        <Routes>
-          <Route path="/components/:type/:subtype/:name" element={<ComponentRenderer />} />
-          <Route path="/components/:type/:name" element={<ComponentRenderer />} />
+        <Routes >
+          <Route
+            path="/components/:type/:subtype/:name"
+            element={<ComponentRenderer />}
+          />
+          <Route
+            path="/components/:type/:name"
+            element={<ComponentRenderer />}
+          />
           <Route path="/TermsOfService" element={<TermsOfServicePage />} />
           <Route path="/PrivacyPolicy" element={<PrivacyPolicyPage />} />
           <Route path="/Login" element={<LoginPage />} />
@@ -135,15 +143,15 @@ export default function App() {
           <Route path="/AboutUs" element={<AboutUsPage />} />
           <Route path="/ContactUs" element={<ContactUsPage />} />
           <Route path="/Blog" element={<BlogIndexPage />} />
-          
-          <Route path="/" element={<Home  />} />
-          
-          {/* Example */}
-          <Route path="/DurgeshNewTheme" element={<DurgeshNewTheme />}/>
-          <Route path="/DurgeshPageExample" element={<DurgeshPageExample />}/>
-          <Route path="MainLandingPage" element={<MainLandingPage  />} />
 
-          
+          <Route path="/" element={<Home />} />
+
+          {/* Example */}
+          <Route path="MainLandingPage" element={<MainLandingPage />} />
+          <Route path="/DurgeshHomePage" element={<DurgeshNewTheme />} />
+          <Route path="/DurgeshPageExample" element={<DurgeshPageExample />} />
+          <Route path="/DurgeshAbout" element={<DurgeshAbout />} />
+          <Route path="/DurgeshLoyalty" element={<DurgeshLoyalty />} />
         </Routes>
       </Router>
     </>

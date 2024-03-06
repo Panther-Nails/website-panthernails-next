@@ -19,6 +19,8 @@ import { ReactComponent as QuotesLeftIconBase } from "images/quotes-l.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/dot-pattern.svg";
 import { Background } from "react-parallax";
 import AnimatedHeading from "components/durgesh/AnimatedHeading";
+// import { Fabric } from "@fluentui/react/lib/Fabric";
+// import {FluentCustomization} from "@fluentui/react-the"
 
 const Header = tw(HeaderBase)` `;
 const Row = tw.div`flex flex-col lg:flex-row justify-between items-center lg:pt-5 max-w-screen-2xl mx-auto sm:px-8`;
@@ -67,7 +69,7 @@ const QuotesLeftIcon = tw(
 const Quote = tw.blockquote`text-black font-bold`;
 const CustomerName = tw.p`mt-4 font-bold`;
 const CustomerCompany = tw.p`mt-1 text-sm text-gray-500`;
-export const BackgroundForHeader = tw.div`h-full w-screen mr-0`; //bg-blue-300
+export const BackgroundForHeader = tw.div`h-full w-screen mr-0 bg-gray-300`; //bg-blue-300
 
 export default ({
   heading = "Better, Faster and Cheaper Cloud.",

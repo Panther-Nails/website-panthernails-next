@@ -25,7 +25,7 @@ const PrimaryLink = tw(
 
 const SecondaryLink = tw(
   Link
-)`text-gray-100 border-gray-500 hover:bg-gray-100 hover:text-primary-500 hover:border-primary-500 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-black hover:text-white hover:border-black shadow-lg`;
+)`text-gray-100 border-gray-500 hover:bg-gray-100 hover:text-primary-500 hover:border-primary-500 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-black hover:text-white hover:border-black`;
 
 const DecoratorBlobContainer = tw.div`absolute inset-0 overflow-hidden rounded-lg`;
 const DecoratorBlob1 = tw(
@@ -38,7 +38,7 @@ const DecoratorBlob2 = tw(
 const HighlightedText = tw.span`text-primary-900 font-bold`;
 
 export default ({
-  leftFirst=true,
+  leftFirst = true,
   text = (
     <>
       {" "}
@@ -56,62 +56,31 @@ export default ({
   containerBg = tw``,
 }) => {
   return (
-
     <Container css={containerBg}>
-       {leftFirst ? (
-        <>
-      {/* && pushDownFooter && tw`mb-20 lg:mb-24` */}
-      <ContentWithPaddingXl>
-        <PrimaryBackgroundContainer css={backgroundColor}>
-          <Row>
-            <TextContainer>
-              <Text css={textCss}>{text}</Text>
-            </TextContainer>
-            <LinksContainer>
-              <ScrollingAnimationUpSide y={400}>
-                <PrimaryLink href={primaryLinkUrl}>
-                  {primaryLinkText}
-                </PrimaryLink>
-                <SecondaryLink href={secondaryLinkUrl} target="_black">
-                  {secondaryLinkText}
-                </SecondaryLink>
-              </ScrollingAnimationUpSide>
-            </LinksContainer>
-          </Row>
-          <DecoratorBlobContainer>
-            <DecoratorBlob1 />
-            <DecoratorBlob2 />
-          </DecoratorBlobContainer>
-        </PrimaryBackgroundContainer>
-      </ContentWithPaddingXl>
-      </>
-       ) : (
-        <>
+      {/* {leftFirst ? ( */}
+      <>
+        {/* && pushDownFooter && tw`mb-20 lg:mb-24` */}
         <ContentWithPaddingXl>
-        <PrimaryBackgroundContainer css={backgroundColor}>
-          <Row css={tw``}>            
-            <LinksContainer >
-              <ScrollingAnimationUpSide y={400}>
-                <PrimaryLink href={primaryLinkUrl}>
-                  {primaryLinkText}
-                </PrimaryLink>
-                <SecondaryLink href={secondaryLinkUrl} target="_black">
-                  {secondaryLinkText}
-                </SecondaryLink>
-              </ScrollingAnimationUpSide>
-            </LinksContainer>
-            <TextContainer css={tw`ml-32`}>
-              <Text css={textCss}>{text}</Text>
-            </TextContainer>
-          </Row>
-          <DecoratorBlobContainer>
-            <DecoratorBlob1 />
-            <DecoratorBlob2 />
-          </DecoratorBlobContainer>
-        </PrimaryBackgroundContainer>
-      </ContentWithPaddingXl>
+          <PrimaryBackgroundContainer css={backgroundColor}>
+            <Row>
+              <TextContainer>hello</TextContainer>
+              <LinksContainer>Well</LinksContainer>
+            </Row>
+          </PrimaryBackgroundContainer>
+        </ContentWithPaddingXl>
       </>
-      )}
+      {/* // ) : (
+      //   <>
+      //     <ContentWithPaddingXl>
+      //       <PrimaryBackgroundContainer css={backgroundColor}>
+      //         <Row css={tw``}>
+      //           <LinksContainer></LinksContainer>
+      //           <TextContainer css={tw`ml-32`}></TextContainer>
+      //         </Row>
+      //       </PrimaryBackgroundContainer>
+      //     </ContentWithPaddingXl>
+      //   </>
+      // )} */}
     </Container>
   );
 };
