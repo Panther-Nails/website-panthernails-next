@@ -9,7 +9,7 @@ const Description = tw.p`lg:text-2xl text-lg mt-2 w-10/12   text-sitecolor-300`;
 const Main = tw.div`md:(min-h-screen w-full bg-sitecolor-100  flex-row) flex flex-col min-h-screen w-full  `;
 // let Left = tw.div`h-screen w-1/2   sticky top-0 flex items-center justify-center   `;
 const Right = tw.div`md:w-1/2 bg-sitecolor-100 min-h-full w-full  `;
-let Items = tw.div`lg:(h-screen w-full  flex-col items-center justify-center mt-0)   mt-4 text-center  h-1/2 flex flex-col items-center  `;
+let Items = tw.div`lg:(h-screen w-full bg-sitecolor-100  flex-col items-center justify-center mt-0)   mt-4 text-center  h-1/2 flex flex-col items-center  `;
 let Images = tw.img`h-full w-full`;
 
 const  Left = styled.div(({variable})=>[
@@ -24,7 +24,32 @@ const  Left = styled.div(({variable})=>[
 ])
 
 let Svg = <Demo1 />;
-export default ({}) => {
+export default ({
+  heading = "Rasik Loyalty",//chenges in headings Questions to product Name
+  description = "we have bunch of features that help you to establish the pure relation with influencers and you can connect anytime with influencers using rasik loyalty app features. ",
+}) => {
+
+  const itemcontant = [
+    {
+      heading: "Rasik Loayalty ",
+      discription:
+        "rasik loyalty is help you to bring the loyal influencer and then influencer bring a loyal customers for you ",
+        url:'https://images.pexels.com/photos/20330740/pexels-photo-20330740/free-photo-of-a-dog-with-light-brown-fur-sitting-on-a-meadow.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'
+    },
+    {
+      heading: "One App",
+      discription:" You can also use variant modifiers to target media queries likeresponsive breakpoints, dark mode, prefers-reduced-motion, and more. For example",
+      url:'https://images.pexels.com/photos/12672768/pexels-photo-12672768.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'
+    },
+    {
+      heading: "Travel Management",
+      discription:" You can also use variant modifiers to target media queries likeresponsive breakpoints, dark mode, prefers-reduced-motion, and more. For example",
+      url:'https://images.pexels.com/photos/12672768/pexels-photo-12672768.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'
+    },
+  ]
+
+
+
   const [addcomp, setaddcomp] = useState(<Demo1 />);
   
 
@@ -92,7 +117,14 @@ export default ({}) => {
           {Svg}
         </Left>
         <Right>
-          <Items ref={elementRef}>
+            {itemcontant.map((info,index)=>(
+              
+              <Items ref={elementRef}>
+                <Heading>{info.heading}</Heading>
+                <Description> {info.discription} </Description>
+              </Items>
+            ))}
+          {/* <Items ref={elementRef}>
             <Heading>Rasik Loyalty</Heading>
             <Description>
             rasik loyalty is help you to bring the loyal influencer and then
@@ -115,7 +147,7 @@ export default ({}) => {
               more. For example, use md:font-bold to apply the font-bold utility
               at only medium screen sizes and above.
             </Description>
-          </Items>
+          </Items> */}
         </Right>
         
       </Main>

@@ -13,7 +13,7 @@ import ProductImageRasikLoyalty from "images/ProductRasikLoyalty.png";
 
 const Icons=tw.img`w-16 h-16 bg-white` 
 const Image=tw.img`w-full h-8/12 bg-white`
-const Raper=tw.div` w-full h-full items-center justify-center flex    `
+const Raper=tw.div` w-full lg:h-full h-half mt-4 overflow-hidden lg:items-center lg:justify-center flex    `
 const HeaderContainer = tw.div`mt-10 w-full flex flex-col items-center justify-between`;
 const Subheading = tw(SubheadingBase)`mb-4`;
 const Heading = tw(SectionHeading)`w-full`;
@@ -21,20 +21,22 @@ const Description = tw(SectionDescription)`w-full text-center py-4`;
 
 const PlansContainer = tw.div`flex justify-around overflow-hidden  flex-col lg:flex-row items-center lg:items-stretch relative`;
 const Plan = styled.div`
-  ${tw`w-full max-w-lg hover:-translate-y-full duration-1000 h-screen mt-0 lg:mr-8 z-30 lg:last:mr-0 text-center px-8 rounded-lg shadow relative  text-gray-900 bg-white flex flex-col`}
+  ${tw`w-full max-w-lg lg:h-screen h-half hover:-translate-y-1/2 lg:hover:-translate-y-full duration-1000 h-screen mt-0 lg:mr-8 z-30 lg:last:mr-0 text-center px-8 rounded-lg shadow relative   text-gray-900 bg-white flex flex-col`}
   .planHighlight {
     ${tw`rounded-t-lg absolute top-0 inset-x-0 h-2`}
   }
 
   ${props =>
+    // this is after css use for background grediant
+    //  background: rgb(100,21,255);
+    //   background: linear-gradient(135deg, rgba(100,21,255,1) 0%, rgba(128,64,252,1) 100%);
+    //   background: rgb(78,11,52);
+    //   background: linear-gradient(90deg, rgba(78,11,52,1) 49%, rgba(245,242,242,1) 1000%);
     props.featured &&
     css`
-      background: rgb(100,21,255);
-      background: linear-gradient(135deg, rgba(100,21,255,1) 0%, rgba(128,64,252,1) 100%);
-      background: rgb(78,11,52);
-      background: linear-gradient(90deg, rgba(78,11,52,1) 49%, rgba(245,242,242,1) 1000%);
+    
       
-      ${tw`bg-primary-100 text-gray-100`}
+      ${tw``}
       .planHighlight {
         ${tw`hidden`}
       }
@@ -90,9 +92,9 @@ const Planhover=styled.div`
 
 
 const PlanHeader = styled.div`
-  ${tw`flex flex-col items-center  uppercase leading-relaxed py-4`}
+  ${tw`flex flex-col items-center    uppercase leading-relaxed py-0 lg:py-4`}
   .name {
-    ${tw`font-bold text-xl`}
+    ${tw`font-bold py-4 text-xl`}
   }
   .img {
     ${tw`font-bold text-4xl sm:text-5xl my-1`}
@@ -116,7 +118,7 @@ const PlanFeatures = styled.div`
 
 const PlanAction = tw.div`px-4 sm:px-8 xl:px-16 py-8`;
 const BuyNowButton = styled(PrimaryButtonBase)`
-  ${tw`rounded-full  uppercase tracking-wider py-4 w-full text-sm hover:shadow-xl transform hocus:translate-x-px hocus:-translate-y-px focus:shadow-outline`}
+  ${tw`rounded-full  uppercase tracking-wider py-2 lg:py-4 w-full text-sm hover:shadow-xl transform hocus:translate-x-px hocus:-translate-y-px focus:shadow-outline`}
 `;
 
 const DecoratorBlob = styled(SvgDecoratorBlob)`
@@ -151,6 +153,7 @@ export default ({
 
       featured: true,
     },
+    
   
   ];
 
@@ -158,7 +161,7 @@ export default ({
 
   const highlightGradientsCss = [
     css`
-      background: rgb(56, 178, 172);
+    background: rgb(56, 178, 172);
       background: linear-gradient(115deg, rgba(56, 178, 172, 1) 0%, rgba(129, 230, 217, 1) 100%);
     `,
     css`
@@ -170,7 +173,7 @@ export default ({
     background: linear-gradient(90deg, rgba(78,11,52,1) 49%, rgba(245,242,242,1) 1000%);
     `
   ];
-
+      console.log('colors',highlightGradientsCss);
   return (
     <Container>
       <ContentWithPaddingXl>
@@ -207,7 +210,7 @@ export default ({
 
               {/* dublicate the card */}
               <Plan  key={index} featured={plan.featured}>
-                {!plan.featured && <div className="planHighlight" css={highlightGradientsCss[index % highlightGradientsCss.length]} />}
+                {!plan.featured && <div className="planHighlight" css={highlightGradientsCss[index]} />}
                   
                 
 
@@ -217,23 +220,35 @@ export default ({
                   <span className="duration">{plan.duration}</span>
                   
                 </PlanHeader>
-                <PlanFeatures>
+                <PlanHeader>
+                 <span className="feature mainFeature"><Image src={plan.mainFeature}></Image></span>
+                  
+                  
+                </PlanHeader>
+                {/* <PlanFeatures>
                   <span className="feature mainFeature"><Image src={plan.mainFeature}></Image></span>
                   
-                  {/* {plan.features.map((feature, index) => (
+                  {plan.features.map((feature, index) => (
                     <span key={index} className="feature">
                       
                     </span>
-                  ))} */}
-                </PlanFeatures>
+                  ))}
+                </PlanFeatures> */}
                 {/* <PlanAction>
                   <BuyNowButton css={!plan.featured && highlightGradientsCss[index]}>{primaryButtonText}</BuyNowButton>
                 </PlanAction> */}
                  <PlanHeader>
-                 <Description>{plan.productinfo}</Description>
-                 <PlanAction>
-                  <BuyNowButton css={!plan.featured && highlightGradientsCss[index]}>{primaryButtonText}</BuyNowButton>
-                </PlanAction>
+                    <Description>{plan.productinfo}</Description>
+                    <PlanAction>
+                      <BuyNowButton css={!plan.featured && highlightGradientsCss[index]}>{primaryButtonText}</BuyNowButton>
+                    </PlanAction>
+                 </PlanHeader>
+
+                <PlanHeader>
+                  {/* <span className="name">{plan.name}</span> */}
+                  <span className="img"><Icons src={plan.img}></Icons></span>
+                  <span className="duration">{plan.duration}</span>
+                  
                 </PlanHeader>
 
                 

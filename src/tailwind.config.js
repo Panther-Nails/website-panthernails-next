@@ -374,6 +374,7 @@ module.exports = {
       '11/12': '91.666667%',
       full: '100%',
       screen: '100vh',
+      half: '50vh',
     }),
     inset: {
       '0': '0',
@@ -527,6 +528,7 @@ module.exports = {
       '11/12': '91.666667%',
       full: '100%',
       screen: '100vw',
+      half: '50vw',
     }),
     zIndex: {
       auto: 'auto',

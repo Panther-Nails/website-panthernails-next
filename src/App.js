@@ -114,6 +114,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "pages/Home";
 import Gaurav from './pages/Gaurav'
 import ParellexanimG from "pages/ParellexanimG";
+import ParellexServices from "pages/ParellexServices";
 
 
 
@@ -144,6 +145,7 @@ export default function App() {
           <Route path="/" element={<Home  />} />
           <Route path="/Gaurav" element={<Gaurav />} />
           <Route path="/ParellexanimG" element={<ParellexanimG />} />
+          <Route path="/ParellexServices" element={<ParellexServices />} />
           
           
         </Routes>

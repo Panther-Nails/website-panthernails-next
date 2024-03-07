@@ -28,6 +28,7 @@ import Testimonial from "../components/testimonials/TwoColumnWithImage.js";
 import Footer from "../components/footers/FiveColumnWithInputForm.js";
 
 import ParellexanimG from "../pages/ParellexanimG.js";
+import ParellexServices  from "../pages/ParellexServices.js";
 
 import SupportIconImage from "images/support-icon.svg";
 import ShieldIconImage from "images/shield-icon.svg";
@@ -162,12 +163,13 @@ export default ({
             <Rightimg src="https://cdn.dribbble.com/userupload/12468591/file/original-4c59268356fb18e647e1e0847ba82d14.png?resize=1024x768&vertical=center" />
           </Right>
         </Container>
+        <ParellexanimG/>
         <Feature11/>
 
         <Product ></Product>
 
 
-        <ParellexanimG/>
+        
         {/* <Cards /> */}
         <Features1
           subheading={<Subheading1>Keeping customers on top</Subheading1>}
@@ -182,6 +184,7 @@ export default ({
         <ProductFeatures ></ProductFeatures>
         <PlatforWeProvide/>
         <RevordSystem></RevordSystem>
+        <ParellexServices></ParellexServices>
         
         {/* <Testimonial /> */}
         <Footer />
