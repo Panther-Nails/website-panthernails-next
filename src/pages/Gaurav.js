@@ -27,6 +27,8 @@ import Testimonial from "../components/testimonials/TwoColumnWithImage.js";
 
 import Footer from "../components/footers/FiveColumnWithInputForm.js";
 
+import Blog from "../components/blogs/GridWithFeaturedPost.js";
+
 import ParellexanimG from "../pages/ParellexanimG.js";
 import ParellexServices  from "../pages/ParellexServices.js";
 
@@ -137,8 +139,8 @@ export default ({
          <Container>
           <Left>
             <SectionHeading>
-              Run your entire <HighlightedText>business</HighlightedText> in one
-              place
+              Run your Entire <HighlightedText>Business</HighlightedText> in one
+              Place
             </SectionHeading>
             <Subheading1>
             panthernails is a one-stop solution for evary entrpricesn who want to
@@ -163,15 +165,16 @@ export default ({
             <Rightimg src="https://cdn.dribbble.com/userupload/12468591/file/original-4c59268356fb18e647e1e0847ba82d14.png?resize=1024x768&vertical=center" />
           </Right>
         </Container>
-        <ParellexanimG/>
+        {/* <ParellexanimG/> */}
         <Feature11/>
 
         <Product ></Product>
+        <ParellexServices></ParellexServices>
 
 
         
         {/* <Cards /> */}
-        <Features1
+        {/* <Features1
           subheading={<Subheading1>Keeping customers on top</Subheading1>}
           heading={
             <>
@@ -180,13 +183,14 @@ export default ({
           }
           description="a genial technology company delivering insightful enterprise software that foster your business."
           cards={serviceCards}
-        />
-        <ProductFeatures ></ProductFeatures>
+        /> */}
+        {/* <ProductFeatures ></ProductFeatures>
         <PlatforWeProvide/>
         <RevordSystem></RevordSystem>
-        <ParellexServices></ParellexServices>
+         */}
         
         {/* <Testimonial /> */}
+        <Blog/>
         <Footer />
         {/* <ThreeColWithSideImage/> */}
         

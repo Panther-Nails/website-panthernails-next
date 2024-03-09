@@ -3,15 +3,16 @@ import React, { useRef, useState, useEffect } from "react";
 import Demo1 from "../Gsvgs/Demo1";
 import Demo2 from "../Gsvgs/Demo2";
 import Demo3 from "../Gsvgs/Demo3";
-const HighlightedTextHeading = tw.h1`  sticky top-0 text-sitecolor-900 text-4xl bg-sitecolor-100 mt-4 text-center w-full` ;
+const HighlightedTextHeading = tw.h1`   text-sitecolor-900 text-4xl bg-sitecolor-100 mt-4 text-center w-full` ;
 const Heading = tw.h1`md:text-4xl   text-2xl font-bold w-full text-center text-sitecolor-900`;
 const Description = tw.p`lg:text-2xl text-lg mt-2 w-10/12   text-sitecolor-300`;
-const Main = tw.div`md:(min-h-screen w-full bg-sitecolor-100  flex-row) flex flex-col min-h-screen w-full  `;
+const Main = tw.div`md:(min-h-screen w-full bg-sitecolor-100  )    flex flex-col min-h-full w-full  `;
 // let Left = tw.div`h-screen w-1/2   sticky top-0 flex items-center justify-center   `;
-const Right = tw.div`md:w-full bg-sitecolor-100 min-h-full   sticky top-0  flex flex-col items-center justify-center`;
-let Items = tw.div`lg:(h-half w-half bg-black  flex-col items-center justify-center mt-32)  sticky top-0  mt-4 text-center  h-1/2 flex flex-col items-center  `;
+const Right = tw.div`md:w-full bg-sitecolor-100 min-h-full lg:p-16    flex flex-col items-center justify-center`;
+let Items = tw.div`lg:(h-half w-full p-0  flex-col items-center justify-center ) rounded-lg h-half p-4 bg-black  sticky top-0  text-center   flex flex-col items-center  `;
 let Images = tw.img`h-full w-full`;
-
+let Items1 = tw.div`lg:(h-half w-full p-0  flex-col items-center justify-center ) rounded-lg  h-half p-4 bg-white sticky top-1/2  text-center   flex flex-col items-center  `;
+// let Temp = tw.div`bg-white sticky top-1/2`;
 const  Left = styled.div(({variable})=>[
   tw`md:(h-screen w-1/2 ) bg-sitecolor-100 hidden sticky top-0 flex items-center justify-center  `,
   // tw`hover:rotate-180 duration-1000`,
@@ -63,28 +64,39 @@ export default ({
       discription:" You can also use variant modifiers to target media queries likeresponsive breakpoints, dark mode, prefers-reduced-motion, and more. For example",
       url:'https://images.pexels.com/photos/12672768/pexels-photo-12672768.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'
     },
+    
+    
   ]
 
   return (
     <>
       
-      <HighlightedTextHeading>Services</HighlightedTextHeading>
+      
       <Main>
+      <HighlightedTextHeading>Services</HighlightedTextHeading>
         
         {/* <Heading>heading</Heading> */}
-        <Left>
+        {/* <Left>
 
         <Heading>Services</Heading>
           
-        </Left>
+        </Left> */}
         <Right>
             {itemcontant.map((info,index)=>(
-              
+              <>
+              {index % 2 === 0 ?
               <Items >
                 
                 <Heading>{info.heading}</Heading>
                 <Description> {info.discription} </Description>
-              </Items>
+              </Items>:
+              
+                <Items1 >
+                  
+                <Heading>{info.heading}</Heading>
+                <Description> {info.discription} </Description>
+              </Items1>}
+              </>
             ))}
          
         </Right>

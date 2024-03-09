@@ -14,7 +14,7 @@ import ProductImageRasikLoyalty from "images/ProductRasikLoyalty.png";
 const Icons=tw.img`w-16 h-16 bg-white` 
 const Image=tw.img`w-full h-8/12 bg-white`
 const Raper=tw.div` w-full lg:h-full h-half mt-4 overflow-hidden lg:items-center lg:justify-center flex    `
-const HeaderContainer = tw.div`mt-10 w-full flex flex-col items-center justify-between`;
+const HeaderContainer = tw.div` w-full flex flex-col items-center justify-between`;
 const Subheading = tw(SubheadingBase)`mb-4`;
 const Heading = tw(SectionHeading)`w-full`;
 const Description = tw(SectionDescription)`w-full text-center py-4`;
@@ -23,7 +23,7 @@ const PlansContainer = tw.div`flex justify-around overflow-hidden  flex-col lg:f
 const Plan = styled.div`
   ${tw`w-full max-w-lg lg:h-screen h-half hover:-translate-y-1/2 lg:hover:-translate-y-full duration-1000 h-screen mt-0 lg:mr-8 z-30 lg:last:mr-0 text-center px-8 rounded-lg shadow relative   text-gray-900 bg-white flex flex-col`}
   .planHighlight {
-    ${tw`rounded-t-lg absolute top-0 inset-x-0 h-2`}
+    ${tw`rounded-t-lg absolute top-0 inset-x-0 h-2  bg-black`}
   }
 
   ${props =>
@@ -175,10 +175,10 @@ export default ({
   ];
       console.log('colors',highlightGradientsCss);
   return (
-    <Container>
-      <ContentWithPaddingXl>
+    <Container >
+      <ContentWithPaddingXl tw="m-0 p-0 ">
         <HeaderContainer>
-          {subheading && <Subheading>{subheading}</Subheading>}
+          {/* {subheading && <Subheading>{subheading}</Subheading>} */}
           <Heading>{heading}</Heading>
           {description && <Description>{description}</Description>}
         </HeaderContainer>
@@ -209,10 +209,12 @@ export default ({
               </Planhover> *
 
               {/* dublicate the card */}
+              
               <Plan  key={index} featured={plan.featured}>
-                {!plan.featured && <div className="planHighlight" css={highlightGradientsCss[index]} />}
-                  
                 
+              
+                  
+                {index % 2 ===0?<div css={highlightGradientsCss[0]} tw="rounded-t-lg absolute top-0 inset-x-0 h-2 "></div>:<div css={highlightGradientsCss[1]} tw="rounded-t-lg absolute top-0 inset-x-0 h-2 " ></div>}
 
                 <PlanHeader>
                   <span className="name">{plan.name}</span>

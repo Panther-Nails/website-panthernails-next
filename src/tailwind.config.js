@@ -375,6 +375,8 @@ module.exports = {
       full: '100%',
       screen: '100vh',
       half: '50vh',
+      twothird: '66vh',
+      onethird: '33vh',
     }),
     inset: {
       '0': '0',

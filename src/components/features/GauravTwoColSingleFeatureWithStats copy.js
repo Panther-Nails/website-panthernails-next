@@ -6,7 +6,7 @@ import { SectionHeading } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 
 
-const Container = tw.div`relative bg-sitecolor-100 my-12 flex flex-col items-center justify-center `;
+const Container = tw.div`relative bg-sitecolor-100  flex flex-col items-center justify-center `;
 const TwoColumn = tw.div`flex flex-col items-center justify-center w-full mx-auto  `;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 // const ImageColumn = tw(Column)`md:w-6/12 lg:w-5/12 flex-shrink-0 h-80 md:h-auto`;
@@ -63,6 +63,7 @@ export default ({
 
   return (
     <Container id="AboutUs">
+      <Heading tw="p-4">About Us</Heading>
       <TwoColumn>
         <ImageColumn>
           <Image imageSrc={imageSrc} />
@@ -83,7 +84,7 @@ export default ({
           </TextContent>
         </TextColumn>
       </TwoColumn>
-      <PrimaryButtonBase>read our story </PrimaryButtonBase>
+      <PrimaryButtonBase tw="bg-sitecolor-300">read our story </PrimaryButtonBase>
     </Container>
   );
 };
