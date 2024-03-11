@@ -22,15 +22,15 @@ const TextColumn = styled(Column)(props => [
 
 const Image = styled.div(props => [
   `background-image: url("${props.imageSrc}");`,
-  tw`rounded bg-cover w-full h-full`,
+  tw`rounded bg-cover w-full h-full `,
 ]);
 const TextContent = tw.div`lg:py-8`;
 
 const Heading = tw(SectionHeading)`  text-3xl sm:text-4xl lg:text-5xl text-center  leading-tight`;
 const Description = tw.p`text-center  md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100 mt-4`
 
-const Statistics = tw.div`mt-6 lg:mt-8 xl:mt-16 md:flex-row flex flex-col `
-const Statistic = tw.div`text-lg sm:text-2xl flex flex-col px-4 items-center justify-between lg:text-3xl w-1/2 mt-4 lg:mt-10 text-center `
+const Statistics = tw.div` mt-6 lg:mt-8 xl:mt-16 md:flex-row flex flex-col `
+const Statistic = tw.div`text-lg sm:text-2xl flex flex-col px-4 items-center justify-between lg:text-3xl  mt-4 lg:mt-10 text-center `
 const Value = tw.div`text-center px-4  text-sm md:text-base lg:text-lg font-medium leading-relaxed text-sitecolor-300 mt-4`
 const Key = tw.div`text-3xl  text-sitecolor-700 sm:text-2xl lg:text-3xl text-center  leading-tight`
 const Icons=tw.img`w-16 h-16 bg-white` 

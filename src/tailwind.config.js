@@ -377,6 +377,8 @@ module.exports = {
       half: '50vh',
       twothird: '66vh',
       onethird: '33vh',
+      fourfifth: '82vh',
+      less: '95vh',
     }),
     inset: {
       '0': '0',
@@ -529,8 +531,10 @@ module.exports = {
       '10/12': '83.333333%',
       '11/12': '91.666667%',
       full: '100%',
-      screen: '100vw',
-      half: '50vw',
+      screen: '100vh',
+      half: '50vh',
+      twothird: '66vh',
+      onethird: '33vh',
     }),
     zIndex: {
       auto: 'auto',

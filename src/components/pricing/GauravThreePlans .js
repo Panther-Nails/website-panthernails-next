@@ -13,7 +13,7 @@ import ProductImageRasikLoyalty from "images/ProductRasikLoyalty.png";
 
 const Icons=tw.img`w-16 h-16 bg-white` 
 const Image=tw.img`w-full h-8/12 bg-white`
-const Raper=tw.div` w-full lg:h-full h-half mt-4 overflow-hidden lg:items-center lg:justify-center flex    `
+const Raper=tw.div` w-full lg:h-full h-half lg:mt-4  overflow-hidden lg:items-center lg:justify-center flex    `
 const HeaderContainer = tw.div` w-full flex flex-col items-center justify-between`;
 const Subheading = tw(SubheadingBase)`mb-4`;
 const Heading = tw(SectionHeading)`w-full`;
@@ -21,7 +21,7 @@ const Description = tw(SectionDescription)`w-full text-center py-4`;
 
 const PlansContainer = tw.div`flex justify-around overflow-hidden  flex-col lg:flex-row items-center lg:items-stretch relative`;
 const Plan = styled.div`
-  ${tw`w-full max-w-lg lg:h-screen h-half hover:-translate-y-1/2 lg:hover:-translate-y-full duration-1000 h-screen mt-0 lg:mr-8 z-30 lg:last:mr-0 text-center px-8 rounded-lg shadow relative   text-gray-900 bg-white flex flex-col`}
+  ${tw`w-full max-w-lg  lg:h-screen h-half hover:-translate-y-1/2 lg:hover:-translate-y-full xl:hover:-translate-y-1/2 duration-1000 h-screen mt-0 lg:mr-8 z-30 lg:last:mr-0 text-center px-8 rounded-lg shadow relative   text-gray-900 bg-white flex flex-col`}
   .planHighlight {
     ${tw`rounded-t-lg absolute top-0 inset-x-0 h-2  bg-black`}
   }
