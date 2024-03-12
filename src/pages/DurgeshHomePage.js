@@ -1,25 +1,27 @@
 import React, { useState, useEffect, useRef } from "react";
 import tw from "twin.macro";
-import Hero from "components/hero/TwoColumnWithFeaturesAndTestimonial.js";
+import Hero from "components/hero/DurgeshHero";
 import ProductSection from "components/durgesh/Theme/ProductSection";
 import ServicesSection from "components/durgesh/ServicesSection";
 import MainFeature from "components/features/TwoColWithButton.js";
 import FeatureStats from "components/features/ThreeColCenteredStatsPrimaryBackground.js";
 import Footer from "components/footers/SimpleFiveColumn";
-import Features from "components/features/ThreeColWithSideImage.js";
-import PortfolioTwoCardsWithImage from "components/cards/PortfolioTwoCardsWithImage";
-import CTA from "components/cta/GetStarted";
-import ServicesSectionDetails from "components/durgesh/ServicesSectionDetails";
-import CreatedCta from "components/durgesh/CreatedCta";
-import { StickyContainer } from "components/misc/Layouts";
-import PhoneMockup from "components/durgesh/Theme/PhoneMockup";
+import Features from "components/features/DurgeshFeaturesThreeCWSI";
+import CTA from "components/cta/DurgeshGetStarted";
+import RoundedSquare from "components/durgesh/RoundedSquare";
+import SimpleWithSideImage from "components/faqs/SimpleWithSideImage";
+import BenefitsWithMockup from "components/durgesh/BenefitsWithMockup";
+import { Body, StickyContainer } from "components/misc/Layouts";
+import ProfileThreeColGrid from "components/cards/ProfileThreeColGrid";
 //images
+
 import TeamIllustrationSrc from "images/hero-screenshot-1.png";
 import ProductImageRasikLoyalty from "images/ProductRasikLoyalty.png";
 import ProfileImageRasikLoyalty from "images/Loyalty.png";
-import ProfileImageCLM from "images/Loyalty.png";
-import { Container } from "components/misc/Layouts";
-import DialogBox from "components/durgesh/DialogBox";
+
+import AnimationRevealPage from "helpers/AnimationRevealPage";
+import DurgeshStatTCCSPB from "components/features/DurgeshStatTCCSPB";
+import DurgeshTeams from "components/cards/DurgeshTeams";
 
 export default ({
   heroHeading = "Elevating Engagement, Empowering Growth for Your Business",
@@ -119,113 +121,117 @@ export default ({
     },
   ],
 }) => {
+  const [scrollValue, setScrollValue] = useState(0);
+
   return (
     <>
-      <Hero
-        heading={<>{heroHeading}</>}
-        description="Embark on a journey of transformation with our bespoke enterprise software solutions, meticulously crafted to amplify your business potential."
-        imageSrc="https://cutesolution.com/html/techvio/assets/img/home-font.png"
-        imageDecoratorBlob={true}
-        primaryButtonText="Book a Meeting"
-        primaryButtonUrl="https://calendly.com/panthernails/influencer-engagement-platform-demo"
-        watchVideoButtonText="Watch it live"
-        watchVideoYoutubeUrl=""
-        links={[
-          { title: "About Us", href: "/AboutUs" },
-          { title: "Rasik Loyalty Platform", href: "/RasikLoyalty" },
-          { title: "Contract Labour Management", href: "/CLM" },
-          { title: "Blog", href: "/blog" },
-          { title: "Contact Us", href: "/contactus" },
-        ]}
-      />
-   
-      <Features />
-      <ServicesSectionDetails leftFirst={false} />
-      <ServicesSectionDetails leftFirst={true} />
-      <CTA
-        backgroundColor={tw`bg-primary-300`}
-        textCss={tw`text-black font-bold`}
-        primaryLinkText="Get Started"
-        primaryLinkUrl="http://panthernails.com"
-        secondaryLinkText="Contact Us"
-        secondaryLinkUrl="http://google.com"
-        pushDownFooter={true}
-      />
+      <AnimationRevealPage>
+        <Hero
+          heading={<>{heroHeading}</>}
+          // description="Embark on a journey of transformation with our bespoke enterprise software solutions, meticulously crafted to amplify your business potential."
+          description=""
+          imageSrc="https://cutesolution.com/html/techvio/assets/img/home-font.png"
+          imageDecoratorBlob={true}
+          primaryButtonText="Book a Meeting"
+          primaryButtonUrl="https://calendly.com/panthernails/influencer-engagement-platform-demo"
+          watchVideoButtonText="Watch it live"
+          watchVideoYoutubeUrl=""
+          links={[
+            { title: "About Us", href: "/AboutUs" },
+            { title: "Rasik Loyalty Platform", href: "/RasikLoyalty" },
+            { title: "Contract Labour Management", href: "/CLM" },
+            { title: "Blog", href: "/blog" },
+            { title: "Contact Us", href: "/contactus" },
+          ]}
+        />
 
-      {/* <PortfolioTwoCardsWithImage /> */}
-      {/* <Features products={products} heading={<></>} description={<> </>} /> */}
-      <ServicesSection
-        heading="PANTHER NAILS PRODUCTS CAN DO FOR YOU"
-        cardsData={cardsDataForPantherNailsServices}
-        bgColor={tw`bg-black`}
-      />
+        {/* <Features /> */}
 
-      <CTA
-        backgroundColor={tw`bg-green-300`}
-        textCss={tw`text-black font-bold`}
-        primaryLinkText="Get Started"
-        primaryLinkUrl="http://panthernails.com"
-        secondaryLinkText="Contact Us"
-        secondaryLinkUrl="http://google.com"
-        pushDownFooter={true}
-        leftFirst={false}
-      />
+        <RoundedSquare />
+        {/* <Benefits /> */}
 
-      <MainFeature
-        imageSrc={TeamIllustrationSrc}
-        imageBorder={true}
-        imageDecoratorBlob={true}
-        leftFirst={true}
-      />
+        <CTA
+          backgroundColor={tw`bg-primary-300`}
+          textCss={tw`text-black font-bold`}
+          primaryLinkText="Get Started"
+          primaryLinkUrl="http://panthernails.com"
+          secondaryLinkText="Contact Us"
+          secondaryLinkUrl="http://google.com"
+          pushDownFooter={true}
+        />
 
-      {/* <ServicesSection
-        heading="Products"
-        subheading="Panther Nails ....."
-        cardsData={cardsData}
-      /> */}
+        <ServicesSection
+          heading="Panther Nails products can do for you"
+          subheading="We understand the importance of building strong relationships with your customers and keeping them engaged. That's why we offer a range of innovative solutions to help you drive loyalty and boost sales."
+          cardsData={cardsDataForPantherNailsServices}
+          bgColor={tw`bg-black`}
+        />
 
-      <ServicesSection
-        heading="Loyalty Program"
-        cardsData={lyaltyProgramData}
-        bgColor={tw`bg-black`}
-      />
+        <CTA
+          backgroundColor={tw`bg-green-300`}
+          textCss={tw`text-black font-bold`}
+          primaryLinkText="Get Started"
+          primaryLinkUrl="http://panthernails.com"
+          secondaryLinkText="Contact Us"
+          secondaryLinkUrl="http://google.com"
+          pushDownFooter={true}
+          leftFirst={false}
+        />
 
-      <CTA
-        backgroundColor={tw`bg-red-400`}
-        textCss={tw`text-black font-bold`}
-        primaryLinkText="Get Started"
-        primaryLinkUrl="http://panthernails.com"
-        secondaryLinkText="Contact Us"
-        secondaryLinkUrl="http://google.com"
-        pushDownFooter={true}
-      />
+        {/* <MainFeature
+            imageSrc={TeamIllustrationSrc}
+            imageBorder={true}
+            imageDecoratorBlob={true}
+            leftFirst={true}
+          /> */}
 
-      {/* <StickyContainer> */}
-      <ServicesSection
-        heading="Rewards Options"
-        subheading="At PANTHER NAILS, we're dedicated to enhancing your partnership experience. That's why we're thrilled to introduce our exclusive loyalty program, designed to reward your loyalty like never before"
-      />
-      {/* </StickyContainer> */}
-      <FeatureStats
-        subheading="Technology Innovations That Transform Your Business"
-        heading="Served 3,000,000+ End costumers"
-        description="We focus on building a company culture capable of delivering superior stakeholder value by helping people to make the most of each moment."
-        stats={[
-          {
-            key: "Locations",
-            value: 2, //"2",
-          },
-          {
-            key: "Clients",
-            value: 35, //"35+",
-          },
-          {
-            key: "Hard Workers",
-            value: 50, //"50+",
-          },
-        ]}
-      />
-      <Footer />
+        <BenefitsWithMockup />
+
+        <ServicesSection
+          heading="Loyalty Program"
+          subheading="We understand the importance of building strong relationships with your customers and keeping them engaged. That's why we offer a range of innovative solutions to help you drive loyalty and boost sales."
+          cardsData={lyaltyProgramData}
+          bgColor={tw`bg-black`}
+          isOnClick={true}
+        />
+        
+        <CTA
+          backgroundColor={tw`bg-red-400`}
+          textCss={tw`text-black font-bold`}
+          primaryLinkText="Get Started"
+          primaryLinkUrl="http://panthernails.com"
+          secondaryLinkText="Contact Us"
+          secondaryLinkUrl="http://google.com"
+          pushDownFooter={true}
+        />
+
+        <ServicesSection
+          heading="Rewards Options"
+          subheading="At PANTHER NAILS, we're dedicated to enhancing your partnership experience. That's why we're thrilled to introduce our exclusive loyalty program, designed to reward your loyalty like never before"
+        />
+        <SimpleWithSideImage />
+        <DurgeshStatTCCSPB
+          subheading="Technology Innovations That Transform Your Business"
+          heading="Served 3,000,000+ End costumers"
+          description="We focus on building a company culture capable of delivering superior stakeholder value by helping people to make the most of each moment."
+          stats={[
+            {
+              key: "Locations",
+              value: 2,
+            },
+            {
+              key: "Clients",
+              value: 35,
+            },
+            {
+              key: "Hard Workers",
+              value: 50,
+            },
+          ]}
+        />
+        <DurgeshTeams />
+        <Footer />
+      </AnimationRevealPage>
     </>
   );
 };

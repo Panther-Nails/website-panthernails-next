@@ -10,6 +10,7 @@ import ProfileThreeColGrid from "components/cards/ProfileThreeColGrid";
 
 //new 05-03-2024
 import ServicesSection from "components/durgesh/ServicesSection";
+import ServicesSectionDetails from "components/durgesh/ServicesSectionDetails";
 
 export const NavLinks = tw.div`inline-block`;
 
@@ -79,6 +80,7 @@ export default ({
       description:
         "Earn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cards.",
     },
+    
   ],
 }) => {
   return (
@@ -100,6 +102,7 @@ export default ({
           cardsData={afterEightInfo}
           bgColor={tw`bg-black`}
         />
+
         <CTA
           backgroundColor={tw`bg-indigo-200`}
           textCss={tw`text-black font-bold`}
@@ -108,6 +111,15 @@ export default ({
           secondaryLinkText="Contact Us"
           secondaryLinkUrl="http://google.com"
           pushDownFooter={true}
+        />
+        {/* <ServicesSectionDetails text=" We are a genial technology company delivering insightful enterprise software that foster your business. We focus on building a company culture capable of delivering superior stakeholder value by helping people to make the most of each moment. Our expertise provides you access to your business at any moment, at work, at home or on the move. The bespoke solutions are designed to serve very specific need of yours. The reporting engine covers detailed minutiae of your business transactions." /> */}
+        <MainFeature1
+        textOnLeft={false}
+          subheading={<Subheading>About us</Subheading>}
+          heading="Technology Innovations That Transform Your Business."
+          buttonRounded={false}
+          description="We are a genial technology company delivering insightful enterprise software that foster your business. We focus on building a company culture capable of delivering superior stakeholder value by helping people to make the most of each moment. Our expertise provides you access to your business at any moment, at work, at home or on the move. The bespoke solutions are designed to serve very specific need of yours. The reporting engine covers detailed minutiae of your business transactions."
+          imageSrc="https://images.pexels.com/photos/248528/pexels-photo-248528.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         />
 
         <MainFeature1
@@ -126,6 +138,7 @@ export default ({
           imageSrc="https://images.unsplash.com/3/doctype-hi-res.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=768&q=80"
           textOnLeft={false}
         />
+
         <CTA
           backgroundColor={tw`bg-pink-300`}
           textCss={tw`text-black font-bold`}
@@ -136,6 +149,7 @@ export default ({
           pushDownFooter={true}
           leftFirst={false}
         />
+
         <Card
           subheading="Values"
           heading={

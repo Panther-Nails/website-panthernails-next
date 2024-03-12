@@ -718,6 +718,14 @@ module.exports = {
       700: "700ms",
       1000: "1000ms",
     },
+    rounded: {
+      full: "rounded-full",
+      5: "rounded-5xl",
+      4: "rounded-4xl",
+      3: "rounded-3xl",
+      2: "rounded-2xl",
+      1: "rounded-xl`",
+    },
   },
 
   variants: {

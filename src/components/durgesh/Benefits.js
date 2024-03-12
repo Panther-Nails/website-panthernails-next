@@ -1,43 +1,41 @@
 import React from "react";
-import { useState } from "react";
+import styled from "styled-components";
 import tw from "twin.macro";
-
 import {
-  Heading,
   Subheading,
-  CardDescription,
   CardHeading,
+  CardDescription,
 } from "components/misc/Typography";
-import {
-  Card,
-  CardGrid,
-  ContainerForCardsSections,
-  CardImage,
-} from "components/misc/Layouts";
 
-const CardContent = tw.div`pl-4`;
-// const ModalContainer = tw.div`absolute  rounded-xl shadow-lg p-5 h-full w-screen z-50 backdrop-blur-sm items-center justify-center bg-white`;
-// const CloseButton = tw.a` text-teal-500 font-bold  cursor-pointer ml-4 mt-2 underline`;
+import { Heading } from "components/misc/Typography";
+import { ContainerForCardsSections,CardGrid } from "components/misc/Layouts";
+
+const Card = styled.div`
+  ${tw`bg-gray-100 p-4 pb-0 rounded-5xl shadow-lg  w-72 items-center justify-center hover:-translate-y-5 ease-in-out`}
+`;
+
+const CardImage = tw.img`w-24 h-24  bg-cover rounded-full ml-20 shadow-lg shadow-gray-700 hover:scale-105 `;
+const CardContent = tw.div`ml-6 mb-8 mt-3`;
 
 export default ({
-  heading = "Main Heading",
+  heading = "Benefits",
   subheading = "Subheading goes here",
+
   cardsData = [
     {
       id: 1,
       imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFashcNgpAy2WyLkO3dP4HDa_livNCalgUkw&usqp=CAU",
-
+        "https://wp.salesforce.com/en-in/wp-content/uploads/sites/21/2023/03/pb-hp-product-smb_icon-1.jpg?resize=768,433",
       heading: "Cash Rewards",
       description:
         "Earn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cards.",
     },
+    //for cash rewards description:"Earn and redeem cash rewards effortlessly through our B2B loyalty program. With seamless disbursement options including bank accounts, wallets, UPIs, and cash cards, rewards are just a click away. Join now for a hassle-free experience",
 
     {
       id: 2,
       imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFashcNgpAy2WyLkO3dP4HDa_livNCalgUkw&usqp=CAU",
-
+        "https://th.bing.com/th/id/OIP.skGPbYgW7-HfIGVptTMvGAHaHa?w=205&h=205&c=7&r=0&o=5&pid=1.7",
       heading: "Physical Gifts",
       description:
         "Panther Nails helps you offer a wide range of relevant products as gifts to your partners, all with quick delivery services.",
@@ -45,7 +43,7 @@ export default ({
     {
       id: 3,
       imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFashcNgpAy2WyLkO3dP4HDa_livNCalgUkw&usqp=CAU",
+        "https://th.bing.com/th/id/OIP.skGPbYgW7-HfIGVptTMvGAHaHa?w=205&h=205&c=7&r=0&o=5&pid=1.7",
       heading: "Gift vouchers",
       description:
         "Enjoy the freedom to select from a wide range of gift vouchers, catering to various interests and preferences. Instant delivery ensures convenience.",
@@ -54,54 +52,25 @@ export default ({
       id: 4,
       imageUrl:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFashcNgpAy2WyLkO3dP4HDa_livNCalgUkw&usqp=CAU",
-
       heading: "Free trip",
       description:
         "Embark on unforgettable adventures with our free trip rewards. Explore exciting destinations and create lasting memories, courtesy of our loyalty program.",
     },
   ],
-  isOnClick = false,
-  bgColor = tw``,
-  buttonText = "Learn More",
-  roundedSize = "0",
 }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleClick = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <ContainerForCardsSections>
-      {/* {isModalOpen && (
-        <ModalContainer>
-          <CloseButton onClick={handleCloseModal}>Close</CloseButton>
-          <SimpleWithSideImage />
-        </ModalContainer>
-      )} */}
       <Heading>{heading}</Heading>
       <Subheading>{subheading}</Subheading>
       <CardGrid>
-        {/* Map over the cardsData and create a card for each item */}
-        {cardsData.map((card, index) => (
-          <Card rounded={roundedSize}>
+        {cardsData.map((card) => (
+          <Card key={card.id}>
             <CardImage src={card.imageUrl} alt="Card Image" />
-            {/* <CardContent> */}
+            <CardContent>
               <CardHeading>{card.heading}</CardHeading>
               <CardDescription>{card.description}</CardDescription>
-            {/* </CardContent> */}
-            {/* {isOnClick == true ? (
-              <CloseButton
-                onClick={isOnClick == true ? () => handleClick() : null}
-              >
-                {buttonText}
-              </CloseButton>
-            ) : null} */}
+            </CardContent>
           </Card>
-
         ))}
       </CardGrid>
     </ContainerForCardsSections>

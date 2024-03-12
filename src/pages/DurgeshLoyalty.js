@@ -10,9 +10,6 @@ import ServicesSection from "components/durgesh/ServicesSection";
 import ServicesSectionDetails from "components/durgesh/ServicesSectionDetails";
 import PhoneMockup from "components/durgesh/Theme/PhoneMockup";
 
-
-
-
 const HighlightedText = tw.span`text-primary-500`;
 
 export default ({
@@ -60,7 +57,6 @@ export default ({
         }
       />
 
-<PhoneMockup/>
       <ServicesSection
         heading="Loyalty Program"
         cardsData={lyaltyProgramData}
@@ -80,6 +76,7 @@ export default ({
       <ServicesSectionDetails leftFirst={false} />
       <ServicesSectionDetails leftFirst={true} />
       <ServicesSectionDetails leftFirst={false} />
+
       <CTA
         backgroundColor={tw`bg-purple-300`}
         textCss={tw`text-black font-bold`}
@@ -90,11 +87,28 @@ export default ({
         pushDownFooter={true}
         leftFirst={false}
       />
-
+      {/* <ServicesSection
+        heading="Loyalty Program"
+        cardsData={lyaltyProgramData}
+        bgColor={tw`bg-black`}
+      />
+      <CTA
+        backgroundColor={tw`bg-red-300`}
+        textCss={tw`text-black font-bold`}
+        primaryLinkText="Get Started"
+        primaryLinkUrl="http://panthernails.com"
+        secondaryLinkText="Contact Us"
+        secondaryLinkUrl="http://google.com"
+        pushDownFooter={true}
+        leftFirst={true}
+      /> */}
+      
       <ServicesSection
         heading="Rewards Options"
         subheading="At PANTHER NAILS, we're dedicated to enhancing your partnership experience. That's why we're thrilled to introduce our exclusive loyalty program, designed to reward your loyalty like never before"
       />
+      <PhoneMockup />
+
       <FAQ textCss={tw`text-rasik-200`} />
 
       <Footer bgColor={tw`bg-rasik-200`} />

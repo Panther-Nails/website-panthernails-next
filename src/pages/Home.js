@@ -281,9 +281,7 @@ export default ({
 
         <ContainerForAnimation>
           {services.map((section, index) => (
-            <ServicesSectionDetails
-              services={services}
-            />
+            <ServicesSectionDetails services={services} />
           ))}
         </ContainerForAnimation>
 

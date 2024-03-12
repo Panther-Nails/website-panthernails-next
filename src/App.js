@@ -111,10 +111,9 @@ import Home from "pages/Home";
 
 //Changes (Added new Example pages) from Durgesh.
 import DurgeshPageExample from "pages/DurgeshPageExample";
-import DurgeshNewTheme from "pages/DurgeshNewTheme";
+import DurgeshHomePage from "pages/DurgeshHomePage";
 import DurgeshAbout from "pages/DurgeshAbout";
 import DurgeshLoyalty from "pages/DurgeshLoyalty";
-
 
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
@@ -124,7 +123,7 @@ export default function App() {
     <>
       <GlobalStyles />
       <Router>
-        <Routes >
+        <Routes>
           <Route
             path="/components/:type/:subtype/:name"
             element={<ComponentRenderer />}
@@ -148,7 +147,7 @@ export default function App() {
 
           {/* Example */}
           <Route path="MainLandingPage" element={<MainLandingPage />} />
-          <Route path="/DurgeshHomePage" element={<DurgeshNewTheme />} />
+          <Route path="/DurgeshHomePage" element={<DurgeshHomePage />} />
           <Route path="/DurgeshPageExample" element={<DurgeshPageExample />} />
           <Route path="/DurgeshAbout" element={<DurgeshAbout />} />
           <Route path="/DurgeshLoyalty" element={<DurgeshLoyalty />} />
