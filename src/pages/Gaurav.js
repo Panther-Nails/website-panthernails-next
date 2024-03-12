@@ -102,7 +102,7 @@ export default ({
         <Header />
         <Gauravhero/>
          
-        {/* <ParellexanimG/> */}
+        <ParellexanimG/>
         <Feature11/>
 
         <Product ></Product>
@@ -110,8 +110,8 @@ export default ({
 
 
         
-        {/* <Cards /> */}
-        {/* <Features1
+        <Cards />
+        <Features1
           subheading={<Subheading>Keeping customers on top</Subheading>}
           heading={
             <>
@@ -120,10 +120,10 @@ export default ({
           }
           description="a genial technology company delivering insightful enterprise software that foster your business."
           cards={serviceCards}
-        /> */}
-        // <ProductFeatures ></ProductFeatures>
-        {/* <PlatforWeProvide/> */}
-        {/* <RevordSystem></RevordSystem> */}
+        />
+         <ProductFeatures ></ProductFeatures>
+        <PlatforWeProvide/>
+        <RevordSystem></RevordSystem>
         
         
         {/* <Testimonial /> */}

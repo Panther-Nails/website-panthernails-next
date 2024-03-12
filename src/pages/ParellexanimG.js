@@ -1,31 +1,21 @@
 import tw, { styled,css } from "twin.macro";
 import React, { useRef, useState, useEffect } from "react";
+import { SimpleContainer, Container } from "../components/misc/Layouts.js";
+import { Heading,SectionHeading } from "../components/misc/Headings.js";
+import { SectionDescription } from "../components/misc/Typography.js";
 import Demo1 from "../Gsvgs/Demo1";
 import Demo2 from "../Gsvgs/Demo2";
 import Demo3 from "../Gsvgs/Demo3";
-const HighlightedTextHeading = tw.h1`text-sitecolor-900 text-4xl bg-sitecolor-100 mt-4 text-center w-full` ;
-const Heading = tw.h1`md:text-4xl  text-2xl font-bold w-full text-center text-sitecolor-900`;
-const Description = tw.p`lg:text-2xl text-lg mt-2 w-10/12   text-sitecolor-300`;
-const Main = tw.div`md:(min-h-screen w-full bg-sitecolor-100  flex-row) flex flex-col min-h-screen w-full  `;
-// let Left = tw.div`h-screen w-1/2   sticky top-0 flex items-center justify-center   `;
-const Right = tw.div`md:w-1/2 bg-sitecolor-100 min-h-full w-full  `;
-let Items = tw.div`lg:(h-screen w-full bg-sitecolor-100  flex-col items-center justify-center mt-0)   mt-4 text-center  h-1/2 flex flex-col items-center  `;
-let Images = tw.img`h-full w-full`;
-
-const  Left = styled.div(({variable})=>[
-  tw`md:(h-screen w-1/2 ) bg-sitecolor-100  sticky top-0 flex items-center justify-center  `,
-  // tw`hover:rotate-180 duration-1000`,
-  // tw`hover:skew-y-12 duration-1000`,
-  // tw`hover:origin-top-left rotate-180 duration-1000`,
-  tw``
-  
-  
-
-])
 
 let Svg = <Demo1 />;
 export default ({
-  heading = "Rasik Loyalty",//chenges in headings Questions to product Name
+  
+  itemshow="Defultcontainer",
+  halfwidth="DefultcontainerHalf",
+  stickycontainer="StickContainerontop",
+  chailditems="ItemsInPhoneAndWindowhalf",
+  heading="headingtext",
+  // heading = "Rasik Loyalty",//chenges in headings Questions to product Name
   description = "we have bunch of features that help you to establish the pure relation with influencers and you can connect anytime with influencers using rasik loyalty app features. ",
 }) => {
 
@@ -107,22 +97,22 @@ export default ({
   return (
     <>
       {/* <Main><Heading>upper page</Heading></Main> */}
-      <HighlightedTextHeading>Products</HighlightedTextHeading>
-      <Main>
+      <SectionHeading>Products</SectionHeading>
+      <SimpleContainer SimpleContainer={itemshow}>
         
         {/* <Heading>heading</Heading> */}
-        <Left>
+        <Container Container={stickycontainer}>
           {/* <Images src={imgpath}></Images> */}
 
           {Svg}
-        </Left>
-        <Right>
+        </Container >
+        <SimpleContainer SimpleContainer={halfwidth}>
             {itemcontant.map((info,index)=>(
               
-              <Items ref={elementRef}>
-                <Heading>{info.heading}</Heading>
-                <Description> {info.discription} </Description>
-              </Items>
+              <Container Container={chailditems} ref={elementRef}>
+                <Heading Heading={heading}>{info.heading}</Heading>
+                <SectionDescription> {info.discription} </SectionDescription>
+              </Container>
             ))}
           {/* <Items ref={elementRef}>
             <Heading>Rasik Loyalty</Heading>
@@ -148,9 +138,9 @@ export default ({
               at only medium screen sizes and above.
             </Description>
           </Items> */}
-        </Right>
+        </SimpleContainer>
         
-      </Main>
+      </SimpleContainer>
       
       {/* <Main><Heading>down page</Heading></Main> */}
     </>

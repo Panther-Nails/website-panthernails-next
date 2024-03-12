@@ -8,10 +8,11 @@ const PrimaryButton1 = tw.button`       hocus:(bg-green-900 animate-none) `;
  
 export const PrimaryButton = styled.button(props => [
     tw`px-8 py-3 my-8 font-bold rounded bg-primary-500 text-gray-100 hocus:bg-sitecolor-900 hocus:text-gray-200 focus:shadow-outline focus:outline-none transition duration-300`,
-    props.rounded === 'full'? tw`rounded-full` :
-    props.animation === 'animation' ? tw`animate-bounce` :
-    props.animation === 'animationnone' ? tw`animate-none` :
-    props.bgcolor === 'green' ? tw`bg-green-600` :
+    props.Rounded === 'Full'? tw`rounded-full` :
+    props.Rounded === 'RoundedFullBgGreen'? tw` bg-green-600 rounded-full` :
+    props.Rounded === 'RoundedFullAnimation' ? tw` rounded-full animate-bounce` :
+    props.Rounded === 'RoundedFullAnimationBgGreen' ? tw`rounded-full animate-bounce bg-green-600` :
+    props.Rounded === 'RoundedHalfAnimationBgGreen' ? tw`rounded-lg animate-bounce bg-green-600  ` :
     tw``,
   ]);
 

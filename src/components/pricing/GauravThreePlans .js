@@ -19,7 +19,7 @@ const Subheading = tw(SubheadingBase)`mb-4`;
 const Heading = tw(SectionHeading)`w-full`;
 const Description = tw(SectionDescription)`w-full text-center py-4`;
 
-const PlansContainer = tw.div`flex justify-around overflow-hidden  flex-col lg:flex-row items-center lg:items-stretch relative`;
+const PlansContainer = tw.div`flex justify-around overflow-hidden gap-6 flex-col lg:flex-row items-center lg:items-stretch relative`;
 const Plan = styled.div`
   ${tw`w-full max-w-lg  lg:h-screen h-half hover:-translate-y-1/2 lg:hover:-translate-y-full xl:hover:-translate-y-1/2 duration-1000 h-screen mt-0 lg:mr-8 z-30 lg:last:mr-0 text-center px-8 rounded-lg shadow relative   text-gray-900 bg-white flex flex-col`}
   .planHighlight {
@@ -127,6 +127,7 @@ const DecoratorBlob = styled(SvgDecoratorBlob)`
 
 
 export default ({
+  itemsshow="ItemsInPhoneAndWindow",
   subheading = "Pricing",
   heading = "Our Products",
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -175,7 +176,7 @@ export default ({
   ];
       console.log('colors',highlightGradientsCss);
   return (
-    <Container >
+    <Container Container={itemsshow} >
       <ContentWithPaddingXl tw="m-0 p-0 ">
         <HeaderContainer>
           {/* {subheading && <Subheading>{subheading}</Subheading>} */}
@@ -246,12 +247,12 @@ export default ({
                     </PlanAction>
                  </PlanHeader>
 
-                <PlanHeader>
-                  {/* <span className="name">{plan.name}</span> */}
+                {/* <PlanHeader>
+                  <span className="name">{plan.name}</span>
                   <span className="img"><Icons src={plan.img}></Icons></span>
                   <span className="duration">{plan.duration}</span>
                   
-                </PlanHeader>
+                </PlanHeader> */}
 
                 
                 
