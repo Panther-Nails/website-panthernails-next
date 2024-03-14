@@ -1,3 +1,5 @@
+
+
 import tw, { styled,css } from "twin.macro";
 import React, { useRef, useState, useEffect } from "react";
 import Demo1 from "../Gsvgs/Demo1";
@@ -10,34 +12,22 @@ import CustomizeIconImage from "images/customize-icon.svg";
 import FastIconImage from "images/fast-icon.svg";
 import ReliableIconImage from "images/reliable-icon.svg";
 import SimpleIconImage from "images/simple-icon.svg";
-
-
-const HighlightedTextHeading = tw.h1`   text-sitecolor-900 text-4xl bg-sitecolor-100 lg:mt-4 mt-0 text-center w-full` ;
-const Heading = tw.h1`md:text-4xl   text-2xl font-bold w-full text-center text-sitecolor-900`;
-const Description = tw.p`lg:text-2xl text-lg mt-2 w-10/12   text-sitecolor-300`;
-const Main = tw.div`md:(min-h-screen w-full bg-sitecolor-100  )    flex flex-col min-h-full w-full  `;
-// let Left = tw.div`h-screen w-1/2   sticky top-0 flex items-center justify-center   `;
-const Right = tw.div`md:w-full bg-sitecolor-100 min-h-full lg:p-16    flex flex-col items-center justify-center`;
-let Items = tw.div`lg:(h-half w-full p-0  flex-col ) items-center justify-center  rounded-lg h-half p-4 bg-black  sticky top-0  text-center   flex flex-col items-center  `;
-let Images = tw.img`h-full w-full`;
-let Items1 = tw.div`lg:(h-half w-full p-0  flex-col ) items-center justify-center  rounded-lg  h-half p-4 bg-white sticky top-1/2  text-center   flex flex-col items-center  `;
-// let Temp = tw.div`bg-white sticky top-1/2`;
-const  Left = styled.div(({variable})=>[
-  tw`md:(h-screen w-1/2 ) bg-sitecolor-100 hidden sticky top-0 flex items-center justify-center  `,
-  // tw`hover:rotate-180 duration-1000`,
-  // tw`hover:skew-y-12 duration-1000`,
-  // tw`hover:origin-top-left rotate-180 duration-1000`,
-  tw``
-  
-  
-
-])
+import { SectionHeading,HighlightedText,Subheading,Heading } from "components/misc/Headings.js";
+import { SectionDescription,Description } from "components/misc/Typography.js";
+import { Container, ContentWithPaddingXl,SimpleContainer,Container90 } from "components/misc/Layouts.js";
 
 let Svg = <Demo1 />;
 
 export default ({
+  //style from services
+  headingstyle="headingtext",
+  simplecontcol="Defultcontainercentercol",
+  simplestickycont="Defultcontainersticktophalf",
+  sectiondiscript="sectiondecriptioncolor",
+  smallcol="Container90col",
+  //text from services
    cards = null,
-   heading = "Amazing Features", 
+   sectionheading = "Services", 
    subheading = "Features", 
    description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 
   }) => {
@@ -98,36 +88,41 @@ export default ({
     <>
       
       
-      <Main>
-      <HighlightedTextHeading>Services</HighlightedTextHeading>
-        
+      <SimpleContainer SimpleContainer={simplecontcol} >
+      <SectionHeading>{sectionheading}</SectionHeading>
+      <Container>
+        <SectionDescription SectionDescription={sectiondiscript}>{description}</SectionDescription>
+      </Container>
         {/* <Heading>heading</Heading> */}
         {/* <Left>
 
         <Heading>Services</Heading>
           
         </Left> */}
-        <Right>
+        <Container90 Container90={smallcol}>
             {itemcontant.map((info,index)=>(
               <>
-              {index % 2 === 0 ?
-              <Items >
-                
-                <Heading>{info.heading}</Heading>
-                <Description> {info.discription} </Description>
-              </Items>:
+             
+              <SimpleContainer SimpleContainer={simplestickycont} >
+                <SimpleContainer SimpleContainer={simplecontcol} >
+                  
+                  
+                  <Heading Heading={headingstyle}>{info.heading}</Heading>
+                  <Description> {info.discription} </Description>
+                </SimpleContainer>
+              </SimpleContainer>
               
-                <Items1 >
+                {/* <Items1 >
                   
                 <Heading>{info.heading}</Heading>
                 <Description> {info.discription} </Description>
-              </Items1>}
+              </Items1> */}
               </>
             ))}
          
-        </Right>
+        </Container90>
         
-      </Main>
+      </SimpleContainer >
       
       {/* <Main><Heading>down page</Heading></Main> */}
     </>

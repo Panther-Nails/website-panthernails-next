@@ -2,21 +2,21 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { SectionHeading } from "components/misc/Headings.js";
+import { SectionHeading,HighlightedText,Subheading,Heading } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
-
-
-const Container = tw.div`relative bg-sitecolor-100  flex flex-col items-center justify-center `;
+import  {Container,Container90}   from "components/misc/Layouts.js";
+import { SectionDescription,Description } from "components/misc/Typography.js";
+// const Container = tw.div`relative bg-sitecolor-100  flex flex-col items-center justify-center `;
 const TwoColumn = tw.div`flex flex-col items-center justify-center w-full mx-auto  `;
-const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
+const Column = tw.div``;
 // const ImageColumn = tw(Column)`md:w-6/12 lg:w-5/12 flex-shrink-0 h-80 md:h-auto`;
-const ImageColumn = tw(Column)`md:w-full flex-shrink-0 h-80 md:h-screen`;
+const ImageColumn = tw.div`md:w-full  w-full h-80 md:h-screen`;
 // const TextColumn = styled(Column)(props => [
 //   tw`md:w-6/12 mt-8 md:mt-0`,
 //   props.textOnLeft ? tw`md:mr-8 lg:mr-16 md:order-first` : tw`md:ml-8 lg:ml-16 md:order-last`
 // ]);
 const TextColumn = styled(Column)(props => [
-  tw`md:w-11/12 px-12 -mt-32 text-center bg-white rounded items-center justify-center`,
+  tw`md:w-11/12 px-12 -mt-32 text-center bg-black rounded items-center justify-center`,
   // props.textOnLeft ? tw`md:mr-8 lg:mr-16 md:order-first` : tw`md:ml-8 lg:ml-16 md:order-last`
 ]);
 
@@ -24,10 +24,10 @@ const Image = styled.div(props => [
   `background-image: url("${props.imageSrc}");`,
   tw`rounded bg-cover w-full h-full `,
 ]);
-const TextContent = tw.div`lg:py-8`;
+const TextContent = tw.div``;
 
-const Heading = tw(SectionHeading)`  text-3xl sm:text-4xl lg:text-5xl text-center  leading-tight`;
-const Description = tw.p`text-center  md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100 mt-4`
+// const Heading = tw(SectionHeading)`  text-3xl sm:text-4xl lg:text-5xl text-center  leading-tight`;
+// const Description = tw.p`text-center  md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100 mt-4`
 
 const Statistics = tw.div` mt-6 lg:mt-8 xl:mt-16 md:flex-row flex flex-col `
 const Statistic = tw.div`text-lg sm:text-2xl flex flex-col px-4 items-center justify-between lg:text-3xl  mt-4 lg:mt-10 text-center `
@@ -36,8 +36,17 @@ const Key = tw.div`text-3xl  text-sitecolor-700 sm:text-2xl lg:text-3xl text-cen
 const Icons=tw.img`w-16 h-16 bg-white` 
 
 export default ({
-  heading="The core values and principles that drive us",
-  description ="We are a genial technology company delivering insightful enterprise software that foster your business. We focus on building a company culture capable of delivering superior stakeholder value by helping people to make the most of each moment. Our expertise provides you access to your business at any moment, at work, at home or on the move. The bespoke solutions are designed to serve very specific need of yours. The reporting engine covers detailed minutiae of your business transactions.",
+  //designing of component
+  containercentercol="ItemscenterCol",
+  itemsshow="ItemsInPhoneAndWindow",
+  smollcontup="Container90up",
+  itemcol="ItemscenterCol",
+  headingstyle="headingtext",
+  btn="RoundedHalfbgbrown",
+  //text from setvices
+  heading="About Us",
+  headingtext="The core values and principles that drive us",
+  // descriptiontext ="We are a genial technology company delivering insightful enterprise software that foster your business. We focus on building a company culture capable of delivering superior stakeholder value by helping people to make the most of each moment. Our expertise provides you access to your business at any moment, at work, at home or on the move. The bespoke solutions are designed to serve very specific need of yours. The reporting engine covers detailed minutiae of your business transactions.",
   textOnLeft = false,
   imageSrc="https://images.pexels.com/photos/3184394/pexels-photo-3184394.jpeg?auto=compress&cs=tinysrgb&w=600",
   statistics = [
@@ -62,29 +71,29 @@ export default ({
   
 
   return (
-    <Container id="AboutUs">
-      <Heading tw="p-4">About Us</Heading>
-      <TwoColumn>
+    <Container Container={containercentercol} id="AboutUs">
+      <SectionHeading >{heading}</SectionHeading>
+      <Container Container={containercentercol}>
         <ImageColumn>
           <Image imageSrc={imageSrc} />
         </ImageColumn>
-        <TextColumn textOnLeft={textOnLeft}>
-          <TextContent>
-            <Heading>{heading}</Heading>
-            {/* <Description>{description}</Description> */}
-            <Statistics>
+        <Container90 Container90={smollcontup}>
+        
+            <SectionHeading>{headingtext}</SectionHeading>
+            {/* <Description>{descriptiontext}</Description> */}
+            <Container Container={itemsshow}>
               {statistics.map((statistic, index) => (
-              <Statistic key={index}>
+              <Container Container={itemcol} key={index}>
                 <Icons src={statistic.img}></Icons>
-                <Key>{statistic.key}</Key>
-                <Value>{statistic.value}</Value>
-              </Statistic>
+                <Heading Heading={headingstyle}>{statistic.key}</Heading>
+                <Description>{statistic.value}</Description>
+              </Container>
               ))}
-            </Statistics>
-          </TextContent>
-        </TextColumn>
-      </TwoColumn>
-      <PrimaryButtonBase tw="bg-sitecolor-300">read our story </PrimaryButtonBase>
+            </Container>
+          
+        </Container90>
+      </Container>
+      <PrimaryButtonBase Rounded={btn}>read our story </PrimaryButtonBase>
     </Container>
   );
 };

@@ -8,7 +8,7 @@ import Features from "components/features/VerticalWithAlternateImageAndText.js";
 import Hero from "components/hero/GauravTwoColumnWithInput copy.js";
 // import { SectionHeading as HeadingTitle } from "../misc/Headings.js";
 
-import Feature11, { Icons } from '../components/features/GauravTwoColSingleFeatureWithStats copy.js'
+import Aboutus, { Icons } from '../components/features/GauravTwoColSingleFeatureWithStats copy.js'
 
 import { SectionHeading,HighlightedText,Subheading } from "components/misc/Headings.js";
 
@@ -103,7 +103,7 @@ export default ({
         <Gauravhero/>
          
         <ParellexanimG/>
-        <Feature11/>
+        <Aboutus heading="My Heading"/>
 
         <Product ></Product>
         <ParellexServices></ParellexServices>

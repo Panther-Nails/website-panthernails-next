@@ -2,7 +2,7 @@ import tw, { styled,css } from "twin.macro";
 import React, { useRef, useState, useEffect } from "react";
 import { SimpleContainer, Container } from "../components/misc/Layouts.js";
 import { Heading,SectionHeading } from "../components/misc/Headings.js";
-import { SectionDescription } from "../components/misc/Typography.js";
+import { SectionDescription,Description } from "../components/misc/Typography.js";
 import Demo1 from "../Gsvgs/Demo1";
 import Demo2 from "../Gsvgs/Demo2";
 import Demo3 from "../Gsvgs/Demo3";
@@ -15,24 +15,25 @@ export default ({
   stickycontainer="StickContainerontop",
   chailditems="ItemsInPhoneAndWindowhalf",
   heading="headingtext",
-  // heading = "Rasik Loyalty",//chenges in headings Questions to product Name
+  descript="descriptioncolor",
+  headingtext = "Rasik Loyalty",//chenges in headings Questions to product Name
   description = "we have bunch of features that help you to establish the pure relation with influencers and you can connect anytime with influencers using rasik loyalty app features. ",
 }) => {
 
   const itemcontant = [
     {
-      heading: "Rasik Loayalty ",
+      headingtext: "Rasik Loayalty ",
       discription:
         "rasik loyalty is help you to bring the loyal influencer and then influencer bring a loyal customers for you ",
         url:'https://images.pexels.com/photos/20330740/pexels-photo-20330740/free-photo-of-a-dog-with-light-brown-fur-sitting-on-a-meadow.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'
     },
     {
-      heading: "One App",
+      headingtext: "One App",
       discription:" You can also use variant modifiers to target media queries likeresponsive breakpoints, dark mode, prefers-reduced-motion, and more. For example",
       url:'https://images.pexels.com/photos/12672768/pexels-photo-12672768.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'
     },
     {
-      heading: "Travel Management",
+      headingtext: "Travel Management",
       discription:" You can also use variant modifiers to target media queries likeresponsive breakpoints, dark mode, prefers-reduced-motion, and more. For example",
       url:'https://images.pexels.com/photos/12672768/pexels-photo-12672768.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'
     },
@@ -110,8 +111,8 @@ export default ({
             {itemcontant.map((info,index)=>(
               
               <Container Container={chailditems} ref={elementRef}>
-                <Heading Heading={heading}>{info.heading}</Heading>
-                <SectionDescription> {info.discription} </SectionDescription>
+                <Heading Heading={heading}>{info.headingtext}</Heading>
+                <Description Description={descript}> {info.discription} </Description>
               </Container>
             ))}
           {/* <Items ref={elementRef}>

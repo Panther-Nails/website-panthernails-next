@@ -3,6 +3,7 @@ import { PrimaryButton  } from "components/misc/Buttons.js";
 import { SectionHeading,HighlightedText,Subheading } from "components/misc/Headings.js";
 import tw,{styled} from "twin.macro";
 import  {Container}   from "components/misc/Layouts.js";
+import {SectionDescription} from "components/misc/Typography.js"
 
 
 
@@ -14,6 +15,7 @@ export default ({
   itemsshow="ItemsInPhoneAndWindow",
   insideitemshow="ItemscenterColWidthhalf",
   insidehide="Itemshideonmovileview",
+  sectiondiscript="sectiondecriptioncolor",
 
     
   heading = (
@@ -48,8 +50,8 @@ export default ({
       <Container Container={itemsshow}>
         <Container Container={insideitemshow}>
           <SectionHeading>{heading}</SectionHeading>
-          <Subheading>{description1}</Subheading>
-          <Subheading>{description2}</Subheading>
+          <SectionDescription SectionDescription={sectiondiscript}>{description1}</SectionDescription>
+          <SectionDescription SectionDescription={sectiondiscript}>{description2}</SectionDescription>
           <PrimaryButton
             as="a"
             href={primaryButtonUrl}
@@ -60,7 +62,7 @@ export default ({
             <Icone src={ProfileImageRasikLoyalty}/>  */}
           </PrimaryButton>
         </Container>
-        <Container Container={insidehide}>
+        <Container Container={insidehide}  >
           <Rightimg src="https://cdn.dribbble.com/userupload/12468591/file/original-4c59268356fb18e647e1e0847ba82d14.png?resize=1024x768&vertical=center" />
         </Container >
       </Container>

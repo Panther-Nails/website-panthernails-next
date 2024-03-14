@@ -13,6 +13,7 @@ export const PrimaryButton = styled.button(props => [
     props.Rounded === 'RoundedFullAnimation' ? tw` rounded-full animate-bounce` :
     props.Rounded === 'RoundedFullAnimationBgGreen' ? tw`rounded-full animate-bounce bg-green-600` :
     props.Rounded === 'RoundedHalfAnimationBgGreen' ? tw`rounded-lg animate-bounce bg-green-600  ` :
+    props.Rounded === 'RoundedHalfbgbrown' ? tw`rounded-lg  bg-sitecolor-300  ` :
     tw``,
   ]);
 
