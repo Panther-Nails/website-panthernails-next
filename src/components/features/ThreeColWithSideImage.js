@@ -52,16 +52,23 @@ const Card = styled.div`
     ${tw`mt-4 tracking-wide font-bold text-2xl leading-none`}
   }
 
+  svg {
+    ${tw`w-6 h-6 text-primary-500 bg-secondary-900`}
+  }
+
   .description {
     ${tw`mt-1 sm:mt-4 font-medium text-secondary-100 hover:text-black  leading-loose`}
   }
 `;
 
-const DecoratorBlob = styled(SvgDecoratorBlob3)`
+
+const DecoratorBlob = styled(SvgDecoratorBlob3)` 
   ${tw`pointer-events-none absolute right-0 bottom-0 w-64 opacity-25 transform translate-x-32 translate-y-48 `}
 `;
 
-export default ({ cards = null, heading = "Amazing Features", subheading = "Features", description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." }) => {
+export default ({
+   cards = null,
+    heading = "Amazing Features", subheading = "Features", description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." }) => {
   /*
    * This componets has an array of object denoting the cards defined below. Each object in the cards array can have the key (Change it according to your need, you can also add more objects to have more cards in this feature component) or you can directly pass this using the cards prop:
    *  1) imageSrc - the image shown at the top of the card
@@ -90,7 +97,7 @@ export default ({ cards = null, heading = "Amazing Features", subheading = "Feat
       <ThreeColumnContainer>
         {subheading && <Subheading>{subheading}</Subheading>}
         <Heading>{heading}</Heading>
-        {description && <Description>{description}</Description>}
+        {description && <SectionDescription>{description}</SectionDescription>}
         <VerticalSpacer />
         {cards.map((card, i) => (
           

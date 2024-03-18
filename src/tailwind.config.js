@@ -9,7 +9,7 @@ module.exports = {
       md: '768px',
       lg: '1024px',
       xl: '1280px',
-      "2xl": "1440px",
+      "2xl": '1440px',
     },
     colors: {
       transparent: 'transparent',
@@ -734,6 +734,7 @@ module.exports = {
       '1000': '1000ms',
     },
   },
+  
   variants: {
     accessibility: ['responsive', 'focus'],
     alignContent: ['responsive'],

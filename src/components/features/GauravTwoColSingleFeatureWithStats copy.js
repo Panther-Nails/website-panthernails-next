@@ -38,12 +38,14 @@ const Icons=tw.img`w-16 h-16 bg-white`
 export default ({
   //designing of component
   containercentercol="ItemscenterCol",
+  contbgtransparent="Itemscenterbgtransparent",
   itemsshow="ItemsInPhoneAndWindow",
   smollcontup="Container90up",
   itemcol="ItemscenterCol",
   headingstyle="headingtext",
+  descriptionstyle="descriptioncolor",
   btn="RoundedHalfbgbrown",
-  //text from setvices
+  //text from services
   heading="About Us",
   headingtext="The core values and principles that drive us",
   // descriptiontext ="We are a genial technology company delivering insightful enterprise software that foster your business. We focus on building a company culture capable of delivering superior stakeholder value by helping people to make the most of each moment. Our expertise provides you access to your business at any moment, at work, at home or on the move. The bespoke solutions are designed to serve very specific need of yours. The reporting engine covers detailed minutiae of your business transactions.",
@@ -86,7 +88,7 @@ export default ({
               <Container Container={itemcol} key={index}>
                 <Icons src={statistic.img}></Icons>
                 <Heading Heading={headingstyle}>{statistic.key}</Heading>
-                <Description>{statistic.value}</Description>
+                <Description Description={descriptionstyle}>{statistic.value}</Description>
               </Container>
               ))}
             </Container>

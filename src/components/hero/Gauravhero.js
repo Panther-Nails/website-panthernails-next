@@ -2,16 +2,17 @@ import React from "react";
 import { PrimaryButton  } from "components/misc/Buttons.js";
 import { SectionHeading,HighlightedText,Subheading } from "components/misc/Headings.js";
 import tw,{styled} from "twin.macro";
-import  {Container}   from "components/misc/Layouts.js";
+import  {Container,Containerbgcolor}   from "components/misc/Layouts.js";
 import {SectionDescription} from "components/misc/Typography.js"
 
 
 
 const Rightimg = tw.img`md:(h-10/12)  w-full h-4/12 hover:scale-110 duration-500  `;
-
+const add="RoundedFullAnimationBgGreen"
 
 export default ({
-  btnlook="RoundedFullAnimationBgGreen",
+  btnlook=add,
+  bgcolor="sitebgcolor",
   itemsshow="ItemsInPhoneAndWindow",
   insideitemshow="ItemscenterColWidthhalf",
   insidehide="Itemshideonmovileview",

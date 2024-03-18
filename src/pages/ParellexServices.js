@@ -21,9 +21,11 @@ let Svg = <Demo1 />;
 export default ({
   //style from services
   headingstyle="headingtext",
+  contbgtransparent="Itemscenterbgtransparent",
   simplecontcol="Defultcontainercentercol",
   simplestickycont="Defultcontainersticktophalf",
   sectiondiscript="sectiondecriptioncolor",
+  descriptionsyle="descriptioncolor",
   smallcol="Container90col",
   //text from services
    cards = null,
@@ -90,8 +92,8 @@ export default ({
       
       <SimpleContainer SimpleContainer={simplecontcol} >
       <SectionHeading>{sectionheading}</SectionHeading>
-      <Container>
-        <SectionDescription SectionDescription={sectiondiscript}>{description}</SectionDescription>
+      <Container Container={contbgtransparent} >
+        <SectionDescription  >{description}</SectionDescription>
       </Container>
         {/* <Heading>heading</Heading> */}
         {/* <Left>
@@ -108,7 +110,7 @@ export default ({
                   
                   
                   <Heading Heading={headingstyle}>{info.heading}</Heading>
-                  <Description> {info.discription} </Description>
+                  <Description Description={descriptionsyle} > {info.discription} </Description>
                 </SimpleContainer>
               </SimpleContainer>
               

@@ -7,11 +7,11 @@ const PrimaryButton1 = tw.button`       hocus:(bg-green-900 animate-none) `;
 
  
 export const PrimaryButton = styled.button(props => [
-    tw`px-8 py-3 my-8 font-bold rounded bg-primary-500 text-gray-100 hocus:bg-sitecolor-900 hocus:text-gray-200 focus:shadow-outline focus:outline-none transition duration-300`,
+    tw`px-8 py-3 my-6 font-bold rounded bg-primary-500 text-gray-100 hocus:bg-sitecolor-900 hocus:text-gray-200 focus:shadow-outline focus:outline-none transition duration-300`,
     props.Rounded === 'Full'? tw`rounded-full` :
     props.Rounded === 'RoundedFullBgGreen'? tw` bg-green-600 rounded-full` :
     props.Rounded === 'RoundedFullAnimation' ? tw` rounded-full animate-bounce` :
-    props.Rounded === 'RoundedFullAnimationBgGreen' ? tw`rounded-full animate-bounce bg-green-600` :
+    props.Rounded === 'RoundedFullAnimationBgGreen' ? tw`rounded-full my-6 animate-bounce bg-green-600` :
     props.Rounded === 'RoundedHalfAnimationBgGreen' ? tw`rounded-lg animate-bounce bg-green-600  ` :
     props.Rounded === 'RoundedHalfbgbrown' ? tw`rounded-lg  bg-sitecolor-300  ` :
     tw``,

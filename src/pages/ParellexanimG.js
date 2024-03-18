@@ -1,6 +1,6 @@
 import tw, { styled,css } from "twin.macro";
 import React, { useRef, useState, useEffect } from "react";
-import { SimpleContainer, Container } from "../components/misc/Layouts.js";
+import { SimpleContainer, Container, Containerbgcolor } from "../components/misc/Layouts.js";
 import { Heading,SectionHeading } from "../components/misc/Headings.js";
 import { SectionDescription,Description } from "../components/misc/Typography.js";
 import Demo1 from "../Gsvgs/Demo1";
@@ -11,6 +11,7 @@ let Svg = <Demo1 />;
 export default ({
   
   itemshow="Defultcontainer",
+  bgcolor="sitebgcolor",
   halfwidth="DefultcontainerHalf",
   stickycontainer="StickContainerontop",
   chailditems="ItemsInPhoneAndWindowhalf",
@@ -101,11 +102,13 @@ export default ({
       <SectionHeading>Products</SectionHeading>
       <SimpleContainer SimpleContainer={itemshow}>
         
-        {/* <Heading>heading</Heading> */}
         <Container Container={stickycontainer}>
+        {/* <Heading>heading</Heading> */}
           {/* <Images src={imgpath}></Images> */}
+        
 
           {Svg}
+       
         </Container >
         <SimpleContainer SimpleContainer={halfwidth}>
             {itemcontant.map((info,index)=>(
@@ -115,35 +118,11 @@ export default ({
                 <Description Description={descript}> {info.discription} </Description>
               </Container>
             ))}
-          {/* <Items ref={elementRef}>
-            <Heading>Rasik Loyalty</Heading>
-            <Description>
-            rasik loyalty is help you to bring the loyal influencer and then
-            influencer bring a loyal customers for you 
-            </Description>
-          </Items>
-          <Items>
-            <Heading>Panther Nails One App</Heading>
-            <Description>
-              You can also use variant modifiers to target media queries like
-              responsive breakpoints, dark mode, prefers-reduced-motion, and
-              more. For example
-            </Description>
-          </Items>
-          <Items>
-            <Heading>Third page</Heading>
-            <Description>
-              You can also use variant modifiers to target media queries like
-              responsive breakpoints, dark mode, prefers-reduced-motion, and
-              more. For example, use md:font-bold to apply the font-bold utility
-              at only medium screen sizes and above.
-            </Description>
-          </Items> */}
+          
         </SimpleContainer>
         
       </SimpleContainer>
-      
-      {/* <Main><Heading>down page</Heading></Main> */}
+  
     </>
   );
 };
