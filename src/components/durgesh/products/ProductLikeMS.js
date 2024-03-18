@@ -25,8 +25,23 @@ export default ({
   ],
 }) => {
   return (
-    <Container>
-      {data.map((item, index) => (
+    <>
+      {/* <div class="flex flex-col md:flex-row bg-gray-100">
+  <nav class="bg-gray-800 w-full md:w-1/4 p-4 text-white bg-blue-100">
+  </nav>
+ 
+  <div class="md:w-3/4 p-4 bg-green-100">
+    <div class="flex">
+      <div class="w-1/2 h-auto bg-black">
+      </div>
+      <div class="w-1/2 h-auto bg-primary-200">
+      </div>
+    </div>
+  </div>
+</div> */}
+
+      {/* <Container>
+        {data.map((item, index) => (
         <React.Fragment key={index}>
           <Column>
             <CardContainer>
@@ -39,6 +54,7 @@ export default ({
           </Column>
         </React.Fragment>
       ))}
-    </Container>
+      </Container> */}
+    </>
   );
 };

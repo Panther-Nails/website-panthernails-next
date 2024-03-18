@@ -16,7 +16,7 @@ import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 const Header = tw.header`
   flex justify-between items-center
   mx-auto mr-0 ml-0 w-full 
-`;//bg-gradient-to-r from-blue-500 to-indigo-500 //For background shade
+`; //bg-gradient-to-r from-blue-500 to-indigo-500 //For background shade
 
 export const NavLinks = tw.div`inline-block text-black`;
 
@@ -26,7 +26,7 @@ export const NavLinks = tw.div`inline-block text-black`;
 export const NavLink = tw.a`
   text-sm my-2 lg:mx-6 lg:my-0
   font-semibold tracking-wide transition duration-300
-  pb-5 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
+   border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
   text-sm mx-0 font-medium font-bold 
 `;
 

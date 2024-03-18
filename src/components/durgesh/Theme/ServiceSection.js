@@ -11,16 +11,14 @@ const ServiceIcon = tw.img`w-12 h-12 mx-auto mb-4`;
 const ServiceName = tw.h3`text-xl font-semibold text-center mb-2`;
 const ServiceDescription = tw.p`text-sm text-gray-700`;
 
-export default ({ 
-    services = [
-        { title: "Service 1", description: "Description of Service 1" },
-        { title: "Service 2", description: "Description of Service 2" },
-      ]
-       
-
+export default ({
+  services = [
+    { title: "Service 1", description: "Description of Service 1" },
+    { title: "Service 2", description: "Description of Service 2" },
+  ],
 }) => {
   return (
-    <Container>
+    <Container >
       <InnerContainer>
         <Title>Our Services</Title>
         <Grid>
@@ -36,5 +34,3 @@ export default ({
     </Container>
   );
 };
-
-

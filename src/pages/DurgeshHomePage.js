@@ -1,21 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import tw from "twin.macro";
 import Hero from "components/hero/DurgeshHero";
-import ProductSection from "components/durgesh/Theme/ProductSection";
 import ServicesSection from "components/durgesh/ServicesSection";
-import MainFeature from "components/features/TwoColWithButton.js";
-import FeatureStats from "components/features/ThreeColCenteredStatsPrimaryBackground.js";
 import Footer from "components/footers/SimpleFiveColumn";
-import Features from "components/features/DurgeshFeaturesThreeCWSI";
 import CTA from "components/cta/DurgeshGetStarted";
 import RoundedSquare from "components/durgesh/RoundedSquare";
 import SimpleWithSideImage from "components/faqs/SimpleWithSideImage";
 import BenefitsWithMockup from "components/durgesh/BenefitsWithMockup";
-import { Body, StickyContainer } from "components/misc/Layouts";
-import ProfileThreeColGrid from "components/cards/ProfileThreeColGrid";
+
+import ThreeCol from "components/features/ThreeColWithSideImage";
+
+import ThreeColSlider from "components/cards/ThreeColSlider";
+
 //images
 
-import TeamIllustrationSrc from "images/hero-screenshot-1.png";
 import ProductImageRasikLoyalty from "images/ProductRasikLoyalty.png";
 import ProfileImageRasikLoyalty from "images/Loyalty.png";
 
@@ -50,6 +48,27 @@ export default ({
       imageUrl:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNyWAr2i3-RgOJB2p0xQNVEab0z104ofxaUw&usqp=CAU",
       heading: "Web Application",
+      description:
+        "Earn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cards.",
+    },
+    {
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4yWZ12WGQpryzMpoPnGtpnJjFvKl8nlHR5g&usqp=CAU",
+      heading: "Mobile Application",
+      description:
+        "Earn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cards.",
+    },
+    {
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNyWAr2i3-RgOJB2p0xQNVEab0z104ofxaUw&usqp=CAU",
+      heading: "Web Application",
+      description:
+        "Earn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cards.",
+    },
+    {
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4yWZ12WGQpryzMpoPnGtpnJjFvKl8nlHR5g&usqp=CAU",
+      heading: "Mobile Application",
       description:
         "Earn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cards.",
     },
@@ -145,9 +164,12 @@ export default ({
           ]}
         />
 
+        {/* <ProductLikeMS/> */}
         {/* <Features /> */}
 
-        <RoundedSquare />
+        {/* <ThreeCol /> */}
+        <ThreeColSlider />
+        <RoundedSquare roundedSize="5" />
         {/* <Benefits /> */}
 
         <CTA
@@ -194,7 +216,7 @@ export default ({
           bgColor={tw`bg-black`}
           isOnClick={true}
         />
-        
+
         <CTA
           backgroundColor={tw`bg-red-400`}
           textCss={tw`text-black font-bold`}
@@ -209,6 +231,7 @@ export default ({
           heading="Rewards Options"
           subheading="At PANTHER NAILS, we're dedicated to enhancing your partnership experience. That's why we're thrilled to introduce our exclusive loyalty program, designed to reward your loyalty like never before"
         />
+
         <SimpleWithSideImage />
         <DurgeshStatTCCSPB
           subheading="Technology Innovations That Transform Your Business"

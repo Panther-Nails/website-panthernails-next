@@ -3,15 +3,18 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
 import {
-  Container,
   ContentWithPaddingXl,
   Card,
+  Container,
 } from "components/misc/Layouts.js";
 import { Subheading } from "components/misc/Headings";
 import { Heading, SectionDescription } from "components/misc/Typography";
 import { ReactComponent as TwitterIcon } from "images/twitter-icon.svg";
 import { ReactComponent as LinkedinIcon } from "images/linkedin-icon.svg";
 import { ReactComponent as GithubIcon } from "images/github-icon.svg";
+import CustomStyle from "components/durgesh/CustomStyle/CustomStyle";
+import { PrimaryButton } from "@fluentui/react";
+// import { Card } from "@fluentui/react-components";
 
 // const HeadingContainer = tw.div``
 // const Heading = tw(SectionHeading)``
@@ -98,11 +101,14 @@ export default ({
     },
   ],
 }) => {
+  var check = "Heading";
+
   return (
     <Container>
       <ContentWithPaddingXl>
         <Container>
           {subheading && <Subheading>{subheading}</Subheading>}
+          {/* {heading && <CustomStyle.Heading>{heading}</CustomStyle.Heading>} */}
           {heading && <Heading>{heading}</Heading>}
           {description && (
             <SectionDescription>{description}</SectionDescription>

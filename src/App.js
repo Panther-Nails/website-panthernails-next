@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import GlobalStyles from "styles/GlobalStyles";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
@@ -114,45 +114,56 @@ import DurgeshPageExample from "pages/DurgeshPageExample";
 import DurgeshHomePage from "pages/DurgeshHomePage";
 import DurgeshAbout from "pages/DurgeshAbout";
 import DurgeshLoyalty from "pages/DurgeshLoyalty";
+import { ThemeProvider } from "@fluentui/react";
+import { lightTheme, darkTheme } from "components/durgesh/Theme/Themes";
+import { createTheme } from "@fluentui/react/lib/Styling";
 
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
   // return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
+  // const myTheme = createTheme(darkTheme)
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   return (
     <>
-      <GlobalStyles />
-      <Router>
-        <Routes>
-          <Route
-            path="/components/:type/:subtype/:name"
-            element={<ComponentRenderer />}
-          />
-          <Route
-            path="/components/:type/:name"
-            element={<ComponentRenderer />}
-          />
-          <Route path="/TermsOfService" element={<TermsOfServicePage />} />
-          <Route path="/PrivacyPolicy" element={<PrivacyPolicyPage />} />
-          <Route path="/Login" element={<LoginPage />} />
-          <Route path="/Signup" element={<SignupPage />} />
-          <Route path="/Products" element={<ProductsPage />} />
-          <Route path="/RasikLoyalty" element={<RasikLoyaltyPage />} />
-          <Route path="/CLM" element={<CLMPage />} />
-          <Route path="/AboutUs" element={<AboutUsPage />} />
-          <Route path="/ContactUs" element={<ContactUsPage />} />
-          <Route path="/Blog" element={<BlogIndexPage />} />
+      <ThemeProvider theme={darkTheme}>
+        <GlobalStyles />
+        <Router>
+          <Routes>
+            <Route
+              path="/components/:type/:subtype/:name"
+              element={<ComponentRenderer />}
+            />
+            <Route
+              path="/components/:type/:name"
+              element={<ComponentRenderer />}
+            />
+            <Route path="/TermsOfService" element={<TermsOfServicePage />} />
+            <Route path="/PrivacyPolicy" element={<PrivacyPolicyPage />} />
+            <Route path="/Login" element={<LoginPage />} />
+            <Route path="/Signup" element={<SignupPage />} />
+            <Route path="/Products" element={<ProductsPage />} />
+            <Route path="/RasikLoyalty" element={<RasikLoyaltyPage />} />
+            <Route path="/CLM" element={<CLMPage />} />
+            <Route path="/AboutUs" element={<AboutUsPage />} />
+            <Route path="/ContactUs" element={<ContactUsPage />} />
+            <Route path="/Blog" element={<BlogIndexPage />} />
 
-          <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home />} />
 
-          {/* Example */}
-          <Route path="MainLandingPage" element={<MainLandingPage />} />
-          <Route path="/DurgeshHomePage" element={<DurgeshHomePage />} />
-          <Route path="/DurgeshPageExample" element={<DurgeshPageExample />} />
-          <Route path="/DurgeshAbout" element={<DurgeshAbout />} />
-          <Route path="/DurgeshLoyalty" element={<DurgeshLoyalty />} />
-        </Routes>
-      </Router>
+            {/* Example */}
+
+            <Route path="MainLandingPage" element={<MainLandingPage />} />
+            <Route path="/DurgeshHomePage" element={<DurgeshHomePage />} />
+            <Route
+              path="/DurgeshPageExample"
+              element={<DurgeshPageExample />}
+            />
+            <Route path="/DurgeshAbout" element={<DurgeshAbout />} />
+            <Route path="/DurgeshLoyalty" element={<DurgeshLoyalty />} />
+          </Routes>
+        </Router>
+      </ThemeProvider>
     </>
   );
 }

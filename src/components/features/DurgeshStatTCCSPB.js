@@ -11,8 +11,12 @@ import {
   Container as ContainerBase,
   ContentWithPaddingForHomePage,
 } from "components/misc/Layouts";
-import { SectionDescription,Heading,Subheading } from "components/misc/Typography";
-
+import {
+  SectionDescription,
+  Heading,
+  Subheading,
+} from "components/misc/Typography";
+import { PrimaryButton } from "@fluentui/react";
 const Container = tw(
   ContainerBase
 )`my-8 lg:my-10  text-gray-100 -mx-8 px-8 bg-blue-300 mr-0 ml-0`;
@@ -71,7 +75,7 @@ export default ({
 
   return (
     <Container ref={ref}>
-      {" "}
+      {/* <PrimaryButton>pricing</PrimaryButton> */}
       {/* Attach the ref to the Container */}
       <ContentWithPaddingForHomePage>
         <HeadingContainer>

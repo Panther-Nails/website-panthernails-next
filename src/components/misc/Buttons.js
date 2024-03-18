@@ -7,3 +7,5 @@ const Link = tw.a`w-full sm:w-auto text-sm sm:text-base px-6 py-3 sm:px-8 sm:py-
 export const PrimaryThemeButton = tw(
   Link
 )` text-gray-100 shadow-lg hocus:bg-red-600 hocus:text-gray-200 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-black font-bold hover:border-black`;
+
+export const SimpleButton = tw.button``

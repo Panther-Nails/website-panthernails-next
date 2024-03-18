@@ -3,12 +3,17 @@ import styled from "styled-components";
 import tw from "twin.macro";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
-import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
+import {
+  SectionHeading,
+  Subheading as SubheadingBase,
+} from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 
 import defaultCardImage from "images/shield-icon.svg";
 
 import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
+
+import { ReactComponent as SupportIconImageComponent } from "feather-icons/dist/icons/anchor.svg";
 
 import SupportIconImage from "images/support-icon.svg";
 import ShieldIconImage from "images/shield-icon.svg";
@@ -17,17 +22,30 @@ import FastIconImage from "images/fast-icon.svg";
 import ReliableIconImage from "images/reliable-icon.svg";
 import SimpleIconImage from "images/simple-icon.svg";
 
+const Container = tw.div`relative  overflow-hidden`; //chenge no bg to bg gray, in 14-2-24
 
-const Container = tw.div`relative  overflow-hidden`;//chenge no bg to bg gray, in 14-2-24
+const SectionDiv = styled(Container)`
+  ${tw`w-full flex flex-col items-center`}
+
+  svg {
+    ${tw` text-red-300 w-16 h-16 `}
+  }
+`;
+const SectionDiv1 = styled.div`
+  svg {
+    ${tw`w-16 h-16 bg-transparent text-green-500  rounded-full`}
+  }
+`;
 
 const ThreeColumnContainer = styled.div`
-  ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-0`}`; //chenge  md:py-24 to py-0 26-02-24
+  ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-0`}
+`; //chenge  md:py-24 to py-0 26-02-24
 
 const Subheading = tw(SubheadingBase)`mb-4 `;
 const Heading = tw(SectionHeading)`w-full `;
 const Description = tw(SectionDescription)`lg:w-full w-10/12  text-center `;
 
-const VerticalSpacer = tw.div`mt-10 w-full`
+const VerticalSpacer = tw.div`mt-10 w-full`;
 
 const Column = styled.div`
   ${tw`md:w-1/2 lg:w-1/3 max-w-sm  p-2 `}
@@ -53,13 +71,22 @@ const Card = styled.div`
   .description {
     ${tw`mt-1 sm:mt-4 font-medium text-secondary-100 hover:text-black  leading-loose`}
   }
+
+  svg {
+    ${tw`w-4 h-4 mr-1 bg-black`}
+  }
 `;
 
 const DecoratorBlob = styled(SvgDecoratorBlob3)`
   ${tw`pointer-events-none absolute right-0 bottom-0 w-64 opacity-25 transform translate-x-32 translate-y-48 `}
 `;
 
-export default ({ cards = null, heading = "Amazing Features", subheading = "Features", description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." }) => {
+export default ({
+  cards = null,
+  heading = "Amazing Features",
+  subheading = "Features",
+  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+}) => {
   /*
    * This componets has an array of object denoting the cards defined below. Each object in the cards array can have the key (Change it according to your need, you can also add more objects to have more cards in this feature component) or you can directly pass this using the cards prop:
    *  1) imageSrc - the image shown at the top of the card
@@ -72,13 +99,14 @@ export default ({ cards = null, heading = "Amazing Features", subheading = "Feat
     {
       imageSrc: ShieldIconImage,
       title: "Secure",
-      description: "We strictly only deal with vendors that provide top notch security."
+      description:
+        "We strictly only deal with vendors that provide top notch security.",
     },
     { imageSrc: SupportIconImage, title: "24/7 Support" },
     { imageSrc: CustomizeIconImage, title: "Customizable" },
     { imageSrc: ReliableIconImage, title: "Reliable" },
     { imageSrc: FastIconImage, title: "Fast" },
-    { imageSrc: SimpleIconImage, title: "Easy" }
+    { imageSrc: SimpleIconImage, title: "Easy" },
   ];
 
   if (!cards) cards = defaultCards;
@@ -86,14 +114,17 @@ export default ({ cards = null, heading = "Amazing Features", subheading = "Feat
   return (
     <Container>
       <ThreeColumnContainer>
+        <SectionDiv>
+          <SupportIconImageComponent />
+        </SectionDiv>
         {subheading && <Subheading>{subheading}</Subheading>}
         <Heading>{heading}</Heading>
         {description && <Description>{description}</Description>}
         <VerticalSpacer />
         {cards.map((card, i) => (
-          
           <Column key={i}>
             {/* <Hovereffect> */}
+
             <Card>
               <span className="imageContainer">
                 <img src={card.imageSrc || defaultCardImage} alt="" />
@@ -101,13 +132,13 @@ export default ({ cards = null, heading = "Amazing Features", subheading = "Feat
               <span className="textContainer">
                 <span className="title">{card.title || "Fully Secure"}</span>
                 <p className="description">
-                  {card.description || "Lorem ipsum donor amet siti ceali ut enim ad minim veniam, quis nostrud."}
+                  {card.description ||
+                    "Lorem ipsum donor amet siti ceali ut enim ad minim veniam, quis nostrud."}
                 </p>
               </span>
             </Card>
             {/* </Hovereffect> */}
           </Column>
-          
         ))}
       </ThreeColumnContainer>
       <DecoratorBlob />

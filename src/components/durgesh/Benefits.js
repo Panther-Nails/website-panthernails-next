@@ -8,8 +8,8 @@ import {
 } from "components/misc/Typography";
 
 import { Heading } from "components/misc/Typography";
-import { ContainerForCardsSections,CardGrid } from "components/misc/Layouts";
-
+import { CardGrid, Container } from "components/misc/Layouts";
+import { Container3 } from "./CustomStyle/CustomStyle";
 const Card = styled.div`
   ${tw`bg-gray-100 p-4 pb-0 rounded-5xl shadow-lg  w-72 items-center justify-center hover:-translate-y-5 ease-in-out`}
 `;
@@ -59,7 +59,7 @@ export default ({
   ],
 }) => {
   return (
-    <ContainerForCardsSections>
+    <Container tw="h-screen text-white">
       <Heading>{heading}</Heading>
       <Subheading>{subheading}</Subheading>
       <CardGrid>
@@ -73,6 +73,6 @@ export default ({
           </Card>
         ))}
       </CardGrid>
-    </ContainerForCardsSections>
+    </Container>
   );
 };

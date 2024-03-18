@@ -370,6 +370,7 @@ module.exports = {
       "9/12": "75%",
       "10/12": "83.333333%",
       "11/12": "91.666667%",
+      "11/12": "98%",
       full: "100%",
       screen: "100vh",
     }),
@@ -725,6 +726,11 @@ module.exports = {
       3: "rounded-3xl",
       2: "rounded-2xl",
       1: "rounded-xl`",
+    },
+    scrollBar: {
+      hide: `::-webkit-scrollbar {
+        display: none;
+      }`,
     },
   },
 

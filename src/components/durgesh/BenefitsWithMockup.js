@@ -1,25 +1,22 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
+import { css } from "styled-components/macro";
+
 import { CardDescription, CardHeading } from "components/misc/Typography";
+import {
+  Image,
+  Card,
+  Container,
+  CardContent,
+  CardGrid,
+} from "components/misc/Layouts";
 
-const Container = tw.div`flex h-full w-screen bg-teal-300 justify-evenly`;
-
-const CardGrid = tw.div`flex flex-wrap md:flex-row  lg:w-1/2  items-center justify-center `;
-
-const Card = styled.div`
-  ${tw`bg-gray-100 p-4 pb-0 rounded-4xl shadow-lg h-64 w-72 items-center justify-center flex-row cursor-pointer pt-8 mr-10 border-r-teal-300 border-2`}//h-80 w-72
-`;
-
-const CardImage = tw.img`w-24 h-24 bg-cover rounded-full  ml-20 `;
-const CardContent = tw.div`ml-6 `; //mb-8 pb-0
-
-const Mockup = tw.div`relative rounded-5xl shadow-xl w-72 h-144 mt-4 mb-4 `;
+const Mockup = tw.div`relative rounded-5xl shadow-xl w-72 h-144 mt-4 mb-4 lg:block hidden `;
 const Screen = tw.div`absolute inset-0 bg-white overflow-hidden rounded-5xl  bg-transparent`;
-const Camera = tw.div`absolute top-0 left-1/2 transform translate-x-1/2 mt-2 ml-5 w-4 h-4 bg-gray-300 rounded-full border-2 border-black`;
-const Speaker = tw.div`absolute top-0 right-1/2 transform translate-x-1/2 mt-3 w-12 h-2 bg-gray-300 rounded-full border-2 border-black`;
-const HomeButton = tw.div`absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-2 w-8 h-8 bg-gray-300 rounded-full border-2 border-black`;
-const Image = tw.img`bg-cover h-full w-full`;
+// const Camera = tw.div`absolute top-0 left-1/2 transform translate-x-1/2 mt-2 ml-5 w-4 h-4 bg-gray-300 rounded-full border-2 border-black`;
+// const Speaker = tw.div`absolute top-0 right-1/2 transform translate-x-1/2 mt-3 w-12 h-2 bg-gray-300 rounded-full border-2 border-black`;
+// const HomeButton = tw.div`absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-2 w-8 h-8 bg-gray-300 rounded-full border-2 border-black`;
 
 export default ({
   cardsData = [
@@ -29,7 +26,7 @@ export default ({
         "https://wp.salesforce.com/en-in/wp-content/uploads/sites/21/2023/03/pb-hp-product-smb_icon-1.jpg?resize=768,433",
       heading: "Cash Rewards",
       description:
-        "Earn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cards.",
+        "Earn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cards Earn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cardsEarn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cardsEarn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cardsEarn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cardsEarn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cardsEarn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cardsEarn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cardsEarn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cardsEarn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cards.",
       hoverIndexUrl:
         "https://th.bing.com/th/id/OIP.WY3T4CB1EfeAP5HJIXZ6-wAAAA?pid=ImgDet&w=111&h=212&c=7",
     },
@@ -66,7 +63,6 @@ export default ({
         "https://th.bing.com/th/id/OIP.wVb90AOR14b2FYz35VTK_gAAAA?pid=ImgDet&w=107&h=212&c=7",
     },
   ],
-
   heading = "Heading",
   subheading = "Subheading",
 }) => {
@@ -77,7 +73,7 @@ export default ({
 
   return (
     <>
-      <Container>
+      <Container tw="bg-primary-100 flex justify-evenly">
         <Mockup>
           <Screen>
             <Image src={cardsData[hoverIndex].hoverIndexUrl} />
@@ -86,9 +82,12 @@ export default ({
           <Speaker />
           <HomeButton /> */}
         </Mockup>
-        <CardGrid>
+        <CardGrid tw="flex flex-wrap lg:w-2/3">
           {cardsData.map((card, index) => (
-            <Card onMouseEnter={() => handleCardHover(index)}>
+            <Card
+              onMouseEnter={() => handleCardHover(index)}
+              tw="h-64 w-72 rounded-5xl pt-8 overflow-y-scroll"
+            >
               {/* <CardImage src={card.imageUrl} alt="Card Image" /> */}
               <CardContent>
                 <CardHeading tw="underline decoration-teal-300 underline-offset-[4px] mb-2">

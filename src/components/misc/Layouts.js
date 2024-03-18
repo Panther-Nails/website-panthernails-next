@@ -1,47 +1,59 @@
 import tw from "twin.macro";
 import styled from "styled-components";
+import { css } from "styled-components/macro";
+import Slider from "react-slick";
 
 export const Container = styled.div((props) => [
-  tw`relative pt-0 items-center justify-center text-center`,
-  handleProps(props),
+  tw`relative items-center justify-center text-center pt-8 bg-gray-300`,
+  props.backgroundColor === "lightblue" ? tw`bg-red-500` : tw``,
 ]);
 
-export const ContentWithPaddingXl = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24 `;
-export const ContentWithPaddingLg = tw.div`max-w-screen-lg mx-auto py-20 lg:py-24`;
+export const ContainerWithTwoCol = styled.div((props) => [tw`flex flex-col `]);
+export const ContentWithPaddingXl = tw.div`max-w-screen-xl mx-auto `;
+export const ContentWithPaddingLg = tw.div`max-w-screen-lg mx-auto `;
 export const ContentWithVerticalPadding = tw.div`py-20 lg:py-12 ml-5`; //lg:py-24 to lg:py-12 for home page image upside
 export const Content2Xl = tw.div`max-w-screen-2xl mx-auto`;
 
 //Durgesh
-
 //For Home.js page FeatureStats
 export const ContentWithPaddingForHomePage = tw.div`w-screen mx-auto py-20 lg:py-24 bg-blue-300 rounded-lg bg-blue-300 h-full `;
 export const Body = tw.div`h-full w-screen `;
 export const HighlightedTextSpan = tw.span`text-primary-500`;
 export const StickyContainer = tw.div`relative pt-0  top-0 -z-50 lg:sticky`;
-
-//serviceSection cards Gridcard
-export const ContainerForCardsSections = tw.div`flex flex-col w-screen mx-auto bg-gray-300 items-center justify-center min-h-screen py-8`;
-
-// export const Card = styled.div`
-//   ${tw`bg-gray-100 p-4 pb-8 rounded-xl shadow-lg w-72 mb-4 `}
-// `;
+export const Column = tw.div`mr-auto lg:mr-0 max-w-lg lg:max-w-xl xl:max-w-2xl ml-0`;
 
 export const CardGrid = styled.div`
-  ${tw`flex flex-col md:flex-row overflow-x-hidden gap-6 pt-5 pb-5 `}
-  flex-wrap: wrap;
-  justify-content: center;
+  ${tw`flex flex-row gap-6 py-5 w-screen px-16 justify-center text-left`}
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const Card = styled.div((props) => [
-  tw`bg-gray-100 p-4 pb-8 shadow-lg w-72 mb-4 sm:flex-shrink rounded-lg `,
+  tw`flex flex-col items-start bg-gray-100 p-4 pb-8 shadow-lg mb-4 sm:flex-shrink rounded-lg max-w-screen-xl w-72 relative overflow-hidden`,
   handleProps(props),
 ]);
 
 export const CardImage = styled.img((props) => [
-  tw`w-full h-40 bg-cover mb-5 rounded-xl`,
-
-  handleProps(props),
+  tw`w-full h-40 bg-cover mb-5 ease-in-out duration-300 hover:scale-110`,
+  props.roundedImage === "roundedImage"
+    ? tw`w-24 h-24  bg-cover rounded-full ml-20 shadow-lg shadow-gray-700 `
+    : "",
 ]);
+
+export const CardContent = tw.div`ml-6 mb-6 mt-3 mr-2`;
+
+export const Image = tw.img`bg-cover h-full w-full`;
+
+export const CardSlider = styled(Slider)`
+  ${tw`mt-16 flex flex-row gap-6 py-5 w-screen  justify-between  text-left px-16`}
+  .slick-track {
+    ${tw`justify-between `}
+  }
+  .slick-slide {
+    ${tw`h-auto flex justify-center mb-1 `}
+  }
+`;
 
 //Function used for using props in another components
 const handleProps = (props) => {

@@ -45,7 +45,7 @@ const Column = styled.div`
 `;
 
 const Card = styled.div`
-  ${tw`flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8 bg-primary-300 rounded-lg shadow-xl shadow-gray-400  `} //hover:bg-blue-400
+  ${tw`flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8 bg-primary-300 rounded-lg shadow-xl shadow-gray-400  `}
 
   // animation: cardAnimation 1s ease-in-out;
 

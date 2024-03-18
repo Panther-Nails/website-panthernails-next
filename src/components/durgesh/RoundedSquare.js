@@ -1,5 +1,6 @@
 import React from "react";
 import tw from "twin.macro";
+import { css } from "styled-components/macro";
 import {
   SectionDescription,
   CardHeading,
@@ -8,19 +9,21 @@ import {
 } from "components/misc/Typography";
 
 import {
-  ContainerForCardsSections,
   CardGrid,
   Card,
+  CardImage,
+  Container,
+  CardContent,
 } from "components/misc/Layouts";
 
-const CardContent = tw.div`ml-6 mb-8 mt-3`;
-const CardImage = tw.img`w-24 h-24  bg-cover rounded-full ml-20 shadow-lg shadow-gray-700 hover:scale-105 `;
+// const CardImage = tw.img`w-24 h-24  bg-cover rounded-full ml-20 shadow-lg shadow-gray-700 hover:scale-105 `;
 
 export default ({
   heading = "Benefits",
   subheading = "Subheading goes here",
   roundedSize = "4",
   backgroundColor = "light green",
+  roundedImage = "roundedImage",
   cardsData = [
     {
       id: 1,
@@ -60,7 +63,7 @@ export default ({
 }) => {
   return (
     <>
-      <ContainerForCardsSections>
+      <Container>
         <Heading>{heading}</Heading>
         <SectionDescription>{subheading}</SectionDescription>
         <CardGrid>
@@ -70,7 +73,12 @@ export default ({
               backgroundColor={backgroundColor}
               rounded={roundedSize}
             >
-              <CardImage src={card.imageUrl} alt="Card Image" />
+              <CardImage
+                src={card.imageUrl}
+                alt="Card Image"
+                roundedImage={roundedImage}
+              />
+
               <CardContent>
                 <CardHeading>{card.heading}</CardHeading>
                 <CardDescription>{card.description}</CardDescription>
@@ -78,7 +86,7 @@ export default ({
             </Card>
           ))}
         </CardGrid>
-      </ContainerForCardsSections>
+      </Container>
     </>
   );
 };

@@ -12,7 +12,6 @@ import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chev
 import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
 import { ReactComponent as PlayIcon } from "feather-icons/dist/icons/play-circle.svg";
 
-
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20`;
 
@@ -30,17 +29,20 @@ const NextButton = tw(ControlButton)``;
 
 const CardSlider = styled(Slider)`
   ${tw`mt-16`}
-  .slick-track { 
-    ${tw`flex`}
+  .slick-track {
+    ${tw`flex gap-12`}
   }
   .slick-slide {
     ${tw`h-auto flex justify-center mb-1`}
   }
+  .slick-list {
+    ${tw`gap-12`}
+  }
 `;
 const Card = tw.div`h-full flex! flex-col sm:border max-w-sm sm:rounded-tl-4xl sm:rounded-br-5xl relative focus:outline-none`;
-const CardImage = styled.div(props => [
+const CardImage = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
-  tw`w-full h-56 sm:h-64 bg-cover bg-center rounded sm:rounded-none sm:rounded-tl-4xl`
+  tw`w-full h-56 sm:h-64 bg-cover bg-center rounded sm:rounded-none sm:rounded-tl-4xl`,
 ]);
 
 const TextInfo = tw.div`py-6 sm:px-10 sm:py-6`;
@@ -67,7 +69,9 @@ const IconContainer = styled.div`
 `;
 const Text = tw.div`ml-2 text-sm font-semibold text-gray-800`;
 
-const PrimaryButton = tw(PrimaryButtonBase)`mt-auto sm:text-lg rounded-none w-full rounded sm:rounded-none sm:rounded-br-4xl py-3 sm:py-6`;
+const PrimaryButton = tw(
+  PrimaryButtonBase
+)`mt-auto sm:text-lg rounded-none w-full rounded sm:rounded-none sm:rounded-br-4xl py-3 sm:py-6`;
 
 const KnowMoreLink = styled.a`
   ${tw`mt-4 sm:mt-0 sm:ml-8 flex items-center text-secondary-300 transition duration-300 hocus:text-primary-400 focus:outline-none`}
@@ -77,46 +81,55 @@ const KnowMoreLink = styled.a`
 `;
 
 export default ({
-  heading="Products",
-  subheading="Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
+  heading = "Products",
+  subheading = "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
   cards = [
-  {
-    imageSrc: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=1024&w=768&q=80",
-    title: "Wyatt Residency",
-    description: "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
-    locationText: "Rome, Italy",
-    pricingText: "USD 39/Day",
-    knowMoreLinkText:"Know More",
-    knowMoreLinkUrl:"https://panthernails.com/after8.html#loyality",  
-    rating: "4.8",
-  },
-  {
-    imageSrc: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=1024&w=768&q=80",
-    title: "Soho Paradise",
-    description: "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
-    locationText: "Ibiza, Spain",
-    pricingText: "USD 50/Day",
-    knowMoreLinkText:"Know More",
-    knowMoreLinkUrl:"https://panthernails.com/after8.html#loyality",  
-    rating: 4.9,
-  },
-  {
-    imageSrc: "https://images.unsplash.com/photo-1549294413-26f195200c16?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=1024&w=768&q=80",
-    title: "Hotel Baja",
-    description: "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
-    locationText: "Palo Alto, CA",
-    pricingText: "USD 19/Day",
-    rating: "5.0",
-  },
-  {
-    imageSrc: "https://images.unsplash.com/photo-1571770095004-6b61b1cf308a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=1024&w=768&q=80",
-    title: "Hudak Homes",
-    description: "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
-    locationText: "Arizona, RAK",
-    pricingText: "USD 99/Day",
-    rating: 4.5,
-  }
-]}) => {
+    {
+      imageSrc:
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=1024&w=768&q=80",
+      title: "Wyatt Residency",
+      description:
+        "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
+      locationText: "Rome, Italy",
+      pricingText: "USD 39/Day",
+      knowMoreLinkText: "Know More",
+      knowMoreLinkUrl: "https://panthernails.com/after8.html#loyality",
+      rating: "4.8",
+    },
+    {
+      imageSrc:
+        "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=1024&w=768&q=80",
+      title: "Soho Paradise",
+      description:
+        "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
+      locationText: "Ibiza, Spain",
+      pricingText: "USD 50/Day",
+      knowMoreLinkText: "Know More",
+      knowMoreLinkUrl: "https://panthernails.com/after8.html#loyality",
+      rating: 4.9,
+    },
+    {
+      imageSrc:
+        "https://images.unsplash.com/photo-1549294413-26f195200c16?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=1024&w=768&q=80",
+      title: "Hotel Baja",
+      description:
+        "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
+      locationText: "Palo Alto, CA",
+      pricingText: "USD 19/Day",
+      rating: "5.0",
+    },
+    {
+      imageSrc:
+        "https://images.unsplash.com/photo-1571770095004-6b61b1cf308a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=1024&w=768&q=80",
+      title: "Hudak Homes",
+      description:
+        "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
+      locationText: "Arizona, RAK",
+      pricingText: "USD 99/Day",
+      rating: 4.5,
+    },
+  ],
+}) => {
   // useState is used instead of useRef below because we want to re-render when sliderRef becomes available (not null)
   const [sliderRef, setSliderRef] = useState(null);
   const sliderSettings = {
@@ -127,20 +140,19 @@ export default ({
         breakpoint: 1280,
         settings: {
           slidesToShow: 2,
-        }
+        },
       },
 
       {
         breakpoint: 900,
         settings: {
           slidesToShow: 1,
-        }
+        },
       },
-    ]
+    ],
   };
 
   /* Change this according to your needs */
-  
 
   return (
     <Container>
@@ -148,8 +160,12 @@ export default ({
         <HeadingWithControl>
           <Heading>{heading}</Heading>
           <Controls>
-            <PrevButton onClick={sliderRef?.slickPrev}><ChevronLeftIcon/></PrevButton>
-            <NextButton onClick={sliderRef?.slickNext}><ChevronRightIcon/></NextButton>
+            <PrevButton onClick={sliderRef?.slickPrev}>
+              <ChevronLeftIcon />
+            </PrevButton>
+            <NextButton onClick={sliderRef?.slickNext}>
+              <ChevronRightIcon />
+            </NextButton>
           </Controls>
         </HeadingWithControl>
         <TextInfo>{subheading}</TextInfo>
@@ -165,8 +181,8 @@ export default ({
                     <Rating>{card.rating}</Rating>
                   </RatingsInfo> */}
                 </TitleReviewContainer>
-                <SecondaryInfoContainer>                  
-                   <IconWithText>
+                <SecondaryInfoContainer>
+                  <IconWithText>
                     <Text>{card.locationText}</Text>
                     {card.knowMoreLinkUrl}
                   </IconWithText>
@@ -177,14 +193,13 @@ export default ({
                     <Text>{card.pricingText}</Text>
                   </IconWithText> */}
                 </SecondaryInfoContainer>
-                <Description>                  
+                <Description>
                   {card.description}
-                <KnowMoreLink href={card.knowMoreLinkUrl} >
-                  <span className="playText">{card.knowMoreLinkText}</span>
-                </KnowMoreLink>
+                  <KnowMoreLink href={card.knowMoreLinkUrl}>
+                    <span className="playText">{card.knowMoreLinkText}</span>
+                  </KnowMoreLink>
                 </Description>
-                
-              </TextInfo>              
+              </TextInfo>
               <PrimaryButton>Book a Meeting</PrimaryButton>
             </Card>
           ))}
