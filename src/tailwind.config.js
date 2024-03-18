@@ -535,6 +535,7 @@ module.exports = {
       half: '50vh',
       twothird: '66vh',
       onethird: '33vh',
+      less: '95vh',
     }),
     zIndex: {
       auto: 'auto',
