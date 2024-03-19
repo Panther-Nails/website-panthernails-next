@@ -40,7 +40,7 @@ import CustomizeIconImage from "images/customize-icon.svg";
 import FastIconImage from "images/fast-icon.svg";
 import ReliableIconImage from "images/reliable-icon.svg";
 import SimpleIconImage from "images/simple-icon.svg";
-import { Containerbgcolor } from "components/misc/Layouts.js";
+import { Containerbgcolor,NewContainer } from "components/misc/Layouts.js";
 
 import Gauravhero from "../components/hero/Gauravhero.js";
 
@@ -130,12 +130,13 @@ export default ({
 
         {/* <Testimonial /> */}
         <Blog />
+        <NewContainer NCwidth={"full"} NCbg={"bgred"}>hellooooo</NewContainer>
         <Footer />
         {/* <ThreeColWithSideImage/> */}
 
         {/* </AnimationRevealPage> */}
 
-        {/* <Right1 ></Right1> */}
+        
       </Containerbgcolor>
     </>
   );

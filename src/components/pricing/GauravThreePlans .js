@@ -15,7 +15,7 @@ import ProductImageRasikLoyalty from "images/ProductRasikLoyalty.png";
 const Icons=tw.img`w-16 h-16 bg-white` 
 const Image=tw.img`w-full h-8/12 bg-white`
 const Plan = styled.div`
-  ${tw`w-full max-w-lg  flex flex-col h-half lg:h-screen hover:-translate-y-full 2xl:( h-twothird) duration-1000 lg:mr-8 z-30  text-center px-8 rounded-lg shadow relative   text-gray-900 bg-white`}
+  ${tw`w-full max-w-lg  flex flex-col h-morethanhalf lg:h-screen hover:-translate-y-full 2xl:( h-half) duration-1000 lg:mr-8 z-30  text-center px-8 rounded-lg shadow relative   text-gray-900 bg-white`}
   
 `;
 const BuyNowButton = styled(PrimaryButtonBase)`

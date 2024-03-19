@@ -2,11 +2,12 @@ import tw, { styled, css } from "twin.macro";
 
 export const theme = "theme2";
 
+
 export const setbg = () => {
   if (theme === "theme1") {
-    return tw`bg-sitecolor-100  `;
+    return tw`bg-colorPrimary `;
   } else if (theme === "theme2") {
-    return tw`bg-red-100`;
+    return tw`bg-sitecolor-100`;
   } else if (theme === "theme3") {
     return tw`bg-blue-100`;
   }
@@ -14,18 +15,18 @@ export const setbg = () => {
 
 export const setshcolor = () => {
   if (theme === "theme1") {
-    return tw`text-sitecolor-300  `;
+    return tw`text-colorOnPrimary  `;
   } else if (theme === "theme2") {
-    return tw`text-green-600  `;
+    return tw`text-sitecolor-300  `;
   } else if (theme === "theme3") {
     return tw`text-pink-900  `;
   }
 };
 export const sethcolor = () => {
   if (theme === "theme1") {
-    return tw`text-sitecolor-900  `;
+    return tw`text-colorOnPrimaryHeighlight `;
   } else if (theme === "theme2") {
-    return tw`text-teal-600  `;
+    return tw`text-sitecolor-900  `;
   } else if (theme === "theme3") {
     return tw`text-blue-500  `;
   }

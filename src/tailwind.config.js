@@ -17,6 +17,15 @@ module.exports = {
       black: '#000',
       white: '#fff',
 
+      success:"#9CFA3E",
+   
+      colorPrimary :'#000',
+      colorOnPrimary :'#fff',
+      colorOnPrimaryHeighlight :'#c53030',
+      
+      colorSecondary: "",
+      colorOnSecondary:"",
+
       // primary: {
       //   100: '#a273ff',
       //   200: '#935bff',
@@ -375,6 +384,7 @@ module.exports = {
       full: '100%',
       screen: '100vh',
       half: '50vh',
+      morethanhalf: '55vh',
       twothird: '66vh',
       onethird: '33vh',
       fourfifth: '82vh',
