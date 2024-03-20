@@ -22,7 +22,6 @@ import ProductFeatures from "../components/faqs/SimpleWithSideImage.js";
 import PlatforWeProvide from "../components/features/GauravTwoColWithButton copy.js";
 import RevordSystem from "../components/testimonials/GauravThreeColumnWithProfileImage copy.js";
 
-
 import Features1 from "components/features/ThreeColWithSideImage.js";
 
 import Testimonial from "../components/testimonials/TwoColumnWithImage.js";
@@ -40,16 +39,16 @@ import CustomizeIconImage from "images/customize-icon.svg";
 import FastIconImage from "images/fast-icon.svg";
 import ReliableIconImage from "images/reliable-icon.svg";
 import SimpleIconImage from "images/simple-icon.svg";
-import { Containerbgcolor,NewContainer } from "components/misc/Layouts.js";
+import { Containerbgcolor, NewContainer } from "components/misc/Layouts.js";
 
 import Gauravhero from "../components/hero/Gauravhero.js";
 
 import Product from "../components/pricing/GauravThreePlans .js";
 
 export const Hovereffect = tw.div`hover:(scale-150 duration-500 shadow-2xl)`;
-
 export default ({
-  bgcolor="sitebgcolor",
+
+  bgcolor = "sitebgcolor",
   serviceCards = [
     {
       imageSrc: ShieldIconImage,
@@ -130,13 +129,24 @@ export default ({
 
         {/* <Testimonial /> */}
         <Blog />
-        <NewContainer NCwidth={"full"} NCbg={"bgred"}>hellooooo</NewContainer>
+        <NewContainer
+          NCwidth={"full"}
+          NCheightmd={"screen"}
+          NCheight={"screenhalf"}
+          NCbgcolor={"Primary"}
+          NCflexdirection={"itemscenter"}
+        >
+          <NewContainer
+            NCwidth={"onebytwo"}
+            NCheight={"onebytwo"}
+            NCbgcolor={"tan"}
+            
+          ></NewContainer>
+        </NewContainer>
         <Footer />
         {/* <ThreeColWithSideImage/> */}
 
         {/* </AnimationRevealPage> */}
-
-        
       </Containerbgcolor>
     </>
   );

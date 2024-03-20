@@ -4,6 +4,7 @@ import {
   SimpleContainer,
   Container,
   Containerbgcolor,
+  NewContainer,
 } from "../components/misc/Layouts.js";
 import { Heading, SectionHeading } from "../components/misc/Headings.js";
 import {
@@ -98,7 +99,7 @@ export default ({
     <>
       {/* <Main><Heading>upper page</Heading></Main> */}
       <SectionHeading>Products</SectionHeading>
-      <SimpleContainer SimpleContainer={itemshow} SimpleContainer1={bgcolor}>
+      <NewContainer  NCresponsive={"responsive"} >
         <Container Container={stickycontainer}>
           {/* <Heading>heading</Heading> */}
           {/* <Images src={imgpath}></Images> */}
@@ -116,7 +117,7 @@ export default ({
             </Container>
           ))}
         </SimpleContainer>
-      </SimpleContainer>
+      </NewContainer>
     </>
   );
 };

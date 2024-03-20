@@ -1,24 +1,35 @@
 import React from "react";
-import { PrimaryButton  } from "components/misc/Buttons.js";
-import { SectionHeading,HighlightedText,Subheading } from "components/misc/Headings.js";
-import tw,{styled} from "twin.macro";
-import  {Container,Containerbgcolor}   from "components/misc/Layouts.js";
-import {SectionDescription} from "components/misc/Typography.js"
-
-
+import { PrimaryButton } from "components/misc/Buttons.js";
+import {
+  SectionHeading,
+  HighlightedText,
+  Subheading,
+} from "components/misc/Headings.js";
+import tw, { styled } from "twin.macro";
+import {
+  Container,
+  Containerbgcolor,
+  NewContainer,
+} from "components/misc/Layouts.js";
+import { SectionDescription } from "components/misc/Typography.js";
 
 const Rightimg = tw.img`md:(h-10/12)  w-full h-4/12 hover:scale-110 duration-500  `;
-const add="RoundedFullAnimationBgGreen"
+const add = "RoundedFullAnimationBgGreen";
 
 export default ({
-  btnlook=add,
-  bgcolor="sitebgcolor",
-  itemsshow="ItemsInPhoneAndWindow",
-  insideitemshow="ItemscenterColWidthhalf",
-  insidehide="Itemshideonmovileview",
-  sectiondiscript="sectiondecriptioncolor",
+  btnlook = add,
+  responsive = "responsive",
+  bgcolor = "tan",
+  flex = "itemscol",
+  width = "onebytwo",
+  sheightmd = "screen",
+  fheightmd = "full",
+  flexdirection = "itemscenter",
+  overflow = "overflowhide",
+  displayhide = "displayhide",
+  displayblock = "displayblockmd",
+  sectiondiscript = "sectiondecriptioncolor",
 
-    
   heading = (
     <>
       Run your Entire <HighlightedText>Business</HighlightedText> in one Place
@@ -43,30 +54,47 @@ export default ({
   ),
   primaryButtonUrl = "https://google.com",
   primaryButtonText = "Get Started",
-
 }) => {
   return (
     <>
-      
-      <Container Container={itemsshow}>
-        <Container Container={insideitemshow}>
+      <NewContainer
+        NCflexdirection={flexdirection}
+        NCresponsive={responsive}
+        NCbgcolor={bgcolor}
+      >
+        <NewContainer
+          NCwidthmd={width}
+          NCheightmd={sheightmd}
+          NCheight={width}
+          NCflex={flex}
+          NCflexdirection={flexdirection}
+          NCbgcolor={bgcolor}
+        >
           <SectionHeading>{heading}</SectionHeading>
-          <SectionDescription SectionDescription={sectiondiscript}>{description1}</SectionDescription>
-          <SectionDescription SectionDescription={sectiondiscript}>{description2}</SectionDescription>
-          <PrimaryButton
-            as="a"
-            href={primaryButtonUrl}
-            Rounded={btnlook}
-          >
+          <SectionDescription SectionDescription={sectiondiscript}>
+            {description1}
+          </SectionDescription>
+          <SectionDescription SectionDescription={sectiondiscript}>
+            {description2}
+          </SectionDescription>
+          <PrimaryButton as="a" href={primaryButtonUrl} Rounded={btnlook}>
             {primaryButtonText}
             {/* <Icone src={ProfileImageCLM}/>
             <Icone src={ProfileImageRasikLoyalty}/>  */}
           </PrimaryButton>
-        </Container>
-        <Container Container={insidehide}  >
+        </NewContainer>
+        <NewContainer
+          NCflexdirection={flexdirection}
+          NCoverflow={overflow}
+          NCwidthmd={width}
+          NCheightmd={fheightmd}
+          NCdisplayhide={displayhide}
+          NCdisplayblock={displayblock}
+          NCbgcolor={bgcolor}
+        >
           <Rightimg src="https://cdn.dribbble.com/userupload/12468591/file/original-4c59268356fb18e647e1e0847ba82d14.png?resize=1024x768&vertical=center" />
-        </Container >
-      </Container>
+        </NewContainer>
+      </NewContainer>
     </>
   );
 };
