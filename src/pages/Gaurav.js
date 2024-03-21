@@ -97,7 +97,7 @@ export default ({
 }) => {
   return (
     <>
-      <Containerbgcolor Containerbgcolor={bgcolor}>
+      
         {/* <AnimationRevealPage> */}
         {/* <Hero>
         
@@ -129,25 +129,15 @@ export default ({
 
         {/* <Testimonial /> */}
         <Blog />
-        <NewContainer
-          NCwidth={"full"}
-          NCheightmd={"screen"}
-          NCheight={"screenhalf"}
-          NCbgcolor={"Primary"}
-          NCflexdirection={"itemscenter"}
-        >
-          <NewContainer
-            NCwidth={"onebytwo"}
-            NCheight={"onebytwo"}
-            NCbgcolor={"tan"}
-            
-          ></NewContainer>
+        
+        <NewContainer NCbgcolor={"black"} NCwidth={"full"} NCheight={"screen"} NCflexdirection={"itemscenter"} >
+        <NewContainer NCbgcolor={"tan"} NCwidth={"screenhalf"} NCheight={"screenhalf"} NCflexdirection={"itemscenter"}>hello</NewContainer>
         </NewContainer>
         <Footer />
         {/* <ThreeColWithSideImage/> */}
 
         {/* </AnimationRevealPage> */}
-      </Containerbgcolor>
+      
     </>
   );
 };

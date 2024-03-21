@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import React, { useEffect, useState } from "react";
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
-
+import { NewContainer } from "components/misc/Layouts.js";
 import logo from "../../images/logo.svg";
 import pnlogo from "../../images/pnlogo.svg";
 
@@ -14,7 +14,7 @@ import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 const Header = tw.header`
   flex justify-between items-center bg-sitecolor-500 w-full 
  pr-8
-`; //chenge bg color 22-2-24, 
+`; //chenge bg color 22-2-24,
 
 export const NavLinks = tw.div`inline-block `;
 
@@ -40,7 +40,7 @@ export const LogoLink = styled(NavLink)`
   }
 `;
 
-export let MobileNavLinksContainer = tw.nav`flex flex-1 items-center justify-between  `;//chenge const to let 24-2-24
+export let MobileNavLinksContainer = tw.nav`flex flex-1 items-center justify-between  `; //chenge const to let 24-2-24
 export const NavToggle = tw.button`
   lg:hidden z-20 focus:outline-none hocus:text-sitecolor-900 transition duration-300
 `;
@@ -84,11 +84,11 @@ export default ({
       <NavLink href="/contactus">Contact Us</NavLink>
     </NavLinks>,
   ];
-  
+
   const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
   const collapseBreakpointCss =
-  collapseBreakPointCssMap[collapseBreakpointClass];
-  
+    collapseBreakPointCssMap[collapseBreakpointClass];
+
   const defaultLogoLink = (
     <LogoLink href="/">
       <img src={pnlogo} alt="logo" />
@@ -104,26 +104,26 @@ export default ({
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    if(close>50 && temp===0){
-      
-       toggleNavbar()
-       setTemp(temp+1)
-       
-      
+    if (close > 50 && temp === 0) {
+      toggleNavbar();
+      setTemp(temp + 1);
     }
-    return()=>{
+    return () => {
       window.removeEventListener("scroll", handleScroll, { passive: true });
-    }
-
+    };
   }, [close]);
 
   logoLink = logoLink || defaultLogoLink;
   links = links || defaultLinks;
 
-  
-
   return (
-    <Header className={className || "header-ligh"}>
+    <NewContainer
+      NCflexdirection={"itemscenter"}
+      NCwidth={"full"}
+      NCpadding={"paddingright4"}
+      NCbgcolor={"nav"}
+      className={className || "heade-light"}
+    >
       <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
         {logoLink}
         {links}
@@ -137,12 +137,14 @@ export default ({
           initial={{ x: "150%", display: "none" }}
           animate={animation}
           css={collapseBreakpointCss.mobileNavLinks}
-         
         >
           {links}
         </MobileNavLinks>
         <NavToggle
-          onClick={()=>{toggleNavbar(); setTemp(0)}} 
+          onClick={() => {
+            toggleNavbar();
+            setTemp(0);
+          }}
           className={showNavLinks ? "open" : "closed"}
         >
           {showNavLinks ? (
@@ -152,7 +154,7 @@ export default ({
           )}
         </NavToggle>
       </MobileNavLinksContainer>
-    </Header>
+    </NewContainer>
   );
 };
 

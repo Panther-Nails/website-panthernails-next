@@ -19,7 +19,7 @@ export const Container = styled.div((props) => [
     : props.Container === "ItemsInPhoneAndWindow"
     ? tw` flex-col md:flex-row lg:h-full `
     : props.Container === "ItemsInPhoneAndWindowhalf"
-    ? tw`lg:(h-screen w-full mt-0)  mt-4 h-1/2  flex-col   `
+    ? tw`lg:(h-screen w-full mt-0)  mt-4 h-1/2  flex-col `
     : props.Container === "StickContainerontop"
     ? tw` md:(h-screen w-1/2 ) z-30 sticky top-0   `
     : tw``,
@@ -65,7 +65,7 @@ export const Container90 = styled.div((props) => [
 
 // export const Container = tw.div`relative xl:(w-full flex items-center justify-center) overflow-hidden p-4 bg-sitecolor-100`;//add overflow hidden at 21-2-24, add paddinf-4 at 8-3-24
 // export const Container90= tw.div`md:w-11/12 px-12 -mt-32 text-center bg-white p-8 rounded items-center justify-center`;
-export const ContentWithPaddingXl = tw.div`max-w-screen-xl 2xl:(w-full  h-fourfifth) mx-auto py-20 lg:py-4`;
+export const ContentWithPaddingXl = tw.div`max-w-screen-xl  mx-auto py-20 lg:py-4`;
 export const ContentWithPaddingLg = tw.div`max-w-screen-lg mx-auto py-20 lg:py-24`;
 export const ContentWithVerticalPadding = tw.div`py-20 lg:py-24`;
 export const Content2Xl = tw.div`max-w-screen-2xl mx-auto`;
@@ -102,7 +102,7 @@ export const Content2Xl = tw.div`max-w-screen-2xl mx-auto`;
 //   : tw``,
 // ]);
 
-export const NewContainer = styled.div((props) => [
+export const NewContainer  = styled.div((props) => [
   tw`relative `,
 
   props.NCwidth === "full"
@@ -244,56 +244,56 @@ export const NewContainer = styled.div((props) => [
     : props.NCmargin === "margin~right4"
     ? tw`  -ml-4 `
     : props.NCmargin === "margin~x1"
-    ? tw`  px-1 `
+    ? tw`  mx-1 `
     : props.NCmargin === "margin~x2"
-    ? tw`  px-2 `
+    ? tw`  mx-2 `
     : props.NCmargin === "margin~x4"
-    ? tw`  px-4 `
+    ? tw`  mx-4 `
     : props.NCmargin === "margin~x1"
-    ? tw` py-1`
+    ? tw` my-1`
     : props.NCmargin === "margin~x2"
-    ? tw` py-2 `
+    ? tw` my-2 `
     : props.NCmargin === "margin~x4"
-    ? tw` py-4 `
+    ? tw` my-4 `
     : props.NCmargin === "margin~top~sm"
-    ? tw` pt-12`
+    ? tw` mt-12`
     : props.NCmargin === "margin~top~md"
-    ? tw`  pt-32 `
+    ? tw`  mt-32 `
     : props.NCmargin === "margin~top~lg"
-    ? tw`  pt-64 `
+    ? tw`  mt-64 `
     : props.NCmargin === "margin~top~xl"
-    ? tw`  pt-80 `
+    ? tw`  mt-80 `
     : props.NCmargin === "margin~bottom~sm"
-    ? tw` pb-12`
-    : props.NCmargin === "margin~bottom~md"
-    ? tw`  pb-32 `
+    ? tw` -mt-12`
+    : props.NCmargin === "marginbottommd"
+    ? tw`  -mt-32 `
     : props.NCmargin === "margin~bottom~lg"
-    ? tw`  pb-64 `
+    ? tw`  -mt-64 `
     : props.NCmargin === "margin~bottom~xl"
-    ? tw`  pb-80 `
+    ? tw`  -mt-80 `
     : props.NCmargin === "margin~right~sm"
-    ? tw` pr-12`
+    ? tw` -ml-12`
     : props.NCmargin === "margin~right~md"
-    ? tw`  pr-32 `
+    ? tw`  -ml-32 `
     : props.NCmargin === "margin~right~lg"
-    ? tw`  pr-64 `
+    ? tw`  -ml-64 `
     : props.NCmargin === "margin~right~xl"
-    ? tw`  pr-80 `
+    ? tw`  -ml-80 `
     : props.NCmargin === "margin~left~sm"
-    ? tw` pl-12`
+    ? tw` ml-12`
     : props.NCmargin === "margin~left~md"
-    ? tw`  pl-32 `
+    ? tw`  ml-32 `
     : props.NCmargin === "margin~left~lg"
-    ? tw`  pl-64 `
+    ? tw`  ml-64 `
     : props.NCmargin === "margin~left~xl"
-    ? tw`  pl-80 `
+    ? tw`  ml-80 `
     : tw``,
 
-  props.NCpadding === "padding~1"
+  props.NCpadding === "padding1"
     ? tw` p-1`
-    : props.NCpadding === "padding~2"
+    : props.NCpadding === "padding2"
     ? tw`  p-2 `
-    : props.NCpadding === "padding~4"
+    : props.NCpadding === "padding4"
     ? tw`  p-4 `
     : props.NCpadding === "padding~top1"
     ? tw` pt-1`
@@ -317,7 +317,7 @@ export const NewContainer = styled.div((props) => [
     ? tw` pr-1`
     : props.NCpadding === "padding~right2"
     ? tw`  pr-2 `
-    : props.NCpadding === "padding~right4"
+    : props.NCpadding === "paddingright4"
     ? tw`  pr-4 `
     : props.NCpadding === "padding~x1"
     ? tw`  mx-1 `
@@ -369,8 +369,14 @@ export const NewContainer = styled.div((props) => [
     ? tw` bg-red-700`
     : props.NCbgcolor === "transparent"
     ? tw` bg-transparent `
+    : props.NCbgcolor === "white"
+    ? tw` bg-white `
+    : props.NCbgcolor === "black"
+    ? tw` bg-black `
     : props.NCbgcolor === "tan"
     ? tw` bg-sitecolor-100 `
+    : props.NCbgcolor === "nav"
+    ? tw` bg-sitecolor-500 `
     : tw``,
 
   props.NCdisplayhide === "displayhide"
@@ -415,6 +421,14 @@ export const NewContainer = styled.div((props) => [
     ? tw` flex  items-center justify-between `
     : tw``,
 
+  props.NCflexwrap === "wrap"
+    ? tw` flex flex-wrap`
+    : props.NCflexwrap === "wrapreverse"
+    ? tw` flex flex-wrap-reverse`
+    : props.NCflexwrap === "nowrap"
+    ? tw` flex flex-nowrap`
+    : tw``,
+
   props.NCflexgap === "flexgapsm"
     ? tw` gap-2`
     : props.NCflexgap === "flexgapmd"
@@ -437,6 +451,8 @@ export const NewContainer = styled.div((props) => [
 
   props.NCrounded === "full"
     ? tw`rounded-full`
+    : props.NCrounded === "rounded"
+    ? tw`rounded`
     : props.NCrounded === "5"
     ? tw`rounded-5xl`
     : props.NCrounded === "4"
@@ -462,7 +478,7 @@ export const NewContainer = styled.div((props) => [
     : props.NCbordercolor === "secondary"
     ? tw` border-blue-300 `
     : props.NCbordercolor === "random"
-    ? tw` border-sitecolor-500 `
+    ? tw` border-sitecolor-900 `
     : tw``,
 
   props.NCzindex === "zindex0"

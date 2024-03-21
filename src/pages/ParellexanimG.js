@@ -24,6 +24,8 @@ export default ({
   chailditems = "ItemsInPhoneAndWindowhalf",
   heading = "headingtext",
   descript = "descriptioncolor",
+
+  sectionheadingtext = "Products",
   headingtext = "Rasik Loyalty", //chenges in headings Questions to product Name
   description = "we have bunch of features that help you to establish the pure relation with influencers and you can connect anytime with influencers using rasik loyalty app features. ",
 }) => {
@@ -96,28 +98,48 @@ export default ({
   }
 
   return (
-    <>
+    <NewContainer NCflex={"itemscol"} NCbgcolor={"tan"}>
       {/* <Main><Heading>upper page</Heading></Main> */}
-      <SectionHeading>Products</SectionHeading>
-      <NewContainer  NCresponsive={"responsive"} >
-        <Container Container={stickycontainer}>
+      <SectionHeading>{sectionheadingtext}</SectionHeading>
+      <NewContainer NCresponsive={"responsive"}>
+        <NewContainer
+          NCheightmd={"screen"}
+          NCwidthmd={"onebytwo"}
+          NCsticky={"stickontop"}
+          NCflexdirection={"itemscenter"}
+          NCbgcolor={"tan"}
+          NCzindex={"zindex3"}
+        >
           {/* <Heading>heading</Heading> */}
           {/* <Images src={imgpath}></Images> */}
 
           {Svg}
-        </Container>
-        <SimpleContainer SimpleContainer={halfwidth}>
+        </NewContainer>
+        <NewContainer
+          NCwidthmd={"onebytwo"}
+          NCwidth={"full"}
+          NCbgcolor={"tan"}
+          NCzindex={"zindex0"}
+        >
           {itemcontant.map((info, index) => (
-            <Container Container={chailditems} ref={elementRef}>
+            <NewContainer
+              ref={elementRef}
+              NCheightlg={"screen"}
+              NCflex={"itemscol"}
+              NCheight={"onebytwo"}
+              NCwidthlg={"full"}
+              NCflexdirection={"itemscenter"}
+              NCbgcolor={"tan"}
+            >
               <Heading Heading={heading}>{info.headingtext}</Heading>
               <Description Description={descript}>
                 {" "}
                 {info.discription}{" "}
               </Description>
-            </Container>
+            </NewContainer>
           ))}
-        </SimpleContainer>
+        </NewContainer>
       </NewContainer>
-    </>
+    </NewContainer>
   );
 };

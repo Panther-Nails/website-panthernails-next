@@ -6,7 +6,7 @@ import { SectionHeading, Subheading as SubheadingBase,Heading } from "components
 import { SectionDescription,Description } from "components/misc/Typography.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 
-import { Container, ContentWithPaddingXl,SimpleContainer } from "components/misc/Layouts.js";
+import { Container, ContentWithPaddingXl,NewContainer,SimpleContainer } from "components/misc/Layouts.js";
 import { ReactComponent as SvgDecoratorBlob } from "images/svg-decorator-blob-6.svg";
 
 import ProductImageCLM from "images/ProductCLM.png";
@@ -83,17 +83,17 @@ export default ({
   ];
       console.log('colors',highlightGradientsCss);
   return (
-    <Container Container={itemsshow}  >
-      <Container Container={itemcol}>
-        <Container Container={itemcol}>
-          <SectionHeading>{heading}</SectionHeading>
-          {description && <SectionDescription >{description}</SectionDescription>}
-        </Container>
-        <Container  Container={itemsshow}>
+    <  >
+      <NewContainer NCflex={"itemscol"} NCflexdirection={"itemscenter"} NCflexgap={"flexgapmd"} NCbgcolor={"tan"}>
+          <NewContainer NCflex={"itemscol"} NCflexdirection={"itemscenter"} NCflexgap={"flexgapmd"}>
+            <SectionHeading>{heading}</SectionHeading>
+            {description && <SectionDescription >{description}</SectionDescription>}
+          </NewContainer>
+        <NewContainer  NCresponsive={"responsive"} NCflexgap={"flexgapmd"} NCpadding={"padding2"}>
           
           {plans.map((plan, index) => (
 
-            <Container  >
+            <NewContainer  NCflexdirection={"itemscenter"} NCoverflow={"overflowhide"} >
              
               
               <Plan  key={index} featured={plan.featured}>
@@ -102,33 +102,33 @@ export default ({
                   
                 {index % 2 ===0?<div css={highlightGradientsCss[0]} tw="rounded-t-lg absolute top-0 inset-x-0 h-2 "></div>:<div css={highlightGradientsCss[1]} tw="rounded-t-lg absolute top-0 inset-x-0 h-2 " ></div>}
 
-                <SimpleContainer SimpleContainer={simplecontcol}>
+                <NewContainer NCwidth={"full"} NCheight={"full"} NCflexdirection={"itemscenter" } NCflex={"itemscol"}>
                   <Heading Heading={headingstyle} >{plan.name}</Heading>
                   <span ><Icons src={plan.img}></Icons></span>
 
-                </SimpleContainer >
-                <SimpleContainer tw="h-full" SimpleContainer={simplecontcol}>
+                </NewContainer >
+                <NewContainer NCwidth={"full"} NCheight={"full"} NCflexdirection={"itemscenter" } NCflex={"itemscol"}>
                  <span><Image src={plan.mainFeature}></Image></span>
                   
                   
-                </SimpleContainer>
+                </NewContainer >
                 
-                 <SimpleContainer SimpleContainer={simplecontcol}>
+                 <NewContainer NCwidth={"full"} NCheight={"full"} NCflexdirection={"itemscenter" } NCflex={"itemscol"}>
                     <Description Description={descriptionstyle}>{plan.productinfo}</Description>
                 
                     <BuyNowButton Rounded={btn} css={!plan.featured && highlightGradientsCss[index]}>{primaryButtonText}</BuyNowButton>
                  
-                 </SimpleContainer>
+                 </NewContainer >
 
-                <SimpleContainer SimpleContainer={simplecontcol}>
+                <NewContainer NCwidth={"full"} NCheight={"full"} NCflexdirection={"itemscenter" } NCflex={"itemscol"}>
                   <span className="img"><Icons src={plan.img}></Icons></span>
-                </SimpleContainer>
+                </NewContainer >
 
               </Plan>
-            </Container>
+            </NewContainer>
           ))}
-        </Container>
-      </Container>
-    </Container>
+        </NewContainer>
+      </NewContainer>
+    </>
   );
 };

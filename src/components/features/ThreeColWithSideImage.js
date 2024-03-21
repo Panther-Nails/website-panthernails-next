@@ -5,6 +5,7 @@ import tw from "twin.macro";
 import { css } from "styled-components/macro";
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
+import { NewContainer } from "components/misc/Layouts.js";
 
 import defaultCardImage from "images/shield-icon.svg";
 
@@ -20,10 +21,10 @@ import SimpleIconImage from "images/simple-icon.svg";
 //self created effect add
 const Hovereffect=tw.div`hover:(scale-102 duration-500 shadow-2xl rounded-full)`
 
-const Container = tw.div`relative bg-sitecolor-100  overflow-hidden`;//chenge no bg to bg gray, in 14-2-24
+
 
 const ThreeColumnContainer = styled.div`
-  ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-0`}`; //chenge  md:py-24 to py-0 26-02-24
+  ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto `}`; //chenge  md:py-24 to py-0 26-02-24
 
 const Subheading = tw(SubheadingBase)`mb-4 text-sitecolor-300 `;
 const Heading = tw(SectionHeading)`w-full text-sitecolor-300`;
@@ -93,7 +94,7 @@ export default ({
   if (!cards) cards = defaultCards;
 
   return (
-    <Container>
+    <NewContainer NCoverflow={"overflowhide"} NCbgcolor={"tan"}>
       <ThreeColumnContainer>
         {subheading && <Subheading>{subheading}</Subheading>}
         <Heading>{heading}</Heading>
@@ -120,6 +121,6 @@ export default ({
         ))}
       </ThreeColumnContainer>
       <DecoratorBlob />
-    </Container>
+    </NewContainer>
   );
 };
