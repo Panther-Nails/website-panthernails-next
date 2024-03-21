@@ -3,42 +3,39 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import HeaderBase, { NavLinks, NavLink } from "components/headers/light.js";
-import { SectionHeading } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { PrimaryThemeButton, PrimaryButton } from "components/misc/Buttons.js";
-import { Container, Column } from "components/misc/Layouts.js";
-import { Heading1 } from "components/misc/Typography.js";
-import { ReactComponent as QuotesLeftIconBase } from "images/quotes-l.svg";
-import { ReactComponent as SvgDecoratorBlob1 } from "images/dot-pattern.svg";
-import { Background } from "react-parallax";
+import { Container, Column, Image } from "components/misc/Layouts.js";
+import { Heading } from "components/misc/Typography.js";
 import AnimatedHeading from "components/durgesh/AnimatedHeading";
+import { useEffect, useState } from "react";
+import { customAnimations } from "tailwind.config";
 
 const Header = tw(HeaderBase)` `;
-const Row = tw.div`flex flex-col lg:flex-row justify-between items-center  lg:pt-5 max-w-screen-2xl mx-auto sm:px-8`;
+const Row = tw.div``;
 
 const Description = tw(
   SectionDescription
 )`mt-4 lg:text-base text-gray-700 max-w-lg`;
-const ImageColumn = tw(Column)`ml-auto lg:mr-0 relative mt-16 lg:mt-0 lg:ml-32`;
+const ImageColumn = tw(Column)` `;
 const ImageContainer = tw.div`relative z-40 transform xl:-translate-x-24 xl:-translate-y-16`;
 
-const Image = styled.img`
-  // max-width: 100%;
-  // width: 24rem;
-  // border-radius: 0.5rem;
-  // position: relative;
-  // z-index: 20;
-  // height: auto;
-  // transition: transform 0.3s ease-in-out;
-  // &:hover {
-  //   transform: scale(1.05) rotateX(5deg) rotateY(5deg);
-  //   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
-  // }
-`;
+// const Image = styled.img`
+//   // max-width: 100%;
+//   // width: 24rem;
+//   // border-radius: 0.5rem;
+//   // position: relative;
+//   // z-index: 20;
+//   // height: auto;
+//   // transition: transform 0.3s ease-in-out;
+//   // &:hover {
+//   //   transform: scale(1.05) rotateX(5deg) rotateY(5deg);
+//   //   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+//   // }
+// `;
 
 export default ({
-  containerCss = tw`pt-0 px-8 h-screen`,
-  heading = "Better, Faster and Cheaper Cloud.",
+  message = "Elevating Engagement, Empowering Growth for",
   description = "At Panther Nails , we understand the importance of building strong relationships with your customers and keeping them engaged. That's why we offer a range of innovative solutions to help you drive loyalty and boost sales.",
   imageSrc = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
   imageDecoratorBlob = true,
@@ -56,6 +53,7 @@ export default ({
     customerName: "Charlotte Hale",
     customerCompany: "Delos Inc.",
   },
+
   //Add background color
   bgColor = tw``,
   links = [
@@ -65,10 +63,41 @@ export default ({
     { title: "Blog", href: "/blog" },
     { title: "Contact Us", href: "/contactus" },
   ],
+  headingTextsAPI = [" Your Business", "Loyalty", "HRM"],
+  backgroundImage = "",
 }) => {
+  const [headingText, setHeadingText] = useState("Your Business");
+
+  useEffect(() => {
+    const highlightText = setInterval(() => {
+      const headingTexts = headingTextsAPI;
+      const nextIndex =
+        (headingTexts.indexOf(headingText) + 1) % headingTexts.length;
+
+      setHeadingText(headingTexts[nextIndex]);
+    }, 2000);
+
+    return () => clearInterval(highlightText);
+  }, [headingText]);
+
+  const [text, setText] = useState("");
+  // const message = heading; // Define your message here
+
+  useEffect(() => {
+    let currentIndex = 0;
+    const interval = setInterval(() => {
+      setText(message.substring(0, currentIndex + 1));
+      currentIndex++;
+      if (currentIndex === message.length) {
+        clearInterval(interval);
+      }
+    }, 100);
+    return () => clearInterval(interval);
+  }, [message]);
+
   return (
     <>
-      <Container css={containerCss}>
+      <Container tw="pt-0 px-8 h-screen" imageSrc={backgroundImage}>
         {/* <BackgroundForHeader> */}
         <Header
           css={bgColor}
@@ -84,50 +113,28 @@ export default ({
           }
         />
 
-        {/* <ContentWithVerticalPadding> */}
-        <Row tw="mt-16">
-          <Column>
+        <Container tw="flex flex-col lg:flex-row justify-between items-center  lg:pt-5 max-w-screen-2xl mx-auto sm:px-8">
+          <Column tw=" pt-16">
             <AnimatedHeading>
-              <Heading1 tw="text-left" bgBlack="bg-black">
-                {heading} 
-              </Heading1>
+              <Heading tw="text-left">
+                {text}
+                <Heading tw="text-left text-headingHighlightTextColor  duration-1000 animate-pulse ease-out">
+                  {headingText}
+                </Heading>
+              </Heading>
             </AnimatedHeading>
             <Description>{description}</Description>
             <PrimaryThemeButton tw="float-left" href={primaryButtonUrl}>
               {primaryButtonText}
             </PrimaryThemeButton>
-            {/* <FeatureList>
-                {features.map((feature, index) => (
-                  <Feature key={index}>
-                    <FeatureIcon />
-                    <FeatureText>{feature}</FeatureText>
-                  </Feature>
-                ))}
-              </FeatureList> */}
           </Column>
           <ImageColumn>
-            <ImageContainer>
-              <Image src={imageSrc} />
-              {/* {imageDecoratorBlob && <ImageDecoratorBlob />} */}
-              {/* <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br> */}
-
-              {/* <Testimonial>
-                  <QuotesLeftIcon />
-                  <Quote>{testimonial.quote}</Quote> */}
-              {/* <CustomerName>{testimonial.customerName}</CustomerName>
-                  <CustomerCompany>{testimonial.customerCompany}</CustomerCompany> */}
-              {/* </Testimonial> */}
-            </ImageContainer>
-            {/* <Offsetbackground /> */}
+            {/* <ImageContainer tw="bg-green-700"> */}
+            <Image src={imageSrc} tw="float-right h-128 w-128" />
+            {/* </ImageContainer> */}
           </ImageColumn>
-        </Row>
-        {/* </ContentWithVerticalPadding> */}
+        </Container>
       </Container>
-      {/* </BackgroundForHeader> */}
     </>
   );
 };

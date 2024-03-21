@@ -19,7 +19,7 @@ import {
 import { PrimaryButton } from "@fluentui/react";
 const Container = tw(
   ContainerBase
-)`my-8 lg:my-10  text-gray-100 -mx-8 px-8 bg-blue-300 mr-0 ml-0`;
+)`my-8 lg:my-10  text-gray-100 -mx-8 px-8 bg-statContainerPrimary mr-0 ml-0`;
 const HeadingContainer = tw.div``;
 // const Heading = tw(
 //   SectionHeading
@@ -58,7 +58,7 @@ export default ({
   ],
 }) => {
   const [animatedStats, setAnimatedStats] = useState([]);
-  const [ref, inView] = useInView({ triggerOnce: true }); // tracking the component is in view or not
+  const [ref, inView] = useInView({ triggerOnce: true });
 
   useEffect(() => {
     setAnimatedStats(stats.map((stat) => ({ ...stat, displayValue: 0 })));
@@ -77,25 +77,25 @@ export default ({
     <Container ref={ref}>
       {/* <PrimaryButton>pricing</PrimaryButton> */}
       {/* Attach the ref to the Container */}
-      <ContentWithPaddingForHomePage>
-        <HeadingContainer>
-          {subheading && <Subheading>{subheading}</Subheading>}
-          <Heading>{heading}</Heading>
-          {description && <Subheading>{description}</Subheading>}
-        </HeadingContainer>
-        <StatsContainer>
-          {animatedStats.map((stat, index) => (
-            <Stats key={index}>
-              <StatValue>
-                {animatedProps.displayValue.interpolate((val) =>
-                  Math.round((val / totalValue) * stat.value)
-                )}
-              </StatValue>
-              <StatKey>{stat.key}</StatKey>
-            </Stats>
-          ))}
-        </StatsContainer>
-      </ContentWithPaddingForHomePage>
+      {/* <ContentWithPaddingForHomePage> */}
+      <HeadingContainer>
+        {subheading && <Subheading>{subheading}</Subheading>}
+        <Heading>{heading}</Heading>
+        {description && <Subheading>{description}</Subheading>}
+      </HeadingContainer>
+      <StatsContainer>
+        {animatedStats.map((stat, index) => (
+          <Stats key={index}>
+            <StatValue>
+              {animatedProps.displayValue.interpolate((val) =>
+                Math.round((val / totalValue) * stat.value)
+              )}
+            </StatValue>
+            <StatKey>{stat.key}</StatKey>
+          </Stats>
+        ))}
+      </StatsContainer>
+      {/* </ContentWithPaddingForHomePage> */}
     </Container>
   );
 };

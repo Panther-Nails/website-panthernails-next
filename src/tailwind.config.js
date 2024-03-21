@@ -13,7 +13,6 @@ module.exports = {
     },
     colors: {
       transparent: "transparent",
-
       black: "#000",
       white: "#fff",
       clm: "#1E90FF",
@@ -23,6 +22,18 @@ module.exports = {
         300: "#69264F",
         400: "#ff53be",
       },
+
+      colorPrimary: "#e2e8f0",
+      colorOnPrimary: "#000",
+      cardPrimary: "#fff",
+      cardOnPrimary: "",
+      headerPrimary: "#e2e8f0",
+      headerOnPrimary: "",
+      headingHighlightTextColor: "#0067cc",
+      statContainerPrimary: "",
+      gradientStartColor: "#68d391",
+      gradientEndColor: "#4299e1",
+      navbarLinkHoverColor: "#4299e1",
 
       // primary: {
       //   100: '#a273ff',
@@ -209,6 +220,7 @@ module.exports = {
       96: "24rem",
       128: "32rem",
       144: "36rem",
+      cardGridWidth: "108rem",
     },
     backgroundColor: (theme) => theme("colors"),
     backgroundPosition: {
@@ -266,6 +278,7 @@ module.exports = {
       raised: "0 20px 50px rgba(0,0,0, 0.075)",
       none: "none",
     },
+
     container: {},
     cursor: {
       auto: "auto",
@@ -727,10 +740,20 @@ module.exports = {
       2: "rounded-2xl",
       1: "rounded-xl`",
     },
-    scrollBar: {
-      hide: `::-webkit-scrollbar {
-        display: none;
-      }`,
+  },
+  customStyel: {
+    durgeshScrollHide: `::-webkit-scrollbar {
+      display: none;
+    }`,
+  },
+  customAnimations: {
+    exampleStyle: {
+      animationName: "floating",
+      animationduration: "3s",
+      animationiterationcount: "infinite",
+      animationtimingfunction: "ease-in-out",
+      marginleft: "30px",
+      margintop: "5px",
     },
   },
 

@@ -35,7 +35,7 @@ const AuthorProfile = tw.div`pt-1 font-medium`;
 
 const PostContainer = styled.div`
   ${tw`relative z-20 mt-10 sm:pt-3 pr-3 w-full sm:w-1/2 lg:w-1/3 max-w-sm mx-auto sm:max-w-none sm:mx-0`}
- 
+
   &:hover {
     animation: cardHoverAnimation 0.9s ease-in;
   }
@@ -45,7 +45,7 @@ const PostContainer = styled.div`
     }
     100% {
       transform: scale(1);
-    }    
+    }
   }
   ${(props) =>
     props.featured &&

@@ -4,7 +4,11 @@ import { css } from "styled-components/macro";
 import Slider from "react-slick";
 
 export const Container = styled.div((props) => [
-  tw`relative items-center justify-center text-center pt-8 bg-gray-300`,
+  `background-image: url("${props.imageSrc}");`,
+  props.imageContain ? tw`bg-contain bg-no-repeat` : tw`bg-cover`,
+  props.imageShadow ? tw`shadow` : tw`shadow-none`,
+
+  tw`relative  items-center justify-center text-center bg-colorPrimary`,
   props.backgroundColor === "lightblue" ? tw`bg-red-500` : tw``,
 ]);
 
@@ -23,14 +27,14 @@ export const StickyContainer = tw.div`relative pt-0  top-0 -z-50 lg:sticky`;
 export const Column = tw.div`mr-auto lg:mr-0 max-w-lg lg:max-w-xl xl:max-w-2xl ml-0`;
 
 export const CardGrid = styled.div`
-  ${tw`flex flex-row gap-6 py-5 w-screen px-16 justify-center text-left`}
+  ${tw`flex sm:w-cardGridWidth gap-6 py-5  lg:w-screen px-16 justify-center text-left lg:flex-wrap lg:flex-row  overflow-x-auto `}
   ::-webkit-scrollbar {
     display: none;
   }
 `;
 
 export const Card = styled.div((props) => [
-  tw`flex flex-col items-start bg-gray-100 p-4 pb-8 shadow-lg mb-4 sm:flex-shrink rounded-lg max-w-screen-xl w-72 relative overflow-hidden`,
+  tw`flex w-72 flex-col items-start bg-cardPrimary p-4 pb-8 shadow-lg mb-4  rounded-lg relative overflow-hidden `,
   handleProps(props),
 ]);
 
@@ -43,10 +47,10 @@ export const CardImage = styled.img((props) => [
 
 export const CardContent = tw.div`ml-6 mb-6 mt-3 mr-2`;
 
-export const Image = tw.img`bg-cover h-full w-full`;
+export const Image = styled.img((props) => [tw`bg-cover h-full w-full`]);
 
 export const CardSlider = styled(Slider)`
-  ${tw`mt-16 flex flex-row gap-6 py-5 w-screen  justify-between  text-left px-16`}
+  ${tw`mt-16 flex flex-row gap-6 py-5 w-screen  justify-between  text-left pl-12 pr-12 lg:flex-wrap`}
   .slick-track {
     ${tw`justify-between `}
   }

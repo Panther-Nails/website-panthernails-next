@@ -63,7 +63,7 @@ export default ({
 }) => {
   return (
     <>
-      <Container>
+      <Container tw=" lg:w-screen ">
         <Heading>{heading}</Heading>
         <SectionDescription>{subheading}</SectionDescription>
         <CardGrid>

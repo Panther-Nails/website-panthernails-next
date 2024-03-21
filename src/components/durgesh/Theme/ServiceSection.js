@@ -1,7 +1,7 @@
 import React from "react";
 import tw from "twin.macro";
-
-const Container = tw.div`py-12 bg-gradient-to-b from-gray-100 to-white`;
+import { css } from "styled-components";
+import { CardGrid, Container } from "components/misc/Layouts";
 const InnerContainer = tw.div`container mx-auto`;
 const Title = tw.h2`text-3xl font-semibold text-center mb-6`;
 const Grid = tw.div`grid grid-cols-3 gap-8`;
@@ -18,19 +18,19 @@ export default ({
   ],
 }) => {
   return (
-    <Container >
-      <InnerContainer>
+    <Container>
+      <Container>
         <Title>Our Services</Title>
-        <Grid>
+        <CardGrid>
           {services.map((service, index) => (
-            <ServiceCard key={index}>
+            <Container key={index}>
               <ServiceIcon src={service.iconSrc} alt={service.Name} />
               <ServiceName>{service.Name} </ServiceName>
               <ServiceDescription>{service.description}</ServiceDescription>
-            </ServiceCard>
+            </Container>
           ))}
-        </Grid>
-      </InnerContainer>
+        </CardGrid>
+      </Container>
     </Container>
   );
 };

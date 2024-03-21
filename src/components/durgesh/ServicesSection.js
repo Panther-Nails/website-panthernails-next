@@ -117,28 +117,35 @@ export default ({
   };
 
   //slider from react
-  const [sliderRef, setSliderRef] = useState(null);
   var cardShowSize = null;
   if (cardsData.length >= 4) {
     cardShowSize = 4;
   } else {
     cardShowSize = cardShowSize;
   }
+
+  const [sliderRef, setSliderRef] = useState(null);
   const sliderSettings = {
+    dots: false,
     arrows: false,
     slidesToShow: 4,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
     responsive: [
+      // {
+      //   breakpoint: 1280,
+      //   settings: {
+      //     slidesToShow: 4,
+      //   },
+      // },
+      // {
+      //   breakpoint: 900,
+      //   settings: {
+      //     slidesToShow: 3,
+      //   },
+      // },
       {
-        breakpoint: 1280,
-        settings: {
-          slidesToShow: cardShowSize,
-        },
-      },
-      {
-        breakpoint: 900,
-        settings: {
-          slidesToShow: 3,
-        },
         breakpoint: 600,
         settings: {
           slidesToShow: 1,
@@ -159,6 +166,7 @@ export default ({
       <Heading>{heading}</Heading>
       <Subheading>{subheading}</Subheading>
       <CardSlider ref={setSliderRef} {...sliderSettings}>
+        {/* //ref={setSliderRef} {...sliderSettings} */}
         {cardsData.map((card, index) => (
           <Card rounded={roundedSize}>
             <Container tw="overflow-hidden bg-transparent pt-0 w-full">

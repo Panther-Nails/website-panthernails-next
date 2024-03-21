@@ -26,7 +26,7 @@ export default ({
         "https://wp.salesforce.com/en-in/wp-content/uploads/sites/21/2023/03/pb-hp-product-smb_icon-1.jpg?resize=768,433",
       heading: "Cash Rewards",
       description:
-        "Earn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cards Earn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cardsEarn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cardsEarn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cardsEarn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cardsEarn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cardsEarn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cardsEarn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cardsEarn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cardsEarn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cards.",
+        "Panther Nails helps you offer a wide range of relevant products as gifts to your partners, all with quick delivery services.",
       hoverIndexUrl:
         "https://th.bing.com/th/id/OIP.WY3T4CB1EfeAP5HJIXZ6-wAAAA?pid=ImgDet&w=111&h=212&c=7",
     },
@@ -63,8 +63,6 @@ export default ({
         "https://th.bing.com/th/id/OIP.wVb90AOR14b2FYz35VTK_gAAAA?pid=ImgDet&w=107&h=212&c=7",
     },
   ],
-  heading = "Heading",
-  subheading = "Subheading",
 }) => {
   const [hoverIndex, setHoverIndex] = useState(0);
   const handleCardHover = (index) => {
@@ -73,7 +71,7 @@ export default ({
 
   return (
     <>
-      <Container tw="bg-primary-100 flex justify-evenly">
+      <Container tw=" flex justify-evenly py-16 px-12">
         <Mockup>
           <Screen>
             <Image src={cardsData[hoverIndex].hoverIndexUrl} />
@@ -82,11 +80,12 @@ export default ({
           <Speaker />
           <HomeButton /> */}
         </Mockup>
-        <CardGrid tw="flex flex-wrap lg:w-2/3">
+        <CardGrid tw="flex flex-wrap lg:w-2/3 ">
           {cardsData.map((card, index) => (
             <Card
               onMouseEnter={() => handleCardHover(index)}
-              tw="h-64 w-72 rounded-5xl pt-8 overflow-y-scroll"
+              tw="h-64 w-72 rounded-5xl pt-8 overflow-y-hidden"
+              // style={customStyel.durgeshScrollHide}
             >
               {/* <CardImage src={card.imageUrl} alt="Card Image" /> */}
               <CardContent>
