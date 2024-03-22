@@ -28,6 +28,14 @@ module.exports = {
       colorSecondary: "",
       colorOnSecondary:"",
 
+      colorPrimaryBg:'#F3EEEA',
+      colorPrimarySh:'#776B5D',
+      colorPrimaryH:'#B0926A',
+      colorPrimarySd:'#a0aec0',
+      colorPrimaryD:'#776B5D',
+      colorPrimaryHt:'#B0926A',
+      
+
       // primary: {
       //   100: '#a273ff',
       //   200: '#935bff',
@@ -346,6 +354,7 @@ module.exports = {
       '4xl': '2.25rem',
       '5xl': '3rem',
       '6xl': '4rem',
+      '7xl': '5rem',
     },
     fontWeight: {
       hairline: '100',

@@ -15,15 +15,14 @@ import {
   HighlightedText,
   Subheading,
   Heading,
+  NewHeadings,
 } from "components/misc/Headings.js";
-import { SectionDescription, Description } from "components/misc/Typography.js";
 import {
-  Container,
-  ContentWithPaddingXl,
-  SimpleContainer,
-  Container90,
-  NewContainer,
-} from "components/misc/Layouts.js";
+  SectionDescription,
+  Description,
+  NewDescription,
+} from "components/misc/Typography.js";
+import { NewContainer } from "components/misc/Layouts.js";
 
 let Svg = <Demo1 />;
 
@@ -106,31 +105,73 @@ export default ({
         NCbgcolor={"tan"}
         NCflexgap={"flexgapmd"}
       >
-        <SectionHeading>{sectionheading}</SectionHeading>
-        
-          <SectionDescription>{description}</SectionDescription>
-        
+        <NewHeadings
+          NHeading={"headingsizemd"}
+          NHtextcolor={"colorPrimarySh"}
+          NHtextposition={"center"}
+          NHpadding={"padding4"}
+        >
+          {sectionheading}
+        </NewHeadings>
+
+        <NewDescription
+          NDescription={"dsizemd"}
+          NDwidth={"equalto85"}
+          NDtextcolor={"colorPrimarySd"}
+          NDtextposition={"center"}
+          NDpadding={"paddingy1"}
+        >
+          {description}
+        </NewDescription>
+
         {/* <Heading>heading</Heading> */}
         {/* <Left>
 
         <Heading>Services</Heading>
           
         </Left> */}
-        <NewContainer NCwidth={"equalto95"} NCheight={"full"} NCflexdirection={"itemscenter" } NCflex={"itemscol"}>
+        <NewContainer
+          NCwidth={"equalto95"}
+          NCheight={"full"}
+          NCflexdirection={"itemscenter"}
+          NCflex={"itemscol"}
+        >
           {itemcontant.map((info, index) => (
             <>
-              <NewContainer NCwidth={"full"} NCheight={"screenhalf"} NCsticky={"stickontop"} NCbgcolor={"black"}  NCrounded={"1"} NCborder={"bordersolide2"} NCbordercolor={"random"}>
               <NewContainer
                 NCwidth={"full"}
-                NCheight={"full"}
-                NCflexdirection={"itemscenter"}
-                NCflex={"itemscol"}
+                NCheight={"screenhalf"}
+                NCsticky={"stickontop"}
+                NCbgcolor={"black"}
+                NCrounded={"1"}
+                NCborder={"bordersolide2"}
+                NCbordercolor={"random"}
               >
-                  <Heading Heading={headingstyle}>{info.heading}</Heading>
-                  <Description Description={descriptionsyle}>
+                <NewContainer
+                  NCwidth={"full"}
+                  NCheight={"full"}
+                  NCflexdirection={"itemscenter"}
+                  NCflex={"itemscol"}
+                >
+                  <NewHeadings
+                    NHeading={"headingsizesm"}
+                    NHtextcolor={"colorPrimaryH"}
+                    NHtextposition={"center"}
+                    NHpadding={"padding2"}
+                    NHwidth={"full"}
+                  >
+                    {info.heading}
+                  </NewHeadings>
+                  <NewDescription
+                    NDescription={"dsizesm"}
+                    NDwidth={"equalto85"}
+                    NDtextcolor={"colorPrimaryD"}
+                    NDtextposition={"center"}
+                    NDpadding={"padding2"}
+                  >
                     {" "}
                     {info.discription}{" "}
-                  </Description>
+                  </NewDescription>
                 </NewContainer>
               </NewContainer>
 

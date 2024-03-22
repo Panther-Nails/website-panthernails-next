@@ -1,9 +1,10 @@
 import React from "react";
-import { PrimaryButton } from "components/misc/Buttons.js";
+import { PrimaryButton, NewPrimaryButton } from "components/misc/Buttons.js";
 import {
   SectionHeading,
   HighlightedText,
   Subheading,
+  NewHeadings,
 } from "components/misc/Headings.js";
 import tw, { styled } from "twin.macro";
 import {
@@ -11,7 +12,10 @@ import {
   Containerbgcolor,
   NewContainer,
 } from "components/misc/Layouts.js";
-import { SectionDescription } from "components/misc/Typography.js";
+import {
+  SectionDescription,
+  NewDescription,
+} from "components/misc/Typography.js";
 
 const Rightimg = tw.img`md:(h-10/12)  w-full h-4/12 hover:scale-110 duration-500  `;
 const add = "RoundedFullAnimationBgGreen";
@@ -70,18 +74,48 @@ export default ({
           NCflexdirection={flexdirection}
           NCbgcolor={bgcolor}
         >
-          <SectionHeading>{heading}</SectionHeading>
-          <SectionDescription SectionDescription={sectiondiscript}>
+          <NewHeadings
+            NHeading={"headingsizemd"}
+            NHtextcolor={"colorPrimarySh"}
+            NHtextposition={"center"}
+            NHpadding={"padding4"}
+          >
+            {heading}
+          </NewHeadings>
+          <NewDescription
+            NDescription={"dsizemd"}
+            NDwidth={"equalto85"}
+            NDtextcolor={"colorPrimarySd"}
+            NDtextposition={"center"}
+            NDpadding={"paddingy1"}
+          >
             {description1}
-          </SectionDescription>
-          <SectionDescription SectionDescription={sectiondiscript}>
+          </NewDescription>
+          <NewDescription
+            NDescription={"dsizemd"}
+            NDwidth={"equalto85"}
+            NDtextcolor={"colorPrimarySd"}
+            NDtextposition={"center"}
+            NDpadding={"paddingy1"}
+          >
             {description2}
-          </SectionDescription>
-          <PrimaryButton as="a" href={primaryButtonUrl} Rounded={btnlook}>
+          </NewDescription>
+          <NewPrimaryButton
+            href={primaryButtonUrl}
+            NBbgcolor={"btnPrimary"}
+            NBbganimation={"bounce"}
+            rounded={"full"}
+            NBtext={"textsize"}
+            NBpadding={"paddingx8"}
+            NBpaddingy={"paddingy3"}
+            NBhover={"bgchange"}
+            NBmargin={"margintop4"}
+            NBtextcolor={"textwhite"}
+          >
             {primaryButtonText}
             {/* <Icone src={ProfileImageCLM}/>
             <Icone src={ProfileImageRasikLoyalty}/>  */}
-          </PrimaryButton>
+          </NewPrimaryButton>
         </NewContainer>
         <NewContainer
           NCflexdirection={flexdirection}

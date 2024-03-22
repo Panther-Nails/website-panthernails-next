@@ -6,10 +6,15 @@ import {
   Containerbgcolor,
   NewContainer,
 } from "../components/misc/Layouts.js";
-import { Heading, SectionHeading } from "../components/misc/Headings.js";
+import {
+  Heading,
+  SectionHeading,
+  NewHeadings,
+} from "../components/misc/Headings.js";
 import {
   SectionDescription,
   Description,
+  NewDescription,
 } from "../components/misc/Typography.js";
 import Demo1 from "../Gsvgs/Demo1";
 import Demo2 from "../Gsvgs/Demo2";
@@ -100,7 +105,14 @@ export default ({
   return (
     <NewContainer NCflex={"itemscol"} NCbgcolor={"tan"}>
       {/* <Main><Heading>upper page</Heading></Main> */}
-      <SectionHeading>{sectionheadingtext}</SectionHeading>
+      <NewHeadings
+        NHeading={"headingsizemd"}
+        NHtextcolor={"colorPrimarySh"}
+        NHtextposition={"center"}
+        NHpadding={"padding4"}
+      >
+        {sectionheadingtext}
+      </NewHeadings>
       <NewContainer NCresponsive={"responsive"}>
         <NewContainer
           NCheightmd={"screen"}
@@ -131,11 +143,25 @@ export default ({
               NCflexdirection={"itemscenter"}
               NCbgcolor={"tan"}
             >
-              <Heading Heading={heading}>{info.headingtext}</Heading>
-              <Description Description={descript}>
+              <NewHeadings
+                NHeading={"headingsizesm"}
+                NHtextcolor={"colorPrimaryH"}
+                NHtextposition={"center"}
+                NHpadding={"padding2"}
+                NHwidth={"full"}
+              >
+                {info.headingtext}
+              </NewHeadings>
+              <NewDescription
+                NDescription={"dsizesm"}
+                NDwidth={"equalto85"}
+                NDtextcolor={"colorPrimaryD"}
+                NDtextposition={"center"}
+                NDpadding={"padding2"}
+              >
                 {" "}
                 {info.discription}{" "}
-              </Description>
+              </NewDescription>
             </NewContainer>
           ))}
         </NewContainer>

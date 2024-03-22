@@ -374,7 +374,7 @@ export const NewContainer  = styled.div((props) => [
     : props.NCbgcolor === "black"
     ? tw` bg-black `
     : props.NCbgcolor === "tan"
-    ? tw` bg-sitecolor-100 `
+    ? tw` bg-colorPrimaryBg `
     : props.NCbgcolor === "nav"
     ? tw` bg-sitecolor-500 `
     : tw``,
@@ -493,3 +493,139 @@ export const NewContainer  = styled.div((props) => [
     ? tw` z-40 `
     : tw``,
 ]);
+
+
+// const Image = tw.img`w-full h-8/12 bg-white`;
+
+
+export const Image  = styled.img((props) => [
+  tw`relative `,
+
+  props.Imgwidth === "full"
+    ? tw` w-full`
+    : props.Imgwidth === "onebytwo"
+    ? tw`  w-1/2 `
+    : props.Imgwidth === "onebyfour"
+    ? tw`  w-1/4 `
+    : props.Imgwidth === "threebyfour"
+    ? tw`  w-3/4 `
+    : props.Imgwidth === "screen"
+    ? tw`  w-screen `
+    : props.Imgwidth === "screenhalf"
+    ? tw`  w-half `
+    : props.Imgwidth === "equalto90"
+    ? tw`  w-less `
+    : props.Imgwidth === "equalto95"
+    ? tw`  w-11/12 `
+    : props.Imgwidth === "equalto33"
+    ? tw`  w-8/12 `
+    : props.Imgwidth === "width4"
+    ? tw`  w-4 `
+    : props.Imgwidth === "width8"
+    ? tw`  w-8 `
+    : props.Imgwidth === "width16"
+    ? tw`  w-16 `
+    : props.Imgwidth === "width32"
+    ? tw`  w-32 `
+    : tw``,
+
+  props.Imgwidthmd === "full"
+    ? tw` md:w-full`
+    : props.Imgwidthmd === "onebytwo"
+    ? tw`  md:w-1/2 `
+    : props.Imgwidthmd === "onebyfour"
+    ? tw`  md:w-1/4 `
+    : props.Imgwidthmd === "threebyfour"
+    ? tw`  md:w-3/4 `
+    : props.Imgwidthmd === "screen"
+    ? tw`  md:w-screen `
+    : props.Imgwidthmd === "screenhalf"
+    ? tw`  md:w-half `
+    : props.Imgwidthmd === "equalto90"
+    ? tw`  md:w-less `
+    : props.Imgwidthmd === "equalto95"
+    ? tw`  md:w-11/12 `
+    : tw``,
+
+  props.Imgwidthlg === "full"
+    ? tw` lg:w-full`
+    : props.Imgwidthlg === "onebytwo"
+    ? tw`  lg:w-1/2 `
+    : props.Imgwidthlg === "onebyfour"
+    ? tw`  lg:w-1/4 `
+    : props.Imgwidthlg === "threebyfour"
+    ? tw`  lg:w-3/4 `
+    : props.Imgwidthlg === "screen"
+    ? tw`  lg:w-screen `
+    : props.Imgwidthlg === "screenhalf"
+    ? tw`  lg:w-half `
+    : props.Imgwidthlg === "equalto90"
+    ? tw`  lg:w-less `
+    : props.Imgwidthlg === "equalto95"
+    ? tw`  lg:w-11/12 `
+    : tw``,
+
+  props.Imgheight === "full"
+    ? tw` h-full`
+    : props.Imgheight === "onebytwo"
+    ? tw`  h-1/2 `
+    : props.Imgheight === "onebyfour"
+    ? tw`  h-1/4 `
+    : props.Imgheight === "threebyfour"
+    ? tw`  h-3/4 `
+    : props.Imgheight === "screen"
+    ? tw`  h-screen `
+    : props.Imgheight === "screenhalf"
+    ? tw`  h-half `
+    : props.Imgheight === "equalto95"
+    ? tw`  h-less `
+    : props.Imgheight === "equalto90"
+    ? tw`  h-11/12 `
+    : props.Imgheight === "equalto33"
+    ? tw`  h-8/12 `
+    : props.Imgheight === "height4"
+    ? tw`  h-4 `
+    : props.Imgheight === "height8"
+    ? tw`  h-8 `
+    : props.Imgheight === "height16"
+    ? tw`  h-16 `
+    : props.Imgheight === "height32"
+    ? tw`  h-32 `
+    : tw``,
+
+  props.Imgheightmd === "full"
+    ? tw` md:h-full`
+    : props.Imgheightmd === "onebytwo"
+    ? tw`  md:h-1/2 `
+    : props.Imgheightmd === "onebyfour"
+    ? tw`  md:h-1/4 `
+    : props.Imgheightmd === "threebyfour"
+    ? tw`  md:h-3/4 `
+    : props.Imgheightmd === "screen"
+    ? tw`  md:h-screen `
+    : props.Imgheightmd === "screenhalf"
+    ? tw`  md:h-half `
+    : props.Imgheightmd === "equalto95"
+    ? tw`  md:h-less `
+    : props.Imgheightmd === "equalto90"
+    ? tw`  md:h-11/12 `
+    : tw``,
+
+  props.Imgheightlg === "full"
+    ? tw` lg:h-full`
+    : props.Imgheightlg === "onebytwo"
+    ? tw`  lg:h-1/2 `
+    : props.Imgheightlg === "onebyfour"
+    ? tw`  lg:h-1/4 `
+    : props.Imgheightlg === "threebyfour"
+    ? tw`  lg:h-3/4 `
+    : props.Imgheightlg === "screen"
+    ? tw`  lg:h-screen `
+    : props.Imgheightlg === "screenhalf"
+    ? tw`  lg:h-half `
+    : props.Imgheightlg === "equalto95"
+    ? tw`  lg:h-less `
+    : props.Imgheightlg === "equalto90"
+    ? tw`  lg:h-11/12 `
+    : tw``,
+  ]);

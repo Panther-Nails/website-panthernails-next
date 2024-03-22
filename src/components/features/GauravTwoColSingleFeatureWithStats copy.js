@@ -7,14 +7,22 @@ import {
   HighlightedText,
   Subheading,
   Heading,
+  NewHeadings,
 } from "components/misc/Headings.js";
-import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
+import {
+  PrimaryButton as PrimaryButtonBase,
+  NewPrimaryButton,
+} from "components/misc/Buttons.js";
 import {
   Container,
   Container90,
   NewContainer,
 } from "components/misc/Layouts.js";
-import { SectionDescription, Description } from "components/misc/Typography.js";
+import {
+  SectionDescription,
+  Description,
+  NewDescription,
+} from "components/misc/Typography.js";
 // const Container = tw.div`relative bg-sitecolor-100  flex flex-col items-center justify-center `;
 const TwoColumn = tw.div`flex flex-col items-center justify-center w-full mx-auto  `;
 const Column = tw.div``;
@@ -90,7 +98,14 @@ export default ({
       NCflexdirection={"itemscenter"}
       NCbgcolor={"tan"}
     >
-      <SectionHeading>{heading}</SectionHeading>
+      <NewHeadings
+        NHeading={"headingsizemd"}
+        NHtextcolor={"colorPrimarySh"}
+        NHtextposition={"center"}
+        NHpadding={"padding4"}
+      >
+        {heading}
+      </NewHeadings>
       <NewContainer
         NCflex={"itemscol"}
         NCflexdirection={"itemscenter"}
@@ -111,7 +126,14 @@ export default ({
           NCzinde={"zindex1"}
           NCbgcolor={"white"}
         >
-          <SectionHeading>{headingtext}</SectionHeading>
+          <NewHeadings
+            NHeading={"headingsizemd"}
+            NHtextcolor={"colorPrimarySh"}
+            NHtextposition={"center"}
+            NHpadding={"padding4"}
+          >
+            {headingtext}
+          </NewHeadings>
           {/* <Description>{descriptiontext}</Description> */}
           <NewContainer NCresponsive={"responsive"}>
             {statistics.map((statistic, index) => (
@@ -121,16 +143,40 @@ export default ({
                 key={index}
               >
                 <Icons src={statistic.img}></Icons>
-                <Heading Heading={headingstyle}>{statistic.key}</Heading>
-                <Description Description={descriptionstyle}>
+                <NewHeadings
+                  NHeading={"headingsizesm"}
+                  NHtextcolor={"colorPrimaryH"}
+                  NHtextposition={"center"}
+                  NHpadding={"padding2"}
+                  NHwidth={"full"}
+                >
+                  {statistic.key}
+                </NewHeadings>
+                <NewDescription
+                  NDescription={"dsizesm"}
+                  NDwidth={"equalto85"}
+                  NDtextcolor={"colorPrimaryD"}
+                  NDtextposition={"center"}
+                  NDpadding={"padding2"}
+                >
                   {statistic.value}
-                </Description>
+                </NewDescription>
               </NewContainer>
             ))}
           </NewContainer>
         </NewContainer>
       </NewContainer>
-      <PrimaryButtonBase Rounded={btn}>read our story </PrimaryButtonBase>
+      <NewPrimaryButton
+        NBbgcolor={"btnSecendary"}
+        rounded={"0"}
+        NBtext={"textsize"}
+        NBpadding={"paddingx8"}
+        NBpaddingy={"paddingy3"}
+        NBmargin={"margintop4"}
+        NBtextcolor={"textwhite"}
+      >
+        read our story{" "}
+      </NewPrimaryButton>
     </NewContainer>
   );
 };
