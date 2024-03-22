@@ -7,7 +7,7 @@ import CTA from "components/cta/DurgeshGetStarted";
 import Benefits from "components/durgesh/RoundedSquare";
 import SimpleWithSideImage from "components/faqs/SimpleWithSideImage";
 import BenefitsWithMockup from "components/durgesh/BenefitsWithMockup";
- 
+
 //images
 
 import ProductImageRasikLoyalty from "images/ProductRasikLoyalty.png";
@@ -17,11 +17,14 @@ import AnimationRevealPage from "helpers/AnimationRevealPage";
 import DurgeshStatTCCSPB from "components/features/DurgeshStatTCCSPB";
 import DurgeshTeams from "components/cards/DurgeshTeams";
 import Slider from "react-slick";
-import { CardSlider } from "components/misc/Layouts";
+import { CardSlider, Container } from "components/misc/Layouts";
 import DurgeshSimpleWithSideImage from "components/faqs/DurgeshSimpleWithSideImage";
 import ServiceSection from "components/durgesh/Theme/ServiceSection";
-import ProductPosterFromFigma from "components/durgesh/ProductPosterFromFigma";
-
+import OneAppPoster from "components/durgesh/ProductPosterFromFigma";
+import GridWithFeaturedPost from "components/blogs/GridWithFeaturedPost";
+import RasikAppPoster from "components/durgesh/ProductPosterFromFigma";
+import { useRef } from "react";
+import AnimatedComponents from "components/durgesh/CustomStyle/AnimatedComponents";
 export default ({
   heroHeading = "Elevating Engagement, Empowering Growth for",
 
@@ -149,33 +152,34 @@ export default ({
   ],
 }) => {
   const [scrollValue, setScrollValue] = useState(0);
+  const [sliderRef, setSliderRef] = useState(null);
 
   const sliderSettings = {
     dots: false,
     arrows: false,
-    slidesToShow: 4,
+    slidesToShow: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
-    pauseOnHover: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: false,
     responsive: [
       {
         breakpoint: 1280,
         settings: {
-          slidesToShow: 4,
-        },
-      },
-      {
-        breakpoint: 900,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
           slidesToShow: 1,
         },
       },
+      // {
+      //   breakpoint: 900,
+      //   settings: {
+      //     slidesToShow: 1,
+      //   },
+      // },
+      // {
+      //   breakpoint: 600,
+      //   settings: {
+      //     slidesToShow: 1,
+      //   },
+      // },
     ],
   };
 
@@ -200,11 +204,24 @@ export default ({
             { title: "Contact Us", href: "/contactus" },
           ]}
         />
-        <ProductPosterFromFigma/>
 
-          
+        <CardSlider tw="flex flex-row " ref={setSliderRef} {...sliderSettings}>
+          <OneAppPoster
+            posterHeading="Experience seamless HR management with One App: Smarter, faster, better!"
+            productButtonText="Contact us"
+            productImageSrc="https://play-lh.googleusercontent.com/IkkzDJ59I3NHCAiLjVlgSjSkrDURP3hIGbbXN2M24QM_H7f2rZ4hsOUpsrl6pTjqYj21=w240-h480-rw"
+          />
+
+          <RasikAppPoster
+            posterHeading="Experience seamless HR management with One App: Smarter, faster, better!"
+            productButtonText="Contact us"
+            productImageSrc="/rasikAppLogoForProductSection.png"
+            leftFirst={false}
+          />
+        </CardSlider>
+
         <Benefits roundedSize="5" />
-        
+
         <CTA
           backgroundColor={tw`bg-primary-300`}
           textCss={tw`text-black font-bold`}
@@ -233,13 +250,6 @@ export default ({
           leftFirst={false}
         />
 
-        {/* <MainFeature
-            imageSrc={TeamIllustrationSrc}
-            imageBorder={true}
-            imageDecoratorBlob={true}
-            leftFirst={true}
-          /> */}
-
         <BenefitsWithMockup />
 
         <ServicesSection
@@ -266,6 +276,7 @@ export default ({
         />
 
         <DurgeshSimpleWithSideImage />
+
         <DurgeshStatTCCSPB
           subheading="Technology Innovations That Transform Your Business"
           heading="Served 3,000,000+ End costumers"

@@ -34,6 +34,8 @@ module.exports = {
       gradientStartColor: "#68d391",
       gradientEndColor: "#4299e1",
       navbarLinkHoverColor: "#4299e1",
+      productPosterPrimary: "#000",
+      productPosterOnPrimary: "#fff",
 
       // primary: {
       //   100: '#a273ff',
@@ -220,6 +222,7 @@ module.exports = {
       96: "24rem",
       128: "32rem",
       144: "36rem",
+      150: "40rem",
       cardGridWidth: "108rem",
     },
     backgroundColor: (theme) => theme("colors"),
@@ -277,6 +280,7 @@ module.exports = {
       outline: "0 0 0 3px rgba(66, 153, 225, 0.5)",
       raised: "0 20px 50px rgba(0,0,0, 0.075)",
       none: "none",
+      innerBottom: "0px 2px 0px 0px rgba(0,0,0,0.05) inset",
     },
 
     container: {},

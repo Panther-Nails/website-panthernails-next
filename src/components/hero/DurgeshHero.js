@@ -97,7 +97,7 @@ export default ({
 
   return (
     <>
-      <Container tw="pt-0 px-8 h-screen" imageSrc={backgroundImage}>
+      <Container tw=" px-8 h-screen " imageSrc={backgroundImage}>
         {/* <BackgroundForHeader> */}
         <Header
           css={bgColor}
@@ -129,9 +129,14 @@ export default ({
             </PrimaryThemeButton>
           </Column>
           <ImageColumn>
+            {/* <Container tw="lg:h-screen bg-transparent lg:block"> */}
             {/* <ImageContainer tw="bg-green-700"> */}
-            <Image src={imageSrc} tw="float-right h-128 w-128" />
+            <Image
+              src={imageSrc}
+              tw=" lg:block float-right lg:h-128 lg:w-128"
+            />
             {/* </ImageContainer> */}
+            {/* </Container> */}
           </ImageColumn>
         </Container>
       </Container>

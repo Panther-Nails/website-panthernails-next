@@ -4,11 +4,7 @@ import { css } from "styled-components/macro";
 import Slider from "react-slick";
 
 export const Container = styled.div((props) => [
-  `background-image: url("${props.imageSrc}");`,
-  props.imageContain ? tw`bg-contain bg-no-repeat` : tw`bg-cover`,
-  props.imageShadow ? tw`shadow` : tw`shadow-none`,
-
-  tw`relative  items-center justify-center text-center bg-colorPrimary`,
+  tw`relative  justify-center text-center bg-colorPrimary `,
   props.backgroundColor === "lightblue" ? tw`bg-red-500` : tw``,
 ]);
 
@@ -47,15 +43,20 @@ export const CardImage = styled.img((props) => [
 
 export const CardContent = tw.div`ml-6 mb-6 mt-3 mr-2`;
 
-export const Image = styled.img((props) => [tw`bg-cover h-full w-full`]);
+export const Image = styled.img((props) => [
+  tw`bg-cover sm:block h-full w-full `,
+]);
 
 export const CardSlider = styled(Slider)`
-  ${tw`mt-16 flex flex-row gap-6 py-5 w-screen  justify-between  text-left pl-12 pr-12 lg:flex-wrap`}
+  ${tw`flex flex-row w-screen justify-center  text-left lg:flex-col`}
   .slick-track {
-    ${tw`justify-between `}
+    ${tw`flex`}
   }
   .slick-slide {
-    ${tw`h-auto flex justify-center mb-1 `}
+    ${tw` `}
+  }
+  .slick-list {
+    ${tw``}
   }
 `;
 

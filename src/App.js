@@ -155,10 +155,10 @@ export default function App() {
 
             <Route path="MainLandingPage" element={<MainLandingPage />} />
             <Route path="/DurgeshHomePage" element={<DurgeshHomePage />} />
-            <Route
+            {/* <Route
               path="/DurgeshPageExample"
               element={<DurgeshPageExample />}
-            />
+            /> */}
             <Route path="/DurgeshAbout" element={<DurgeshAbout />} />
             <Route path="/DurgeshLoyalty" element={<DurgeshLoyalty />} />
           </Routes>

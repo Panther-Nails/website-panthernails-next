@@ -155,7 +155,7 @@ export default ({
   };
 
   return (
-    <Container css={containerCss}>
+    <Container css={containerCss} tw="lg:w-screen ">
       {/* {isModalOpen && (
         <ModalContainer>
           <CloseButton onClick={handleCloseModal}>Close</CloseButton>

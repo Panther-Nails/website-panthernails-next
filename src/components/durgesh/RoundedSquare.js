@@ -1,6 +1,10 @@
 import React from "react";
 import tw from "twin.macro";
 import { css } from "styled-components/macro";
+import styled from "styled-components";
+import { useState } from "react";
+import Slider from "react-slick";
+
 import {
   SectionDescription,
   CardHeading,
@@ -9,12 +13,25 @@ import {
 } from "components/misc/Typography";
 
 import {
-  CardGrid,
   Card,
   CardImage,
   Container,
   CardContent,
+  CardGrid,
 } from "components/misc/Layouts";
+
+const CardSlider = styled(Slider)`
+  ${tw`flex lg:flex-wrap flex-row w-screen justify-center  text-left lg:flex-col`}
+  .slick-track {
+    ${tw`flex gap-12`}
+  }
+  .slick-slide {
+    ${tw` `}
+  }
+  .slick-list {
+    ${tw``}
+  }
+`;
 
 // const CardImage = tw.img`w-24 h-24  bg-cover rounded-full ml-20 shadow-lg shadow-gray-700 hover:scale-105 `;
 
@@ -61,12 +78,43 @@ export default ({
     },
   ],
 }) => {
+  const [sliderRef, setSliderRef] = useState(null);
+  const sliderSettings = {
+    dots: false,
+    arrows: false,
+    slidesToShow: 4,
+    autoplay: false,
+    autoplaySpeed: 2500,
+    pauseOnHover: true,
+    responsive: [
+      // {
+      //   breakpoint: 1280,
+      //   settings: {
+      //     slidesToShow: 4,
+      //   },
+      // },
+      // {
+      //   breakpoint: 900,
+      //   settings: {
+      //     slidesToShow: 3,
+      //   },
+      // },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <>
-      <Container tw=" lg:w-screen ">
+      <Container tw=" lg:w-screen columns-1 sm:h-screen ">
         <Heading>{heading}</Heading>
         <SectionDescription>{subheading}</SectionDescription>
-        <CardGrid>
+        <CardSlider ref={setSliderRef} {...sliderSettings}>
+          {/* <CardGrid tw="columns-1 sm:h-screen max-w-150"> */}
           {cardsData.map((card) => (
             <Card
               key={card.id}
@@ -85,7 +133,8 @@ export default ({
               </CardContent>
             </Card>
           ))}
-        </CardGrid>
+          {/* </CardGrid> */}
+        </CardSlider>
       </Container>
     </>
   );
