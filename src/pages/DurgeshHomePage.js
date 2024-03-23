@@ -158,7 +158,7 @@ export default ({
     dots: false,
     arrows: false,
     slidesToShow: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
     pauseOnHover: false,
     responsive: [
@@ -205,22 +205,30 @@ export default ({
           ]}
         />
 
+        {/* Poster Section */}
         <CardSlider tw="flex flex-row " ref={setSliderRef} {...sliderSettings}>
           <OneAppPoster
             posterHeading="Experience seamless HR management with One App: Smarter, faster, better!"
             productButtonText="Contact us"
-            productImageSrc="https://play-lh.googleusercontent.com/IkkzDJ59I3NHCAiLjVlgSjSkrDURP3hIGbbXN2M24QM_H7f2rZ4hsOUpsrl6pTjqYj21=w240-h480-rw"
+            productImageSrc="./oneAppLogoForProductSection.png"
+            productButtonTextSecond="Explore App"
           />
-
           <RasikAppPoster
-            posterHeading="Experience seamless HR management with One App: Smarter, faster, better!"
+            posterHeading="Single App For All Business Automation Needs"
             productButtonText="Contact us"
             productImageSrc="/rasikAppLogoForProductSection.png"
+            productButtonTextSecond="Explore App"
             leftFirst={false}
           />
         </CardSlider>
 
-        <Benefits roundedSize="5" />
+        {/* Services Section  */}
+        <ServicesSection
+          heading="Services" //Panther Nails products can do for you
+          subheading="We understand the importance of building strong relationships with your customers and keeping them engaged. That's why we offer a range of innovative solutions to help you drive loyalty and boost sales."
+          cardsData={cardsDataForPantherNailsServices}
+          bgColor={tw`bg-black`}
+        />
 
         <CTA
           backgroundColor={tw`bg-primary-300`}
@@ -232,13 +240,7 @@ export default ({
           pushDownFooter={true}
         />
 
-        <ServicesSection
-          heading="Panther Nails products can do for you"
-          subheading="We understand the importance of building strong relationships with your customers and keeping them engaged. That's why we offer a range of innovative solutions to help you drive loyalty and boost sales."
-          cardsData={cardsDataForPantherNailsServices}
-          bgColor={tw`bg-black`}
-        />
-
+        <BenefitsWithMockup />
         <CTA
           backgroundColor={tw`bg-green-300`}
           textCss={tw`text-black font-bold`}
@@ -249,8 +251,6 @@ export default ({
           pushDownFooter={true}
           leftFirst={false}
         />
-
-        <BenefitsWithMockup />
 
         <ServicesSection
           heading="Loyalty Program"

@@ -155,7 +155,7 @@ export default ({
   };
 
   return (
-    <Container css={containerCss} tw="lg:w-screen ">
+    <Container css={containerCss} tw="h-screen lg:w-screen ">
       {/* {isModalOpen && (
         <ModalContainer>
           <CloseButton onClick={handleCloseModal}>Close</CloseButton>
@@ -163,9 +163,9 @@ export default ({
         </ModalContainer>
       )} */}
 
-      <Heading>{heading}</Heading>
-      <Subheading>{subheading}</Subheading>
-      <CardSlider ref={setSliderRef} {...sliderSettings}>
+      <Heading tw="sm:pt-5">{heading}</Heading>
+      <Subheading tw="pt-6">{subheading}</Subheading>
+      <CardSlider ref={setSliderRef} {...sliderSettings} tw="pt-8 lg:pt-3">
         {/* //ref={setSliderRef} {...sliderSettings} */}
         {cardsData.map((card, index) => (
           <Card rounded={roundedSize}>

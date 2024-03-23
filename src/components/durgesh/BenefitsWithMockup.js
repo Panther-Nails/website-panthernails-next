@@ -71,7 +71,7 @@ export default ({
 
   return (
     <>
-      <Container tw=" flex justify-evenly py-16 px-12">
+      <Container tw=" flex justify-evenly py-16 lg:px-12">
         <Mockup>
           <Screen>
             <Image src={cardsData[hoverIndex].hoverIndexUrl} />

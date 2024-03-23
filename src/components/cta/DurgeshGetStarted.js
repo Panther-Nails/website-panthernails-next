@@ -4,7 +4,7 @@ import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9.svg";
 import { ContentWithPaddingXl, Container } from "components/misc/Layouts";
-import { PrimaryThemeButton ,PrimaryButton} from "components/misc/Buttons";
+import { PrimaryThemeButton, PrimaryButton } from "components/misc/Buttons";
 import Signup from "pages/Signup";
 import ScrollingAnimationUpSide from "components/durgesh/ScrollingAnimationUpSide";
 import { HighlightedText } from "components/misc/Headings";
@@ -28,9 +28,8 @@ const DecoratorBlob2 = tw(
   SvgDecoratorBlob1
 )`absolute top-0 right-0 w-80 h-80 transform  translate-x-20 -translate-y-64 text-primary-700 opacity-50`;
 
-
 export default ({
-  leftFirst=true,
+  leftFirst = true,
   text = (
     <>
       {" "}
@@ -48,26 +47,26 @@ export default ({
   containerBg = tw``,
 }) => {
   return (
-
-    <Container css={containerBg}>
-       {leftFirst ? (
-        <>
+    <Container
+      css={containerBg}
+      tw="sm:px-8 lg:h-96 flex items-center justify-center"
+    >
       {/* && pushDownFooter && tw`mb-20 lg:mb-24` */}
       <ContentWithPaddingXl>
-        <PrimaryBackgroundContainer css={backgroundColor}>
+        <PrimaryBackgroundContainer css={backgroundColor} tw="sm:px-8 w-full">
           <Row>
             <TextContainer>
               <Text css={textCss}>{text}</Text>
             </TextContainer>
             <LinksContainer>
-              <ScrollingAnimationUpSide y={400}>
-                <PrimaryThemeButton href={primaryLinkUrl}>
-                  {primaryLinkText}
-                </PrimaryThemeButton>
-                <PrimaryThemeButton href={secondaryLinkUrl} target="_black">
-                  {secondaryLinkText}
-                </PrimaryThemeButton>
-              </ScrollingAnimationUpSide>
+              {/* <ScrollingAnimationUpSide y={400}> */}
+              <PrimaryThemeButton href={primaryLinkUrl}>
+                {primaryLinkText}
+              </PrimaryThemeButton>
+              <PrimaryThemeButton href={secondaryLinkUrl} target="_black">
+                {secondaryLinkText}
+              </PrimaryThemeButton>
+              {/* </ScrollingAnimationUpSide> */}
             </LinksContainer>
           </Row>
           <DecoratorBlobContainer>
@@ -76,34 +75,6 @@ export default ({
           </DecoratorBlobContainer>
         </PrimaryBackgroundContainer>
       </ContentWithPaddingXl>
-      </>
-       ) : (
-        <>
-        <ContentWithPaddingXl>
-        <PrimaryBackgroundContainer css={backgroundColor}>
-          <Row css={tw``}>            
-            <LinksContainer >
-              <ScrollingAnimationUpSide y={400}>
-                <PrimaryThemeButton href={primaryLinkUrl}>
-                  {primaryLinkText}
-                </PrimaryThemeButton>
-                <PrimaryThemeButton href={secondaryLinkUrl} target="_black">
-                  {secondaryLinkText}
-                </PrimaryThemeButton>
-              </ScrollingAnimationUpSide>
-            </LinksContainer>
-            <TextContainer css={tw`ml-32`}>
-              <Text css={textCss}>{text}</Text>
-            </TextContainer>
-          </Row>
-          <DecoratorBlobContainer>
-            <DecoratorBlob1 />
-            <DecoratorBlob2 />
-          </DecoratorBlobContainer>
-        </PrimaryBackgroundContainer>
-      </ContentWithPaddingXl>
-      </>
-      )}
     </Container>
   );
 };

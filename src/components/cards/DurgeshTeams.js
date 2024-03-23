@@ -101,10 +101,8 @@ export default ({
     },
   ],
 }) => {
-  var check = "Heading";
-
   return (
-    <Container>
+    <Container tw="lg:h-screen">
       <ContentWithPaddingXl>
         <Container>
           {subheading && <Subheading>{subheading}</Subheading>}
