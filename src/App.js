@@ -149,12 +149,13 @@ export default function App() {
             <Route path="/ContactUs" element={<ContactUsPage />} />
             <Route path="/Blog" element={<BlogIndexPage />} />
 
-            <Route path="/" element={<Home />} />
+            {/* <Route path="/" element={<Home />} /> */}
 
             {/* Example */}
+            <Route path="/" element={<DurgeshHomePage />} />
 
             <Route path="MainLandingPage" element={<MainLandingPage />} />
-            <Route path="/DurgeshHomePage" element={<DurgeshHomePage />} />
+            {/* <Route path="/DurgeshHomePage" element={<DurgeshHomePage />} /> */}
             {/* <Route
               path="/DurgeshPageExample"
               element={<DurgeshPageExample />}

@@ -33,6 +33,8 @@ module.exports = {
       statContainerPrimary: "",
       gradientStartColor: "#68d391",
       gradientEndColor: "#4299e1",
+      hovergradientStartColor: "#ed64a6",
+      hovergradientEndColor: "#ecc94b",
       navbarLinkHoverColor: "#4299e1",
       productPosterPrimary: "#000",
       productPosterOnPrimary: "#fff",

@@ -28,7 +28,7 @@ export default ({
         {leftFirst ? (
           <>
             <Container tw="flex-col sm:h-1/2 lg:h-screen bg-transparent flex p-8  gap-12 flex items-center">
-              <Image src={productImageSrc} tw="h-32 w-32 "></Image>
+              <Image src={productImageSrc} tw="h-24 w-24 "></Image>
               <Heading tw="text-2xl md:text-xl lg:text-4xl  text-productPosterOnPrimary text-left lg:ml-24 ">
                 {posterHeading}
               </Heading>

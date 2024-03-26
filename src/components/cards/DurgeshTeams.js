@@ -2,10 +2,12 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
+import { useState } from "react";
 import {
   ContentWithPaddingXl,
   Card,
   Container,
+  CardSlider,
 } from "components/misc/Layouts.js";
 import { Subheading } from "components/misc/Headings";
 import { Heading, SectionDescription } from "components/misc/Typography";
@@ -101,6 +103,35 @@ export default ({
     },
   ],
 }) => {
+  const [sliderRef, setSliderRef] = useState(null);
+  const sliderSettings = {
+    dots: false,
+    arrows: true,
+    slidesToShow: 4,
+    autoplay: false,
+    autoplaySpeed: 2500,
+    pauseOnHover: true,
+    responsive: [
+      // {
+      //   breakpoint: 1280,
+      //   settings: {
+      //     slidesToShow: 4,
+      //   },
+      // },
+      // {
+      //   breakpoint: 900,
+      //   settings: {
+      //     slidesToShow: 3,
+      //   },
+      // },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
   return (
     <Container tw="lg:h-screen">
       <ContentWithPaddingXl>
@@ -113,9 +144,10 @@ export default ({
           )}
         </Container>
 
-        <Cards>
+        {/* <Cards> */}
+        <CardSlider ref={setSliderRef} {...sliderSettings}>
           {cards.map((card, index) => (
-            <Card key={index}>
+            <Card key={index} tw="flex items-center justify-center">
               <CardImage imageSrc={card.imageSrc} />
               <CardContent>
                 <span className="position">{card.position}</span>
@@ -130,7 +162,8 @@ export default ({
               </CardContent>
             </Card>
           ))}
-        </Cards>
+        </CardSlider>
+        {/* </Cards> */}
       </ContentWithPaddingXl>
     </Container>
   );

@@ -25,6 +25,7 @@ import GridWithFeaturedPost from "components/blogs/GridWithFeaturedPost";
 import RasikAppPoster from "components/durgesh/ProductPosterFromFigma";
 import { useRef } from "react";
 import AnimatedComponents from "components/durgesh/CustomStyle/AnimatedComponents";
+import WhoWeAre from "components/durgesh/WhoWeAre";
 export default ({
   heroHeading = "Elevating Engagement, Empowering Growth for",
 
@@ -296,6 +297,7 @@ export default ({
             },
           ]}
         />
+        <WhoWeAre />
         <DurgeshTeams />
         <Footer />
       </AnimationRevealPage>

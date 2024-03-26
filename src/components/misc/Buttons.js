@@ -5,6 +5,6 @@ const Link = tw.a`w-full sm:w-auto text-sm sm:text-base px-6 py-3 sm:px-8 sm:py-
 
 export const PrimaryThemeButton = tw(
   Link
-)` shadow-lg  bg-gradient-to-r from-gradientStartColor to-gradientEndColor hover:from-pink-500 hover:to-yellow-500 text-black font-bold hover:border-black`;
+)` shadow-lg cursor-pointer bg-gradient-to-r from-gradientStartColor to-gradientEndColor hover:from-hovergradientStartColor hover:to-hovergradientEndColor text-black font-bold hover:border-black`;
 
 export const SimpleButton = tw.button``;

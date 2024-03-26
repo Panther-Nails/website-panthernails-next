@@ -155,7 +155,7 @@ export default ({
   };
 
   return (
-    <Container css={containerCss} tw="h-screen lg:w-screen ">
+    <Container css={containerCss} tw="h-screen lg:w-screen sm:py-12">
       {/* {isModalOpen && (
         <ModalContainer>
           <CloseButton onClick={handleCloseModal}>Close</CloseButton>
@@ -164,7 +164,9 @@ export default ({
       )} */}
 
       <Heading tw="sm:pt-5">{heading}</Heading>
-      <Subheading tw="pt-6">{subheading}</Subheading>
+      <Subheading tw="pt-6 sm:text-justify lg:text-center px-12">
+        {subheading}
+      </Subheading>
       <CardSlider ref={setSliderRef} {...sliderSettings} tw="pt-8 lg:pt-3">
         {/* //ref={setSliderRef} {...sliderSettings} */}
         {cardsData.map((card, index) => (
