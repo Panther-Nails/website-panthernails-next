@@ -44,7 +44,7 @@ export default ({
   descriptionstyle = "descriptioncolor",
   //text from services
   heading = "Our Products",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  description = "Here we are showcasing our products which gives the business the best choice to grow their business",
   plans = null,
   primaryButtonText = "click for more",
   icons,
@@ -207,6 +207,7 @@ export default ({
                   NCheight={"full"}
                   NCflexdirection={"itemscenter"}
                   NCflex={"itemscol"}
+                  NCpadding={"paddingtop4"}
                 >
                   <NewDescription
                     NDescription={"dsizesm"}
@@ -214,7 +215,7 @@ export default ({
                     NDtextcolor={"colorPrimaryD"}
                     NDtextposition={"center"}
                     NDpadding={"padding2"}
-                    NDmargin={"margintoplg"}
+                    NDmargin={"margintopmd"}
                   >
                     {plan.productinfo}
                   </NewDescription>
@@ -239,6 +240,7 @@ export default ({
                   NCheight={"full"}
                   NCflexdirection={"itemscenter"}
                   NCflex={"itemscol"}
+                  NCpadding={"paddingtop4"}
                 >
                   <Image
                     Imgwidth={"width16"}

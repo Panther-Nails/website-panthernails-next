@@ -102,7 +102,7 @@ export const Content2Xl = tw.div`max-w-screen-2xl mx-auto`;
 //   : tw``,
 // ]);
 
-export const NewContainer  = styled.div((props) => [
+export const NewContainer = styled.div((props) => [
   tw`relative `,
 
   props.NCwidth === "full"
@@ -213,79 +213,79 @@ export const NewContainer  = styled.div((props) => [
     ? tw`  lg:h-11/12 `
     : tw``,
 
-  props.NCmargin === "margin~1"
+  props.NCmargin === "margin1"
     ? tw` m-1`
-    : props.NCmargin === "margin~2"
+    : props.NCmargin === "margin2"
     ? tw`  m-2 `
-    : props.NCmargin === "margin~4"
+    : props.NCmargin === "margin4"
     ? tw`  m-4 `
-    : props.NCmargin === "margin~top1"
+    : props.NCmargin === "margintop1"
     ? tw` mt-1`
-    : props.NCmargin === "margin~top2"
+    : props.NCmargin === "margintop2"
     ? tw`  mt-2 `
-    : props.NCmargin === "margin~top4"
+    : props.NCmargin === "margintop4"
     ? tw`  mt-4 `
-    : props.NCmargin === "margin~bottom1"
+    : props.NCmargin === "marginbottom1"
     ? tw` -mt-1`
-    : props.NCmargin === "margin~bottom2"
+    : props.NCmargin === "marginbottom2"
     ? tw`  -mt-2 `
-    : props.NCmargin === "margin~bottom4"
+    : props.NCmargin === "marginbottom4"
     ? tw`  -mt-4 `
-    : props.NCmargin === "margin~left1"
+    : props.NCmargin === "marginleft1"
     ? tw` ml-1`
-    : props.NCmargin === "margin~left2"
+    : props.NCmargin === "marginleft2"
     ? tw`  ml-2 `
-    : props.NCmargin === "margin~left4"
+    : props.NCmargin === "marginleft4"
     ? tw`  ml-4 `
-    : props.NCmargin === "margin~right1"
+    : props.NCmargin === "marginright1"
     ? tw` -ml-1`
-    : props.NCmargin === "margin~right2"
+    : props.NCmargin === "marginright2"
     ? tw`  -ml-2 `
-    : props.NCmargin === "margin~right4"
+    : props.NCmargin === "marginright4"
     ? tw`  -ml-4 `
-    : props.NCmargin === "margin~x1"
+    : props.NCmargin === "marginx1"
     ? tw`  mx-1 `
-    : props.NCmargin === "margin~x2"
+    : props.NCmargin === "marginx2"
     ? tw`  mx-2 `
-    : props.NCmargin === "margin~x4"
+    : props.NCmargin === "marginx4"
     ? tw`  mx-4 `
-    : props.NCmargin === "margin~x1"
+    : props.NCmargin === "marginx1"
     ? tw` my-1`
-    : props.NCmargin === "margin~x2"
+    : props.NCmargin === "marginx2"
     ? tw` my-2 `
-    : props.NCmargin === "margin~x4"
+    : props.NCmargin === "marginx4"
     ? tw` my-4 `
-    : props.NCmargin === "margin~top~sm"
+    : props.NCmargin === "margintopsm"
     ? tw` mt-12`
-    : props.NCmargin === "margin~top~md"
+    : props.NCmargin === "margintopmd"
     ? tw`  mt-32 `
-    : props.NCmargin === "margin~top~lg"
+    : props.NCmargin === "margintoplg"
     ? tw`  mt-64 `
-    : props.NCmargin === "margin~top~xl"
+    : props.NCmargin === "margintopxl"
     ? tw`  mt-80 `
-    : props.NCmargin === "margin~bottom~sm"
+    : props.NCmargin === "marginbottomsm"
     ? tw` -mt-12`
     : props.NCmargin === "marginbottommd"
     ? tw`  -mt-32 `
-    : props.NCmargin === "margin~bottom~lg"
+    : props.NCmargin === "marginbottomlg"
     ? tw`  -mt-64 `
-    : props.NCmargin === "margin~bottom~xl"
+    : props.NCmargin === "marginbottomxl"
     ? tw`  -mt-80 `
-    : props.NCmargin === "margin~right~sm"
+    : props.NCmargin === "marginrightsm"
     ? tw` -ml-12`
-    : props.NCmargin === "margin~right~md"
+    : props.NCmargin === "marginrightmd"
     ? tw`  -ml-32 `
-    : props.NCmargin === "margin~right~lg"
+    : props.NCmargin === "marginrightlg"
     ? tw`  -ml-64 `
-    : props.NCmargin === "margin~right~xl"
+    : props.NCmargin === "marginrightxl"
     ? tw`  -ml-80 `
-    : props.NCmargin === "margin~left~sm"
+    : props.NCmargin === "marginleftsm"
     ? tw` ml-12`
-    : props.NCmargin === "margin~left~md"
+    : props.NCmargin === "marginleftmd"
     ? tw`  ml-32 `
-    : props.NCmargin === "margin~left~lg"
+    : props.NCmargin === "marginleftlg"
     ? tw`  ml-64 `
-    : props.NCmargin === "margin~left~xl"
+    : props.NCmargin === "marginleftxl"
     ? tw`  ml-80 `
     : tw``,
 
@@ -295,74 +295,82 @@ export const NewContainer  = styled.div((props) => [
     ? tw`  p-2 `
     : props.NCpadding === "padding4"
     ? tw`  p-4 `
-    : props.NCpadding === "padding~top1"
+    : props.NCpadding === "paddingtop1"
     ? tw` pt-1`
-    : props.NCpadding === "padding~top2"
+    : props.NCpadding === "paddingtop2"
     ? tw`  pt-2 `
-    : props.NCpadding === "padding~top4"
+    : props.NCpadding === "paddingtop4"
     ? tw`  pt-4 `
-    : props.NCpadding === "padding~bottom1"
+    : props.NCpadding === "paddingbottom1"
     ? tw`pb-1`
-    : props.NCpadding === "padding~bottom2"
+    : props.NCpadding === "paddingbottom2"
     ? tw` pb-2 `
-    : props.NCpadding === "padding~bottom4"
+    : props.NCpadding === "paddingbottom4"
     ? tw` pb-4 `
-    : props.NCpadding === "padding~left1"
+    : props.NCpadding === "paddingleft1"
     ? tw`pl-1`
-    : props.NCpadding === "padding~left2"
+    : props.NCpadding === "paddingleft2"
     ? tw` pl-2 `
-    : props.NCpadding === "padding~left4"
+    : props.NCpadding === "paddingleft4"
     ? tw` pl-4 `
-    : props.NCpadding === "padding~right1"
+    : props.NCpadding === "paddingright1"
     ? tw` pr-1`
-    : props.NCpadding === "padding~right2"
+    : props.NCpadding === "paddingright2"
     ? tw`  pr-2 `
     : props.NCpadding === "paddingright4"
     ? tw`  pr-4 `
-    : props.NCpadding === "padding~x1"
-    ? tw`  mx-1 `
-    : props.NCpadding === "padding~x2"
-    ? tw`  mx-2 `
-    : props.NCpadding === "padding~x4"
-    ? tw`  mx-4 `
-    : props.NCpadding === "padding~x1"
-    ? tw`  my-1`
-    : props.NCpadding === "padding~x2"
-    ? tw`  my-2 `
-    : props.NCpadding === "padding~x4"
-    ? tw`  my-4 `
-    : props.NCpadding === "padding~top~sm"
-    ? tw` mt-12`
-    : props.NCpadding === "padding~top~md"
-    ? tw`  mt-32 `
-    : props.NCpadding === "padding~top~lg"
-    ? tw`  mt-64 `
-    : props.NCpadding === "padding~top~xl"
-    ? tw`  mt-80 `
-    : props.NCpadding === "padding~bottom~sm"
-    ? tw` -mt-12`
-    : props.NCpadding === "padding~bottom~md"
-    ? tw`  -mt-32 `
-    : props.NCpadding === "padding~bottom~lg"
-    ? tw`  -mt-64 `
-    : props.NCpadding === "padding~bottom~xl"
-    ? tw`  -mt-80 `
-    : props.NCpadding === "padding~right~sm"
-    ? tw` -ml-12`
-    : props.NCpadding === "padding~right~md"
-    ? tw`  -ml-32 `
-    : props.NCpadding === "padding~right~lg"
-    ? tw`  -ml-64 `
-    : props.NCpadding === "padding~right~xl"
-    ? tw`  -ml-80 `
-    : props.NCpadding === "padding~left~sm"
-    ? tw` ml-12`
-    : props.NCpadding === "padding~left~md"
-    ? tw`  ml-32 `
-    : props.NCpadding === "padding~left~lg"
-    ? tw`  ml-64 `
-    : props.NCpadding === "padding~left~xl"
-    ? tw`  ml-80 `
+    : props.NCpaddingx === "paddingx1"
+    ? tw`  px-1 `
+    : props.NCpadding === "paddingtopsm"
+    ? tw` pt-12`
+    : props.NCpadding === "paddingtopmd"
+    ? tw`  pt-32 `
+    : props.NCpadding === "paddingtoplg"
+    ? tw`  pt-64 `
+    : props.NCpadding === "paddingtopxl"
+    ? tw`  pt-80 `
+    : props.NCpadding === "paddingbottomsm"
+    ? tw` pb-12`
+    : props.NCpadding === "paddingbottommd"
+    ? tw`  pb-32 `
+    : props.NCpadding === "paddingbottomlg"
+    ? tw`  pb-64 `
+    : props.NCpadding === "paddingbottomxl"
+    ? tw`  pb-80 `
+    : props.NCpadding === "paddingrightsm"
+    ? tw` pr-12`
+    : props.NCpadding === "paddingrightmd"
+    ? tw`  pr-32 `
+    : props.NCpadding === "paddingrightlg"
+    ? tw`  pr-64 `
+    : props.NCpadding === "paddingrightxl"
+    ? tw`  pr-80 `
+    : props.NCpadding === "paddingleftsm"
+    ? tw` pl-12`
+    : props.NCpadding === "paddingleftmd"
+    ? tw`  pl-32 `
+    : props.NCpadding === "paddingleftlg"
+    ? tw`  pl-64 `
+    : props.NCpadding === "paddingleftxl"
+    ? tw`  pl-80 `
+    : tw``,
+
+  props.NCpaddingx === "paddingx2"
+    ? tw`  px-2 `
+    : props.NCpaddingx === "paddingx4"
+    ? tw`  px-4 `
+    : props.NCpaddingx === "paddingx8"
+    ? tw`  px-8 `
+    : tw``,
+
+  props.NCpaddingy === "paddingy1"
+    ? tw`  py-1`
+    : props.NCpaddingy === "paddingy2"
+    ? tw`  py-2 `
+    : props.NCpaddingy === "paddingy4"
+    ? tw`  py-4 `
+    : props.NCpaddingy === "paddingy20"
+    ? tw`  py-20 `
     : tw``,
 
   props.NCbgcolor === "Primary"
@@ -376,12 +384,14 @@ export const NewContainer  = styled.div((props) => [
     : props.NCbgcolor === "tan"
     ? tw` bg-colorPrimaryBg `
     : props.NCbgcolor === "nav"
-    ? tw` bg-sitecolor-500 `
+    ? tw` bg-colorSecondary `
+    : props.NCbgcolor === "pink"
+    ? tw` bg-red-500 `
     : tw``,
 
   props.NCdisplayhide === "displayhide"
     ? tw` xsm:hidden`
-    :props.NCdisplayhide === "displayhidesm"
+    : props.NCdisplayhide === "displayhidesm"
     ? tw` sm:hidden`
     : props.NCdisplayhide === "displayhidemd"
     ? tw` md:hidden `
@@ -397,7 +407,7 @@ export const NewContainer  = styled.div((props) => [
     ? tw` md:block`
     : props.NCdisplayblock === "displayblocklg"
     ? tw` lg:block`
-    : tw``, 
+    : tw``,
 
   props.NCdisplayinline === "displayinlinesm"
     ? tw` sm:inline`
@@ -405,12 +415,26 @@ export const NewContainer  = styled.div((props) => [
     ? tw` md:inline`
     : props.NCdisplayinline === "displayinlinelg"
     ? tw` lg:inline`
-    : tw``,  
+    : tw``,
 
   props.NCflex === "itemsrow"
-    ? tw` flex`
+    ? tw` flex `
     : props.NCflex === "itemscol"
     ? tw` flex flex-col `
+    : tw``,
+
+  props.NCflexmd === "itemsrow"
+    ? tw` md:flex-row`
+    : props.NCflex === "itemscol"
+    ? tw` flex md:flex-col `
+    : tw``,
+
+  props.Possition === "absolute"
+    ? tw` absolute`
+    : props.Possition === "fixed"
+    ? tw` fixed `
+    : props.Possition === "static"
+    ? tw` static `
     : tw``,
 
   props.NCflexdirection === "itemscenter"
@@ -492,14 +516,25 @@ export const NewContainer  = styled.div((props) => [
     : props.NCzindex === "zindex4"
     ? tw` z-40 `
     : tw``,
+  props.NCtextcolor === "colorPrimarySh"
+    ? tw`text-colorPrimarySh `
+    : props.NHtextcolor === "colorPrimaryH"
+    ? tw`text-colorPrimaryH `
+    : tw``,
 ]);
-
 
 // const Image = tw.img`w-full h-8/12 bg-white`;
 
-
-export const Image  = styled.img((props) => [
+export const Image = styled.img((props) => [
   tw`relative `,
+
+  props.Possition === "absolute"
+    ? tw` absolute`
+    : props.Possition === "fixed"
+    ? tw` fixed `
+    : props.Possition === "static"
+    ? tw` static `
+    : tw``,
 
   props.Imgwidth === "full"
     ? tw` w-full`
@@ -628,4 +663,4 @@ export const Image  = styled.img((props) => [
     : props.Imgheightlg === "equalto90"
     ? tw`  lg:h-11/12 `
     : tw``,
-  ]);
+]);

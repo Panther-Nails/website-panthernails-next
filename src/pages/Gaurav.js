@@ -106,14 +106,14 @@ export default ({
         <Header />
         <Gauravhero />
 
-        <ParellexanimG />
+        {/* <ParellexanimG /> */}
         <Aboutus heading="My Heading" />
 
         <Product></Product>
         <ParellexServices></ParellexServices>
 
         {/* <Cards /> */}
-        <Features1
+        {/* <Features1
           // subheading={<Subheading>Keeping customers on top</Subheading>}
           heading={
             <>
@@ -122,17 +122,17 @@ export default ({
           }
           description="a genial technology company delivering insightful enterprise software that foster your business."
           cards={serviceCards}
-        />
-        <ProductFeatures></ProductFeatures>
+        /> */}
+        {/* <ProductFeatures></ProductFeatures>
         <PlatforWeProvide />
-        <RevordSystem></RevordSystem>
+        <RevordSystem></RevordSystem> */}
 
         {/* <Testimonial /> */}
         <Blog />
         
-        <NewContainer NCbgcolor={"black"} NCwidth={"full"} NCheight={"screen"} NCflexdirection={"itemscenter"} >
+        {/* <NewContainer NCbgcolor={"black"} NCwidth={"full"} NCheight={"screen"} NCflexdirection={"itemscenter"} >
         <NewContainer NCbgcolor={"tan"} NCwidth={"screenhalf"} NCheight={"screenhalf"} NCflexdirection={"itemscenter"}>hello</NewContainer>
-        </NewContainer>
+        </NewContainer> */}
         <Footer />
         {/* <ThreeColWithSideImage/> */}
 

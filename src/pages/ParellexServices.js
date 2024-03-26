@@ -35,45 +35,46 @@ export default ({
   sectiondiscript = "sectiondecriptioncolor",
   descriptionsyle = "descriptioncolor",
   smallcol = "Container90col",
+  bgcolorarray=["Primary","white","black","tan","pink","nav"],
   //text from services
   cards = null,
   sectionheading = "Services",
   subheading = "Features",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utLorem ipsum dolor sit amet.",
 }) => {
   const itemcontant = [
     {
-      heading: "Rasik Loayalty ",
+      heading: "Secure ",
       discription:
-        "rasik loyalty is help you to bring the loyal influencer and then influencer bhelp you to bring the loyal influencer and then influencer b help you to bring the loyal influencer and then influencer bring a loyal customers for you ",
+        "Cloud Infrastructure with a safe & secured credentials enabled with SSO. ",
       url: "https://images.pexels.com/photos/20330740/pexels-photo-20330740/free-photo-of-a-dog-with-light-brown-fur-sitting-on-a-meadow.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
     },
     {
-      heading: "One App",
+      heading: "Support",
       discription:
-        " You can also use variant modifiers to target media queries likeresponsive breakpoints, dark mode, prefers-reduced-motion, and more. For example",
+        " Prudence customer success team that can converse in major indian languages.",
       url: "https://images.pexels.com/photos/12672768/pexels-photo-12672768.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
     },
     {
-      heading: "Travel Management",
+      heading: "Customizable",
       discription:
-        " You can also use variant modifiers to target media queries likeresponsive breakpoints, dark mode, prefers-reduced-motion, and more. For example",
+        " A Rapid & Stable Development Based on Panther Nails After8 Framework makes it easy. ",
       url: "https://images.pexels.com/photos/12672768/pexels-photo-12672768.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
     },
     {
-      heading: "Rasik Loayalty ",
+      heading: "Reliable ",
       discription:
-        "rasik loyalty is help you to bring the loyal influencer and then influencer bring a loyal customers for you ",
+        "The application provides uninterrupted access to the system and 99% up time.",
       url: "https://images.pexels.com/photos/20330740/pexels-photo-20330740/free-photo-of-a-dog-with-light-brown-fur-sitting-on-a-meadow.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
     },
     {
-      heading: "One App",
+      heading: "Fast",
       discription:
-        " You can also use variant modifiers to target media queries likeresponsive breakpoints, dark mode, prefers-reduced-motion, and more. For example",
+        " Robust & Scalable Cloud Infrastructure where you get ready to grow with your business.",
       url: "https://images.pexels.com/photos/12672768/pexels-photo-12672768.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
     },
     {
-      heading: "Travel Management",
+      heading: "Easy",
       discription:
         " You can also use variant modifiers to target media queries likeresponsive breakpoints, dark mode, prefers-reduced-motion, and more. For example",
       url: "https://images.pexels.com/photos/12672768/pexels-photo-12672768.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
@@ -105,25 +106,34 @@ export default ({
         NCbgcolor={"tan"}
         NCflexgap={"flexgapmd"}
       >
-        <NewHeadings
-          NHeading={"headingsizemd"}
-          NHtextcolor={"colorPrimarySh"}
-          NHtextposition={"center"}
-          NHpadding={"padding4"}
-        >
-          {sectionheading}
-        </NewHeadings>
-
-        <NewDescription
-          NDescription={"dsizemd"}
+        <NewContainer
           NDwidth={"equalto85"}
-          NDtextcolor={"colorPrimarySd"}
-          NDtextposition={"center"}
-          NDpadding={"paddingy1"}
+          NCsticky={"stickontop"}
+          NCheight={"full"}
+          NCflexdirection={"itemscenter"}
+          NCflex={"itemscol"}
+          NCbgcolor={"tan"}
+          NCflexgap={"flexgapmd"}
         >
-          {description}
-        </NewDescription>
+          <NewHeadings
+            NHeading={"headingsizemd"}
+            NHtextcolor={"colorPrimarySh"}
+            NHtextposition={"center"}
+            NHpadding={"padding4"}
+          >
+            {sectionheading}
+          </NewHeadings>
 
+          <NewDescription
+            NDescription={"dsizemd"}
+            NDwidth={"equalto85"}
+            NDtextcolor={"colorPrimarySd"}
+            NDtextposition={"center"}
+            NDpadding={"paddingy1"}
+          >
+            {description}
+          </NewDescription>
+        </NewContainer>
         {/* <Heading>heading</Heading> */}
         {/* <Left>
 
@@ -135,45 +145,118 @@ export default ({
           NCheight={"full"}
           NCflexdirection={"itemscenter"}
           NCflex={"itemscol"}
+          
+          
         >
           {itemcontant.map((info, index) => (
             <>
-              <NewContainer
-                NCwidth={"full"}
-                NCheight={"screenhalf"}
-                NCsticky={"stickontop"}
-                NCbgcolor={"black"}
-                NCrounded={"1"}
-                NCborder={"bordersolide2"}
-                NCbordercolor={"random"}
-              >
+              {index % 2 === 0 ? (
                 <NewContainer
                   NCwidth={"full"}
-                  NCheight={"full"}
-                  NCflexdirection={"itemscenter"}
-                  NCflex={"itemscol"}
+                  NCheight={"screenhalf"}
+                  NCsticky={"stickonmid"}
+                  NCrounded={"1"}
+                  NCoverflow={"overflowhide"}
+
+                  // NCborder={"bordersolide2"}
+                  // NCbordercolor={"random"}
                 >
-                  <NewHeadings
-                    NHeading={"headingsizesm"}
-                    NHtextcolor={"colorPrimaryH"}
-                    NHtextposition={"center"}
-                    NHpadding={"padding2"}
-                    NHwidth={"full"}
+                  <NewContainer
+                    NCwidth={"full"}
+                    NCheight={"full"}
+                    NCflexdirection={"itemscenter"}
+                    NCflexmd={"itemsrow"}
+                    NCflex={"itemscol"}
                   >
-                    {info.heading}
-                  </NewHeadings>
-                  <NewDescription
-                    NDescription={"dsizesm"}
-                    NDwidth={"equalto85"}
-                    NDtextcolor={"colorPrimaryD"}
-                    NDtextposition={"center"}
-                    NDpadding={"padding2"}
-                  >
-                    {" "}
-                    {info.discription}{" "}
-                  </NewDescription>
+                    <NewContainer
+                      NCwidth={"full"}
+                      NCheight={"full"}
+                      NCflexdirection={"itemscenter"}
+                      NCbgcolor={bgcolorarray[index]}
+                      NCflex={"itemscol"}
+                    >
+                      <NewHeadings
+                        NHeading={"headingsizesm"}
+                        NHtextcolor={"colorPrimaryH"}
+                        NHtextposition={"center"}
+                        NHpadding={"padding2"}
+                        NHwidth={"full"}
+                      >
+                        {info.heading}
+                      </NewHeadings>
+                      <NewDescription
+                        NDescription={"dsizesm"}
+                        NDwidth={"equalto85"}
+                        NDtextcolor={"colorPrimaryD"}
+                        NDtextposition={"center"}
+                        NDpadding={"padding2"}
+                      >
+                        {" "}
+                        {info.discription}{" "}
+                      </NewDescription>
+                    </NewContainer>
+                    <NewContainer
+                      NCwidth={"full"}
+                      NCflexdirection={"itemscenter"}
+                      NCflex={"itemscol"}
+                      NCbgcolor={"black"}
+                    ></NewContainer>
+                  </NewContainer>
                 </NewContainer>
-              </NewContainer>
+              ) : (
+                <NewContainer
+                  NCwidth={"full"}
+                  NCheight={"screenhalf"}
+                  NCsticky={"stickonmid"}
+                  NCrounded={"1"}
+                  NCoverflow={"overflowhide"}
+                  // NCborder={"bordersolide2"}
+                  // NCbordercolor={"random"}
+                >
+                  <NewContainer
+                    NCwidth={"full"}
+                    NCheight={"full"}
+                    NCflexdirection={"itemscenter"}
+                    NCflexmd={"itemsrow"}
+                    NCflex={"itemscol"}
+                  >
+                    <NewContainer
+                      NCwidth={"full"}
+                      NCflexdirection={"itemscenter"}
+                      NCflex={"itemscol"}
+                    ></NewContainer>
+                    <NewContainer
+                      NCwidth={"full"}
+                      NCheight={"full"}
+                      NCflexdirection={"itemscenter"}
+                      NCbgcolor={bgcolorarray[index]}
+                      NCflex={"itemscol"}
+                    >
+                      <NewHeadings
+                        NHeading={"headingsizesm"}
+                        NHtextcolor={"colorPrimaryH"}
+                        NHtextposition={"center"}
+                        NHpadding={"padding2"}
+                        NHwidth={"full"}
+                      >
+                        {info.heading}
+                      </NewHeadings>
+                      <NewDescription
+                        NDescription={"dsizesm"}
+                        NDwidth={"equalto85"}
+                        NDtextcolor={"colorPrimaryD"}
+                        NDtextposition={"center"}
+                        NDpadding={"padding2"}
+                      >
+                        {" "}
+                        {info.discription}{" "}
+                      </NewDescription>
+                    </NewContainer>
+                  </NewContainer>
+                </NewContainer>
+              )}
+
+              {/* next */}
 
               {/* <Items1 >
                   
