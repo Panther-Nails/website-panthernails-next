@@ -41,8 +41,7 @@ export default ({
   cardsData = [
     {
       id: 1,
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFashcNgpAy2WyLkO3dP4HDa_livNCalgUkw&usqp=CAU",
+      imageUrl: "/RewardsImages/cashRewards.png",
 
       heading: "Cash Rewards",
       description:
@@ -51,8 +50,7 @@ export default ({
 
     {
       id: 2,
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFashcNgpAy2WyLkO3dP4HDa_livNCalgUkw&usqp=CAU",
+      imageUrl: "/RewardsImages/PhysicalGifts.png",
 
       heading: "Physical Gifts",
       description:
@@ -60,42 +58,14 @@ export default ({
     },
     {
       id: 3,
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFashcNgpAy2WyLkO3dP4HDa_livNCalgUkw&usqp=CAU",
+      imageUrl: "/RewardsImages/giftVouchers.png",
       heading: "Gift vouchers",
       description:
         "Enjoy the freedom to select from a wide range of gift vouchers, catering to various interests and preferences. Instant delivery ensures convenience.",
     },
     {
       id: 4,
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFashcNgpAy2WyLkO3dP4HDa_livNCalgUkw&usqp=CAU",
-
-      heading: "Free trip",
-      description:
-        "Embark on unforgettable adventures with our free trip rewards. Explore exciting destinations and create lasting memories, courtesy of our loyalty program.",
-    },
-    {
-      id: 2,
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFashcNgpAy2WyLkO3dP4HDa_livNCalgUkw&usqp=CAU",
-
-      heading: "Physical Gifts",
-      description:
-        "Panther Nails helps you offer a wide range of relevant products as gifts to your partners, all with quick delivery services.",
-    },
-    {
-      id: 3,
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFashcNgpAy2WyLkO3dP4HDa_livNCalgUkw&usqp=CAU",
-      heading: "Gift vouchers",
-      description:
-        "Enjoy the freedom to select from a wide range of gift vouchers, catering to various interests and preferences. Instant delivery ensures convenience.",
-    },
-    {
-      id: 4,
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFashcNgpAy2WyLkO3dP4HDa_livNCalgUkw&usqp=CAU",
+      imageUrl: "/RewardsImages/freeTrips.png",
 
       heading: "Free trip",
       description:
@@ -126,7 +96,7 @@ export default ({
 
   const [sliderRef, setSliderRef] = useState(null);
   const sliderSettings = {
-    dots: false,
+    dots: true,
     arrows: false,
     slidesToShow: 4,
     autoplay: true,
@@ -171,7 +141,7 @@ export default ({
         {/* //ref={setSliderRef} {...sliderSettings} */}
         {cardsData.map((card, index) => (
           <Card rounded={roundedSize}>
-            <Container tw="overflow-hidden bg-transparent pt-0 w-full">
+            <Container tw="overflow-hidden bg-transparent pt-0 w-full flex lg:items-center lg:justify-center">
               <CardImage src={card.imageUrl} alt="Card Image" />
             </Container>
             <CardContent>

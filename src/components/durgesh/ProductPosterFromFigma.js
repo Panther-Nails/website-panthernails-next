@@ -16,6 +16,7 @@ export default ({
   // productImageMockupSrc = ""
   leftFirst = true,
   productButtonTextSecond = "Explore our App",
+  productSrcWithMockup = "/smacoProductSectionImage3.png",
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -43,7 +44,7 @@ export default ({
             </Container>
             <Container tw="lg:h-screen bg-transparent   lg:pt-20  lg:block">
               <Image
-                src="/smacoProductSectionImage3.png"
+                src={productSrcWithMockup}
                 alt="Mockup Image here"
                 tw="lg:h-144 lg:w-150 bg-cover "
               ></Image>
@@ -53,7 +54,7 @@ export default ({
           <>
             <Container tw="lg:h-screen bg-transparent   lg:pt-20  lg:block">
               <Image
-                src="/raskikAppPosterForProductSection.png"
+                src={productSrcWithMockup}
                 alt="Mockup Image here"
                 tw="lg:h-144 lg:w-150 bg-cover lg:ml-24 "
               ></Image>

@@ -117,7 +117,8 @@ import DurgeshLoyalty from "pages/DurgeshLoyalty";
 import { ThemeProvider } from "@fluentui/react";
 import { lightTheme, darkTheme } from "components/durgesh/Theme/Themes";
 import { createTheme } from "@fluentui/react/lib/Styling";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
   // return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;

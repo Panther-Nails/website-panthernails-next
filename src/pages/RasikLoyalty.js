@@ -78,7 +78,7 @@ export default ({
       />
 
       <AnimationRevealPage>
-        <Features products={products} heading={<></>} description={<> </>} />
+        <Features products={products} heading={<></>} description={<></>} />
 
         <DashedBorderSixFeatures
           headTitle="Rasik "
@@ -101,9 +101,7 @@ export default ({
           secondaryLinkUrl="https://wa.me/918087144244"
           pushDownFooter={false}
         />
-        <ThreePlans
-        heading='Redeemption opations'
-        />
+        <ThreePlans heading="Redeemption opations" />
 
         <Testimonial
           Heading="Our Esteemed Customers"

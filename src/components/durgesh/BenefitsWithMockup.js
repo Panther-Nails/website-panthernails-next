@@ -76,6 +76,7 @@ export default ({
           <Screen>
             <Image src={cardsData[hoverIndex].hoverIndexUrl} />
           </Screen>
+
           {/* <Camera />
           <Speaker />
           <HomeButton /> */}

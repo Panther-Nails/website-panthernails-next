@@ -26,6 +26,7 @@ import RasikAppPoster from "components/durgesh/ProductPosterFromFigma";
 import { useRef } from "react";
 import AnimatedComponents from "components/durgesh/CustomStyle/AnimatedComponents";
 import WhoWeAre from "components/durgesh/WhoWeAre";
+import RewardSection from "components/durgesh/RewardSection";
 export default ({
   heroHeading = "Elevating Engagement, Empowering Growth for",
 
@@ -213,12 +214,14 @@ export default ({
             productButtonText="Contact us"
             productImageSrc="./oneAppLogoForProductSection.png"
             productButtonTextSecond="Explore App"
+            productSrcWithMockup="/smacoProductSectionImage3.png"
           />
           <RasikAppPoster
             posterHeading="Single App For All Business Automation Needs"
             productButtonText="Contact us"
             productImageSrc="/rasikAppLogoForProductSection.png"
             productButtonTextSecond="Explore App"
+            productSrcWithMockup="/raskikAppPosterForProductSection.png"
             leftFirst={false}
           />
         </CardSlider>
@@ -271,10 +274,7 @@ export default ({
           pushDownFooter={false}
         />
 
-        <ServicesSection
-          heading="Rewards Options"
-          subheading="At PANTHER NAILS, we're dedicated to enhancing your partnership experience. That's why we're thrilled to introduce our exclusive loyalty program, designed to reward your loyalty like never before"
-        />
+        <RewardSection />
 
         <DurgeshSimpleWithSideImage />
 
