@@ -1,4 +1,5 @@
 import React from "react";
+import heroimg from "images/heroimg.png"
 import { PrimaryButton, NewPrimaryButton } from "components/misc/Buttons.js";
 import {
   SectionHeading,
@@ -17,7 +18,7 @@ import {
   NewDescription,
 } from "components/misc/Typography.js";
 
-const Rightimg = tw.img`md:(h-10/12)  w-full h-4/12 hover:scale-110 duration-500  `;
+const Rightimg = tw.img`md:(h-10/12)  w-full h-4/12 filter grayscale hover:(scale-110 filter grayscale-0) duration-500  `;
 const add = "RoundedFullAnimationBgGreen";
 
 export default ({
@@ -126,7 +127,7 @@ export default ({
           NCdisplayblock={displayblock}
           NCbgcolor={bgcolor}
         >
-          <Rightimg src="https://cdn.dribbble.com/userupload/12468591/file/original-4c59268356fb18e647e1e0847ba82d14.png?resize=1024x768&vertical=center" />
+          <Rightimg src={heroimg} />
         </NewContainer>
       </NewContainer>
     </>

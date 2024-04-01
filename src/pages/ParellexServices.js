@@ -35,7 +35,7 @@ export default ({
   sectiondiscript = "sectiondecriptioncolor",
   descriptionsyle = "descriptioncolor",
   smallcol = "Container90col",
-  bgcolorarray=["Primary","white","black","tan","pink","nav"],
+  bgcolorarray = ["Primary", "white", "black", "tan", "pink", "nav"],
   //text from services
   cards = null,
   sectionheading = "Services",
@@ -124,7 +124,7 @@ export default ({
             {sectionheading}
           </NewHeadings>
 
-          <NewDescription
+          {/* <NewDescription
             NDescription={"dsizemd"}
             NDwidth={"equalto85"}
             NDtextcolor={"colorPrimarySd"}
@@ -132,7 +132,7 @@ export default ({
             NDpadding={"paddingy1"}
           >
             {description}
-          </NewDescription>
+          </NewDescription> */}
         </NewContainer>
         {/* <Heading>heading</Heading> */}
         {/* <Left>
@@ -145,8 +145,6 @@ export default ({
           NCheight={"full"}
           NCflexdirection={"itemscenter"}
           NCflex={"itemscol"}
-          
-          
         >
           {itemcontant.map((info, index) => (
             <>
@@ -154,7 +152,7 @@ export default ({
                 <NewContainer
                   NCwidth={"full"}
                   NCheight={"screenhalf"}
-                  NCsticky={"stickonmid"}
+                  NCsticky={"stickbelowTop"}
                   NCrounded={"1"}
                   NCoverflow={"overflowhide"}
 

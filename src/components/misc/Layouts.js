@@ -469,6 +469,8 @@ export const NewContainer = styled.div((props) => [
 
   props.NCsticky === "stickontop"
     ? tw` sticky top-0`
+    : props.NCsticky === "stickbelowTop"
+    ? tw` sticky top-1`
     : props.NCsticky === "stickonmid"
     ? tw` sticky top-1/2`
     : tw``,

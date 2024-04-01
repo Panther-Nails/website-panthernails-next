@@ -55,12 +55,6 @@ export default ({
       img: "http://localhost:3000/static/media/CLM.fd4a3027caa865270a0d.png",
       // duration: "Monthly",
       mainFeature: ProductImageCLM,
-      features: [
-        "30 Templates",
-        "7 Landing Pages",
-        "12 Internal Pages",
-        "Basic Assistance",
-      ],
       productinfo:
         "Our Products that are built with Business Analytics & Intelligence, Automated Query Response System, Automated Analysis Emails, Voice Intelligence System provides you enhanced accessibility to run your business.",
     },
@@ -69,17 +63,12 @@ export default ({
       img: "http://localhost:3000/static/media/Loyalty.4b56d4f1b36a49c1a2ef.png",
       // duration: "Monthly",
       mainFeature: ProductImageRasikLoyalty,
-      features: [
-        "60 Templates",
-        "8 Landing Pages",
-        "22 Internal Pages",
-        "Priority Assistance",
-      ],
       productinfo:
         "Our Products that are built with Business Analytics & Intelligence, Automated Query Response System, Automated Analysis Emails, Voice Intelligence System provides you enhanced accessibility to run your business.",
 
-      featured: true,
     },
+
+    
   ];
 
   if (!plans) plans = defaultPlans;
