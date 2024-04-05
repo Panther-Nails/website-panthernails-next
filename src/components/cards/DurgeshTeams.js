@@ -8,14 +8,20 @@ import {
   Card,
   Container,
   CardSlider,
+  CardGrid,
 } from "components/misc/Layouts.js";
-import { Subheading } from "components/misc/Headings";
-import { Heading, SectionDescription } from "components/misc/Typography";
+import {
+  CardDescription,
+  CardHeading,
+  Heading,
+  Subheading,
+} from "components/misc/Typography";
 import { ReactComponent as TwitterIcon } from "images/twitter-icon.svg";
 import { ReactComponent as LinkedinIcon } from "images/linkedin-icon.svg";
 import { ReactComponent as GithubIcon } from "images/github-icon.svg";
 import CustomStyle from "components/durgesh/CustomStyle/CustomStyle";
 import { PrimaryButton } from "@fluentui/react";
+import HeadingSubheadingDescription from "components/features/HeadingSubheadingDescription";
 // import { Card } from "@fluentui/react-components";
 
 // const HeadingContainer = tw.div``
@@ -33,7 +39,7 @@ const CardImage = styled.div`
   ${tw`w-64 h-64 bg-contain bg-center rounded`}
 `;
 const CardContent = styled.div`
-  ${tw`flex flex-col items-center mt-6`}
+  ${tw`flex sm:flex-col lg:flex-row items-center `}
   .position {
     ${tw`uppercase font-bold tracking-widest text-xs text-primary-500`}
   }
@@ -103,55 +109,56 @@ export default ({
     },
   ],
 }) => {
-  const [sliderRef, setSliderRef] = useState(null);
-  const sliderSettings = {
-    dots: false,
-    arrows: true,
-    slidesToShow: 4,
-    autoplay: false,
-    autoplaySpeed: 2500,
-    pauseOnHover: true,
-    responsive: [
-      // {
-      //   breakpoint: 1280,
-      //   settings: {
-      //     slidesToShow: 4,
-      //   },
-      // },
-      // {
-      //   breakpoint: 900,
-      //   settings: {
-      //     slidesToShow: 3,
-      //   },
-      // },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
-  };
+  // const [sliderRef, setSliderRef] = useState(null);
+  // const sliderSettings = {
+  //   dots: false,
+  //   arrows: true,
+  //   slidesToShow: 4,
+  //   autoplay: false,
+  //   autoplaySpeed: 2500,
+  //   pauseOnHover: true,
+  //   responsive: [
+  //     // {
+  //     //   breakpoint: 1280,
+  //     //   settings: {
+  //     //     slidesToShow: 4,
+  //     //   },
+  //     // },
+  //     // {
+  //     //   breakpoint: 900,
+  //     //   settings: {
+  //     //     slidesToShow: 3,
+  //     //   },
+  //     // },
+  //     {
+  //       breakpoint: 600,
+  //       settings: {
+  //         slidesToShow: 1,
+  //       },
+  //     },
+  //   ],
+  // };
+
   return (
-    <Container tw="lg:h-screen">
+    <Container tw="lg:h-screen py-12">
       <ContentWithPaddingXl>
         <Container>
-          {subheading && <Subheading>{subheading}</Subheading>}
+          {/* {subheading && <Subheading>{subheading}</Subheading>} */}
           {/* {heading && <CustomStyle.Heading>{heading}</CustomStyle.Heading>} */}
           {heading && <Heading>{heading}</Heading>}
-          {description && (
-            <SectionDescription>{description}</SectionDescription>
-          )}
+          {description && <Subheading>{description}</Subheading>}
         </Container>
 
         {/* <Cards> */}
-        <CardSlider ref={setSliderRef} {...sliderSettings}>
+        <CardContent tw="flex flex-col lg:flex-row items-center justify-center gap-8 mt-4">
           {cards.map((card, index) => (
-            <Card key={index} tw="flex items-center justify-center">
+            <Card key={index} tw="flex flex-col items-center justify-center">
               <CardImage imageSrc={card.imageSrc} />
-              <CardContent>
-                <span className="position">{card.position}</span>
-                <span className="name">{card.name}</span>
+              <CardContent tw="flex flex-col items-center justify-center mt-4">
+                <CardDescription className="position">
+                  {card.position}
+                </CardDescription>
+                <CardHeading className="name">{card.name}</CardHeading>
                 <CardLinks>
                   {card.links.map((link, linkIndex) => (
                     <a key={linkIndex} className="link" href={link.url}>
@@ -162,7 +169,7 @@ export default ({
               </CardContent>
             </Card>
           ))}
-        </CardSlider>
+        </CardContent>
         {/* </Cards> */}
       </ContentWithPaddingXl>
     </Container>

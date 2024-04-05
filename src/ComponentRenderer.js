@@ -67,6 +67,7 @@ import PortfolioCards from "components/cards/PortfolioTwoCardsWithImage.js";
 import TabGridCards from "components/cards/TabCardGrid.js";
 import ProfileThreeColGridCards from "components/cards/ProfileThreeColGrid.js";
 import ThreeColContactDetailsCards from "components/cards/ThreeColContactDetails.js";
+import DurgeshTeamsCards from "components/cards/DurgeshTeams";
 
 import ThreeColSimpleWithImageBlog from "components/blogs/ThreeColSimpleWithImage.js";
 import ThreeColSimpleWithImageAndDashedBorderBlog from "components/blogs/ThreeColSimpleWithImageAndDashedBorder.js";
@@ -317,6 +318,11 @@ export const components = {
           component: SliderCards,
           url: "/components/blocks/Cards/Slider",
         },
+        DurgeshTeamsCards: {
+          name: "Durgesh Teams Cards ",
+          component: DurgeshTeamsCards,
+          url: "/components/blocks/Cards/Portfolio",
+        },
         Portfolio: {
           name: "Two Column Portfolio Cards With Images ",
           component: PortfolioCards,
@@ -505,6 +511,10 @@ export const components = {
 
 export default () => {
   const { type, subtype, name } = useParams();
+
+  console.log(type);
+  console.log(subtype);
+  console.log(name);
 
   try {
     let Component = null;

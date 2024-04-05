@@ -74,7 +74,7 @@ export default ({
   });
 
   return (
-    <Container ref={ref} tw="lg:h-screen mt-0 mb-0 ">
+    <Container ref={ref} tw="mt-0 mb-0 pb-24 h-1/2">
       {/* <PrimaryButton>pricing</PrimaryButton> */}
       {/* Attach the ref to the Container */}
       {/* <ContentWithPaddingForHomePage> */}

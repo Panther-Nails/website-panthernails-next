@@ -6,26 +6,39 @@ import { Container, Image } from "components/misc/Layouts";
 import { Heading } from "components/misc/Typography";
 import { PrimaryThemeButton } from "components/misc/Buttons";
 import { PrimaryButton } from "@fluentui/react";
-import { useRef } from "react";
-import { useInView } from "framer-motion";
+
+import { ImageContainer } from "./controls/ImageContainer";
 
 export default ({
   posterHeading = "Experience seamless HR management with One App: Smarter, faster, better!",
   productButtonText = "Contact us",
   productImageSrc = "",
-  // productImageMockupSrc = ""
   leftFirst = true,
   productButtonTextSecond = "Explore our App",
   productSrcWithMockup = "/smacoProductSectionImage3.png",
-}) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  return (
+
+  productSectionData = {
+    oneAppData: [
+      (posterHeading =
+        "Experience seamless HR management with One App: Smarter, faster, better!"),
+      (productButtonText = "Contact us"),
+      (productImageSrc = "./oneAppLogoForProductSection.png"),
+      (productButtonTextSecond = "Explore App"),
+      (productSrcWithMockup = "/smacoProductSectionImage3.png"),
+    ],
+    rasikAppData: [
+      (posterHeading = "Single App For All Business Automation Needs"),
+      (productButtonText = "Contact us"),
+      (productImageSrc = "/rasikAppLogoForProductSection.png"),
+      (productButtonTextSecond = "Explore App"),
+      (productSrcWithMockup = "/raskikAppPosterForProductSection.png"),
+      (leftFirst = true),
+    ],
+  },
+}) =>
+  (productSectionData = (
     <>
-      <Container
-        tw="bg-productPosterPrimary sm:columns-1 lg:columns-2 lg:h-screen sm:flex-row px-8"
-        // ref={ref}
-      >
+      <Container tw="bg-productPosterPrimary sm:columns-1 lg:columns-2 lg:h-screen sm:flex-row px-8">
         {leftFirst ? (
           <>
             <Container tw="flex-col sm:h-1/2 lg:h-screen bg-transparent flex p-8  gap-12 flex items-center">
@@ -77,5 +90,4 @@ export default ({
         )}
       </Container>
     </>
-  );
-};
+  ));

@@ -81,7 +81,6 @@ export default ({
   }, [headingText]);
 
   const [text, setText] = useState("");
-  // const message = heading; // Define your message here
 
   useEffect(() => {
     let currentIndex = 0;
@@ -97,9 +96,10 @@ export default ({
 
   return (
     <>
-      <Container tw=" px-8 h-screen " imageSrc={backgroundImage}>
+      <Container tw="px-8 lg:px-0 h-screen " imageSrc={backgroundImage}>
         {/* <BackgroundForHeader> */}
         <Header
+          tw="lg:w-full"
           css={bgColor}
           links={
             <>
@@ -113,7 +113,7 @@ export default ({
           }
         />
 
-        <Container tw="flex flex-col lg:flex-row justify-between items-center  lg:pt-5 max-w-screen-2xl mx-auto sm:px-8">
+        <Container tw="flex flex-col  lg:flex-row justify-between items-center  lg:pt-5 max-w-screen-2xl mx-auto sm:px-12">
           <Column tw=" pt-16">
             <AnimatedHeading>
               <Heading tw="text-left">

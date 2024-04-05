@@ -4,8 +4,14 @@ import { css } from "styled-components/macro";
 import Slider from "react-slick";
 
 export const Container = styled.div((props) => [
-  tw`relative  justify-center text-center bg-colorPrimary `,
+  tw`relative  justify-center text-center bg-colorPrimary`,
   props.backgroundColor === "lightblue" ? tw`bg-red-500` : tw``,
+  // props.textOn === "left" ? tw`md:order-first` : tw`md:order-last`,
+  // props.textOn === "right" ? tw`md:order-last` : tw`md:order-first`,
+]);
+
+export const FullScreenContainer = styled.div((props) => [
+  tw`h-screen  bg-colorPrimary`,
 ]);
 
 export const ContainerWithTwoCol = styled.div((props) => [tw`flex flex-col `]);
@@ -23,7 +29,7 @@ export const StickyContainer = tw.div`relative pt-0  top-0 -z-50 lg:sticky`;
 export const Column = tw.div`mr-auto lg:mr-0 max-w-lg lg:max-w-xl xl:max-w-2xl ml-0`;
 
 export const CardGrid = styled.div`
-  ${tw`flex sm:w-cardGridWidth gap-6 py-5  lg:w-screen px-16 justify-center text-left lg:flex-wrap lg:flex-row  overflow-x-auto `}
+  ${tw`flex sm:w-cardGridWidth gap-6 py-5  lg:w-screen px-16 justify-center text-left flex-wrap lg:flex-row  overflow-x-auto `}
   ::-webkit-scrollbar {
     display: none;
   }
@@ -74,23 +80,19 @@ const handleProps = (props) => {
     ? tw`rounded-2xl`
     : props.rounded === "1"
     ? tw`rounded-xl`
-    : // :props.backgroundColor === "dark green"
-      // ? tw`bg-green-800`
-      // : props.backgroundColor === "light green"
-      // ? tw`bg-green-300`
-      // : props.backgroundColor === "green"
-      // ? tw`bg-green-500`
-      // : props.backgroundColor === "dark red"
-      // ? tw`bg-red-800`
-      // : props.backgroundColor === "light red"
-      // ? tw`bg-red-300`
-      // : props.backgroundColor === "red"
-      // ? tw`bg-red-500`
-      // : props.backgroundColor === "dark blue"
-      // ? tw`bg-blue-800`
-      // : props.backgroundColor === "light blue"
-      // ? tw`bg-blue-300`
-      // : props.backgroundColor === "blue"
-      // ? tw`bg-blue-500`
-      tw``;
+    : tw``;
 };
+
+export const ImageContainer = styled.div((props) => [tw``]);
+export const TextContent = tw.div`lg:py-8 text-center md:text-left`;
+
+export const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
+const ColumnDynamic = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
+export const ImageColumn = tw(ColumnDynamic)`md:w-6/12 flex-shrink-0 relative`;
+
+export const TextColumn = styled(ColumnDynamic)((props) => [
+  tw`md:w-6/12 mt-16 md:mt-0`,
+  props.textOnLeft
+    ? tw`md:mr-12 lg:mr-16 md:order-first`
+    : tw`md:ml-12 lg:ml-16 md:order-last`,
+]);

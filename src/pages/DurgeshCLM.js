@@ -1,38 +1,42 @@
 import React from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
-
-import Hero from "components/hero/TwoColumnWithInput.js";
-import Features from "components/features/VerticalWithAlternateImageAndText.js";
-import Pricing from "components/pricing/TwoPlansWithDurationSwitcher";
-import CTA from "components/cta/GetStarted";
-import Testimonial from "components/testimonials/ThreeColumnWithProfileImage";
-import Footer from "components/footers/FiveColumnWithInputForm.js";
-import FAQ from "components/faqs/SingleCol.js";
-
 import tw from "twin.macro";
-
-import PhoneImageRasikLoyalty from "images/RASIK.png";
-
-import ProfileImageRasikLoyalty from "images/Loyalty.png";
-import ProfileImageCLM from "images/CLM.png";
-
-import ProductImageRasikLoyalty from "images/ProductRasikLoyalty.png";
-import ProductImageCLM from "images/ProductCLM.png";
-
-export const NavLinks = tw.div`inline-block`;
-
-/* hocus: stands for "on hover or focus"
- * hocus:bg-primary-700 will apply the bg-primary-700 class on hover or focus
- */
-export const NavLink = tw.a`
-  text-lg my-2 lg:text-sm lg:mx-6 lg:my-0
-  font-semibold tracking-wide transition duration-300
-  pb-1 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
-`;
-
+import { css } from "styled-components";
+import styled from "styled-components";
+import Hero from "components/hero/TwoColumnWithInput.js";
+import OneAppPoster from "components/durgesh/ProductPosterFromFigma";
+import OneAppServices from "components/durgesh/LoyaltyServices";
+import { Container } from "components/misc/Layouts";
 const HighlightedText = tw.span`text-primary-500`;
 
-export default ({}) => {
+export default ({
+  oneAppServicesCardData = [
+    {
+      imageUrl: "logo192.png",
+      heading: "Work Report",
+      description:
+        "Paying out employees for his expenses for company work, paying out perks that are not part of his CTC, and any other type of expenses that you see that has to payed out or reimbursed to the employee are managed through this.",
+    },
+    {
+      imageUrl: "logo192.png",
+      heading: "Leave Management",
+      description:
+        "Paying out employees for his expenses for company work, paying out perks that are not part of his CTC, and any other type of expenses that you see that has to payed out or reimbursed to the employee are managed through this.",
+    },
+    {
+      imageUrl: "logo192.png",
+      heading: "Accommodation",
+      description:
+        "Paying out employees for his expenses for company work, paying out perks that are not part of his CTC, and any other type of expenses that you see that has to payed out or reimbursed to the employee are managed through this.",
+    },
+    {
+      imageUrl: "logo192.png",
+      heading: "Advance Money",
+      description:
+        "Paying out employees for his expenses for company work, paying out perks that are not part of his CTC, and any other type of expenses that you see that has to payed out or reimbursed to the employee are managed through this.",
+    },
+  ],
+}) => {
   return (
     <>
       <Hero
@@ -51,8 +55,22 @@ export default ({}) => {
             each moment.{" "}
           </>
         }
+
         // bgColor={tw`bg-blue-500`}
       />
+      <OneAppPoster
+        posterHeading="Experience seamless HR management with One App: Smarter, faster, better!"
+        productButtonText="Contact us"
+        productImageSrc="./oneAppLogoForProductSection.png"
+        productButtonTextSecond="Explore App"
+        productSrcWithMockup="/smacoProductSectionImage3.png"
+      />
+      <OneAppServices
+        productServicesHeading="OneApp Services"
+        productServicesSubheading="Rasik Loyalty Services Subheading"
+        productServicesCardData={oneAppServicesCardData}
+      />
+      
     </>
   );
 };

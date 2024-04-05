@@ -1,12 +1,14 @@
 import React from "react";
 import tw from "twin.macro";
+import { css } from "styled-components";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/TwoColumnWithInput";
 import RasikAppPoster from "components/durgesh/ProductPosterFromFigma";
 import { HighlightedText } from "components/misc/Headings";
 import RewardSection from "components/durgesh/RewardSection";
 import Carousel from "components/durgesh/Carousel";
-import { Container } from "components/misc/Layouts";
+import LoyaltyServices from "../components/durgesh/LoyaltyServices";
+import { Container, StickyContainer } from "components/misc/Layouts";
 export default ({}) => {
   return (
     <>
@@ -36,10 +38,10 @@ export default ({}) => {
           productSrcWithMockup="/raskikAppPosterForProductSection.png"
           leftFirst={true}
         />
-        {/* <Container className="w-screen flex justify-center"> */}
-        
-        <Carousel />
-        {/* </Container> */}
+        <LoyaltyServices />
+
+        {/* <Carousel /> */}
+
         <RewardSection />
       </AnimationRevealPage>
       ;

@@ -11,6 +11,7 @@ module.exports = {
       xl: "1280px",
       "2xl": "1440px",
     },
+
     colors: {
       transparent: "transparent",
       black: "#000",
@@ -23,7 +24,7 @@ module.exports = {
         400: "#ff53be",
       },
 
-      colorPrimary: "#e2e8f0",
+      colorPrimary: "#fff", //#e2e8f0
       colorOnPrimary: "#000",
       cardPrimary: "#fff",
       cardOnPrimary: "",
@@ -331,6 +332,7 @@ module.exports = {
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
       ],
+
       serif: ["Georgia", "Cambria", '"Times New Roman"', "Times", "serif"],
       mono: [
         "Menlo",
@@ -340,6 +342,8 @@ module.exports = {
         '"Courier New"',
         "monospace",
       ],
+      roslindale: ["cursive"],
+      ptSerif: ["PT Serif"],
     },
     fontSize: {
       xs: "0.75rem",
@@ -389,7 +393,6 @@ module.exports = {
       "9/12": "75%",
       "10/12": "83.333333%",
       "11/12": "91.666667%",
-      "11/12": "98%",
       full: "100%",
       screen: "100vh",
     }),
@@ -692,6 +695,7 @@ module.exports = {
       90: "90deg",
       180: "180deg",
       3: "3deg",
+      5: "5deg",
     },
     translate: (theme, { negative }) => ({
       ...theme("spacing"),
@@ -738,7 +742,7 @@ module.exports = {
       700: "700ms",
       1000: "1000ms",
     },
-    rounded: {
+    roundedRadius: {
       full: "rounded-full",
       5: "rounded-5xl",
       4: "rounded-4xl",

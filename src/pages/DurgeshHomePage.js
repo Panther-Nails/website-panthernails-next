@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import tw from "twin.macro";
-import Hero from "components/hero/DurgeshHero";
+import Hero from "components/hero/BackgroundAsImage";
 import ServicesSection from "components/durgesh/ServicesSection";
 import Footer from "components/footers/SimpleFiveColumn";
 import CTA from "components/cta/DurgeshGetStarted";
@@ -27,6 +27,9 @@ import { useRef } from "react";
 import AnimatedComponents from "components/durgesh/CustomStyle/AnimatedComponents";
 import WhoWeAre from "components/durgesh/WhoWeAre";
 import RewardSection from "components/durgesh/RewardSection";
+import OurStory from "components/durgesh/OurStory";
+import ProductPoster from "components/durgesh/ProductPoster";
+
 export default ({
   heroHeading = "Elevating Engagement, Empowering Growth for",
 
@@ -151,6 +154,13 @@ export default ({
       description:
         "Earn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cards.",
     },
+    {
+      imageUrl:
+        "data:image/jpeg;base64,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",
+      heading: "Architect Loyalty ",
+      description:
+        "Earn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cards.",
+    },
   ],
 }) => {
   const [scrollValue, setScrollValue] = useState(0);
@@ -200,15 +210,17 @@ export default ({
           watchVideoYoutubeUrl=""
           links={[
             { title: "About Us", href: "/AboutUs" },
-            { title: "Rasik Loyalty Platform", href: "/RasikLoyalty" },
+            { title: "Loyalty Platform", href: "/RasikLoyalty" },
             { title: "Contract Labour Management", href: "/CLM" },
             { title: "Blog", href: "/blog" },
             { title: "Contact Us", href: "/contactus" },
+            { title: "Rupesh", href: "/pages/rasikLoyalty/rasikLoyalty" },
+            { title: "Durgesh", href: "/pages/clm/clm" },
           ]}
         />
-
+        <ProductPoster />
         {/* Poster Section */}
-        <CardSlider tw="flex flex-row " ref={setSliderRef} {...sliderSettings}>
+        <CardSlider tw="" ref={setSliderRef} {...sliderSettings}>
           <OneAppPoster
             posterHeading="Experience seamless HR management with One App: Smarter, faster, better!"
             productButtonText="Contact us"
@@ -232,6 +244,7 @@ export default ({
           subheading="We understand the importance of building strong relationships with your customers and keeping them engaged. That's why we offer a range of innovative solutions to help you drive loyalty and boost sales."
           cardsData={cardsDataForPantherNailsServices}
           bgColor={tw`bg-black`}
+          // isOnClick={true}
         />
 
         <CTA
@@ -299,6 +312,7 @@ export default ({
         />
         <WhoWeAre />
         <DurgeshTeams />
+        <OurStory />
         <Footer />
       </AnimationRevealPage>
     </>

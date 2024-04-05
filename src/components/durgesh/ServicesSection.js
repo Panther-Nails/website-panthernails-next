@@ -38,55 +38,22 @@ const CardSlider = styled(Slider)`
 export default ({
   heading = "Main Heading",
   subheading = "Subheading goes here",
-  cardsData = [
-    {
-      id: 1,
-      imageUrl: "/RewardsImages/cashRewards.png",
-
-      heading: "Cash Rewards",
-      description:
-        "Earn cash rewards effortlessly through our loyalty program. Redeemable through various channels including bank accounts, wallets, UPIs, and cash cards.",
-    },
-
-    {
-      id: 2,
-      imageUrl: "/RewardsImages/PhysicalGifts.png",
-
-      heading: "Physical Gifts",
-      description:
-        "Panther Nails helps you offer a wide range of relevant products as gifts to your partners, all with quick delivery services.",
-    },
-    {
-      id: 3,
-      imageUrl: "/RewardsImages/giftVouchers.png",
-      heading: "Gift vouchers",
-      description:
-        "Enjoy the freedom to select from a wide range of gift vouchers, catering to various interests and preferences. Instant delivery ensures convenience.",
-    },
-    {
-      id: 4,
-      imageUrl: "/RewardsImages/freeTrips.png",
-
-      heading: "Free trip",
-      description:
-        "Embark on unforgettable adventures with our free trip rewards. Explore exciting destinations and create lasting memories, courtesy of our loyalty program.",
-    },
-  ],
+  cardsData = [],
   isOnClick = false,
   bgColor = tw``,
   buttonText = "Learn More",
   roundedSize = "0",
   containerCss = null,
 }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleClick = () => {
-    setIsModalOpen(true);
-  };
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const handleClick = () => {
+  //   setIsModalOpen(true);
+  // };
+  // const handleCloseModal = () => {
+  //   setIsModalOpen(false);
+  // };
 
-  //slider from react
+  //slider from react-slick
   var cardShowSize = null;
   if (cardsData.length >= 4) {
     cardShowSize = 4;
@@ -94,8 +61,15 @@ export default ({
     cardShowSize = cardShowSize;
   }
 
-  const [sliderRef, setSliderRef] = useState(null);
   const sliderSettings = {
+    // customPaging: function (i) {
+    //   return (
+    //     <a>
+    //       <img src={`${cardsData[i].imageUrl}`} tw="" />
+    //     </a>
+    //   );
+    // },
+
     dots: true,
     arrows: false,
     slidesToShow: 4,
@@ -125,7 +99,7 @@ export default ({
   };
 
   return (
-    <Container css={containerCss} tw="h-screen lg:w-screen sm:py-12">
+    <Container css={containerCss} tw="h-screen lg:w-screen sm:py-0">
       {/* {isModalOpen && (
         <ModalContainer>
           <CloseButton onClick={handleCloseModal}>Close</CloseButton>
@@ -137,8 +111,7 @@ export default ({
       <Subheading tw="pt-6 sm:text-justify lg:text-center px-12">
         {subheading}
       </Subheading>
-      <CardSlider ref={setSliderRef} {...sliderSettings} tw="pt-8 lg:pt-3">
-        {/* //ref={setSliderRef} {...sliderSettings} */}
+      <CardSlider {...sliderSettings} tw="pt-8 lg:pt-3 ">
         {cardsData.map((card, index) => (
           <Card rounded={roundedSize}>
             <Container tw="overflow-hidden bg-transparent pt-0 w-full flex lg:items-center lg:justify-center">

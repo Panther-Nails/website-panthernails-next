@@ -101,6 +101,7 @@ import AboutUsPage from "pages/AboutUs.js";
 import ContactUsPage from "pages/ContactUs.js";
 import BlogIndexPage from "pages/BlogIndex.js";
 
+import DynamicPage from "DynamicPage";
 import ComponentRenderer from "ComponentRenderer.js";
 import MainLandingPage from "MainLandingPage.js";
 import TermsOfServicePage from "pages/TermsOfService.js";
@@ -119,6 +120,8 @@ import { lightTheme, darkTheme } from "components/durgesh/Theme/Themes";
 import { createTheme } from "@fluentui/react/lib/Styling";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import DurgeshCLM from "pages/DurgeshCLM";
+import DynamicPageForSectionTesting from "pages/DynamicPageForSectionTesting";
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
   // return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
@@ -135,11 +138,9 @@ export default function App() {
               path="/components/:type/:subtype/:name"
               element={<ComponentRenderer />}
             />
-            <Route
-              path="/components/:type/:name"
-              element={<ComponentRenderer />}
-            />
-            <Route path="/TermsOfService" element={<TermsOfServicePage />} />
+            <Route path="/components/:type/:name" element={<DynamicPage />} />
+            <Route path="/pages/:type/:subtype" element={<DynamicPage />} />
+            {/* <Route path="/TermsOfService" element={<TermsOfServicePage />} />
             <Route path="/PrivacyPolicy" element={<PrivacyPolicyPage />} />
             <Route path="/Login" element={<LoginPage />} />
             <Route path="/Signup" element={<SignupPage />} />
@@ -148,7 +149,7 @@ export default function App() {
             <Route path="/CLM" element={<CLMPage />} />
             <Route path="/AboutUs" element={<AboutUsPage />} />
             <Route path="/ContactUs" element={<ContactUsPage />} />
-            <Route path="/Blog" element={<BlogIndexPage />} />
+            <Route path="/Blog" element={<BlogIndexPage />} /> */}
 
             {/* <Route path="/" element={<Home />} /> */}
 
@@ -163,6 +164,8 @@ export default function App() {
             /> */}
             <Route path="/DurgeshAbout" element={<DurgeshAbout />} />
             <Route path="/DurgeshLoyalty" element={<DurgeshLoyalty />} />
+            <Route path="/Clm" element={<DurgeshCLM />} />
+            <Route path="/Testing" element={<DynamicPageForSectionTesting />} />
           </Routes>
         </Router>
       </ThemeProvider>

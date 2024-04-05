@@ -16,14 +16,18 @@ import {
   CardImage,
   Container,
   CardContent,
+  // Card,
 } from "components/misc/Layouts";
 import { PrimaryButton } from "@fluentui/react";
 import { PrimaryThemeButton } from "components/misc/Buttons";
 
 // const ModalContainer = tw.div`absolute  rounded-xl shadow-lg p-5 h-full w-screen z-50 backdrop-blur-sm items-center justify-center bg-white`;
 // const CloseButton = tw.a` text-teal-500 font-bold  cursor-pointer ml-4 mt-2 underline`;
+
 const Card = styled.div``;
+
 const Image = styled.img``;
+
 export default ({
   rewardSectionHeading = "Rewards Options",
   rewardSectionDescription = "Description for reward section",
@@ -64,12 +68,12 @@ export default ({
 }) => {
   return (
     <>
-      <Container tw=" sm:pb-3 lg:pb-0 pt-8 z-10">
+      <Container tw=" sm:pb-3 lg:pb-0 pt-8 ">
         <Heading>{rewardSectionHeading}</Heading>
         <Subheading>{rewardSectionDescription}</Subheading>
-        <Container tw="lg:h-144 flex flex-wrap lg:py-12 gap-8 bg-transparent ">
+        <Container tw="lg:h-144 flex flex-wrap lg:py-12 bg-transparent gap-3">
           {cardsData.map((card, index) => (
-            <Card tw="h-full w-72 rounded-xl">
+            <Card tw="h-full w-72 rounded-xl shadow-none bg-transparent">
               <Image
                 src={card.imageUrl}
                 tw="lg:h-56 w-full mb-3 bg-cover px-6"
@@ -78,7 +82,7 @@ export default ({
                 <CardHeading tw="">{card.heading}</CardHeading>
                 <CardDescription tw=" ">{card.description}</CardDescription>
               </CardContent>
-              <PrimaryThemeButton tw="text-black p-2 text-sm px-4">
+              <PrimaryThemeButton tw="text-black p-2 text-sm px-4 ">
                 {rewardSectionButtonText}
               </PrimaryThemeButton>
             </Card>
