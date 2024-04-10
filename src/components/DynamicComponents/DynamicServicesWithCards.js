@@ -22,10 +22,12 @@ export default ({
     heading: "Rasik Loyalty Services",
     componentStyle: {
       buttonType: "Primary", //Primary, Custom, default, Secondary, Gradient, Tailwind,
-      componentBgImageUrl: "",
+      componentBgImageUrl: "/",
       cardstyles: {
         cardBgImageUrl: "",
-        rotate: "5",
+        rotate: "-5",
+        rounded: "5",
+        backgroundImageUrl: "",
       },
     },
     componentProperties: {
@@ -88,10 +90,10 @@ export default ({
         >
           {data.componentProperties.cards.map((card, index) => (
             <Card
-              css={[
-                tw`h-64 w-72 overflow-y-hidden shadow-xl rounded-lg px-0 lg:-rotate-5`,
-              ]}
+              css={[tw`h-64 w-72 overflow-y-hidden shadow-xl  px-0`]}
               backgroundImageUrl={data.componentStyle.cardstyles.cardBgImageUrl}
+              rotate={data.componentStyle.cardstyles.rotate}
+              rounded={data.componentStyle.cardstyles.rounded}
             >
               <CardContent tw="flex flex-col ">
                 <Container tw="flex flex-row gap-3 bg-transparent justify-start">

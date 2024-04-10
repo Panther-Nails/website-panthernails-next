@@ -2,11 +2,11 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
 import Slider from "react-slick";
-
+import { getStyle } from "components/DynamicControls/Controls";
 export const Container = styled.div((props) => [
-  tw`relative  justify-center text-center bg-colorPrimary bg-cover bg-no-repeat	`,
+  tw`relative  justify-center text-center bg-colorPrimary bg-no-repeat bg-cover`,
   css`
-    background-image: url("${props.backgroundImageUrl}");
+    ${getStyle(props)}
   `,
   props.backgroundColor === "lightblue" ? tw`bg-red-500` : tw``,
   // props.textOn === "left" ? tw`md:order-first` : tw`md:order-last`,
@@ -39,12 +39,21 @@ export const CardGrid = styled.div`
 `;
 
 export const Card = styled.div((props) => [
-  tw`flex w-72 flex-col items-start bg-cardPrimary p-4 pb-8 shadow-lg mb-4  rounded-lg relative overflow-hidden `,
+  tw`flex w-72 flex-col items-start bg-cardPrimary p-4 pb-8 shadow-lg mb-4 relative  overflow-hidden `,
   css`
-    background-image: url("${props.backgroundImageUrl}");
+    ${getStyle(props)}
   `,
-]);
 
+  //Rotate
+
+  //Rounded
+  // props.rounded === "full" ? tw`rounded-full` : tw``,
+  // props.rounded === "5" ? tw`rounded-5xl` : tw``,
+  // props.rounded === "extra large" || "extraLarge" ? tw`rounded-4xl` : tw``,
+  // props.rounded === "Large" ? tw`rounded-3xl` : tw``,
+  // props.rounded === "Medium" ? tw`rounded-2xl` : tw``,
+  // props.rounded === "Small" ? tw`rounded-sm` : tw``,
+]);
 export const CardImage = styled.img((props) => [
   tw`w-full h-40 bg-cover mb-5 ease-in-out duration-300 hover:scale-110`,
   props.roundedImage === "roundedImage"

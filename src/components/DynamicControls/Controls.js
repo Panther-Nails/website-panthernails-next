@@ -25,16 +25,14 @@ export const getButtonByType = (buttonType) => {
   }
 };
 
-export const getCardType = (cardType) => {
-  switch (cardType) {
-    default:
-      return null;
-  }
-};
-
-export const getLinkType = (linkType) => {
-  switch (linkType) {
-    default:
-      return null;
-  }
+export const getStyle = (props) => {
+  return {
+    backgroundColor: `${props.bgColor}`,
+    color: "",
+    border: "",
+    padding: "",
+    borderRadius: `${props.rounded}%`,
+    rotate: `${props.rotate}deg`,
+    backgroundImage: `url(${props.backgroundImageUrl})`,
+  };
 };
