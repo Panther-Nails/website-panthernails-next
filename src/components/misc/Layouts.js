@@ -4,7 +4,10 @@ import { css } from "styled-components/macro";
 import Slider from "react-slick";
 
 export const Container = styled.div((props) => [
-  tw`relative  justify-center text-center bg-colorPrimary`,
+  tw`relative  justify-center text-center bg-colorPrimary bg-cover bg-no-repeat	`,
+  css`
+    background-image: url("${props.backgroundImageUrl}");
+  `,
   props.backgroundColor === "lightblue" ? tw`bg-red-500` : tw``,
   // props.textOn === "left" ? tw`md:order-first` : tw`md:order-last`,
   // props.textOn === "right" ? tw`md:order-last` : tw`md:order-first`,
@@ -37,7 +40,9 @@ export const CardGrid = styled.div`
 
 export const Card = styled.div((props) => [
   tw`flex w-72 flex-col items-start bg-cardPrimary p-4 pb-8 shadow-lg mb-4  rounded-lg relative overflow-hidden `,
-  handleProps(props),
+  css`
+    background-image: url("${props.backgroundImageUrl}");
+  `,
 ]);
 
 export const CardImage = styled.img((props) => [
@@ -96,3 +101,9 @@ export const TextColumn = styled(ColumnDynamic)((props) => [
     ? tw`md:mr-12 lg:mr-16 md:order-first`
     : tw`md:ml-12 lg:ml-16 md:order-last`,
 ]);
+
+export const cardStyle = ({ props }) => [
+  props.rotate === true ? tw`lg:-rotate-5` : tw``,
+  props.bordered === true ? tw`border border-gray-300` : "",
+  props.rounded === true ? tw`rounded-lg` : tw``,
+];

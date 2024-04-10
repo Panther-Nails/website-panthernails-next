@@ -47,32 +47,29 @@ export default ({
       primaryButtonText: "Learn More",
       primaryButtonUrl: "https://timerse.com",
       imageSrc: TeamIllustrationSrc,
-      buttonRounded: true,
       imageRounded: true,
       imageBorder: false,
       imageShadow: false,
-      imageCss: null,
-      imageDecoratorBlob: false,
-      imageDecoratorBlobCss: null,
       textOnLeft: false,
-      showButton: false,
     },
   },
 }) => {
   return (
     <>
-      <Container tw="px-12">
+      <Container tw="lg:mx-12 lg:my-6 rounded-xl">
         <TwoColumn tw="py-3">
           <TextColumn textOnLeft={data.componentProperties.textOnLeft}>
-            <TextContent>
+            <TextContent tw="pl-3">
               <SubheadingTreact>{data.subheading}</SubheadingTreact>
-              <HeadingTreact>{data.heading}</HeadingTreact>
-              <DescriptionTreact>{data.description}</DescriptionTreact>
+              <HeadingTreact tw="px-5 lg:px-0">{data.heading}</HeadingTreact>
+              <DescriptionTreact tw="px-5 lg:px-0">
+                {data.description}
+              </DescriptionTreact>
             </TextContent>
           </TextColumn>
           <ImageColumn>
             <Image
-              css={data.componentProperties.imageCss}
+              tw=" lg:p-12 px-5 lg:px-0"
               src={data.componentProperties.imageSrc}
               imageBorder={data.componentProperties.imageBorder}
               imageShadow={data.componentProperties.imageShadow}

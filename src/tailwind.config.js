@@ -24,7 +24,7 @@ module.exports = {
         400: "#ff53be",
       },
 
-      colorPrimary: "#fff", //#e2e8f0
+      colorPrimary: "#e2e8f0", //#e2e8f0
       colorOnPrimary: "#000",
       cardPrimary: "#fff",
       cardOnPrimary: "",
@@ -741,14 +741,6 @@ module.exports = {
       500: "500ms",
       700: "700ms",
       1000: "1000ms",
-    },
-    roundedRadius: {
-      full: "rounded-full",
-      5: "rounded-5xl",
-      4: "rounded-4xl",
-      3: "rounded-3xl",
-      2: "rounded-2xl",
-      1: "rounded-xl`",
     },
   },
   customStyel: {

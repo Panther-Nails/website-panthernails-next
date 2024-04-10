@@ -28,7 +28,8 @@ const Card = styled.div``;
 
 const Image = styled.img``;
 
-export default ({
+export default 
+({
   rewardSectionHeading = "Rewards Options",
   rewardSectionDescription = "Description for reward section",
   cardsData = [

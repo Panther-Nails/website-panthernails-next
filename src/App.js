@@ -138,7 +138,7 @@ export default function App() {
               path="/components/:type/:subtype/:name"
               element={<ComponentRenderer />}
             />
-            <Route path="/components/:type/:name" element={<DynamicPage />} />
+            {/* <Route path="/components/:type/:name" element={<DynamicPage />} /> */}
             <Route path="/pages/:type/:subtype" element={<DynamicPage />} />
             {/* <Route path="/TermsOfService" element={<TermsOfServicePage />} />
             <Route path="/PrivacyPolicy" element={<PrivacyPolicyPage />} />

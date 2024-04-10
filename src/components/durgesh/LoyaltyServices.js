@@ -62,9 +62,9 @@ export default ({
           <Heading tw="px-2 font-roslindale">{productServicesHeading}</Heading>
           <Subheading>{productServicesSubheading}</Subheading>
         </Container>
-        <CardGrid tw="flex lg:w-2/3 flex-wrap py-8  border-l-0 lg:origin-bottom lg:-rotate-5">
+        <CardGrid tw="flex lg:w-2/3 flex-wrap py-8  border-l-0 lg:origin-bottom ">
           {productServicesCardData.map((card, index) => (
-            <Card tw="h-64 w-72 rounded-5xl overflow-y-hidden shadow-xl rounded-lg px-0 ">
+            <Card tw="h-64 w-72 rounded-5xl overflow-y-hidden shadow-xl rounded-lg px-0  lg:-rotate-5">
               <CardContent tw="flex flex-col ">
                 <Container tw="flex flex-row gap-3 bg-transparent justify-start">
                   <CardImage
