@@ -109,6 +109,7 @@ import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "pages/Home";
 import Test from "pages/Test";
+import DynamicPage from "DynamicPage";
 
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
@@ -119,14 +120,10 @@ export default function App() {
       <GlobalStyles />
       <Router>
         <Routes>
-          <Route
-            path="/components/:type/:subtype/:name"
-            element={<ComponentRenderer />}
-          />
-          <Route
+          {/* <Route
             path="/components/:type/:name"
             element={<ComponentRenderer />}
-          />
+          /> */}
           <Route path="/TermsOfService" element={<TermsOfServicePage />} />
           <Route path="/PrivacyPolicy" element={<PrivacyPolicyPage />} />
           <Route path="/Login" element={<LoginPage />} />
@@ -139,8 +136,8 @@ export default function App() {
           <Route path="/Blog" element={<BlogIndexPage />} />
           <Route path="/MainLandingPage" element={<MainLandingPage />} />
           <Route path="/Test" element={<Test />} />
-
           <Route path="/" element={<Home />} />
+          <Route path="/:type/:subtype/:name" element={<DynamicPage />} />
         </Routes>
       </Router>
     </>
