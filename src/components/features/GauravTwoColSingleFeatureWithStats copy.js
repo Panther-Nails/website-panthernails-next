@@ -96,7 +96,11 @@ export default ({
     <NewContainer
       NCflex={"itemscol"}
       NCflexdirection={"itemscenter"}
-      NCbgcolor={"tan"}
+      NCbgcolor={"newcolor"}
+      NCrounded={"4"}
+      NCmargin={"margin4"}
+      NCoverflow={"overflowhide"}
+      
     >
       <NewHeadings
         NHeading={"headingsizemd"}

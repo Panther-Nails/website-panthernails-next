@@ -97,6 +97,13 @@ export default ({
 }) => {
   return (
     <>
+        <NewContainer
+        NCbgcolor={"newbgcolor"}
+        NCoverflow={"overflow"}
+        NCflex={"itemscol"}
+        
+        
+      >
       
         {/* <AnimationRevealPage> */}
         {/* <Hero>
@@ -138,6 +145,7 @@ export default ({
 
         {/* </AnimationRevealPage> */}
       
+        </NewContainer>
     </>
   );
 };

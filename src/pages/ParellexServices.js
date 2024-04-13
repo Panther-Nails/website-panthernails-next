@@ -99,12 +99,15 @@ export default ({
   return (
     <>
       <NewContainer
-        NCwidth={"full"}
+        
         NCheight={"full"}
         NCflexdirection={"itemscenter"}
         NCflex={"itemscol"}
-        NCbgcolor={"tan"}
+        NCbgcolor={"newcolor"}
+        NCrounded={"4"}
+        NCmargin={"margin4"}
         NCflexgap={"flexgapmd"}
+        
       >
         <NewContainer
           NDwidth={"equalto85"}
@@ -112,7 +115,6 @@ export default ({
           NCheight={"full"}
           NCflexdirection={"itemscenter"}
           NCflex={"itemscol"}
-          NCbgcolor={"tan"}
           NCflexgap={"flexgapmd"}
         >
           <NewHeadings
@@ -205,7 +207,7 @@ export default ({
                 <NewContainer
                   NCwidth={"full"}
                   NCheight={"screenhalf"}
-                  NCsticky={"stickonmid"}
+                  NCsticky={"stickbelowTop"}
                   NCrounded={"1"}
                   NCoverflow={"overflowhide"}
                   // NCborder={"bordersolide2"}

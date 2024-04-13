@@ -119,7 +119,8 @@ export default ({
       NCpaddingx={"paddingx8"}
       NCpaddingy={"paddingy20"}
       NCtextcolor={"colorPrimarySh"}
-      NCbgcolor={"nav"}
+      NCsticky={"stickontop"}
+      
     >
       <Content>
         <SixColumns>

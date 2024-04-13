@@ -1,5 +1,6 @@
 import React from "react";
-import heroimg from "images/heroimg.png"
+import heroimg from "images/heroimg.png";
+import Header from "components/headers/light.js";
 import { PrimaryButton, NewPrimaryButton } from "components/misc/Buttons.js";
 import {
   SectionHeading,
@@ -63,71 +64,83 @@ export default ({
   return (
     <>
       <NewContainer
-        NCflexdirection={flexdirection}
-        NCresponsive={responsive}
-        NCbgcolor={bgcolor}
+        NCflex={flex}
+        
+        NCbgcolor={"newcolor"}
+        NCrounded={"4"}
+        NCoverflow={"overflowhide"}
+        NCmargin={"margin4"}
+        
       >
+        {/* <Header /> */}
         <NewContainer
-          NCwidthmd={width}
-          NCheightmd={sheightmd}
-          NCheight={width}
-          NCflex={flex}
-          NCflexdirection={flexdirection}
-          NCbgcolor={bgcolor}
+          NCflexdirection={"itemscenter"}
+          NCresponsive={"responsive"}
+          NCbgcolor={"newcolor"}
+          NCrounded={"4"}
+          NCoverflow={"overflowhide"}
+          NCmargin={"margin4"}
         >
-          <NewHeadings
-            NHeading={"headingsizemd"}
-            NHtextcolor={"colorPrimarySh"}
-            NHtextposition={"center"}
-            NHpadding={"padding4"}
+          <NewContainer
+            NCwidthmd={width}
+            NCheightmd={sheightmd}
+            NCheight={width}
+            NCflex={flex}
+            NCflexdirection={flexdirection}
           >
-            {heading}
-          </NewHeadings>
-          <NewDescription
-            NDescription={"dsizemd"}
-            NDwidth={"equalto85"}
-            NDtextcolor={"colorPrimarySd"}
-            NDtextposition={"center"}
-            NDpadding={"paddingy1"}
-          >
-            {description1}
-          </NewDescription>
-          <NewDescription
-            NDescription={"dsizemd"}
-            NDwidth={"equalto85"}
-            NDtextcolor={"colorPrimarySd"}
-            NDtextposition={"center"}
-            NDpadding={"paddingy1"}
-          >
-            {description2}
-          </NewDescription>
-          <NewPrimaryButton
-            href={primaryButtonUrl}
-            NBbgcolor={"btnPrimary"}
-            NBbganimation={"bounce"}
-            rounded={"full"}
-            NBtext={"textsize"}
-            NBpadding={"paddingx8"}
-            NBpaddingy={"paddingy3"}
-            NBhover={"bgchange"}
-            NBmargin={"margintop4"}
-            NBtextcolor={"textwhite"}
-          >
-            {primaryButtonText}
-            {/* <Icone src={ProfileImageCLM}/>
+            <NewHeadings
+              NHeading={"headingsizemd"}
+              NHtextcolor={"colorPrimarySh"}
+              NHtextposition={"center"}
+              NHpadding={"padding4"}
+            >
+              {heading}
+            </NewHeadings>
+            <NewDescription
+              NDescription={"dsizemd"}
+              NDwidth={"equalto85"}
+              NDtextcolor={"colorPrimarySd"}
+              NDtextposition={"center"}
+              NDpadding={"paddingy1"}
+            >
+              {description1}
+            </NewDescription>
+            <NewDescription
+              NDescription={"dsizemd"}
+              NDwidth={"equalto85"}
+              NDtextcolor={"colorPrimarySd"}
+              NDtextposition={"center"}
+              NDpadding={"paddingy1"}
+            >
+              {description2}
+            </NewDescription>
+            <NewPrimaryButton
+              href={primaryButtonUrl}
+              NBbgcolor={"btnPrimary"}
+              NBbganimation={"bounce"}
+              rounded={"full"}
+              NBtext={"textsize"}
+              NBpadding={"paddingx8"}
+              NBpaddingy={"paddingy3"}
+              NBhover={"bgchange"}
+              NBmargin={"margintop4"}
+              NBtextcolor={"textwhite"}
+            >
+              {primaryButtonText}
+              {/* <Icone src={ProfileImageCLM}/>
             <Icone src={ProfileImageRasikLoyalty}/>  */}
-          </NewPrimaryButton>
-        </NewContainer>
-        <NewContainer
-          NCflexdirection={flexdirection}
-          NCoverflow={overflow}
-          NCwidthmd={width}
-          NCheightmd={fheightmd}
-          NCdisplayhide={displayhide}
-          NCdisplayblock={displayblock}
-          NCbgcolor={bgcolor}
-        >
-          <Rightimg src={heroimg} />
+            </NewPrimaryButton>
+          </NewContainer>
+          <NewContainer
+            NCflexdirection={flexdirection}
+            NCoverflow={overflow}
+            NCwidthmd={width}
+            NCheightmd={fheightmd}
+            NCdisplayhide={displayhide}
+            NCdisplayblock={displayblock}
+          >
+            <Rightimg src={heroimg} />
+          </NewContainer>
         </NewContainer>
       </NewContainer>
     </>

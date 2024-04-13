@@ -373,6 +373,16 @@ export const NewContainer = styled.div((props) => [
     ? tw`  py-20 `
     : tw``,
 
+  props.NCpaddingylg === "paddingy1"
+    ? tw`  lg:py-1`
+    : props.NCpaddingylg === "paddingy2"
+    ? tw`  lg:py-2 `
+    : props.NCpaddingylg === "paddingy4"
+    ? tw`  lg:py-4 `
+    : props.NCpaddingylg === "paddingy20"
+    ? tw`  lg:py-40 `
+    : tw``,
+
   props.NCbgcolor === "Primary"
     ? tw` bg-red-700`
     : props.NCbgcolor === "transparent"
@@ -387,6 +397,10 @@ export const NewContainer = styled.div((props) => [
     ? tw` bg-colorSecondary `
     : props.NCbgcolor === "pink"
     ? tw` bg-red-500 `
+    : props.NCbgcolor === "newcolor"
+    ? tw` bg-newcolor `
+    : props.NCbgcolor === "newbgcolor"
+    ? tw` bg-newbgcolor `
     : tw``,
 
   props.NCdisplayhide === "displayhide"

@@ -24,30 +24,20 @@ import { ReactComponent as SvgDecoratorBlob } from "images/svg-decorator-blob-6.
 import ProductImageCLM from "images/ProductCLM.png";
 import ProductImageRasikLoyalty from "images/ProductRasikLoyalty.png";
 
-// const Icons = tw.img`w-16 h-16 bg-white`;
-// const Image = tw.img`w-full h-8/12 bg-white`;
+
 const Plan = styled.div`
-  ${tw` max-w-xl flex flex-col h-morethanhalf lg:h-less hover:-translate-y-full 3xl:( h-twothird) duration-1000 lg:mr-8 z-30  text-center px-8 rounded-lg shadow relative   text-gray-900 bg-white`}
+  ${tw` max-w-xl flex flex-col h-morethanhalf lg:h-fourfifth hover:-translate-y-full 3xl:( h-twothird) duration-1000 lg:mr-8 z-30  text-center px-8 rounded-lg shadow relative   text-gray-900 bg-white`}
 `;
 const BuyNowButton = styled(PrimaryButtonBase)`
   ${tw`rounded-full bg-sitecolor-1000 hover:bg-sitecolor-1000 uppercase tracking-wider py-2 lg:py-4  text-sm hover:shadow-xl transform hocus:translate-x-px hocus:-translate-y-px focus:shadow-outline`}
 `;
 
 export default ({
-  //style the component through service
-  itemsshow = "ItemsInPhoneAndWindow",
-  btn = "Full",
-  itemcol = "ItemscenterCol",
-  simplecontcol = "Defultcontainercentercol",
-  subheading = "Pricing",
-  headingstyle = "headingtext",
-  descriptionstyle = "descriptioncolor",
-  //text from services
   heading = "Our Products",
-  description = "Here we are showcasing our products which gives the business the best choice to grow their business",
+  description = "Here we are showcasing our products which gives the business best choice to grow their business",
   plans = null,
   primaryButtonText = "click for more",
-  icons,
+  
 }) => {
   const defaultPlans = [
     {
@@ -65,10 +55,7 @@ export default ({
       mainFeature: ProductImageRasikLoyalty,
       productinfo:
         "Our Products that are built with Business Analytics & Intelligence, Automated Query Response System, Automated Analysis Emails, Voice Intelligence System provides you enhanced accessibility to run your business.",
-
     },
-
-    
   ];
 
   if (!plans) plans = defaultPlans;
@@ -106,7 +93,10 @@ export default ({
         NCflex={"itemscol"}
         NCflexdirection={"itemscenter"}
         NCflexgap={"flexgapmd"}
-        NCbgcolor={"tan"}
+        NCbgcolor={"newcolor"}
+        NCrounded={"4"}
+        NCmargin={"margin4"}
+        
       >
         <NewContainer
           NCflex={"itemscol"}
@@ -197,6 +187,7 @@ export default ({
                   NCflexdirection={"itemscenter"}
                   NCflex={"itemscol"}
                   NCpadding={"paddingtop4"}
+                  NCpaddingylg={"paddingy20"}
                 >
                   <NewDescription
                     NDescription={"dsizesm"}
@@ -212,7 +203,7 @@ export default ({
                   <NewPrimaryButton
                     NBbgcolor={"btnthird"}
                     rounded={"full"}
-                    NBbganimation={ "scale"}
+                    NBbganimation={"scale"}
                     NBtext={"textsize"}
                     NBpadding={"paddingx8"}
                     NBpaddingy={"paddingy3"}

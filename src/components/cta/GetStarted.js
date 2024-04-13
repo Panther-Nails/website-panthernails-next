@@ -35,7 +35,7 @@ export default ({
   pushDownFooter = true
 }) => {
   return (
-    <Container css={pushDownFooter && tw`mb-20 lg:mb-24`}>
+    <Container css={pushDownFooter && tw` mb-20 lg:mb-24`}>
       <ContentWithPaddingXl>
       <PrimaryBackgroundContainer>
         <Row>

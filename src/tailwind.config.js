@@ -18,6 +18,8 @@ module.exports = {
 
       black: "#000",
       white: "#fff",
+      newcolor:"#F2F5FB",
+      newbgcolor:"#DEE3E9",
 
       success: "#9CFA3E",
 

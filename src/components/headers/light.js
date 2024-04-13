@@ -121,7 +121,7 @@ export default ({
       NCflexdirection={"itemscenter"}
       NCwidth={"full"}
       NCpadding={"paddingright4"}
-      NCbgcolor={"nav"}
+      
       className={className || "heade-light"}
     >
       <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
