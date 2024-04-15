@@ -65,7 +65,7 @@ export default ({
           </>
         ) : (
           <>
-            <Container tw="lg:h-screen bg-transparent   lg:pt-20  lg:block">
+            <Container tw="lg:h-screen bg-transparent lg:pt-20 lg:block">
               <Image
                 src={productSrcWithMockup}
                 alt="Mockup Image here"

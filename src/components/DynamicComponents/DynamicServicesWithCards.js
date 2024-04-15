@@ -25,11 +25,12 @@ export default ({
       componentBgImageUrl: "/",
       cardstyles: {
         cardBgImageUrl: "",
-        rotate: "-5",
-        rounded: "5",
+        rotate: "-5", //deg
+        rounded: "5", //%
         backgroundImageUrl: "",
       },
     },
+
     componentProperties: {
       buttonText: "Explore All",
       subheading: "Rasik Loyalty Services Subheading",
@@ -71,11 +72,11 @@ export default ({
   },
 }) => {
   let ButtonFromJson = getButtonByType(data.componentStyle.buttonType);
-
+  let background = "";
   return (
     <>
       <Container
-        tw="sm:block lg:flex justify-evenly py-16 px-12 lg:mx-12 lg:my-6 rounded-xl"
+        css={tw`sm:block lg:flex justify-evenly py-16 px-12 lg:mx-12 lg:my-6 ${background} rounded-xl`}
         backgroundImageUrl={data.componentStyle.componentBgImageUrl}
       >
         {/* //flex-col for control the heading and cards */}

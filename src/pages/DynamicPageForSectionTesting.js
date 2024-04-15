@@ -6,14 +6,24 @@ import DynamicServices from "components/DynamicComponents/DynamicServices";
 import DynamicServicesWithRoatedCards from "components/DynamicComponents/DynamicServicesWithCards";
 import DynamicTextWithImage from "components/DynamicComponents/DynamicTextWithImage";
 import DynamicNavbar from "components/DynamicComponents/DynamicNavbar";
-import ComponentUsingJson from "components/DynamicComponents/ComponentUsingJson";
+import TextCenterWithMockup from "components/DynamicComponents/Hero/TextCenterWithMockup";
+import IllustrationAndVideo from "components/DynamicComponents/Hero/IllustrationAndVideo";
+import BackgroundAsImageWithCenteredContent from "components/DynamicComponents/Hero/BackgroundAsImageWithCenteredContent";
+import ThreeColSimple from "components/DynamicComponents/Features/ThreeColSimple";
+import ThreeColSimpleWithImage from "components/DynamicComponents/Features/ThreeColSimpleWithImage";
+import TwoColContactUs from "components/DynamicComponents/ContactUs/TwoColContactUs";
 
 export default ({}) => {
   return (
     <>
       {/* <DynamicMockupWithBg /> */}
-      <DynamicNavbar />
-      {/* <ComponentUsingJson /> */}
+      {/* <DynamicNavbar /> */}
+      <TwoColContactUs />
+      <ThreeColSimpleWithImage />
+      <ThreeColSimple />
+      <BackgroundAsImageWithCenteredContent />
+      <IllustrationAndVideo />
+      <TextCenterWithMockup />
       <DynamicTextWithImage />
       {/* <DynamicServices /> */}
       <DynamicServicesWithRoatedCards />

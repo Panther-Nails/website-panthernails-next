@@ -46,7 +46,6 @@ export const NavLink = tw.a`
   pb-1 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
 `;
 
-
 const IllustrationContainer = tw.div`flex justify-center md:justify-end items-center relative max-w-3xl lg:max-w-none`;
 
 // Random Decorator Blobs (shapes that you see in background)
@@ -72,20 +71,20 @@ const CloseModalButton = tw.button`absolute top-0 right-0 mt-8 mr-8 hocus:text-p
 
 export default ({
   heading = "Modern React Templates, Just For You",
-  description="Our templates are easy to setup, understand and customize. Fully modular components with a variety of pages and components.",
-  primaryButtonText="Get Started",
-  primaryButtonUrl="#",
-  watchVideoButtonText="Watch Video",
-  watchVideoYoutubeUrl="https://www.youtube.com/embed/_GuOjXYl5ew",
-  imageSrc=DesignIllustration,
-  imageCss=null,
+  description = "Our templates are easy to setup, understand and customize. Fully modular components with a variety of pages and components.",
+  primaryButtonText = "Get Started",
+  primaryButtonUrl = "#",
+  watchVideoButtonText = "Watch Video",
+  watchVideoYoutubeUrl = "https://www.youtube.com/embed/_GuOjXYl5ew",
+  imageSrc = DesignIllustration,
+  imageCss = null,
   imageDecoratorBlob = false,
-  links=[
-    { title:"About", href:"#AboutUs"},
-    { title:"Products", href:"#Products"},
-    { title:"Blog", href:"#"},
-    { title:"Contact Us", href:"#"},
-  ]  
+  links = [
+    { title: "About", href: "#AboutUs" },
+    { title: "Products", href: "#Products" },
+    { title: "Blog", href: "#" },
+    { title: "Contact Us", href: "#" },
+  ],
 }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -93,20 +92,24 @@ export default ({
 
   return (
     <>
-      <Header links={
-        <NavLinks key={1}> 
-           {links.map((link, index) => (
-            <NavLink href={link.href}>{link.title}</NavLink>
-           ))}
-        </NavLinks>
-      } />
+      <Header
+        links={
+          <NavLinks key={1}>
+            {links.map((link, index) => (
+              <NavLink href={link.href}>{link.title}</NavLink>
+            ))}
+          </NavLinks>
+        }
+      />
       <Container>
         <TwoColumn>
           <LeftColumn>
             <Heading>{heading}</Heading>
             <Paragraph>{description}</Paragraph>
             <Actions>
-              <PrimaryButton as="a" href={primaryButtonUrl}>{primaryButtonText}</PrimaryButton>
+              <PrimaryButton as="a" href={primaryButtonUrl}>
+                {primaryButtonText}
+              </PrimaryButton>
               <WatchVideoButton onClick={toggleModal}>
                 <span className="playIconContainer">
                   <PlayIcon className="playIcon" />
@@ -117,11 +120,7 @@ export default ({
           </LeftColumn>
           <RightColumn>
             <IllustrationContainer>
-              <img
-                css={imageCss}
-                src={imageSrc}
-                alt="Hero"
-              />
+              <img css={imageCss} src={imageSrc} alt="Hero" />
               {imageDecoratorBlob && <DecoratorBlob2 />}
             </IllustrationContainer>
           </RightColumn>

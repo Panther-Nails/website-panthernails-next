@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { css } from "styled-components/macro";
 import Slider from "react-slick";
 import { getStyle } from "components/DynamicControls/Controls";
-export const Container = styled.div((props) => [
+
+export let Container = styled.div((props) => [
   tw`relative  justify-center text-center bg-colorPrimary bg-no-repeat bg-cover`,
   css`
     ${getStyle(props)}
@@ -43,16 +44,6 @@ export const Card = styled.div((props) => [
   css`
     ${getStyle(props)}
   `,
-
-  //Rotate
-
-  //Rounded
-  // props.rounded === "full" ? tw`rounded-full` : tw``,
-  // props.rounded === "5" ? tw`rounded-5xl` : tw``,
-  // props.rounded === "extra large" || "extraLarge" ? tw`rounded-4xl` : tw``,
-  // props.rounded === "Large" ? tw`rounded-3xl` : tw``,
-  // props.rounded === "Medium" ? tw`rounded-2xl` : tw``,
-  // props.rounded === "Small" ? tw`rounded-sm` : tw``,
 ]);
 export const CardImage = styled.img((props) => [
   tw`w-full h-40 bg-cover mb-5 ease-in-out duration-300 hover:scale-110`,
@@ -116,3 +107,6 @@ export const cardStyle = ({ props }) => [
   props.bordered === true ? tw`border border-gray-300` : "",
   props.rounded === true ? tw`rounded-lg` : tw``,
 ];
+
+export const LeftColumn = tw.div`relative lg:w-6/12 lg:pr-12 flex-shrink-0 text-center lg:text-left`;
+export const RightColumn = tw.div`relative mt-12 lg:mt-0 flex flex-col justify-center`;

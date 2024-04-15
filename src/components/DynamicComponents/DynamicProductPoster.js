@@ -34,7 +34,7 @@ export default ({
 
   return (
     <>
-      <Container tw="bg-productPosterPrimary sm:columns-1 lg:columns-2 sm:flex-row px-8 ">
+      <Container tw=" sm:columns-1 lg:columns-2 sm:flex-row px-8 ">
         <Container tw="flex-col sm:h-1/2 lg:h-screen bg-transparent flex pt-24  gap-12 flex items-center">
           <Image
             src={data.componentProperties.productImageSrc}

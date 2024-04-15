@@ -1,12 +1,16 @@
 import React from "react";
 import tw from "twin.macro";
 import { css } from "styled-components/macro";
-import { PrimaryThemeButton } from "components/misc/Buttons";
-import { SimpleButton } from "components/misc/Buttons";
-import { GradientDuotone } from "components/misc/Buttons";
+import {
+  PrimaryThemeButton,
+  GradientDuotone,
+  SimpleButton,
+  PrimaryButton,
+  SecondaryButton,
+  Link,
+} from "components/misc/Buttons";
+
 import { Button } from "@material-tailwind/react";
-import { PrimaryButton } from "components/misc/Buttons";
-import { SecondaryButton } from "components/misc/Buttons";
 
 export const getButtonByType = (buttonType) => {
   switch (buttonType) {
@@ -20,6 +24,8 @@ export const getButtonByType = (buttonType) => {
       return PrimaryButton;
     case "Secondary":
       return SecondaryButton;
+    case "Link":
+      return Link;
     default:
       return SimpleButton;
   }
@@ -28,7 +34,7 @@ export const getButtonByType = (buttonType) => {
 export const getStyle = (props) => {
   return {
     backgroundColor: `${props.bgColor}`,
-    color: "",
+    color: `${props.textColor}`,
     border: "",
     padding: "",
     borderRadius: `${props.rounded}%`,
