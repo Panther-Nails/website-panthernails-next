@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import { useParams } from "react-router-dom";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
-import { Suspense } from "react";
 import { ExecuteQuery } from "services/APIService";
-import { lazy } from "react";
 import GetStarted from "components/cta/GetStarted";
 
 export default () => {
@@ -24,12 +22,14 @@ export default () => {
   };
 
   useEffect(() => {
-    ExecuteQuery({
-      ActionName:
-        "WSM.GMst_SelectFewFromLinkComponentAndComponentPropertyWhereGroupNameSubGroupNamePageName",
-      ParameterJSON: JSON.stringify(parameter),
-      SessionDataJSON: '{"CompanyID":217}',
-    }).then((response) => {
+    ExecuteQuery(
+      {
+        ActionName:
+          "WSM.GMst_SelectFewFromLinkComponentAndComponentPropertyWhereGroupNameSubGroupNamePageName",
+        ParameterJSON: JSON.stringify(parameter),
+      },
+      "dynamic-page"
+    ).then((response) => {
       console.log("Response", response);
       if (response.message === "Successfull") {
         setData(response.items);
@@ -53,7 +53,6 @@ export default () => {
 
     console.log("parameter", parameter);
     console.log("Response", data);
-    // ComponentOrder	ComponentName	ComponentPropertyJSON	ChildComponentJSON
 
     return (
       <>

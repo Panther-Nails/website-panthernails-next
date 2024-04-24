@@ -15,7 +15,7 @@ import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 
 const Header = tw.header`
   flex justify-between items-center
-  mx-auto mr-0 ml-0 w-full bg-headerPrimary
+  mx-auto mr-0 ml-0 w-full
 `; //bg-gradient-to-r from-blue-500 to-indigo-500 //For background shade
 
 export const NavLinks = tw.div`inline-block text-black`;
