@@ -15,7 +15,7 @@ import {
   CookieKeys,
 } from "services/CookieService";
 
-const PrimaryBackgroundContainer = tw.div`py-20 lg:py-24 bg-secondary-500 rounded-lg relative bg-purple-500 `;
+const PrimaryBackgroundContainer = tw.div`py-20 lg:py-24 bg-secondary-500 rounded-lg relative`;
 const Row = tw.div`px-8 max-w-screen-lg mx-auto flex items-center relative z-10 flex-col lg:flex-row text-center lg:text-left`;
 
 const ColumnContainer = tw.div`lg:w-1/2 max-w-lg`;
@@ -62,9 +62,11 @@ export default ({
   const [cookieConsent, setCookieConsent] = useState(CookieConsentValue);
 
   return (
-    <>
+    <Container
+      css={tw`flex justify-center items-center bg-transparent  w-screen h-screen absolute z-40`}
+    >
       {cookieConsent == null ? (
-        <Container css={containerBg}>
+        <Container css={tw` z-50`}>
           {/* && pushDownFooter && tw`mb-20 lg:mb-24` */}
           <ContentWithPaddingXl>
             <PrimaryBackgroundContainer css={backgroundColor}>
@@ -109,6 +111,6 @@ export default ({
       ) : (
         <></>
       )}
-    </>
+    </Container>
   );
 };
