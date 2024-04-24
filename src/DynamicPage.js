@@ -1,45 +1,52 @@
-import React from "react";
+import React, { Component, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
-import Hero from "components/hero/DurgeshHero";
-import ServicesSection from "components/durgesh/ServicesSection";
-import Footer from "components/footers/SimpleFiveColumn";
+import { Suspense } from "react";
 
-import OneAppPoster from "components/durgesh/ProductPosterFromFigma";
-import WhoWeAre from "components/durgesh/WhoWeAre";
-import OurStory from "components/durgesh/OurStory";
+import { ExecuteQuery } from "services/APIService";
+import { getComponentName } from "components/DynamicControls/ComponentsControls";
+import { lazy } from "react";
+import { components } from "ComponentRenderer";
+
 export default () => {
-  const components = [
-    {
-      name: WhoWeAre,
-    },
-    {
-      name: ServicesSection,
-    },
-    {
-      name: OurStory,
-    },
-    {
-      name: OneAppPoster,
-    },
-  ];
-
   const { type, subtype, name } = useParams();
-  var Durgesh;
-  console.log(type, "type");
-  console.log(subtype, "subtype");
-  console.log(name);
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    ExecuteQuery({
+      ActionName:
+        "WSM.GMst_SelectFewFromLinkComponentAndComponentPropertyWhereGroupNameSubGroupNamePageName",
+      ParameterJSON: JSON.stringify(parameter),
+      SessionDataJSON: '{"CompanyID":217}',
+    }).then((response) => {
+      console.log("Response", response);
+      if (response.message === "Successfull") {
+        setData(response.items);
+      }
+    });
+  }, []);
 
   try {
+    var parameter = {
+      GroupName: type,
+      SubGroupName: subtype,
+      PageName: name,
+    };
+
+    console.log("parameter", parameter);
+    console.log("Response", data);
+    // ComponentOrder	ComponentName	ComponentPropertyJSON	ChildComponentJSON
+
     return (
-      <AnimationRevealPage>
-        <Hero />
-        {components.map((components, index) => {
-          Durgesh = components.name;
-          return <Durgesh />;
+      <>
+        {data.map((component, index) => {
+          // console.log("componentsData", component);
+          var Component = getComponentName[component.ComponentName];
+          // console.log("component Name", component.ComponentName);
+          return Component && <Component data={component} />;
         })}
-        <Footer />
-      </AnimationRevealPage>
+      </>
     );
   } catch (e) {
     console.log(e);

@@ -1,79 +1,67 @@
-import React from "react";
-import AnimationRevealPage from "helpers/AnimationRevealPage.js";
+import React, { useEffect, useState, lazy, Suspense } from "react";
+import { useParams } from "react-router-dom";
+import { ExecuteQuery } from "services/APIService";
+import GetStarted from "components/cta/GetStarted";
 
-import Hero from "components/hero/TwoColumnWithInput.js";
-import Features from "components/features/VerticalWithAlternateImageAndText.js";
-import Pricing from "components/pricing/TwoPlansWithDurationSwitcher";
-import CTA from "components/cta/DownloadApp";
-import Testimonial from "components/testimonials/TwoColumnWithImageSlider.js";
-import Footer from "components/footers/FiveColumnWithInputForm.js";
-import FAQ from "components/faqs/SingleCol.js";
+export default ({}) => {
+  const { type, subtype, name } = useParams();
+  const [data, setData] = useState([]);
 
-import tw from "twin.macro";
-
-import PhoneImageRasikLoyalty from "images/RASIK.png";
-
-import ProfileImageRasikLoyalty from "images/Loyalty.png";
-import ProfileImageCLM from "images/CLM.png";
-
-import ProductImageRasikLoyalty from "images/ProductRasikLoyalty.png";
-import ProductImageCLM from "images/ProductCLM.png";
-
-
-export const NavLinks = tw.div`inline-block`;
-
-/* hocus: stands for "on hover or focus"
- * hocus:bg-primary-700 will apply the bg-primary-700 class on hover or focus
- */
-export const NavLink = tw.a`
-  text-lg my-2 lg:text-sm lg:mx-6 lg:my-0
-  font-semibold tracking-wide transition duration-300
-  pb-1 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
-`;
-
-const HighlightedText = tw.span`text-primary-500`;
-
-
-export default ({
+  const DynamicComponent = (Section, ComponentName) => {
+    const ComponentTest = lazy(() =>
+      import(`components/${Section}/${ComponentName}.js`)
+        .then((module) => ({ default: module.default }))
+        .catch((error) => {
+          console.error(`Error loading component ${ComponentName}:`, error);
+          return { default: () => <GetStarted /> };
+        })
+    );
+    return ComponentTest;
+  };
   
-  products = [
-    {
-      imageSrc: ProductImageRasikLoyalty,
-      profileImageSrc: ProfileImageRasikLoyalty,
-      subtitle: "Customer Loyalty Platform",
-      title: "Rasik Loyalty",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      url: "/RasikLoyalty"
-    },
-    {
-      imageSrc: ProductImageCLM,
-      profileImageSrc: ProfileImageCLM,
-      subtitle: "Contract Labour Management",
-      title: "Panther Nails One App",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      url: "/OneApp"
-    },
-  ]
-}) => {
-  return (
-    <AnimationRevealPage>
-      <Hero
-        heading={
-          <>
-            Rasik <HighlightedText>Loyalty Platform!</HighlightedText>
-          </>
-        }        
-        description = { <> We focus on building products that are capable of delivering superior stakeholder value by helping people to make the most of each moment.  </>}
-      />
+  useEffect(() => {
+    ExecuteQuery({
+      ActionName:
+        "WSM.GMst_SelectFewFromLinkComponentAndComponentPropertyWhereGroupNameSubGroupNamePageName",
+      ParameterJSON: JSON.stringify(parameter),
+      SessionDataJSON: '{"CompanyID":217}',
+    }).then((response) => {
+      console.log("Response", response);
+      if (response.message === "Successfull") {
+        setData(response.items);
+      }
+    });
+  }, []);
 
-      <Testimonial />
+  try {
+    var parameter = {
+      GroupName: type,
+      SubGroupName: subtype,
+      PageName: name,
+    };
 
-      
+    console.log("parameter", parameter);
+    console.log("Response", data);
 
-      <Footer />
-
-    </AnimationRevealPage>
-  );
+    return (
+      <>
+        {data.map((component) => {
+          console.log("component.Section", component.Section);
+          console.log("component.ComponentName", component.ComponentName);
+          const Component = DynamicComponent(
+            component.Section,
+            component.ComponentName
+          );
+          return (
+            <Suspense>
+              <Component data={component.CPJSON} />
+            </Suspense>
+          );
+        })}
+      </>
+    );
+  } catch (e) {
+    console.log(e);
+    return <div>Error: Component Not Found</div>;
+  }
 };
