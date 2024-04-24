@@ -22,6 +22,11 @@ export default () => {
     return Component;
   };
 
+  const getPageCacheKey = () =>
+    "1BGeZoi3zs" + window.location.pathname.replace("/", "-");
+
+  console.log(getPageCacheKey());
+
   useEffect(() => {
     ExecuteQuery(
       {
@@ -29,7 +34,7 @@ export default () => {
           "WSM.GMst_SelectFewFromLinkComponentAndComponentPropertyWhereGroupNameSubGroupNamePageName",
         ParameterJSON: JSON.stringify(parameter),
       },
-      "dynamic-page"
+      getPageCacheKey()
     ).then((response) => {
       console.log("Response", response);
       if (response.message === "Successfull") {
