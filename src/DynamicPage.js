@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { ExecuteQuery } from "services/APIService";
 import GetStarted from "components/cta/GetStarted";
+import CookieConsent from "components/controls/CookieConsent";
 
 export default () => {
   const { type, subtype, name } = useParams();
@@ -57,6 +58,7 @@ export default () => {
     return (
       <>
         <AnimationRevealPage>
+          <CookieConsent />
           {data.map((component) => {
             console.log("component.Section", component.Section);
             console.log("component.ComponentName", component.ComponentName);
