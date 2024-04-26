@@ -61,56 +61,54 @@ export default ({
 }) => {
   const [cookieConsent, setCookieConsent] = useState(CookieConsentValue);
 
-  return (
+  const cookieConsentComponent = () => (
     <Container
-      css={tw`flex justify-center items-center bg-transparent  w-screen h-screen absolute z-40`}
+      css={tw`flex justify-center items-center bg-transparent  w-screen h-screen absolute z-40 mx-12`}
     >
-      {cookieConsent == null ? (
-        <Container css={tw` z-50`}>
-          {/* && pushDownFooter && tw`mb-20 lg:mb-24` */}
-          <ContentWithPaddingXl>
-            <PrimaryBackgroundContainer css={backgroundColor}>
-              <Row>
-                <TextContainer>
-                  <Text css={textCss}>{text}</Text>
-                </TextContainer>
-                <LinksContainer>
-                  <ScrollingAnimationUpSide y={400}>
-                    <PrimaryLink
-                      onClick={() => {
-                        setCookie(
-                          CookieKeys.CookieConsent,
-                          CookieValues.Accepted
-                        );
-                        setCookieConsent(CookieValues.Accepted);
-                      }}
-                    >
-                      {primaryLinkText}
-                    </PrimaryLink>
-                    <Link
-                      onClick={() => {
-                        setCookie(
-                          CookieKeys.CookieConsent,
-                          CookieValues.Rejected
-                        );
-                        setCookieConsent(CookieValues.Rejected);
-                      }}
-                    >
-                      {secondaryLinkText}
-                    </Link>
-                  </ScrollingAnimationUpSide>
-                </LinksContainer>
-              </Row>
-              <DecoratorBlobContainer>
-                <DecoratorBlob1 />
-                <DecoratorBlob2 />
-              </DecoratorBlobContainer>
-            </PrimaryBackgroundContainer>
-          </ContentWithPaddingXl>
-        </Container>
-      ) : (
-        <></>
-      )}
+      <Container css={tw` z-50 `}>
+        {/* && pushDownFooter && tw`mb-20 lg:mb-24` */}
+        <ContentWithPaddingXl>
+          <PrimaryBackgroundContainer css={backgroundColor}>
+            <Row>
+              <TextContainer>
+                <Text css={textCss}>{text}</Text>
+              </TextContainer>
+              <LinksContainer>
+                <ScrollingAnimationUpSide y={400}>
+                  <PrimaryLink
+                    onClick={() => {
+                      setCookie(
+                        CookieKeys.CookieConsent,
+                        CookieValues.Accepted
+                      );
+                      setCookieConsent(CookieValues.Accepted);
+                    }}
+                  >
+                    {primaryLinkText}
+                  </PrimaryLink>
+                  <Link
+                    onClick={() => {
+                      setCookie(
+                        CookieKeys.CookieConsent,
+                        CookieValues.Rejected
+                      );
+                      setCookieConsent(CookieValues.Rejected);
+                    }}
+                  >
+                    {secondaryLinkText}
+                  </Link>
+                </ScrollingAnimationUpSide>
+              </LinksContainer>
+            </Row>
+            <DecoratorBlobContainer>
+              <DecoratorBlob1 />
+              <DecoratorBlob2 />
+            </DecoratorBlobContainer>
+          </PrimaryBackgroundContainer>
+        </ContentWithPaddingXl>
+      </Container>
     </Container>
   );
+
+  return <>{cookieConsent == null ? cookieConsentComponent() : <></>}</>;
 };
