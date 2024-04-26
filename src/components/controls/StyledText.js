@@ -34,10 +34,8 @@ export default ({ text = "Our Expertise", textOnLeft = true }) => {
 
   return (
     <Container>
-      <Column>
-        <ImageText css={tw`absolute`}> Hello </ImageText>
-        <StyledText1 css={tw`absolute`}> Hello </StyledText1>
-      </Column>
+      <ImageText css={tw`absolute`}> Hello </ImageText>
+      <StyledText1 css={tw`absolute`}> Hello </StyledText1>
     </Container>
   );
 };
