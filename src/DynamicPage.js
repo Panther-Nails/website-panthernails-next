@@ -4,11 +4,13 @@ import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { ExecuteQuery } from "services/APIService";
 import GetStarted from "components/cta/GetStarted";
 import CookieConsent from "components/controls/CookieConsent";
+import SiteMap from "components/headers/SiteMap";
 
 export default () => {
   const { type, subtype, name } = useParams();
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
+  const [components, setComponents] = useState([]);
 
   const ImportDynamicComponent = (Section, ComponentName) => {
     const Component = lazy(() =>
@@ -22,6 +24,11 @@ export default () => {
     return Component;
   };
 
+  const getPageCacheKey = () =>
+    "1BGeZoi3zs" + window.location.pathname.replace("/", "-");
+
+  console.log(getPageCacheKey());
+
   useEffect(() => {
     ExecuteQuery(
       {
@@ -29,11 +36,11 @@ export default () => {
           "WSM.GMst_SelectFewFromLinkComponentAndComponentPropertyWhereGroupNameSubGroupNamePageName",
         ParameterJSON: JSON.stringify(parameter),
       },
-      "dynamic-page"
+      getPageCacheKey()
     ).then((response) => {
       console.log("Response", response);
       if (response.message === "Successfull") {
-        setData(response.items);
+        setData(response.items[0]);
       } else {
         setData([
           {
@@ -45,39 +52,56 @@ export default () => {
     });
   }, []);
 
+  useEffect(() => {
+    console.log("dataset", data);
+    console.log("length", data.Components);
+    if (data.Components) {
+      var c = JSON.parse(data.Components);
+      console.log("components ", c);
+      setComponents(c);
+    }
+  }, [data]);
+
   try {
     var parameter = {
       GroupName: type,
       SubGroupName: subtype,
       PageName: name,
     };
-
-    console.log("parameter", parameter);
-    console.log("Response", data);
-
+    // console.log("data check", data[0]);
     return (
       <>
-        <AnimationRevealPage>
-          <CookieConsent />
-          {data.map((component) => {
-            console.log("component.Section", component.Section);
-            console.log("component.ComponentName", component.ComponentName);
-            const Component = ImportDynamicComponent(
-              component.Section,
-              component.ComponentName
-            );
-            return (
-              <Suspense>
-                <Component data={component.CPJSON} />
-              </Suspense>
-            );
-          })}
-        </AnimationRevealPage>
+        <Suspense>
+          <AnimationRevealPage>
+            <CookieConsent />
+            <SiteMap />
+            {components.map((component, index) => {
+              const Component = ImportDynamicComponent(
+                component.Section,
+                component.ComponentName
+              );
+              var cpJson = "{}";
+              var hpJson = "{}";
+
+              if (component.CPJSON) {
+                var cpJson = JSON.parse(component.CPJSON);
+              }
+
+              if (component.HPJSON) {
+                var hpJson = JSON.parse(component.HPJSON);
+              }
+
+              return (
+                <Component data={component} CPJSON={cpJson} HPJSON={hpJson} />
+              );
+            })}
+          </AnimationRevealPage>
+        </Suspense>
       </>
     );
   } catch (e) {
     console.log(e);
-    return <div>Error: Component Not Found</div>;
+    return <div>Error: Component Not Found [{e.message}] </div>;
   }
 };
 
