@@ -11,11 +11,34 @@ module.exports = {
       xl: "1280px",
       "2xl": "1440px",
     },
+
     colors: {
       transparent: "transparent",
-
       black: "#000",
       white: "#fff",
+      clm: "#1E90FF",
+      rasik: {
+        100: "#B8448C",
+        200: "#9D2D7B",
+        300: "#69264F",
+        400: "#ff53be",
+      },
+
+      colorPrimary: "#e2e8f0", //#e2e8f0
+      colorOnPrimary: "#000",
+      cardPrimary: "#fff",
+      cardOnPrimary: "",
+      headerPrimary: "#e2e8f0",
+      headerOnPrimary: "",
+      headingHighlightTextColor: "#0067cc",
+      statContainerPrimary: "",
+      gradientStartColor: "#68d391",
+      gradientEndColor: "#4299e1",
+      hovergradientStartColor: "#ed64a6",
+      hovergradientEndColor: "#ecc94b",
+      navbarLinkHoverColor: "#4299e1",
+      productPosterPrimary: "#000",
+      productPosterOnPrimary: "#fff",
 
       // primary: {
       //   100: '#a273ff',
@@ -206,6 +229,8 @@ module.exports = {
       96: "24rem",
       128: "32rem",
       144: "36rem",
+      150: "40rem",
+      cardGridWidth: "108rem",
     },
     backgroundColor: (theme) => theme("colors"),
     backgroundPosition: {
@@ -262,7 +287,9 @@ module.exports = {
       outline: "0 0 0 3px rgba(66, 153, 225, 0.5)",
       raised: "0 20px 50px rgba(0,0,0, 0.075)",
       none: "none",
+      innerBottom: "0px 2px 0px 0px rgba(0,0,0,0.05) inset",
     },
+
     container: {},
     cursor: {
       auto: "auto",
@@ -309,6 +336,7 @@ module.exports = {
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
       ],
+
       serif: ["Georgia", "Cambria", '"Times New Roman"', "Times", "serif"],
       mono: [
         "Menlo",
@@ -318,6 +346,8 @@ module.exports = {
         '"Courier New"',
         "monospace",
       ],
+      roslindale: ["cursive"],
+      ptSerif: ["PT Serif"],
     },
     fontSize: {
       xs: "0.75rem",
@@ -330,9 +360,6 @@ module.exports = {
       "4xl": "2.25rem",
       "5xl": "3rem",
       "6xl": "4rem",
-      "7xl": "8rem",
-      "8xl": "12rem",
-      "9xl": "16rem",
     },
     fontWeight: {
       hairline: "100",
@@ -671,6 +698,8 @@ module.exports = {
       45: "45deg",
       90: "90deg",
       180: "180deg",
+      3: "3deg",
+      5: "5deg",
     },
     translate: (theme, { negative }) => ({
       ...theme("spacing"),
@@ -718,6 +747,22 @@ module.exports = {
       1000: "1000ms",
     },
   },
+  customStyel: {
+    durgeshScrollHide: `::-webkit-scrollbar {
+      display: none;
+    }`,
+  },
+  customAnimations: {
+    exampleStyle: {
+      animationName: "floating",
+      animationduration: "3s",
+      animationiterationcount: "infinite",
+      animationtimingfunction: "ease-in-out",
+      marginleft: "30px",
+      margintop: "5px",
+    },
+  },
+
   variants: {
     accessibility: ["responsive", "focus"],
     alignContent: ["responsive"],
@@ -808,6 +853,7 @@ module.exports = {
     transitionTimingFunction: ["responsive"],
     transitionDuration: ["responsive"],
   },
+
   corePlugins: {},
   plugins: [],
 };
