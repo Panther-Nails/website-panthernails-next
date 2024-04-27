@@ -1,24 +1,25 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState } from "react";
 import GlobalStyles from "styles/GlobalStyles";
-import DynamicPage from "DynamicPage";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useSession } from "providers/SessionProvider";
+
+import Header from "components/headers/light";
+import RouterPaths from "RouterPaths";
 
 export default function App() {
+  const { hasNotificationSeen } = useSession();
+
   return (
     <>
       <GlobalStyles />
-      <Router>
-        <Routes>
-          <Route path="/" element={<DynamicPage />}>
-            <Route path="/:type" element={<DynamicPage />} />
-            <Route path="/:type/:subtype" element={<DynamicPage />} />
-            <Route path="/:type/:subtype/:name" element={<DynamicPage />} />
-          </Route>
-        </Routes>
-      </Router>
+
+      {/* {hasNotificationSeen ? "seen" : "not seen"} */}
+
+      <Header />
+
+      <RouterPaths />
     </>
   );
 }

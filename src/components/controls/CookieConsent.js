@@ -4,8 +4,6 @@ import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9.svg";
 import { ContentWithPaddingXl, Container } from "components/misc/Layouts";
-import Signup from "pages/Signup";
-import ScrollingAnimationUpSide from "components/durgesh/ScrollingAnimationUpSide";
 
 import {
   getCookie,
@@ -74,30 +72,22 @@ export default ({
                 <Text css={textCss}>{text}</Text>
               </TextContainer>
               <LinksContainer>
-                <ScrollingAnimationUpSide y={400}>
-                  <PrimaryLink
-                    onClick={() => {
-                      setCookie(
-                        CookieKeys.CookieConsent,
-                        CookieValues.Accepted
-                      );
-                      setCookieConsent(CookieValues.Accepted);
-                    }}
-                  >
-                    {primaryLinkText}
-                  </PrimaryLink>
-                  <Link
-                    onClick={() => {
-                      setCookie(
-                        CookieKeys.CookieConsent,
-                        CookieValues.Rejected
-                      );
-                      setCookieConsent(CookieValues.Rejected);
-                    }}
-                  >
-                    {secondaryLinkText}
-                  </Link>
-                </ScrollingAnimationUpSide>
+                <PrimaryLink
+                  onClick={() => {
+                    setCookie(CookieKeys.CookieConsent, CookieValues.Accepted);
+                    setCookieConsent(CookieValues.Accepted);
+                  }}
+                >
+                  {primaryLinkText}
+                </PrimaryLink>
+                <Link
+                  onClick={() => {
+                    setCookie(CookieKeys.CookieConsent, CookieValues.Rejected);
+                    setCookieConsent(CookieValues.Rejected);
+                  }}
+                >
+                  {secondaryLinkText}
+                </Link>
               </LinksContainer>
             </Row>
             <DecoratorBlobContainer>

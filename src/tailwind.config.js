@@ -64,6 +64,10 @@ module.exports = {
       //   900: '#12497D',
       // },
 
+      siteColors: {
+        textColor: "#414243",
+      },
+
       primary: {
         100: "#cce5fe",
         200: "#99ccff",
@@ -451,6 +455,7 @@ module.exports = {
       "4xl": "56rem",
       "5xl": "64rem",
       "6xl": "72rem",
+      "9xl": "108rem",
       full: "100%",
       ...theme("spacing"),
       ...breakpoints(theme("screens")),

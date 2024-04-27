@@ -8,12 +8,11 @@ import {
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
+import { Container } from "../misc/Layouts.js";
 
 import defaultCardImage from "images/shield-icon.svg";
 
 import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
-
-import { ReactComponent as SupportIconImageComponent } from "feather-icons/dist/icons/anchor.svg";
 
 import SupportIconImage from "images/support-icon.svg";
 import ShieldIconImage from "images/shield-icon.svg";
@@ -22,37 +21,21 @@ import FastIconImage from "images/fast-icon.svg";
 import ReliableIconImage from "images/reliable-icon.svg";
 import SimpleIconImage from "images/simple-icon.svg";
 
-const Container = tw.div`relative  overflow-hidden`; //chenge no bg to bg gray, in 14-2-24
-
-const SectionDiv = styled(Container)`
-  ${tw`w-full flex flex-col items-center`}
-
-  svg {
-    ${tw` text-red-300 w-16 h-16 `}
-  }
-`;
-const SectionDiv1 = styled.div`
-  svg {
-    ${tw`w-16 h-16 bg-transparent text-green-500  rounded-full`}
-  }
-`;
-
 const ThreeColumnContainer = styled.div`
-  ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-0`}
-`; //chenge  md:py-24 to py-0 26-02-24
-
-const Subheading = tw(SubheadingBase)`mb-4 `;
-const Heading = tw(SectionHeading)`w-full `;
-const Description = tw(SectionDescription)`lg:w-full w-10/12  text-center `;
+  ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-24`}
+`;
+const Subheading = tw(SubheadingBase)`mb-4`;
+const Heading = tw(SectionHeading)`w-full`;
+const Description = tw(SectionDescription)`w-full text-center`;
 
 const VerticalSpacer = tw.div`mt-10 w-full`;
 
 const Column = styled.div`
-  ${tw`md:w-1/2 lg:w-1/3 max-w-sm  p-2 `}
+  ${tw`md:w-1/2 lg:w-1/3 max-w-sm`}
 `;
 
 const Card = styled.div`
-  ${tw`flex flex-col  rounded-lg sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8`}
+  ${tw`flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8`}
   .imageContainer {
     ${tw`border text-center rounded-full p-5 flex-shrink-0`}
     img {
@@ -61,7 +44,7 @@ const Card = styled.div`
   }
 
   .textContainer {
-    ${tw`sm:ml-4 mt-4 sm:mt-2  `}
+    ${tw`sm:ml-4 mt-4 sm:mt-2`}
   }
 
   .title {
@@ -69,11 +52,7 @@ const Card = styled.div`
   }
 
   .description {
-    ${tw`mt-1 sm:mt-4 font-medium text-secondary-100 hover:text-black  leading-loose`}
-  }
-
-  svg {
-    ${tw`w-4 h-4 mr-1 bg-black`}
+    ${tw`mt-1 sm:mt-4 font-medium text-secondary-100 leading-loose`}
   }
 `;
 
@@ -114,17 +93,12 @@ export default ({
   return (
     <Container>
       <ThreeColumnContainer>
-        <SectionDiv>
-          <SupportIconImageComponent />
-        </SectionDiv>
         {subheading && <Subheading>{subheading}</Subheading>}
         <Heading>{heading}</Heading>
         {description && <Description>{description}</Description>}
         <VerticalSpacer />
         {cards.map((card, i) => (
           <Column key={i}>
-            {/* <Hovereffect> */}
-
             <Card>
               <span className="imageContainer">
                 <img src={card.imageSrc || defaultCardImage} alt="" />
@@ -137,7 +111,6 @@ export default ({
                 </p>
               </span>
             </Card>
-            {/* </Hovereffect> */}
           </Column>
         ))}
       </ThreeColumnContainer>

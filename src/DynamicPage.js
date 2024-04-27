@@ -4,7 +4,6 @@ import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { ExecuteQuery } from "services/APIService";
 import GetStarted from "components/cta/GetStarted";
 import CookieConsent from "components/controls/CookieConsent";
-import SiteMap from "components/headers/SiteMap";
 
 export default () => {
   const { type, subtype, name } = useParams();
@@ -74,7 +73,6 @@ export default () => {
         <Suspense>
           <AnimationRevealPage>
             <CookieConsent />
-            <SiteMap />
             {components.map((component, index) => {
               const Component = ImportDynamicComponent(
                 component.Section,

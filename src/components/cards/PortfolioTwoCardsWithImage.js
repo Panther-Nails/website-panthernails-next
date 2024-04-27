@@ -8,7 +8,6 @@ import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import { ReactComponent as LocationIcon } from "feather-icons/dist/icons/map-pin.svg";
 import { ReactComponent as TimeIcon } from "feather-icons/dist/icons/clock.svg";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
-import ProductImageRasikLoyalty from "images/ProductRasikLoyalty.png";
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
@@ -58,35 +57,35 @@ const CardMetaFeature = styled.div`
 const CardAction = tw(PrimaryButtonBase)`w-full mt-6`;
 
 export default ({
-  subheading = "", //"Our Portfolio",
+  subheading = "Our Portfolio",
   headingHtmlComponent = (
     <>
-      We've done some <span tw="text-primary-500">amazing products.</span>
+      We've done some <span tw="text-primary-500">amazing projects.</span>
     </>
   ),
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam.",
   linkText = "View all Projects",
-  cardLinkText = "Read Info",
+  cardLinkText = "Read Case Study",
   textOnLeft = false
 }) => {
   const cards = [
     {
-      imageSrc:ProductImageRasikLoyalty
-        ,
-      company: "Rasik Store.",
-      type: "Manufacturing",
+      imageSrc:
+        "https://images.unsplash.com/photo-1563461660947-507ef49e9c47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
+      company: "Tesla Inc.",
+      type: "Ad Campaign",
       title: "Personalized Ad Campaign using Google AdWords",
       durationText: "90 Days Campaign",
-      locationText: "Pune"
+      locationText: "New York"
     },
     {
       imageSrc:
-        "https://th.bing.com/th/id/OIP.XuGL9Y-YmtiStOxMBZRVEQHaHa?w=179&h=180&c=7&r=0&o=5&pid=1.7",
-      company: "OneApp",
-      type: "Labour Management",
+        "https://images.unsplash.com/photo-1573165231977-3f0e27806045?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
+      company: "Nestle",
+      type: "SEO Marketing",
       title: "Ranking #1 for keywords like Chocolate, Snack",
       durationText: "180 Day Campaign",
-      locationText: "Pune"
+      locationText: "Palo Alto"
     }
   ];
   return (

@@ -7,8 +7,8 @@ import LogoImage from "../../images/pnlogo.svg";
 import { ReactComponent as FacebookIcon } from "../../images/facebook-icon.svg";
 import { ReactComponent as TwitterIcon } from "../../images/twitter-icon.svg";
 import { ReactComponent as YoutubeIcon } from "../../images/youtube-icon.svg";
-import { Container } from "components/misc/Layouts";
-// const Container = tw.div`relative bg-gray-200 -mx-8 -mb-8 px-8 bg-blue-300 mr-0 ml-0 bg-gray-200`;
+
+const Container = tw.div`relative bg-gray-200 -mx-8 -mb-8 px-8`;
 const FiveColumns = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20 flex flex-wrap justify-between`;
 
 const Column = tw.div`md:w-1/5`;
@@ -22,7 +22,7 @@ const Link = tw.a`border-b-2 border-transparent hocus:text-primary-500 hocus:bor
 
 const LogoContainer = tw.div`flex items-center justify-center md:justify-start`;
 const LogoImg = tw.img`w-48`;
-const LogoText = tw.h5`ml-2 text-xl font-black text-black`;
+const LogoText = tw.h5`ml-2 text-xl font-black text-primary-500`;
 
 const CompanyDescription = tw.p`mt-4 max-w-xs font-medium text-sm mx-auto md:mx-0 md:mr-4 `;
 
@@ -34,7 +34,7 @@ const SocialLink = styled.a`
   }
 `;
 
-export default ({companyDescription = "Treact is an Internet Technology company providing design resources such as website templates and themes."}) => {
+export default () => {
   return (
     <Container>
       <FiveColumns>
@@ -43,7 +43,8 @@ export default ({companyDescription = "Treact is an Internet Technology company 
             <LogoImg src={LogoImage} />
             
           </LogoContainer>
-          <CompanyDescription> {companyDescription}
+          <CompanyDescription>
+            Treact is an Internet Technology company providing design resources such as website templates and themes.
           </CompanyDescription>
           <SocialLinksContainer>
             <SocialLink href="https://facebook.com">

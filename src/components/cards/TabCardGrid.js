@@ -4,7 +4,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
-import { SectionHeading } from "components/misc/Headings.js";
+import { SectionHeading, Subheading } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import { ReactComponent as StarIcon } from "images/star-icon.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-5.svg";
@@ -66,6 +66,7 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
 `;
 
 export default ({
+  data = {},
   heading = "Checkout the Menu",
   tabs = {
     Starters: [
@@ -150,7 +151,16 @@ export default ({
         url: "#",
       },
     ],
-    Main: getRandomCards(),
+    Main: data.ChildComponentJSON.map((item, index) => ({
+      imageSrc:
+        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
+      title: item.ComponentPropertyJSON.heading,
+      content: item.ComponentPropertyJSON.description,
+      price: "$5.99",
+      rating: "5.0",
+      reviews: "87",
+      url: "#",
+    })),
     Soup: getRandomCards(),
     Desserts: getRandomCards(),
   },
@@ -160,6 +170,8 @@ export default ({
    * as the key and value of the key will be its content (as an array of objects).
    * To see what attributes are configurable of each object inside this array see the example above for "Starters".
    */
+
+  console.log(data);
   const tabsKeys = Object.keys(tabs);
   const [activeTab, setActiveTab] = useState(tabsKeys[0]);
 
@@ -167,7 +179,8 @@ export default ({
     <Container>
       <ContentWithPaddingXl>
         <HeaderRow>
-          <Header>{heading}</Header>
+          <Header>{data.ComponentPropertyJSON.heading}</Header>
+          <Subheading>{data.ComponentPropertyJSON.subHeading}</Subheading>
           <TabsControl>
             {Object.keys(tabs).map((tabName, index) => (
               <TabControl
@@ -256,7 +269,7 @@ const getRandomCards = () => {
     {
       imageSrc:
         "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      title: "Chicken Chilled",
+      title: "Hello",
       content: "Chicken Main Course",
       price: "$5.99",
       rating: "5.0",
