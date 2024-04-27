@@ -29,6 +29,9 @@ export function Execute(oFormData) {
     .then((res) => res.json())
     .then((json) => {
       return { DataIsLoaded: true, items: json.Data, message: json.Message };
+    })
+    .catch((error) => {
+      return { DataIsLoaded: false, items: [], message: error.Message };
     });
 }
 

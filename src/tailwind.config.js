@@ -455,6 +455,7 @@ module.exports = {
       "4xl": "56rem",
       "5xl": "64rem",
       "6xl": "72rem",
+      "9xl": "108rem",
       full: "100%",
       ...theme("spacing"),
       ...breakpoints(theme("screens")),

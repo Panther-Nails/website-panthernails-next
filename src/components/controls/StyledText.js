@@ -12,7 +12,7 @@ import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 import { Container, StyledText } from "../misc/Layouts.js";
 
 const ImageText = styled.span`
-  ${tw` -my-16 text-center text-9xl font-black `}
+  ${tw` -my-16 text-center text-5xl font-black `}
 
   background-image: url("https://images.unsplash.com/photo-1569448634236-16398247262e?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: cover;
@@ -21,7 +21,7 @@ const ImageText = styled.span`
 `;
 
 const StyledText1 = styled.span`
-  ${tw` -my-16 text-center text-9xl font-black `}
+  ${tw` -my-16 text-center text-5xl font-black `}
 
   background-image: linear-gradient(to right, #00000000, #1e90ffff);
   background-size: cover;
@@ -34,8 +34,8 @@ export default ({ text = "Our Expertise", textOnLeft = true }) => {
 
   return (
     <Container>
-      <ImageText css={tw`absolute`}> Hello </ImageText>
-      <StyledText1 css={tw`absolute`}> Hello </StyledText1>
+      <ImageText css={tw`absolute`}> {text} </ImageText>
+      <StyledText1 css={tw`absolute`}> {text} </StyledText1>
     </Container>
   );
 };

@@ -39,12 +39,12 @@ const Text = styled.span`
   -webkit-text-fill-color: transparent;
 `;
 
-const NewText = styled(StyledText)((props) => [tw`text-9xl `]);
+const NewText = styled(StyledText)((props) => [tw`text-6xl `]);
 
 const TextContent = tw.div` text-center text-2xl `;
 
 const NumberContent = styled.span`
-  ${tw` -my-16 text-center text-8xl font-black`}
+  ${tw` -my-16 text-center text-6xl font-black`}
   background-image: url("https://images.unsplash.com/photo-1579547945413-497e1b99dac0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
 
   background-size: cover;
@@ -71,7 +71,7 @@ const PrimaryButton = styled(PrimaryButtonBase)((props) => [
 ]);
 
 const ImageText = styled.span`
-  ${tw` -my-16 text-center text-9xl font-black `}
+  ${tw` -my-16 text-center text-6xl font-black `}
 
   background-image: url("https://images.unsplash.com/photo-1569448634236-16398247262e?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: cover;
@@ -80,7 +80,7 @@ const ImageText = styled.span`
 `;
 
 const StyledText1 = styled.span`
-  ${tw` -my-16 text-center text-9xl font-black `}
+  ${tw` -my-16 text-center text-6xl font-black `}
 
   background-image: linear-gradient(to right, #00000000, #1e90ffff);
   background-size: cover;
