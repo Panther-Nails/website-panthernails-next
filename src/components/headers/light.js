@@ -31,6 +31,13 @@ export const NavLink = styled(RouterLink)`
   border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
 `;
 
+export const NavLinkWrapper = tw.div`
+  inline-block
+  text-sm my-2 lg:mx-6 lg:my-0
+  font-semibold tracking-wide transition duration-300
+  border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
+`;
+
 export const PrimaryLink = tw(NavLink)`
   lg:mx-0   px-8 py-3 rounded bg-primary-500 text-gray-100
   hocus:bg-primary-700 hocus:text-gray-200 focus:shadow-outline
@@ -96,12 +103,21 @@ export default ({
 
   const defaultLinks = [
     <NavLinks key={1}>
-      <MyLink to="/">Home</MyLink>
-      <NavLink to="/about">About Us</NavLink>
-      <NavLink to="/pages/products/loyalty">Rasik Loyalty Platform</NavLink>
-      <NavLink to="/pages/products/clm">Contract Labour Management</NavLink>
-      <NavLink to="/blog">Blog</NavLink>
-      <NavLink to="/contact">Contact Us</NavLink>
+      <NavLinkWrapper>
+        <NavLink to="/about">About Us</NavLink>
+      </NavLinkWrapper>
+      <NavLinkWrapper>
+        <NavLink to="/pages/products/loyalty">Rasik Loyalty Platform</NavLink>
+      </NavLinkWrapper>
+      <NavLinkWrapper>
+        <NavLink to="/pages/products/clm">Contract Labour Management</NavLink>
+      </NavLinkWrapper>
+      <NavLinkWrapper>
+        <NavLink to="/blog">Blog</NavLink>
+      </NavLinkWrapper>
+      <NavLinkWrapper>
+        <NavLink to="/contact">Contact Us</NavLink>
+      </NavLinkWrapper>
     </NavLinks>,
   ];
 
@@ -110,7 +126,7 @@ export default ({
     collapseBreakPointCssMap[collapseBreakpointClass];
 
   const defaultLogoLink = (
-    <LogoLink href="/">
+    <LogoLink to="/">
       <img src={pnlogo} alt="logo" />
     </LogoLink>
   );
