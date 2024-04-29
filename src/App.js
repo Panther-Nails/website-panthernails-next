@@ -17,10 +17,7 @@ export default function App() {
     <>
       <GlobalStyles />
 
-      {hasNotificationSeen ? "seen" : "not seen"}
-
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/about">about</NavLink>
+      {/* {hasNotificationSeen ? "seen" : "not seen"} */}
 
       <Header />
 
