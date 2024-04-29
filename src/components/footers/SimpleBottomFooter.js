@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { NavLink as RouterLink } from "react-router-dom";
 
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 
@@ -14,18 +13,16 @@ import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 
 import { useSession } from "providers/SessionProvider.js";
 
-const Container = tw.div` relative sticky top-0 z-50 bg-white`;
+const Container = tw.div` relative sticky bottom-0 z-50 bg-white`;
 
-const Header = tw.header`border-b flex justify-between items-center  `;
+const Header = tw.header`border-t flex justify-between items-center  `;
 
 export const NavLinks = tw.div`inline-block`;
 
 /* hocus: stands for "on hover or focus"
  * hocus:bg-primary-700 will apply the bg-primary-700 class on hover or focus
  */
-const MyLink = styled(RouterLink)`p-5`;
-
-export const NavLink = styled(RouterLink)`
+export const NavLink = tw.a`
   text-sm my-2 lg:mx-6 lg:my-0
   font-semibold tracking-wide transition duration-300
   border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
@@ -50,7 +47,7 @@ export const NavToggle = tw.button`
   lg:hidden mr-5 z-20 focus:outline-none hocus:text-primary-500 transition duration-300
 `;
 export const MobileNavLinks = motion(styled.div`
-  ${tw`lg:hidden z-10 fixed top-0 inset-x-0 mx-4 my-6 p-8 border text-center rounded-lg text-gray-900 bg-white`}
+  ${tw`lg:hidden z-10 fixed bottom-0 inset-x-0 mx-4 my-6 p-8 border text-center rounded-lg text-gray-900 bg-white`}
   ${NavLinks} {
     ${tw`flex flex-col items-center`}
   }
@@ -90,13 +87,10 @@ export default ({
    */
 
   const [notificationVisible, setNotificationVisible] = useState(true);
-  const [notificationText, setNotificationText] = useState(
-    "If you manipulate links here, all the styling on the links is already done for you. If you pass links yourself though, you are responsible for styling the links or use the helper styled components that are defined here (NavLink)"
-  );
+  const [notificationText, setNotificationText] = useState("");
 
   const defaultLinks = [
     <NavLinks key={1}>
-      <MyLink to="/">Home</MyLink>
       <NavLink to="/about">About Us</NavLink>
       <NavLink to="/pages/products/loyalty">Rasik Loyalty Platform</NavLink>
       <NavLink to="/pages/products/clm">Contract Labour Management</NavLink>
@@ -128,7 +122,9 @@ export default ({
       <Header className={className || "header-light"}>
         <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
           {logoLink}
-          {links}
+          <div css="bg-gray-200">
+            <input type="text" css="w-6 h-2 m-3 p-2 bg-gray-200" />
+          </div>
         </DesktopNavLinks>
 
         <MobileNavLinksContainer

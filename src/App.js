@@ -8,6 +8,8 @@ import { useSession } from "providers/SessionProvider";
 import Header from "components/headers/light";
 import RouterPaths from "RouterPaths";
 
+import { NavLink } from "react-router-dom";
+
 export default function App() {
   const { hasNotificationSeen } = useSession();
 
@@ -15,7 +17,10 @@ export default function App() {
     <>
       <GlobalStyles />
 
-      {/* {hasNotificationSeen ? "seen" : "not seen"} */}
+      {hasNotificationSeen ? "seen" : "not seen"}
+
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/about">about</NavLink>
 
       <Header />
 
