@@ -39,17 +39,20 @@ export default () => {
     ).then((response) => {
       console.log("Response", response);
       if (response.message === "Successfull") {
-        setData(response.items[0]);
+        console.log("Data retrival success");
+        var newData = response.items[0];
+        setData({ ...data, ...newData });
       } else {
-        setData([
-          {
-            Section: "cta",
-            ComponentName: "GetStarted", // add page not available component
-          },
-        ]);
+        setData({
+          HeadTitle: "Home",
+          HeadDescription: "",
+          HeadKeyWords: "Home, panther, nails",
+          Components:
+            '[{"ComponentOrder":1,"ComponentName":"BackgroundAsImage","Section":"hero"},{"ComponentOrder":2,"ComponentName":"TwoColWithSteps","Section":"features"},{"ComponentOrder":3,"ComponentName":"TwoColumnWithImageAndProfilePictureReview","Section":"testimonials"},{"ComponentOrder":4,"ComponentName":"GetStarted","Section":"cta"},{"ComponentOrder":5,"ComponentName":"DashedBorderSixFeatures","Section":"features"},{"ComponentOrder":6,"ComponentName":"TwoColumnWithImage","Section":"testimonials"},{"ComponentOrder":7,"ComponentName":"TwoColSingleFeatureWithStats2","Section":"features"},{"ComponentOrder":8,"ComponentName":"FiveColumnDark","Section":"footers"}]',
+        });
       }
     });
-  }, []);
+  }, [type, subtype, name]);
 
   useEffect(() => {
     console.log("dataset", data);
