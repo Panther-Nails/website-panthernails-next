@@ -8,6 +8,8 @@ import { useSession } from "providers/SessionProvider";
 import Header from "components/headers/light";
 import RouterPaths from "RouterPaths";
 
+import { NavLink } from "react-router-dom";
+
 export default function App() {
   const { hasNotificationSeen } = useSession();
 
