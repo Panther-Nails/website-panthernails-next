@@ -4,8 +4,8 @@ import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { ExecuteQuery } from "services/APIService";
 import GetStarted from "components/cta/GetStarted";
 import CookieConsent from "components/controls/CookieConsent";
-import SiteMap from "components/headers/SiteMap";
-import Offers from "components/headers/Offers";
+// import SiteMap from "components/headers/SiteMap";
+// import Offers from "components/headers/Offers";
 
 export const ImportDynamicComponent = (Section, ComponentName) => {
   const Component = lazy(() =>
@@ -152,12 +152,15 @@ export default () => {
                 children = component.Children;
               }
 
+              var finalJson={...cpJson,...hpJson}
+
               return (
                 <Component
                   data={component}
                   CPJSON={cpJson}
                   HPJSON={hpJson}
                   children={children}
+                  finalJson={finalJson}
                 />
               );
             })}

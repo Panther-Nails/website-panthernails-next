@@ -20,6 +20,7 @@ const CustomerInfo = tw.div`mt-6 flex flex-col sm:flex-row items-center justify-
 const CustomerProfilePicture = tw.img`rounded-full w-20 h-20 mb-2`;
 
 export default ({ children }) => {
+ 
   const [data, setData] = useState([
     {
       ComponentOrder: 1,

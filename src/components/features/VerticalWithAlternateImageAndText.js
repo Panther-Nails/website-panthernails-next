@@ -3,7 +3,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import { ReactComponent as SvgDotPatternIcon } from "../../images/dot-pattern.svg";
 import { SectionHeading as HeadingTitle } from "../misc/Headings.js";
-import { cardComponentName } from "ImportDynamicCard";
+
 import {
   ImportDynamicComponent,
   ProcessChildComponents,
@@ -30,17 +30,18 @@ const SvgDotPattern4 = tw(
   SvgDotPatternIcon
 )`absolute bottom-0 right-0 transform translate-x-20 rotate-90 -translate-y-24 -z-10 opacity-25 text-primary-500 fill-current w-24`;
 
-export default ({ CPJSON, HPJSON, data, children }) => {
+export default ({ CPJSON, HPJSON, data, children,finalJson }) => {
+  console.log("finalJson",finalJson);
   console.log("CPJSON", CPJSON);
   console.log("data", data);
 
-  var overriedData = Object.keys(HPJSON).length > 0 ? HPJSON : CPJSON;
+  // var overriedData = Object.keys(HPJSON).length > 0 ? HPJSON : CPJSON;
   return (
     <Container>
       <SingleColumn>
         <HeadingInfoContainer>
-          <HeadingTitle>{overriedData.heading}</HeadingTitle>
-          <HeadingDescription>{overriedData.subheading}</HeadingDescription>
+          <HeadingTitle>{finalJson.heading}</HeadingTitle>
+          <HeadingDescription>{finalJson.subheading}</HeadingDescription>
         </HeadingInfoContainer>
 
         {ProcessChildComponents(children)}

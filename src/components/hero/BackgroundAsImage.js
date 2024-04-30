@@ -22,11 +22,12 @@ const StyledHeader = styled(Header)`
     ${tw`text-gray-100 hover:text-primary-500`}
   }
 `;
-const Container = styled.div`
-  ${tw`relative -mx-8 -mt-8 bg-center bg-cover`}
-  background-image: url("https://plus.unsplash.com/premium_photo-1661284806850-b709cb1262b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80");
-`;
 
+
+const Container = styled.div(props => [
+  `background-image: url("${props.imageSrc}");`,
+  tw`relative -mx-8 -mt-8 bg-center bg-cover`
+]);
 const OpacityOverlay = tw.div`z-10 absolute inset-0 bg-primary-500 opacity-15`;
 
 const HeroContainer = tw.div`z-20 relative px-4 sm:px-8 max-w-screen-xl mx-auto`;
@@ -62,7 +63,8 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
   }
 `;
 
-export default () => {
+export default ({finalJson,data,CPJSON,HPJSON}) => {
+  console.log("finalJsonHome",finalJson);
   const navLinks = [
     <NavLinks key={1}>
       <NavLink to="#">About</NavLink>
@@ -76,24 +78,25 @@ export default () => {
   ];
 
   return (
-    <Container>
+    <Container imageSrc={finalJson.backgroundImageUrl
+    }>
       <OpacityOverlay />
       <HeroContainer>
         <TwoColumn>
           <LeftColumn>
             <Notification>
-              We have now launched operations in Europe.
+              {finalJson.subheading}
             </Notification>
             <Heading>
-              <span>Hire the best</span>
+              <span>{finalJson.heading}</span>
               <br />
-              <SlantedBackground>Marketing Team.</SlantedBackground>
+              {/* <SlantedBackground>Marketing Team.</SlantedBackground> */}
             </Heading>
-            <PrimaryAction>Read Customer Stories</PrimaryAction>
+            <PrimaryAction>{finalJson.buttonText}</PrimaryAction>
           </LeftColumn>
           <RightColumn>
             <StyledResponsiveVideoEmbed
-              url="//player.vimeo.com/video/374265101?title=0&portrait=0&byline=0&autoplay=0&responsive=1"
+              url={finalJson.videoUrl}
               background="transparent"
             />
           </RightColumn>

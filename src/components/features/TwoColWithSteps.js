@@ -5,8 +5,9 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import TeamIllustrationSrc from "images/team-illustration-2.svg";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
+import { ProcessChildComponents } from "DynamicPage";
 
-const Container = tw.div`relative`;
+const Container = tw.div`relative `;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative`;
@@ -40,6 +41,8 @@ const StepHeading = tw.h6`leading-none text-xl font-semibold`;
 const StepDescription = tw.p`mt-3 max-w-xs leading-loose text-sm text-gray-600 font-medium`;
 
 export default ({
+  CPJSON, HPJSON, data, children,finalJson,
+  
   subheading = "Our Expertise",
   heading = (
     <>
@@ -55,46 +58,21 @@ export default ({
   steps = null,
   decoratorBlobCss = null,
 }) => {
-  // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
-
-  const defaultSteps = [
-    {
-      heading: "Register",
-      description: "Create an account with us using Google or Facebook."
-    },
-    {
-      heading: "Download",
-      description: "Browse and Download the template that you like from the marketplace."
-    },
-    {
-      heading: "Run",
-      description: "Follow the instructions to setup and customize the template to your needs."
-    }
-  ];
-
-  if (!steps) steps = defaultSteps;
+  
 
   return (
     <Container>
       <TwoColumn>
         <ImageColumn>
-          <Image src={imageSrc} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded} />
+          <Image src={finalJson.imageUrl} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded} />
           {imageDecoratorBlob && <DecoratorBlob css={decoratorBlobCss} />}
         </ImageColumn>
         <TextColumn textOnLeft={textOnLeft}>
           <TextContent>
-            <Subheading>{subheading}</Subheading>
-            <Heading>{heading}</Heading>
+            <Subheading>{finalJson.subheading}</Subheading>
+            <Heading>{finalJson.heading}</Heading>
             <Steps>
-              {steps.map((step, index) => (
-                <Step key={index}>
-                  <StepNumber>{(index+1).toString().padStart(2,'0')}</StepNumber>
-                  <StepText>
-                    <StepHeading>{step.heading}</StepHeading>
-                    <StepDescription>{step.description}</StepDescription>
-                  </StepText>
-                </Step>
-              ))}
+            {ProcessChildComponents(children)}
             </Steps>
           </TextContent>
         </TextColumn>
