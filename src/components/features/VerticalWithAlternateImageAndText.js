@@ -3,7 +3,6 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import { ReactComponent as SvgDotPatternIcon } from "../../images/dot-pattern.svg";
 import { SectionHeading as HeadingTitle } from "../misc/Headings.js";
-import { cardComponentName } from "ImportDynamicCard";
 import {
   ImportDynamicComponent,
   ProcessChildComponents,

@@ -4,8 +4,6 @@ import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { ExecuteQuery } from "services/APIService";
 import GetStarted from "components/cta/GetStarted";
 import CookieConsent from "components/controls/CookieConsent";
-import SiteMap from "components/headers/SiteMap";
-import Offers from "components/headers/Offers";
 
 export const ImportDynamicComponent = (Section, ComponentName) => {
   const Component = lazy(() =>
@@ -38,7 +36,6 @@ export const getChildComponentName = (Components) => {
 };
 
 export const ProcessChildComponents = (Components) => {
-  console.log("ProcessChildComponents", Components.length);
   if (Components.length > 0) {
     const component = getChildComponentName(Components);
     const Component = ImportDynamicComponent(
@@ -128,28 +125,28 @@ export default () => {
         <Suspense>
           <AnimationRevealPage>
             <CookieConsent />
-
-            {/* <SiteMap /> */}
-            {/* <Offers /> */}
             {components.map((component, index) => {
               const Component = ImportDynamicComponent(
                 component.Section,
                 component.ComponentName
               );
-              var cpJson = {};
-              var hpJson = {};
-              var children = [];
+              {
+                var cpJson = {};
+                var hpJson = {};
+                var children = [];
 
-              if (component.CPJSON) {
-                cpJson = JSON.parse(component.CPJSON);
-              }
+                if (component.CPJSON) {
+                  cpJson = JSON.parse(component.CPJSON);
+                }
 
-              if (component.HPJSON) {
-                hpJson = JSON.parse(component.HPJSON);
-              }
+                if (component.HPJSON) {
+                  hpJson = JSON.parse(component.HPJSON);
+                }
 
-              if (component.Children) {
-                children = component.Children;
+                if (component.Children) {
+                  children = component.Children;
+                }
+                var finalJson = { ...cpJson, ...hpJson };
               }
 
               return (
@@ -158,6 +155,7 @@ export default () => {
                   CPJSON={cpJson}
                   HPJSON={hpJson}
                   children={children}
+                  finalJson={finalJson}
                 />
               );
             })}

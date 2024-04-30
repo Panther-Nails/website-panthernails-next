@@ -35,7 +35,7 @@ export default ({ children }) => {
     },
   ]);
 
-  console.log("children", JSON.stringify(children));
+  console.log("childrenTextImage", children);
 
   useEffect(() => {
     setData([...children]);
@@ -43,18 +43,10 @@ export default ({ children }) => {
   return (
     <Content>
       {data.map((child, index) => {
-        <div>{child.ComponentName}</div>;
-        console.log("child", child.ComponentName);
-        // var cpJson = {};
         var hpJson = {};
-
-        // if (child.CCPJSON) {
-        //   cpJson = JSON.parse(child.CCPJSON);
-        // }
 
         if (child.CHPJSON) {
           hpJson = JSON.parse(child.CHPJSON);
-          console.log(hpJson);
         }
 
         return (

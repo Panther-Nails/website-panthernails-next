@@ -23,8 +23,11 @@ const StyledHeader = styled(Header)`
   }
 `;
 const Container = styled.div`
-  ${tw`relative -mx-8 -mt-8 bg-center bg-cover`}
-  background-image: url("https://plus.unsplash.com/premium_photo-1661284806850-b709cb1262b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80");
+  ${(props) =>
+    css`
+      background-image: url(${props.backgroundImageUrl});
+      ${tw`relative -mx-8 -mt-8 bg-center bg-cover h-screen `}
+    `}
 `;
 
 const OpacityOverlay = tw.div`z-10 absolute inset-0 bg-primary-500 opacity-15`;
@@ -62,38 +65,25 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
   }
 `;
 
-export default () => {
-  const navLinks = [
-    <NavLinks key={1}>
-      <NavLink to="#">About</NavLink>
-      <NavLink to="#">Blog</NavLink>
-      <NavLink to="#">Locations</NavLink>
-      <NavLink to="#">Pricing</NavLink>
-    </NavLinks>,
-    <NavLinks key={2}>
-      <PrimaryLink to="/#">Hire Us</PrimaryLink>
-    </NavLinks>,
-  ];
-
+export default ({ data, CPJSON, HPJSON, finalJson }) => {
   return (
-    <Container>
+    <Container backgroundImageUrl={finalJson.backgroundImageUrl}>
       <OpacityOverlay />
       <HeroContainer>
         <TwoColumn>
           <LeftColumn>
-            <Notification>
-              We have now launched operations in Europe.
-            </Notification>
+            <Notification>{finalJson.notification}</Notification>
+
             <Heading>
-              <span>Hire the best</span>
+              <span>{finalJson.heading}</span>
               <br />
-              <SlantedBackground>Marketing Team.</SlantedBackground>
+              {/* <SlantedBackground></SlantedBackground> */}
             </Heading>
-            <PrimaryAction>Read Customer Stories</PrimaryAction>
+            <PrimaryAction>{finalJson.buttonText}</PrimaryAction>
           </LeftColumn>
           <RightColumn>
             <StyledResponsiveVideoEmbed
-              url="//player.vimeo.com/video/374265101?title=0&portrait=0&byline=0&autoplay=0&responsive=1"
+              url={"https://youtu.be/9HBg3enCJ_Y?si=fRktv8ODIjrt3Pr6"}
               background="transparent"
             />
           </RightColumn>
