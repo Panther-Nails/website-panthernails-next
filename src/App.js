@@ -17,7 +17,7 @@ export default function App() {
     <>
       <GlobalStyles />
 
-      {/* {hasNotificationSeen ? "seen" : "not seen"} */}
+      {hasNotificationSeen ? "seen" : "not seen"}
 
       <Header />
 
