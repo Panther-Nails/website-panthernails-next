@@ -4,24 +4,76 @@ import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { ExecuteQuery } from "services/APIService";
 import GetStarted from "components/cta/GetStarted";
 import CookieConsent from "components/controls/CookieConsent";
+import SiteMap from "components/headers/SiteMap";
+import Offers from "components/headers/Offers";
+
+export const ImportDynamicComponent = (Section, ComponentName) => {
+  const Component = lazy(() =>
+    import(`components/${Section}/${ComponentName}.js`)
+      .then((module) => ({ default: module.default }))
+      .catch((error) => {
+        console.error(`Error loading component ${ComponentName}:`, error);
+        return { default: () => <GetStarted /> }; // to be replaced with ErrorPage
+      })
+  );
+  return Component;
+};
+
+export const getChildComponentName = (Components) => {
+  var childComponentName = Components[0].ComponentName;
+  var childSection = Components[0].Section;
+  var isUnique = true;
+
+  Components.forEach((child) => {
+    if (childComponentName !== child.ComponentName) isUnique = false;
+    else childComponentName = child.ComponentName;
+  });
+
+  if (isUnique)
+    return {
+      componentName: childComponentName,
+      section: childSection,
+    };
+  else return null;
+};
+
+export const ProcessChildComponents = (Components) => {
+  console.log("ProcessChildComponents", Components.length);
+  if (Components.length > 0) {
+    const component = getChildComponentName(Components);
+    const Component = ImportDynamicComponent(
+      component.section,
+      component.componentName
+    );
+    return (
+      <Suspense>
+        <Component children={Components} />
+      </Suspense>
+    );
+  } else {
+    return <></>;
+  }
+};
+
+export const ProcessComponents = (Components) => {
+  Components.map((component, index) => {
+    const Component = ImportDynamicComponent(
+      component.Section,
+      component.ComponentName
+    );
+    return (
+      <Suspense>
+        <Component data={component} />
+      </Suspense>
+    );
+  });
+};
 
 export default () => {
   const { type, subtype, name } = useParams();
 
   const [data, setData] = useState({});
   const [components, setComponents] = useState([]);
-
-  const ImportDynamicComponent = (Section, ComponentName) => {
-    const Component = lazy(() =>
-      import(`components/${Section}/${ComponentName}.js`)
-        .then((module) => ({ default: module.default }))
-        .catch((error) => {
-          console.error(`Error loading component ${ComponentName}:`, error);
-          return { default: () => <GetStarted /> }; // to be replaced with ErrorPage
-        })
-    );
-    return Component;
-  };
 
   const getPageCacheKey = () =>
     "1BGeZoi3zs" + window.location.pathname.replace("/", "-");
@@ -76,24 +128,37 @@ export default () => {
         <Suspense>
           <AnimationRevealPage>
             <CookieConsent />
+
+            {/* <SiteMap /> */}
+            {/* <Offers /> */}
             {components.map((component, index) => {
               const Component = ImportDynamicComponent(
                 component.Section,
                 component.ComponentName
               );
-              var cpJson = "{}";
-              var hpJson = "{}";
+              var cpJson = {};
+              var hpJson = {};
+              var children = [];
 
               if (component.CPJSON) {
-                var cpJson = JSON.parse(component.CPJSON);
+                cpJson = JSON.parse(component.CPJSON);
               }
 
               if (component.HPJSON) {
-                var hpJson = JSON.parse(component.HPJSON);
+                hpJson = JSON.parse(component.HPJSON);
+              }
+
+              if (component.Children) {
+                children = component.Children;
               }
 
               return (
-                <Component data={component} CPJSON={cpJson} HPJSON={hpJson} />
+                <Component
+                  data={component}
+                  CPJSON={cpJson}
+                  HPJSON={hpJson}
+                  children={children}
+                />
               );
             })}
           </AnimationRevealPage>
