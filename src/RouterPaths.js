@@ -1,20 +1,23 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import DynamicPage from "DynamicPage";
 import Test from "pages/Test";
 import PrivacyPolicy from "pages/PrivacyPolicy";
 
+const DynamicPageComponent = () => {
+  console.log("url", window.location.pathname);
+  return <DynamicPage />;
+};
+
 export default () => (
-  <Router>
-    <Routes>
-      <Route exact path="/" element={<DynamicPage />}>
-        <Route path="/:type" component={<DynamicPage />} />
-        <Route path="/:type/:subtype" component={<DynamicPage />} />
-        <Route path="/:type/:subtype/:name" component={<DynamicPage />} />
-      </Route>
-      <Route path="/admin-panel" element={<Test />}>
-        <Route path="/admin-panel/policy" component={<PrivacyPolicy />} />
-      </Route>
-    </Routes>
-  </Router>
+  <Routes>
+    <Route exact path="/" element={DynamicPageComponent()}>
+      <Route path="/:type" element={DynamicPageComponent()} />
+      <Route path="/:type/:subtype" element={DynamicPageComponent()} />
+      <Route path="/:type/:subtype/:name" element={DynamicPageComponent()} />
+    </Route>
+    <Route path="/admin-panel" element={<Test />}>
+      <Route path="/admin-panel/policy" element={<PrivacyPolicy />} />
+    </Route>
+  </Routes>
 );

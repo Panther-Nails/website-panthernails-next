@@ -97,7 +97,7 @@ export default ({
         links={
           <NavLinks key={1}>
             {links.map((link, index) => (
-              <NavLink href={link.href}>{link.title}</NavLink>
+              <NavLink to={link.href}>{link.title}</NavLink>
             ))}
           </NavLinks>
         }
@@ -108,7 +108,7 @@ export default ({
             <Heading>{heading}</Heading>
             <Paragraph>{description}</Paragraph>
             <Actions>
-              <PrimaryButton as="a" href={primaryButtonUrl}>
+              <PrimaryButton as="a" to={primaryButtonUrl}>
                 {primaryButtonText}
               </PrimaryButton>
               <WatchVideoButton onClick={toggleModal}>

@@ -58,8 +58,6 @@ export const getCacheAsync = (cacheKey) => {
   return caches
     .match(cacheKey)
     .then((response) => {
-      console.log("response", response);
-
       return response;
     })
     .then((r) => r.json())
