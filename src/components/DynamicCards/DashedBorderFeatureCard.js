@@ -47,15 +47,17 @@ export default ({ children }) => {
     <>
       {data.map((child, index) => {
         var hpJson = {};
-        if (child.CHPJSON) {
-          hpJson = JSON.parse(child.CHPJSON);
+        if (child.HPJSON) {
+          hpJson = JSON.parse(child.HPJSON);
         }
         return (
           <Column key={index}>
             <Card>
-              <span className="imageContainer">
-                <img src={hpJson.imageSrc} alt="" />
-              </span>
+              {hpJson.imageSrc && (
+                <span className="imageContainer">
+                  {hpJson.imageSrc && <img src={hpJson.imageSrc} alt="" />}
+                </span>
+              )}
               <span className="textContainer">
                 <span className="title">{hpJson.heading}</span>
                 <p className="description">{hpJson.description} </p>

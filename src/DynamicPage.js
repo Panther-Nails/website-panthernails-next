@@ -148,7 +148,7 @@ export default () => {
                 }
                 var finalJson = { ...cpJson, ...hpJson };
               }
-
+              console.log("children", children);
               return (
                 <Component
                   data={component}

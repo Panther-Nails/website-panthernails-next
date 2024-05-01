@@ -83,7 +83,7 @@ export default ({ data, CPJSON, HPJSON, finalJson }) => {
           </LeftColumn>
           <RightColumn>
             <StyledResponsiveVideoEmbed
-              url={"https://youtu.be/9HBg3enCJ_Y?si=fRktv8ODIjrt3Pr6"}
+              url={finalJson.videoId}
               background="transparent"
             />
           </RightColumn>

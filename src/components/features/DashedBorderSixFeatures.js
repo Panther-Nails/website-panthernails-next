@@ -25,7 +25,10 @@ export default ({ data, HPJSON, CPJSON, finalJson, children }) => {
     <Container>
       <ThreeColumnContainer>
         <Heading>
-          Our Professional <span tw="text-primary-500">Services</span>
+          {finalJson.heading}{" "}
+          <span tw="text-primary-500">
+            {finalJson.highlighHeading && finalJson.highlighHeading}
+          </span>
         </Heading>
         {ProcessChildComponents(children)}
       </ThreeColumnContainer>
