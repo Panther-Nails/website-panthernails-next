@@ -85,7 +85,7 @@ export default ({finalJson,data,CPJSON,HPJSON}) => {
         <TwoColumn>
           <LeftColumn>
             <Notification>
-              {finalJson.subheading}
+              {finalJson.notification}
             </Notification>
             <Heading>
               <span>{finalJson.heading}</span>

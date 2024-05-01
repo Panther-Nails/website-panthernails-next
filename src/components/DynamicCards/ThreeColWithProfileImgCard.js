@@ -1,17 +1,20 @@
-import React from "react";
-import { useEffect, useState } from "react";
+
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import tw from "twin.macro";
-
-const Step = tw.li`mt-8 flex flex-col md:flex-row items-center md:items-start`;
-const StepNumber = tw.div`font-semibold text-4xl leading-none text-gray-400`;
-const StepText = tw.div`mt-3 md:mt-0 md:ml-6`;
-const StepHeading = tw.h6`leading-none text-xl font-semibold`;
-const StepDescription = tw.p`mt-3 max-w-xs leading-loose text-sm text-gray-600 font-medium`;
+import { css } from "styled-components/macro"; //eslint-disable-line
 
 
-const Steps = tw.ul`mt-12`;
+const Testimonials = tw.div`flex flex-col lg:flex-row items-center lg:items-stretch`;
+const TestimonialContainer = tw.div`mt-16 lg:w-1/3`;
+const Testimonial = tw.div`px-4 text-center max-w-xs mx-auto flex flex-col items-center`;
+const Image = tw.img`w-20 h-20 rounded-full`;
+const Quote = tw.blockquote`mt-5 text-gray-600 font-medium leading-loose`;
+const CustomerName = tw.p`mt-5 text-gray-900 font-semibold uppercase text-sm tracking-wide`;
+
+
+
 export default ({ children }) => {
-    
  
     const [data, setData] = useState([
       {
@@ -34,7 +37,7 @@ export default ({ children }) => {
       setData([...children]);
     }, [children]);
     return (
-      <Steps>
+      <Testimonials>
         {data.map((child, index) => {
           <div>{child.ComponentName}</div>;
           console.log("child", child.ComponentName);
@@ -52,18 +55,19 @@ export default ({ children }) => {
   
           return (
             <>
-            <Step key={index}>
-            <StepNumber>{(index+1).toString().padStart(2,'0')}</StepNumber>
-            <StepText>
-              <StepHeading>{hpJson.heading}</StepHeading>
-              <StepDescription>{hpJson.description}</StepDescription>
-            </StepText>
-          </Step>
-          </>
+          {children.map((testimonial, index) => (
+            <TestimonialContainer key={index}>
+              <Testimonial>
+                <CustomerName>{testimonial.customerName}</CustomerName>
+                <Image src={testimonial.imageSrc} />
+                <Quote>"{testimonial.quote}"</Quote>
+              </Testimonial>
+            </TestimonialContainer>
+          ))}
+        </>
           );
         })}
-      </Steps>
-      
+      </Testimonials>
     );
   };
   

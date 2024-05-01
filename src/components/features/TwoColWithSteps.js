@@ -59,6 +59,7 @@ export default ({
   decoratorBlobCss = null,
 }) => {
   
+  // console.log("componenttwocol",children);
 
   return (
     <Container>
@@ -72,7 +73,27 @@ export default ({
             <Subheading>{finalJson.subheading}</Subheading>
             <Heading>{finalJson.heading}</Heading>
             <Steps>
-            {ProcessChildComponents(children)}
+            {children.map((child, index) => {
+
+              var hpJson=JSON.parse(child.HPJSON)
+              // var cpJson=JSON.parse(child[index].CPJSON)
+
+              // var finalChildJson = {...cpJson,...hpJson}
+
+              // console.log("finalChildJson",hpJson);
+  
+          return (
+            <>
+            <Step key={index}>
+            <StepNumber>{(index+1).toString().padStart(2,'0')}</StepNumber>
+            <StepText>
+              <StepHeading>{hpJson.heading}</StepHeading>
+              <StepDescription>{hpJson.description}</StepDescription>
+            </StepText>
+          </Step>
+          </>
+          );
+        })}
             </Steps>
           </TextContent>
         </TextColumn>

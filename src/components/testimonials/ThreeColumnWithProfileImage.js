@@ -23,6 +23,8 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
 `;
 
 export default ({
+  children,
+  finalJson,
   subheading = "Testimonials",
   heading = "Customer's Review",
   testimonials = [
@@ -49,26 +51,37 @@ export default ({
     }
   ]
 }) => {
+
+
+
   return (
+    <>
     <Container>
       <ContentWithPaddingXl>
         {subheading && <Subheading>{subheading}</Subheading>}
-        <Heading>{heading}</Heading>
+        <Heading>{finalJson.heading}</Heading>
         <Testimonials>
-          {testimonials.map((testimonial, index) => (
-            <TestimonialContainer key={index}>
-              <Testimonial>
-                <CustomerName>{testimonial.customerName}</CustomerName>
-                <Image src={testimonial.imageSrc} />
-                <Quote>"{testimonial.quote}"</Quote>
-              </Testimonial>
-            </TestimonialContainer>
-          ))}
+          {children.map((child, index) => {
+            var hpJson=JSON.parse(child.HPJSON)
+             
+            return(
+                    <>
+                      <TestimonialContainer key={index}>
+                        <Testimonial>
+                          <CustomerName>{hpJson.heading}</CustomerName>
+                          <Image src={hpJson.imageSrc} />
+                          <Quote>"{hpJson.description}"</Quote>
+                        </Testimonial>
+                      </TestimonialContainer>
+                  </>
+            )
+           })}
         </Testimonials>
       </ContentWithPaddingXl>
 
       <DecoratorBlob1 />
       <DecoratorBlob2 />
     </Container>
+    </>
   );
-};
+  }
