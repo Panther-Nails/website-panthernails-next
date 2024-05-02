@@ -53,7 +53,7 @@ console.log("finalJsoncontact",finalJson);
         </ImageColumn>
         <TextColumn textOnLeft={textOnLeft}>
           <TextContent>
-            {subheading && <Subheading>{finalJson.subheading}</Subheading>}
+            {subheading && <Subheading>{finalJson.subHeading}</Subheading>}
             <Heading>{finalJson.heading}</Heading>
             {description && <Description>{finalJson.description}</Description>}
             <Form action={formAction} method={formMethod}>

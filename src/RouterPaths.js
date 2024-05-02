@@ -5,7 +5,7 @@ import Test from "pages/Test";
 import PrivacyPolicy from "pages/PrivacyPolicy";
 
 const DynamicPageComponent = () => {
-  console.log("url", window.location.pathname);
+  // console.log("url", window.location.pathname);
   return <DynamicPage />;
 };
 

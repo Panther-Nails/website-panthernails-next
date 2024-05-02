@@ -6,33 +6,30 @@ import { ReactComponent as SvgDotPatternIcon } from "../../images/dot-pattern.sv
 
 const Container = tw.div`relative w-full h-screen  p-20 bg-gray-500  border-4 border-red-900`;
 
-export default ({ children, HPJSON }) => {
-  console.log("testchildren", HPJSON);
-
+export default ({ children, finalJson,cfinalJson }) => {
   return (
     <>
       <Container>
-        <h1>{HPJSON.heading}</h1>
+        <h1>{finalJson.heading}</h1>
 
         <Container>
           {children.map((child, index) => {
             const chpJson = JSON.parse(child.HPJSON);
-            var tp =children[0]
-            
+            var tp = children[index];
+            // console.log("testchildren", cfinalJson);
+
             return (
-              
               <>
                 <h1>{chpJson.heading}</h1>
-                  <Container>
-                    {tp.Children.map((child, index) => {
-                      var tp =children[0]
-                      console.log("test3",);
-                      const chpJson = JSON.parse(child.HPJSON);
+                <Container>
+                  {tp.Children.map((child, index) => {
+                    var tp = children[index];
+                    // console.log("test3");
+                    const chpJson = JSON.parse(child.HPJSON);
 
-                      return <h1>{chpJson.heading}</h1>;
-                    })}
-                  </Container>
-                
+                    return <h1>{chpJson.heading}</h1>;
+                  })}
+                </Container>
               </>
             );
           })}

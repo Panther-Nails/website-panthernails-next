@@ -58,7 +58,7 @@ export default ({
     <>
     <Container>
       <ContentWithPaddingXl>
-        {subheading && <Subheading>{subheading}</Subheading>}
+        {subheading && <Subheading>{finalJson.subheading}</Subheading>}
         <Heading>{finalJson.heading}</Heading>
         <Testimonials>
           {children.map((child, index) => {

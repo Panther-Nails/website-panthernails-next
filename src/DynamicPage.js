@@ -78,7 +78,7 @@ export default () => {
   const getPageCacheKey = () =>
     "1BGeZoi3zs" + window.location.pathname.replace("/", "-");
 
-  console.log(getPageCacheKey());
+  // console.log(getPageCacheKey());
 
   useEffect(() => {
     ExecuteQuery(
@@ -89,9 +89,9 @@ export default () => {
       },
       getPageCacheKey()
     ).then((response) => {
-      console.log("Response", response);
+      // console.log("Response", response);
       if (response.message === "Successfull") {
-        console.log("Data retrival success");
+        // console.log("Data retrival success");
         var newData = response.items[0];
         setData({ ...data, ...newData });
       } else {
@@ -107,8 +107,8 @@ export default () => {
   }, [type, subtype, name]);
 
   useEffect(() => {
-    console.log("dataset", data);
-    console.log("length", data.Components);
+    // console.log("dataset", data);
+    // console.log("length", data.Components);
     if (data.Components) {
       var c = JSON.parse(data.Components);
       console.log("components ", c);
@@ -145,6 +145,8 @@ export default () => {
               }
 
               if (component.HPJSON) {
+
+                
                 hpJson = JSON.parse(component.HPJSON);
               }
 
@@ -152,13 +154,13 @@ export default () => {
                 children = component.Children;
               }
 
-              var finalJson={...cpJson,...hpJson}
+              console.log("children",children);
+
+              var finalJson = { ...cpJson, ...hpJson };
 
               return (
                 <Component
                   data={component}
-                  CPJSON={cpJson}
-                  HPJSON={hpJson}
                   children={children}
                   finalJson={finalJson}
                 />

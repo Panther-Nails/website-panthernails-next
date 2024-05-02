@@ -13,7 +13,7 @@ const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative`;
 const TextColumn = styled(Column)(props => [
   tw`md:w-6/12 mt-16 md:mt-0`,
-  props.textOnLeft ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`
+  props.textOnLeft==="true" ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`
 ]);
 
 const Image = styled.img(props => [
@@ -54,41 +54,50 @@ export default ({
   imageBorder = false,
   imageShadow = false,
   imageDecoratorBlob = false,
-  textOnLeft = true,
+  textOnLeft = "true",
   steps = null,
   decoratorBlobCss = null,
 }) => {
   
-  // console.log("componenttwocol",children);
+  console.log("CPJSON",children);
 
   return (
     <Container>
       <TwoColumn>
         <ImageColumn>
-          <Image src={finalJson.imageUrl} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded} />
+          <Image src={finalJson.imageSrc} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded} />
           {imageDecoratorBlob && <DecoratorBlob css={decoratorBlobCss} />}
         </ImageColumn>
-        <TextColumn textOnLeft={textOnLeft}>
+        <TextColumn textOnLeft={finalJson.textOnLeft}>
           <TextContent>
-            <Subheading>{finalJson.subheading}</Subheading>
+            <Subheading>{finalJson.subHeading}</Subheading>
             <Heading>{finalJson.heading}</Heading>
             <Steps>
             {children.map((child, index) => {
+              var hpJson={}
 
-              var hpJson=JSON.parse(child.HPJSON)
+              if(child.HPJSON)
+              {
+                 hpJson=JSON.parse(child.HPJSON);
+
+              }
+              
+
               // var cpJson=JSON.parse(child[index].CPJSON)
 
               // var finalChildJson = {...cpJson,...hpJson}
 
-              // console.log("finalChildJson",hpJson);
+              // console.log("finalChildJson",finalJson);
   
           return (
             <>
             <Step key={index}>
-            <StepNumber>{(index+1).toString().padStart(2,'0')}</StepNumber>
+            {/* <StepNumber>{(index+1).toString().padStart(2,'0')}</StepNumber> */}
             <StepText>
               <StepHeading>{hpJson.heading}</StepHeading>
+              
               <StepDescription>{hpJson.description}</StepDescription>
+              <Subheading>{hpJson.subHeading}</Subheading>
             </StepText>
           </Step>
           </>
