@@ -4,6 +4,7 @@ import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { ExecuteQuery } from "services/APIService";
 import GetStarted from "components/cta/GetStarted";
 import CookieConsent from "components/controls/CookieConsent";
+import { getProperties } from "services/JsonService";
 
 export const ImportDynamicComponent = (Section, ComponentName) => {
   const Component = lazy(() =>
@@ -42,9 +43,10 @@ export const ProcessChildComponents = (Components) => {
       component.section,
       component.componentName
     );
+    var properties = getProperties(Components[0]);
     return (
       <Suspense>
-        <Component children={Components} />
+        <Component children={Components} properties={properties} />
       </Suspense>
     );
   } else {
@@ -52,18 +54,27 @@ export const ProcessChildComponents = (Components) => {
   }
 };
 
-export const ProcessComponents = (Components) => {
-  Components.map((component, index) => {
-    const Component = ImportDynamicComponent(
-      component.Section,
-      component.ComponentName
-    );
-    return (
-      <Suspense>
-        <Component data={component} />
-      </Suspense>
-    );
-  });
+export const ProcessChildComponentsSeparately = (Components) => {
+  if (Components.length > 0) {
+    return Components.map((child, index) => {
+      var childProperties = getProperties(child);
+      const Component = ImportDynamicComponent(
+        child.Section,
+        child.ComponentName
+      );
+      return (
+        <Suspense>
+          <Component
+            properties={childProperties}
+            children={child.Children}
+            index={index}
+          />
+        </Suspense>
+      );
+    });
+  } else {
+    return <></>;
+  }
 };
 
 export default () => {
@@ -131,31 +142,18 @@ export default () => {
                 component.ComponentName
               );
               {
-                var cpJson = {};
-                var hpJson = {};
                 var children = [];
-
-                if (component.CPJSON) {
-                  cpJson = JSON.parse(component.CPJSON);
-                }
-
-                if (component.HPJSON) {
-                  hpJson = JSON.parse(component.HPJSON);
-                }
-
                 if (component.Children) {
                   children = component.Children;
                 }
-                var finalJson = { ...cpJson, ...hpJson };
+                var properties = getProperties(component);
               }
               console.log("children", children);
               return (
                 <Component
                   data={component}
-                  CPJSON={cpJson}
-                  HPJSON={hpJson}
                   children={children}
-                  finalJson={finalJson}
+                  properties={properties}
                 />
               );
             })}

@@ -39,7 +39,7 @@ export default ({
   HPJSON,
   CPJSON,
   data,
-  finalJson,
+  properties,
   text = (
     <>
       {" "}
@@ -59,14 +59,14 @@ export default ({
         <PrimaryBackgroundContainer>
           <Row>
             <TextContainer>
-              <Text>{finalJson.heading}</Text>
+              <Text>{properties.heading}</Text>
             </TextContainer>
             <LinksContainer>
-              <PrimaryLink href={finalJson.leftButtonUrl} target="_black">
-                {finalJson.leftButtonText}
+              <PrimaryLink href={properties.leftButtonUrl} target="_black">
+                {properties.leftButtonText}
               </PrimaryLink>
-              <SecondaryLink href={finalJson.rightButtonUrl} target="_black">
-                {finalJson.rightButtonText}
+              <SecondaryLink href={properties.rightButtonUrl} target="_black">
+                {properties.rightButtonText}
               </SecondaryLink>
             </LinksContainer>
           </Row>

@@ -65,25 +65,25 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
   }
 `;
 
-export default ({ data, CPJSON, HPJSON, finalJson }) => {
+export default ({ data, properties }) => {
   return (
-    <Container backgroundImageUrl={finalJson.backgroundImageUrl}>
+    <Container backgroundImageUrl={properties.backgroundImageUrl}>
       <OpacityOverlay />
       <HeroContainer>
         <TwoColumn>
           <LeftColumn>
-            <Notification>{finalJson.notification}</Notification>
+            <Notification>{properties.notification}</Notification>
 
             <Heading>
-              <span>{finalJson.heading}</span>
+              <span>{properties.heading}</span>
               <br />
               {/* <SlantedBackground></SlantedBackground> */}
             </Heading>
-            <PrimaryAction>{finalJson.buttonText}</PrimaryAction>
+            <PrimaryAction>{properties.buttonText}</PrimaryAction>
           </LeftColumn>
           <RightColumn>
             <StyledResponsiveVideoEmbed
-              url={finalJson.videoId}
+              url={properties.videoId}
               background="transparent"
             />
           </RightColumn>

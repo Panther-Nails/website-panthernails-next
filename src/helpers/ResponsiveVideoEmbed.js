@@ -16,7 +16,7 @@ export default ({ url, background = "black", className = "video" }) => {
       <iframe
         width="560"
         height="315"
-        src={`https://www.youtube.com/embed/${url}`}
+        src={`https://www.youtube.com/embed/${url}?&showinfo=0&controls=0&autohide=1&rel=0`}
       ></iframe>
     </div>
   );

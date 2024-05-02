@@ -6,8 +6,11 @@ import { SectionHeading as HeadingTitle } from "../misc/Headings.js";
 import {
   ImportDynamicComponent,
   ProcessChildComponents,
+  ProcessChildComponentsSeparately,
   getChildComponentName,
 } from "DynamicPage";
+import AlternateTextImageCard from "components/DynamicCards/AlternateTextImageCard";
+import { getProperties } from "services/JsonService";
 
 const Container = tw.div`relative`;
 
@@ -29,16 +32,30 @@ const SvgDotPattern4 = tw(
   SvgDotPatternIcon
 )`absolute bottom-0 right-0 transform translate-x-20 rotate-90 -translate-y-24 -z-10 opacity-25 text-primary-500 fill-current w-24`;
 
-export default ({ CPJSON, HPJSON, data, children, finalJson }) => {
+const Content = tw.div`mt-16`;
+
+export default ({ CPJSON, HPJSON, data, children, properties }) => {
   return (
     <Container>
       <SingleColumn>
         <HeadingInfoContainer>
-          <HeadingTitle>{finalJson.heading}</HeadingTitle>
-          <HeadingDescription>{finalJson.subheading}</HeadingDescription>
+          <HeadingTitle>{properties.heading}</HeadingTitle>
+          <HeadingDescription>{properties.subheading}</HeadingDescription>
         </HeadingInfoContainer>
+        <Content>
+          {/* {children.map((child, index) => {
+            var childProperties = getProperties(child);
 
-        {ProcessChildComponents(children)}
+            return (
+              <AlternateTextImageCard
+                properties={childProperties}
+                children={child.Children}
+                index={index}
+              />
+            );
+          })} */}
+          {ProcessChildComponentsSeparately(children)}
+        </Content>
       </SingleColumn>
       <SvgDotPattern1 />
       <SvgDotPattern2 />
