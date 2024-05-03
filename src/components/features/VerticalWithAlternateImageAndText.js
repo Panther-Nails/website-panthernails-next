@@ -3,12 +3,14 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import { ReactComponent as SvgDotPatternIcon } from "../../images/dot-pattern.svg";
 import { SectionHeading as HeadingTitle } from "../misc/Headings.js";
-import { cardComponentName } from "ImportDynamicCard";
 import {
   ImportDynamicComponent,
   ProcessChildComponents,
+  ProcessChildComponentsSeparately,
   getChildComponentName,
 } from "DynamicPage";
+import AlternateTextImageCard from "components/DynamicCards/AlternateTextImageCard";
+import { getProperties } from "services/JsonService";
 
 const Container = tw.div`relative`;
 
@@ -30,20 +32,30 @@ const SvgDotPattern4 = tw(
   SvgDotPatternIcon
 )`absolute bottom-0 right-0 transform translate-x-20 rotate-90 -translate-y-24 -z-10 opacity-25 text-primary-500 fill-current w-24`;
 
-export default ({ CPJSON, HPJSON, data, children }) => {
-  console.log("CPJSON", CPJSON);
-  console.log("data", data);
+const Content = tw.div`mt-16`;
 
-  var overriedData = Object.keys(HPJSON).length > 0 ? HPJSON : CPJSON;
+export default ({ CPJSON, HPJSON, data, children, properties }) => {
   return (
     <Container>
       <SingleColumn>
         <HeadingInfoContainer>
-          <HeadingTitle>{overriedData.heading}</HeadingTitle>
-          <HeadingDescription>{overriedData.subheading}</HeadingDescription>
+          <HeadingTitle>{properties.heading}</HeadingTitle>
+          <HeadingDescription>{properties.subheading}</HeadingDescription>
         </HeadingInfoContainer>
+        <Content>
+          {/* {children.map((child, index) => {
+            var childProperties = getProperties(child);
 
-        {ProcessChildComponents(children)}
+            return (
+              <AlternateTextImageCard
+                properties={childProperties}
+                children={child.Children}
+                index={index}
+              />
+            );
+          })} */}
+          {ProcessChildComponentsSeparately(children)}
+        </Content>
       </SingleColumn>
       <SvgDotPattern1 />
       <SvgDotPattern2 />

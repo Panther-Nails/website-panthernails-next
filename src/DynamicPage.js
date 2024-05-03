@@ -4,8 +4,7 @@ import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { ExecuteQuery } from "services/APIService";
 import GetStarted from "components/cta/GetStarted";
 import CookieConsent from "components/controls/CookieConsent";
-import SiteMap from "components/headers/SiteMap";
-import Offers from "components/headers/Offers";
+import { getProperties } from "services/JsonService";
 
 export const ImportDynamicComponent = (Section, ComponentName) => {
   const Component = lazy(() =>
@@ -38,16 +37,16 @@ export const getChildComponentName = (Components) => {
 };
 
 export const ProcessChildComponents = (Components) => {
-  console.log("ProcessChildComponents", Components.length);
   if (Components.length > 0) {
     const component = getChildComponentName(Components);
     const Component = ImportDynamicComponent(
       component.section,
       component.componentName
     );
+    var properties = getProperties(Components[0]);
     return (
       <Suspense>
-        <Component children={Components} />
+        <Component children={Components} properties={properties} />
       </Suspense>
     );
   } else {
@@ -55,18 +54,27 @@ export const ProcessChildComponents = (Components) => {
   }
 };
 
-export const ProcessComponents = (Components) => {
-  Components.map((component, index) => {
-    const Component = ImportDynamicComponent(
-      component.Section,
-      component.ComponentName
-    );
-    return (
-      <Suspense>
-        <Component data={component} />
-      </Suspense>
-    );
-  });
+export const ProcessChildComponentsSeparately = (Components) => {
+  if (Components.length > 0) {
+    return Components.map((child, index) => {
+      var childProperties = getProperties(child);
+      const Component = ImportDynamicComponent(
+        child.Section,
+        child.ComponentName
+      );
+      return (
+        <Suspense>
+          <Component
+            properties={childProperties}
+            children={child.Children}
+            index={index}
+          />
+        </Suspense>
+      );
+    });
+  } else {
+    return <></>;
+  }
 };
 
 export default () => {
@@ -128,36 +136,24 @@ export default () => {
         <Suspense>
           <AnimationRevealPage>
             <CookieConsent />
-
-            {/* <SiteMap /> */}
-            {/* <Offers /> */}
             {components.map((component, index) => {
               const Component = ImportDynamicComponent(
                 component.Section,
                 component.ComponentName
               );
-              var cpJson = {};
-              var hpJson = {};
-              var children = [];
-
-              if (component.CPJSON) {
-                cpJson = JSON.parse(component.CPJSON);
+              {
+                var children = [];
+                if (component.Children) {
+                  children = component.Children;
+                }
+                var properties = getProperties(component);
               }
-
-              if (component.HPJSON) {
-                hpJson = JSON.parse(component.HPJSON);
-              }
-
-              if (component.Children) {
-                children = component.Children;
-              }
-
+              console.log("children", children);
               return (
                 <Component
                   data={component}
-                  CPJSON={cpJson}
-                  HPJSON={hpJson}
                   children={children}
+                  properties={properties}
                 />
               );
             })}

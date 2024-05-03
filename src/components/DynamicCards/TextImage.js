@@ -30,12 +30,10 @@ export default ({ children }) => {
       Deleted: false,
       CompanyID: 217,
       SubscriberID: 1140,
-      CHPJSON:
+      HPJSON:
         '{"imageSrc":"https:\\/\\/images.unsplash.com\\/photo-1509824227185-9c5a01ceba0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=658&q=80","title":"Hello"}',
     },
   ]);
-
-  console.log("children", JSON.stringify(children));
 
   useEffect(() => {
     setData([...children]);
@@ -43,19 +41,12 @@ export default ({ children }) => {
   return (
     <Content>
       {data.map((child, index) => {
-        <div>{child.ComponentName}</div>;
-        console.log("child", child.ComponentName);
-        // var cpJson = {};
         var hpJson = {};
 
-        // if (child.CCPJSON) {
-        //   cpJson = JSON.parse(child.CCPJSON);
-        // }
-
-        if (child.CHPJSON) {
-          hpJson = JSON.parse(child.CHPJSON);
-          console.log(hpJson);
+        if (child.HPJSON) {
+          hpJson = JSON.parse(child.HPJSON);
         }
+        console.log("TextImageData", child.HPJSON);
 
         return (
           <Card key={index} reversed={index % 2 === 1}>
