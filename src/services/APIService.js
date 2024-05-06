@@ -1,8 +1,16 @@
 import { getCacheAsync, trySetCache } from "./CacheService";
 import { Duration, getCookie, setCookie } from "./CookieService";
-import session from "../session.json";
+import encrypted from "../session.json";
+import { decryptData } from "./EncryptionService";
 
 export function Execute(oFormData) {
+  var decryptionKey = decryptData(
+    "U2FsdGVkX1+W8KoKL4/oI5HlgnvejSahTXl44m6BXuV/TfvRV+NVLObS6Puiq/pu",
+    "abcd12345"
+  );
+
+  var session = decryptData(encrypted.session, decryptionKey);
+
   var sessionData = {
     CompanyID: session.CompanyID,
     SubscriberID: session.SubscriberID,
@@ -13,10 +21,13 @@ export function Execute(oFormData) {
 
   var formData = {
     ...oFormData,
-    SessionDataJSON: JSON.stringify(sessionData),
+    SessionDataJSON: JSON.stringify({
+      ...sessionData,
+      ...oFormData.SessionDataJSON,
+    }),
   };
 
-  return fetch("https://oneapp.panthernails.com/DPWA/api/device/Execute", {
+  return fetch(session.endpoint, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

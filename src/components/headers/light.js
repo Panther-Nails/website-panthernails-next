@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimation, useCycle } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
@@ -12,7 +12,7 @@ import pnlogo from "../../images/pnlogo.svg";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 
-import { useSession } from "providers/SessionProvider.js";
+import { Languages, useSession } from "providers/SessionProvider.js";
 
 const Container = tw.div` relative sticky top-0 z-50 bg-white`;
 
@@ -23,8 +23,6 @@ export const NavLinks = tw.div`inline-block`;
 /* hocus: stands for "on hover or focus"
  * hocus:bg-primary-700 will apply the bg-primary-700 class on hover or focus
  */
-const MyLink = styled(RouterLink)`p-5`;
-
 export const NavLink = styled(RouterLink)`
   text-sm my-2 lg:mx-6 lg:my-0
   font-semibold tracking-wide transition duration-300
@@ -73,6 +71,19 @@ export const NotificationBarPullout = tw.div`top-0 border-b z-50
 export const NotificationText = tw.p` p-2`;
 export const NotificationActions = tw.div`font-bold hover:bg-red-500 p-2`;
 
+export const SiteOptionToggleButton = tw.button`mr-5 z-20 focus:outline-none hocus:text-primary-500 transition duration-300`;
+
+export const SiteOptionsContainer = tw.nav`flex flex-1 items-center justify-between`;
+
+export const LanguageSelectionLinks = motion(styled.div`
+  ${tw`lg:hidden z-10 fixed top-0 w-1/2 inset-x-0 mx-4 my-6 p-8 border text-center rounded-lg text-gray-900 bg-white`}
+  ${NavLinks} {
+    ${tw`flex flex-col items-center`}
+  }
+`);
+
+const LanguageText = styled.div`font-bold hover:font-black`;
+
 export default ({
   roundedHeaderButton = false,
   logoLink,
@@ -80,7 +91,16 @@ export default ({
   collapseBreakpointClass = "lg",
   links,
 }) => {
-  const { hasNotificationSeen, setHasNotificationSeen } = useSession();
+  const {
+    hasNotificationSeen,
+    setHasNotificationSeen,
+    theme,
+    setTheme,
+    language,
+    setLanguage,
+    languageObject,
+    setLanguageObject,
+  } = useSession();
 
   /*
    * This header component accepts an optionals "links" prop that specifies the links to render in the navbar.
@@ -97,9 +117,7 @@ export default ({
    */
 
   const [notificationVisible, setNotificationVisible] = useState(true);
-  const [notificationText, setNotificationText] = useState(
-    "If you manipulate links here, all the styling on the links is already done for you. If you pass links yourself though, you are responsible for styling the links or use the helper styled components that are defined here (NavLink)"
-  );
+  const [notificationText, setNotificationText] = useState("");
 
   const defaultLinks = [
     <NavLinks key={1}>
@@ -118,6 +136,19 @@ export default ({
       <NavLinkWrapper>
         <NavLink to="/contact">Contact Us</NavLink>
       </NavLinkWrapper>
+    </NavLinks>,
+  ];
+
+  const siteOptions = [
+    <NavLinks key={2}>
+      {SiteOptions(
+        theme,
+        setTheme,
+        language,
+        setLanguage,
+        languageObject,
+        setLanguageObject
+      )}
     </NavLinks>,
   ];
 
@@ -145,6 +176,7 @@ export default ({
         <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
           {logoLink}
           {links}
+          {/* {siteOptions} */}
         </DesktopNavLinks>
 
         <MobileNavLinksContainer
@@ -213,4 +245,65 @@ const collapseBreakPointCssMap = {
     desktopNavLinks: tw`lg:flex`,
     mobileNavLinksContainer: tw`lg:hidden`,
   },
+};
+
+export function useAnimatedSiteOptionsToggler() {
+  const [showSiteOptions, setShowSiteOptions] = useState(false);
+  const [x, cycleX] = useCycle("50%", "250%");
+  const animation = useAnimation();
+
+  const toggleSiteOptions = () => {
+    setShowSiteOptions(!showSiteOptions);
+    animation.start({ x: x, display: "block" });
+    cycleX();
+  };
+
+  return { showSiteOptions, animation, toggleSiteOptions };
+}
+
+const SiteOptions = (
+  theme,
+  setTheme,
+  language,
+  setLanguage,
+  languageObject,
+  setLanguageObject
+) => {
+  const { showSiteOptions, animation, toggleSiteOptions } =
+    useAnimatedSiteOptionsToggler();
+  return (
+    <SiteOptionsContainer>
+      <LanguageSelectionLinks
+        initial={{ x: "250%", display: "none" }}
+        animate={animation}
+      >
+        <NavLinks key={1}>
+          {Languages.map((lang, index) => {
+            return (
+              <NavLinkWrapper
+                key={index}
+                onClick={() => {
+                  setLanguage(lang.name);
+                  setLanguageObject({ ...lang });
+                  toggleSiteOptions();
+                }}
+              >
+                {lang.name?.toLocaleUpperCase()} ({lang.nameUnicode})
+              </NavLinkWrapper>
+            );
+          })}
+        </NavLinks>
+      </LanguageSelectionLinks>
+      <SiteOptionToggleButton
+        onClick={toggleSiteOptions}
+        className={showSiteOptions ? "open" : "closed"}
+      >
+        <NavLinkWrapper>
+          <LanguageText title={languageObject.nameUnicode}>
+            {languageObject.nameUnicode} {language}
+          </LanguageText>
+        </NavLinkWrapper>
+      </SiteOptionToggleButton>
+    </SiteOptionsContainer>
+  );
 };
