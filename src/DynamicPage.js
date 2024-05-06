@@ -88,7 +88,7 @@ export default () => {
   const getPageCacheKey = () =>
     "1BGeZoi3zs" + window.location.pathname.replace("/", "-");
 
-  console.log(getPageCacheKey());
+  // console.log(getPageCacheKey());
 
   useEffect(() => {
     ExecuteQuery(
@@ -100,9 +100,9 @@ export default () => {
       },
       getPageCacheKey()
     ).then((response) => {
-      console.log("Response", response);
+      // console.log("Response", response);
       if (response.message === "Successfull") {
-        console.log("Data retrival success");
+        // console.log("Data retrival success");
         var newData = response.items[0];
         setData({ ...data, ...newData });
       } else {
@@ -118,8 +118,8 @@ export default () => {
   }, [type, subtype, name]);
 
   useEffect(() => {
-    console.log("dataset", data);
-    console.log("length", data.Components);
+    // console.log("dataset", data);
+    // console.log("length", data.Components);
     if (data.Components) {
       var c = JSON.parse(data.Components);
       console.log("components ", c);

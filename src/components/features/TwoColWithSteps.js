@@ -8,8 +8,9 @@ import {
 } from "components/misc/Headings.js";
 import TeamIllustrationSrc from "images/team-illustration-2.svg";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
+import { ProcessChildComponents } from "DynamicPage";
 
-const Container = tw.div`relative`;
+const Container = tw.div`relative `;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative`;
@@ -18,6 +19,7 @@ const TextColumn = styled(Column)((props) => [
   props.textOnLeft
     ? tw`md:mr-12 lg:mr-16 md:order-first`
     : tw`md:ml-12 lg:ml-16 md:order-last`,
+  props.textOnLeft==="true" ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`
 ]);
 
 const Image = styled.img((props) => [
@@ -45,6 +47,8 @@ const StepHeading = tw.h6`leading-none text-xl font-semibold`;
 const StepDescription = tw.p`mt-3 max-w-xs leading-loose text-sm text-gray-600 font-medium`;
 
 export default ({
+  CPJSON, HPJSON, data, children,finalJson,
+  
   subheading = "Our Expertise",
   heading = (
     <>
@@ -56,7 +60,7 @@ export default ({
   imageBorder = false,
   imageShadow = false,
   imageDecoratorBlob = false,
-  textOnLeft = true,
+  textOnLeft = "true",
   steps = null,
   decoratorBlobCss = null,
 }) => {
@@ -80,35 +84,51 @@ export default ({
   ];
 
   if (!steps) steps = defaultSteps;
+  
+  console.log("CPJSON",children);
 
   return (
     <Container>
       <TwoColumn>
         <ImageColumn>
-          <Image
-            src={imageSrc}
-            imageBorder={imageBorder}
-            imageShadow={imageShadow}
-            imageRounded={imageRounded}
-          />
+          <Image src={finalJson.imageSrc} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded} />
           {imageDecoratorBlob && <DecoratorBlob css={decoratorBlobCss} />}
         </ImageColumn>
-        <TextColumn textOnLeft={textOnLeft}>
+        <TextColumn textOnLeft={finalJson.textOnLeft}>
           <TextContent>
-            <Subheading>{subheading}</Subheading>
-            <Heading>{heading}</Heading>
+            <Subheading>{finalJson.subHeading}</Subheading>
+            <Heading>{finalJson.heading}</Heading>
             <Steps>
-              {steps.map((step, index) => (
-                <Step key={index}>
-                  <StepNumber>
-                    {(index + 1).toString().padStart(2, "0")}
-                  </StepNumber>
-                  <StepText>
-                    <StepHeading>{step.heading}</StepHeading>
-                    <StepDescription>{step.description}</StepDescription>
-                  </StepText>
-                </Step>
-              ))}
+            {children.map((child, index) => {
+              var hpJson={}
+
+              if(child.HPJSON)
+              {
+                 hpJson=JSON.parse(child.HPJSON);
+
+              }
+              
+
+              // var cpJson=JSON.parse(child[index].CPJSON)
+
+              // var finalChildJson = {...cpJson,...hpJson}
+
+              // console.log("finalChildJson",finalJson);
+  
+          return (
+            <>
+            <Step key={index}>
+            {/* <StepNumber>{(index+1).toString().padStart(2,'0')}</StepNumber> */}
+            <StepText>
+              <StepHeading>{hpJson.heading}</StepHeading>
+              
+              <StepDescription>{hpJson.description}</StepDescription>
+              <Subheading>{hpJson.subHeading}</Subheading>
+            </StepText>
+          </Step>
+          </>
+          );
+        })}
             </Steps>
           </TextContent>
         </TextColumn>
