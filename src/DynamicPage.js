@@ -5,6 +5,7 @@ import { ExecuteQuery } from "services/APIService";
 import GetStarted from "components/cta/GetStarted";
 import CookieConsent from "components/controls/CookieConsent";
 import { getProperties } from "services/JsonService";
+import { useSession } from "providers/SessionProvider";
 
 export const ImportDynamicComponent = (Section, ComponentName) => {
   const Component = lazy(() =>
@@ -79,6 +80,7 @@ export const ProcessChildComponentsSeparately = (Components) => {
 
 export default () => {
   const { type, subtype, name } = useParams();
+  const { languageObject } = useSession();
 
   const [data, setData] = useState({});
   const [components, setComponents] = useState([]);
@@ -94,6 +96,7 @@ export default () => {
         ActionName:
           "WSM.GMst_SelectFewFromLinkComponentAndComponentPropertyWhereGroupNameSubGroupNamePageName",
         ParameterJSON: JSON.stringify(parameter),
+        SessionDataJSON: { language: languageObject.code },
       },
       getPageCacheKey()
     ).then((response) => {
@@ -148,7 +151,6 @@ export default () => {
                 }
                 var properties = getProperties(component);
               }
-              console.log("children", children);
               return (
                 <Component
                   data={component}
