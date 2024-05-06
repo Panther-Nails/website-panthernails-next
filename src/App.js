@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import GlobalStyles from "styles/GlobalStyles";
 
 import "slick-carousel/slick/slick.css";
@@ -8,16 +8,16 @@ import { useSession } from "providers/SessionProvider";
 import Header from "components/headers/light";
 import RouterPaths from "RouterPaths";
 
-import { NavLink } from "react-router-dom";
-
 export default function App() {
-  const { hasNotificationSeen } = useSession();
+  const { hasNotificationSeen, language, languageObject } = useSession();
 
   return (
     <>
       <GlobalStyles />
 
-      {hasNotificationSeen ? "seen" : "not seen"}
+      {/* <p>
+        {JSON.stringify({ ...languageObject, language, hasNotificationSeen })}
+      </p> */}
 
       <Header />
 

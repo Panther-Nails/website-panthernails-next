@@ -22,7 +22,13 @@ const StyledHeader = styled(Header)`
     ${tw`text-gray-100 hover:text-primary-500`}
   }
 `;
-
+const Container = styled.div`
+  ${(props) =>
+    css`
+      background-image: url(${props.backgroundImageUrl});
+      ${tw`relative -mx-8 -mt-8 bg-center bg-cover h-screen `}
+    `}
+`;
 
 const Container = styled.div(props => [
   `background-image: url("${props.imageSrc}");`,
@@ -63,40 +69,25 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
   }
 `;
 
-export default ({finalJson,data,CPJSON,HPJSON}) => {
-  console.log("finalJsonHome",finalJson);
-  const navLinks = [
-    <NavLinks key={1}>
-      <NavLink to="#">About</NavLink>
-      <NavLink to="#">Blog</NavLink>
-      <NavLink to="#">Locations</NavLink>
-      <NavLink to="#">Pricing</NavLink>
-    </NavLinks>,
-    <NavLinks key={2}>
-      <PrimaryLink to="/#">Hire Us</PrimaryLink>
-    </NavLinks>,
-  ];
-
+export default ({ data, properties }) => {
   return (
-    <Container imageSrc={finalJson.backgroundImageUrl
-    }>
+    <Container backgroundImageUrl={properties.backgroundImageUrl}>
       <OpacityOverlay />
       <HeroContainer>
         <TwoColumn>
           <LeftColumn>
-            <Notification>
-              {finalJson.notification}
-            </Notification>
+            <Notification>{properties.notification}</Notification>
+
             <Heading>
-              <span>{finalJson.heading}</span>
+              <span>{properties.heading}</span>
               <br />
-              {/* <SlantedBackground>Marketing Team.</SlantedBackground> */}
+              {/* <SlantedBackground></SlantedBackground> */}
             </Heading>
-            <PrimaryAction>{finalJson.buttonText}</PrimaryAction>
+            <PrimaryAction>{properties.buttonText}</PrimaryAction>
           </LeftColumn>
           <RightColumn>
             <StyledResponsiveVideoEmbed
-              url={finalJson.videoUrl}
+              url={properties.videoId}
               background="transparent"
             />
           </RightColumn>

@@ -7,8 +7,11 @@ import { SectionHeading as HeadingTitle } from "../misc/Headings.js";
 import {
   ImportDynamicComponent,
   ProcessChildComponents,
+  ProcessChildComponentsSeparately,
   getChildComponentName,
 } from "DynamicPage";
+import AlternateTextImageCard from "components/DynamicCards/AlternateTextImageCard";
+import { getProperties } from "services/JsonService";
 
 const Container = tw.div`relative`;
 

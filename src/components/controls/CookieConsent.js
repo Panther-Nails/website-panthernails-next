@@ -61,9 +61,9 @@ export default ({
 
   const cookieConsentComponent = () => (
     <Container
-      css={tw`flex justify-center items-center bg-transparent  w-screen h-screen absolute z-40 mx-12`}
+      css={tw`fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50`}
     >
-      <Container css={tw` z-50 `}>
+      <Container css={tw`bg-transparent`}>
         {/* && pushDownFooter && tw`mb-20 lg:mb-24` */}
         <ContentWithPaddingXl>
           <PrimaryBackgroundContainer css={backgroundColor}>
