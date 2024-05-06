@@ -3,7 +3,8 @@ import styled from "styled-components";
 import tw from "twin.macro";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
-import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
+import { 
+  SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 
 import defaultCardImage from "images/shield-icon.svg";
@@ -14,6 +15,7 @@ import CustomizeIconImage from "images/customize-icon.svg";
 import FastIconImage from "images/fast-icon.svg";
 import ReliableIconImage from "images/reliable-icon.svg";
 import SimpleIconImage from "images/simple-icon.svg";
+import { ProcessChildComponentsSeparately } from "DynamicPage";
 
 const Container = tw.div`relative bg-primary-900 -mx-8 px-8 text-gray-100`;
 
@@ -53,7 +55,8 @@ const Card = styled.div`
 `;
 
 export default ({
-  cards = null,
+  children,
+  properties,
   heading = "Amazing Features",
   subheading = "",
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -79,30 +82,16 @@ export default ({
     { imageSrc: SimpleIconImage, title: "Easy" }
   ];
 
-  if (!cards) cards = defaultCards;
+
 
   return (
     <Container>
       <ThreeColumnContainer>
-        {subheading && <Subheading>{subheading}</Subheading>}
-        <Heading>{heading}</Heading>
-        {description && <Description>{description}</Description>}
+        {properties.subheading && <Subheading>{properties.subheading}</Subheading>}
+        <Heading>{properties.heading}</Heading>
+        {properties.description && <Description>{properties.description}</Description>}
         <VerticalSpacer />
-        {cards.map((card, i) => (
-          <Column key={i}>
-            <Card>
-              <span className="imageContainer">
-                <img src={card.imageSrc || defaultCardImage} alt="" />
-              </span>
-              <span className="textContainer">
-                <span className="title">{card.title || "Fully Secure"}</span>
-                <p className="description">
-                  {card.description || "Lorem ipsum donor amet siti ceali ut enim ad minim veniam, quis nostrud."}
-                </p>
-              </span>
-            </Card>
-          </Column>
-        ))}
+        {ProcessChildComponentsSeparately(children)}
       </ThreeColumnContainer>
     </Container>
   );

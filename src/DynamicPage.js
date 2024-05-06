@@ -6,6 +6,7 @@ import GetStarted from "components/cta/GetStarted";
 import CookieConsent from "components/controls/CookieConsent";
 import { getProperties } from "services/JsonService";
 import { useSession } from "providers/SessionProvider";
+import { Subheading } from "components/misc/Headings";
 
 export const ImportDynamicComponent = (Section, ComponentName) => {
   const Component = lazy(() =>

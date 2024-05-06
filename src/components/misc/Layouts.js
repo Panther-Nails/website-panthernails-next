@@ -11,7 +11,7 @@ export const Container = styled.div`
   ${tw`relative`}
 
   h2 {
-    ${tw`text-5xl font-black tracking-wide mt-4 text-center leading-tight text-primary-900`}
+    ${tw`text-5xl font-black tracking-wide mt-4 text-center leading-tight text-white`}
   }
 
   h5 {

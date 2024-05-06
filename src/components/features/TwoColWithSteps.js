@@ -8,7 +8,13 @@ import {
 } from "components/misc/Headings.js";
 import TeamIllustrationSrc from "images/team-illustration-2.svg";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
-import { ProcessChildComponents } from "DynamicPage";
+// import { ProcessChildComponents } from "DynamicPage";
+import {
+  ImportDynamicComponent,
+  ProcessChildComponents,
+  ProcessChildComponentsSeparately,
+  getChildComponentName,
+} from "DynamicPage";
 
 const Container = tw.div`relative `;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
@@ -72,8 +78,6 @@ export default ({ properties, children }) => {
 
   if (!steps) steps = defaultSteps;
 
-  console.log("CPJSON", children);
-
   return (
     <Container>
       <TwoColumn>
@@ -92,35 +96,7 @@ export default ({ properties, children }) => {
           <TextContent>
             <Subheading>{properties.subHeading}</Subheading>
             <Heading>{properties.heading}</Heading>
-            <Steps>
-              {children.map((child, index) => {
-                var hpJson = {};
-
-                if (child.HPJSON) {
-                  hpJson = JSON.parse(child.HPJSON);
-                }
-
-                // var cpJson=JSON.parse(child[index].CPJSON)
-
-                // var finalChildJson = {...cpJson,...hpJson}
-
-                // console.log("finalChildJson",properties);
-
-                return (
-                  <>
-                    <Step key={index}>
-                      {/* <StepNumber>{(index+1).toString().padStart(2,'0')}</StepNumber> */}
-                      <StepText>
-                        <StepHeading>{hpJson.heading}</StepHeading>
-
-                        <StepDescription>{hpJson.description}</StepDescription>
-                        <Subheading>{hpJson.subHeading}</Subheading>
-                      </StepText>
-                    </Step>
-                  </>
-                );
-              })}
-            </Steps>
+            <Steps>{ProcessChildComponentsSeparately(children)}</Steps>
           </TextContent>
         </TextColumn>
       </TwoColumn>
