@@ -30,10 +30,6 @@ const Container = styled.div`
     `}
 `;
 
-const Container = styled.div(props => [
-  `background-image: url("${props.imageSrc}");`,
-  tw`relative -mx-8 -mt-8 bg-center bg-cover`
-]);
 const OpacityOverlay = tw.div`z-10 absolute inset-0 bg-primary-500 opacity-15`;
 
 const HeroContainer = tw.div`z-20 relative px-4 sm:px-8 max-w-screen-xl mx-auto`;
