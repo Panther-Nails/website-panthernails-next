@@ -117,7 +117,7 @@ export default ({
    */
 
   const [notificationVisible, setNotificationVisible] = useState(true);
-  const [, setNotificationText] = useState("");
+  const [notificationText, setNotificationText] = useState("");
 
   const defaultLinks = [
     <NavLinks key={1}>
