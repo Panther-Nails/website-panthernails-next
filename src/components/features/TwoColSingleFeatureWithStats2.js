@@ -16,7 +16,7 @@ const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(Column)`md:w-5/12 flex-shrink-0 h-80 md:h-auto relative`;
 const TextColumn = styled(Column)((props) => [
   tw`md:w-7/12 mt-16 md:mt-0`,
-  props.textOnLeft
+  props.textOnLeft === "true"
     ? tw`md:mr-12 lg:mr-16 md:order-first`
     : tw`md:ml-12 lg:ml-16 md:order-last`,
 ]);
@@ -50,58 +50,39 @@ export default ({
   properties,
   children,
   index,
-  subheading = "Our Track Record",
-  heading = <>We have been doing this since </>,
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  primaryButtonText = "Learn More",
-  primaryButtonUrl = "https://timerse.com",
-  imageSrc = StatsIllustrationSrc,
+
   imageCss = null,
   imageContainerCss = null,
   imageDecoratorBlob = false,
   imageDecoratorBlobCss = null,
   imageInsideDiv = true,
-  statistics = null,
-  textOnLeft = false,
 }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
   //Change the statistics variable as you like, add or delete objects
-  const defaultStatistics = [
-    {
-      key: "Clients",
-      value: "2282+",
-    },
-    {
-      key: "Projects",
-      value: "3891+",
-    },
-    {
-      key: "Awards",
-      value: "1000+",
-    },
-  ];
 
-  if (!statistics) statistics = defaultStatistics;
+  var statistics = JSON.parse(properties.statistics);
 
   return (
     <Container>
       <TwoColumn css={!imageInsideDiv && tw`md:items-center`}>
         <ImageColumn css={imageContainerCss}>
           {imageInsideDiv ? (
-            <Image imageSrc={imageSrc} css={imageCss} />
+            <Image imageSrc={properties.imageSrc} css={imageCss} />
           ) : (
-            <img src={imageSrc} css={imageCss} alt="" />
+            <img src={properties.imageSrc} css={imageCss} alt="" />
           )}
           {imageDecoratorBlob && <DecoratorBlob css={imageDecoratorBlobCss} />}
         </ImageColumn>
-        <TextColumn textOnLeft={textOnLeft}>
+        <TextColumn textOnLeft={properties.textOnLeft}>
           <TextContent>
-            {subheading && <Subheading>{subheading}</Subheading>}
+            {properties.subheading && (
+              <Subheading>{properties.subheading}</Subheading>
+            )}
             <Heading>
-              {heading}
-              <span tw="text-primary-500">1999.</span>
+              {properties.heading}
+              <span tw="text-primary-500"> {properties.highlighHeading}</span>
             </Heading>
-            <Description>{description}</Description>
+            <Description>{properties.description}</Description>
             <Statistics>
               {statistics.map((statistic, index) => (
                 <Statistic key={index}>
@@ -110,8 +91,8 @@ export default ({
                 </Statistic>
               ))}
             </Statistics>
-            <PrimaryButton as="a" href={primaryButtonUrl}>
-              {primaryButtonText}
+            <PrimaryButton as="a" href={properties.buttonUrl}>
+              {properties.buttonText}
             </PrimaryButton>
           </TextContent>
         </TextColumn>

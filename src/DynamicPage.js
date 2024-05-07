@@ -7,7 +7,6 @@ import CookieConsent from "components/controls/CookieConsent";
 import { getProperties } from "services/JsonService";
 import { useSession } from "providers/SessionProvider";
 import Loading from "helpers/Loading";
-import ThreeColWithSideImage from "components/features/ThreeColWithSideImage";
 
 export const ImportDynamicComponent = (Section, ComponentName) => {
   const Component = lazy(() =>
@@ -83,6 +82,7 @@ export const ProcessChildComponentsSeparately = (Components) => {
 export default () => {
   const { type, subtype, name } = useParams();
   const { languageObject } = useSession();
+  const { hasNotificationSeen, setHasNotificationSeen } = useSession();
 
   const [data, setData] = useState({});
   const [components, setComponents] = useState([]);
@@ -108,6 +108,7 @@ export default () => {
         var newData = response.items[0];
         setData({ ...data, ...newData });
       } else {
+        setHasNotificationSeen(true);
         setData({
           HeadTitle: "Home",
           HeadDescription: "",
