@@ -6,6 +6,8 @@ import GetStarted from "components/cta/GetStarted";
 import CookieConsent from "components/controls/CookieConsent";
 import { getProperties } from "services/JsonService";
 import { useSession } from "providers/SessionProvider";
+import Loading from "helpers/Loading";
+import ThreeColWithSideImage from "components/features/ThreeColWithSideImage";
 
 export const ImportDynamicComponent = (Section, ComponentName) => {
   const Component = lazy(() =>
@@ -67,7 +69,7 @@ export const ProcessChildComponentsSeparately = (Components) => {
         <Suspense>
           <Component
             properties={childProperties}
-            children={child.Children}
+            children={child.Children ?? []}
             index={index}
           />
         </Suspense>
@@ -136,7 +138,7 @@ export default () => {
     // console.log("data check", data[0]);
     return (
       <>
-        <Suspense>
+        <Suspense fallback={<Loading />}>
           <AnimationRevealPage>
             <CookieConsent />
             {components.map((component, index) => {
