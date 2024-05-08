@@ -51,9 +51,9 @@ const SvgDotPattern4 = tw(
 )`absolute bottom-0 right-0 transform translate-x-20 rotate-90 -translate-y-24 -z-10 opacity-25 text-primary-500 fill-current w-24`;
 
 export default ({ properties, children }) => {
-  console.log("properties", properties);
+  // console.log("properties", properties);
 
-  console.log("childrendata", children);
+  // console.log("childrendata", children);
 
   // var overriedData = Object.keys(HPJSON).length > 0 ? HPJSON : CPJSON;
   return (

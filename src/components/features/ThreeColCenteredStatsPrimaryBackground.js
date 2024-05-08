@@ -28,7 +28,7 @@ const StatKey = tw.div`text-xl font-medium`;
 const StatValue = tw.div`text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-black`;
 
 export default ({ children, properties }) => {
-  console.log("propertiesinGtest", children);
+  // console.log("propertiesinGtest", children);
 
   const localStats = () => {
     var stats = JSON.parse(properties.stats);

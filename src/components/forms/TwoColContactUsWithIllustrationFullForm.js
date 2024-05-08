@@ -42,7 +42,7 @@ const SubmitButton = tw(PrimaryButtonBase)`inline-block mt-8`;
 
 export default ({ properties, children, index }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
-  console.log("properties", properties);
+  // console.log("properties", properties);
   return (
     <Container>
       <TwoColumn>
