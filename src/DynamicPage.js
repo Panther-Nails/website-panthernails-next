@@ -7,6 +7,7 @@ import CookieConsent from "components/controls/CookieConsent";
 import { getProperties } from "services/JsonService";
 import { useSession } from "providers/SessionProvider";
 import Loading from "helpers/Loading";
+import FallbackLoading from "helpers/FallbackLoading";
 
 export const ImportDynamicComponent = (Section, ComponentName) => {
   const Component = lazy(() =>
@@ -139,7 +140,7 @@ export default () => {
     // console.log("data check", data[0]);
     return (
       <>
-        <Suspense fallback={<Loading />}>
+        <Suspense fallback={<FallbackLoading />}>
           <AnimationRevealPage>
             <CookieConsent />
             {components.map((component, index) => {

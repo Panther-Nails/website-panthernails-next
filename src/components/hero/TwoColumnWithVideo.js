@@ -4,8 +4,6 @@ import tw from "twin.macro";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
 
-import Header from "../headers/light.js";
-
 import ReactModalAdapter from "../../helpers/ReactModalAdapter.js";
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
 
@@ -71,21 +69,11 @@ const StyledModal = styled(ReactModalAdapter)`
 const CloseModalButton = tw.button`absolute top-0 right-0 mt-8 mr-8 hocus:text-primary-500`;
 
 export default ({
-  heading = "Modern React Templates, Just For You",
-  description = "Our templates are easy to setup, understand and customize. Fully modular components with a variety of pages and components.",
-  primaryButtonText = "Get Started",
-  primaryButtonUrl = "#",
-  watchVideoButtonText = "Watch Video",
-  watchVideoYoutubeUrl = "https://www.youtube.com/embed/_GuOjXYl5ew",
-  imageSrc = DesignIllustration,
+  index,
+  properties,
+  children,
   imageCss = null,
   imageDecoratorBlob = false,
-  links = [
-    { title: "About", href: "#AboutUs" },
-    { title: "Products", href: "#Products" },
-    { title: "Blog", href: "#" },
-    { title: "Contact Us", href: "#" },
-  ],
 }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -93,35 +81,34 @@ export default ({
 
   return (
     <>
-      <Header
-        links={
-          <NavLinks key={1}>
-            {links.map((link, index) => (
-              <NavLink to={link.href}>{link.title}</NavLink>
-            ))}
-          </NavLinks>
-        }
-      />
       <Container>
         <TwoColumn>
           <LeftColumn>
-            <Heading>{heading}</Heading>
-            <Paragraph>{description}</Paragraph>
+            <Heading>{properties.heading}</Heading>
+            <Paragraph>{properties.description}</Paragraph>
             <Actions>
-              <PrimaryButton as="a" to={primaryButtonUrl}>
-                {primaryButtonText}
+              <PrimaryButton as="a" to={properties.buttonUrl}>
+                {properties.buttonText}
               </PrimaryButton>
               <WatchVideoButton onClick={toggleModal}>
                 <span className="playIconContainer">
                   <PlayIcon className="playIcon" />
                 </span>
-                <span className="playText">{watchVideoButtonText}</span>
+                <span className="playText">
+                  {properties.watchVideoButtonText}
+                </span>
               </WatchVideoButton>
             </Actions>
           </LeftColumn>
           <RightColumn>
             <IllustrationContainer>
-              <img css={imageCss} src={imageSrc} alt="Hero" />
+              <img
+                css={imageCss}
+                src={
+                  properties.imageSrc ? properties.imageSrc : DesignIllustration
+                }
+                alt="Hero"
+              />
               {imageDecoratorBlob && <DecoratorBlob2 />}
             </IllustrationContainer>
           </RightColumn>
@@ -138,7 +125,10 @@ export default ({
             <CloseIcon tw="w-6 h-6" />
           </CloseModalButton>
           <div className="content">
-            <ResponsiveVideoEmbed url={watchVideoYoutubeUrl} tw="w-full" />
+            <ResponsiveVideoEmbed
+              url={properties.watchVideoYoutubeUrl}
+              tw="w-full"
+            />
           </div>
         </StyledModal>
       </Container>

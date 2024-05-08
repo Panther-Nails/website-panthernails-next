@@ -3,17 +3,9 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { SectionHeading as HeadingTitle } from "../misc/Headings.js";
 import { ReactComponent as QuotesLeftIcon } from "../../images/quotes-l.svg";
 import { ReactComponent as QuotesRightIcon } from "../../images/quotes-r.svg";
-import { ReactComponent as ArrowLeftIcon } from "../../images/arrow-left-2-icon.svg";
-import { ReactComponent as ArrowRightIcon } from "../../images/arrow-right-2-icon.svg";
-import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-4.svg";
-import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-5.svg";
-
 import "slick-carousel/slick/slick.css";
-import { getProperties } from "services/JsonService.js";
-import { ProcessChildComponentsSeparately } from "DynamicPage.js";
 
 const Testimonial = tw.div`flex! flex-col items-center md:items-stretch md:flex-row md:justify-center outline-none`;
 const ImageContainer = styled.div`
@@ -36,21 +28,11 @@ const QuotesRight = tw(
   QuotesRightIcon
 )`w-8 h-8 lg:w-10 lg:h-10 text-primary-500 absolute bottom-0 right-0`;
 
-const SliderControlButtonContainer = styled.div`
-  ${tw`absolute top-0 h-full flex items-end md:items-center z-20`}
-  button {
-    ${tw`text-secondary-500 hover:text-primary-500 focus:outline-none transition duration-300 transform hover:scale-125 transform -translate-y-2/3 md:translate-y-0`}
-    svg {
-      ${tw`w-8`}
-    }
-  }
-`;
-
 export default ({ index, properties, children }) => {
   return (
     <Testimonial key={index}>
       <ImageContainer>
-        <img src={properties.imageSrc} alt={properties.customerName} />
+        <img src={properties.imageSrc} alt={properties.name} />
       </ImageContainer>
       <TextContainer>
         <QuoteContainer>
@@ -59,8 +41,8 @@ export default ({ index, properties, children }) => {
           <QuotesRight />
         </QuoteContainer>
         <CustomerInfo>
-          <CustomerName>{properties.customerName}</CustomerName>
-          <CustomerTitle>{properties.customerTitle}</CustomerTitle>
+          <CustomerName>{properties.name}</CustomerName>
+          <CustomerTitle>{properties.title}</CustomerTitle>
         </CustomerInfo>
       </TextContainer>
     </Testimonial>

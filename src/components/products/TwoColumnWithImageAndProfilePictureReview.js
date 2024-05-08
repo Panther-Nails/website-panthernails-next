@@ -65,7 +65,6 @@ const QuotesRight = tw(
   QuotesRightIcon
 )`w-6 h-6 opacity-75 text-primary-500 inline-block ml-1 -mt-3`;
 
-
 export const Links = tw.div`inline-block`;
 
 export const Link = tw.a`
@@ -82,7 +81,6 @@ const DecoratorBlob1 = tw(
 const DecoratorBlob2 = tw(
   SvgDecoratorBlob2
 )`absolute w-32 bottom-0 right-0 -z-10 text-pink-500 opacity-15 transform translate-x-2/3 translate-y-8`;
-
 
 export default ({
   subheading = "",
@@ -106,7 +104,7 @@ export default ({
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80",
       customerName: "Charlotte Hale",
       customerTitle: "CEO, Delos Inc.",
-      redirectUrl: "/"
+      redirectUrl: "/",
     },
     {
       imageSrc:
@@ -117,7 +115,7 @@ export default ({
         "Sinor Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
       customerName: "Adam Cuppy",
       customerTitle: "Founder, EventsNYC",
-      redirectUrl: "/"
+      redirectUrl: "/",
     },
   ];
 
@@ -159,7 +157,7 @@ export default ({
                   </ImageAndControlContainer>
                 ))}
               </TestimonialImageSlider>
-              
+
               <TextContainer textOnLeft={textOnLeft}>
                 <HeadingInfo
                   tw="hidden lg:block"
@@ -192,9 +190,8 @@ export default ({
                       <QuoteContainer>
                         <Quote>
                           <QuotesLeft />
-                            {testimonial.quote}
+                          {testimonial.quote}
                           <QuotesRight />
-                          
                         </Quote>
                       </QuoteContainer>
                       <Link href={testimonial.redirectUrl}>Know more</Link>

@@ -29,43 +29,18 @@ const Card = styled.div`
   }
 `;
 
-export default ({ children }) => {
-  const [data, setData] = useState([
-    {
-      imageSrc: "",
-      heading: "Ads Management",
-      description:
-        "We create and manage ads that you need, from creation to deployment. Lorem ipsum donor sit amet consicou.",
-    },
-  ]);
-
-  useEffect(() => {
-    setData([...children]);
-  }, [children]);
-
+export default ({ properties, children, index }) => {
   return (
-    <>
-      {data.map((child, index) => {
-        var hpJson = {};
-        if (child.HPJSON) {
-          hpJson = JSON.parse(child.HPJSON);
-        }
-        return (
-          <Column key={index}>
-            <Card>
-              {hpJson.imageSrc && (
-                <span className="imageContainer">
-                  {hpJson.imageSrc && <img src={hpJson.imageSrc} alt="" />}
-                </span>
-              )}
-              <span className="textContainer">
-                <span className="title">{hpJson.heading}</span>
-                <p className="description">{hpJson.description} </p>
-              </span>
-            </Card>
-          </Column>
-        );
-      })}
-    </>
+    <Column key={index}>
+      <Card>
+        <span className="imageContainer">
+          <img src={properties.imageSrc} alt="" />
+        </span>
+        <span className="textContainer">
+          <span className="title">{properties.heading}</span>
+          <p className="description">{properties.description}</p>
+        </span>
+      </Card>
+    </Column>
   );
 };

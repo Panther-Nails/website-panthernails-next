@@ -44,43 +44,28 @@ const PrimaryButton = tw(
 )`mt-8 text-sm sm:text-base px-6 py-5 sm:px-10 sm:py-5 bg-primary-400 inline-block hocus:bg-primary-500`;
 const Image = tw.img`w-144 ml-auto`;
 
-export default ({
-  heading = "High Performant Servers tailored to your needs",
-  description = "Our cloud provisions the best servers, with fast SSD, powerful Xeon Processors, whenever you need it. Oh, and we have 99.9% SLA",
-  primaryButtonText = "Start Your 15 Day Free Trial",
-  primaryButtonUrl = "#",
-  imageSrc = serverIllustrationImageSrc,
-}) => {
-  const logoLink = (
-    <LogoLink to="/">
-      <img src={logoImageSrc} alt="Logo" />
-      Treact
-    </LogoLink>
-  );
-  const navLinks = [
-    <NavLinks key={1}>
-      <NavLink to="#">Features</NavLink>
-      <NavLink to="#">Pricing</NavLink>
-      <NavLink to="#">Login</NavLink>
-      <PrimaryLink to="#">Signup</PrimaryLink>
-    </NavLinks>,
-  ];
+export default ({ index, properties, children }) => {
   return (
     <PrimaryBackgroundContainer>
       <Content2Xl>
-        <Header logoLink={logoLink} links={navLinks} />
         <Container>
           <ContentWithVerticalPadding>
             <Row>
               <TextColumn>
-                <Heading>{heading}</Heading>
-                <Description>{description}</Description>
-                <PrimaryButton as="a" to={primaryButtonUrl}>
-                  {primaryButtonText}
+                <Heading>{properties.heading}</Heading>
+                <Description>{properties.description}</Description>
+                <PrimaryButton as="a" to={properties.buttonUrl}>
+                  {properties.buttonText}
                 </PrimaryButton>
               </TextColumn>
               <IllustrationColumn>
-                <Image src={imageSrc} />
+                <Image
+                  src={
+                    properties.imageSrc
+                      ? properties.imageSrc
+                      : serverIllustrationImageSrc
+                  }
+                />
               </IllustrationColumn>
             </Row>
           </ContentWithVerticalPadding>

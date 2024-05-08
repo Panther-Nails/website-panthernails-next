@@ -38,7 +38,7 @@ export default ({ index, properties, children }) => {
     <Column key={index}>
       <Card>
         <span className="imageContainer">
-          <img src={properties.imageSrc || defaultCardImage} alt="" />
+          <img src={properties.imageSrc} alt="" />
         </span>
         <span className="textContainer">
           <span className="title">{properties.title}</span>

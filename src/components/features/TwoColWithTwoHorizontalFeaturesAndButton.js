@@ -69,48 +69,13 @@ export default ({
   properties,
   index,
   children,
-  subheading = "Our Expertise",
-  heading = <>Designed & Developed by</>,
-  description = "",
-  primaryButtonText = "Learn More",
-  primaryButtonUrl = "https://timerse.com",
-  imageSrc = TeamIllustrationSrc,
   buttonRounded = true,
   imageRounded = true,
   imageBorder = false,
   imageShadow = false,
   showDecoratorBlob = false,
-  textOnLeft = true,
   features = null,
-  iconRoundedFull = true,
-  iconFilled = true,
-  iconContainerCss = null,
 }) => {
-  // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
-
-  /*
-   * Change the features variable as you like, add or delete objects
-   * `icon` must be a React SVG component. See how BriefcaseIcon is imported above. For a full list of available icons, see Feather Icons.
-   */
-  const defaultFeatures = [
-    {
-      Icon: BriefcaseIcon,
-      title: "Professionalism",
-      description:
-        "We have the best professional marketing people across the globe just to work with you.",
-      iconContainerCss: tw`bg-teal-300 text-teal-800`,
-    },
-    {
-      Icon: MoneyIcon,
-      title: "Affordable",
-      description:
-        "We promise to offer you the best rate we can - at par with the industry standard.",
-      iconContainerCss: tw`bg-red-300 text-red-800`,
-    },
-  ];
-
-  if (!features) features = defaultFeatures;
-
   return (
     <Container>
       <TwoColumn>

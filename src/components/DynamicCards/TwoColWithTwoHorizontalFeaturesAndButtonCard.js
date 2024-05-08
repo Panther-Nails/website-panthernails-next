@@ -2,7 +2,6 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 
 const Feature = tw.div`mt-10 lg:mt-8 flex items-center md:items-start flex-col md:mr-8 last:mr-0`;
 
