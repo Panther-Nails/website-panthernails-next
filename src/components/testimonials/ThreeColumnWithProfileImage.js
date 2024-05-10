@@ -29,6 +29,8 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
 `;
 
 export default ({ properties, children }) => {
+
+  console.log(properties);
   return (
     <>
       <Container>
