@@ -11,6 +11,7 @@ import { ReactComponent as StarIcon } from "feather-icons/dist/icons/star.svg";
 import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chevron-left.svg";
 import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
 import { ReactComponent as PlayIcon } from "feather-icons/dist/icons/play-circle.svg";
+import { ProcessChildComponentsSeparately } from "DynamicPage";
 
 
 const Container = tw.div`relative`;
@@ -77,6 +78,7 @@ const KnowMoreLink = styled.a`
 `;
 
 export default ({
+  index, properties, children ,
   heading="Products",
   subheading="Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
   cards = [
@@ -121,12 +123,12 @@ export default ({
   const [sliderRef, setSliderRef] = useState(null);
   const sliderSettings = {
     arrows: false,
-    slidesToShow: 3,
+    slidesToShow: 2,
     responsive: [
       {
         breakpoint: 1280,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
         }
       },
 
@@ -146,48 +148,17 @@ export default ({
     <Container>
       <Content>
         <HeadingWithControl>
-          <Heading>{heading}</Heading>
+          <Heading>{properties.heading}</Heading>
           <Controls>
             <PrevButton onClick={sliderRef?.slickPrev}><ChevronLeftIcon/></PrevButton>
             <NextButton onClick={sliderRef?.slickNext}><ChevronRightIcon/></NextButton>
           </Controls>
         </HeadingWithControl>
-        <TextInfo>{subheading}</TextInfo>
+        <Description>{properties.subHeading}</Description>
         <CardSlider ref={setSliderRef} {...sliderSettings}>
-          {cards.map((card, index) => (
-            <Card key={index}>
-              {/* <CardImage imageSrc={card.imageSrc} /> */}
-              <TextInfo>
-                <TitleReviewContainer>
-                  <Title>{card.title}</Title>
-                  {/* <RatingsInfo>
-                    <StarIcon />
-                    <Rating>{card.rating}</Rating>
-                  </RatingsInfo> */}
-                </TitleReviewContainer>
-                <SecondaryInfoContainer>                  
-                   <IconWithText>
-                    <Text>{card.locationText}</Text>
-                    {card.knowMoreLinkUrl}
-                  </IconWithText>
-                  {/*<IconWithText>
-                    <IconContainer>
-                      <PriceIcon />
-                    </IconContainer>
-                    <Text>{card.pricingText}</Text>
-                  </IconWithText> */}
-                </SecondaryInfoContainer>
-                <Description>                  
-                  {card.description}
-                <KnowMoreLink href={card.knowMoreLinkUrl} >
-                  <span className="playText">{card.knowMoreLinkText}</span>
-                </KnowMoreLink>
-                </Description>
-                
-              </TextInfo>              
-              <PrimaryButton>Book a Meeting</PrimaryButton>
-            </Card>
-          ))}
+          
+        {ProcessChildComponentsSeparately(children)}
+       
         </CardSlider>
       </Content>
     </Container>

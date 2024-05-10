@@ -3,23 +3,30 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
-import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings";
+import {
+  SectionHeading,
+  Subheading as SubheadingBase,
+} from "components/misc/Headings";
 import { SectionDescription } from "components/misc/Typography";
-import { ReactComponent as TwitterIcon} from "images/twitter-icon.svg";
-import { ReactComponent as LinkedinIcon} from "images/linkedin-icon.svg";
+import { ReactComponent as TwitterIcon } from "images/twitter-icon.svg";
+import { ReactComponent as LinkedinIcon } from "images/linkedin-icon.svg";
 import { ReactComponent as GithubIcon } from "images/github-icon.svg";
+import { ProcessChildComponentsSeparately } from "DynamicPage";
 
-const HeadingContainer = tw.div``
-const Heading = tw(SectionHeading)``
-const Subheading = tw(SubheadingBase)`text-center mb-3`
-const Description = tw(SectionDescription)`mx-auto text-center`
+const HeadingContainer = tw.div``;
+const Heading = tw.h1`text-4xl sm:text-5xl font-black tracking-wide text-center`;
+const Subheading = tw(SubheadingBase)`text-center mb-3`;
+const Description = tw(SectionDescription)`mx-auto text-center`;
 
-const Cards = tw.div`flex flex-wrap flex-row justify-center sm:max-w-2xl lg:max-w-5xl mx-auto`
-const Card = tw.div`mt-24 w-full sm:w-1/2 lg:w-1/4 flex flex-col items-center`
+const Cards = tw.div`flex flex-wrap flex-row justify-center sm:max-w-2xl lg:max-w-5xl mx-auto`;
+const Card = tw.div`mt-24 w-full sm:w-1/2 lg:w-1/4 flex flex-col items-center`;
 const CardImage = styled.div`
-  ${props => css`background-image: url("${props.imageSrc}");`}
+  ${(props) =>
+    css`
+      background-image: url("${props.imageSrc}");
+    `}
   ${tw`w-64 h-64 bg-contain bg-center rounded`}
-`
+`;
 const CardContent = styled.div`
   ${tw`flex flex-col items-center mt-6`}
   .position {
@@ -28,7 +35,7 @@ const CardContent = styled.div`
   .name {
     ${tw`mt-1 text-xl font-medium text-gray-900`}
   9
-`
+`;
 
 const CardLinks = styled.div`
   ${tw`mt-6 flex`}
@@ -38,9 +45,12 @@ const CardLinks = styled.div`
       ${tw`fill-current w-6 h-6`}
     }
   }
-`
+`;
 
 export default ({
+  index,
+  children,
+  properties,
   heading = "Meet These Fine Folks.",
   subheading = "Our Team",
   description = "The strength of the team is each individual member. The strength of each member is the team.",
@@ -53,7 +63,7 @@ export default ({
         {
           url: "https://www.linkedin.com/in/manojchandak/",
           icon: LinkedinIcon,
-        }
+        },
       ],
     },
     {
@@ -64,7 +74,7 @@ export default ({
         {
           url: "https://www.linkedin.com/in/rupeshtelang/",
           icon: LinkedinIcon,
-        }
+        },
       ],
     },
     {
@@ -75,7 +85,7 @@ export default ({
         {
           url: "https://www.linkedin.com/in/pawan-bari-438059131/",
           icon: LinkedinIcon,
-        }
+        },
       ],
     },
     {
@@ -86,37 +96,32 @@ export default ({
         {
           url: "https://www.linkedin.com/in/rupchand-jawale-9b840b17/",
           icon: LinkedinIcon,
-        }
+        },
       ],
     },
-  ]
+  ],
 }) => {
+
+
+  // var links1= [
+  //   {
+  //     url: "https://www.linkedin.com/in/manojchandak/",
+  //     icon: LinkedinIcon,
+  //   },
+  // ]
+
+  // console.log("links1",JSON.stringify(links1));
   return (
     <Container>
       <ContentWithPaddingXl>
         <HeadingContainer>
-          {subheading && <Subheading>{subheading}</Subheading>}
-          {heading && <Heading>{heading}</Heading> }
-          {description && <Description>{description}</Description> }
+          {properties.subHeading && <Subheading>{properties.subHeading}</Subheading>}
+          {properties.heading && <Heading>{properties.heading}</Heading>}
+          {properties.description && <Description>{properties.description}</Description>}
         </HeadingContainer>
-        
-        <Cards>          
-          {cards.map((card, index) => (
-            <Card key={index}>
-              <CardImage imageSrc={card.imageSrc} />
-              <CardContent>
-                <span className="position">{card.position}</span>
-                <span className="name">{card.name}</span>
-                <CardLinks>
-                  {card.links.map((link, linkIndex) => (
-                    <a key={linkIndex} className="link" href={link.url}>
-                      <link.icon className="icon" />
-                    </a>
-                  ))}
-                </CardLinks>
-              </CardContent>
-            </Card>
-          ))}
+
+        <Cards>
+        {ProcessChildComponentsSeparately(children)}
         </Cards>
       </ContentWithPaddingXl>
     </Container>

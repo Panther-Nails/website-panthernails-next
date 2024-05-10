@@ -31,7 +31,7 @@ export default ({ children }) => {
       },
     ]);
   
-    console.log("children", JSON.stringify(children));
+    // console.log("children", JSON.stringify(children));
   
     useEffect(() => {
       setData([...children]);

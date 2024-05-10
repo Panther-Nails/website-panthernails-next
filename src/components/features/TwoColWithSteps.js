@@ -8,7 +8,13 @@ import {
 } from "components/misc/Headings.js";
 import TeamIllustrationSrc from "images/team-illustration-2.svg";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
-import { ProcessChildComponents } from "DynamicPage";
+// import { ProcessChildComponents } from "DynamicPage";
+import {
+  ImportDynamicComponent,
+  ProcessChildComponents,
+  ProcessChildComponentsSeparately,
+  getChildComponentName,
+} from "DynamicPage";
 
 const Container = tw.div`relative `;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
@@ -19,7 +25,9 @@ const TextColumn = styled(Column)((props) => [
   props.textOnLeft
     ? tw`md:mr-12 lg:mr-16 md:order-first`
     : tw`md:ml-12 lg:ml-16 md:order-last`,
-  props.textOnLeft==="true" ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`
+  props.textOnLeft === "true"
+    ? tw`md:mr-12 lg:mr-16 md:order-first`
+    : tw`md:ml-12 lg:ml-16 md:order-last`,
 ]);
 
 const Image = styled.img((props) => [
@@ -46,25 +54,10 @@ const StepText = tw.div`mt-3 md:mt-0 md:ml-6`;
 const StepHeading = tw.h6`leading-none text-xl font-semibold`;
 const StepDescription = tw.p`mt-3 max-w-xs leading-loose text-sm text-gray-600 font-medium`;
 
-export default ({
-  CPJSON, HPJSON, data, children,finalJson,
-  
-  subheading = "Our Expertise",
-  heading = (
-    <>
-      Designed & Developed by <span tw="text-primary-500">Professionals.</span>
-    </>
-  ),
-  imageSrc = TeamIllustrationSrc,
-  imageRounded = true,
-  imageBorder = false,
-  imageShadow = false,
-  imageDecoratorBlob = false,
-  textOnLeft = "true",
-  steps = null,
-  decoratorBlobCss = null,
-}) => {
+export default ({ properties, children }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
+
+  const steps = [];
 
   const defaultSteps = [
     {
@@ -84,52 +77,26 @@ export default ({
   ];
 
   if (!steps) steps = defaultSteps;
-  
-  console.log("CPJSON",children);
 
   return (
     <Container>
       <TwoColumn>
         <ImageColumn>
-          <Image src={finalJson.imageSrc} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded} />
-          {imageDecoratorBlob && <DecoratorBlob css={decoratorBlobCss} />}
+          <Image
+            src={properties.imageSrc}
+            imageBorder={properties.imageBorder}
+            imageShadow={properties.imageShadow}
+            imageRounded={properties.imageRounded}
+          />
+          {properties.imageDecoratorBlob && (
+            <DecoratorBlob css={properties.decoratorBlobCss} />
+          )}
         </ImageColumn>
-        <TextColumn textOnLeft={finalJson.textOnLeft}>
+        <TextColumn textOnLeft={properties.textOnLeft}>
           <TextContent>
-            <Subheading>{finalJson.subHeading}</Subheading>
-            <Heading>{finalJson.heading}</Heading>
-            <Steps>
-            {children.map((child, index) => {
-              var hpJson={}
-
-              if(child.HPJSON)
-              {
-                 hpJson=JSON.parse(child.HPJSON);
-
-              }
-              
-
-              // var cpJson=JSON.parse(child[index].CPJSON)
-
-              // var finalChildJson = {...cpJson,...hpJson}
-
-              // console.log("finalChildJson",finalJson);
-  
-          return (
-            <>
-            <Step key={index}>
-            {/* <StepNumber>{(index+1).toString().padStart(2,'0')}</StepNumber> */}
-            <StepText>
-              <StepHeading>{hpJson.heading}</StepHeading>
-              
-              <StepDescription>{hpJson.description}</StepDescription>
-              <Subheading>{hpJson.subHeading}</Subheading>
-            </StepText>
-          </Step>
-          </>
-          );
-        })}
-            </Steps>
+            <Subheading>{properties.subHeading}</Subheading>
+            <Heading>{properties.heading}</Heading>
+            <Steps>{ProcessChildComponentsSeparately(children)}</Steps>
           </TextContent>
         </TextColumn>
       </TwoColumn>

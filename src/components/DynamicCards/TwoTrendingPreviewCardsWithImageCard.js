@@ -14,17 +14,8 @@ import { ProcessChildComponentsSeparately } from "DynamicPage";
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
 
-// const ThreeColumn = tw.div`flex flex-row-reverse flex-wrap`;
+const ThreeColumn = tw.div`flex flex-wrap`;
 const Column = tw.div``;
-
-
-const ThreeColumn = styled(Column)(props => [
-  tw`flex  flex-wrap`,
-  props.textOnLeft==='true' ? tw`flex-row` : tw` flex-row-reverse `
-]);
-
-
-
 const HeadingColumn = tw(Column)`w-full xl:w-1/3`;
 const CardColumn = tw(Column)`w-full md:w-1/2 xl:w-1/3 mt-16 xl:mt-0`;
 
@@ -64,56 +55,33 @@ const CardMetaFeature = styled.div`
   }
 `;
 const CardAction = tw(PrimaryButtonBase)`w-full mt-8`;
-
-export default ({
-  index, children, properties,
-  heading="Trending Tours",
-  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam.",
-  actionLinkText="View All",
-  actionLinkUrl="/components/landingPages/HotelTravelLandingPage",
-  cards = [
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1553194587-b010d08c6c56?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      type: "Beachfront",
-      pricePerDay: "$99",
-      title: "A Trip to the Bahamas and the Carribean Ocean",
-      trendingText: "Trending",
-      durationText: "7 Days Tour",
-      locationText: "Africa"
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1584200186925-87fa8f93be9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      type: "Cruise",
-      pricePerDay: "$169",
-      title: "Cruise to the Mariana Trench and the Phillipines",
-      trendingText: "Trending",
-      durationText: "15 Days Tour",
-      locationText: "Australia"
-    }    
-  ],
-
-}) => {
-  console.log("properties.textOnLeft",properties.textOnLeft);
+export default ({ index, children, properties }) => {
   return (
-    <Container id="Products">
-      <Content>
-        <ThreeColumn textOnLeft={properties.textOnLeft}>
-          <HeadingColumn >
-            <HeadingInfoContainer>
-              <HeadingTitle>{properties.heading}</HeadingTitle>
-              <HeadingDescription>
-                {properties.description}
-              </HeadingDescription>
-              <PrimaryLink href={properties.linkUrl} target="_blank">
-                {properties.linkText}<ArrowRightIcon />
-              </PrimaryLink>
-            </HeadingInfoContainer>
-          </HeadingColumn>
-          {ProcessChildComponentsSeparately(children)}
-        </ThreeColumn>
-      </Content>
-    </Container>
+    <CardColumn key={index}>
+    <Card>
+      <CardImage imageSrc={properties.imageSrc} />
+      <CardText>
+        <CardHeader>
+          <CardType>{properties.type}</CardType>
+          <CardPrice>
+            <CardPriceAmount>{properties.pricingText}</CardPriceAmount> per day
+          </CardPrice>
+        </CardHeader>
+        <CardTitle>{properties.title}</CardTitle>
+        <CardMeta>
+          <CardMetaFeature>
+            <TrendingIcon /> {properties.trendingText}
+          </CardMetaFeature>
+          <CardMetaFeature>
+            <TimeIcon /> {properties.durationText}
+          </CardMetaFeature>
+          <CardMetaFeature>
+            <LocationIcon /> {properties.locationText}
+          </CardMetaFeature>
+        </CardMeta>
+        <CardAction>Book Now</CardAction>
+      </CardText>
+    </Card>
+  </CardColumn>
   );
 };

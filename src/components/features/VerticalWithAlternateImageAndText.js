@@ -20,7 +20,6 @@ const SingleColumn = tw.div`py-10`;
 const HeadingInfoContainer = tw.div`flex flex-col items-center`;
 const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w-sm`;
 
-
 const Content = tw.div`mt-16`;
 
 const Card = styled.div((props) => [
@@ -51,40 +50,21 @@ const SvgDotPattern4 = tw(
   SvgDotPatternIcon
 )`absolute bottom-0 right-0 transform translate-x-20 rotate-90 -translate-y-24 -z-10 opacity-25 text-primary-500 fill-current w-24`;
 
-export default ({ CPJSON, HPJSON, data, children,finalJson }) => {
-  console.log("finalJson",finalJson);
-  console.log("CPJSON", CPJSON);
-  console.log("childrendata", children);
+export default ({ properties, children }) => {
+  // console.log("properties", properties);
+
+  // console.log("childrendata", children);
 
   // var overriedData = Object.keys(HPJSON).length > 0 ? HPJSON : CPJSON;
   return (
     <Container>
       <SingleColumn>
         <HeadingInfoContainer>
-          <HeadingTitle>{finalJson.heading}</HeadingTitle>
-          <HeadingDescription>{finalJson.subheading}</HeadingDescription>
+          <HeadingTitle>{properties.heading}</HeadingTitle>
+          <HeadingDescription>{properties.subheading}</HeadingDescription>
         </HeadingInfoContainer>
 
-        <Content>
-      {children.map((child, index) => {
-        
-        var hpJson=JSON.parse(child.HPJSON)
-        return (
-          <Card key={index} reversed={index % 2 === 1}>
-            <Image imageSrc={hpJson.imageSrc} />
-            <Details>
-              <CustomerInfo>
-                <CustomerProfilePicture
-                  src={hpJson.profileImageSrc}
-                ></CustomerProfilePicture>
-              </CustomerInfo>
-              <Title>{hpJson.title}</Title>
-              <Description>{hpJson.description}</Description>
-            </Details>
-          </Card>
-        );
-      })}
-    </Content>
+        <Content>{ProcessChildComponentsSeparately(children)}</Content>
       </SingleColumn>
       <SvgDotPattern1 />
       <SvgDotPattern2 />
