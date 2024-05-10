@@ -25,7 +25,8 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
   ${tw`pointer-events-none -z-20 absolute right-0 bottom-0 h-64 w-64 opacity-10 transform translate-x-2/3 text-yellow-500`}
 `;
 
-export default ({ index, properties, children }) => {
+export default ({ properties, children }) => {
+  console.log(properties);
   return (
     <>
       <Container>
