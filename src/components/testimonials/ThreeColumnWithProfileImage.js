@@ -4,13 +4,15 @@ import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { ContentWithPaddingXl, Container } from "components/misc/Layouts.js";
 import {
-  SectionHeading as Heading,
+  SectionHeading ,
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-7.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-8.svg";
 import { getProperties } from "services/JsonService";
-
+const Heading = tw(
+  SectionHeading
+)`mt-4 font-black text-3xl sm:text-4xl lg:text-5xl text-center  leading-tight`;
 const Subheading = tw(SubheadingBase)`text-center`;
 const Testimonials = tw.div`flex flex-col lg:flex-row items-center lg:items-stretch`;
 const TestimonialContainer = tw.div`mt-16 lg:w-1/3`;
