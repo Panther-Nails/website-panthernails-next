@@ -10,6 +10,8 @@ import {
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-7.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-8.svg";
 import { getProperties } from "services/JsonService";
+import { ProcessChildComponentsSeparately } from "DynamicPage";
+
 const Heading = tw(
   SectionHeading
 )`mt-4 font-black text-3xl sm:text-4xl lg:text-5xl text-center  leading-tight`;
