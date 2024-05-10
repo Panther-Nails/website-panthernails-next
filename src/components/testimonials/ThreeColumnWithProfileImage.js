@@ -23,16 +23,17 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
 
 export default ({ index, properties, children }) => {
   return (
-    <Container>
-      <ContentWithPaddingXl>
-        {properties.subheading && (
-          <Subheading>{properties.subheading}</Subheading>
-        )}
-        <Heading>{properties.heading}</Heading>
-        <Testimonials>
-          {ProcessChildComponentsSeparately(children)}
-        </Testimonials>
-      </ContentWithPaddingXl>
+    <>
+      <Container>
+        <ContentWithPaddingXl>
+          {properties.subheading && (
+            <Subheading>{properties.subheading}</Subheading>
+          )}
+          <Heading>{properties.heading}</Heading>
+          <Testimonials>
+            {ProcessChildComponentsSeparately(children)}
+          </Testimonials>
+        </ContentWithPaddingXl>
 
         <DecoratorBlob1 />
         <DecoratorBlob2 />
