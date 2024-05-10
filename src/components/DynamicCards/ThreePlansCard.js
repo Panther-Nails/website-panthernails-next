@@ -10,7 +10,6 @@ import { SectionDescription } from "components/misc/Typography.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { ReactComponent as SvgDecoratorBlob } from "images/svg-decorator-blob-6.svg";
-import { ProcessChildComponentsSeparately } from "DynamicPage";
 
 const HeaderContainer = tw.div`mt-10 w-full flex flex-col items-center`;
 const Subheading = tw(SubheadingBase)`mb-4`;
@@ -81,59 +80,8 @@ const BuyNowButton = styled(PrimaryButtonBase)`
   ${tw`rounded-full uppercase tracking-wider py-4 w-full text-sm hover:shadow-xl transform hocus:translate-x-px hocus:-translate-y-px focus:shadow-outline`}
 `;
 
-const DecoratorBlob = styled(SvgDecoratorBlob)`
-  ${tw`pointer-events-none -z-20 absolute left-0 bottom-0 h-64 w-64 opacity-25 transform -translate-x-1/2 translate-y-1/2`}
-`;
-
-export default ({
-  children,
-  properties,
-  index,
-
-  plans = null,
-  primaryButtonText = "Buy Now",
-}) => {
-  const defaultPlans = [
-    {
-      name: "Personal",
-      price: "$17.99",
-      duration: "Monthly",
-      mainFeature: "Suited for Personal Blogs",
-      features: [
-        "30 Templates",
-        "7 Landing Pages",
-        "12 Internal Pages",
-        "Basic Assistance",
-      ],
-    },
-    {
-      name: "Business",
-      price: "$37.99",
-      duration: "Monthly",
-      mainFeature: "Suited for Production Websites",
-      features: [
-        "60 Templates",
-        "8 Landing Pages",
-        "22 Internal Pages",
-        "Priority Assistance",
-      ],
-      featured: true,
-    },
-    {
-      name: "Enterprise",
-      price: "$57.99",
-      duration: "Monthly",
-      mainFeature: "Suited for Big Companies",
-      features: [
-        "90 Templates",
-        "9 Landing Pages",
-        "37 Internal Pages",
-        "Personal Assistance",
-      ],
-    },
-  ];
-
-  if (!plans) plans = defaultPlans;
+export default ({ children, properties, index }) => {
+  var childCard = JSON.parse(properties.features);
 
   const highlightGradientsCss = [
     css`
@@ -164,56 +112,30 @@ export default ({
       );
     `,
   ];
-
   return (
-    <Container>
-      <ContentWithPaddingXl>
-        <HeaderContainer>
-          {properties.subheading && (
-            <Subheading>{properties.subheading}</Subheading>
-          )}
-          <Heading>{properties.heading}</Heading>
-          {properties.description && (
-            <Description>{properties.description}</Description>
-          )}
-        </HeaderContainer>
-        <PlansContainer>
-          {ProcessChildComponentsSeparately(children)}
-          {/* {plans.map((plan, index) => (
-            <Plan key={index} featured={plan.featured}>
-              {!plan.featured && (
-                <div
-                  className="planHighlight"
-                  css={
-                    highlightGradientsCss[index % highlightGradientsCss.length]
-                  }
-                />
-              )}
-              <PlanHeader>
-                <span className="name">{plan.name}</span>
-                <span className="price">{plan.price}</span>
-                <span className="duration">{plan.duration}</span>
-              </PlanHeader>
-              <PlanFeatures>
-                <span className="feature mainFeature">{plan.mainFeature}</span>
-                {plan.features.map((feature, index) => (
-                  <span key={index} className="feature">
-                    {feature}
-                  </span>
-                ))}
-              </PlanFeatures>
-              <PlanAction>
-                <BuyNowButton
-                  css={!plan.featured && highlightGradientsCss[index]}
-                >
-                  {primaryButtonText}
-                </BuyNowButton>
-              </PlanAction>
-            </Plan>
-          ))} */}
-          <DecoratorBlob />
-        </PlansContainer>
-      </ContentWithPaddingXl>
-    </Container>
+    <>
+      <Plan key={index}>
+        <PlanHeader>
+          <span className="name">{properties.name}</span>
+          <span className="price">{properties.price}</span>
+          <span className="duration">{properties.duration}</span>
+        </PlanHeader>
+        <PlanFeatures>
+          <span className="feature mainFeature">{properties.mainFeature}</span>
+          {childCard.map((feature, index) => (
+            <span key={index} className="feature">
+              {feature}
+            </span>
+          ))}
+        </PlanFeatures>
+        <PlanAction>
+          <BuyNowButton
+            css={!properties.featured && highlightGradientsCss[index]}
+          >
+            {properties.buttonText}
+          </BuyNowButton>
+        </PlanAction>
+      </Plan>
+    </>
   );
 };

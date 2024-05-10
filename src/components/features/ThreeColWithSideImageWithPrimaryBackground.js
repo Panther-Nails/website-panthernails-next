@@ -3,8 +3,10 @@ import styled from "styled-components";
 import tw from "twin.macro";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
-import { 
-  SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
+import {
+  SectionHeading,
+  Subheading as SubheadingBase,
+} from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 
 import defaultCardImage from "images/shield-icon.svg";
@@ -54,13 +56,7 @@ const Card = styled.div`
   }
 `;
 
-export default ({
-  children,
-  properties,
-  heading = "Amazing Features",
-  subheading = "",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-}) => {
+export default ({ properties, index, children, cards = null }) => {
   /*
    * This componets has an array of object denoting the cards defined below. Each object in the cards array can have the key (Change it according to your need, you can also add more objects to have more cards in this feature component) or you can directly pass this using the cards prop:
    *  1) imageSrc - the image shown at the top of the card
@@ -73,25 +69,44 @@ export default ({
     {
       imageSrc: ShieldIconImage,
       title: "Secure",
-      description: "We strictly only deal with vendors that provide top notch security infrastructure."
+      description:
+        "We strictly only deal with vendors that provide top notch security infrastructure.",
     },
     { imageSrc: SupportIconImage, title: "24/7 Support" },
     { imageSrc: CustomizeIconImage, title: "Customizable" },
     { imageSrc: ReliableIconImage, title: "Reliable" },
     { imageSrc: FastIconImage, title: "Fast" },
-    { imageSrc: SimpleIconImage, title: "Easy" }
+    { imageSrc: SimpleIconImage, title: "Easy" },
   ];
-
-
 
   return (
     <Container>
       <ThreeColumnContainer>
-        {properties.subheading && <Subheading>{properties.subheading}</Subheading>}
+        {properties.subheading && (
+          <Subheading>{properties.subheading}</Subheading>
+        )}
         <Heading>{properties.heading}</Heading>
-        {properties.description && <Description>{properties.description}</Description>}
+        {properties.description && (
+          <Description>{properties.description}</Description>
+        )}
         <VerticalSpacer />
         {ProcessChildComponentsSeparately(children)}
+        {/* {cards.map((card, i) => (
+          <Column key={i}>
+            <Card>
+              <span className="imageContainer">
+                <img src={card.imageSrc || defaultCardImage} alt="" />
+              </span>
+              <span className="textContainer">
+                <span className="title">{card.title || "Fully Secure"}</span>
+                <p className="description">
+                  {card.description ||
+                    "Lorem ipsum donor amet siti ceali ut enim ad minim veniam, quis nostrud."}
+                </p>
+              </span>
+            </Card>
+          </Column>
+        ))} */}
       </ThreeColumnContainer>
     </Container>
   );

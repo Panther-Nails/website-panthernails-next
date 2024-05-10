@@ -35,26 +35,9 @@ const DecoratorBlob2 = tw(
 
 const HighlightedText = tw.span`text-primary-500`;
 
-export default ({
-  HPJSON,
-  CPJSON,
-  data,
-  properties,
-  text = (
-    <>
-      {" "}
-      build relationships with influencers to make your{" "}
-      <HighlightedText>business grow</HighlightedText>
-    </>
-  ),
-  primaryLinkText = "Get Started",
-  primaryLinkUrl = "http://panthernails.com",
-  secondaryLinkText = "Contact Us",
-  secondaryLinkUrl = "http://google.com",
-  pushDownFooter = true,
-}) => {
+export default ({ properties }) => {
   return (
-    <Container css={pushDownFooter && tw`mb-20 lg:mb-24`}>
+    <Container css={properties.pushDownFooter === "true" && tw`mb-20 lg:mb-24`}>
       <ContentWithPaddingXl>
         <PrimaryBackgroundContainer>
           <Row>

@@ -55,7 +55,6 @@ export default ({
   primaryButtonText = "Learn More",
   primaryButtonUrl = "https://timerse.com",
   imageSrc = TeamIllustrationSrc,
-  buttonRounded = true,
   imageRounded = true,
   imageBorder = false,
   imageShadow = false,
@@ -63,7 +62,6 @@ export default ({
   imageDecoratorBlob = false,
   imageDecoratorBlobCss = null,
   textOnLeft = true,
-  showButton = false,
 }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
 

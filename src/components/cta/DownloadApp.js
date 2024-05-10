@@ -27,7 +27,7 @@ const Text = tw(
 )`text-gray-100 lg:text-left max-w-none text-3xl leading-snug`;
 const Subheading = tw(SubheadingBase)`text-yellow-500 mb-4 tracking-wider`;
 
-const LinksContainer = tw.div`mt-8 lg:mt-16 flex flex-col items-center sm:block`;
+const LinksContainer = tw.div`mt-8 lg:mt-16 flex flex-col items-center sm:block `;
 const Link = styled.a`
   ${tw`w-56 p-3 sm:p-4 text-sm sm:text-base font-bold uppercase tracking-wider rounded-full inline-flex justify-center items-center mt-6 first:mt-0 sm:mt-0 sm:ml-8 first:ml-0 bg-gray-100 hocus:bg-gray-300 text-gray-900 hocus:text-gray-900 shadow hover:shadow-lg focus:shadow-outline focus:outline-none transition duration-300`}
   img {
@@ -50,38 +50,42 @@ const DecoratorBlob2 = tw(
   SvgDecoratorBlob1
 )`absolute top-0 right-0 w-80 h-80 transform  translate-x-20 -translate-y-64 text-pink-800 opacity-50`;
 export default ({
+  index,
+  properties,
+  children,
   subheading = "Download App",
-  text = "Developers all over the world are happily using Treact.",
+  text = "",
   link1Text = "App Store",
   link1Url = "http://apple.com",
   link1IconSrc = appleIconImageSrc,
   link2Text = "Google Play",
   link2Url = "http://play.google.com",
   link2IconSrc = googlePlayIconImageSrc,
-  pushDownFooter = false,
+  pushDownFooter = "false",
   imageSrc = mockupImageSrc,
-  children,
 }) => {
   return (
-    <Container css={pushDownFooter && tw`mb-20 lg:mb-24`}>
+    <Container css={properties.pushDownFooter === "true" && tw`mb-20 lg:mb-24`}>
       <Content>
         <Row>
           <TextContainer>
-            {subheading && <Subheading>{subheading}</Subheading>}
-            <Text>{text}</Text>
+            {properties.subheading && (
+              <Subheading>{properties.subheading}</Subheading>
+            )}
+            <Text>{properties.heading}</Text>
             <LinksContainer>
               <Link href={link1Url}>
                 <img src={link1IconSrc} alt="" />
-                <span>{link1Text}</span>
+                <span>{properties.link1Text}</span>
               </Link>
               <Link href={link2Url}>
                 <img src={link2IconSrc} alt="" />
-                <span>{link2Text}</span>
+                <span>{properties.link2Text}</span>
               </Link>
             </LinksContainer>
           </TextContainer>
           <ImageContainer>
-            <img src={imageSrc} alt="" tw="w-64" />
+            <img src={properties.imageSrc} alt="" tw="w-64" />
           </ImageContainer>
         </Row>
         <Row>{ProcessChildComponents(children)}</Row>

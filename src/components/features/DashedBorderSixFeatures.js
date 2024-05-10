@@ -7,7 +7,10 @@ import { SectionHeading } from "components/misc/Headings.js";
 
 import { ReactComponent as SvgDecoratorBlob3 } from "../../images/svg-decorator-blob-3.svg";
 
-import { ProcessChildComponents } from "DynamicPage";
+import {
+  ProcessChildComponents,
+  ProcessChildComponentsSeparately,
+} from "DynamicPage";
 
 const Container = tw.div`relative`;
 
@@ -20,7 +23,7 @@ const DecoratorBlob = styled(SvgDecoratorBlob3)`
   ${tw`pointer-events-none absolute right-0 bottom-0 w-64 opacity-25 transform translate-x-32 translate-y-48 `}
 `;
 
-export default ({ properties, children }) => {
+export default ({ properties, children, index }) => {
   return (
     <Container>
       <ThreeColumnContainer>
@@ -30,7 +33,7 @@ export default ({ properties, children }) => {
             {properties.highlighHeading && properties.highlighHeading}
           </span>
         </Heading>
-        {ProcessChildComponents(children)}
+        {ProcessChildComponentsSeparately(children)}
       </ThreeColumnContainer>
       <DecoratorBlob />
     </Container>

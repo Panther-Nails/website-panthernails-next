@@ -6,7 +6,8 @@ import GetStarted from "components/cta/GetStarted";
 import CookieConsent from "components/controls/CookieConsent";
 import { getProperties } from "services/JsonService";
 import { useSession } from "providers/SessionProvider";
-import { Subheading } from "components/misc/Headings";
+import Loading from "helpers/Loading";
+import FallbackLoading from "helpers/FallbackLoading";
 
 export const ImportDynamicComponent = (Section, ComponentName) => {
   const Component = lazy(() =>
@@ -68,7 +69,7 @@ export const ProcessChildComponentsSeparately = (Components) => {
         <Suspense>
           <Component
             properties={childProperties}
-            children={child.Children}
+            children={child.Children ?? []}
             index={index}
           />
         </Suspense>
@@ -82,6 +83,7 @@ export const ProcessChildComponentsSeparately = (Components) => {
 export default () => {
   const { type, subtype, name } = useParams();
   const { languageObject } = useSession();
+  const { hasNotificationSeen, setHasNotificationSeen } = useSession();
 
   const [data, setData] = useState({});
   const [components, setComponents] = useState([]);
@@ -107,6 +109,7 @@ export default () => {
         var newData = response.items[0];
         setData({ ...data, ...newData });
       } else {
+        setHasNotificationSeen(true);
         setData({
           HeadTitle: "Home",
           HeadDescription: "",
@@ -137,7 +140,7 @@ export default () => {
     // console.log("data check", data[0]);
     return (
       <>
-        <Suspense>
+        <Suspense fallback={<FallbackLoading />}>
           <AnimationRevealPage>
             <CookieConsent />
             {components.map((component, index) => {

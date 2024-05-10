@@ -15,7 +15,7 @@ const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(Column)`md:w-5/12 flex-shrink-0 h-80 md:h-auto`;
 const TextColumn = styled(Column)((props) => [
   tw`md:w-7/12 mt-16 md:mt-0`,
-  props.textOnLeft
+  props.textOnLeft === "true"
     ? tw`md:mr-12 lg:mr-16 md:order-first`
     : tw`md:ml-12 lg:ml-16 md:order-last`,
 ]);
@@ -40,38 +40,40 @@ const Textarea = styled(Input).attrs({ as: "textarea" })`
 
 const SubmitButton = tw(PrimaryButtonBase)`inline-block mt-8`;
 
-export default ({ properties, children, index }) => {
+export default ({ children, properties, index, subheading = "Contact Us" }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
-  // console.log("properties", properties);
+  var inputs = JSON.parse(properties.inputs);
   return (
     <Container>
       <TwoColumn>
         <ImageColumn>
-          <Image imageSrc={properties.imageUrl} />
+          <Image
+            imageSrc={
+              properties.imageSrc ? properties.imageSrc : EmailIllustrationSrc
+            }
+          />
         </ImageColumn>
         <TextColumn textOnLeft={properties.textOnLeft}>
           <TextContent>
-            {properties.subheading && (
-              <Subheading>{properties.subHeading}</Subheading>
-            )}
-            <Heading>{properties.heading}</Heading>
+            {subheading && <Subheading>{subheading}</Subheading>}
+            <Heading>
+              {properties.heading}
+              <span tw="text-primary-500">{properties.highlightHeading}</span>
+            </Heading>
             {properties.description && (
               <Description>{properties.description}</Description>
             )}
             <Form action={properties.formAction} method={properties.formMethod}>
-              <Input
-                type="email"
-                name="email"
-                placeholder="Your Email Address"
-              />
-              <Input type="text" name="name" placeholder="Full Name" />
-              <Input
-                type="number"
-                name="subject"
-                placeholder="Your Mobile Number"
-              />
-              <Input type="text" name="subject" placeholder="Subject" />
-              <Textarea name="message" placeholder="Your Message Here" />
+              {inputs.map((label, index) => (
+                <Input
+                  key={index}
+                  type={label.type}
+                  name={label.name}
+                  placeholder={label.placeholder}
+                />
+              ))}
+
+              <Textarea name="message" placeholder={properties.placeholder} />
               <SubmitButton type="submit">{properties.buttonText}</SubmitButton>
             </Form>
           </TextContent>
