@@ -68,34 +68,6 @@ export default ({ children, properties, index }) => {
         </HeadingContainer>
         <TestimonialsSlider arrows={false} ref={setSliderRef}>
           {ProcessChildComponentsSeparately(children)}
-          {/* {testimonials.map((testimonial, index) => (
-            <Testimonial key={index}>
-              <QuoteContainer>
-                <QuoteIcon />
-                <Quote>{testimonial.quote}</Quote>
-              </QuoteContainer>
-              <CustomerInfoAndControlsContainer>
-                <CustomerImage src={testimonial.imageSrc} />
-                <CustomerNameAndProfileContainer>
-                  <CustomerName>{testimonial.customerName}</CustomerName>
-                  <CustomerProfile>
-                    {testimonial.customerProfile}
-                  </CustomerProfile>
-                </CustomerNameAndProfileContainer>
-                <ControlsContainer>
-                  <ControlButton onClick={sliderRef?.slickPrev}>
-                    <ArrowLeftIcon className="icon" />
-                  </ControlButton>
-                  <ControlButton>
-                    <ArrowRightIcon
-                      className="icon"
-                      onClick={sliderRef?.slickNext}
-                    />
-                  </ControlButton>
-                </ControlsContainer>
-              </CustomerInfoAndControlsContainer>
-            </Testimonial>
-          ))} */}
         </TestimonialsSlider>
       </ContentWithPaddingXl>
     </PrimaryBackgroundContainer>

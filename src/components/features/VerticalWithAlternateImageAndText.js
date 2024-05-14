@@ -4,14 +4,7 @@ import tw from "twin.macro";
 import { ReactComponent as SvgDotPatternIcon } from "../../images/dot-pattern.svg";
 import { SectionHeading as HeadingTitle } from "../misc/Headings.js";
 
-import {
-  ImportDynamicComponent,
-  ProcessChildComponents,
-  ProcessChildComponentsSeparately,
-  getChildComponentName,
-} from "DynamicPage";
-import AlternateTextImageCard from "components/DynamicCards/AlternateTextImageCard";
-import { getProperties } from "services/JsonService";
+import { ProcessChildComponentsSeparately } from "DynamicPage";
 
 const Container = tw.div`relative`;
 
