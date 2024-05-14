@@ -37,7 +37,6 @@ export default ({ index, properties, children }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
   //Change the statistics variable as you like, add or delete objects
   var statistics = JSON.parse(properties.statistics);
-  console.log("properties.textOnLeft", properties.textOnLeft);
 
   return (
     <Container id="AboutUs">

@@ -77,9 +77,9 @@ export default ({}) => {
               <span tw="text-[#63797F]">Just a Second...</span>
               <br />
             </Heading>
-            <PrimaryAction tw="bg-[#252525]"></PrimaryAction>
+            <PrimaryAction tw="bg-[#252525] w-24"></PrimaryAction>
           </LeftColumn>
-          <RightColumn tw="bg-[#252525] h-72 w-144 rounded-lg"></RightColumn>
+          <RightColumn tw="bg-[#252525] h-72 w-144 sm:m-12 lg:m-0 rounded-lg"></RightColumn>
         </TwoColumn>
       </HeroContainer>
     </Container>

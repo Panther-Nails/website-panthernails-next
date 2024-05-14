@@ -4,13 +4,8 @@ import tw from "twin.macro";
 import { ReactComponent as SvgDotPatternIcon } from "../../images/dot-pattern.svg";
 import { SectionHeading as HeadingTitle } from "../misc/Headings.js";
 import {
-  ImportDynamicComponent,
-  ProcessChildComponents,
   ProcessChildComponentsSeparately,
-  getChildComponentName,
 } from "DynamicPage";
-import AlternateTextImageCard from "components/DynamicCards/AlternateTextImageCard";
-import { getProperties } from "services/JsonService";
 
 const Container = tw.div`relative`;
 
@@ -34,7 +29,7 @@ const SvgDotPattern4 = tw(
 
 const Content = tw.div`mt-16`;
 
-export default ({ CPJSON, HPJSON, data, children, properties }) => {
+export default ({ index, children, properties }) => {
   return (
     <Container>
       <SingleColumn>

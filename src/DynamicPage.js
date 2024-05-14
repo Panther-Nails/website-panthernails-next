@@ -6,7 +6,6 @@ import GetStarted from "components/cta/GetStarted";
 import CookieConsent from "components/controls/CookieConsent";
 import { getProperties } from "services/JsonService";
 import { useSession } from "providers/SessionProvider";
-import Loading from "helpers/Loading";
 import FallbackLoading from "helpers/FallbackLoading";
 
 export const ImportDynamicComponent = (Section, ComponentName) => {
@@ -83,10 +82,27 @@ export const ProcessChildComponentsSeparately = (Components) => {
 export default () => {
   const { type, subtype, name } = useParams();
   const { languageObject } = useSession();
-  const { hasNotificationSeen, setHasNotificationSeen } = useSession();
-
   const [data, setData] = useState({});
   const [components, setComponents] = useState([]);
+
+  function setMetaTitleDynamic(response) {
+    document.title = response.items[0].HeadTitle;
+    console.log(response);
+    const existingMetaTagDescription = document.querySelector(
+      'meta[name="description"]'
+    );
+    existingMetaTagDescription.setAttribute(
+      "Content",
+      response.items[0].HeadDescription
+    );
+    const existingMetaTagKeyWord = document.querySelector(
+      'meta[name="keywords"]'
+    );
+    existingMetaTagKeyWord.setAttribute(
+      "Content",
+      response.items[0].HeadKeyWords
+    );
+  }
 
   const getPageCacheKey = () =>
     "1BGeZoi3zs" + window.location.pathname.replace("/", "-");
@@ -104,12 +120,13 @@ export default () => {
       getPageCacheKey()
     ).then((response) => {
       console.log("Response", response);
+      setMetaTitleDynamic(response);
+
       if (response.message === "Successfull") {
         console.log("Data retrival success");
         var newData = response.items[0];
         setData({ ...data, ...newData });
       } else {
-        setHasNotificationSeen(true);
         setData({
           HeadTitle: "Home",
           HeadDescription: "",
