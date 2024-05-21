@@ -7,6 +7,7 @@ import CookieConsent from "components/controls/CookieConsent";
 import { getProperties } from "services/JsonService";
 import { useSession } from "providers/SessionProvider";
 import FallbackLoading from "helpers/FallbackLoading";
+import Fireworks from "components/controls/Fireworks";
 
 export const ImportDynamicComponent = (Section, ComponentName) => {
   const Component = lazy(() =>
@@ -88,14 +89,14 @@ export default () => {
   function setMetaTitleDynamic(response) {
     document.title = response.items[0].HeadTitle;
     console.log(response);
-    const existingMetaTagDescription = document.querySelector(
+    var existingMetaTagDescription = document.querySelector(
       'meta[name="description"]'
     );
     existingMetaTagDescription.setAttribute(
       "Content",
       response.items[0].HeadDescription
     );
-    const existingMetaTagKeyWord = document.querySelector(
+    var existingMetaTagKeyWord = document.querySelector(
       'meta[name="keywords"]'
     );
     existingMetaTagKeyWord.setAttribute(
@@ -158,30 +159,31 @@ export default () => {
     return (
       <>
         <Suspense fallback={<FallbackLoading />}>
-          <AnimationRevealPage>
-            <CookieConsent />
-            {components.map((component, index) => {
-              const Component = ImportDynamicComponent(
-                component.Section,
-                component.ComponentName
-              );
-              {
-                var children = [];
-                if (component.Children) {
-                  children = component.Children;
-                }
-                var properties = getProperties(component);
+          {/* <AnimationRevealPage> */}
+          <CookieConsent />
+          {components.map((component, index) => {
+            const Component = ImportDynamicComponent(
+              component.Section,
+              component.ComponentName
+            );
+            {
+              var children = [];
+              if (component.Children) {
+                children = component.Children;
               }
-              return (
-                <Component
-                  data={component}
-                  children={children}
-                  properties={properties}
-                />
-              );
-            })}
-          </AnimationRevealPage>
+              var properties = getProperties(component);
+            }
+            return (
+              <Component
+                data={component}
+                children={children}
+                properties={properties}
+              />
+            );
+          })}
+          {/* </AnimationRevealPage> */}
         </Suspense>
+        <Fireworks />
       </>
     );
   } catch (e) {
