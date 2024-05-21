@@ -12,7 +12,7 @@ import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9
 import { ProcessChildComponentsSeparately } from "DynamicPage";
 import Footermenus from "components/DynamicCards/Footermenus";
 
-const Container = tw.div`relative bg-siteColors-textColor text-gray-100 -mb-8 -mx-8 px-8 py-20 lg:py-24`;
+const Container = tw.div`relative bg-siteColors-textColor text-gray-100 -mb-8  px-8 py-20 lg:py-24`;
 const Content = tw.div`max-w-screen-xl mx-auto relative z-10 `;
 const SixColumns = tw.div`flex flex-wrap text-center sm:text-left justify-center sm:justify-start md:justify-between -mt-12`;
 

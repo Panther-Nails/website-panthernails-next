@@ -16,7 +16,7 @@ import appleIconImageSrc from "images/apple-icon.png";
 import googlePlayIconImageSrc from "images/google-play-icon.png";
 import { ProcessChildComponents } from "DynamicPage";
 
-const Container = tw(ContainerBase)`bg-primary-900 -mx-8`;
+const Container = tw(ContainerBase)`bg-primary-900 `;
 const Content = tw(ContentWithPaddingXl)``;
 const Row = tw.div`px-8 flex items-center relative z-10 flex-col lg:flex-row text-center lg:text-left justify-center`;
 

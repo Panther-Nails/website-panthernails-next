@@ -24,7 +24,7 @@ export default ({ index, properties, children }) => {
           <FeatureIconContainer>{<properties.icon />}</FeatureIconContainer>
         )}
         <FeatureText>
-          <FeatureHeading>{properties.title}</FeatureHeading>
+          <FeatureHeading>{properties.heading}</FeatureHeading>
           <FeatureDescription>{properties.description}</FeatureDescription>
         </FeatureText>
       </Feature>

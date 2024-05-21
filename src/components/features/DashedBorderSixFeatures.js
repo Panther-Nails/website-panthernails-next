@@ -12,7 +12,7 @@ import {
   ProcessChildComponentsSeparately,
 } from "DynamicPage";
 
-const Container = tw.div`relative`;
+const Container = tw.div`relative overflow-hidden`;
 
 const ThreeColumnContainer = styled.div`
   ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-xl mx-auto py-20 md:py-24`}

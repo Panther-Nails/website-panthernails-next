@@ -8,7 +8,7 @@ const Container = styled.div`
   ${(props) =>
     css`
       background-image: url(${props.backgroundImageUrl});
-      ${tw`relative -mx-8 -mt-8 bg-center bg-cover h-screen `}
+      ${tw`relative  -mt-8 bg-center bg-cover h-screen `}
     `}
 `;
 

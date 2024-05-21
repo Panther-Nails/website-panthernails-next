@@ -86,7 +86,9 @@ export default () => {
   const [components, setComponents] = useState([]);
 
   function setMetaTitleDynamic(response) {
-    document.title = response.items[0].HeadTitle;
+    document.title =
+      response.items[0].HeadTitle +
+      " - Panther Nails Technologies Private Limited.";
     console.log(response);
     const existingMetaTagDescription = document.querySelector(
       'meta[name="description"]'
@@ -158,29 +160,29 @@ export default () => {
     return (
       <>
         <Suspense fallback={<FallbackLoading />}>
-          <AnimationRevealPage>
-            <CookieConsent />
-            {components.map((component, index) => {
-              const Component = ImportDynamicComponent(
-                component.Section,
-                component.ComponentName
-              );
-              {
-                var children = [];
-                if (component.Children) {
-                  children = component.Children;
-                }
-                var properties = getProperties(component);
+          {/* <AnimationRevealPage> */}
+          <CookieConsent />
+          {components.map((component, index) => {
+            const Component = ImportDynamicComponent(
+              component.Section,
+              component.ComponentName
+            );
+            {
+              var children = [];
+              if (component.Children) {
+                children = component.Children;
               }
-              return (
-                <Component
-                  data={component}
-                  children={children}
-                  properties={properties}
-                />
-              );
-            })}
-          </AnimationRevealPage>
+              var properties = getProperties(component);
+            }
+            return (
+              <Component
+                data={component}
+                children={children}
+                properties={properties}
+              />
+            );
+          })}
+          {/* </AnimationRevealPage> */}
         </Suspense>
       </>
     );
