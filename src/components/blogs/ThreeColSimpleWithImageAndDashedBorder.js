@@ -95,31 +95,7 @@ export default ({ index, properties, children }) => {
           </HeadingTitle>
           <HeadingDescription>{properties.description}</HeadingDescription>
         </HeadingInfoContainer>
-        <ThreeColumn>
-          {ProcessChildComponentsSeparately(children)}
-          {/* {blogPosts.map((post, index) => (
-            <Column key={index}>
-              <Card>
-                <Image imageSrc={post.imageSrc} />
-                <Details>
-                  <MetaContainer>
-                    <Meta>
-                      <UserIcon />
-                      <div>{post.author}</div>
-                    </Meta>
-                    <Meta>
-                      <TagIcon />
-                      <div>{post.category}</div>
-                    </Meta>
-                  </MetaContainer>
-                  <Title>{post.title}</Title>
-                  <Description>{post.description}</Description>
-                  <Link href={post.url}>Read Post</Link>
-                </Details>
-              </Card>
-            </Column>
-          ))} */}
-        </ThreeColumn>
+        <ThreeColumn>{ProcessChildComponentsSeparately(children)}</ThreeColumn>
       </Content>
       <DecoratorBlob1 />
       <DecoratorBlob2 />

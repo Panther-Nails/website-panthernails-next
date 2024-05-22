@@ -15,7 +15,7 @@ import DesignIllustration from "../../images/design-illustration.svg";
 
 import { Container } from "../misc/Layouts.js";
 
-const TwoColumn = tw.div`flex flex-col lg:flex-row md:items-center max-w-screen-xl mx-auto py-20 md:py-24`;
+const TwoColumn = tw.div`flex flex-col lg:flex-row md:items-center max-w-screen-xl mx-auto `;
 const LeftColumn = tw.div`relative lg:w-6/12 lg:pr-12 flex-shrink-0 text-center lg:text-left`;
 const RightColumn = tw.div`relative mt-12 lg:mt-0 flex flex-col justify-center`;
 
@@ -63,7 +63,7 @@ const StyledModal = styled(ReactModalAdapter)`
     ${tw`xl:mx-auto m-4 sm:m-16 max-w-screen-xl absolute inset-0 flex justify-center items-center rounded-lg bg-gray-200 outline-none`}
   }
   .content {
-    ${tw`w-full lg:p-16`}
+    ${tw` lg:p-16`}
   }
 `;
 const CloseModalButton = tw.button`absolute top-0 right-0 mt-8 mr-8 hocus:text-primary-500`;
@@ -125,10 +125,7 @@ export default ({
             <CloseIcon tw="w-6 h-6" />
           </CloseModalButton>
           <div className="content">
-            <ResponsiveVideoEmbed
-              url={properties.watchVideoYoutubeUrl}
-              tw="w-full"
-            />
+            <ResponsiveVideoEmbed url={properties.videoId} tw="w-full" />
           </div>
         </StyledModal>
       </Container>

@@ -7,6 +7,7 @@ import CookieConsent from "components/controls/CookieConsent";
 import { getProperties } from "services/JsonService";
 import { useSession } from "providers/SessionProvider";
 import FallbackLoading from "helpers/FallbackLoading";
+import Fireworks from "components/controls/Fireworks";
 
 export const ImportDynamicComponent = (Section, ComponentName) => {
   const Component = lazy(() =>
@@ -90,14 +91,14 @@ export default () => {
       response.items[0].HeadTitle +
       " - Panther Nails Technologies Private Limited.";
     console.log(response);
-    const existingMetaTagDescription = document.querySelector(
+    var existingMetaTagDescription = document.querySelector(
       'meta[name="description"]'
     );
     existingMetaTagDescription.setAttribute(
       "Content",
       response.items[0].HeadDescription
     );
-    const existingMetaTagKeyWord = document.querySelector(
+    var existingMetaTagKeyWord = document.querySelector(
       'meta[name="keywords"]'
     );
     existingMetaTagKeyWord.setAttribute(
@@ -184,6 +185,7 @@ export default () => {
           })}
           {/* </AnimationRevealPage> */}
         </Suspense>
+        <Fireworks />
       </>
     );
   } catch (e) {

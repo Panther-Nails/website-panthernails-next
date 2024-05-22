@@ -93,7 +93,7 @@ export default ({
     },
   ],
 }) => {
-  console.log("properties.textOnLeft", properties.textOnLeft);
+  console.log("properties.textOnLeft",properties.textOnLeft);
   return (
     <Container id="Products">
       <Content>

@@ -67,7 +67,9 @@ export default ({ index, properties, children }) => {
             </MetaContainer>
             <Title>{properties.title}</Title>
             <Description>{properties.description}</Description>
-            <Link href={properties.url}>{properties.linkText}</Link>
+            {properties.linkText && (
+              <Link href={properties.url}>{properties.linkText}</Link>
+            )}
           </Details>
         </Card>
       </Column>
