@@ -59,7 +59,7 @@ export default ({ children, properties, index, subheading = "hello" }) => {
           >
             {faq.answer ? <ChevronDownIcon /> : null}
           </QuestionToggleIcon>
-        </Question>
+        </Question> 
         {faq.answer ? (
           <Answer
             variants={{
