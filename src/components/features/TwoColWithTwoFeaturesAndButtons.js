@@ -18,14 +18,14 @@ const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(Column)`md:w-5/12 flex-shrink-0 h-80 md:h-auto `;
 const TextColumn = styled(Column)((props) => [
   tw`md:w-7/12 mt-16 md:mt-0`,
-  props.textOnLeft
-    ? tw`md:mr-12 lg:mr-16 md:order-first`
-    : tw`md:ml-12 lg:ml-16 md:order-last`,
+  props.textOnLeft==='true'
+    ? tw`md:mr-12  lg:mr-16 md:order-first`
+    : tw`md:ml-12  lg:ml-16 flex-row-reverse`,
 ]);
 
 const Image = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
-  tw`rounded bg-contain bg-no-repeat bg-center h-full bg-black`,
+  tw`rounded bg-contain bg-no-repeat bg-center h-full `,
 ]);
 const TextContent = tw.div`lg:py-8 text-center md:text-left`;
 
@@ -73,9 +73,13 @@ export default ({ properties, index, children }) => {
             </Heading>
             <Description>{properties.description}</Description>
             <Features>{ProcessChildComponentsSeparately(children)}</Features>
-            { properties.buttonText?<PrimaryButton as="a" href={properties.buttonUrl}>
-              {properties.buttonText}
-            </PrimaryButton>:<></>}
+            {properties.buttonText ? (
+              <PrimaryButton as="a" href={properties.buttonUrl}>
+                {properties.buttonText}
+              </PrimaryButton>
+            ) : (
+              <></>
+            )}
           </TextContent>
         </TextColumn>
       </TwoColumn>
