@@ -15,7 +15,7 @@ import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-
 import "slick-carousel/slick/slick.css";
 import { ProcessChildComponentsSeparately } from "DynamicPage.js";
 
-const Container = tw.div`relative`;
+const Container = tw.div`relative overflow-hidden`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
 const HeadingInfoContainer = tw.div`flex flex-col items-center`;
 const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w-sm`;
