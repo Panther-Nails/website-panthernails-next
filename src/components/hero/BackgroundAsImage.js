@@ -3,6 +3,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
+import { NavLink, Navigate, useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   ${(props) =>
@@ -45,13 +46,17 @@ export default ({ data, properties }) => {
         <TwoColumn>
           <LeftColumn>
             <Notification>{properties.notification}</Notification>
-
             <Heading>
               <span>{properties.heading}</span>
               <br />
-              {/* <SlantedBackground></SlantedBackground> */}
             </Heading>
-            <PrimaryAction>{properties.buttonText}</PrimaryAction>
+            <PrimaryAction
+              onClick={() => {
+                window.open(`${properties.buttonUrl}`, "_blank");
+              }}
+            >
+              {properties.buttonText}
+            </PrimaryAction>
           </LeftColumn>
           <RightColumn>
             <StyledResponsiveVideoEmbed

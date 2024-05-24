@@ -35,7 +35,7 @@ const TextColumn = tw.div`text-center lg:text-left`;
 const IllustrationColumn = tw(Column)`mt-16 lg:mt-0 lg:ml-16`;
 const Heading = tw(
   SectionHeading
-)`max-w-3xl lg:max-w-4xl lg:text-left leading-tight`;
+)`max-w-3xl lg:max-w-4xl lg:text-left text-white font-black text-center text-3xl sm:text-4xl lg:text-5xl leading-tight`;
 const Description = tw(
   SectionDescription
 )`mt-4 max-w-2xl text-gray-100 lg:text-base mx-auto lg:mx-0`;

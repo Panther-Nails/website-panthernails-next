@@ -58,7 +58,11 @@ export default ({ properties, index, children }) => {
     <Container>
       <TwoColumn>
         <ImageColumn>
-          <Image imageSrc={TeamIllustrationSrc} />
+          <Image
+            imageSrc={
+              properties.imageSrc ? properties.imageSrc : TeamIllustrationSrc
+            }
+          />
         </ImageColumn>
         <TextColumn textOnLeft={properties.textOnLeft}>
           <TextContent>

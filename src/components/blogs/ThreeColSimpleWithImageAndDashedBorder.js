@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import {
   SectionHeading as HeadingTitle,
+  SectionHeading,
   Subheading,
 } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
@@ -19,7 +20,7 @@ const ThreeColumn = tw.div`flex flex-col items-center lg:items-stretch lg:flex-r
 const Column = tw.div`mt-24 lg:w-1/3`;
 
 const HeadingInfoContainer = tw.div`flex flex-col items-center`;
-const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w-sm`;
+const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center md:px-20`;
 
 const Card = tw.div`lg:mx-4 xl:mx-8 max-w-sm flex flex-col h-full`;
 const Image = styled.div((props) => [
@@ -41,6 +42,10 @@ const Description = tw.p`mt-2 text-sm text-secondary-100`;
 const Link = styled(PrimaryButtonBase).attrs({ as: "a" })`
   ${tw`inline-block mt-4 text-sm font-semibold`}
 `;
+
+const Heading = tw(
+  SectionHeading
+)`w-full mt-4 font-black text-3xl sm:text-4xl lg:text-5xl text-center leading-tight `;
 
 const DecoratorBlob1 = tw(
   SvgDecoratorBlob1
@@ -89,10 +94,10 @@ export default ({ index, properties, children }) => {
           {properties.subheading && (
             <Subheading>{properties.subheading}</Subheading>
           )}
-          <HeadingTitle>
-            {properties.heading}
-            <span tw="text-primary-500"> {properties.hightlightHeading}</span>
-          </HeadingTitle>
+          <Heading>
+            {properties.heading}{" "}
+            <span tw="text-primary-500">{properties.hightlightHeading}</span>
+          </Heading>
           <HeadingDescription>{properties.description}</HeadingDescription>
         </HeadingInfoContainer>
         <ThreeColumn>{ProcessChildComponentsSeparately(children)}</ThreeColumn>
