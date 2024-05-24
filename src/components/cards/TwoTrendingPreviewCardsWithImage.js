@@ -19,7 +19,7 @@ const Column = tw.div``;
 
 const ThreeColumn = styled(Column)((props) => [
   tw`flex  flex-wrap`,
-  props.textOnLeft === "true" ? tw`flex-row` : tw` flex-row-reverse `,
+  props.textOnLeft === "true" ? tw`flex-row-reverse ` : tw`flex-row `,
 ]);
 
 const HeadingColumn = tw(Column)`w-full xl:w-1/3`;
@@ -93,6 +93,7 @@ export default ({
     },
   ],
 }) => {
+  console.log("properties.textOnLeft",properties.textOnLeft);
   return (
     <Container id="Products">
       <Content>
@@ -101,10 +102,13 @@ export default ({
             <HeadingInfoContainer>
               <HeadingTitle>{properties.heading}</HeadingTitle>
               <HeadingDescription>{properties.description}</HeadingDescription>
-              <PrimaryLink href={properties.linkUrl} target="_blank">
-                {properties.linkText}
-                <ArrowRightIcon />
-              </PrimaryLink>
+              {properties.linkUrl ? (
+                <PrimaryLink href={properties.linkUrl} target="_blank">
+                  {properties.linkText} <ArrowRightIcon />
+                </PrimaryLink>
+              ) : (
+                <></>
+              )}
             </HeadingInfoContainer>
           </HeadingColumn>
           {ProcessChildComponentsSeparately(children)}

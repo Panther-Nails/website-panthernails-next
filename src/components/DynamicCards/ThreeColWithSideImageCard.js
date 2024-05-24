@@ -41,7 +41,7 @@ export default ({ index, properties, children }) => {
           <img src={properties.imageSrc} alt="" />
         </span>
         <span className="textContainer">
-          <span className="title">{properties.title}</span>
+          <span className="title">{properties.heading}</span>
           <p className="description">{properties.description}</p>
         </span>
       </Card>

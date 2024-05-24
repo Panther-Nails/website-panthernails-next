@@ -12,16 +12,16 @@ import { ReactComponent as ChevronDownIcon } from "feather-icons/dist/icons/chev
 
 const PrimaryBackgroundContainer = tw(
   Container
-)`-mx-8 px-8 bg-primary-900 text-gray-100`;
+)` px-8 bg-primary-900 text-gray-100`;
 
 const HeadingContainer = tw.div``;
 const Subheading = tw(SubheadingBase)`text-center text-gray-100 mb-4`;
-const Heading = tw(SectionHeading)``;
+const Heading = tw(SectionHeading)`text-white`;
 const Description = tw(SectionDescription)`mx-auto text-center text-gray-300`;
 
 const FaqsContainer = tw.div`mt-10 sm:mt-16 w-full flex-1 lg:flex justify-between items-start max-w-screen-lg mx-auto`;
 const FaqsColumn = tw.div`w-full lg:max-w-lg lg:mr-12 last:mr-0`;
-const Faq = tw.div`select-none cursor-pointer border-b-2 border-primary-300 hover:border-primary-500 transition-colors duration-300 py-6`;
+const Faq = tw.div` cursor-pointer border-b-2 border-primary-300 hover:border-primary-500 transition-colors duration-300 py-6`;
 const Question = tw.div`flex justify-between items-center`;
 const QuestionText = tw.div`text-sm sm:text-lg font-semibold tracking-wide`;
 const QuestionToggleIcon = styled(motion.span)`
@@ -33,7 +33,7 @@ const QuestionToggleIcon = styled(motion.span)`
 const Answer = tw(motion.div)`hidden text-sm font-normal mt-4 text-gray-300`;
 
 export default ({ children, properties, index, subheading = "hello" }) => {
-  var faqs = JSON.parse(properties.faqs);
+  var faqs = JSON.parse(properties.inputs);
   const faqCol1 = [];
   const faqCol2 = [];
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
@@ -57,30 +57,32 @@ export default ({ children, properties, index, subheading = "hello" }) => {
             animate={activeQuestionIndex === index ? "open" : "collapsed"}
             transition={{ duration: 0.02, ease: [0.04, 0.62, 0.23, 0.98] }}
           >
-            <ChevronDownIcon />
+            {faq.answer ? <ChevronDownIcon /> : null}
           </QuestionToggleIcon>
-        </Question>
-        <Answer
-          variants={{
-            open: {
-              opacity: 1,
-              height: "auto",
-              marginTop: "16px",
-              display: "block",
-            },
-            collapsed: {
-              opacity: 0,
-              height: 0,
-              marginTop: "0px",
-              display: "none",
-            },
-          }}
-          initial="collapsed"
-          animate={activeQuestionIndex === index ? "open" : "collapsed"}
-          transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
-        >
-          {faq.answer}
-        </Answer>
+        </Question> 
+        {faq.answer ? (
+          <Answer
+            variants={{
+              open: {
+                opacity: 1,
+                height: "auto",
+                marginTop: "16px",
+                display: "block",
+              },
+              collapsed: {
+                opacity: 0,
+                height: 0,
+                marginTop: "0px",
+                display: "none",
+              },
+            }}
+            initial="collapsed"
+            animate={activeQuestionIndex === index ? "open" : "collapsed"}
+            transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
+          >
+            {faq.answer}
+          </Answer>
+        ) : null}
       </Faq>
     );
 

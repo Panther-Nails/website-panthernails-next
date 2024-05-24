@@ -130,9 +130,9 @@ export default ({
       <NavLinkWrapper>
         <NavLink to="/pages/products/clm">Contract Labour Management</NavLink>
       </NavLinkWrapper>
-      <NavLinkWrapper>
+      {/* <NavLinkWrapper>
         <NavLink to="/blog">Blog</NavLink>
-      </NavLinkWrapper>
+      </NavLinkWrapper> */}
       <NavLinkWrapper>
         <NavLink to="/contact">Contact Us</NavLink>
       </NavLinkWrapper>

@@ -88,9 +88,9 @@ export default () => {
   const [components, setComponents] = useState([]);
 
   function setMetaTitleDynamic(response) {
-    document.title = response.items[0].HeadTitle
-      ? response.items[0].HeadTitle
-      : "Panther Nails";
+    document.title =
+      response.items[0].HeadTitle +
+      " - Panther Nails Technologies Private Limited.";
     console.log(response);
     var existingMetaTagDescription = document.querySelector(
       'meta[name="description"]'

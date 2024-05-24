@@ -15,7 +15,7 @@ import { ProcessChildComponentsSeparately } from "DynamicPage";
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
-const ImageColumn = tw(Column)`md:w-5/12 flex-shrink-0 h-80 md:h-auto`;
+const ImageColumn = tw(Column)`md:w-5/12 flex-shrink-0 h-80 md:h-auto `;
 const TextColumn = styled(Column)((props) => [
   tw`md:w-7/12 mt-16 md:mt-0`,
   props.textOnLeft
@@ -25,7 +25,7 @@ const TextColumn = styled(Column)((props) => [
 
 const Image = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
-  tw`rounded bg-contain bg-no-repeat bg-center h-full`,
+  tw`rounded bg-contain bg-no-repeat bg-center h-full bg-black`,
 ]);
 const TextContent = tw.div`lg:py-8 text-center md:text-left`;
 
@@ -66,16 +66,16 @@ export default ({ properties, index, children }) => {
         </ImageColumn>
         <TextColumn textOnLeft={properties.textOnLeft}>
           <TextContent>
-            <Subheading>{properties.subheading}</Subheading>
+            <Subheading>{properties.subHeading}</Subheading>
             <Heading>
               {properties.heading}
               <span tw="text-primary-500">{properties.highlightText}</span>
             </Heading>
             <Description>{properties.description}</Description>
             <Features>{ProcessChildComponentsSeparately(children)}</Features>
-            <PrimaryButton as="a" href={properties.buttonUrl}>
+            { properties.buttonText?<PrimaryButton as="a" href={properties.buttonUrl}>
               {properties.buttonText}
-            </PrimaryButton>
+            </PrimaryButton>:<></>}
           </TextContent>
         </TextColumn>
       </TwoColumn>

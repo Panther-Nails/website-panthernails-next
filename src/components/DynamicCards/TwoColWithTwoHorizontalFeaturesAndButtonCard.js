@@ -26,7 +26,7 @@ export default ({ index, children, properties }) => {
       <Feature key={index}>
         <FeatureHeadingContainer>
           <FeatureIconContainer
-            iconFilled={properties.iconFilled}
+            iconFilled={true}
             iconRoundedFull={properties.iconRoundedFull}
             css={properties.iconContainerCss}
           ></FeatureIconContainer>

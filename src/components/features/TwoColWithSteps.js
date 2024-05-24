@@ -57,27 +57,6 @@ const StepDescription = tw.p`mt-3 max-w-xs leading-loose text-sm text-gray-600 f
 export default ({ properties, children }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
 
-  const steps = [];
-
-  const defaultSteps = [
-    {
-      heading: "Register",
-      description: "Create an account with us using Google or Facebook.",
-    },
-    {
-      heading: "Download",
-      description:
-        "Browse and Download the template that you like from the marketplace.",
-    },
-    {
-      heading: "Run",
-      description:
-        "Follow the instructions to setup and customize the template to your needs.",
-    },
-  ];
-
-  if (!steps) steps = defaultSteps;
-
   return (
     <Container>
       <TwoColumn>
