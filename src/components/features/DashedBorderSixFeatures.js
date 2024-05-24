@@ -23,15 +23,16 @@ const DecoratorBlob = styled(SvgDecoratorBlob3)`
   ${tw`pointer-events-none absolute right-0 bottom-0 w-64 opacity-25 transform translate-x-32 translate-y-48 `}
 `;
 
+const highlightedText = tw.span`text-primary-500`
 export default ({ properties, children, index }) => {
   return (
     <Container>
       <ThreeColumnContainer>
         <Heading>
           {properties.heading}{" "}
-          <span tw="text-primary-500">
+          <highlightedText>
             {properties.highlighHeading && properties.highlighHeading}
-          </span>
+          </highlightedText>
         </Heading>
         {ProcessChildComponentsSeparately(children)}
       </ThreeColumnContainer>
@@ -39,3 +40,4 @@ export default ({ properties, children, index }) => {
     </Container>
   );
 };
+ 
