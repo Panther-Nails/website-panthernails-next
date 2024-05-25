@@ -24,7 +24,7 @@ const ColumnContainer = tw.div`max-w-2xl`;
 const TextContainer = tw(ColumnContainer)``;
 const Text = tw(
   SectionHeading
-)`text-gray-100 lg:text-left max-w-none text-3xl leading-snug`;
+)`text-gray-100 lg:text-left max-w-none text-3xl leading-snug font-bold`;
 const Subheading = tw(SubheadingBase)`text-yellow-500 mb-4 tracking-wider`;
 
 const LinksContainer = tw.div`mt-8 lg:mt-16 flex flex-col items-center sm:block `;
@@ -74,13 +74,13 @@ export default ({
             )}
             <Text>{properties.heading}</Text>
             <LinksContainer>
-              <Link href={link1Url}>
+              <Link href={properties.leftButtonUrl} target="_black">
                 <img src={link1IconSrc} alt="" />
-                <span>{properties.link1Text}</span>
+                <span>{properties.leftButtonText}</span>
               </Link>
-              <Link href={link2Url}>
+              <Link href={properties.rightButtonUrl} target="_black">
                 <img src={link2IconSrc} alt="" />
-                <span>{properties.link2Text}</span>
+                <span>{properties.rightButtonText}</span>
               </Link>
             </LinksContainer>
           </TextContainer>

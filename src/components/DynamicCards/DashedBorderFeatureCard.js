@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
+import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 
 const Column = styled.div`
   ${tw`md:w-1/2 lg:w-1/3 px-6 flex`}
 `;
 
 const Card = styled.div`
-  ${tw`flex flex-col mx-auto max-w-xs items-center px-6 py-10 border-2 border-dashed border-primary-500 rounded-lg mt-12`}
+  ${tw`flex flex-col mx-auto max-w-xs items-center px-6 py-10 border-2 border-dashed border-primary-500 rounded-lg mt-12 justify-between`}
   .imageContainer {
     ${tw`border-2 border-primary-500 text-center rounded-full p-3 flex-shrink-0 relative`}
     img {
@@ -28,7 +29,9 @@ const Card = styled.div`
     ${tw`mt-3 font-semibold text-secondary-100 text-sm leading-loose`}
   }
 `;
-
+const Link = styled(PrimaryButtonBase).attrs({ as: "a" })`
+  ${tw`inline-block mt-4 text-sm font-semibold`}
+`;
 export default ({ properties, children, index }) => {
   return (
     <Column key={index}>
@@ -40,6 +43,9 @@ export default ({ properties, children, index }) => {
           <span className="title">{properties.heading}</span>
           <p className="description">{properties.description}</p>
         </span>
+        {properties.buttonVisible === "true" && (
+          <Link href={properties.buttonUrl}>{properties.buttonText}</Link>
+        )}
       </Card>
     </Column>
   );

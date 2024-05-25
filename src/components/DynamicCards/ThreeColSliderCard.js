@@ -12,7 +12,6 @@ import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chev
 import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
 import { ReactComponent as PlayIcon } from "feather-icons/dist/icons/play-circle.svg";
 
-
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20`;
 
@@ -30,7 +29,7 @@ const NextButton = tw(ControlButton)``;
 
 const CardSlider = styled(Slider)`
   ${tw`mt-16`}
-  .slick-track { 
+  .slick-track {
     ${tw`flex`}
   }
   .slick-slide {
@@ -38,9 +37,9 @@ const CardSlider = styled(Slider)`
   }
 `;
 const Card = tw.div`h-full flex! flex-col sm:border max-w-sm sm:rounded-tl-4xl sm:rounded-br-5xl relative focus:outline-none`;
-const CardImage = styled.div(props => [
+const CardImage = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
-  tw`w-full h-56 sm:h-64 bg-cover bg-center rounded sm:rounded-none sm:rounded-tl-4xl`
+  tw`w-full h-56 sm:h-64 bg-cover bg-center rounded sm:rounded-none sm:rounded-tl-4xl `,
 ]);
 
 const TextInfo = tw.div`py-6 sm:px-10 sm:py-6`;
@@ -67,7 +66,9 @@ const IconContainer = styled.div`
 `;
 const Text = tw.div` text-sm font-semibold text-gray-800`;
 
-const PrimaryButton = tw(PrimaryButtonBase)`mt-auto sm:text-lg rounded-none w-full rounded sm:rounded-none sm:rounded-br-4xl py-3 sm:py-6`;
+const PrimaryButton = tw(
+  PrimaryButtonBase
+)`mt-auto sm:text-lg rounded-none w-full rounded sm:rounded-none sm:rounded-br-4xl py-3 sm:py-6`;
 
 const KnowMoreLink = styled.a`
   ${tw`mt-4 sm:mt-0  flex items-center text-secondary-300 transition duration-300 hocus:text-primary-400 focus:outline-none`}
@@ -76,40 +77,41 @@ const KnowMoreLink = styled.a`
   }
 `;
 export default ({ index, properties, children }) => {
-//   console.log("properties", properties);
-//   console.log("children alternate", children);
+  //   console.log("properties", properties);
+  //   console.log("children alternate", children);
   return (
     <Card key={index}>
-              <CardImage imageSrc={properties.imageSrc} />
-              <TextInfo>
-                <TitleReviewContainer>
-                  <Title>{properties.title}</Title>
-                  <RatingsInfo>
-                    <StarIcon />
-                    <Rating>{properties.rating}</Rating>
-                  </RatingsInfo>
-                </TitleReviewContainer>
-                <SecondaryInfoContainer>                  
-                   <IconWithText>
-                    <Text>{properties.locationText}</Text>
-                    {properties.knowMoreLinkUrl}
-                  </IconWithText>
-                  <IconWithText>
-                    <IconContainer>
-                      <PriceIcon />
-                    </IconContainer>
-                    <Text>{properties.pricingText}</Text>
-                  </IconWithText>
-                </SecondaryInfoContainer>
-                <Description>                  
-                  {properties.description}
-                <KnowMoreLink href={properties.linkUrl} >
-                  <span className="playText">{properties.linkText}</span>
-                </KnowMoreLink>
-                </Description>
-                
-              </TextInfo>              
-              <PrimaryButton>Book a Meeting</PrimaryButton>
-            </Card>
+      <CardImage imageSrc={properties.imageSrc} />
+      <TextInfo>
+        <TitleReviewContainer>
+          <Title>{properties.title}</Title>
+          {properties.rating && (
+            <RatingsInfo>
+              <StarIcon />
+              <Rating>{properties.rating}</Rating>
+            </RatingsInfo>
+          )}
+        </TitleReviewContainer>
+        <SecondaryInfoContainer>
+          <IconWithText>
+            <Text>{properties.locationText}</Text>
+            {properties.knowMoreLinkUrl}
+          </IconWithText>
+          <IconWithText>
+            <IconContainer>
+              <PriceIcon />
+            </IconContainer>
+            <Text>{properties.pricingText}</Text>
+          </IconWithText>
+        </SecondaryInfoContainer>
+        <Description>
+          {properties.description}
+          <KnowMoreLink href={properties.linkUrl}>
+            <span className="playText">{properties.linkText}</span>
+          </KnowMoreLink>
+        </Description>
+      </TextInfo>
+      <PrimaryButton>Book a Meeting</PrimaryButton>
+    </Card>
   );
 };

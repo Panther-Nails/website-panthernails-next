@@ -28,56 +28,11 @@ const PlanFeatures = styled.ul`
 `;
 
 export default ({ plans = null, properties, children, index }) => {
-  //   const defaultPlans = [
-  //     {
-  //       name: "Personal",
-  //       features: [
-  //         { name: "2 Core Xeon CPU", link: "https://panthernails.com/" },
-  //         { name: "4 Core Xeon CPU", link: "https://panthernails.com/" },
-  //         { name: "99.9% Uptime", link: "https://panthernails.com/" },
-  //         { name: "Unlimited Transfer", link: "https://panthernails.com/" },
-  //         { name: "Free DNS Management", link: "https://panthernails.com/" },
-  //       ],
-  //     },
-  //     {
-  //       name: "Personal",
-  //       features: [
-  //         { name: "2 Core Xeon CPU", link: "https://panthernails.com/" },
-  //         { name: "4 Core Xeon CPU", link: "https://panthernails.com/" },
-  //         { name: "99.9% Uptime", link: "https://panthernails.com/" },
-  //         { name: "Unlimited Transfer", link: "https://panthernails.com/" },
-  //         { name: "Free DNS Management", link: "https://panthernails.com/" },
-  //       ],
-  //     },
-  //     {
-  //       name: "Business",
-  //       features: [
-  //         { name: "2 Core Xeon CPU", link: "https://panthernails.com/" },
-  //         { name: "4 Core Xeon CPU", link: "https://panthernails.com/" },
-  //         { name: "99.9% Uptime", link: "https://panthernails.com/" },
-  //         { name: "Unlimited Transfer", link: "https://panthernails.com/" },
-  //         { name: "Free DNS Management", link: "https://panthernails.com/" },
-  //       ],
-  //     },
-  //     {
-  //       name: "Enterprise",
-  //       features: [
-  //         { name: "2 Core Xeon CPU", link: "https://panthernails.com/" },
-  //         { name: "4 Core Xeon CPU", link: "https://panthernails.com/" },
-  //         { name: "99.9% Uptime", link: "https://panthernails.com/" },
-  //         { name: "Unlimited Transfer", link: "https://panthernails.com/" },
-  //         { name: "Free DNS Management", link: "https://panthernails.com/" },
-  //       ],
-  //     },
-  //   ];
-
-  //   if (!plans) plans = defaultPlans;
-  console.log("properties", properties);
   var siteMapArray = JSON.parse(properties.siteMapJson);
 
   return (
     <Container tw="bg-white">
-      <Heading tw="text-left text-black text-3xl font-serif py-12">
+      <Heading tw="text-left text-black text-3xl font-serif pl-8 py-12">
         {properties.heading}
       </Heading>
       <PlansContainer>

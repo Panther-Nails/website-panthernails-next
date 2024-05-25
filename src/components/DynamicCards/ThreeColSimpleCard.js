@@ -42,9 +42,9 @@ export default ({ index, properties, children }) => {
           </span>
           <span className="title">{properties.title}</span>
           <p className="description">{properties.description}</p>
-          {properties.linkText && (
+          {properties.buttonVisible === "true" && (
             <span className="link">
-              <span>{properties.linkText}</span>
+              <span>{properties.buttonText}</span>
               <ArrowRightIcon className="icon" />
             </span>
           )}

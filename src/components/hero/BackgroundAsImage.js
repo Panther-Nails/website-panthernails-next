@@ -59,10 +59,12 @@ export default ({ data, properties }) => {
             </PrimaryAction>
           </LeftColumn>
           <RightColumn>
-            <StyledResponsiveVideoEmbed
-              url={properties.videoId}
-              background="transparent"
-            />
+            {properties.videoId && (
+              <StyledResponsiveVideoEmbed
+                url={properties.videoId}
+                background="transparent"
+              />
+            )}
           </RightColumn>
         </TwoColumn>
       </HeroContainer>

@@ -7,7 +7,7 @@ import { Container } from "../misc/Layouts.js";
 
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0 `;
 const Image = styled.img((props) => [
-  tw`h-full mx-auto lg:w-5/6 lg:mx-24`,
+  tw` mx-auto lg:w-5/6 lg:mx-24`,
   props.imageRounded && tw`rounded`,
   props.imageBorder && tw`border`,
   props.imageShadow && tw`shadow`,

@@ -45,11 +45,11 @@ export default ({ children, properties, index }) => {
               <Heading>{properties.heading}</Heading>
             </TextContainer>
             <LinksContainer>
-              <PrimaryLink href={properties.buttonUrl}>
-                {properties.buttonText}
+              <PrimaryLink href={properties.leftButtonUrl} target="_black">
+                {properties.leftButtonText}
               </PrimaryLink>
-              <SecondaryLink href={properties.secondaryButtonUrl}>
-                {properties.secondaryButtonText}
+              <SecondaryLink href={properties.rightButtonUrl} target="_black">
+                {properties.rightButtonText}
               </SecondaryLink>
             </LinksContainer>
           </Row>

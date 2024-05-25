@@ -25,7 +25,7 @@ const TextColumn = styled(Column)((props) => [
 
 const Image = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
-  tw`rounded bg-contain bg-no-repeat bg-center h-full bg-black`,
+  tw`rounded bg-contain bg-no-repeat bg-center h-full`,
 ]);
 const TextContent = tw.div`lg:py-8 text-center md:text-left`;
 
@@ -73,9 +73,13 @@ export default ({ properties, index, children }) => {
             </Heading>
             <Description>{properties.description}</Description>
             <Features>{ProcessChildComponentsSeparately(children)}</Features>
-            { properties.buttonText?<PrimaryButton as="a" href={properties.buttonUrl}>
-              {properties.buttonText}
-            </PrimaryButton>:<></>}
+            {properties.buttonText ? (
+              <PrimaryButton as="a" href={properties.buttonUrl}>
+                {properties.buttonText}
+              </PrimaryButton>
+            ) : (
+              <></>
+            )}
           </TextContent>
         </TextColumn>
       </TwoColumn>

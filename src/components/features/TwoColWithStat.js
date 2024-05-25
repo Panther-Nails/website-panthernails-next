@@ -15,16 +15,16 @@ const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0 lg:py-40`;
 
 const TextColumn = styled(Column)((props) => [
-  tw`md:w-6/12 md:mt-0 text-center`,
+  tw`md:w-6/12 md:mt-0 text-center py-20`,
   props.textOnLeft
     ? tw`md:mr-12 lg:mr-16 md:order-first`
     : tw`md:ml-12 lg:ml-16 md:order-last`,
 ]);
 
-const TextContent = tw.div` text-center text-2xl `;
+const TextContent = tw.div` text-center text-2xl font-bold `;
 
 const NumberContent = styled.span`
-  ${tw`  text-center text-6xl font-black`}
+  ${tw`  text-center text-8xl font-black`}
   background-image: url("https://images.unsplash.com/photo-1583248352195-d3a8e766edf2?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
 
   background-size: cover;
