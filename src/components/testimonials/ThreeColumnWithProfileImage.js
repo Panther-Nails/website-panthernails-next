@@ -19,7 +19,7 @@ const TestimonialContainer = tw.div`mt-16 lg:w-1/3`;
 const Testimonial = tw.div`px-4 text-center max-w-xs mx-auto flex flex-col items-center`;
 const Image = tw.img`w-20 h-20 rounded-full`;
 const Quote = tw.blockquote`mt-5 text-gray-600 font-medium leading-loose`;
-const CustomerName = tw.p`mt-5 text-gray-900 font-semibold uppercase text-sm tracking-wide`;
+const CustomerName = tw.p`m-5 text-gray-900 font-semibold uppercase  tracking-wide`;
 
 const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
   ${tw`pointer-events-none -z-20 absolute left-0 top-0 h-56 w-56 opacity-15 transform -translate-x-2/3 -translate-y-12 text-teal-400`}

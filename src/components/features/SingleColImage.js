@@ -15,9 +15,20 @@ const Image = styled.img((props) => [
 
 const Heading = tw(
   SectionHeading
-)`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center leading-tight  `;
+)`mt-4 font-black px-4 lg:px-0 text-left text-2xl sm:text-4xl lg:text-5xl text-center leading-tight  `;
 
 const Description = tw.p`mx-auto mt-4 text-center text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
+
+const HighlightedHeading = ({ children }) => {
+  return (
+    <>
+      {children.split("`").map((chunk, index) => {
+        if (index % 2 == 0) return <span tw="text-primary-900">{chunk}</span>;
+        else return <span tw="text-primary-500">{chunk}</span>;
+      })}
+    </>
+  );
+};
 
 export default ({ data, children, properties }) => {
   const isMobile = window.matchMedia("(max-width: 767px)").matches;
@@ -25,8 +36,7 @@ export default ({ data, children, properties }) => {
     <Container>
       <Column>
         <Heading>
-          {properties.heading}{" "}
-          <span tw="text-primary-500">{properties.highlighHeading}</span>
+          <HighlightedHeading>{properties.heading}</HighlightedHeading>
         </Heading>
         <Description>{properties.description}</Description>
         <Image

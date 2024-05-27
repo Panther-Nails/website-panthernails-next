@@ -20,7 +20,7 @@ const ThreeColumn = tw.div`flex flex-col items-center lg:items-stretch lg:flex-r
 const Column = tw.div`mt-24 lg:w-1/3`;
 
 const HeadingInfoContainer = tw.div`flex flex-col items-center`;
-const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center md:px-20`;
+const HeadingDescription = tw.p`mt-4 px-4 lg:px-0 font-medium text-gray-600 text-center md:px-20`;
 
 const Card = tw.div`lg:mx-4 xl:mx-8 max-w-sm flex flex-col h-full`;
 const Image = styled.div((props) => [
@@ -45,7 +45,7 @@ const Link = styled(PrimaryButtonBase).attrs({ as: "a" })`
 
 const Heading = tw(
   SectionHeading
-)`w-full mt-4 font-black text-3xl sm:text-4xl lg:text-5xl text-center leading-tight `;
+)`w-full mt-4 font-black text-2xl sm:text-4xl lg:text-5xl text-center leading-tight `;
 
 const DecoratorBlob1 = tw(
   SvgDecoratorBlob1

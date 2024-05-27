@@ -11,6 +11,14 @@ import RouterPaths from "RouterPaths";
 export default function App() {
   const { hasNotificationSeen, language, languageObject } = useSession();
 
+  const headerLinks = [
+    { url: "/about", text: "About Us" },
+    { url: "/pages/products/loyalty", text: "Rasik Loyalty Platform" },
+    { url: "/pages/products/clm", text: "Contract Labour Management" },
+    //    { url: "/blog", text: "Blog" },
+    { url: "/contact", text: "Contact Us" },
+  ];
+
   return (
     <>
       <GlobalStyles />
@@ -19,7 +27,7 @@ export default function App() {
         {JSON.stringify({ ...languageObject, language, hasNotificationSeen })}
       </p> */}
 
-      <Header />
+      <Header links={headerLinks} />
 
       <RouterPaths />
     </>

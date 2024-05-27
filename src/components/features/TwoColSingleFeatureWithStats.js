@@ -25,8 +25,8 @@ const TextContent = tw.div`lg:py-8`;
 
 const Heading = tw(
   SectionHeading
-)`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
-const Description = tw.p`text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100 mt-4`;
+)`mt-4 font-black text-left px-4 lg:px-0 text-2xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
+const Description = tw.p`text-center px-4 lg:px-0 md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100 mt-4`;
 
 const Statistics = tw.div`mt-6 lg:mt-8 xl:mt-16 flex flex-wrap`;
 const Statistic = tw.div`text-lg sm:text-2xl lg:text-3xl w-1/2 mt-4 lg:mt-10 text-center md:text-left`;

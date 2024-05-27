@@ -162,8 +162,20 @@ export default ({
     </LogoLink>
   );
 
+  const menuLinks = (
+    <NavLinks key={1}>
+      {links.map((link, index) => {
+        return (
+          <NavLinkWrapper onClick={toggleNavbar}>
+            <NavLink to={link.url}>{link.text}</NavLink>
+          </NavLinkWrapper>
+        );
+      })}
+    </NavLinks>
+  );
+
   logoLink = logoLink || defaultLogoLink;
-  links = links || defaultLinks;
+  links = menuLinks || defaultLinks;
 
   const handleCloseNotification = (e) => {
     setNotificationVisible(false);

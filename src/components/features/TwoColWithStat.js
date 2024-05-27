@@ -32,15 +32,15 @@ const NumberContent = styled.span`
 `;
 
 const NumberDecorator = styled.span`
-  ${tw` text-center text-green-700 font-bold text-6xl  `}
+  ${tw` text-center text-green-700 font-bold text-4xl lg:text-6xl  `}
 `;
 
 const Subheading = tw(SubheadingBase)`text-center text-red-500`;
 const Heading = tw(
   SectionHeading
-)`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center leading-tight  `;
+)`mt-4 font-black text-left text-2xl sm:text-4xl lg:text-5xl text-center leading-tight  `;
 
-const Description = tw.p`mx-auto mt-4 text-center text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
+const Description = tw.p`mx-auto mt-4 px-4 lg:px-0 text-center text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
 const ImageText = styled.span`
   ${tw`absolute text-left text-9xl font-black `}
