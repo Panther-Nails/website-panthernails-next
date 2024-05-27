@@ -18,14 +18,14 @@ const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(Column)`md:w-5/12 flex-shrink-0 h-80 md:h-auto `;
 const TextColumn = styled(Column)((props) => [
   tw`md:w-7/12 mt-16 md:mt-0`,
-  props.textOnLeft==='true'
+  props.textOnLeft === "true"
     ? tw`md:mr-12  lg:mr-16 md:order-first`
     : tw`md:ml-12  lg:ml-16 flex-row-reverse`,
 ]);
 
 const Image = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
-  tw`rounded bg-contain bg-no-repeat bg-center h-full `,
+  tw`rounded bg-contain bg-no-repeat bg-center h-full bg-black`,
 ]);
 const TextContent = tw.div`lg:py-8 text-center md:text-left`;
 

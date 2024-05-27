@@ -4,11 +4,14 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
 
-export default () => {
+export default ({ properties }) => {
   const [showConfetti, setShowConfetti] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowConfetti(false), 9000);
+    const timer = setTimeout(
+      () => setShowConfetti(false),
+      properties.confettiTime ? JSON.parse(properties.confettiTime) : 9000
+    );
     return () => clearTimeout(timer);
   }, []);
 

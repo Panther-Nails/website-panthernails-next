@@ -7,8 +7,6 @@ import CookieConsent from "components/controls/CookieConsent";
 import { getProperties } from "services/JsonService";
 import { useSession } from "providers/SessionProvider";
 import FallbackLoading from "helpers/FallbackLoading";
-import Fireworks from "components/controls/Fireworks";
-import tw from "twin.macro";
 
 export const ImportDynamicComponent = (Section, ComponentName) => {
   const Component = lazy(() =>
@@ -185,7 +183,6 @@ export default () => {
             );
           })}
         </Suspense>
-        <Fireworks />
       </>
     );
   } catch (e) {

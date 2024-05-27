@@ -70,10 +70,11 @@ export default ({ children, properties, index, subheading = "Contact Us" }) => {
                   type={label.type}
                   name={label.name}
                   placeholder={label.placeholder}
+                  required
                 />
               ))}
 
-              <Textarea name="message" placeholder={properties.placeholder} />
+              <Textarea name="body" placeholder={properties.placeholder} />
               <SubmitButton type="submit">{properties.buttonText}</SubmitButton>
             </Form>
           </TextContent>
