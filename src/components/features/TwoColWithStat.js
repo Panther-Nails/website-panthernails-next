@@ -24,9 +24,8 @@ const TextColumn = styled(Column)((props) => [
 const TextContent = tw.div` text-center text-2xl font-bold `;
 
 const NumberContent = styled.span`
-  ${tw`  text-center text-8xl font-black`}
-  background-image: url("https://images.unsplash.com/photo-1583248352195-d3a8e766edf2?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-
+  ${tw`text-center text-8xl font-black`}
+  background-image: url("${(props) => props.imageSrc}");
   background-size: cover;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -64,7 +63,6 @@ const StyledText1 = styled.span`
 export default ({ data, children, properties, textOnLeft = false }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
   var statistics = JSON.parse(properties.statistics);
-
   return (
     <Container>
       {/* <Column>
@@ -79,7 +77,9 @@ export default ({ data, children, properties, textOnLeft = false }) => {
       <TwoColumn>
         {statistics.map((stat, index) => (
           <TextColumn textOnLeft={textOnLeft}>
-            <NumberContent>{stat.number}</NumberContent>
+            <NumberContent imageSrc={properties.imageSrc}>
+              {stat.number}
+            </NumberContent>
             <NumberDecorator>{stat.decorator}</NumberDecorator>
             <TextContent>{stat.description}</TextContent>
           </TextColumn>

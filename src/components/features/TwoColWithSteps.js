@@ -17,17 +17,17 @@ import {
 } from "DynamicPage";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 const Container = tw.div`relative `;
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto pb-12 items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
-const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative`;
+const ImageColumn = tw(Column)`md:w-6/12 flex flex-col relative items-center`;
 const TextColumn = styled(Column)((props) => [
   tw`md:w-6/12 mt-16 md:mt-0`,
-  props.textOnLeft
-    ? tw`md:mr-12 lg:mr-16 md:order-first`
-    : tw`md:ml-12 lg:ml-16 md:order-last`,
+  // props.textOnLeft
+  //   ? tw`md:mr-12 lg:mr-16 md:order-first`
+  //   : tw`md:ml-12 lg:ml-16 md:order-last`,
   props.textOnLeft === "true"
-    ? tw`md:mr-12 lg:mr-16 md:order-first`
-    : tw`md:ml-12 lg:ml-16 md:order-last`,
+    ? tw`md:pl-20 md:order-first`
+    : tw`  md:order-last`,
 ]);
 
 const Image = styled.img((props) => [
@@ -78,9 +78,11 @@ export default ({ properties, children }) => {
             <Subheading>{properties.subHeading}</Subheading>
             <Heading>{properties.heading}</Heading>
             <Steps>{ProcessChildComponentsSeparately(children)}</Steps>
-            {properties.buttonText?<PrimaryButton as="a" href={properties.buttonUrl}>
-              {properties.buttonText}
-            </PrimaryButton>:null}
+            {properties.buttonText ? (
+              <PrimaryButton as="a" href={properties.buttonUrl}>
+                {properties.buttonText}
+              </PrimaryButton>
+            ) : null}
           </TextContent>
         </TextColumn>
       </TwoColumn>
