@@ -23,10 +23,10 @@ const CustomerTitle = tw.p`font-medium text-sm`;
 
 const QuotesLeft = tw(
   QuotesLeftIcon
-)`w-8 h-8 lg:w-10 lg:h-10 text-primary-500 absolute top-0 left-0`;
+)`w-4 h-4 lg:w-10 lg:h-10 text-primary-500 absolute top-0 left-0`;
 const QuotesRight = tw(
   QuotesRightIcon
-)`w-8 h-8 lg:w-10 lg:h-10 text-primary-500 absolute bottom-0 right-0`;
+)`w-4 h-4 lg:w-10 lg:h-10 text-primary-500 absolute bottom-0 right-0`;
 
 export default ({ index, properties, children }) => {
   return (

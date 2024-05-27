@@ -16,7 +16,7 @@ const PrimaryBackgroundContainer = tw(
 
 const HeadingContainer = tw.div``;
 const Subheading = tw(SubheadingBase)`text-center text-gray-100 mb-4`;
-const Heading = tw(SectionHeading)`text-white`;
+const Heading = tw(SectionHeading)`text-white font-black `;
 const Description = tw(SectionDescription)`mx-auto text-center text-gray-300`;
 
 const FaqsContainer = tw.div`mt-10 sm:mt-16 w-full flex-1 lg:flex justify-between items-start max-w-screen-lg mx-auto`;
@@ -59,7 +59,7 @@ export default ({ children, properties, index, subheading = "hello" }) => {
           >
             {faq.answer ? <ChevronDownIcon /> : null}
           </QuestionToggleIcon>
-        </Question> 
+        </Question>
         {faq.answer ? (
           <Answer
             variants={{

@@ -6,7 +6,7 @@ const TestimonialContainer = tw.div`mt-16 lg:w-1/3`;
 const Testimonial = tw.div`px-4 text-center max-w-xs mx-auto flex flex-col items-center`;
 const Image = tw.img`w-20 h-20 rounded-full`;
 const Quote = tw.blockquote`mt-5 text-gray-600 font-medium leading-loose`;
-const CustomerName = tw.p`mt-5 text-gray-900 font-semibold uppercase text-sm tracking-wide`;
+const CustomerName = tw.p`text-gray-900 font-semibold uppercase text-sm tracking-wide py-5`;
 
 export default ({ index, properties, children }) => {
   return (

@@ -20,7 +20,7 @@ const Content = tw.div`max-w-screen-xl mx-auto pt-20 lg:py-24`;
 const HeadingInfoContainer = tw.div`flex flex-col items-center`;
 const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w-sm`;
 
-const TestimonialSliderContainer = tw.div`mt-24`;
+const TestimonialSliderContainer = tw.div`mt-8 px-8`;
 const TestimonialSlider = styled(Slider)``;
 
 const SliderControlButtonContainer = styled.div`
@@ -28,7 +28,7 @@ const SliderControlButtonContainer = styled.div`
   button {
     ${tw`text-secondary-500 hover:text-primary-500 focus:outline-none transition duration-300 transform hover:scale-125 transform -translate-y-2/3 md:translate-y-0`}
     svg {
-      ${tw`w-8`}
+      ${tw` w-4 h-4  lg:(w-8 h-8)`}
     }
   }
 `;
@@ -36,21 +36,21 @@ const SliderControlButtonContainer = styled.div`
 const NextArrow = ({ currentSlide, slideCount, ...props }) => (
   <SliderControlButtonContainer tw="right-0">
     <button {...props}>
-      <ArrowRightIcon />
+      <ArrowRightIcon tw=" " />
     </button>
   </SliderControlButtonContainer>
 );
 const PreviousArrow = ({ currentSlide, slideCount, ...props }) => (
   <SliderControlButtonContainer tw="left-0">
     <button {...props}>
-      <ArrowLeftIcon />
+      <ArrowLeftIcon tw=" " />
     </button>
   </SliderControlButtonContainer>
 );
 
 const Heading = tw(
   SectionHeading
-)`mt-4 font-black  text-3xl sm:text-4xl lg:text-5xl text-center leading-tight`;
+)`mt-4 font-black  text-2xl sm:text-4xl lg:text-5xl text-center leading-tight`;
 
 const DecoratorBlob1 = tw(
   SvgDecoratorBlob1

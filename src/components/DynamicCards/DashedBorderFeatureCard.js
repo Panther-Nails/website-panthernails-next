@@ -9,7 +9,7 @@ const Column = styled.div`
 `;
 
 const Card = styled.div`
-  ${tw`flex flex-col mx-auto max-w-xs items-center px-6 py-10 border-2 border-dashed border-primary-500 rounded-lg mt-12 justify-between`}
+  ${tw`flex flex-col mx-auto max-w-xs items-center px-6 py-10 border-2 border-dashed border-primary-500 hocus:bg-primary-100 rounded-lg mt-12 justify-between`}
   .imageContainer {
     ${tw`border-2 border-primary-500 text-center rounded-full p-3 flex-shrink-0 relative`}
     img {
@@ -22,7 +22,7 @@ const Card = styled.div`
   }
 
   .title {
-    ${tw`mt-2 font-bold text-xl leading-none text-primary-500`}
+    ${tw`mt-2 font-bold text-xl leading-none text-primary-500 `}
   }
 
   .description {
