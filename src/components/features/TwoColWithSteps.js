@@ -15,7 +15,7 @@ import {
   ProcessChildComponentsSeparately,
   getChildComponentName,
 } from "DynamicPage";
-
+import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 const Container = tw.div`relative `;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
@@ -53,7 +53,9 @@ const StepNumber = tw.div`font-semibold text-4xl leading-none text-gray-400`;
 const StepText = tw.div`mt-3 md:mt-0 md:ml-6`;
 const StepHeading = tw.h6`leading-none text-xl font-semibold`;
 const StepDescription = tw.p`mt-3 max-w-xs leading-loose text-sm text-gray-600 font-medium`;
-
+const PrimaryButton = tw(
+  PrimaryButtonBase
+)`mt-8 md:mt-10 text-sm inline-block mx-auto md:mx-0`;
 export default ({ properties, children }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
 
@@ -76,6 +78,9 @@ export default ({ properties, children }) => {
             <Subheading>{properties.subHeading}</Subheading>
             <Heading>{properties.heading}</Heading>
             <Steps>{ProcessChildComponentsSeparately(children)}</Steps>
+            {properties.buttonText?<PrimaryButton as="a" href={properties.buttonUrl}>
+              {properties.buttonText}
+            </PrimaryButton>:null}
           </TextContent>
         </TextColumn>
       </TwoColumn>
