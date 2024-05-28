@@ -50,7 +50,7 @@ const PreviousArrow = ({ currentSlide, slideCount, ...props }) => (
 
 const Heading = tw(
   SectionHeading
-)`mt-4 font-black  text-2xl sm:text-4xl lg:text-5xl text-center leading-tight`;
+)`mt-4 font-black  px-4 lg:px-0 text-2xl sm:text-4xl lg:text-5xl text-center leading-tight`;
 
 const DecoratorBlob1 = tw(
   SvgDecoratorBlob1

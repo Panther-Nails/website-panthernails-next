@@ -14,11 +14,11 @@ import { ReactComponent as GithubIcon } from "images/github-icon.svg";
 import { ProcessChildComponentsSeparately } from "DynamicPage";
 
 const HeadingContainer = tw.div``;
-const Heading = tw.h1`text-4xl sm:text-5xl font-black tracking-wide text-center`;
+const Heading = tw.h1`text-4xl sm:text-5xl font-black text-primary-900 tracking-wide text-center`;
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`mx-auto text-center`;
 
-const Cards = tw.div`flex flex-wrap flex-row justify-center sm:max-w-2xl lg:max-w-5xl mx-auto`;
+const Cards = tw.div`flex  flex-wrap flex-row justify-between sm:max-w-2xl lg:max-w-5xl mx-auto`;
 const Card = tw.div`mt-24 w-full sm:w-1/2 lg:w-1/4 flex flex-col items-center`;
 const CardImage = styled.div`
   ${(props) =>

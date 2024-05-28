@@ -15,7 +15,7 @@ const Subheading = tw(SubheadingBase)`text-center mb-3`
 const Description = tw(SectionDescription)`mx-auto text-center`
 
 const Cards = tw.div`flex flex-wrap flex-row justify-center sm:max-w-2xl lg:max-w-5xl mx-auto`
-const Card = tw.div`mt-24 w-full sm:w-1/2 lg:w-1/4 flex flex-col items-center`
+const Card = tw.div`mt-24  w-full sm:w-1/2 lg:w-1/3 flex flex-col items-center`
 const CardImage = styled.div`
   ${props => css`background-image: url("${props.imageSrc}");`}
   ${tw`w-64 h-64 bg-contain bg-center rounded`}
@@ -41,7 +41,7 @@ const CardLinks = styled.div`
 `
 
 export default ({ index, children, properties }) => {
-  var links = JSON.parse(properties.inputs)
+  var links = JSON.parse(properties.inputs ? properties.inputs :null)
   
 
   return (
@@ -50,14 +50,15 @@ export default ({ index, children, properties }) => {
     <CardContent>
       <span className="position">{properties.position}</span>
       <span className="name">{properties.name}</span>
-      <CardLinks>
+
+     {links ? <CardLinks>
         {links.map((link, linkIndex) => (
           <a key={linkIndex} className="link" href={link.url}>
             <LinkedinIcon className="icon" />
            
           </a>
         ))}
-      </CardLinks>
+      </CardLinks> : null}
     </CardContent>
   </Card>
   );
