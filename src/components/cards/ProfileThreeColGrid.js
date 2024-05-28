@@ -11,6 +11,7 @@ import { SectionDescription } from "components/misc/Typography";
 import { ProcessChildComponentsSeparately } from "DynamicPage";
 
 const HeadingContainer = tw.div``;
+
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`mx-auto text-center`;
 

@@ -183,6 +183,7 @@ export default () => {
                 data={component}
                 children={children}
                 properties={properties}
+                key={index}
               />
             );
           })}

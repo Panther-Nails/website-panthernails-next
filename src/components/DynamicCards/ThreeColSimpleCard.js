@@ -4,7 +4,7 @@ import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
 const Column = styled.div`
-  ${tw`lg:w-1/3 max-w-xs`}
+  ${tw`lg:w-full max-w-xs`}
 `;
 
 const Card = styled.a`

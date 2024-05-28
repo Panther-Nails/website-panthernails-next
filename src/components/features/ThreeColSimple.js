@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import {
-  Subheading as SubheadingBase,
-} from "components/misc/Headings.js";
+import { Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
@@ -12,7 +10,7 @@ import { ProcessChildComponentsSeparately } from "DynamicPage";
 
 const Heading = tw(
   SubheadingBase
-)`mt-4 font-black text-3xl sm:text-4xl lg:text-5xl text-center leading-tight`;
+)`mt-4 font-black px-2 lg:px-0 text-3xl sm:text-4xl lg:text-5xl text-center leading-tight`;
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`text-center mx-auto `;
 const ThreeColumnContainer = styled.div`
@@ -27,8 +25,18 @@ const HighlightedHeading = ({ children }) => {
   return (
     <>
       {children.split("`").map((chunk, index) => {
-        if (index % 2 == 0) return <span tw="text-primary-900">{chunk}</span>;
-        else return <span tw="text-primary-500">{chunk}</span>;
+        if (index % 2 == 0)
+          return (
+            <span key={index} tw="text-primary-900">
+              {chunk}
+            </span>
+          );
+        else
+          return (
+            <span key={index} tw="text-primary-500">
+              {chunk}
+            </span>
+          );
       })}
     </>
   );
