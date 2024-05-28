@@ -8,9 +8,6 @@ import {
   Subheading as SubheadingBase,
 } from "components/misc/Headings";
 import { SectionDescription } from "components/misc/Typography";
-import { ReactComponent as TwitterIcon } from "images/twitter-icon.svg";
-import { ReactComponent as LinkedinIcon } from "images/linkedin-icon.svg";
-import { ReactComponent as GithubIcon } from "images/github-icon.svg";
 import { ProcessChildComponentsSeparately } from "DynamicPage";
 
 const HeadingContainer = tw.div``;
@@ -18,6 +15,25 @@ const Heading = tw.h1`text-4xl sm:text-5xl font-black text-primary-900 tracking-
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`mx-auto text-center`;
 
+const Cards = tw.div`flex flex-wrap flex-row justify-center sm:max-w-2xl lg:max-w-5xl mx-auto`;
+
+const Heading = tw(
+  SectionHeading
+)`w-full mt-4 font-black px-4 lg:px-0 text-2xl sm:text-4xl lg:text-5xl text-center leading-tight `;
+
+const HighlightedHeading = ({ children }) => {
+  return (
+    <>
+      {children.split("`").map((chunk, index) => {
+        console.log(chunk);
+        if (index % 2 == 0) return <span tw="text-primary-900">{chunk}</span>;
+        else return <span tw="text-primary-500">{chunk}</span>;
+      })}
+    </>
+  );
+};
+
+export default ({ index, children, properties }) => {
 const Cards = tw.div`flex  flex-wrap flex-row justify-between sm:max-w-2xl lg:max-w-5xl mx-auto`;
 const Card = tw.div`mt-24 w-full sm:w-1/2 lg:w-1/4 flex flex-col items-center`;
 const CardImage = styled.div`
@@ -115,14 +131,16 @@ export default ({
     <Container>
       <ContentWithPaddingXl>
         <HeadingContainer>
-          {properties.subHeading && <Subheading>{properties.subHeading}</Subheading>}
+          {properties.subHeading && (
+            <Subheading>{properties.subHeading}</Subheading>
+          )}
           {properties.heading && <Heading>{properties.heading}</Heading>}
-          {properties.description && <Description>{properties.description}</Description>}
+          {properties.description && (
+            <Description>{properties.description}</Description>
+          )}
         </HeadingContainer>
 
-        <Cards>
-        {ProcessChildComponentsSeparately(children)}
-        </Cards>
+        <Cards>{ProcessChildComponentsSeparately(children)}</Cards>
       </ContentWithPaddingXl>
     </Container>
   );

@@ -15,6 +15,7 @@ const ImageText = styled.span`
   ${tw` -my-16 text-center text-5xl font-black `}
 
   background-image: url("https://images.unsplash.com/photo-1569448634236-16398247262e?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+
   background-size: cover;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
