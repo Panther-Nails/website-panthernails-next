@@ -81,7 +81,7 @@ export const ProcessChildComponentsSeparately = (Components) => {
 
 export default () => {
   const { type, subtype, name } = useParams();
-  const { languageObject } = useSession();
+  const { languageObject, setNotification } = useSession();
   const [data, setData] = useState({});
   const [components, setComponents] = useState([]);
 
@@ -129,6 +129,10 @@ export default () => {
         var newData = response.items[0];
         setData({ ...data, ...newData });
       } else {
+        setNotification(
+          "Please check your internet connection and try again",
+          "info"
+        );
         setData({
           HeadTitle: "Home",
           HeadDescription: "home description\r\n",

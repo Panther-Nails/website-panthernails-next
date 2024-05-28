@@ -72,52 +72,7 @@ const DecoratorBlob2 = tw(
   SvgDotPatternIcon
 )`absolute top-0 right-0 w-32 h-32 mt-16 mr-6 transform translate-x-1/2 -translate-y-1/2 fill-current text-gray-500 opacity-50`;
 
-export default ({
-  index,
-  properties,
-  children,
-  subheading = "",
-  posts = [
-    {
-      imageSrc: "",
-      profileImageSrc: "",
-      title: "",
-      description: "",
-      name: "Adam Cuppy",
-      profile: "Vlogger",
-      url: "",
-      featured: true,
-    },
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      title: "Getting the most out of your vacation",
-      authorName: "Aaron Patterson",
-      url: "https://reddit.com",
-    },
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      title: "Choosing the perfect Safaris in Africa",
-      authorName: "Sam Phipphen",
-      url: "https://reddit.com",
-    },
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      title: "Hiking during the monsoon in Asia",
-      authorName: "Tony Hawk",
-      url: "https://timerse.com",
-    },
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      title: "Must carry items while travelling to Thailand",
-      authorName: "Himali Turn",
-      url: "https://timerse.com",
-    },
-  ],
-}) => {
+export default ({ index, properties, children, subheading = "" }) => {
   return (
     <Container>
       <ContentWithPaddingXl>
@@ -130,28 +85,7 @@ export default ({
         </HeadingContainer>
         <Posts>
           {ProcessChildComponentsSeparately(children)}
-          {/* {posts.map((post, index) => (
-            <PostContainer featured={post.featured} key={index}>
-              <Post className="group" href={post.url}>
-                <PostImage imageSrc={post.postImageSrc} />
-                <PostText>
-                  <PostTitle>{post.title}</PostTitle>
-                  {post.featured && (
-                    <PostDescription>{post.description}</PostDescription>
-                  )}
-                  <AuthorInfo>
-                    {post.featured && <AuthorImage src={post.authorImageSrc} />}
-                    <AuthorTextInfo>
-                      <AuthorName>{post.authorName}</AuthorName>
-                      {post.featured && (
-                        <AuthorProfile>{post.authorProfile}</AuthorProfile>
-                      )}
-                    </AuthorTextInfo>
-                  </AuthorInfo>
-                </PostText>
-              </Post>
-            </PostContainer>
-          ))} */}
+
           <DecoratorBlob1 />
           <DecoratorBlob2 />
         </Posts>

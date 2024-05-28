@@ -7,8 +7,6 @@ import {
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
-import { ReactComponent as BriefcaseIcon } from "feather-icons/dist/icons/briefcase.svg";
-import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sign.svg";
 import TeamIllustrationSrc from "images/team-illustration-2.svg";
 import { ProcessChildComponentsSeparately } from "DynamicPage";
 
@@ -36,18 +34,6 @@ const Heading = tw(
 const Description = tw.p`mt-4 px-6 lg:px-0 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
 const Features = tw.div`mt-8 max-w-sm mx-auto md:mx-0`;
-const Feature = tw.div`mt-8 flex items-start flex-col md:flex-row`;
-
-const FeatureIconContainer = styled.div`
-  ${tw`mx-auto inline-block border border-primary-500 text-center rounded-full p-2 flex-shrink-0`}
-  svg {
-    ${tw`w-5 h-5 text-primary-500`}
-  }
-`;
-
-const FeatureText = tw.div`mt-4 md:mt-0 md:ml-4 text-center md:text-left`;
-const FeatureHeading = tw.div`font-bold text-lg text-primary-500`;
-const FeatureDescription = tw.div`mt-1 text-sm`;
 
 const PrimaryButton = tw(
   PrimaryButtonBase
@@ -74,7 +60,7 @@ export default ({ properties, index, children }) => {
             <Description>{properties.description}</Description>
             <Features>{ProcessChildComponentsSeparately(children)}</Features>
             {properties.buttonText ? (
-              <PrimaryButton as="a" href={properties.buttonUrl}>
+              <PrimaryButton as="a" href={properties.buttonUrl} target="_blank">
                 {properties.buttonText}
               </PrimaryButton>
             ) : (
