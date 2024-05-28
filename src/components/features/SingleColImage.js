@@ -4,10 +4,9 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading } from "components/misc/Headings.js";
 import { Container } from "../misc/Layouts.js";
-
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0 `;
 const Image = styled.img((props) => [
-  tw` mx-auto lg:w-5/6 lg:mx-24`,
+  tw` mx-auto `,
   props.imageRounded && tw`rounded`,
   props.imageBorder && tw`border`,
   props.imageShadow && tw`shadow`,
@@ -23,7 +22,7 @@ const HighlightedHeading = ({ children }) => {
   return (
     <>
       {children.split("`").map((chunk, index) => {
-        if (index % 2 == 0) return <span tw="text-primary-900">{chunk}</span>;
+        if (index % 2 === 0) return <span tw="text-primary-900">{chunk}</span>;
         else return <span tw="text-primary-500">{chunk}</span>;
       })}
     </>
@@ -32,6 +31,9 @@ const HighlightedHeading = ({ children }) => {
 
 export default ({ data, children, properties }) => {
   const isMobile = window.matchMedia("(max-width: 767px)").matches;
+  const handleClick = () => {
+    if (properties.url) window.open(properties.url);
+  };
   return (
     <Container>
       <Column>
@@ -40,6 +42,7 @@ export default ({ data, children, properties }) => {
         </Heading>
         <Description>{properties.description}</Description>
         <Image
+          onClick={handleClick}
           src={
             isMobile ? properties.mobileImageSrc : properties.desktopImageSrc
           }

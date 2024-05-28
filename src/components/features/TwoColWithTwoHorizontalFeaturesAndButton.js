@@ -7,10 +7,7 @@ import {
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
-import TeamIllustrationSrc from "images/team-illustration-2.svg";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
-import { ReactComponent as BriefcaseIcon } from "feather-icons/dist/icons/briefcase.svg";
-import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sign.svg";
 import { ProcessChildComponentsSeparately } from "DynamicPage";
 
 const Container = tw.div`relative`;
@@ -43,23 +40,6 @@ const Heading = tw(
 const Description = tw.p`mt-8 px-6 lg:px-0  text-center  text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
 const Features = tw.div`mx-auto md:mx-0 flex flex-col lg:flex-row max-w-xs lg:max-w-none`;
-const Feature = tw.div`mt-10 lg:mt-8 flex items-center md:items-start flex-col md:mr-8 last:mr-0`;
-
-const FeatureHeadingContainer = tw.div`flex items-center`;
-const FeatureIconContainer = styled.div`
-  ${tw`mx-auto inline-block border border-primary-500 text-primary-500 text-center rounded p-2 flex-shrink-0`}
-  ${(props) => [
-    props.iconRoundedFull && tw`rounded-full`,
-    props.iconFilled && tw`border-0 bg-primary-500 text-gray-100`,
-  ]}
-  svg {
-    ${tw`w-5 h-5`}
-  }
-`;
-const FeatureHeading = tw.div`ml-3 font-bold text-xl`;
-
-const FeatureDescription = tw.div`mt-4 text-center md:text-left text-gray-600 leading-relaxed`;
-
 const PrimaryButton = styled(PrimaryButtonBase)((props) => [
   tw`mt-12 text-sm inline-block mx-auto md:mx-0`,
   props.buttonRounded && tw`rounded-full`,

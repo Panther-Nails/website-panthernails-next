@@ -2,20 +2,6 @@ import React, { useEffect, useState } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
-import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
-import {
-  SectionHeading,
-  Subheading as SubheadingBase,
-} from "components/misc/Headings";
-import { SectionDescription } from "components/misc/Typography";
-import { ReactComponent as TwitterIcon } from "images/twitter-icon.svg";
-import { ReactComponent as LinkedinIcon } from "images/linkedin-icon.svg";
-import { ReactComponent as GithubIcon } from "images/github-icon.svg";
-
-const HeadingContainer = tw.div``;
-const Heading = tw(SectionHeading)``;
-const Subheading = tw(SubheadingBase)`text-center mb-3`;
-const Description = tw(SectionDescription)`mx-auto text-center`;
 
 const Cards = tw.div`flex flex-wrap flex-row justify-center sm:max-w-2xl lg:max-w-5xl mx-auto`;
 const Card = tw.div`mt-24 w-full sm:w-1/2 lg:w-1/4 flex flex-col items-center`;

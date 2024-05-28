@@ -6,15 +6,9 @@ import {
   SectionHeading,
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
-import TeamIllustrationSrc from "images/team-illustration-2.svg";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 // import { ProcessChildComponents } from "DynamicPage";
-import {
-  ImportDynamicComponent,
-  ProcessChildComponents,
-  ProcessChildComponentsSeparately,
-  getChildComponentName,
-} from "DynamicPage";
+import { ProcessChildComponentsSeparately } from "DynamicPage";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 const Container = tw.div`relative `;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto pb-12 items-center`;
@@ -48,11 +42,6 @@ const Heading = tw(
 )`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
 
 const Steps = tw.ul`mt-12`;
-const Step = tw.li`mt-8 flex flex-col md:flex-row items-center md:items-start`;
-const StepNumber = tw.div`font-semibold text-4xl leading-none text-gray-400`;
-const StepText = tw.div`mt-3 md:mt-0 md:ml-6`;
-const StepHeading = tw.h6`leading-none text-xl font-semibold`;
-const StepDescription = tw.p`mt-3 max-w-xs leading-loose text-sm text-gray-600 font-medium`;
 const PrimaryButton = tw(
   PrimaryButtonBase
 )`mt-8 md:mt-10 text-sm inline-block mx-auto md:mx-0`;
