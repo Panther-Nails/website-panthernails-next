@@ -28,8 +28,18 @@ const HighlightedHeading = ({ children }) => {
   return (
     <>
       {children.split("`").map((chunk, index) => {
-        if (index % 2 == 0) return <span tw="text-primary-900">{chunk}</span>;
-        else return <span tw="text-primary-500">{chunk}</span>;
+        if (index % 2 == 0)
+          return (
+            <span key={index} tw="text-primary-900">
+              {chunk}
+            </span>
+          );
+        else
+          return (
+            <span key={index} tw="text-primary-500">
+              {chunk}
+            </span>
+          );
       })}
     </>
   );
@@ -41,9 +51,6 @@ export default ({ properties, children, index }) => {
       <ThreeColumnContainer>
         <Heading>
           <HighlightedHeading>{properties.heading}</HighlightedHeading>
-          <highlightedText>
-            {properties.highlighHeading && properties.highlighHeading}
-          </highlightedText>
         </Heading>
         {ProcessChildComponentsSeparately(children)}
       </ThreeColumnContainer>

@@ -34,10 +34,16 @@ const DecoratorBlob2 = tw(
 )`absolute top-0 right-0 w-80 h-80 transform  translate-x-20 -translate-y-64 text-primary-700 opacity-50`;
 
 const HighlightedText = tw.span`text-primary-500`;
-                         
+
 export default ({ properties }) => {
   return (
-    <Container css={properties.pushDownFooter === "true" && tw`mb-20 lg:mb-24`}>
+    <Container
+      css={
+        properties.pushDownFooter
+          ? properties.pushDownFooter === "true" && tw`mb-20 lg:mb-24`
+          : tw``
+      }
+    >
       <ContentWithPaddingXl tw="py-0">
         <PrimaryBackgroundContainer>
           <Row>

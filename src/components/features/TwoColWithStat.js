@@ -76,7 +76,7 @@ export default ({ data, children, properties, textOnLeft = false }) => {
 
       <TwoColumn>
         {statistics.map((stat, index) => (
-          <TextColumn textOnLeft={textOnLeft}>
+          <TextColumn textOnLeft={textOnLeft} key={index}>
             <NumberContent imageSrc={properties.imageSrc}>
               {stat.number}
             </NumberContent>
