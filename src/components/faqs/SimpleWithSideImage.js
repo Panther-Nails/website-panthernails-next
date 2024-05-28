@@ -45,11 +45,7 @@ const Answer = motion(
 export default ({
   children,
   properties,
-  index,
-  subheading = "",
-  heading = "",
-  description = "",
-  imageSrc = "",
+
   imageContain = false,
   imageShadow = true,
   faqs = null,

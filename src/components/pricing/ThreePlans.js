@@ -50,19 +50,6 @@ background: linear-gradient(135deg, rgba(76,81,191,1) 0%, rgba(102,126,234,1) 10
         ${tw`bg-gray-100 text-primary-500 hocus:bg-gray-300 hocus:text-primary-800`}
     `}
 `;
-
-const PlanHeader = styled.div`
-  ${tw`flex flex-col uppercase leading-relaxed py-8`}
-  .name {
-    ${tw`font-bold text-xl`}
-  }
-  .price {
-    ${tw`font-bold text-4xl sm:text-5xl my-1`}
-  }
-  .duration {
-    ${tw`text-gray-500 font-bold tracking-widest`}
-  }
-`;
 const PlanFeatures = styled.div`
   ${tw`flex flex-col -mx-8 px-8 py-8 border-t-2 border-b-2 flex-1`}
   .feature {
@@ -76,7 +63,6 @@ const PlanFeatures = styled.div`
   }
 `;
 
-const PlanAction = tw.div`px-4 sm:px-8 xl:px-16 py-8`;
 const BuyNowButton = styled(PrimaryButtonBase)`
   ${tw`rounded-full uppercase tracking-wider py-4 w-full text-sm hover:shadow-xl transform hocus:translate-x-px hocus:-translate-y-px focus:shadow-outline`}
 `;

@@ -41,18 +41,9 @@ export default ({
   index,
   properties,
   children,
-  subheading = "Contact Us",
-  heading = (
-    <>
-      Feel free to
-      <wbr /> with us.
-    </>
-  ),
-  description = "",
-  submitButtonText = "Contact Me",
+
   formAction = "#",
   formMethod = "get",
-  textOnLeft = false,
 }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
 

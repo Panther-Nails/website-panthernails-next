@@ -10,7 +10,6 @@ import { ReactComponent as TwitterIcon } from "images/twitter-icon.svg";
 import { ReactComponent as YoutubeIcon } from "images/youtube-icon.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9.svg";
 import { ProcessChildComponentsSeparately } from "DynamicPage";
-import Footermenus from "components/DynamicCards/Footermenus";
 
 const Container = tw.div`relative bg-siteColors-textColor text-gray-100 -mb-8  px-8 py-20 lg:py-24`;
 const Content = tw.div`max-w-screen-xl mx-auto relative z-10 `;
@@ -63,62 +62,6 @@ const DecoratorBlob2 = tw(
 
 export default ({ index, children, properties }) => {
   var sections = JSON.parse(properties.inputs);
-
-  // var footerMenus = [
-  //   {
-  //     title: "Site links",
-  //     children: [
-  //       { title: "Blog", textUrl: "/blog" },
-  //       { title: "About Us", textUrl: "/aboutus" },
-  //       { title: "FAQs", textUrl: "/AboutUs#faq" },
-  //       {
-  //         title: "Support",
-  //         textUrl:
-  //           "mailto:support@oneapp.panthernails.com?subject=Customer Support - Website Visitor&body=I want more details about your products. My email address is:",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     title: "Loyalty Platform",
-  //     children: [
-  //       { title: "Customer Loyalty Platform", textUrl: "#" },
-  //       { title: "Influencer Loyalty Platform", textUrl: "#" },
-  //       { title: "Channel Loyalty Platform", textUrl: "#" },
-  //       { title: "End to End Loyalty Platform", textUrl: "#" },
-  //     ],
-  //   },
-  //   {
-  //     title: "Products",
-  //     children: [
-  //       { title: "Contract Labour Management", textUrl: "#" },
-  //       { title: "Production Management", textUrl: "#" },
-  //       { title: "Human Resource Management", textUrl: "#" },
-  //       { title: "Fixed Asset Management", textUrl: "#" },
-  //     ],
-  //   },
-  //   {
-  //     title: "Legal",
-  //     children: [
-  //       { title: "Privacy Policy", textUrl: "/PrivacyPolicy" },
-  //       { title: "Terms Of Service", textUrl: "/TermsOfService" },
-  //       {
-  //         title: "Sub Processors",
-  //         textUrl:
-  //           "https://panthernails.com/docs/61.01_Panther_Nails_Cloud_Infrastructure_Integrations_And_Sub_Processors_R2202.pdf",
-  //       },
-  //       {
-  //         title: "Data Protection",
-  //         textUrl:
-  //           "https://panthernails.com/docs/61.02_Panther_Nails_Application_Data_Privacy_R2202.pdf",
-  //       },
-  //       {
-  //         title: "SLA",
-  //         textUrl:
-  //           "https://panthernails.com/docs/71.03_Panther_Nails_Service_Level_Agreement_R2202.pdf",
-  //       },
-  //     ],
-  //   },
-  // ];
 
   return (
     <Container>

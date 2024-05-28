@@ -8,6 +8,16 @@ export const SessionProvider = ({ children }) => {
   const [languageObject, setLanguageObject] = useState(Languages[0]);
   const [hasNotificationSeen, setHasNotificationSeen] = useState(false);
 
+  const [notificationText, setNotificationText] = useState("");
+  const [notificationType, setNotificationType] = useState("none");
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  const setNotification = (notificationText, notificationType = "none") => {
+    setNotificationText(notificationText);
+    setNotificationType(notificationType);
+  };
+
   return (
     <SessionContext.Provider
       value={{
@@ -19,6 +29,9 @@ export const SessionProvider = ({ children }) => {
         setHasNotificationSeen,
         languageObject,
         setLanguageObject,
+        notificationText,
+        setNotification,
+        notificationType,
       }}
     >
       {children}
