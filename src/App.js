@@ -7,6 +7,8 @@ import { useSession } from "providers/SessionProvider";
 
 import Header from "components/headers/light";
 import RouterPaths from "RouterPaths";
+import ScrollUpButton from "components/features/ScrollUpButton";
+import DockedButtons from "components/features/DockedButtons";
 
 export default function App() {
   const { hasNotificationSeen, language, languageObject } = useSession();
@@ -28,6 +30,7 @@ export default function App() {
       </p> */}
 
       <Header links={headerLinks} />
+      <ScrollUpButton />
 
       <RouterPaths />
     </>
