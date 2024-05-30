@@ -6,7 +6,6 @@ import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9
 import { ContentWithPaddingXl, Container } from "components/misc/Layouts";
 
 import {
-  getCookie,
   setCookie,
   CookieConsentValue,
   CookieValues,

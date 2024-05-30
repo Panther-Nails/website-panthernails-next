@@ -1,6 +1,5 @@
 import React from "react";
 import tw from "twin.macro";
-import styled from "styled-components";
 import { css } from "styled-components/macro";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import {
@@ -11,6 +10,7 @@ import { SectionDescription } from "components/misc/Typography";
 import { ProcessChildComponentsSeparately } from "DynamicPage";
 
 const HeadingContainer = tw.div``;
+
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`mx-auto text-center`;
 
@@ -25,8 +25,18 @@ const HighlightedHeading = ({ children }) => {
     <>
       {children.split("`").map((chunk, index) => {
         console.log(chunk);
-        if (index % 2 == 0) return <span tw="text-primary-900">{chunk}</span>;
-        else return <span tw="text-primary-500">{chunk}</span>;
+        if (index % 2 === 0)
+          return (
+            <span key={index} tw="text-primary-900">
+              {chunk}
+            </span>
+          );
+        else
+          return (
+            <span key={index} tw="text-primary-500">
+              {chunk}
+            </span>
+          );
       })}
     </>
   );
@@ -40,7 +50,11 @@ export default ({ index, children, properties }) => {
           {properties.subHeading && (
             <Subheading>{properties.subHeading}</Subheading>
           )}
-          {properties.heading && <Heading>{properties.heading}</Heading>}
+          {properties.heading && (
+            <Heading>
+              <HighlightedHeading>{properties.heading}</HighlightedHeading>
+            </Heading>
+          )}
           {properties.description && (
             <Description>{properties.description}</Description>
           )}

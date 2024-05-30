@@ -19,7 +19,7 @@ export default ({ index, properties, children }) => {
       <Column key={index}>
         <Card>
           <Image tw="">
-            <img src={properties.imageSrc}></img>
+            <img src={properties.imageSrc} alt={properties.title}></img>
           </Image>
           <Category>{properties.category}</Category>
           <Title>{properties.title}</Title>

@@ -1,24 +1,19 @@
 import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
-import { css } from "styled-components/macro"; //eslint-disable-line
-import { SectionHeading, Subheading } from "components/misc/Headings.js";
-import { PrimaryLink as PrimaryLinkBase } from "components/misc/Links.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import { ReactComponent as LocationIcon } from "feather-icons/dist/icons/map-pin.svg";
 import { ReactComponent as TimeIcon } from "feather-icons/dist/icons/clock.svg";
-import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
 
 const Column = tw.div`xl:mr-12 xl:last:mr-0`;
 
-
-
-
-const CardColumn = tw(Column)`w-full md:w-1/2 xl:w-3/12 mt-16 xl:mt-0 xl:last:ml-auto`;
+const CardColumn = tw(
+  Column
+)`w-full md:w-1/2 xl:w-3/12 mt-16 xl:mt-0 xl:last:ml-auto`;
 const Card = tw.div`mx-auto xl:mx-0 xl:ml-auto max-w-sm md:max-w-xs lg:max-w-sm xl:max-w-xs`;
-const CardImage = styled.div(props => [
+const CardImage = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
-  tw`h-80 bg-cover bg-center rounded`
+  tw`h-80 bg-cover bg-center rounded`,
 ]);
 
 const CardText = tw.div`mt-4`;
@@ -41,7 +36,6 @@ const CardMetaFeature = styled.div`
 `;
 const CardAction = tw(PrimaryButtonBase)`w-full mt-6`;
 
-
 export default ({ index, children, properties }) => {
   // var Default = JSON.parse(properties.inputs);
   console.log("propertiesfootermanujson", properties);
@@ -50,25 +44,25 @@ export default ({ index, children, properties }) => {
 
   return (
     <CardColumn key={index}>
-              <Card>
-                <CardImage imageSrc={properties.imageSrc} />
-                <CardText>
-                  <CardHeader>
-                    <CardCompany>{properties.company}</CardCompany>
-                    <CardType>{properties.type}</CardType>
-                  </CardHeader>
-                  <CardTitle>{properties.title}</CardTitle>
-                  <CardMeta>
-                    <CardMetaFeature>
-                      <TimeIcon /> {properties.durationText}
-                    </CardMetaFeature>
-                    <CardMetaFeature>
-                      <LocationIcon /> {properties.locationText}
-                    </CardMetaFeature>
-                  </CardMeta>
-                  <CardAction>{properties.cardLinkText}</CardAction>
-                </CardText>
-              </Card>
-            </CardColumn>
+      <Card>
+        <CardImage imageSrc={properties.imageSrc} />
+        <CardText>
+          <CardHeader>
+            <CardCompany>{properties.company}</CardCompany>
+            <CardType>{properties.type}</CardType>
+          </CardHeader>
+          <CardTitle>{properties.title}</CardTitle>
+          <CardMeta>
+            <CardMetaFeature>
+              <TimeIcon /> {properties.durationText}
+            </CardMetaFeature>
+            <CardMetaFeature>
+              <LocationIcon /> {properties.locationText}
+            </CardMetaFeature>
+          </CardMeta>
+          <CardAction>{properties.cardLinkText}</CardAction>
+        </CardText>
+      </Card>
+    </CardColumn>
   );
 };

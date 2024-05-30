@@ -10,7 +10,7 @@ import { ProcessChildComponentsSeparately } from "DynamicPage";
 
 const Heading = tw(
   SubheadingBase
-)`mt-4 font-black text-3xl sm:text-4xl lg:text-5xl text-center leading-tight`;
+)`mt-4 font-black px-2 lg:px-0 text-3xl sm:text-4xl lg:text-5xl text-center leading-tight`;
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`text-center mx-auto `;
 const ThreeColumnContainer = styled.div`

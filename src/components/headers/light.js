@@ -175,7 +175,7 @@ export default ({
     <NavLinks key={1}>
       {links.map((link, index) => {
         return (
-          <NavLinkWrapper onClick={toggleNavbar}>
+          <NavLinkWrapper onClick={toggleNavbar} key={index}>
             <NavLink to={link.url}>{link.text}</NavLink>
           </NavLinkWrapper>
         );

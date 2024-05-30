@@ -170,18 +170,19 @@ export default () => {
               component.Section,
               component.ComponentName
             );
-            {
-              var children = [];
-              if (component.Children) {
-                children = component.Children;
-              }
-              var properties = getProperties(component);
+
+            var children = [];
+            if (component.Children) {
+              children = component.Children;
             }
+            var properties = getProperties(component);
+
             return (
               <Component
                 data={component}
                 children={children}
                 properties={properties}
+                key={index}
               />
             );
           })}
