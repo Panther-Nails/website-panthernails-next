@@ -40,7 +40,6 @@ export default ({ properties, children, index }) => {
       <ThreeColumnContainer>
         <Heading>
           <HighlightedHeading>{properties.heading}</HighlightedHeading>
-          {properties.highlighHeading && properties.highlighHeading}
         </Heading>
         {ProcessChildComponentsSeparately(children)}
       </ThreeColumnContainer>

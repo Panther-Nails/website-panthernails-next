@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import {
-  Subheading as SubheadingBase,
-} from "components/misc/Headings.js";
+import { Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
@@ -27,7 +25,7 @@ const HighlightedHeading = ({ children }) => {
   return (
     <>
       {children.split("`").map((chunk, index) => {
-        if (index % 2 == 0) return <span tw="text-primary-900">{chunk}</span>;
+        if (index % 2 === 0) return <span tw="text-primary-900">{chunk}</span>;
         else return <span tw="text-primary-500">{chunk}</span>;
       })}
     </>
