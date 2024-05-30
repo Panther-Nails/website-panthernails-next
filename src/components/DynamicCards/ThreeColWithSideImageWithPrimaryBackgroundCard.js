@@ -4,8 +4,6 @@ import tw from "twin.macro";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
 
-import defaultCardImage from "images/shield-icon.svg";
-
 const Column = styled.div`
   ${tw`md:w-1/2 lg:w-1/3 max-w-xs`}
 `;

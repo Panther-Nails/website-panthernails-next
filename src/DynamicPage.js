@@ -1,6 +1,5 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
 import { useParams } from "react-router-dom";
-import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { ExecuteQuery } from "services/APIService";
 import GetStarted from "components/cta/GetStarted";
 import CookieConsent from "components/controls/CookieConsent";
@@ -171,13 +170,13 @@ export default () => {
               component.Section,
               component.ComponentName
             );
-            {
-              var children = [];
-              if (component.Children) {
-                children = component.Children;
-              }
-              var properties = getProperties(component);
+
+            var children = [];
+            if (component.Children) {
+              children = component.Children;
             }
+            var properties = getProperties(component);
+
             return (
               <Component
                 data={component}

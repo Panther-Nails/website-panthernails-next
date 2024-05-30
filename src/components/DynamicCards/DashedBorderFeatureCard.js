@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
-import { css } from "styled-components/macro";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 
 const Column = styled.div`

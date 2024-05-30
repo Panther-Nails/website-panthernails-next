@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 const TestimonialContainer = tw.div`mt-16 lg:w-1/3`;
