@@ -2,14 +2,13 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { SectionHeading } from "components/misc/Headings.js";
+import { HighlightedHeading } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { ReactComponent as SvgDecoratorBlob } from "images/svg-decorator-blob-6.svg";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
 
 const HeaderContainer = tw.div`mt-10 w-full flex flex-col items-center`;
-const Heading = tw(SectionHeading)`w-full`;
 const Description = tw(SectionDescription)`w-full text-center`;
 
 const PlansContainer = tw.div`flex justify-between flex-col lg:flex-row items-center relative gap-3`;
@@ -106,7 +105,7 @@ export default ({
     <Container>
       <ContentWithPaddingXl>
         <HeaderContainer>
-          <Heading>{properties.heading}</Heading>
+          <HighlightedHeading>{properties.heading}</HighlightedHeading>
           <Description>{properties.description}</Description>
         </HeaderContainer>
         <PlansContainer>

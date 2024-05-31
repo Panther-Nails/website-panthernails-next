@@ -6,6 +6,7 @@ import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import {
   SectionHeading,
   Subheading as SubheadingBase,
+  HighlightedHeading,
 } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { ReactComponent as ChevronDownIcon } from "feather-icons/dist/icons/chevron-down.svg";
@@ -98,7 +99,9 @@ export default ({ children, properties, index, subheading = "hello" }) => {
           {properties.subheading && (
             <Subheading>{properties.subheading}</Subheading>
           )}
-          <Heading>{properties.heading}</Heading>
+          <HighlightedHeading tw="text-white">
+            {properties.heading}
+          </HighlightedHeading>
           <Description>{properties.description}</Description>
         </HeadingContainer>
         <FaqsContainer>

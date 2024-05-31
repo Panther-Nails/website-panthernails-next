@@ -7,7 +7,6 @@ import { css } from "styled-components/macro";
 import ReactModalAdapter from "../../helpers/ReactModalAdapter.js";
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
 
-import { ReactComponent as PlayIcon } from "feather-icons/dist/icons/play-circle.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/dot-pattern.svg";
@@ -24,21 +23,9 @@ const Paragraph = tw.p`my-5 lg:my-8 text-sm lg:text-base font-medium text-gray-6
 
 const Actions = tw.div`flex flex-col items-center sm:flex-row justify-center lg:justify-start mt-8`;
 const PrimaryButton = tw.a`font-bold px-8 lg:px-10 py-3 rounded bg-primary-500 text-gray-100 hocus:bg-primary-700 focus:shadow-outline focus:outline-none transition duration-300`;
-const WatchVideoButton = styled.button`
-  ${tw`mt-4 sm:mt-0 sm:ml-8 flex items-center text-secondary-300 transition duration-300 hocus:text-primary-400 focus:outline-none`}
-  .playIcon {
-    ${tw`stroke-1 w-12 h-12`}
-  }
-  .playText {
-    ${tw`ml-2 font-medium`}
-  }
-`;
 
 export const NavLinks = tw.div`inline-block`;
 
-/* hocus: stands for "on hover or focus"
- * hocus:bg-primary-700 will apply the bg-primary-700 class on hover or focus
- */
 export const NavLink = tw.a`
   text-lg my-2 lg:text-sm lg:mx-6 lg:my-0
   font-semibold tracking-wide transition duration-300
@@ -90,14 +77,6 @@ export default ({
               <PrimaryButton href={properties.buttonUrl} target="_blank">
                 {properties.buttonText}
               </PrimaryButton>
-              {/* <WatchVideoButton onClick={toggleModal}>
-                <span className="playIconContainer">
-                  <PlayIcon className="playIcon" />
-                </span>
-                <span className="playText">
-                  {properties.watchVideoButtonText}
-                </span>
-              </WatchVideoButton> */}
             </Actions>
           </LeftColumn>
           <RightColumn>

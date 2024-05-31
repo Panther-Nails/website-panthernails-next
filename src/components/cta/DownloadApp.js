@@ -57,14 +57,14 @@ export default ({
   link2IconSrc = googlePlayIconImageSrc,
 }) => {
   return (
-    <Container css={properties.pushDownFooter === "true" && tw`mb-20 lg:mb-24`}>
+    <Container>
       <Content>
         <Row>
           <TextContainer>
             {properties.subheading && (
               <Subheading>{properties.subheading}</Subheading>
             )}
-            <Heading>{properties.heading}</Heading>
+            <Heading tw="text-white">{properties.heading}</Heading>
             <LinksContainer>
               <Link href={properties.leftButtonUrl} target="_black">
                 <img src={link1IconSrc} alt="" />

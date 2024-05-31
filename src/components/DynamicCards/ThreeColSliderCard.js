@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-import Slider from "react-slick";
+import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
-import { SectionHeading } from "components/misc/Headings";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons";
 import { ReactComponent as PriceIcon } from "feather-icons/dist/icons/dollar-sign.svg";
 import { ReactComponent as StarIcon } from "feather-icons/dist/icons/star.svg";
@@ -48,8 +46,6 @@ const KnowMoreLink = styled.a`
   }
 `;
 export default ({ index, properties, children }) => {
-  //   console.log("properties", properties);
-  //   console.log("children alternate", children);
   return (
     <Card key={index}>
       <CardImage imageSrc={properties.imageSrc} />

@@ -1,9 +1,9 @@
-import React, { Children, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
-import { SectionHeading } from "components/misc/Headings.js";
+import { HighlightedHeading } from "components/misc/Headings.js";
 
 import { ReactComponent as SvgDecoratorBlob3 } from "../../images/svg-decorator-blob-3.svg";
 
@@ -19,38 +19,12 @@ const DecoratorBlob = styled(SvgDecoratorBlob3)`
   ${tw`pointer-events-none absolute right-0 bottom-0 w-64 opacity-25 transform translate-x-32 translate-y-48 `}
 `;
 
-const Heading = tw(
-  SectionHeading
-)`w-full mt-4 font-black px-4 lg:px-0 text-2xl sm:text-4xl lg:text-5xl text-center leading-tight `;
-
-const HighlightedHeading = ({ children }) => {
-  return (
-    <>
-      {children.split("`").map((chunk, index) => {
-        if (index % 2 == 0)
-          return (
-            <span key={index} tw="text-primary-900">
-              {chunk}
-            </span>
-          );
-        else
-          return (
-            <span key={index} tw="text-primary-500">
-              {chunk}
-            </span>
-          );
-      })}
-    </>
-  );
-};
-
 export default ({ properties, children, index }) => {
   return (
     <Container>
       <ThreeColumnContainer>
-        <Heading>
-          <HighlightedHeading>{properties.heading}</HighlightedHeading>
-        </Heading>
+        <HighlightedHeading>{properties.heading}</HighlightedHeading>
+
         {ProcessChildComponentsSeparately(children)}
       </ThreeColumnContainer>
       <DecoratorBlob />

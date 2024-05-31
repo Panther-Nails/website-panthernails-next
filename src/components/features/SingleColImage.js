@@ -2,7 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { SectionHeading } from "components/misc/Headings.js";
+import { HighlightedHeading } from "components/misc/Headings.js";
 import { Container } from "../misc/Layouts.js";
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0 `;
 const Image = styled.img((props) => [
@@ -12,22 +12,7 @@ const Image = styled.img((props) => [
   props.imageShadow && tw`shadow`,
 ]);
 
-const Heading = tw(
-  SectionHeading
-)`mt-4 font-black px-4 lg:px-0 text-left text-2xl sm:text-4xl lg:text-5xl text-center leading-tight  `;
-
 const Description = tw.p`mx-auto mt-4 text-center text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
-
-const HighlightedHeading = ({ children }) => {
-  return (
-    <>
-      {children.split("`").map((chunk, index) => {
-        if (index % 2 === 0) return <span tw="text-primary-900">{chunk}</span>;
-        else return <span tw="text-primary-500">{chunk}</span>;
-      })}
-    </>
-  );
-};
 
 export default ({ data, children, properties }) => {
   const isMobile = window.matchMedia("(max-width: 767px)").matches;
@@ -37,9 +22,8 @@ export default ({ data, children, properties }) => {
   return (
     <Container>
       <Column>
-        <Heading>
-          <HighlightedHeading>{properties.heading}</HighlightedHeading>
-        </Heading>
+        <HighlightedHeading>{properties.heading}</HighlightedHeading>
+
         <Description>{properties.description}</Description>
         <Image
           onClick={handleClick}

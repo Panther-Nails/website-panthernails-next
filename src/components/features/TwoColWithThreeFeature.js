@@ -2,16 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import {
-  SectionHeading,
-  Subheading as SubheadingBase,
-} from "components/misc/Headings.js";
+import { SectionHeading } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
-import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
+import { Container } from "components/misc/Layouts.js";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
-import SupportIconImage from "images/support-icon.svg";
-import ShieldIconImage from "images/shield-icon.svg";
-import CustomizeIconImage from "images/customize-icon.svg";
 import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
 
 const Description = tw(SectionDescription)`text-center mx-auto`;
@@ -64,31 +58,7 @@ export default ({
   properties,
   children,
   index,
-  heading = "heading",
-  subheading = "SubHeading",
-  description = "Description",
 
-  //   inputs = [
-  //     {
-  //       imageSrc: ShieldIconImage,
-  //       title: "Secure",
-  //       description:
-  //         "We strictly only deal with vendors that provide top notch security.",
-  //       url: "https://timerse.com",
-  //     },
-  //     {
-  //       imageSrc: SupportIconImage,
-  //       title: "24/7 Support",
-  //       description: "Lorem ipsum donor amet siti ceali placeholder text",
-  //       url: "https://google.com",
-  //     },
-  //     {
-  //       imageSrc: CustomizeIconImage,
-  //       title: "Customizable",
-  //       description: "Lorem ipsum donor amet siti ceali placeholder text",
-  //       url: "https://reddit.com",
-  //     },
-  //   ],
   linkText = "Learn More",
 
   imageContainerCss = null,

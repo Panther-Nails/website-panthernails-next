@@ -46,7 +46,12 @@ export default ({ plans = null, properties, children, index }) => {
               </span>
               {plan.features.map((feature, index) => (
                 <li className="feature" key={index}>
-                  <a href={feature.link} className="text" target="_blank">
+                  <a
+                    href={feature.link}
+                    className="text"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     {feature.name}
                   </a>
                 </li>

@@ -32,10 +32,7 @@ export default ({ index, properties, children }) => {
           {properties.subheading && (
             <Subheading>{properties.subheading}</Subheading>
           )}
-          <Heading>
-            {properties.heading}{" "}
-            <span tw="text-primary-500">{properties.hightlightHeading}</span>
-          </Heading>
+          <Heading>{properties.heading} </Heading>
           <HeadingDescription>{properties.description}</HeadingDescription>
         </HeadingInfoContainer>
         <ThreeColumn>{ProcessChildComponentsSeparately(children)}</ThreeColumn>

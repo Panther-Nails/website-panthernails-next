@@ -34,7 +34,7 @@ const DecoratorBlob2 = tw(
 )`absolute top-0 right-0 w-80 h-80 transform  translate-x-20 -translate-y-64 text-purple-900 opacity-15`;
 export default ({ children, properties, index }) => {
   return (
-    <Container css={properties.pushDownFooter === "true" && tw`mb-20 lg:mb-24`}>
+    <Container>
       <ContentWithPaddingXl tw="py-0">
         <PrimaryBackgroundContainer>
           <Row>

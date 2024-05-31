@@ -7,8 +7,6 @@ import { css } from "styled-components/macro";
 import Header from "../headers/light.js";
 
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
-import DesignIllustration from "../../images/design-illustration-2.svg";
-import CustomersLogoStripImage from "../../images/customers-logo-strip.png";
 
 const Container = tw.div`relative`;
 const Content = tw.div`mt-24 lg:mt-24 lg:mb-10 flex flex-col sm:items-center lg:items-stretch text-center`;
@@ -23,10 +21,7 @@ const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
 
 export default ({
   heading = <></>,
-  description = (
-    <>      
-    </>
-  ),
+  description = <></>,
   roundedHeaderButton,
 }) => {
   return (
@@ -34,12 +29,8 @@ export default ({
       <Header roundedHeaderButton={roundedHeaderButton} />
       <Container>
         <Content>
-          <Heading>
-            {heading}
-          </Heading>
-          <Paragraph>
-            {description}
-          </Paragraph>
+          <Heading>{heading}</Heading>
+          <Paragraph>{description}</Paragraph>
         </Content>
         <DecoratorBlob1 />
       </Container>

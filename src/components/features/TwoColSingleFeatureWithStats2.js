@@ -3,11 +3,10 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import {
-  SectionHeading,
   Subheading as SubheadingBase,
+  HighlightedHeading,
 } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
-import StatsIllustrationSrc from "images/stats-illustration.svg";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 
 const Container = tw.div`relative`;
@@ -30,9 +29,6 @@ const Image = styled.div((props) => [
 const TextContent = tw.div`lg:py-8 text-center md:text-left`;
 
 const Subheading = tw(SubheadingBase)`text-center md:text-left`;
-const Heading = tw(
-  SectionHeading
-)`mt-4 font-black text-left text-2xl px-4 lg:px-0 sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
 const Description = tw.p`mt-4 px-4 lg:px-0 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
 const Statistics = tw.div`flex flex-col items-center sm:block text-center md:text-left mt-4`;
@@ -80,10 +76,7 @@ export default ({
             {properties.subheading && (
               <Subheading>{properties.subheading}</Subheading>
             )}
-            <Heading>
-              {properties.heading}
-              <span tw="text-primary-500"> {properties.highlighHeading}</span>
-            </Heading>
+            <HighlightedHeading>{properties.heading}</HighlightedHeading>
             <Description>{properties.description}</Description>
             <Statistics>
               {statistics.map((statistic, index) => (
