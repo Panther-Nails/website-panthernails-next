@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import {
-  SectionHeading as HeadingTitle,
-  SectionHeading,
-} from "../misc/Headings.js";
+import { HighlightedHeading } from "../misc/Headings.js";
 import { ReactComponent as ArrowLeftIcon } from "../../images/arrow-left-2-icon.svg";
 import { ReactComponent as ArrowRightIcon } from "../../images/arrow-right-2-icon.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-4.svg";
@@ -48,10 +45,6 @@ const PreviousArrow = ({ currentSlide, slideCount, ...props }) => (
   </SliderControlButtonContainer>
 );
 
-const Heading = tw(
-  SectionHeading
-)`mt-4 font-black  px-4 lg:px-0 text-2xl sm:text-4xl lg:text-5xl text-center leading-tight`;
-
 const DecoratorBlob1 = tw(
   SvgDecoratorBlob1
 )`absolute w-32 top-0 left-0 -z-10 text-primary-500 opacity-25 transform -translate-x-full`;
@@ -64,7 +57,7 @@ export default ({ index, properties, children }) => {
     <Container>
       <Content>
         <HeadingInfoContainer>
-          <Heading>{properties.heading}</Heading>
+          <HighlightedHeading>{properties.heading}</HighlightedHeading>
           <HeadingDescription></HeadingDescription>
         </HeadingInfoContainer>
         <TestimonialSliderContainer>

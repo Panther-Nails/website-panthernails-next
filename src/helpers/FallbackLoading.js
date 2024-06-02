@@ -27,7 +27,7 @@ const Notification = tw.span`inline-block my-4 pl-3 py-1 text-gray-100  font-med
 
 const PrimaryAction = tw.button`px-8 py-3 mt-10 text-sm sm:text-base sm:mt-16 sm:px-8 sm:py-4 bg-gray-100 text-primary-500 font-bold rounded shadow transition duration-300 hocus:bg-primary-500 hocus:text-gray-100 focus:shadow-outline`;
 
-export default ({}) => {
+export default () => {
   return (
     <Container tw="bg-white relative sticky p-12">
       <HeroContainer tw="rounded-lg ">

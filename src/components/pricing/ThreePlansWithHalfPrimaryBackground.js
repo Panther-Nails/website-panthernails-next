@@ -1,18 +1,16 @@
 import React from "react";
 import tw from "twin.macro";
-import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import {
   SectionHeading,
   Subheading as SubheadingBase,
+  HighlightedHeading,
 } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
-import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import {
   Container as ContainerBase,
   ContentWithPaddingXl as ContentBase,
 } from "components/misc/Layouts.js";
-import { ReactComponent as CheckboxIcon } from "images/checkbox-circle.svg";
 import { ProcessChildComponentsSeparately } from "DynamicPage";
 
 const Container = tw(ContainerBase)`bg-primary-900 text-gray-100 -mx-8 px-8`;
@@ -98,7 +96,9 @@ export default ({
           {properties.subheading && (
             <Subheading>{properties.subheading}</Subheading>
           )}
-          <Heading>{properties.heading}</Heading>
+          <HighlightedHeading tw="text-white">
+            {properties.heading}
+          </HighlightedHeading>
           {properties.description && (
             <Description>{properties.description}</Description>
           )}

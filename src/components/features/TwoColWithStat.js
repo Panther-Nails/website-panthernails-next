@@ -3,10 +3,10 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import {
-  SectionHeading,
   Subheading as SubheadingBase,
+  HighlightedHeading,
 } from "components/misc/Headings.js";
-import { Container, StyledText } from "../misc/Layouts.js";
+import { Container } from "../misc/Layouts.js";
 
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto   items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0 lg:py-40`;
@@ -34,12 +34,8 @@ const NumberDecorator = styled.span`
 `;
 
 const Subheading = tw(SubheadingBase)`text-center text-red-500`;
-const Heading = tw(
-  SectionHeading
-)`mt-4 font-black px-4 lg:px-0 text-left text-2xl sm:text-4xl lg:text-5xl text-center leading-tight  `;
 
 const Description = tw.p`mx-auto mt-4 px-4 lg:px-0 text-center text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
-
 
 export default ({ data, children, properties, textOnLeft = false }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
@@ -47,7 +43,7 @@ export default ({ data, children, properties, textOnLeft = false }) => {
   return (
     <Container>
       <Subheading>{properties.subheading}</Subheading>
-      <Heading>{properties.heading}</Heading>
+      <HighlightedHeading>{properties.heading}</HighlightedHeading>
       <Description>{properties.description}</Description>
       <TwoColumn>
         {statistics.map((stat, index) => (

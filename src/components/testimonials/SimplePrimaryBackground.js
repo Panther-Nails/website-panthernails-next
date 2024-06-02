@@ -36,7 +36,6 @@ const TestimonialsSlider = styled(Slider)`
 
 export default ({ children, properties, index }) => {
   const [sliderRef, setSliderRef] = useState(null);
-
   return (
     <PrimaryBackgroundContainer>
       <ContentWithPaddingXl>

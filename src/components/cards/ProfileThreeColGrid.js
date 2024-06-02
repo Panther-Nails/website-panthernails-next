@@ -1,6 +1,6 @@
 import React from "react";
 import tw from "twin.macro";
-import { css } from "styled-components/macro";
+import { css } from "styled-components/macro"; //eslint-disable-line
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import {
   SectionHeading,

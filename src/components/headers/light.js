@@ -95,7 +95,6 @@ const backgroundColor = {
 const LanguageText = styled.div`font-bold hover:font-black`;
 
 export default ({
-  roundedHeaderButton = false,
   logoLink,
   className,
   collapseBreakpointClass = "lg",
@@ -104,12 +103,7 @@ export default ({
   const {
     hasNotificationSeen,
     setHasNotificationSeen,
-    theme,
-    setTheme,
-    language,
-    setLanguage,
-    languageObject,
-    setLanguageObject,
+
     notificationText,
     notificationType,
   } = useSession();
@@ -145,19 +139,6 @@ export default ({
       <NavLinkWrapper>
         <NavLink to="/contact">Contact Us</NavLink>
       </NavLinkWrapper>
-    </NavLinks>,
-  ];
-
-  const siteOptions = [
-    <NavLinks key={2}>
-      {SiteOptions(
-        theme,
-        setTheme,
-        language,
-        setLanguage,
-        languageObject,
-        setLanguageObject
-      )}
     </NavLinks>,
   ];
 
@@ -280,8 +261,6 @@ export function useAnimatedSiteOptionsToggler() {
 }
 
 const SiteOptions = (
-  theme,
-  setTheme,
   language,
   setLanguage,
   languageObject,
