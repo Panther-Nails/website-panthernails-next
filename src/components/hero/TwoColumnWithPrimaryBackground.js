@@ -1,12 +1,7 @@
 import React from "react";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import HeaderBase, {
-  LogoLink as LogoLinkBase,
-  NavLinks,
-  NavLink as NavLinkBase,
-  PrimaryLink as PrimaryLinkBase,
-} from "../headers/light.js";
+
 import {
   Container as ContainerBase,
   ContentWithVerticalPadding,
@@ -15,19 +10,9 @@ import {
 import { SectionHeading } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
-import logoImageSrc from "images/logo-light.svg";
 import serverIllustrationImageSrc from "images/server-illustration-2.svg";
 
 const PrimaryBackgroundContainer = tw.div`-mx-8 px-8 bg-primary-900 text-gray-100`;
-const Header = tw(HeaderBase)`max-w-none -mt-8 py-8 -mx-8 px-8`;
-const NavLink = tw(
-  NavLinkBase
-)`lg:text-gray-100 lg:hocus:text-gray-300 lg:hocus:border-gray-100`;
-const LogoLink = tw(LogoLinkBase)`text-gray-100 hocus:text-gray-300`;
-const PrimaryLink = tw(
-  PrimaryLinkBase
-)`shadow-raised lg:bg-primary-400 lg:hocus:bg-primary-500`;
-
 const Container = tw(ContainerBase)``;
 const Row = tw.div`flex items-center flex-col lg:flex-row`;
 const Column = tw.div`lg:w-1/2`;

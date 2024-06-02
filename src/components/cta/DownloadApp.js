@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import mockupImageSrc from "images/app-mockup.png";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9.svg";
 import {
   ContentWithPaddingXl,
@@ -58,14 +57,14 @@ export default ({
   link2IconSrc = googlePlayIconImageSrc,
 }) => {
   return (
-    <Container css={properties.pushDownFooter === "true" && tw`mb-20 lg:mb-24`}>
+    <Container>
       <Content>
         <Row>
           <TextContainer>
             {properties.subheading && (
               <Subheading>{properties.subheading}</Subheading>
             )}
-            <Heading>{properties.heading}</Heading>
+            <Heading tw="text-white">{properties.heading}</Heading>
             <LinksContainer>
               <Link href={properties.leftButtonUrl} target="_black">
                 <img src={link1IconSrc} alt="" />

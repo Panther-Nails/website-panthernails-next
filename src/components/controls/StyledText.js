@@ -2,14 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import {
-  SectionHeading,
-  Subheading as SubheadingBase,
-} from "components/misc/Headings.js";
-import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
-import TeamIllustrationSrc from "images/team-illustration-2.svg";
-import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
-import { Container, StyledText } from "../misc/Layouts.js";
+import { Container } from "../misc/Layouts.js";
 
 const ImageText = styled.span`
   ${tw` -my-16 text-center text-5xl font-black `}
@@ -21,7 +14,7 @@ const ImageText = styled.span`
   -webkit-text-fill-color: transparent;
 `;
 
-const StyledText1 = styled.span`
+const StyledText = styled.span`
   ${tw` -my-16 text-center text-5xl font-black `}
 
   background-image: linear-gradient(to right, #00000000, #1e90ffff);
@@ -36,7 +29,7 @@ export default ({ text = "Our Expertise", textOnLeft = true }) => {
   return (
     <Container>
       <ImageText css={tw`absolute`}> {text} </ImageText>
-      <StyledText1 css={tw`absolute`}> {text} </StyledText1>
+      <StyledText css={tw`absolute`}> {text} </StyledText>
     </Container>
   );
 };

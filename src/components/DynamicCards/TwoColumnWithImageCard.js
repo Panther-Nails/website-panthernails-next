@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import Slider from "react-slick";
+import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line

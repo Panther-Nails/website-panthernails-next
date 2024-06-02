@@ -6,7 +6,6 @@ import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9
 import { ContentWithPaddingXl, Container } from "components/misc/Layouts";
 
 import {
-  getCookie,
   setCookie,
   CookieConsentValue,
   CookieValues,
@@ -52,7 +51,6 @@ export default ({
   ),
   primaryLinkText = "Accept",
   secondaryLinkText = "Reject",
-  pushDownFooter = true,
   backgroundColor = tw`bg-gray-100`,
   textCss = tw`text-white`,
   containerBg = tw``,
@@ -67,7 +65,6 @@ export default ({
       }}
     >
       <Container css={tw`bg-transparent`}>
-        {/* && pushDownFooter && tw`mb-20 lg:mb-24` */}
         <ContentWithPaddingXl>
           <PrimaryBackgroundContainer css={backgroundColor}>
             <Row>

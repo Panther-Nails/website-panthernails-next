@@ -1,10 +1,6 @@
 import React from "react";
 import tw from "twin.macro";
-import styled from "styled-components";
-import {
-  SectionHeading as HeadingTitle,
-  SectionHeading,
-} from "../misc/Headings.js";
+import { SectionHeading } from "../misc/Headings.js";
 import { ProcessChildComponentsSeparately } from "DynamicPage.js";
 
 const Container = tw.div`relative`;

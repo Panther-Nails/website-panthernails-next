@@ -12,7 +12,9 @@ const Container = tw.div`relative bg-gray-200 -mx-8 -mb-8 px-8`;
 const FiveColumns = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20 flex flex-wrap justify-between`;
 
 const Column = tw.div`md:w-1/5`;
-const WideColumn = tw(Column)`text-center md:text-left w-full md:w-2/5 mb-10 md:mb-0`;
+const WideColumn = tw(
+  Column
+)`text-center md:text-left w-full md:w-2/5 mb-10 md:mb-0`;
 
 const ColumnHeading = tw.h5`font-bold`;
 
@@ -22,7 +24,6 @@ const Link = tw.a`border-b-2 border-transparent hocus:text-primary-500 hocus:bor
 
 const LogoContainer = tw.div`flex items-center justify-center md:justify-start`;
 const LogoImg = tw.img`w-48`;
-const LogoText = tw.h5`ml-2 text-xl font-black text-primary-500`;
 
 const CompanyDescription = tw.p`mt-4 max-w-xs font-medium text-sm mx-auto md:mx-0 md:mr-4 `;
 
@@ -41,10 +42,10 @@ export default () => {
         <WideColumn>
           <LogoContainer>
             <LogoImg src={LogoImage} />
-            
           </LogoContainer>
           <CompanyDescription>
-            Treact is an Internet Technology company providing design resources such as website templates and themes.
+            Treact is an Internet Technology company providing design resources
+            such as website templates and themes.
           </CompanyDescription>
           <SocialLinksContainer>
             <SocialLink href="https://facebook.com">

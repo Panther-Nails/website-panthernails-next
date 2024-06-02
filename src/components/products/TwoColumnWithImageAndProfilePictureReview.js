@@ -93,8 +93,6 @@ export default ({
    * You can modify the products shown by modifying the array below or passing in the products prop above
    * You can add or remove objects from the array as you need.
    */
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const toggleModal = () => setModalIsOpen(!modalIsOpen);
 
   const defaultProducts = [
     {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
@@ -8,6 +8,7 @@ import {
 } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import EmailIllustrationSrc from "images/email-illustration.svg";
+import { ExecuteFile } from "services/APIService";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto pb-20 md:pb-24`;
@@ -41,6 +42,47 @@ const Textarea = styled(Input).attrs({ as: "textarea" })`
 const SubmitButton = tw(PrimaryButtonBase)`inline-block mt-8`;
 
 export default ({ children, properties, index, subheading = "Contact Us" }) => {
+  const [formData, setFormData] = useState({});
+
+  const [subjectContent, setSubjectContent] = useState("");
+  const [bodyContent, setBodyContent] = useState("");
+
+  const handleChange = (event) => {
+    event.preventDefault();
+    const name = event.target.name;
+    const value = event.target.value;
+    setFormData((data) => ({ ...data, [name]: value }));
+    var today = new Date();
+
+    console.log(today.toString());
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    var today = new Date();
+    var timestamp = `${today.getFullYear()}${today.getMonth()}${today.getDay()}${today.getHours()}${today.getMinutes()}${today.getSeconds()}`;
+    var formJson = JSON.stringify({ ...formData, timestamp: timestamp });
+
+    console.log(today.getMonth());
+
+    var now = Date.now();
+    var serverFilePath = `F:\\File Server\\WSM\\${
+      properties.enquiryFolder ?? "websiteEnquiry"
+    }\\${timestamp}_Enquriy.json`;
+
+    console.log(serverFilePath);
+
+    ExecuteFile({
+      ActionName: "WriteFile",
+      ParameterJSON: JSON.stringify({
+        ServerFilePath: serverFilePath,
+        FileContentInBase64String: btoa(formJson),
+      }),
+    });
+    alert("Thank you for showing interest.");
+  };
+
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
   var inputs = JSON.parse(properties.inputs);
   return (
@@ -70,12 +112,23 @@ export default ({ children, properties, index, subheading = "Contact Us" }) => {
                   type={label.type}
                   name={label.name}
                   placeholder={label.placeholder}
+                  onChange={handleChange}
                   required
                 />
               ))}
 
-              <Textarea name="body" placeholder={properties.placeholder} />
-              <SubmitButton type="submit">{properties.buttonText}</SubmitButton>
+              <Textarea
+                name="message"
+                placeholder={properties.placeholder}
+                onChange={handleChange}
+              />
+
+              <input type="hidden" name="subject" value={subjectContent} />
+              <input type="hidden" name="body" value={bodyContent} />
+
+              <SubmitButton type="submit" onClick={handleSubmit}>
+                {properties.buttonText}
+              </SubmitButton>
             </Form>
           </TextContent>
         </TextColumn>

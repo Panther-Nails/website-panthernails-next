@@ -11,8 +11,6 @@ import ScrollUpButton from "components/features/ScrollUpButton";
 import DockedButtons from "components/features/DockedButtons";
 
 export default function App() {
-  const { hasNotificationSeen, language, languageObject } = useSession();
-
   const headerLinks = [
     { url: "/about", text: "About Us" },
     { url: "/pages/products/loyalty", text: "Rasik Loyalty Platform" },
@@ -24,10 +22,6 @@ export default function App() {
   return (
     <>
       <GlobalStyles />
-
-      {/* <p>
-        {JSON.stringify({ ...languageObject, language, hasNotificationSeen })}
-      </p> */}
 
       <Header links={headerLinks} />
       <ScrollUpButton />

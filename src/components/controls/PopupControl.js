@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components"; //eslint-disable-line
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9.svg";
 
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 import { ProcessChildComponentsSeparately } from "DynamicPage";
@@ -38,11 +37,7 @@ const Popup = styled.div((props) => [
   //   getSizeAndPosition(props),
 ]);
 
-const ColumnContainer = tw.div`lg:w-1/2 max-w-lg`;
-const Link = tw.a`w-full sm:w-auto  hocus:bg-red-600  text-sm sm:text-base px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-5 mt-4 first:mt-0 sm:mt-0 sm:mr-8 sm:last:mr-0 rounded-full font-bold border border-transparent tracking-wide transition duration-300 focus:outline-none focus:shadow-outline`;
-
 export default ({ properties, children, index }) => {
-  const [cookieConsent, setCookieConsent] = useState("set");
   const [showPopup, setShowPopup] = useState(false);
 
   var startTime = properties.startTime
@@ -57,7 +52,7 @@ export default ({ properties, children, index }) => {
     }, startTime);
 
     return () => clearTimeout(timerStart);
-  }, []);
+  }, [startTime]);
 
   useEffect(() => {
     const timerEnd = setTimeout(() => {

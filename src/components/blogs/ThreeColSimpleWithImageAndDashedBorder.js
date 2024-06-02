@@ -1,12 +1,7 @@
 import React from "react";
 import tw from "twin.macro";
-import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import {
-  SectionHeading as HeadingTitle,
-  SectionHeading,
-  Subheading,
-} from "components/misc/Headings.js";
+import { SectionHeading, Subheading } from "components/misc/Headings.js";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-3.svg";
 import { ProcessChildComponentsSeparately } from "DynamicPage";
@@ -37,10 +32,7 @@ export default ({ index, properties, children }) => {
           {properties.subheading && (
             <Subheading>{properties.subheading}</Subheading>
           )}
-          <Heading>
-            {properties.heading}{" "}
-            <span tw="text-primary-500">{properties.hightlightHeading}</span>
-          </Heading>
+          <Heading>{properties.heading} </Heading>
           <HeadingDescription>{properties.description}</HeadingDescription>
         </HeadingInfoContainer>
         <ThreeColumn>{ProcessChildComponentsSeparately(children)}</ThreeColumn>

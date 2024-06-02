@@ -2,21 +2,8 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import {
-  SectionHeading,
-  Subheading as SubheadingBase,
-} from "components/misc/Headings.js";
-import { SectionDescription } from "components/misc/Typography.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
-import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
-import { ReactComponent as SvgDecoratorBlob } from "images/svg-decorator-blob-6.svg";
 
-const HeaderContainer = tw.div`mt-10 w-full flex flex-col items-center`;
-const Subheading = tw(SubheadingBase)`mb-4`;
-const Heading = tw(SectionHeading)`w-full`;
-const Description = tw(SectionDescription)`w-full text-center`;
-
-const PlansContainer = tw.div`flex justify-between flex-col lg:flex-row items-center lg:items-stretch relative`;
 const Plan = styled.div`
   ${tw`w-full max-w-sm mt-16 lg:mr-8 lg:last:mr-0 text-center px-8 rounded-lg shadow relative pt-2 text-gray-900 bg-white flex flex-col`}
   .planHighlight {
@@ -28,10 +15,10 @@ const Plan = styled.div`
     css`
       background: rgb(100,21,255);
       background: linear-gradient(135deg, rgba(100,21,255,1) 0%, rgba(128,64,252,1) 100%);
-background: rgb(85,60,154);
-background: linear-gradient(135deg, rgba(85,60,154,1) 0%, rgba(128,90,213,1) 100%);
-background: rgb(76,81,191);
-background: linear-gradient(135deg, rgba(76,81,191,1) 0%, rgba(102,126,234,1) 100%);
+      background: rgb(85,60,154);
+      background: linear-gradient(135deg, rgba(85,60,154,1) 0%, rgba(128,90,213,1) 100%);
+      background: rgb(76,81,191);
+      background: linear-gradient(135deg, rgba(76,81,191,1) 0%, rgba(102,126,234,1) 100%);
       ${tw`bg-primary-500 text-gray-100`}
       .planHighlight {
         ${tw`hidden`}
