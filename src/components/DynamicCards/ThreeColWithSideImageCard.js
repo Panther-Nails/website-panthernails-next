@@ -31,7 +31,6 @@ const Card = styled.div`
 `;
 
 export default ({ index, properties, children }) => {
-  console.log("properties", properties);
   return (
     <Column key={index}>
       <Card>
