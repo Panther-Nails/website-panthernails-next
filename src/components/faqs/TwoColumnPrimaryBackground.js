@@ -17,7 +17,7 @@ const PrimaryBackgroundContainer = tw(
 
 const HeadingContainer = tw.div``;
 const Subheading = tw(SubheadingBase)`text-center text-gray-100 mb-4`;
-const Heading = tw(SectionHeading)`text-white font-black `;
+const Heading = tw.h1`text-white font-black text-4xl sm:text-5xl tracking-wide text-center `;
 const Description = tw(SectionDescription)`mx-auto text-center text-gray-300`;
 
 const FaqsContainer = tw.div`mt-10 sm:mt-16 w-full flex-1 lg:flex justify-between items-start max-w-screen-lg mx-auto`;
@@ -99,9 +99,9 @@ export default ({ children, properties, index, subheading = "hello" }) => {
           {properties.subheading && (
             <Subheading>{properties.subheading}</Subheading>
           )}
-          <HighlightedHeading tw="text-white">
+          <Heading tw="text-white" >
             {properties.heading}
-          </HighlightedHeading>
+          </Heading>
           <Description>{properties.description}</Description>
         </HeadingContainer>
         <FaqsContainer>
