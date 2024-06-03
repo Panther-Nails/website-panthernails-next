@@ -6,11 +6,10 @@ import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 const Column = styled.div`
   ${tw`md:w-1/2 lg:w-1/3 px-6 flex`}
 `;
-
 const Card = styled.div`
-  ${tw`flex flex-col mx-auto max-w-xs items-center px-6 py-10 border-2 border-dashed border-primary-500 hocus:bg-primary-100 rounded-lg mt-12 justify-between w-72`}
+  ${tw`flex flex-col mx-auto max-w-xs items-center px-6 py-10 border-2 border-dashed border-primary-500 hocus:bg-primary-100 rounded-lg mt-12 justify-between w-96`}
   .imageContainer {
-    ${tw`border-2 border-primary-500 text-center rounded-full p-3 flex-shrink-0 relative`}
+    ${tw`border-2 border-primary-500  rounded-full p-3 `}
     img {
       ${tw`w-12 h-12`}
     }

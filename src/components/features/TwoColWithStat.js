@@ -19,7 +19,6 @@ const TextColumn = styled(Column)((props) => [
 ]);
 
 const TextContent = tw.div` text-center text-2xl font-bold `;
-
 const NumberContent = styled.span`
   ${tw`text-center text-6xl md:text-8xl font-black`}
   background-color: #1e90ffff;

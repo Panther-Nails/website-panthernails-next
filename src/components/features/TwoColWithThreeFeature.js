@@ -18,7 +18,7 @@ const Card = styled.a`
   .imageContainer {
     ${tw`text-center rounded-full p-2 bg-gray-100`}
     img {
-      ${tw`w-16 h-16`}
+      ${tw`w-20 h-20`}
     }
   }
 
@@ -58,9 +58,7 @@ export default ({
   properties,
   children,
   index,
-
   linkText = "Learn More",
-
   imageContainerCss = null,
   imageCss = null,
 }) => {
@@ -83,16 +81,20 @@ export default ({
           {inputs.map((input, i) => (
             <Column key={i}>
               <Card href={input.url} target="_blank">
-                <span className="imageContainer" css={imageContainerCss}>
-                  <img src={input.imageSrc} alt="" css={imageCss} />
-                </span>
-                <span className="title">{input.title}</span>
-                <p className="description">{input.description}</p>
-                {input.url && (
-                  <span className="link">
-                    <span target="_blank">{linkText}</span>
-                    <ArrowRightIcon className="icon" />
+                {properties.imageVisible === "true" && (
+                  <span className="imageContainer" css={imageContainerCss}>
+                    <img src={input.imageSrc} alt="" css={imageCss} />
                   </span>
+                )}
+                {properties.textVisible === "true" && (
+                  <>
+                    <span className="title">{input.title}</span>
+                    <p className="description">{input.description}</p>
+                    <span className="link">
+                      <span target="_blank">{linkText}</span>
+                      <ArrowRightIcon className="icon" />
+                    </span>
+                  </>
                 )}
               </Card>
             </Column>
