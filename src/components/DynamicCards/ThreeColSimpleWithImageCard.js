@@ -25,7 +25,6 @@ export default ({ index, properties, children }) => {
         <Card textAlign={properties.textAlign}>
           <Image tw="">
             <img src={properties.imageSrc} alt={properties.title}></img>
-            {console.log(properties.imageSrc)}
           </Image>
           <Category>{properties.category}</Category>
           <Title>{properties.title}</Title>
