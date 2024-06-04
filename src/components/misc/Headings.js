@@ -15,7 +15,6 @@ export function HighlightedHeading({ children }) {
         if (index % 2 === 0) return <span tw="text-primary-900">{chunk}</span>;
         else return <span tw="text-primary-500">{chunk}</span>;
       })}
-      {console.log("children", children)}
     </DynamicHeading>
   );
 }

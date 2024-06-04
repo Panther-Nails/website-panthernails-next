@@ -43,7 +43,6 @@ const SubmitButton = tw(PrimaryButtonBase)`inline-block mt-8`;
 
 export default ({ children, properties, index, subheading = "Contact Us" }) => {
   const [formData, setFormData] = useState({});
-
   const [subjectContent, setSubjectContent] = useState("");
   const [bodyContent, setBodyContent] = useState("");
 
@@ -53,7 +52,6 @@ export default ({ children, properties, index, subheading = "Contact Us" }) => {
     const value = event.target.value;
     setFormData((data) => ({ ...data, [name]: value }));
     var today = new Date();
-
     console.log(today.toString());
   };
 
@@ -66,7 +64,6 @@ export default ({ children, properties, index, subheading = "Contact Us" }) => {
 
     console.log(today.getMonth());
 
-    var now = Date.now();
     var serverFilePath = `F:\\File Server\\WSM\\${
       properties.enquiryFolder ?? "websiteEnquiry"
     }\\${timestamp}_Enquriy.json`;
@@ -81,6 +78,29 @@ export default ({ children, properties, index, subheading = "Contact Us" }) => {
       }),
     });
     alert("Thank you for showing interest.");
+
+    // ExecuteFile({
+    //   ActionName: "ReadFile",
+    //   ParameterJSON: JSON.stringify({
+    //     ServerFilePath:
+    //       "F:\\File Server\\WSM\\LoyaltyEnquiry\\20245192650_Enquriy.json",
+    //     FileContentInBase64String: btoa(formJson),
+    //   }),
+    // }).then((response) => {
+    //   console.log("response", response);
+    // });
+
+    // try {
+    //   fetch(
+    //     "https://oneapp.panthernails.com/fs/wsm/LoyaltyEnquiry/20245192650_Enquriy.json"
+    //   ) //added param to get the latest data
+    //     .then((res) => res.text())
+    //     .then((md) => {
+    //       console.log(md);
+    //     });
+    // } catch (e) {
+    //   console.log("Error", e);
+    // }
   };
 
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.

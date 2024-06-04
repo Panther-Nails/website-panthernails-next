@@ -11,7 +11,6 @@ import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/dot-pattern.svg";
 import DesignIllustration from "../../images/design-illustration.svg";
-
 import { Container } from "../misc/Layouts.js";
 
 const TwoColumn = tw.div`flex flex-col lg:flex-row md:items-center max-w-screen-xl mx-auto px-12 lg:py-8`;
@@ -60,7 +59,7 @@ export default ({
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
   return (
     <>
-      <Container tw="h-screen">
+      <Container tw="pt-12 md:pt-3 md:pb-8 ">
         <TwoColumn>
           <LeftColumn>
             <Heading>{properties.heading}</Heading>
