@@ -24,7 +24,7 @@ export default ({ data, children, properties }) => {
       <Column>
         <HighlightedHeading>{properties.heading}</HighlightedHeading>
         <Description>{properties.description}</Description>
-        <Container tw="h-full w-full p-80 pt-0">
+        <Container>
           <Image
             onClick={handleClick}
             src={
