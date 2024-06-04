@@ -11,7 +11,7 @@ const Image = styled.div((props) => [
 
 const Card = styled.div((props) => [
   ` text-align: ${props.textAlign};`,
-  tw`lg:mx-4 xl:mx-8 max-w-sm lg:max-w-xs`,
+  tw`lg:mx-4 xl:mx-8 max-w-sm lg:max-w-xs duration-300 hover:cursor-pointer transform hover:scale-105`,
 ]);
 
 const Category = tw.div`mt-4 text-secondary-100 font-bold text-sm`;

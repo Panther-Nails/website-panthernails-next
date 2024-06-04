@@ -23,15 +23,16 @@ export default ({ data, children, properties }) => {
     <Container>
       <Column>
         <HighlightedHeading>{properties.heading}</HighlightedHeading>
-
         <Description>{properties.description}</Description>
-        <Image
-          onClick={handleClick}
-          src={
-            isMobile ? properties.mobileImageSrc : properties.desktopImageSrc
-          }
-          css={isMobile === true ? tw`bg-clip-content` : tw``}
-        ></Image>
+        <Container tw="h-full w-full p-80 pt-0">
+          <Image
+            onClick={handleClick}
+            src={
+              isMobile ? properties.mobileImageSrc : properties.desktopImageSrc
+            }
+            css={isMobile === true ? tw`bg-clip-content` : tw``}
+          ></Image>
+        </Container>
       </Column>
     </Container>
   );

@@ -16,7 +16,7 @@ const ThreeColumnContainer = styled.div`
 const Card = styled.a`
   ${tw`flex flex-col items-center text-center h-full w-48 mx-4 px-4 py-8 rounded transition-transform duration-300 hover:cursor-pointer transform hover:scale-105 `}
   .imageContainer {
-    ${tw`text-center rounded-full p-2 bg-gray-100`}
+    ${tw`text-center rounded-full p-2 bg-gray-100 hocus:shadow hocus:shadow-lg duration-300 `}
     img {
       ${tw`w-20 h-20`}
     }
@@ -80,7 +80,7 @@ export default ({
         <ThreeColumnContainer>
           {inputs.map((input, i) => (
             <Column key={i}>
-              <Card href={input.url} target="_blank">
+              <Card href={input.url} target="_blank" title={input.title}>
                 {properties.imageVisible === "true" && (
                   <span className="imageContainer" css={imageContainerCss}>
                     <img src={input.imageSrc} alt="" css={imageCss} />
