@@ -60,7 +60,7 @@ export default ({
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
   return (
     <>
-      <Container tw="h-screen">
+      <Container tw="pt-12 md:pt-3 md:pb-8 ">
         <TwoColumn>
           <LeftColumn>
             <Heading>{properties.heading}</Heading>
