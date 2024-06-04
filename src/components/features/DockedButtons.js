@@ -14,7 +14,7 @@ const positions = {
 };
 
 const StyledContainer = styled.div((props) => [
-  tw`fixed flex z-50  w-1/12 `,
+  tw`fixed flex z-50 `,
   positions[props.position],
 ]);
 
