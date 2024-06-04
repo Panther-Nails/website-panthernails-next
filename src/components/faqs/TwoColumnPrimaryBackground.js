@@ -92,7 +92,7 @@ export default ({ children, properties, index, subheading = "hello" }) => {
 
     return null;
   });
- 
+
   return (
     <PrimaryBackgroundContainer>
       <ContentWithPaddingXl>
@@ -100,7 +100,12 @@ export default ({ children, properties, index, subheading = "hello" }) => {
           {properties.subheading && (
             <Subheading>{properties.subheading}</Subheading>
           )}
-          <HighlightedHeading primaryColor={"white"}>{properties.heading}</HighlightedHeading>
+          <HighlightedHeading
+            primaryColor={tw`text-white`}
+            highlightColor={tw`text-primary-500`}
+          >
+            {properties.heading}
+          </HighlightedHeading>
           <Description>{properties.description}</Description>
         </HeadingContainer>
         <FaqsContainer>
