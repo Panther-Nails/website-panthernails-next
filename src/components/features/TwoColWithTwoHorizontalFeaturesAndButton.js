@@ -3,7 +3,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import {
-  SectionHeading,
+  HighlightedHeading,
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
@@ -34,9 +34,7 @@ const DecoratorBlob = tw(
 const TextContent = tw.div`lg:py-8  text-center md:text-left `;
 
 const Subheading = tw(SubheadingBase)`text-center md:text-left`;
-const Heading = tw(
-  SectionHeading
-)`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
+
 const Description = tw.p`mt-8 px-6 lg:px-0  text-center  text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
 const Features = tw.div`mx-auto md:mx-0 flex flex-col lg:flex-row max-w-xs lg:max-w-none`;
@@ -71,10 +69,9 @@ export default ({
         <TextColumn textOnLeft={properties.textOnLeft}>
           <TextContent>
             <Subheading>{properties.subheading}</Subheading>
-            <Heading>
+            <HighlightedHeading tw="text-left">
               {properties.heading}
-              <span tw="text-primary-500">{properties.highlighHeading}</span>
-            </Heading>
+            </HighlightedHeading>
             <Description>{properties.description}</Description>
             <Features>{ProcessChildComponentsSeparately(children)}</Features>
 
