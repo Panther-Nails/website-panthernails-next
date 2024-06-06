@@ -1,15 +1,12 @@
 import React from "react";
-import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import Header from "components/headers/light.js";
-import Footer from "components/footers/FiveColumnWithInputForm.js";
 import { SectionHeading } from "components/misc/Headings";
 
 const HeadingRow = tw.div`flex`;
-const Heading = tw(SectionHeading)`text-gray-900 mb-10`;
+const Heading = tw(SectionHeading)`text-gray-900 mb-10 font-black`;
 const Text = styled.div`
   ${tw`text-lg  text-gray-800`}
   p {
@@ -35,20 +32,21 @@ const Text = styled.div`
   }
 `;
 
-export default ({ headingText = "Terms And Condition" }) => {
+const Paragraph = tw.p`text-justify py-2 mt-2 leading-loose`;
+
+export default ({ properties }) => {
   return (
-    <AnimationRevealPage>
-      <Header />
+    <>
       <Container>
         <ContentWithPaddingXl>
           <HeadingRow>
-            <Heading>{headingText}</Heading>
+            <Heading>{properties.heading}</Heading>
           </HeadingRow>
           <Text>
             <h1>TERMS OF USE</h1>
             <h3>We believe that transparency</h3>
 
-            <p>
+            <Paragraph>
               PLEASE READ THESE TERMS OF USE (“Agreement”) CAREFULLY. BY
               DOWNLOADING, ACCESSING, BROWSING OR UTILIZING ANY SERVICES ON
               WEBSITE ONEAPP.PANTHERNAILS.COM AND ONE APP, AN APPLICATION FOR
@@ -60,9 +58,9 @@ export default ({ headingText = "Terms And Condition" }) => {
               CREATES A LEGALLY BINDING AGREEMENT. IF YOU DO NOT WISH TO BE
               BOUND BY THIS AGREEMENT, KINDLY DO NOT ACCESS OR UTILIZE THE
               PLATFORM AND PLEASE DELETE/REFRAIN FROM ACCESSING THE SAME.
-            </p>
+            </Paragraph>
 
-            <p>
+            <Paragraph>
               For the purpose of these Terms of Use, wherever the context so
               requires, the terms “One App”, “we”, “us” or “our” shall mean{" "}
               <strong>Panther Nails Technologies Private Limited</strong>. “You”
@@ -72,28 +70,28 @@ export default ({ headingText = "Terms And Condition" }) => {
               user). As long as You comply with these Terms of Use, We grant You
               a non-exclusive, non-transferable, limited right to enter and use
               Our Platform and services.
-            </p>
+            </Paragraph>
 
-            <p>
+            <Paragraph>
               The applications (One App) are owned and provided by{" "}
               <strong>Panther Nails Technologies Private Limited</strong>{" "}
               (hereinafter “Company”), a company incorporated under the
               Companies Act, 1956 and having its registered office at Hadapsar,
               Pune, India.
-            </p>
+            </Paragraph>
 
-            <p>
+            <Paragraph>
               One App is a platform that provides customers and other users
               incentives with other features such as product information,
               product selectors, coverage calculators, information in relation
               to events, registrations for the same, etc.. One App also allows
               the User to check their balance and redeem the points that have
               been accumulated.
-            </p>
+            </Paragraph>
 
             <h2>AMENDMENTS</h2>
 
-            <p>
+            <Paragraph>
               We reserve the right to modify the contents of this Terms of Use
               from time to time, and such modification shall come into effect
               from us posting the modifications on our Platform. You agree to be
@@ -101,12 +99,12 @@ export default ({ headingText = "Terms And Condition" }) => {
               Platform subsequent to such modification. You shall, at all times,
               be responsible for regularly reviewing the Terms of Use and the
               other policies.
-            </p>
+            </Paragraph>
 
             <h2>REGISTRATION OR USE OF THE PLATFORM</h2>
 
-            <p>
-              <ol type="a">
+            <Paragraph>
+              <Paragraph type="a">
                 <li>
                   You must be 18 (eighteen) years or older to visit/register
                   with One App. By registering and using the services you agree
@@ -164,83 +162,89 @@ export default ({ headingText = "Terms And Condition" }) => {
                   herein and do not have any liability to share any account
                   information whatsoever.
                 </li>
-              </ol>
-            </p>
+              </Paragraph>
+            </Paragraph>
 
             <h2>SERVICES OFFERED</h2>
 
-            <ol type="a">
-              <li>
-                One App provides a number of internet-based services through the
-                Platform like redeeming points pursuant to a claim code upon the
-                purchase of a product, check balance of the points available for
-                you, redeem the points either for cash or gift, as provided in
-                the gift brochure (“Gift”), register for events, provide product
-                information, permit product selection (i.e. identifying the
-                right product for the desired application), help center, product
-                coverage calculator, taking surveys, etc..
-              </li>
-              <li>
-                Each product of ours that is purchased by you may contain a
-                coupon with a claim code printed on it along with a QR code. You
-                represent and warrant that you have purchased our product and
-                therefore are entitled to use the claim code. The claim code is
-                nontransferable.
-              </li>
-              <li>
-                Upon becoming a Member, you must scan the QR code and the
-                corresponding points shall be credited to your account.
-              </li>
-              <li>
-                You can either redeem the points for cash at the rate of Re. 1/-
-                per point redeemed, asper the Cash Policy or accumulate points
-                and redeem it for a Gift, as per the Gift Policy. The Gift along
-                with the points required to purchase the Gift is available in
-                the Gift Policy. The MRP of the Gift may not match the number of
-                points required to purchase the Gift.
-              </li>
-              <li>
-                The claim code coupon must be maintained by the buyer as
-                evidence of points, in the event of a dispute.
-              </li>
-              <li>
-                If in a transaction performed by You on the Platform, there is a
-                change in points or the cash has not been received in you bank
-                account within 7 working days, then You shall inform us by
-                sending an e mail to our customer services e mail address
-                mentioned hereunder.
-              </li>
-            </ol>
+            <Paragraph>
+              <Paragraph type="a">
+                <li>
+                  One App provides a number of internet-based services through
+                  the Platform like redeeming points pursuant to a claim code
+                  upon the purchase of a product, check balance of the points
+                  available for you, redeem the points either for cash or gift,
+                  as provided in the gift brochure (“Gift”), register for
+                  events, provide product information, permit product selection
+                  (i.e. identifying the right product for the desired
+                  application), help center, product coverage calculator, taking
+                  surveys, etc..
+                </li>
+                <li>
+                  Each product of ours that is purchased by you may contain a
+                  coupon with a claim code printed on it along with a QR code.
+                  You represent and warrant that you have purchased our product
+                  and therefore are entitled to use the claim code. The claim
+                  code is nontransferable.
+                </li>
+                <li>
+                  Upon becoming a Member, you must scan the QR code and the
+                  corresponding points shall be credited to your account.
+                </li>
+                <li>
+                  You can either redeem the points for cash at the rate of Re.
+                  1/- per point redeemed, asper the Cash Policy or accumulate
+                  points and redeem it for a Gift, as per the Gift Policy. The
+                  Gift along with the points required to purchase the Gift is
+                  available in the Gift Policy. The MRP of the Gift may not
+                  match the number of points required to purchase the Gift.
+                </li>
+                <li>
+                  The claim code coupon must be maintained by the buyer as
+                  evidence of points, in the event of a dispute.
+                </li>
+                <li>
+                  If in a transaction performed by You on the Platform, there is
+                  a change in points or the cash has not been received in you
+                  bank account within 7 working days, then You shall inform us
+                  by sending an e mail to our customer services e mail address
+                  mentioned hereunder.
+                </li>
+              </Paragraph>
+            </Paragraph>
 
             <h2>CASH POLICY</h2>
 
-            <ol type="a">
-              <li>
-                In the event that you wish to redeem the points for a cash back
-                into your account, you will be required to provide your bank
-                account details like name, bank name, branch details, IFSC code
-                and account number. This information will be treated as personal
-                information and governed by the Privacy Policy. You represent
-                and warrant that the information provided is current and
-                accurate. Panther Nails will not be liable for any discrepancies
-                and consequent losses or damages.
-              </li>
-              <li>
-                In the event that there is any misuse or theft of handheld
-                device, you are required to inform us to suspend the account and
-                prevent the changes of any personal information on the Platform.
-              </li>
-              <li>
-                In the event that any KYC information or other compliance
-                required under law is required from you to complete the cash
-                back policy, you agree to provide the same as per the timelines
-                mentioned.
-              </li>
-            </ol>
+            <Paragraph>
+              <Paragraph type="a">
+                <li>
+                  In the event that you wish to redeem the points for a cash
+                  back into your account, you will be required to provide your
+                  bank account details like name, bank name, branch details,
+                  IFSC code and account number. This information will be treated
+                  as personal information and governed by the Privacy Policy.
+                  You represent and warrant that the information provided is
+                  current and accurate. Panther Nails will not be liable for any
+                  discrepancies and consequent losses or damages.
+                </li>
+                <li>
+                  In the event that there is any misuse or theft of handheld
+                  device, you are required to inform us to suspend the account
+                  and prevent the changes of any personal information on the
+                  Platform.
+                </li>
+                <li>
+                  In the event that any KYC information or other compliance
+                  required under law is required from you to complete the cash
+                  back policy, you agree to provide the same as per the
+                  timelines mentioned.
+                </li>
+              </Paragraph>
+            </Paragraph>
 
             <h2>GIFT POLICY</h2>
 
-            <ol type="a">
+            <Paragraph type="a">
               <li>
                 Panther Nails do not own, sell, resell on its own and/or do not
                 control and of the products given as gifts. You understand that
@@ -283,20 +287,20 @@ export default ({ headingText = "Terms And Condition" }) => {
                 responsible to the customer in for any indirect or consequential
                 loss or damage.
               </li>
-            </ol>
+            </Paragraph>
 
             <h2>USER CONDUCT</h2>
 
-            <p>
+            <Paragraph>
               You agree, undertake and confirm that Your use of the Platform
               shall be strictly governed by the following binding principles:
-            </p>
+            </Paragraph>
 
-            <ol type="a">
+            <Paragraph type="a">
               <li>
                 You shall not directly or indirectly do or cause any action, on
                 the Platform, which:
-                <ol type="i">
+                <Paragraph type="i">
                   <li>
                     Promotes information that you know is false or misleading or
                     promotes illegal activities or conduct that is abusive,
@@ -341,7 +345,7 @@ export default ({ headingText = "Terms And Condition" }) => {
                     Contains nudity, violence, pornography, sexually explicit
                     material or offensive subject matter
                   </li>
-                </ol>
+                </Paragraph>
               </li>
 
               <li>
@@ -395,11 +399,11 @@ export default ({ headingText = "Terms And Condition" }) => {
                 You shall at all times ensure full compliance with the
                 applicable provisions, as amended from time to time.
               </li>
-            </ol>
+            </Paragraph>
 
             <h2>DISCLAIMER AND LIMITATION OF LIABILITY</h2>
 
-            <ol type="a">
+            <Paragraph type="a">
               <li>
                 Panther Nails does not warrant or represent that the material on
                 the platform is accurate, complete or current or that the
@@ -439,7 +443,7 @@ export default ({ headingText = "Terms And Condition" }) => {
                 In no event shall Panther Nails be liable for any indirect,
                 punitive, incidental, special, consequential damages or any
                 other damages resulting from:
-                <ol type="i">
+                <Paragraph type="i">
                   <li>
                     the use or the inability to use the Platform, services ,
                     products or Gift
@@ -468,25 +472,25 @@ export default ({ headingText = "Terms And Condition" }) => {
                     under law, Panther Nails’s liability shall be limited to an
                     amount or Rs. 100/-
                   </li>
-                </ol>
+                </Paragraph>
               </li>
-            </ol>
+            </Paragraph>
 
             <h2>WAIVER OF LIABILITY</h2>
 
-            <p>
+            <Paragraph>
               You agree and acknowledge that no delay or decision not to enforce
               rights under this Agreement will constitute a waiver of the right
               to do so and will not affect rights in relation to any subsequent
               breach.
-            </p>
+            </Paragraph>
 
-            <p>
+            <Paragraph>
               You agree and acknowledge that We will, however, not be liable for
               any loss or damage (in contract, negligence or otherwise) where:
-            </p>
+            </Paragraph>
 
-            <ol type="a">
+            <Paragraph type="a">
               <li>
                 There is no breach of a legal duty of care owed to you by us;
               </li>
@@ -502,33 +506,33 @@ export default ({ headingText = "Terms And Condition" }) => {
                 Panther Nails or its directors shall not be liable for any
                 indirect, consequential or other damages caused to the user.
               </li>
-            </ol>
+            </Paragraph>
 
             <h2>THIRD PARTY RIGHTS</h2>
 
-            <p>
+            <Paragraph>
               Nothing in this Agreement is intended to nor shall confer a
               benefit on any third party and any person who is not a party to
               this Agreement has no rights to enforce them.
-            </p>
+            </Paragraph>
 
             <h2>
               Theft of handheld device or suspected misuse of your account by a
               third party:
             </h2>
 
-            <p>
+            <Paragraph>
               In the event that you have lost your handheld device or suspect or
               have reason to believe that a third party has had unauthorised
               access to your account, you shall inform us immediately of the
               same and your account shall be temporarily suspended. We shall
               attempt to provide a fresh password and keep your information as
               safe as practicably possible.
-            </p>
+            </Paragraph>
 
             <h2>INDEMNITY</h2>
 
-            <p>
+            <Paragraph>
               You shall indemnify and hold harmless Panther Nails, its owner,
               licensee, affiliates, subsidiaries, group companies (as
               applicable) and their respective officers, directors, agents, and
@@ -538,11 +542,11 @@ export default ({ headingText = "Terms And Condition" }) => {
               Policy and other Policies, or Your violation of any law, rules or
               regulations or the rights (including infringement of intellectual
               property rights) of a third party.
-            </p>
+            </Paragraph>
 
             <h2>INTELLECTUAL PROPERTY RIGHTS</h2>
 
-            <p>
+            <Paragraph>
               All materials on our Platforms, including, without limitation,
               names, logos, trademarks, images, text, columns, graphics, videos,
               photographs, illustrations, artwork, software and other elements
@@ -561,19 +565,19 @@ export default ({ headingText = "Terms And Condition" }) => {
               security features, or to utilize our Platforms or any part of the
               Proprietary Information for any purpose other than its intended
               purposes is strictly prohibited.
-            </p>
+            </Paragraph>
 
             <h2>NOTIFICATION OF ERRORS</h2>
 
-            <p>
+            <Paragraph>
               If you encounter any error while viewing any content on our
               Platform, kindly notify us of the same at the earliest either by
               mail or phone.
-            </p>
+            </Paragraph>
 
             <h2>TERMINATION</h2>
 
-            <ol type="a">
+            <Paragraph type="a">
               <li>
                 If at any time you wish to terminate your registration as a
                 Member, kindly notify us of your intention by sending us a mail
@@ -589,31 +593,31 @@ export default ({ headingText = "Terms And Condition" }) => {
                 forfeited and you shall not be entitled to any compensation or
                 redemption of any accumulated points.
               </li>
-            </ol>
+            </Paragraph>
 
             <h2>JURISDICTION AND GOVERNING LAW</h2>
 
-            <p>
+            <Paragraph>
               Panther Nails makes no representation that materials in the
               Platform are appropriate or available for use in other
               locations/countries other than India or conditions different form
               the information provided by You. In the event the Platform is
               accessed from outside India, it shall be deemed that the cause of
               action in any dispute under this Agreement has arisen in India.
-            </p>
+            </Paragraph>
 
-            <p>
+            <Paragraph>
               These terms shall be governed by and constructed in accordance
               with the laws of India without reference to conflict of laws
               principles and disputes arising in relation hereto shall be
               subject to the exclusive jurisdiction of courts, tribunals, fora,
               applicable authorities at Hyderabad. The place of jurisdiction
               shall be exclusively in Hyderabad.
-            </p>
+            </Paragraph>
 
             <h2>FORCE MAJEURE</h2>
 
-            <p>
+            <Paragraph>
               Panther Nails shall not be liable and to the extent, that the
               performance or delay in performance of any of its obligations are
               prevented, restricted, delayed or interfered with due to
@@ -622,11 +626,11 @@ export default ({ headingText = "Terms And Condition" }) => {
               in legislation, fire, flood, explosion, epidemic, accident, act of
               God, war, riot, strike, lockout, traffic or other concerted act of
               workmen and/or act of Government.
-            </p>
+            </Paragraph>
 
             <h2>SEVERABILITY</h2>
 
-            <p>
+            <Paragraph>
               If any of these Terms of Use should be determined to be illegal,
               invalid or otherwise unenforceable by reason of the laws of any
               state or country in which these Terms of Use are intended to be
@@ -635,20 +639,21 @@ export default ({ headingText = "Terms And Condition" }) => {
               severed and deleted and the remaining Terms of Use shall survive,
               remain in full force and effect and continue to be binding and
               enforceable.
-            </p>
+            </Paragraph>
 
             <h2>GRIEVANCE OFFICER</h2>
-            <p>
+            <Paragraph>
               For any grievances related to data privacy, you can contact our
-              grievance officer (Rahul Daga) via email at : (
-              <a href="mailto:legal@panthernails.com">legal@panthernails.com</a>
+              grievance officer ({properties.legalName}) via email at : (
+              <a href={`mailto:${properties.legalEmail}`}>
+                {properties.legalEmail}
+              </a>
               )
-            </p>
+            </Paragraph>
             <hr />
           </Text>
         </ContentWithPaddingXl>
       </Container>
-      <Footer />
-    </AnimationRevealPage>
+    </>
   );
 };

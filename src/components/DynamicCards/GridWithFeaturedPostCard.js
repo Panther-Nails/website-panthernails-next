@@ -1,5 +1,4 @@
 import React from "react";
-import { Container, ContentWithPaddingXl } from "components/misc/Layouts";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
@@ -9,8 +8,10 @@ const PostImage = styled.div`
     css`
       background-image: url("${props.imageSrc}");
     `}
-  ${tw`h-64 sm:h-80 bg-center bg-cover rounded-t`}
+  ${tw`h-64 sm:h-80 bg-center bg-no-repeat bg-contain rounded-t`}
 `;
+//  ${tw`h-64 sm:h-80 bg-center bg-cover rounded-t`}
+
 const PostText = tw.div`flex-1 px-6 py-8`;
 const PostTitle = tw.h6`font-bold group-hocus:text-primary-500 transition duration-300 `;
 const PostDescription = tw.p``;
@@ -31,7 +32,7 @@ const PostContainer = styled.div`
         ${tw`sm:flex-row items-center sm:pr-3`}
       }
       ${PostImage} {
-        ${tw`sm:h-80 sm:min-h-full w-full sm:w-1/2 rounded-t sm:rounded-t-none sm:rounded-l`}
+        ${tw`sm:h-80 sm:min-h-full w-full  sm:w-1/2 rounded-t sm:rounded-t-none sm:rounded-l`}
       }
       ${PostText} {
         ${tw`pl-8 pr-5`}
@@ -55,10 +56,10 @@ export default ({ index, properties, children }) => {
   return (
     <>
       <PostContainer featured={properties.featured} key={index}>
-        <Post className="group" href={properties.url}>
+        <Post className="group" href={properties.url} target="_blank">
           <PostImage imageSrc={properties.imageSrc} />
           <PostText>
-            <PostTitle>{properties.title}</PostTitle>
+            <PostTitle>{properties.heading}</PostTitle>
             {properties.featured && (
               <PostDescription>{properties.description}</PostDescription>
             )}
@@ -66,12 +67,14 @@ export default ({ index, properties, children }) => {
               {properties.featured === "true" && (
                 <AuthorImage src={properties.profileImageSrc} />
               )}
-              <AuthorTextInfo>
-                <AuthorName>{properties.name}</AuthorName>
-                {properties.featured && (
-                  <AuthorProfile>{properties.profile}</AuthorProfile>
-                )}
-              </AuthorTextInfo>
+              {properties.featured === "true" && (
+                <AuthorTextInfo>
+                  <AuthorName>{properties.name}</AuthorName>
+                  {properties.featured && (
+                    <AuthorProfile>{properties.profile}</AuthorProfile>
+                  )}
+                </AuthorTextInfo>
+              )}
             </AuthorInfo>
           </PostText>
         </Post>

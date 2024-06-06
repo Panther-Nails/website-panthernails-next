@@ -6,14 +6,13 @@ import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9
 import { ContentWithPaddingXl, Container } from "components/misc/Layouts";
 
 import {
-  getCookie,
   setCookie,
   CookieConsentValue,
   CookieValues,
   CookieKeys,
 } from "services/CookieService";
 
-const PrimaryBackgroundContainer = tw.div`py-20 lg:py-24 bg-secondary-500 rounded-lg relative`;
+const PrimaryBackgroundContainer = tw.div`py-20 lg:py-24 bg-white rounded-lg relative`;
 const Row = tw.div`px-8 max-w-screen-lg mx-auto flex items-center relative z-10 flex-col lg:flex-row text-center lg:text-left`;
 
 const ColumnContainer = tw.div`lg:w-1/2 max-w-lg`;
@@ -52,8 +51,7 @@ export default ({
   ),
   primaryLinkText = "Accept",
   secondaryLinkText = "Reject",
-  pushDownFooter = true,
-  backgroundColor = tw`bg-primary-500`,
+  backgroundColor = tw`bg-gray-100`,
   textCss = tw`text-white`,
   containerBg = tw``,
 }) => {
@@ -62,9 +60,11 @@ export default ({
   const cookieConsentComponent = () => (
     <Container
       css={tw`fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50`}
+      onClick={() => {
+        setCookieConsent(CookieValues.Rejected);
+      }}
     >
       <Container css={tw`bg-transparent`}>
-        {/* && pushDownFooter && tw`mb-20 lg:mb-24` */}
         <ContentWithPaddingXl>
           <PrimaryBackgroundContainer css={backgroundColor}>
             <Row>
@@ -80,14 +80,6 @@ export default ({
                 >
                   {primaryLinkText}
                 </PrimaryLink>
-                <Link
-                  onClick={() => {
-                    setCookie(CookieKeys.CookieConsent, CookieValues.Rejected);
-                    setCookieConsent(CookieValues.Rejected);
-                  }}
-                >
-                  {secondaryLinkText}
-                </Link>
               </LinksContainer>
             </Row>
             <DecoratorBlobContainer>

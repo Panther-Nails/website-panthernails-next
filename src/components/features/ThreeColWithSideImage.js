@@ -4,8 +4,8 @@ import tw from "twin.macro";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
 import {
-  SectionHeading,
   Subheading as SubheadingBase,
+  HighlightedHeading,
 } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { Container } from "../misc/Layouts.js";
@@ -16,8 +16,7 @@ const ThreeColumnContainer = styled.div`
   ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-24`}
 `;
 const Subheading = tw(SubheadingBase)`mb-4`;
-const Heading = tw(SectionHeading)`w-full`;
-const Description = tw(SectionDescription)`w-full text-center`;
+const Description = tw(SectionDescription)`w-5/6 text-center`;
 
 const VerticalSpacer = tw.div`mt-10 w-full`;
 
@@ -32,7 +31,7 @@ export default ({ properties, children, index }) => {
         {properties.subHeading && (
           <Subheading>{properties.subHeading}</Subheading>
         )}
-        <Heading>{properties.heading}</Heading>
+        <HighlightedHeading>{properties.heading}</HighlightedHeading>
         {properties.description && (
           <Description>{properties.description}</Description>
         )}

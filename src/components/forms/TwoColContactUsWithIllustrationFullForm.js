@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
@@ -8,13 +8,14 @@ import {
 } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import EmailIllustrationSrc from "images/email-illustration.svg";
+import { ExecuteFile } from "services/APIService";
 
 const Container = tw.div`relative`;
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto pb-20 md:pb-24`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(Column)`md:w-5/12 flex-shrink-0 h-80 md:h-auto`;
 const TextColumn = styled(Column)((props) => [
-  tw`md:w-7/12 mt-16 md:mt-0`,
+  tw`px-4 lg:px-0 md:w-7/12 mt-16 md:mt-0`,
   props.textOnLeft === "true"
     ? tw`md:mr-12 lg:mr-16 md:order-first`
     : tw`md:ml-12 lg:ml-16 md:order-last`,
@@ -41,6 +42,67 @@ const Textarea = styled(Input).attrs({ as: "textarea" })`
 const SubmitButton = tw(PrimaryButtonBase)`inline-block mt-8`;
 
 export default ({ children, properties, index, subheading = "Contact Us" }) => {
+  const [formData, setFormData] = useState({});
+  const [subjectContent, setSubjectContent] = useState("");
+  const [bodyContent, setBodyContent] = useState("");
+
+  const handleChange = (event) => {
+    event.preventDefault();
+    const name = event.target.name;
+    const value = event.target.value;
+    setFormData((data) => ({ ...data, [name]: value }));
+    var today = new Date();
+    console.log(today.toString());
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    var today = new Date();
+    var timestamp = `${today.getFullYear()}${today.getMonth()}${today.getDay()}${today.getHours()}${today.getMinutes()}${today.getSeconds()}`;
+    var formJson = JSON.stringify({ ...formData, timestamp: timestamp });
+
+    console.log(today.getMonth());
+
+    var serverFilePath = `F:\\File Server\\WSM\\${
+      properties.enquiryFolder ?? "websiteEnquiry"
+    }\\${timestamp}_Enquriy.json`;
+
+    console.log(serverFilePath);
+
+    ExecuteFile({
+      ActionName: "WriteFile",
+      ParameterJSON: JSON.stringify({
+        ServerFilePath: serverFilePath,
+        FileContentInBase64String: btoa(formJson),
+      }),
+    });
+    alert("Thank you for showing interest.");
+
+    // ExecuteFile({
+    //   ActionName: "ReadFile",
+    //   ParameterJSON: JSON.stringify({
+    //     ServerFilePath:
+    //       "F:\\File Server\\WSM\\LoyaltyEnquiry\\20245192650_Enquriy.json",
+    //     FileContentInBase64String: btoa(formJson),
+    //   }),
+    // }).then((response) => {
+    //   console.log("response", response);
+    // });
+
+    // try {
+    //   fetch(
+    //     "https://oneapp.panthernails.com/fs/wsm/LoyaltyEnquiry/20245192650_Enquriy.json"
+    //   ) //added param to get the latest data
+    //     .then((res) => res.text())
+    //     .then((md) => {
+    //       console.log(md);
+    //     });
+    // } catch (e) {
+    //   console.log("Error", e);
+    // }
+  };
+
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
   var inputs = JSON.parse(properties.inputs);
   return (
@@ -70,11 +132,23 @@ export default ({ children, properties, index, subheading = "Contact Us" }) => {
                   type={label.type}
                   name={label.name}
                   placeholder={label.placeholder}
+                  onChange={handleChange}
+                  required
                 />
               ))}
 
-              <Textarea name="message" placeholder={properties.placeholder} />
-              <SubmitButton type="submit">{properties.buttonText}</SubmitButton>
+              <Textarea
+                name="message"
+                placeholder={properties.placeholder}
+                onChange={handleChange}
+              />
+
+              <input type="hidden" name="subject" value={subjectContent} />
+              <input type="hidden" name="body" value={bodyContent} />
+
+              <SubmitButton type="submit" onClick={handleSubmit}>
+                {properties.buttonText}
+              </SubmitButton>
             </Form>
           </TextContent>
         </TextColumn>

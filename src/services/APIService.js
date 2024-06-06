@@ -42,7 +42,11 @@ export function Execute(oFormData) {
       return { DataIsLoaded: true, items: json.Data, message: json.Message };
     })
     .catch((error) => {
-      return { DataIsLoaded: false, items: [], message: error.Message };
+      return {
+        DataIsLoaded: false,
+        items: [],
+        message: error.Message || "Data retrival failed.",
+      };
     });
 }
 

@@ -14,7 +14,7 @@ const FeatureIconContainer = styled.div`
 
 const FeatureText = tw.div`mt-4 md:mt-0 md:ml-4 text-center md:text-left`;
 const FeatureHeading = tw.div`font-bold text-lg text-primary-500`;
-const FeatureDescription = tw.div`mt-1 text-sm`;
+const FeatureDescription = tw.div`mt-1 px-6 lg:px-0 text-sm`;
 
 export default ({ index, properties, children }) => {
   return (

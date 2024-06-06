@@ -1,3 +1,9 @@
-# https://www.robotstxt.org/robotstxt.html
+
 User-agent: *
-Disallow:
+
+Allow: /
+
+Disallow:/test
+Disallow:/gtest
+
+Sitemap: https://websitebeta.panthernails.com/sitemap.xml

@@ -4,7 +4,7 @@ import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
 const Column = styled.div`
-  ${tw`lg:w-1/3 max-w-xs`}
+  ${tw`lg:w-full max-w-xs`}
 `;
 
 const Card = styled.a`
@@ -42,9 +42,9 @@ export default ({ index, properties, children }) => {
           </span>
           <span className="title">{properties.title}</span>
           <p className="description">{properties.description}</p>
-          {properties.linkText && (
+          {properties.buttonVisible === "true" && (
             <span className="link">
-              <span>{properties.linkText}</span>
+              <span>{properties.buttonText}</span>
               <ArrowRightIcon className="icon" />
             </span>
           )}

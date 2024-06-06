@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
@@ -11,10 +11,7 @@ import { useSession } from "providers/SessionProvider.js";
 const Container = tw.div` bg-white`;
 
 export const NavLinks = tw.div`inline-block`;
-
-/* hocus: stands for "on hover or focus"
- * hocus:bg-primary-700 will apply the bg-primary-700 class on hover or focus
- */
+ 
 export const NavLink = tw.a`
   text-sm my-1 lg:mx-6 lg:my-0
   font-semibold tracking-wide transition duration-300
@@ -63,8 +60,6 @@ export default ({ type = "info" }) => {
   const [notificationText, setNotificationText] = useState(
     "Safeguard photos, documents, phones, tablets, and computers with features designed to secure your digital life."
   );
-
-  const NotificationTextRef = useRef();
 
   const handleCloseNotification = (e) => {
     setNotificationVisible(false);

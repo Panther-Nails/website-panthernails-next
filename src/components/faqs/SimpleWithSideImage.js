@@ -45,14 +45,9 @@ const Answer = motion(
 export default ({
   children,
   properties,
-  index,
-  subheading = "",
-  heading = "",
-  description = "",
-  imageSrc = "",
+
   imageContain = false,
   imageShadow = true,
-  faqs = null,
 }) => {
   /*
    * You can modify FAQs either by modifying the below defaultFaqs array or by passing a custom array of FAQs using

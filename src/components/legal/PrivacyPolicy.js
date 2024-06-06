@@ -1,15 +1,12 @@
 import React from "react";
-import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import Header from "components/headers/light.js";
-import Footer from "components/footers/FiveColumnWithInputForm.js";
 import { SectionHeading } from "components/misc/Headings";
 
 const HeadingRow = tw.div`flex`;
-const Heading = tw(SectionHeading)`text-gray-900 mb-10`;
+const Heading = tw(SectionHeading)`text-gray-900 mb-10 font-black`;
 const Text = styled.div`
   ${tw`text-lg  text-gray-800`}
   p {
@@ -34,29 +31,33 @@ const Text = styled.div`
     }
   }
 `;
-export default ({ headingText = "Privacy Policy" }) => {
+
+const Strong = tw.span`font-bold`;
+
+const Paragraph = tw.p`text-justify py-2 mt-2 leading-loose`;
+
+export default ({ properties }) => {
   return (
-    <AnimationRevealPage>
-      <Header />
+    <>
       <Container>
         <ContentWithPaddingXl>
           <HeadingRow>
-            <Heading>{headingText}</Heading>
+            <Heading>{properties.heading}</Heading>
           </HeadingRow>
           <Text>
             <h3>
               We believe that protecting privacy is part of maintaining that
               trust
             </h3>
-            <p>
-              <strong>PANTHER NAILS TECHNOLOGIES PRIVATE LIMITED</strong>{" "}
+            <Paragraph>
+              <Strong>PANTHER NAILS TECHNOLOGIES PRIVATE LIMITED</Strong>{" "}
               (“Company”) is the author and publisher of the mobile application
               RASIK and auther of business branded application owned by
               business. The mobile application shall be referred to by the name
               of ‘App’ wherever applicable in this document.{" "}
-            </p>
+            </Paragraph>
 
-            <p>
+            <Paragraph>
               BY USING THE APPLICATION OR THE SERVICES OF OUR COMPANY OR BY
               PROVIDING YOUR INFORMATION, YOU CONSENT TO BE BOUND BY THE TERMS
               OF THIS PRIVACY POLICY AND THE TERMS OF USE. YOU AGREE TO THE
@@ -66,9 +67,9 @@ export default ({ headingText = "Privacy Policy" }) => {
               POLICY AT ANY TIME, AT OUR SOLE DISCRETION. IF YOU DO NOT AGREE
               WITH THE TERMS OF THIS PRIVACY POLICY, WE REQUEST YOU TO REFRAIN
               FROM USING OUR SERVICES AND NOT PROVIDE US YOUR INFORMATION.
-            </p>
+            </Paragraph>
 
-            <p>
+            <Paragraph>
               This privacy policy ("Privacy Policy") explains how we (the
               Company) collect, use, share and protect your personal information
               (jointly and severally referred to as “You” or “Users” in this
@@ -79,14 +80,14 @@ export default ({ headingText = "Privacy Policy" }) => {
               protection of your privacy and your personal information. Your use
               of and access to the services is subject to this Privacy Policy
               and our Terms of Use.
-            </p>
+            </Paragraph>
 
             <h2>DEFINITIONS</h2>
 
             <ol>
               <li>
                 <p>
-                  <strong>"Business"</strong> shall mean the organization that
+                  <Strong>"Business"</Strong> shall mean the organization that
                   has choose to Panther Nails services on their business branded
                   applicaiton.
                 </p>
@@ -94,7 +95,7 @@ export default ({ headingText = "Privacy Policy" }) => {
               <li>
                 <p>
                   {" "}
-                  <strong>"Publisher"</strong> shall mean the owner of the
+                  <Strong>"Publisher"</Strong> shall mean the owner of the
                   application. In case of Rasik App or One App, Panther Nails is
                   the owner of the application. Otherwise, Business will be the
                   publisher of the application.
@@ -103,13 +104,13 @@ export default ({ headingText = "Privacy Policy" }) => {
               <li>
                 <p>
                   {" "}
-                  <strong>"User"</strong> shall mean the user of the
+                  <Strong>"User"</Strong> shall mean the user of the
                   application.{" "}
                 </p>
               </li>
               <li>
                 <p>
-                  <strong>"App"</strong> shall mean the mobile application used
+                  <Strong>"App"</Strong> shall mean the mobile application used
                   by the user.
                 </p>
               </li>
@@ -117,7 +118,7 @@ export default ({ headingText = "Privacy Policy" }) => {
 
             <h2>CONTEXT AND PURPOSE</h2>
 
-            <p>
+            <Paragraph>
               This Privacy Policy is published in compliance with Section 43A of
               the Information Technology Act, 2000, Regulation 4 of the
               Information Technology (Reasonable Security Practices and
@@ -125,11 +126,11 @@ export default ({ headingText = "Privacy Policy" }) => {
               (hereinafter referred as the “SPDI Rules”) and Regulation 3(1) of
               the Information Technology (Intermediaries Guidelines) Rules,
               2011.
-            </p>
+            </Paragraph>
 
             <h2>COLLECTION OF PERSONAL INFORMATION</h2>
 
-            <p>
+            <Paragraph>
               Our services require us to authenticate and know who you are, so
               that we can best meet your needs. When you access the services, we
               may ask you to voluntarily provide us with certain information
@@ -148,35 +149,35 @@ export default ({ headingText = "Privacy Policy" }) => {
                   calls.
                 </li>
               </ol>
-            </p>
+            </Paragraph>
 
-            <p>
+            <Paragraph>
               This information collected from you by the publisher may
               constitute ‘personal information’ or ‘sensitive personal data or
               information’ as defined under Rule 2(i) and Rule 3 of the SPDI
               Rules.
-            </p>
+            </Paragraph>
 
             <h2>DISCLOSURE OF DATA</h2>
 
-            <p>
+            <Paragraph>
               The publisher my share the data with the applicaiton affiliates
               and third-party service providers, or vendors contracted to
               provide services on the publisher's behalf. These third-party
               service providers or vendors may use the data we provide to them
               only as instructed by the publisher.
-            </p>
+            </Paragraph>
 
-            <p>
+            <Paragraph>
               Information that is freely available in the public domain or
               accessible under the Right to Information Act, 2005 or any other
               law will not be regarded as personal information or sensitive
               personal data or information.
-            </p>
+            </Paragraph>
 
             <h2>DATA RETENTION</h2>
 
-            <p>
+            <Paragraph>
               The publisher will retain your personal data at least if necessary
               to fulfil the service that you have requested, comply with any
               laws or regulations, resolve disputes, and enforce our agreements.
@@ -185,23 +186,23 @@ export default ({ headingText = "Privacy Policy" }) => {
               personal rights and freedoms. Data entered in the app is retained
               in accordance with any applicable agreement between the publisher
               and its customers.{" "}
-            </p>
+            </Paragraph>
 
             <h2>PRIVACY STATEMENTS</h2>
 
             <ol>
               <li>
-                <strong>CONSENT TO THE PRIVACY POLICY</strong>
-                <p>
+                <Strong>CONSENT TO THE PRIVACY POLICY</Strong>
+                <Paragraph>
                   By affirming your assent to this Privacy Policy, you provide
                   your consent to such collection as required under applicable
                   law.
-                </p>
+                </Paragraph>
               </li>
 
               <li>
-                <strong>INFORMATION COLLECTED FROM THE USER</strong>
-                <p>
+                <Strong>INFORMATION COLLECTED FROM THE USER</Strong>
+                <Paragraph>
                   All/any information provided by you, including sensitive
                   information, is voluntary and we reserve the right to use such
                   information provided by or about you for the following
@@ -232,12 +233,12 @@ export default ({ headingText = "Privacy Policy" }) => {
                       orders and interests.
                     </li>
                   </ol>
-                </p>
+                </Paragraph>
               </li>
 
               <li>
-                <strong></strong>
-                <p>
+                <Strong></Strong>
+                <Paragraph>
                   the publisher takes your right to privacy very seriously and
                   other than as specifically stated in this privacy policy, we
                   will only disclose your personal information in the event it
@@ -248,21 +249,21 @@ export default ({ headingText = "Privacy Policy" }) => {
                   rights of others, to prevent harm to persons or property, to
                   fight fraud and credit risk, or to enforce or apply the Terms
                   of Use.
-                </p>
+                </Paragraph>
               </li>
 
               <li>
-                <p>
+                <Paragraph>
                   We also reserve the right to, periodically, reveal general
                   statistical information about the application & its users,
                   such as number of visitors, number and type of goods and
                   services purchased, etc.
-                </p>
+                </Paragraph>
               </li>
 
               <li>
-                <strong>YOUR DUTIES</strong>
-                <p>
+                <Strong>YOUR DUTIES</Strong>
+                <Paragraph>
                   You are responsible for maintaining the accuracy of the
                   information you submit to us, such as your contact information
                   provided as part of account registration. If your personal
@@ -277,38 +278,38 @@ export default ({ headingText = "Privacy Policy" }) => {
                   that the information provided by you is untrue, inaccurate,
                   out of date or incomplete, the publisher may at its sole
                   discretion, discontinue the provision of the services to you.
-                </p>
+                </Paragraph>
               </li>
 
               <li>
-                <strong>TERMINATION</strong>
+                <Strong>TERMINATION</Strong>
 
-                <p>
+                <Paragraph>
                   If you wish to cancel your account or request that we no
                   longer use your information to provide you services, contact
                   us through support. We shall not retain such personal
                   information unless required under any other law for the time
                   being in force.{" "}
-                </p>
+                </Paragraph>
               </li>
 
               <li>
-                <strong>CYBER INFORMATION and COOKIES</strong>
+                <Strong>CYBER INFORMATION and COOKIES</Strong>
                 <ol>
                   <li>
-                    <p>
+                    <Paragraph>
                       The app uses temporary storage to store certain data (that
                       is not sensitive personal data or information) that is
                       used by the publisher for technical administration,
                       research, and development, and for User administration,
                       which maybe shared with third parties.
-                    </p>
+                    </Paragraph>
                   </li>
                 </ol>
               </li>
 
               <li>
-                <p>
+                <Paragraph>
                   This Privacy Policy applies to services that are owned and
                   operated by the Company. The app and/or the Company does not
                   exercise control over the sites linked from within its
@@ -316,11 +317,11 @@ export default ({ headingText = "Privacy Policy" }) => {
                   data collected from such links. If you decide to visit a
                   third-party website linked to the website, understand you do
                   this entirely at your own risk.
-                </p>
+                </Paragraph>
               </li>
 
               <li>
-                <strong>SECURITY MEASURES</strong>
+                <Strong>SECURITY MEASURES</Strong>
                 <ol>
                   <li>
                     The Publisher has adopted the best international market
@@ -368,7 +369,7 @@ export default ({ headingText = "Privacy Policy" }) => {
 
             <ol>
               <li>
-                <p>
+                <Paragraph>
                   Your Personal Information is maintained by the publisher in
                   electronic form on its equipment, and on the equipment of its
                   employees. The publisher takes all necessary precautions to
@@ -378,28 +379,28 @@ export default ({ headingText = "Privacy Policy" }) => {
                   physical security control measures that commensurate with
                   respect to the information being collected and the nature of
                   the publishers business.
-                </p>
+                </Paragraph>
               </li>
               <li>
-                <p>
+                <Paragraph>
                   The publisher will not be liable for any unauthorized use of
                   your account. If you suspect an unauthorized use of your
                   account, at any time, you must immediately notify the
                   publisher by contacting support. You shall be liable to
                   indemnify the publisher for any loss suffered by us due to
                   such unauthorized use of your account.
-                </p>
+                </Paragraph>
               </li>
               <li>
-                <p>
+                <Paragraph>
                   The publisher makes your information accessible to its
                   employees, agents, or partners and third parties only on a
                   need-to-know basis and binds all such parties to strict
                   confidentiality obligations.
-                </p>
+                </Paragraph>
               </li>
               <li>
-                <p>
+                <Paragraph>
                   Notwithstanding the above, the publisher is not responsible
                   for the confidentiality, security, or distribution of your
                   personal information by our partners and third parties outside
@@ -411,13 +412,13 @@ export default ({ headingText = "Privacy Policy" }) => {
                   unauthorized access to computer data and storage device,
                   system failure, breach of security and encryption, poor
                   quality of your Internet service or mobile phone service, etc.
-                </p>
+                </Paragraph>
               </li>
             </ol>
 
             <h2>SECURITY</h2>
 
-            <p>
+            <Paragraph>
               The publisher uses technical and organizational measures that
               provide a level of security appropriate to the risk of processing
               your personal data. However, the security of information
@@ -425,30 +426,31 @@ export default ({ headingText = "Privacy Policy" }) => {
               responsible for maintaining the security of your password and
               other form of authentication involved in accessing password
               protected or secured resources.
-            </p>
+            </Paragraph>
 
             <h2>AMENDMENTS TO PRIVACY POLICY</h2>
 
-            <p>
+            <Paragraph>
               The Publisher may update this privacy policy at any time, with or
               without advance notice. If you use the services of the Company or
               access the application after a notice of amendment has been sent
               to him/her, you hereby provide your consent to the amended terms.
-            </p>
+            </Paragraph>
 
             <h2>GRIEVANCE OFFICER</h2>
-            <p>
+            <Paragraph>
               For any grievances related to data privacy, you can contact our
-              grievance officer (Rahul Daga) via email at : (
-              <a href="mailto:legal@panthernails.com">legal@panthernails.com</a>
+              grievance officer ({properties.legalName}) via email at : (
+              <a href={`mailto:${properties.legalEmail}`}>
+                {properties.legalEmail}
+              </a>
               )
-            </p>
+            </Paragraph>
 
             <hr />
           </Text>
         </ContentWithPaddingXl>
       </Container>
-      <Footer />
-    </AnimationRevealPage>
+    </>
   );
 };

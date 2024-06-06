@@ -7,19 +7,24 @@ import { useSession } from "providers/SessionProvider";
 
 import Header from "components/headers/light";
 import RouterPaths from "RouterPaths";
+import ScrollUpButton from "components/features/ScrollUpButton";
+import DockedButtons from "components/features/DockedButtons";
 
 export default function App() {
-  const { hasNotificationSeen, language, languageObject } = useSession();
+  const headerLinks = [
+    { url: "/about", text: "About Us" },
+    { url: "/pages/products/loyalty", text: "Rasik Loyalty Platform" },
+    { url: "/pages/products/clm", text: "Contract Labour Management" },
+    //    { url: "/blog", text: "Blog" },
+    { url: "/contact", text: "Contact Us" },
+  ];
 
   return (
     <>
       <GlobalStyles />
 
-      {/* <p>
-        {JSON.stringify({ ...languageObject, language, hasNotificationSeen })}
-      </p> */}
-
-      <Header />
+      <Header links={headerLinks} />
+      <ScrollUpButton />
 
       <RouterPaths />
     </>

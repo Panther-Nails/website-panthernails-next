@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import mockupImageSrc from "images/app-mockup.png";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9.svg";
 import {
   ContentWithPaddingXl,
@@ -22,14 +21,14 @@ const Row = tw.div`px-8 flex items-center relative z-10 flex-col lg:flex-row tex
 
 const ColumnContainer = tw.div`max-w-2xl`;
 const TextContainer = tw(ColumnContainer)``;
-const Text = tw(
+const Heading = tw(
   SectionHeading
-)`text-gray-100 lg:text-left max-w-none text-3xl leading-snug`;
+)`text-gray-100 lg:text-left max-w-none text-3xl leading-snug font-bold  `;
 const Subheading = tw(SubheadingBase)`text-yellow-500 mb-4 tracking-wider`;
 
-const LinksContainer = tw.div`mt-8 lg:mt-16 flex flex-col items-center sm:block `;
+const LinksContainer = tw.div`mt-8 lg:mt-16 flex flex-col items-center md:block sm:block gap-3 `;
 const Link = styled.a`
-  ${tw`w-56 p-3 sm:p-4 text-sm sm:text-base font-bold uppercase tracking-wider rounded-full inline-flex justify-center items-center mt-6 first:mt-0 sm:mt-0 sm:ml-8 first:ml-0 bg-gray-100 hocus:bg-gray-300 text-gray-900 hocus:text-gray-900 shadow hover:shadow-lg focus:shadow-outline focus:outline-none transition duration-300`}
+  ${tw`w-56 p-3 sm:p-4 text-sm sm:text-base font-bold uppercase tracking-wider rounded-full md:flex lg:inline-flex justify-center items-center mt-6 first:mt-0 sm:mt-0 sm:ml-8 sm:my-2 bg-gray-100 hocus:bg-gray-300 text-gray-900 hocus:text-gray-900 shadow hover:shadow-lg focus:shadow-outline focus:outline-none transition duration-300`}
   img {
     ${tw`inline-block h-8 mr-3`}
   }
@@ -53,34 +52,27 @@ export default ({
   index,
   properties,
   children,
-  subheading = "Download App",
-  text = "",
-  link1Text = "App Store",
-  link1Url = "http://apple.com",
+
   link1IconSrc = appleIconImageSrc,
-  link2Text = "Google Play",
-  link2Url = "http://play.google.com",
   link2IconSrc = googlePlayIconImageSrc,
-  pushDownFooter = "false",
-  imageSrc = mockupImageSrc,
 }) => {
   return (
-    <Container css={properties.pushDownFooter === "true" && tw`mb-20 lg:mb-24`}>
+    <Container>
       <Content>
         <Row>
           <TextContainer>
             {properties.subheading && (
               <Subheading>{properties.subheading}</Subheading>
             )}
-            <Text>{properties.heading}</Text>
+            <Heading tw="text-white">{properties.heading}</Heading>
             <LinksContainer>
-              <Link href={link1Url}>
+              <Link href={properties.leftButtonUrl} target="_black">
                 <img src={link1IconSrc} alt="" />
-                <span>{properties.link1Text}</span>
+                <span>{properties.leftButtonText}</span>
               </Link>
-              <Link href={link2Url}>
+              <Link href={properties.rightButtonUrl} target="_black">
                 <img src={link2IconSrc} alt="" />
-                <span>{properties.link2Text}</span>
+                <span>{properties.rightButtonText}</span>
               </Link>
             </LinksContainer>
           </TextContainer>

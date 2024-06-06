@@ -65,8 +65,10 @@ export const DesktopNavLinks = tw.nav`
   hidden lg:flex flex-1 justify-between items-center lg:mr-20 
 `;
 
-export const NotificationBarPullout = tw.div`top-0 border-b z-50   
-  flex justify-between items-center p-5 lg:px-20 `;
+export const NotificationBarPullout = styled.div((props) => [
+  tw`top-0 border-b z-50 flex justify-between items-center p-1 lg:px-20 font-semibold`,
+  backgroundColor[props.type || "none"],
+]);
 
 export const NotificationText = tw.p` p-2`;
 export const NotificationActions = tw.div`font-bold hover:bg-red-500 p-2`;
@@ -82,10 +84,17 @@ export const LanguageSelectionLinks = motion(styled.div`
   }
 `);
 
+const backgroundColor = {
+  success: tw`bg-green-500`,
+  warning: tw`bg-yellow-400`,
+  danger: tw`bg-red-500 text-white`,
+  info: tw`bg-primary-400 text-white `,
+  none: tw``,
+};
+
 const LanguageText = styled.div`font-bold hover:font-black`;
 
 export default ({
-  roundedHeaderButton = false,
   logoLink,
   className,
   collapseBreakpointClass = "lg",
@@ -94,12 +103,9 @@ export default ({
   const {
     hasNotificationSeen,
     setHasNotificationSeen,
-    theme,
-    setTheme,
-    language,
-    setLanguage,
-    languageObject,
-    setLanguageObject,
+
+    notificationText,
+    notificationType,
   } = useSession();
 
   /*
@@ -115,9 +121,6 @@ export default ({
    * changing the defaultLinks variable below below.
    * If you manipulate links here, all the styling on the links is already done for you. If you pass links yourself though, you are responsible for styling the links or use the helper styled components that are defined here (NavLink)
    */
-
-  const [notificationVisible, setNotificationVisible] = useState(true);
-  const [notificationText, setNotificationText] = useState("");
 
   const defaultLinks = [
     <NavLinks key={1}>
@@ -139,19 +142,6 @@ export default ({
     </NavLinks>,
   ];
 
-  const siteOptions = [
-    <NavLinks key={2}>
-      {SiteOptions(
-        theme,
-        setTheme,
-        language,
-        setLanguage,
-        languageObject,
-        setLanguageObject
-      )}
-    </NavLinks>,
-  ];
-
   const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
   const collapseBreakpointCss =
     collapseBreakPointCssMap[collapseBreakpointClass];
@@ -162,11 +152,22 @@ export default ({
     </LogoLink>
   );
 
+  const menuLinks = (
+    <NavLinks key={1}>
+      {links.map((link, index) => {
+        return (
+          <NavLinkWrapper onClick={toggleNavbar} key={index}>
+            <NavLink to={link.url}>{link.text}</NavLink>
+          </NavLinkWrapper>
+        );
+      })}
+    </NavLinks>
+  );
+
   logoLink = logoLink || defaultLogoLink;
-  links = links || defaultLinks;
+  links = menuLinks || defaultLinks;
 
   const handleCloseNotification = (e) => {
-    setNotificationVisible(false);
     setHasNotificationSeen(true);
   };
 
@@ -202,10 +203,8 @@ export default ({
           </NavToggle>
         </MobileNavLinksContainer>
       </Header>
-      {!hasNotificationSeen &&
-      notificationVisible &&
-      notificationText?.length > 0 ? (
-        <NotificationBarPullout type="success">
+      {!hasNotificationSeen && notificationText?.length > 0 ? (
+        <NotificationBarPullout type={notificationType}>
           <NotificationText>{notificationText}</NotificationText>
           <NotificationActions>
             <CloseIcon tw="w-6 h-6" onClick={handleCloseNotification} />
@@ -262,8 +261,6 @@ export function useAnimatedSiteOptionsToggler() {
 }
 
 const SiteOptions = (
-  theme,
-  setTheme,
   language,
   setLanguage,
   languageObject,

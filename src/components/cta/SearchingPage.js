@@ -1,5 +1,4 @@
-import react from "react";
-export default ({}) => {
+export default () => {
   return (
     <>
       <div
