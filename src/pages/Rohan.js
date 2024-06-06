@@ -9,15 +9,8 @@ import logo from "images/logo.svg";
 import googleIconImageSrc from "images/google-icon.png";
 import twitterIconImageSrc from "images/twitter-icon.png";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
-import {
-  Menu,
-  MenuItems,
-  MenuItem,
-  Transition,
-  MenuButton,
-} from "@headlessui/react";
+
 import { Fragment } from "react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 const Container = tw(
   ContainerBase
@@ -151,116 +144,12 @@ export default ({
     var sanitizedValue = newValue.replace(/[^0-9]/g, ""); //In UC Browser inputmode="numeric not working" so added this
     event.target.value = sanitizedValue;
 
-    if (newValue.length > maxLength) {
-      //   infoNotify("Mobile number should not be greater than " + maxLength);
-      return;
-    }
     setUserInput({ ...userInput, [event.target.id]: event.target.value });
   }
 
   return (
     <AnimationRevealPage>
-      <Container>
-        <Content>
-          <MainContainer>
-            <LogoLink href={logoLinkUrl}>
-              <LogoImage src={logo} />
-            </LogoLink>
-            <MainContent>
-              <Heading>{headingText}</Heading>
-              <FormContainer>
-                <Menu as="div" className="relative inline-block text-left">
-                  <MenuButton tw="w-full text-left">
-                    <DropdownButton>
-                      Option
-                      <ChevronDownIcon
-                        tw="-mr-1 h-5 w-5 text-gray-400"
-                        aria-hidden="true"
-                      />
-                    </DropdownButton>
-                  </MenuButton>
-
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <DropdownContainer
-                      role="menu"
-                      aria-orientation="vertical"
-                      aria-labelledby="menu-button"
-                      tabindex="-1"
-                    >
-                      <DropdownItems>
-                        {items.map((item, index) => {
-                          return (
-                            <DropdownItem
-                              href={item.href}
-                              role="menuitem"
-                              tabindex="-1"
-                              id="menu-item-0"
-                            >
-                              {item.text}
-                            </DropdownItem>
-                          );
-                        })}
-                      </DropdownItems>
-                    </DropdownContainer>
-                  </Transition>
-                </Menu>
-                <Input
-                  id="MobileNoOREmailID"
-                  type="text"
-                  isNumeric={true}
-                  placeholder="Enter Mobile Number"
-                  onChange={onMobileNoChange}
-                  value={userInput.MobileNoOREmailID}
-                />
-                {SendOTPButton()}
-
-                {/* <p tw="mt-6 text-xs text-gray-600 text-center">
-                  <a
-                    href={forgotPasswordUrl}
-                    tw="border-b border-gray-500 border-dotted"
-                  >
-                    Forgot Password ?
-                  </a>
-                </p> */}
-                {/* <p tw="mt-8 text-sm text-gray-600 text-center">
-                  Dont have an account?{" "}
-                  <a href={signupUrl} tw="border-b border-gray-500 border-dotted">
-                    Sign Up
-                  </a>
-                </p> */}
-                {/* <DividerTextContainer>
-                  <DividerText>Or Sign in with your e-mail</DividerText>
-                </DividerTextContainer>
-                <SocialButtonsContainer>
-                  {socialButtons.map((socialButton, index) => (
-                    <SocialButton key={index} href={socialButton.url}>
-                      <span className="iconContainer">
-                        <img
-                          src={socialButton.iconImageSrc}
-                          className="icon"
-                          alt=""
-                        />
-                      </span>
-                      <span className="text">{socialButton.text}</span>
-                    </SocialButton>
-                  ))}
-                </SocialButtonsContainer> */}
-              </FormContainer>
-            </MainContent>
-          </MainContainer>
-          <IllustrationContainer>
-            <IllustrationImage imageSrc={illustrationImageSrc} />
-          </IllustrationContainer>
-        </Content>
-      </Container>
+      <Container></Container>
     </AnimationRevealPage>
   );
 };
