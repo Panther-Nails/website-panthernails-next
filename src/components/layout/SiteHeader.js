@@ -113,7 +113,7 @@ export default (props) => {
               {obj.Menus.map((menuItems) => {
                 return (
                   <MenuLink
-                    to={menuItems.Text}
+                    to={menuItems.Link}
                     onClick={() => props.setIsOpen((prev) => !prev)}
                   >
                     {menuItems.Link}

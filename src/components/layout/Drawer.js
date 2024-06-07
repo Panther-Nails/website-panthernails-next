@@ -20,6 +20,7 @@ import {
   Input,
   makeResetStyles,
   tokens,
+  DrawerFooter,
 } from "@fluentui/react-components";
 import { ArrowLeftRegular } from "@fluentui/react-icons";
 
@@ -58,6 +59,7 @@ export default ({ title, children, isOpen, setIsOpen }) => {
       </DrawerHeader>
 
       <DrawerBody>{children}</DrawerBody>
+      <DrawerFooter>Setting</DrawerFooter>
     </OverlayDrawer>
   );
 };
