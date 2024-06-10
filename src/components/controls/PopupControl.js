@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components"; //eslint-disable-line
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 import { ProcessChildComponentsSeparately } from "DynamicPage";
 
@@ -33,9 +32,20 @@ import { ProcessChildComponentsSeparately } from "DynamicPage";
 // };
 
 const Popup = styled.div((props) => [
-  tw`fixed top-0 left-0 rounded  z-50 w-1/2 h-1/2 translate-x-1/2 translate-y-1/4 `,
-  //   getSizeAndPosition(props),
+  tw`fixed top-0 left-0 rounded  z-50 w-1/2 translate-x-1/2 translate-y-1/4 overflow-scroll`,
+  `background-color:${props.bgColor};
+  ::-webkit-scrollbar {
+      display: none;
+    }
+  `,
 ]);
+
+// const Popup = styled.iframe((props) => [
+//   `::-webkit-scrollbar {
+//       display: none;
+//     }`,
+//   tw`fixed top-0 left-0 rounded  z-50 w-1/2 h-1/2 translate-x-1/2 translate-y-1/4 p-3 bg-white`,
+// ]);
 
 export default ({ properties, children, index }) => {
   const [showPopup, setShowPopup] = useState(false);
@@ -44,7 +54,7 @@ export default ({ properties, children, index }) => {
     ? JSON.parse(properties.startTime)
     : 5000;
 
-  var endTime = properties.endTime ? JSON.parse(properties.endTime) : 10000;
+  var endTime = properties.endTime ? JSON.parse(properties.endTime) : 1000000;
 
   useEffect(() => {
     const timerStart = setTimeout(() => {
@@ -64,12 +74,12 @@ export default ({ properties, children, index }) => {
 
   return showPopup ? (
     <>
-      <Popup size="small" position="center">
+      <Popup size="small" position="center" bgColor={properties.bgColor}>
         <CloseIcon
           tw="p-1 bg-red-500 rounded rounded-full hocus:bg-gray-600 fixed right-0 z-50 cursor-pointer"
           onClick={() => setShowPopup(false)}
         />
-        <>{ProcessChildComponentsSeparately(children)}</>
+        {ProcessChildComponentsSeparately(children)}
       </Popup>
     </>
   ) : (

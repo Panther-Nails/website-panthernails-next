@@ -160,7 +160,6 @@ export default () => {
       PageName: name,
     };
 
-    // console.log("data check", data[0]);
     return (
       <>
         <Suspense fallback={<FallbackLoading />}>

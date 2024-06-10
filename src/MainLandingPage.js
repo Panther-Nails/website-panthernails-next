@@ -216,7 +216,7 @@ export default ({
               </ImageContainer>
             </ImageColumn>
           </HeroRow>
-          <SectionContainer id="landingPageDemos">
+          {/* <SectionContainer id="landingPageDemos">
             <SectionHeading>Landing Pages</SectionHeading>
             <SectionDescription>
               We have {noOfLandingPages} premade landing pages. Click on the
@@ -280,7 +280,7 @@ export default ({
                 </PreviewCardContainer>
               ))}
             </PreviewCards>
-          </SectionContainer>
+          </SectionContainer> */}
 
           <SectionContainer id="componentDemos">
             <SectionHeading>Component Blocks</SectionHeading>
