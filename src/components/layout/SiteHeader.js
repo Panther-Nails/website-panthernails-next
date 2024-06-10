@@ -108,7 +108,7 @@ export default (props) => {
         {menuData.map((obj) => {
           return (
             <>
-              <Label size="medium">{obj.moduleName}</Label>
+              <Label size="large">{obj.moduleName}</Label>
 
               {obj.Menus.map((menuItems) => {
                 return (

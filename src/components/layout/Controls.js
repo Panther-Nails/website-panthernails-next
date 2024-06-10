@@ -28,7 +28,6 @@ export const HomeDatabsase = bundleIcon(
 
 export const LogoLink = styled(NavLink)`
   ${tw`flex w-auto items-center font-black `};
-
   img {
     ${tw`h-8 `}
   }
@@ -36,9 +35,9 @@ export const LogoLink = styled(NavLink)`
 
 export const MenuLink = tw(
   NavLink
-)`lg:text-left w-auto px-3 pt-1 pb-2 block duration-300`;
+)`lg:text-left w-auto px-3 pt-1 pb-2 block duration-300 no-underline text-primary-900 hover:bg-gray-300 rounded-md text-lg capitalize`;
 
-export const Divider = tw.hr`border-2 border-b-primary-900 `;
+export const Divider = tw.hr`border border-solid border-gray-500`;
 
 export const CompanyLogo = (props) => {
   return (
