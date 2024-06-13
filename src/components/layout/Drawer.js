@@ -33,7 +33,7 @@ const useStackClassName = makeResetStyles({
   rowGap: tokens.spacingVerticalL,
 });
 
-export default ({ title, children, isOpen, setIsOpen }) => {
+export default ({ title, children, isOpen, setIsOpen, isShowFooter }) => {
   return (
     <OverlayDrawer
       open={isOpen}
@@ -59,7 +59,7 @@ export default ({ title, children, isOpen, setIsOpen }) => {
       </DrawerHeader>
 
       <DrawerBody>{children}</DrawerBody>
-      <DrawerFooter>Setting</DrawerFooter>
+      {isShowFooter && <DrawerFooter>Setting</DrawerFooter>}
     </OverlayDrawer>
   );
 };

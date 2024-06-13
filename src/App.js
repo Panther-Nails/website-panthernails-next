@@ -59,9 +59,10 @@ export default function App() {
       <SiteHeader isOpen={isOpen} setIsOpen={setIsOpen} />
 
       <Routes>
-        <Route exact path="/" element={<diuv>Home</diuv>} />
-        <Route exact path="/data" element={<diuv>Data</diuv>} />
-        <Route exact path="/profile" element={<diuv>Profile</diuv>} />
+        <Route exact path="/" element={<RohanLearning />} />
+        <Route exact path="/employee" element={<div>Employee</div>} />
+        <Route exact path="/data" element={<div>Data</div>} />
+        <Route exact path="/profile" element={<div>Profile</div>} />
       </Routes>
     </>
   );
