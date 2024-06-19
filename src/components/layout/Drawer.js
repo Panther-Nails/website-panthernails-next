@@ -1,13 +1,10 @@
 import React from "react";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import tw from "twin.macro";
 import styled from "styled-components";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
-
 import { useState } from "react";
 
 import {
@@ -16,24 +13,35 @@ import {
   DrawerHeaderTitle,
   OverlayDrawer,
   Button,
-  Field,
-  Input,
-  makeResetStyles,
-  tokens,
   DrawerFooter,
+  SearchBox,
+  makeStyles,
 } from "@fluentui/react-components";
 import { ArrowLeftRegular } from "@fluentui/react-icons";
 
-const ScreenFull = tw.div`h-screen w-screen bg-gray-100 flex`;
+import useDrawerHelper from "./useDrawerHelper";
 
-const Content = tw.div`basis-full bg-white`;
-const useStackClassName = makeResetStyles({
-  display: "flex",
-  flexDirection: "column",
-  rowGap: tokens.spacingVerticalL,
+const useStyles = makeStyles({
+  base: {
+    marginTop: "10px",
+    width: "100%",
+  },
 });
 
-export default ({ title, children, isOpen, setIsOpen, isShowFooter }) => {
+export default ({
+  title,
+  children,
+  isOpen,
+  setIsOpen,
+  isShowFooter,
+  data,
+  // menuData,
+  setMenuData,
+}) => {
+  const styles = useStyles();
+
+  const { handleMenuSearch, handleDrawerClose } = useDrawerHelper();
+
   return (
     <OverlayDrawer
       open={isOpen}
@@ -50,11 +58,19 @@ export default ({ title, children, isOpen, setIsOpen, isShowFooter }) => {
               appearance="subtle"
               aria-label="Close"
               icon={<ArrowLeftRegular />}
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setIsOpen(false);
+                handleDrawerClose(setMenuData, data);
+              }}
             />
           }
         >
           {title}
+          <SearchBox
+            appearance="outline"
+            className={styles.base}
+            onChange={(e) => handleMenuSearch(e, data, setMenuData)}
+          />
         </DrawerHeaderTitle>
       </DrawerHeader>
 

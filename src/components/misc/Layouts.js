@@ -30,6 +30,7 @@ export const ContentWithPaddingXl = tw.div`max-w-screen-xl mx-auto pb-20 lg:py-2
 export const ContentWithPaddingLg = tw.div`max-w-screen-lg mx-auto py-20 lg:py-24`;
 export const ContentWithVerticalPadding = tw.div`py-20 lg:py-24`;
 export const Content2Xl = tw.div`max-w-screen-2xl mx-auto`;
+export const NewLine = tw.br``;
 
 export const Image = tw.img`w-auto h-auto`;
 

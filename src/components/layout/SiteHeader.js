@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
@@ -7,18 +7,16 @@ import { MoreVertical32Regular, Person32Regular } from "@fluentui/react-icons";
 
 import { CompanyLogo, Divider, MenuLink } from "./Controls";
 import {
-  tokens,
   Field,
   Input,
   Label,
-  MenuItem,
-  MenuList,
-  MenuPopover,
-  MenuTrigger,
-  makeStyles,
-  Menu,
+  SearchBox,
+  Tree,
+  TreeItem,
+  TreeItemLayout,
 } from "@fluentui/react-components";
 import Drawer from "./Drawer";
+import useSiteHeaderHelper from "./useSiteHeaderHelper";
 
 const Container = tw.div`flex justify-between items-center shadow `;
 const LogoColumn = tw.div`flex items-center gap-4 mx-5 my-2 py-1`;
@@ -26,9 +24,9 @@ const ProfileColumn = tw.div`flex items-center  gap-2 mx-5 py-1`;
 const MenuIconContainer = tw.div`cursor-pointer`;
 
 export default (props) => {
-  const menuData = [
+  const data = [
     {
-      moduleName: "Masters",
+      Text: "Masters",
       Menus: [
         { Text: "Employee Master", Link: "employee" },
         { Text: "Profile Master", Link: "profile" },
@@ -36,55 +34,60 @@ export default (props) => {
       ],
     },
     {
-      moduleName: "Masters",
+      Text: "Transaction",
       Menus: [
-        { Text: "Employee Master", Link: "employee" },
-        { Text: "Profile Master", Link: "profile" },
-        { Text: "Data Master", Link: "data" },
-      ],
-    },
-    {
-      moduleName: "Masters",
-      Menus: [
-        { Text: "Employee Master", Link: "employee" },
-        { Text: "Profile Master", Link: "profile" },
-        { Text: "Data Master", Link: "data" },
-        { Text: "Employee Master", Link: "employee" },
-        { Text: "Profile Master", Link: "profile" },
-        { Text: "Data Master", Link: "data" },
-        { Text: "Employee Master", Link: "employee" },
-        { Text: "Profile Master", Link: "profile" },
-        { Text: "Data Master", Link: "data" },
-        { Text: "Employee Master", Link: "employee" },
-        { Text: "Profile Master", Link: "profile" },
-        { Text: "Data Master", Link: "data" },
-      ],
-    },
-    {
-      moduleName: "Masters",
-      Menus: [
-        { Text: "Employee Master", Link: "employee" },
-        { Text: "Profile Master", Link: "profile" },
-        { Text: "Data Master", Link: "data" },
-      ],
-    },
-    {
-      moduleName: "Masters",
-      Menus: [
+        { Text: "Service Plan", Link: "employee" },
+        { Text: "Event", Link: "profile" },
         {
-          Text: "Employee Master has child menu",
-          Link: "employee",
-          Child: [
-            { Text: "Employee Master", Link: "employee" },
-            { Text: "Employee Master", Link: "employee" },
+          Text: "Data ",
+          Link: "data",
+          Menus: [
+            { Text: "Data 1", Link: "employee" },
+            { Text: "Data 2", Link: "employee" },
           ],
         },
-        { Text: "Profile Master", Link: "profile" },
-        { Text: "Data Master", Link: "data" },
+      ],
+    },
+    {
+      Text: "Utilities",
+      Menus: [
+        { Text: "Theme", Link: "employee" },
+        { Text: "Notification", Link: "profile" },
+        { Text: "SMS", Link: "employee" },
+        { Text: "Notification", Link: "profile" },
+        { Text: "Theme", Link: "employee" },
+        { Text: "Notification", Link: "profile" },
+      ],
+    },
+    {
+      Text: "Components",
+      Menus: [
+        { Text: "Blogs", Link: "employee" },
+        { Text: "Cards", Link: "profile" },
+        {
+          Text: "Headers",
+          Link: "data",
+          Menus: [
+            { Text: "Sub Menu 1", Link: "employee" },
+            { Text: "Sub Menu 2", Link: "employee" },
+          ],
+        },
+      ],
+    },
+    {
+      Text: "Concepts",
+      Menus: [
+        {
+          Text: "Introduction",
+          Link: "Introduction",
+        },
+        { Text: "Developer", Link: "Developer" },
+        { Text: "Migration", Link: "Migration" },
       ],
     },
   ];
 
+  const [menuData, setMenuData] = React.useState(data);
   return (
     <>
       <Container>
@@ -114,45 +117,52 @@ export default (props) => {
         isOpen={props.isOpen}
         setIsOpen={props.setIsOpen}
         title={<Label size="large">One App</Label>}
+        data={data}
+        menuData={menuData}
+        setMenuData={setMenuData}
       >
         <Divider />
         {menuData.map((obj) => {
           return (
             <>
-              <Label size="large">{obj.moduleName}</Label>
+              <Label size="large">{obj.Text}</Label>
 
               {obj.Menus.map((menuItems) => {
-                if (menuItems.Child) {
+                if (menuItems.Menus) {
                   return (
-                    <MenuList>
-                      <Menu>
-                        <MenuTrigger>
-                          <MenuLink>{menuItems.Text}</MenuLink>
-                        </MenuTrigger>
-                        <MenuPopover>
-                          <MenuList>
-                            {menuItems.Child.map((obj) => {
-                              return (
-                                <MenuLink to={menuItems.Link}>
-                                  {obj.Text}
-                                </MenuLink>
-                              );
-                            })}
-                          </MenuList>
-                        </MenuPopover>
-                      </Menu>
-                    </MenuList>
+                    <Tree
+                      aria-label="Default"
+                      defaultOpenItems={[menuItems.Text]}
+                    >
+                      <TreeItem itemType="branch" value={menuItems.Text}>
+                        <TreeItemLayout>{menuItems.Text}</TreeItemLayout>
+                        <Tree>
+                          {menuItems.Menus.map((obj) => {
+                            return (
+                              <TreeItem itemType="leaf">
+                                <TreeItemLayout>
+                                  <MenuLink to={obj.Link}>{obj.Text} </MenuLink>
+                                </TreeItemLayout>
+                              </TreeItem>
+                            );
+                          })}
+                        </Tree>
+                      </TreeItem>
+                    </Tree>
+                  );
+                } else {
+                  return (
+                    <Tree aria-label="Default">
+                      <TreeItem itemType="leaf">
+                        <TreeItemLayout>
+                          <MenuLink to={menuItems.Link}>
+                            {menuItems.Text}
+                          </MenuLink>
+                        </TreeItemLayout>
+                      </TreeItem>
+                    </Tree>
                   );
                 }
-
-                return (
-                  <MenuLink
-                    to={menuItems.Link}
-                    onClick={() => props.setIsOpen((prev) => !prev)}
-                  >
-                    {menuItems.Text}
-                  </MenuLink>
-                );
               })}
             </>
           );

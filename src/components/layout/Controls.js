@@ -33,9 +33,7 @@ export const LogoLink = styled(NavLink)`
   }
 `;
 
-export const MenuLink = tw(
-  NavLink
-)`lg:text-left w-auto px-3 pt-1 pb-2 block duration-300 no-underline text-primary-900 hover:bg-gray-300 rounded-md text-lg capitalize`;
+export const MenuLink = tw(NavLink)`no-underline text-primary-1000`;
 
 export const Divider = tw.hr`border border-solid border-gray-500`;
 
