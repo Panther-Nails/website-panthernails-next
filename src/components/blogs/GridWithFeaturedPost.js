@@ -9,9 +9,7 @@ import { ProcessChildComponentsSeparately } from "DynamicPage";
 
 const HeadingContainer = tw.div`text-center`;
 const Description = tw(SectionDescription)`mx-auto`;
-
 const Posts = tw.div`mt-12 flex flex-wrap -mr-3 relative`;
-
 const DecoratorBlob1 = tw(
   SvgDotPatternIcon
 )`absolute bottom-0 left-0 w-32 h-32 mb-3 ml-3 transform -translate-x-1/2 translate-y-1/2 fill-current text-gray-500 opacity-50`;
@@ -19,7 +17,7 @@ const DecoratorBlob2 = tw(
   SvgDotPatternIcon
 )`absolute top-0 right-0 w-32 h-32 mt-16 mr-6 transform translate-x-1/2 -translate-y-1/2 fill-current text-gray-500 opacity-50`;
 
-export default ({ index, properties, children }) => {
+export default ({ properties, children, index, data }) => {
   return (
     <Container>
       <ContentWithPaddingXl>

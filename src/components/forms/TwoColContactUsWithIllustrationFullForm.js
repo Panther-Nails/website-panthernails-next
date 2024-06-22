@@ -41,7 +41,7 @@ const Textarea = styled(Input).attrs({ as: "textarea" })`
 
 const SubmitButton = tw(PrimaryButtonBase)`inline-block mt-8`;
 
-export default ({ children, properties, index, subheading = "Contact Us" }) => {
+export default ({ children, properties, index, data }) => {
   const [formData, setFormData] = useState({});
   const [subjectContent, setSubjectContent] = useState("");
   const [bodyContent, setBodyContent] = useState("");
@@ -117,7 +117,9 @@ export default ({ children, properties, index, subheading = "Contact Us" }) => {
         </ImageColumn>
         <TextColumn textOnLeft={properties.textOnLeft}>
           <TextContent>
-            {subheading && <Subheading>{subheading}</Subheading>}
+            {properties.subheading && (
+              <Subheading>{properties.subheading}</Subheading>
+            )}
             <Heading>
               {properties.heading}
               <span tw="text-primary-500">{properties.highlightHeading}</span>

@@ -30,8 +30,7 @@ const PrimaryLink = styled(PrimaryLinkBase)`
   }
 `;
 
-export default ({ index, children, properties }) => {
-  console.log("properties.textOnLeft", properties.textOnLeft);
+export default ({ properties, children, index, data }) => {
   return (
     <Container id="Products">
       <Content>

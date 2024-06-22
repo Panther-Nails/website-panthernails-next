@@ -75,58 +75,39 @@ const ControlButton = styled.button`
   }
 `;
 
-export default ({
-  imageSrc = loveIllustrationImageSrc,
-  imageRounded = true,
-  imageBorder = false,
-  imageShadow = false,
-  subheading = "Testimonials",
-  heading = "Our Clients Love Us.",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam.",
-  textOnLeft = false,
-  testimonials = [
-    {
-      stars: 5,
-      profileImageSrc:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80",
-      heading: "Amazing User Experience",
-      quote:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
-      customerName: "Charlotte Hale",
-      customerTitle: "CEO, Delos Inc.",
-    },
-    {
-      stars: 5,
-      profileImageSrc:
-        "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=512&h=512&q=80",
-      heading: "Love the Developer Experience and Design Principles !",
-      quote:
-        "Sinor Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-      customerName: "Adam Cuppy",
-      customerTitle: "Founder, EventsNYC",
-    },
-  ],
-}) => {
+export default ({ properties, children, index, data }) => {
   const [sliderRef, setSliderRef] = useState(null);
-
+  var inputs = JSON.parse(properties.inputs);
   return (
     <Container>
       <ContentWithPaddingXl>
         <Row>
           <ImageColumn>
             <Image
-              src={imageSrc}
-              imageBorder={imageBorder}
-              imageShadow={imageShadow}
-              imageRounded={imageRounded}
+              src={
+                properties.imageSrc
+                  ? properties.imageSrc
+                  : loveIllustrationImageSrc
+              }
+              imageBorder={
+                properties.imageBorder ? properties.imageBorder : false
+              }
+              imageShadow={
+                properties.imageShadow ? properties.imageShadow : false
+              }
+              imageRounded={
+                properties.imageRounded ? properties.imageRounded : true
+              }
             />
           </ImageColumn>
-          <TextColumn textOnLeft={textOnLeft}>
-            <Subheading>{subheading}</Subheading>
-            <Heading>{heading}</Heading>
-            <Description>{description}</Description>
+          <TextColumn
+            textOnLeft={properties.textOnLeft === "true" ? true : false}
+          >
+            <Subheading>{properties.subHeading}</Subheading>
+            <Heading>{properties.heading}</Heading>
+            <Description>{properties.description}</Description>
             <TestimonialSlider arrows={false} ref={setSliderRef}>
-              {testimonials.map((testimonial, index) => (
+              {inputs.map((testimonial, index) => (
                 <Testimonial key={index}>
                   <StarsContainer>
                     {Array.from({ length: testimonial.stars }).map(

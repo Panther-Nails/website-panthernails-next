@@ -11,7 +11,7 @@ export const SessionProvider = ({ children }) => {
   const [notificationText, setNotificationText] = useState("");
   const [notificationType, setNotificationType] = useState("none");
 
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(false); //eslint-disable-line
 
   const setNotification = (notificationText, notificationType = "none") => {
     setNotificationText(notificationText);

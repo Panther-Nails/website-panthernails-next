@@ -52,7 +52,7 @@ const PostContainer = styled.div`
     `}
 `;
 
-export default ({ index, properties, children }) => {
+export default ({ index, properties, children, data }) => {
   return (
     <>
       <PostContainer featured={properties.featured} key={index}>

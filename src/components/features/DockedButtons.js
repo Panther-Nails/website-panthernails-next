@@ -1,7 +1,7 @@
 import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
-import { css } from "styled-components/macro";
+import { css } from "styled-components/macro"; //eslint-disable-line
 
 // const Container = tw.div`fixed left-0 bottom-1/2 w-12 z-50 -translate-x-1`;
 // const Link = tw.a`flex flex-row items-center justify-center w-12 h-12 p-4 rounded bg-white hocus:bg-gray-300 hocus:w-16 duration-200`;
@@ -33,10 +33,6 @@ const LinkIcon = styled.img`w-full h-full`;
 // ]);
 
 export default ({ data, properties, children, index }) => {
-  // console.log(JSON.stringify(properties));
-
-  var links =
-    '[{"icon":"https://cdn-icons-png.flaticon.com/128/5968/5968771.png","link":"https://www.facebook.com/panthernails"},{"icon":"https://cdn-icons-png.flaticon.com/128/3991/3991775.png","link":"https://www.linkedin.com/company/panthernails/?viewAsMember=true"},{"icon":"https://cdn-icons-png.flaticon.com/128/2504/2504947.png","link":"https://x.com/panthernails"},{"icon":"https://cdn-icons-png.flaticon.com/128/2111/2111463.png","link":"https://www.instagram.com/panthernails_loyalty?igsh=aG5mMHVuMm5lOXNw"}]';
   var parsedChildren = JSON.parse(properties.links);
   return (
     <>

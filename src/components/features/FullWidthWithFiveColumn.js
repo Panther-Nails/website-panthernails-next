@@ -53,53 +53,7 @@ const Card = styled.a`
   }
 `;
 
-export default ({
-  properties,
-  children,
-  index,
-  plans = null,
-  linkText = "Learn More",
-  imageContainerCss = null,
-  imageCss = null,
-}) => {
-  // var defaultPlans = [
-  //   {
-  //     imageSrc:
-  //       "https://oneapp.panthernails.com/FS/WSM/WebsiteAsset/217/615.png",
-  //     title: "Secure",
-  //     description:
-  //       "We strictly only deal with vendors that provide top notch security.",
-  //     url: "/contact",
-  //     bgColor: "#9FE2BF",
-  //   },
-  //   {
-  //     imageSrc:
-  //       "https://oneapp.panthernails.com/FS/WSM/WebsiteAsset/217/621.png",
-  //     title: "24/7 Support",
-  //     description: "Lorem ipsum donor amet siti ceali placeholder text",
-  //     url: "/contact",
-  //     bgColor: "#40E0D0",
-  //   },
-  //   {
-  //     imageSrc:
-  //       "https://oneapp.panthernails.com/FS/WSM/WebsiteAsset/217/617.png",
-  //     title: "Customizable",
-  //     description: "Lorem ipsum donor amet siti ceali placeholder text",
-  //     url: "/contact",
-  //     bgColor: "#6495ED",
-  //   },
-  //   {
-  //     imageSrc:
-  //       "https://oneapp.panthernails.com/FS/WSM/WebsiteAsset/217/621.png",
-  //     title: "24/7 Support",
-  //     description: "Lorem ipsum donor amet siti ceali placeholder text",
-  //     url: "/contact",
-  //     bgColor: "#CCCCFF",
-  //   },
-  // ];
-
-  // if (!plans) plans = defaultPlans;
-
+export default ({ properties, children, index, data }) => {
   var inputs = JSON.parse(properties.inputs);
   return (
     <Container>
@@ -113,14 +67,25 @@ export default ({
             <Plan key={index} bgColor={input.bgColor}>
               {!input.featured && <div className="planHighlight" />}
               <Card href={input.url} target="_blank">
-                <span className="imageContainer" css={imageContainerCss}>
-                  <img src={input.imageSrc} alt="" css={imageCss} />
+                <span
+                  className="imageContainer"
+                  css={
+                    properties.imageContainerCss
+                      ? properties.imageContainerCss
+                      : null
+                  }
+                >
+                  <img
+                    src={input.imageSrc}
+                    alt=""
+                    css={properties.imageCss ? properties.imageCss : null}
+                  />
                 </span>
                 <span className="title">{input.title}</span>
                 <p className="description">{input.description}</p>
                 {input.url && (
                   <span className="link">
-                    <span target="_blank">{linkText}</span>
+                    <span target="_blank">{properties.linkText}</span>
                     <ArrowRightIcon className="icon" />
                   </span>
                 )}

@@ -6340,6 +6340,11 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.npmjs.org/lines-and-columns/-/lines-and-columns-1.1.6.tgz"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA= sha512-8ZmlJFVK9iCmtLz19HpSsR8HaAMWBT284VMNednLwlIMDP2hJDCIhUp0IZ2xUcZ+Ob6BM0VvCSJwzASDM45NLQ==
 
+linq@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.npmjs.org/linq/-/linq-4.0.3.tgz"
+  integrity sha512-dP0w2ERJXfVUk6VmmAK+Tz/SxFHwyY7VM6Mrq4fnJmeQf9JNEYFH6qJfV6Qn0N91mfwz2GEE/4S+RDkmDNyUJw==
+
 loader-runner@^4.2.0:
   version "4.3.0"
   resolved "https://registry.npmjs.org/loader-runner/-/loader-runner-4.3.0.tgz"

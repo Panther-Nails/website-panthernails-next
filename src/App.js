@@ -3,12 +3,10 @@ import GlobalStyles from "styles/GlobalStyles";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useSession } from "providers/SessionProvider";
 
 import Header from "components/headers/light";
 import RouterPaths from "RouterPaths";
 import ScrollUpButton from "components/features/ScrollUpButton";
-import DockedButtons from "components/features/DockedButtons";
 
 export default function App() {
   const headerLinks = [

@@ -43,28 +43,24 @@ const PrimaryButton = styled(PrimaryButtonBase)((props) => [
   props.buttonRounded && tw`rounded-full`,
 ]);
 
-export default ({
-  properties,
-  index,
-  children,
-  buttonRounded = true,
-  imageRounded = true,
-  imageBorder = false,
-  imageShadow = false,
-  showDecoratorBlob = false,
-  features = null,
-}) => {
+export default ({ properties, children, index, data }) => {
   return (
     <Container>
       <TwoColumn>
         <ImageColumn>
           <Image
             src={properties.imageSrc}
-            imageBorder={imageBorder}
-            imageShadow={imageShadow}
-            imageRounded={imageRounded}
+            imageBorder={
+              properties.imageBorder ? properties.imageBorder : false
+            }
+            imageShadow={
+              properties.imageShadow ? properties.imageShadow : false
+            }
+            imageRounded={
+              properties.imageRounded ? properties.imageRounded : true
+            }
           />
-          {showDecoratorBlob && <DecoratorBlob />}
+          {properties.showDecoratorBlob ? <DecoratorBlob /> : null}
         </ImageColumn>
         <TextColumn textOnLeft={properties.textOnLeft}>
           <TextContent>
@@ -76,7 +72,9 @@ export default ({
             <Features>{ProcessChildComponentsSeparately(children)}</Features>
 
             <PrimaryButton
-              buttonRounded={buttonRounded}
+              buttonRounded={
+                properties.buttonRounded ? properties.buttonRounded : true
+              }
               as="a"
               href={properties.buttonUrl}
             >

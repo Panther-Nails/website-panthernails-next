@@ -13,7 +13,9 @@ import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 const Container = tw.div`relative `;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto pb-12 items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
-const ImageColumn = tw(Column)`md:w-6/12 flex flex-col relative items-center hidden lg:block`;
+const ImageColumn = tw(
+  Column
+)`md:w-6/12 flex flex-col relative items-center hidden lg:block`;
 const TextColumn = styled(Column)((props) => [
   tw`md:w-6/12 mt-16 md:mt-0`,
   // props.textOnLeft
@@ -45,7 +47,7 @@ const Steps = tw.ul`mt-12`;
 const PrimaryButton = tw(
   PrimaryButtonBase
 )`mt-8 md:mt-10 text-sm inline-block mx-auto md:mx-0`;
-export default ({ properties, children }) => {
+export default ({ properties, children, index, data }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
 
   return (

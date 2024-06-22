@@ -37,14 +37,7 @@ const Input = tw.input`border-2 px-5 py-3 rounded focus:outline-none font-medium
 
 const SubmitButton = tw(PrimaryButtonBase)`inline-block lg:ml-6 mt-6 lg:mt-0`;
 
-export default ({
-  index,
-  properties,
-  children,
-
-  formAction = "#",
-  formMethod = "get",
-}) => {
+export default ({ properties, children, index, data }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
 
   return (
@@ -67,7 +60,10 @@ export default ({
               <span tw="text-primary-500"> {properties.highlighHeading}</span>
             </Heading>
             <Description>{properties.description}</Description>
-            <Form action={formAction} method={formMethod}>
+            <Form
+              action={properties.formAction ? properties.formAction : "#"}
+              method={properties.formMethod ? properties.formMethod : "get"}
+            >
               <Input
                 type="email"
                 name="email"

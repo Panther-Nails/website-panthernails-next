@@ -37,6 +37,7 @@ export function setCookie(name, value, duration) {
   document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
+// eslint-disable-next-line
 function setCookieForDays(name, value, duration) {
   eraseCookie(name);
   var expires = "";

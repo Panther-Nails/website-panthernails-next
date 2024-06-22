@@ -260,6 +260,7 @@ export function useAnimatedSiteOptionsToggler() {
   return { showSiteOptions, animation, toggleSiteOptions };
 }
 
+// eslint-disable-next-line
 const SiteOptions = (
   language,
   setLanguage,

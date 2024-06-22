@@ -32,7 +32,7 @@ const DecoratorBlob1 = tw(
 const DecoratorBlob2 = tw(
   SvgDecoratorBlob1
 )`absolute top-0 right-0 w-80 h-80 transform  translate-x-20 -translate-y-64 text-purple-900 opacity-15`;
-export default ({ children, properties, index }) => {
+export default ({ properties, children, index, data }) => {
   return (
     <Container>
       <ContentWithPaddingXl tw="py-0">

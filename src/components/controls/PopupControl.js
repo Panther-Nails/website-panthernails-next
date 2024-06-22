@@ -32,7 +32,7 @@ import { ProcessChildComponentsSeparately } from "DynamicPage";
 // };
 
 const Popup = styled.div((props) => [
-  tw`fixed top-0 left-0 rounded  z-50 w-1/2 translate-x-1/2 translate-y-1/4 overflow-scroll`,
+  tw`fixed top-0 left-0 rounded  z-50 w-1/2 translate-x-1/2 translate-y-1/4 overflow-scroll mb-20`,
   `background-color:${props.bgColor};
   ::-webkit-scrollbar {
       display: none;
@@ -67,10 +67,10 @@ export default ({ properties, children, index }) => {
   useEffect(() => {
     const timerEnd = setTimeout(() => {
       setShowPopup(false);
-    }, endTime);
+    }, endTime); //eslint-disable-line
 
     return () => clearTimeout(timerEnd);
-  }, [showPopup]);
+  }, [endTime]);
 
   return showPopup ? (
     <>

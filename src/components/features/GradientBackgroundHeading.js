@@ -22,7 +22,7 @@ const StyledText1 = styled.span`
   -webkit-text-fill-color: transparent;
 `;
 
-export default ({ data, children, properties }) => {
+export default ({ properties, children, index, data }) => {
   return (
     <Column>
       <ImageText> {properties.heading} </ImageText>

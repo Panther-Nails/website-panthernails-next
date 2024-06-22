@@ -14,7 +14,7 @@ const Image = styled.img((props) => [
 
 const Description = tw.p`mx-auto mt-4 text-center text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
-export default ({ data, children, properties }) => {
+export default ({ properties, children, index, data }) => {
   const isMobile = window.matchMedia("(max-width: 767px)").matches;
   const handleClick = () => {
     if (properties.url) window.open(properties.url);

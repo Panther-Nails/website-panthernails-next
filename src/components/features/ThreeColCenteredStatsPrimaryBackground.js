@@ -2,7 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import {
-  SectionHeading,
+  HighlightedHeading,
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
 import {
@@ -16,7 +16,6 @@ const Container = tw(
   ContainerBase
 )`my-8 lg:my-10 bg-primary-900 text-gray-100 -mx-8 px-8`;
 const HeadingContainer = tw.div``;
-const Heading = tw(SectionHeading)`sm:text-3xl md:text-4xl lg:text-5xl`;
 const Subheading = tw(SubheadingBase)`text-gray-100 text-center`;
 const Description = tw(
   SectionDescription
@@ -27,9 +26,7 @@ const Stat = tw.div`flex flex-col text-center p-4 tracking-wide`;
 const StatKey = tw.div`text-xl font-medium`;
 const StatValue = tw.div`text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-black`;
 
-export default ({ children, properties }) => {
-  // console.log("propertiesinGtest", children);
-
+export default ({ properties, children, index, data }) => {
   const localStats = () => {
     var stats = JSON.parse(properties.stats);
     return stats.map((stat, index) => {
@@ -48,7 +45,9 @@ export default ({ children, properties }) => {
           {properties.subheading && (
             <Subheading>{properties.subheading}</Subheading>
           )}
-          <Heading>{properties.heading}</Heading>
+          <HighlightedHeading primaryColor={tw`text-white`}>
+            {properties.heading}
+          </HighlightedHeading>
           {properties.description && (
             <Description>{properties.description}</Description>
           )}

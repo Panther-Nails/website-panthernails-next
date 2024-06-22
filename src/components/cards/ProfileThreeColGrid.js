@@ -14,7 +14,7 @@ const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`mx-auto text-center`;
 const Cards = tw.div`flex flex-wrap flex-row justify-center mx-auto`;
 
-export default ({ index, children, properties }) => {
+export default ({ properties, children, index, data }) => {
   return (
     <Container>
       <ContentWithPaddingXl>

@@ -87,7 +87,7 @@ export default ({ index, children, properties }) => {
               </SubscribeText>
               <SubscribeForm
                 method="post"
-                action="mailto:subscribe@panthernails.com?subject=Subscribe"
+                action={"mailto:subscribe@panthernails.com?subject=Subscribe"}
               >
                 <Input
                   type="email"

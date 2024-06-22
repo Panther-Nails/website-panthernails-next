@@ -26,7 +26,7 @@ const Heading = styled.h1`
 `;
 
 const CardAction = tw(PrimaryButtonBase)` mt-4`;
-export default ({ index, properties, children }) => {
+export default ({ properties, children, index, data }) => {
   return (
     <Container imageSrc={properties.backgroundImageUrl}>
       <OpacityOverlay />

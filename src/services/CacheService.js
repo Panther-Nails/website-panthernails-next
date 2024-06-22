@@ -19,6 +19,7 @@ export const trySetCache = (cacheKey, data) => {
       },
     });
 
+    // eslint-disable-next-line
     const promise = caches.open(cacheName).then((cache) => {
       cache.put(cacheKey, jsonResponse);
     });
@@ -40,6 +41,7 @@ export const getCache = (cacheKey, resolverDelegate) => {
     .then((r) => r.json())
     .then();
 
+  // eslint-disable-next-line
   const promise = cacheData
     .then((result) => {
       console.log("resolverDelegate result", result);

@@ -35,110 +35,47 @@ const SocialLink = styled.a`
   }
 `;
 
-const CopyrightAndCompanyInfoRow = tw.div`pb-0 text-sm font-normal flex flex-col sm:flex-row justify-between items-center`;
-const CopyrightNotice = tw.div``;
-const CompanyInfo = tw.div``;
-
 const Divider = tw.div`my-8 border-b-2 border-gray-800`;
-export default () => {
+export default ({ properties, children, index, data }) => {
+  var inputs = JSON.parse(properties.inputs);
+
   return (
     <Container>
       <Content>
         <FiveColumns>
           <CompanyColumn>
             <LogoContainer>
-              <LogoImg src={LogoImage} />
+              <LogoImg
+                src={properties.LogoImage ? properties.LogoImage : LogoImage}
+              />
             </LogoContainer>
-            <CompanyAddress>
-              123 Road, New Startup Building Carter Road, San Francisco
-              California 40234
-            </CompanyAddress>
+            <CompanyAddress>{properties.description}</CompanyAddress>
             <SocialLinksContainer>
-              <SocialLink href="https://facebook.com">
+              <SocialLink href={properties.facebookIconUrl}>
                 <FacebookIcon />
               </SocialLink>
-              <SocialLink href="https://twitter.com">
+              <SocialLink href={properties.twitterIconUrl}>
                 <TwitterIcon />
               </SocialLink>
-              <SocialLink href="https://youtube.com">
+              <SocialLink href={properties.youtubeIconUrl}>
                 <YoutubeIcon />
               </SocialLink>
             </SocialLinksContainer>
           </CompanyColumn>
-          <Column>
-            <ColumnHeading>Quick Links</ColumnHeading>
-            <LinkList>
-              <LinkListItem>
-                <Link href="#">Blog</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">FAQs</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Support</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">About Us</Link>
-              </LinkListItem>
-            </LinkList>
-          </Column>
-          <Column>
-            <ColumnHeading>Product</ColumnHeading>
-            <LinkList>
-              <LinkListItem>
-                <Link href="#">Log In</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Personal</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Business</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Team</Link>
-              </LinkListItem>
-            </LinkList>
-          </Column>
-          <Column>
-            <ColumnHeading>Legal</ColumnHeading>
-            <LinkList>
-              <LinkListItem>
-                <Link href="#">GDPR</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Privacy Policy</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Terms of Service</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Disclaimer</Link>
-              </LinkListItem>
-            </LinkList>
-          </Column>
-          <Column>
-            <ColumnHeading>Contact</ColumnHeading>
-            <LinkList>
-              <LinkListItem>+1 (234) (567)-8901</LinkListItem>
-              <LinkListItem>
-                <Link href="mailto:support@servana.com">
-                  support@servana.com
-                </Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Sales</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Report Abuse</Link>
-              </LinkListItem>
-            </LinkList>
-          </Column>
+          {inputs.map((footerMenu, index) => (
+            <Column>
+              <ColumnHeading>{footerMenu.title}</ColumnHeading>
+              <LinkList>
+                {footerMenu.menuLinks.map((menulink, index) => (
+                  <LinkListItem>
+                    <Link href={menulink.link}>{menulink.title}</Link>
+                  </LinkListItem>
+                ))}
+              </LinkList>
+            </Column>
+          ))}
         </FiveColumns>
         <Divider />
-        <CopyrightAndCompanyInfoRow>
-          <CopyrightNotice>&copy; Copyright 2020, Treact Inc.</CopyrightNotice>
-          <CompanyInfo>An Internet Company.</CompanyInfo>
-        </CopyrightAndCompanyInfoRow>
       </Content>
     </Container>
   );

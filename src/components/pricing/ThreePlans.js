@@ -21,55 +21,7 @@ const DecoratorBlob = styled(SvgDecoratorBlob)`
   ${tw`pointer-events-none -z-20 absolute left-0 bottom-0 h-64 w-64 opacity-25 transform -translate-x-1/2 translate-y-1/2`}
 `;
 
-export default ({
-  children,
-  properties,
-  index,
-
-  plans = null,
-}) => {
-  const defaultPlans = [
-    {
-      name: "Personal",
-      price: "$17.99",
-      duration: "Monthly",
-      mainFeature: "Suited for Personal Blogs",
-      features: [
-        "30 Templates",
-        "7 Landing Pages",
-        "12 Internal Pages",
-        "Basic Assistance",
-      ],
-    },
-    {
-      name: "Business",
-      price: "$37.99",
-      duration: "Monthly",
-      mainFeature: "Suited for Production Websites",
-      features: [
-        "60 Templates",
-        "8 Landing Pages",
-        "22 Internal Pages",
-        "Priority Assistance",
-      ],
-      featured: true,
-    },
-    {
-      name: "Enterprise",
-      price: "$57.99",
-      duration: "Monthly",
-      mainFeature: "Suited for Big Companies",
-      features: [
-        "90 Templates",
-        "9 Landing Pages",
-        "37 Internal Pages",
-        "Personal Assistance",
-      ],
-    },
-  ];
-
-  if (!plans) plans = defaultPlans;
-
+export default ({ children, properties, index, data }) => {
   return (
     <Container>
       <ContentWithPaddingXl>
