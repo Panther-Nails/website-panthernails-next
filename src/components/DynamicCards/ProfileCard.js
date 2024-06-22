@@ -3,6 +3,8 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
 
+const Link = tw.a`flex items-center w-12 h-12 p-4 rounded bg-white hocus:bg-gray-300 hocus:w-16 duration-200`;
+const LinkIcon = styled.img`w-full h-full`;
 const Cards = tw.div`flex flex-wrap flex-row justify-center sm:max-w-2xl lg:max-w-5xl mx-auto`;
 const Card = tw.div`mt-24 w-full sm:w-1/2 lg:w-1/4 flex flex-col items-center`;
 const CardImage = styled.div`
@@ -32,47 +34,26 @@ const CardLinks = styled.div`
   }
 `;
 
-export default ({ children }) => {
-  const [data, setData] = useState([
-    {
-      ComponentOrder: 1,
-      ComponentID: 161,
-      ComponentName: "ProfileCard",
-      Section: "DynamicCards",
-      IsParentComponent: true,
-      Deleted: false,
-      CompanyID: 217,
-      SubscriberID: 1140,
-      CHPJSON:
-        '{"imageSrc":"https:\\/\\/images.unsplash.com\\/photo-1509824227185-9c5a01ceba0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=658&q=80","title":"Hello"}',
-    },
-  ]);
-
-  console.log("profilecardArray", children);
-
-  useEffect(() => {
-    setData([...children]);
-  }, [children]);
+export default ({ children, properties, index }) => {
+  var parsedChildren = JSON.parse(properties.links);
   return (
-    <Cards>
-      {data.map((child, index) => {
-        var hpJson = {};
-
-        if (child.CHPJSON) {
-          hpJson = JSON.parse(child.CHPJSON);
-        }
-
-        return (
-          <Card key={index}>
-            <CardImage imageSrc={hpJson.imageSrc} />
-            <CardContent>
-              <span className="position">{hpJson.position}</span>
-              <span className="name">{hpJson.title}</span>
-              <CardLinks></CardLinks>
-            </CardContent>
-          </Card>
-        );
-      })}
-    </Cards>
+    <Card key={index}>
+      <CardImage imageSrc={properties.imageSrc} />
+      <CardContent>
+        <span className="position">{properties.position}</span>
+        <span className="name">{properties.title}</span>
+        <CardLinks>
+          {parsedChildren.map((item, index) => {
+            return (
+              <>
+                <Link href={item.link} key={index}>
+                  <LinkIcon src={item.icon}></LinkIcon>
+                </Link>
+              </>
+            );
+          })}
+        </CardLinks>
+      </CardContent>
+    </Card>
   );
 };

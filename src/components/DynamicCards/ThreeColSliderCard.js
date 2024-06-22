@@ -4,8 +4,9 @@ import styled from "styled-components";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons";
 import { ReactComponent as PriceIcon } from "feather-icons/dist/icons/dollar-sign.svg";
 import { ReactComponent as StarIcon } from "feather-icons/dist/icons/star.svg";
+import { ReactComponent as LocationIcon } from "feather-icons/dist/icons/map-pin.svg";
 
-const Card = tw.div`h-full flex! flex-col sm:border max-w-sm sm:rounded-tl-4xl sm:rounded-br-5xl relative focus:outline-none`;
+const Card = tw.div`h-full   flex! flex-col sm:border max-w-sm sm:rounded-tl-4xl sm:rounded-br-5xl relative focus:outline-none`;
 const CardImage = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
   tw`w-full h-56 sm:h-64 bg-cover bg-center rounded sm:rounded-none sm:rounded-tl-4xl `,
@@ -37,7 +38,7 @@ const Text = tw.div` text-sm font-semibold text-gray-800`;
 
 const PrimaryButton = tw(
   PrimaryButtonBase
-)`mt-auto sm:text-lg rounded-none w-full rounded sm:rounded-none sm:rounded-br-4xl py-3 sm:py-6`;
+)`mt-auto sm:text-lg text-center rounded-none w-full rounded sm:rounded-none sm:rounded-br-4xl py-3 sm:py-6`;
 
 const KnowMoreLink = styled.a`
   ${tw`mt-4 sm:mt-0  flex items-center text-secondary-300 transition duration-300 hocus:text-primary-400 focus:outline-none`}
@@ -61,6 +62,7 @@ export default ({ index, properties, children }) => {
         </TitleReviewContainer>
         <SecondaryInfoContainer>
           <IconWithText>
+            <LocationIcon/>
             <Text>{properties.locationText}</Text>
             {properties.knowMoreLinkUrl}
           </IconWithText>
@@ -78,7 +80,7 @@ export default ({ index, properties, children }) => {
           </KnowMoreLink>
         </Description>
       </TextInfo>
-      <PrimaryButton>Book a Meeting</PrimaryButton>
+      <PrimaryButton as="a" href={properties.buttonUrl}>{properties.buttonText}</PrimaryButton>
     </Card>
   );
 };

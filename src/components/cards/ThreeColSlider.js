@@ -8,10 +8,10 @@ import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chev
 import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
 import { ProcessChildComponentsSeparately } from "DynamicPage";
 
-const Container = tw.div`relative`;
+const Container = tw.div`relative px-4`;
 const Content = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20`;
 
-const HeadingWithControl = tw.div`flex flex-col items-center sm:items-stretch sm:flex-row justify-between`;
+const HeadingWithControl = tw.div` px-4 flex flex-col items-center sm:items-stretch sm:flex-row justify-between`;
 const Heading = tw(SectionHeading)``;
 const Controls = tw.div`flex items-center`;
 const ControlButton = styled(PrimaryButtonBase)`
@@ -32,7 +32,7 @@ const CardSlider = styled(Slider)`
     ${tw`h-auto flex justify-center mb-1`}
   }
 `;
-const Description = tw.p`text-sm leading-loose mt-2 sm:mt-4`;
+const Description = tw.p`text-sm leading-loose px-5 mt-2 sm:mt-4`;
 
 export default ({ index, properties, children }) => {
   // useState is used instead of useRef below because we want to re-render when sliderRef becomes available (not null)
@@ -72,7 +72,7 @@ export default ({ index, properties, children }) => {
             </NextButton>
           </Controls>
         </HeadingWithControl>
-        <Description>{properties.subHeading}</Description>
+        <Description>{properties.description}</Description>
         <CardSlider ref={setSliderRef} {...sliderSettings}>
           {ProcessChildComponentsSeparately(children)}
         </CardSlider>

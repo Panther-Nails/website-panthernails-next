@@ -7,7 +7,7 @@ const Column = styled.div`
 `;
 
 const Card = styled.div`
-  ${tw`flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8`}
+  ${tw`flex flex-col sm:flex-row  items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8`}
   .imageContainer {
     ${tw`border text-center rounded-full p-5 flex-shrink-0`}
     img {
@@ -28,46 +28,16 @@ const Card = styled.div`
   }
 `;
 
-export default ({ children }) => {
-  const [data, setData] = useState([
-    {
-      ComponentOrder: 1,
-      ComponentID: 161,
-      ComponentName: "ProfileCard",
-      Section: "DynamicCards",
-      IsParentComponent: true,
-      Deleted: false,
-      CompanyID: 217,
-      SubscriberID: 1140,
-      HPJSON:
-        '{"imageSrc":"https:\\/\\/images.unsplash.com\\/photo-1509824227185-9c5a01ceba0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=658&q=80","title":"Hello"}',
-    },
-  ]);
-
-  useEffect(() => {
-    setData([...children]);
-  }, [children]);
-
-  return (
-    <>
-      {data.map((child, index) => {
-        var hpJson = {};
-
-        if (child.HPJSON) {
-          hpJson = JSON.parse(child.HPJSON);
-        }
-
+export default ({ children,properties,index }) => {
+ 
         return (
           <Column key={index}>
             <Card>
               <span className="textContainer">
-                <span className="title">{hpJson.heading}</span>
-                <p className="description">{hpJson.description}</p>
+                <span className="title">{properties.heading}</span>
+                <p className="description">{properties.description}</p>
               </span>
             </Card>
           </Column>
         );
-      })}
-    </>
-  );
-};
+      }

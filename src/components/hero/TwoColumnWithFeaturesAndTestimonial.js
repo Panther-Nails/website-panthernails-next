@@ -79,18 +79,7 @@ export default ({
 
   return (
     <>
-      <Header
-        links={
-          <>
-            <NavLinks key={1}>
-              {links.map((link, index) => (
-                <NavLink to={link.href}>{link.title}</NavLink>
-              ))}
-            </NavLinks>
-            <NavLinks key={2}></NavLinks>
-          </>
-        }
-      />
+   
       <Container>
         <ContentWithVerticalPadding>
           <Row>
