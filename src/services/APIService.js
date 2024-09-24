@@ -6,8 +6,9 @@ import { BS64PNE36 } from "./cipher";
 
 function GetAuthenticationToken(companyID) {
   var bs = new BS64PNE36();
-  return fetch(
-    `https://localhost:7106/api/Auth/GenerateToken?sKey=${companyID}`,
+
+  https: return fetch(
+    `${encrypted.baseUrl}/Auth/GenerateToken?sKey=${companyID}`,
     {
       method: "get",
     }
@@ -54,7 +55,7 @@ export function Execute(oFormData) {
   var formDataEncrypted = bs.encrypt(body);
 
   return GetAuthenticationToken(session.CompanyID).then((token) => {
-    return fetch("https://localhost:7106/api/Device/safeexecute", {
+    return fetch(`${encrypted.baseUrl}/Device/safeexecute`, {
       method: "POST",
       headers: {
         Authorization: token,
