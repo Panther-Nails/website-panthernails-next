@@ -3,12 +3,11 @@ import GlobalStyles from "styles/GlobalStyles";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useSession } from "providers/SessionProvider";
 
 import Header from "components/headers/light";
 import RouterPaths from "RouterPaths";
 import ScrollUpButton from "components/features/ScrollUpButton";
-import DockedButtons from "components/features/DockedButtons";
+import Demo from "Demo";
 
 export default function App() {
   const headerLinks = [
@@ -26,6 +25,7 @@ export default function App() {
       <Header links={headerLinks} />
       <ScrollUpButton />
 
+      {/* <Demo /> */}
       <RouterPaths />
     </>
   );

@@ -2,6 +2,28 @@ import { getCacheAsync, trySetCache } from "./CacheService";
 import { Duration, getCookie, setCookie } from "./CookieService";
 import encrypted from "../session.json";
 import { decryptData } from "./EncryptionService";
+import { BS64PNE36 } from "./cipher";
+
+function GetAuthenticationToken(companyID) {
+  var bs = new BS64PNE36();
+  return fetch(
+    `https://localhost:7106/api/Auth/GenerateToken?sKey=${companyID}`,
+    {
+      method: "get",
+    }
+  ).then((response) => {
+    if (!response.ok) {
+      return bs.encrypt(
+        JSON.stringify({
+          DataIsLoaded: false,
+          items: [],
+          message: response.Message || "Data retrival failed.",
+        })
+      );
+    }
+    return response.text().then((t) => t);
+  });
+}
 
 export function Execute(oFormData) {
   var decryptionKey = decryptData(
@@ -27,27 +49,53 @@ export function Execute(oFormData) {
     }),
   };
 
-  return fetch(session.endpoint, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers":
-        "Origin, X-Requested-With, Content-Type, Accept",
-    },
-    body: JSON.stringify(formData),
-  })
-    .then((res) => res.json())
-    .then((json) => {
-      return { DataIsLoaded: true, items: json.Data, message: json.Message };
+  var bs = new BS64PNE36();
+  var body = JSON.stringify(formData);
+  var formDataEncrypted = bs.encrypt(body);
+
+  return GetAuthenticationToken(session.CompanyID).then((token) => {
+    return fetch("https://localhost:7106/api/Device/safeexecute", {
+      method: "POST",
+      headers: {
+        Authorization: token,
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers":
+          "Origin, X-Requested-With, Content-Type, Accept",
+      },
+      body: formDataEncrypted,
     })
-    .catch((error) => {
-      return {
-        DataIsLoaded: false,
-        items: [],
-        message: error.Message || "Data retrival failed.",
-      };
-    });
+      .then((response) => {
+        if (!response.ok) {
+          return bs.encrypt(
+            JSON.stringify({
+              DataIsLoaded: false,
+              items: [],
+              message: response.Message || "Data retrival failed.",
+            })
+          );
+        }
+
+        return response.text().then((t) => t);
+      })
+      .then((text) => bs.decrypt(text))
+      .then((res) => JSON.parse(res))
+      .then((json) => {
+        return {
+          DataIsLoaded: true,
+          items: json.Data,
+          message: json.Message,
+        };
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error("Fetch error:", error);
+        return {
+          DataIsLoaded: false,
+          items: [],
+          message: error.Message || "Data retrival failed.",
+        };
+      });
+  });
 }
 
 export function ExecuteCached(
@@ -80,7 +128,6 @@ export function ExecuteCached(
         });
 
     if (cookieValue != null) {
-      console.log("inside cookie present");
       return getCacheAsync(cacheKey)
         .then((response) => response)
         .catch((error) => {
@@ -88,12 +135,10 @@ export function ExecuteCached(
           return response;
         });
     } else {
-      console.log("inside cookie absent");
       var response = ExecuteAndSetCacheCookie();
       return response;
     }
   } else {
-    console.log("When direct service call");
     return Execute(FormData);
   }
 }

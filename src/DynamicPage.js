@@ -88,7 +88,6 @@ export default () => {
     document.title =
       response.items[0].HeadTitle +
       " - Panther Nails Technologies Private Limited.";
-    console.log(response);
     var existingMetaTagDescription = document.querySelector(
       'meta[name="description"]'
     );
@@ -120,8 +119,6 @@ export default () => {
       },
       getPageCacheKey()
     ).then((response) => {
-      console.log("Response", response);
-
       if (response.message === "Successfull") {
         setMetaTitleDynamic(response);
         // console.log("Data retrival success");
@@ -148,7 +145,6 @@ export default () => {
     // console.log("length", data.Components);
     if (data.Components) {
       var c = JSON.parse(data.Components);
-      console.log("components ", c);
       setComponents(c);
     }
   }, [data]);
