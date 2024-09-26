@@ -69,11 +69,11 @@ export default ({ index, children, properties }) => {
       <Content>
         <SixColumns>
           {sections.map((section, index) => (
-            <Column>
-              <ColumnHeading>{section.title}</ColumnHeading>
+            <Column key={index}>
+              <ColumnHeading  >{section.title}</ColumnHeading>
               <LinkList>
                 {section.menuLinks.map((menulink, index) => (
-                  <LinkListItem>
+                  <LinkListItem key={index}>
                     <Link href={menulink.link}>{menulink.title}</Link>
                   </LinkListItem>
                 ))}

@@ -39,15 +39,13 @@ export default ({ properties, children }) => {
               var childProperties = getProperties(child);
 
               return (
-                <>
-                  <TestimonialContainer key={index}>
-                    <Testimonial>
-                      <CustomerName>{childProperties.heading}</CustomerName>
-                      <Image src={childProperties.imageSrc} />
-                      <Quote>"{childProperties.description}"</Quote>
-                    </Testimonial>
-                  </TestimonialContainer>
-                </>
+                <TestimonialContainer key={index}>
+                  <Testimonial>
+                    <CustomerName>{childProperties.heading}</CustomerName>
+                    <Image src={childProperties.imageSrc} />
+                    <Quote>"{childProperties.description}"</Quote>
+                  </Testimonial>
+                </TestimonialContainer>
               );
             })}
           </Testimonials>

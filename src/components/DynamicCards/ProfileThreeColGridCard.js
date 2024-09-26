@@ -35,7 +35,7 @@ const CardLinks = styled.div`
 
 export default ({ index, properties }) => {
   var links = JSON.parse(properties.inputs);
-  
+
   return (
     <Card key={index}>
       <CardImage imageSrc={properties.imageSrc} />
@@ -43,16 +43,13 @@ export default ({ index, properties }) => {
         <span className="position">{properties.position}</span>
         <span className="name">{properties.name}</span>
         <CardLinks>
-        {links.map((item, index) => {
+          {links.map((item, index) => {
             return (
-              <>
-                <Link href={item.link} key={index}>
-                  <LinkIcon src={item.icon}></LinkIcon>
-                </Link>
-              </>
+              <Link href={item.link} key={index}>
+                <LinkIcon src={item.icon}></LinkIcon>
+              </Link>
             );
           })}
-       
         </CardLinks>
       </CardContent>
     </Card>

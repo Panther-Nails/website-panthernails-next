@@ -32,25 +32,17 @@ const LinkIcon = styled.img`w-full h-full`;
 //     : tw`md:ml-8 lg:ml-16 md:order-last`,
 // ]);
 
-export default ({ data, properties, children, index }) => {
-
-
-  var links =
-    '[{"icon":"https://cdn-icons-png.flaticon.com/128/5968/5968771.png","link":"https://www.facebook.com/panthernails"},{"icon":"https://cdn-icons-png.flaticon.com/128/3991/3991775.png","link":"https://www.linkedin.com/company/panthernails/?viewAsMember=true"},{"icon":"https://cdn-icons-png.flaticon.com/128/2504/2504947.png","link":"https://x.com/panthernails"},{"icon":"https://cdn-icons-png.flaticon.com/128/2111/2111463.png","link":"https://www.instagram.com/panthernails_loyalty?igsh=aG5mMHVuMm5lOXNw"}]';
+export default ({ properties }) => {
   var parsedChildren = JSON.parse(properties.links);
   return (
-    <>
-      <StyledContainer position={properties?.position || "bottom"}>
-        {parsedChildren.map((item, index) => {
-          return (
-            <>
-              <Link href={item.link} key={index}>
-                <LinkIcon src={item.icon}></LinkIcon>
-              </Link>
-            </>
-          );
-        })}
-      </StyledContainer>
-    </>
+    <StyledContainer position={properties?.position || "bottom"}>
+      {parsedChildren.map((item, index) => {
+        return (
+          <Link href={item.link} key={`${item.link}-${index}`}>
+            <LinkIcon src={item.icon}></LinkIcon>
+          </Link>
+        );
+      })}
+    </StyledContainer>
   );
 };

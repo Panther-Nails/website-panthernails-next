@@ -64,7 +64,7 @@ export const ProcessChildComponentsSeparately = (Components) => {
         child.ComponentName
       );
       return (
-        <Suspense>
+        <Suspense key={index}>
           <Component
             properties={childProperties}
             children={child.Children ?? []}
