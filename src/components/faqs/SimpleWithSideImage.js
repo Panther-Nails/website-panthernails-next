@@ -4,6 +4,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import {
+  HighlightedHeading,
   SectionHeading,
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
@@ -64,7 +65,7 @@ export default ({
   return (
     <Container id="faq">
       <Content>
-        <TwoColumn>
+        <TwoColumn tw="md:flex items-center justify-center gap-12">
           <Column tw="hidden lg:block w-5/12 flex-shrink-0">
             <Image
               imageContain={imageContain}
@@ -77,7 +78,7 @@ export default ({
               {properties.subheading ? (
                 <Subheading>{properties.subheading}</Subheading>
               ) : null}
-              <Heading>{properties.heading}</Heading>
+              <HighlightedHeading>{properties.heading}</HighlightedHeading>
               <Description>{properties.description}</Description>
               <FAQSContainer>
                 {faqs.map((faq, index) => (
@@ -90,13 +91,15 @@ export default ({
                   >
                     <Question>
                       <QuestionText>{faq.question}</QuestionText>
-                      <QuestionToggleIcon>
-                        {activeQuestionIndex === index ? (
-                          <MinusIcon />
-                        ) : (
-                          <PlusIcon />
-                        )}
-                      </QuestionToggleIcon>
+                      {faqs.Answer != null ? (
+                        <QuestionToggleIcon>
+                          {activeQuestionIndex === index ? (
+                            <MinusIcon />
+                          ) : (
+                            <PlusIcon />
+                          )}
+                        </QuestionToggleIcon>
+                      ) : null}
                     </Question>
                     <Answer
                       variants={{

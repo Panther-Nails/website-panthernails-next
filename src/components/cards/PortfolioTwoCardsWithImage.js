@@ -2,7 +2,11 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { SectionHeading, Subheading } from "components/misc/Headings.js";
+import {
+  HighlightedHeading,
+  SectionHeading,
+  Subheading,
+} from "components/misc/Headings.js";
 import { PrimaryLink as PrimaryLinkBase } from "components/misc/Links.js";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
 import { ProcessChildComponentsSeparately } from "DynamicPage";
@@ -31,13 +35,13 @@ const PrimaryLink = styled(PrimaryLinkBase)`
 
 export default ({ index, children, properties }) => {
   return (
-    <Container>
+    <Container tw="bg-white">
       <Content>
         <ThreeColumn>
           <HeadingColumn textOnLeft={properties.textOnLeft}>
             <HeadingInfoContainer>
               <Subheading>{properties.subHeading}</Subheading>
-              <HeadingTitle>{properties.heading}</HeadingTitle>
+              <HighlightedHeading>{properties.heading}</HighlightedHeading>
               <HeadingDescription>{properties.description}</HeadingDescription>
               <PrimaryLink>
                 {properties.linkText} <ArrowRightIcon />

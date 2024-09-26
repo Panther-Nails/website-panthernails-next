@@ -2,7 +2,10 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { SectionHeading } from "components/misc/Headings.js";
+import {
+  HighlightedHeading,
+  SectionHeading,
+} from "components/misc/Headings.js";
 
 const Container = styled.div`bg-primary-900 text-gray-100 -mx-8 px-8 text-left`;
 const Heading = tw(SectionHeading)`w-full `;
@@ -31,11 +34,11 @@ export default ({ plans = null, properties, children, index }) => {
   var siteMapArray = JSON.parse(properties.siteMapJson);
 
   return (
-    <Container tw="bg-white">
-      <Heading tw="text-left text-black text-3xl font-serif pl-8 py-12">
+    <Container tw="bg-white lg:flex lg:flex-col gap-8 py-12">
+      <HighlightedHeading tw="text-left text-black text-3xl font-serif pl-8 py-12">
         {properties.heading}
-      </Heading>
-      <PlansContainer>
+      </HighlightedHeading>
+      <PlansContainer tw="md:flex items-center justify-center">
         {siteMapArray.map((plan, index) => (
           <Plan key={index} featured={plan.featured}>
             <PlanFeatures>

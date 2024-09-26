@@ -38,12 +38,16 @@ export default ({ properties }) => {
               <Text>{properties.heading}</Text>
             </TextContainer>
             <LinksContainer>
-              <PrimaryLink href={properties.leftButtonUrl} target="_black">
-                {properties.leftButtonText}
-              </PrimaryLink>
-              <SecondaryLink href={properties.rightButtonUrl} target="_black">
-                {properties.rightButtonText}
-              </SecondaryLink>
+              {properties.leftButtonText && (
+                <PrimaryLink href={properties.leftButtonUrl} target="_black">
+                  {properties.leftButtonText}
+                </PrimaryLink>
+              )}
+              {properties.leftButtonText && (
+                <SecondaryLink href={properties.rightButtonUrl} target="_black">
+                  {properties.rightButtonText}
+                </SecondaryLink>
+              )}
             </LinksContainer>
           </Row>
           <DecoratorBlobContainer>

@@ -3,14 +3,13 @@ import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import {
-  SectionHeading,
+  HighlightedHeading,
   Subheading as SubheadingBase,
 } from "components/misc/Headings";
 import { SectionDescription } from "components/misc/Typography";
 import { ProcessChildComponentsSeparately } from "DynamicPage";
 
 const HeadingContainer = tw.div``;
-
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`mx-auto text-center`;
 
@@ -50,9 +49,7 @@ export default ({ index, children, properties }) => {
             <Subheading>{properties.subHeading}</Subheading>
           )}
           {properties.heading && (
-            <Heading>
-              <HighlightedHeading>{properties.heading}</HighlightedHeading>
-            </Heading>
+            <HighlightedHeading>{properties.heading}</HighlightedHeading>
           )}
           {properties.description && (
             <Description>{properties.description}</Description>

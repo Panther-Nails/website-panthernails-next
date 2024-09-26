@@ -2,6 +2,29 @@ import { getCacheAsync, trySetCache } from "./CacheService";
 import { Duration, getCookie, setCookie } from "./CookieService";
 import encrypted from "../session.json";
 import { decryptData } from "./EncryptionService";
+import { BS64PNE36 } from "./cipher";
+
+function GetAuthenticationToken(companyID) {
+  var bs = new BS64PNE36();
+
+  https: return fetch(
+    `${encrypted.baseUrl}/Auth/GenerateToken?sKey=${companyID}`,
+    {
+      method: "get",
+    }
+  ).then((response) => {
+    if (!response.ok) {
+      return bs.encrypt(
+        JSON.stringify({
+          DataIsLoaded: false,
+          items: [],
+          message: response.Message || "Data retrival failed.",
+        })
+      );
+    }
+    return response.text().then((t) => t);
+  });
+}
 
 export function Execute(oFormData) {
   var decryptionKey = decryptData(
@@ -27,27 +50,53 @@ export function Execute(oFormData) {
     }),
   };
 
-  return fetch(session.endpoint, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers":
-        "Origin, X-Requested-With, Content-Type, Accept",
-    },
-    body: JSON.stringify(formData),
-  })
-    .then((res) => res.json())
-    .then((json) => {
-      return { DataIsLoaded: true, items: json.Data, message: json.Message };
+  var bs = new BS64PNE36();
+  var body = JSON.stringify(formData);
+  var formDataEncrypted = bs.encrypt(body);
+
+  return GetAuthenticationToken(session.CompanyID).then((token) => {
+    return fetch(`${encrypted.baseUrl}/Device/safeexecute`, {
+      method: "POST",
+      headers: {
+        Authorization: token,
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers":
+          "Origin, X-Requested-With, Content-Type, Accept",
+      },
+      body: formDataEncrypted,
     })
-    .catch((error) => {
-      return {
-        DataIsLoaded: false,
-        items: [],
-        message: error.Message || "Data retrival failed.",
-      };
-    });
+      .then((response) => {
+        if (!response.ok) {
+          return bs.encrypt(
+            JSON.stringify({
+              DataIsLoaded: false,
+              items: [],
+              message: response.Message || "Data retrival failed.",
+            })
+          );
+        }
+
+        return response.text().then((t) => t);
+      })
+      .then((text) => bs.decrypt(text))
+      .then((res) => JSON.parse(res))
+      .then((json) => {
+        return {
+          DataIsLoaded: true,
+          items: json.Data,
+          message: json.Message,
+        };
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error("Fetch error:", error);
+        return {
+          DataIsLoaded: false,
+          items: [],
+          message: error.Message || "Data retrival failed.",
+        };
+      });
+  });
 }
 
 export function ExecuteCached(
