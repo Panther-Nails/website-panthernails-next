@@ -2,7 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
-import { ReactComponent as LinkedinIcon } from "images/linkedin-icon.svg";
+// import { ReactComponent as LinkedinIcon } from "images/linkedin-icon.svg";
 const Link = tw.a`flex items-center w-12 h-12 p-4 rounded bg-white hocus:bg-gray-300 hocus:w-16 duration-200`;
 const LinkIcon = styled.img`w-full h-full`;
 const Card = tw.div`mt-24 w-full sm:w-1/2 lg:w-1/4 flex flex-col items-center`;
@@ -33,7 +33,7 @@ const CardLinks = styled.div`
   }
 `;
 
-export default ({ index, children, properties }) => {
+export default ({ index, properties }) => {
   var links = JSON.parse(properties.inputs);
   
   return (

@@ -37,10 +37,8 @@ const CardMetaFeature = styled.div`
 const CardAction = tw(PrimaryButtonBase)`w-full mt-6`;
 
 export default ({ index, children, properties }) => {
-  // var Default = JSON.parse(properties.inputs);
-  console.log("propertiesfootermanujson", properties);
 
-  // var menuLinks = JSON.parse(properties.menuLinks);
+
 
   return (
     <CardColumn key={index}>
