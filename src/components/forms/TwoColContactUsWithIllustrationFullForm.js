@@ -52,7 +52,7 @@ export default ({ children, properties, index, subheading = "Contact Us" }) => {
     const value = event.target.value;
     setFormData((data) => ({ ...data, [name]: value }));
     var today = new Date();
-    console.log(today.toString());
+  
   };
 
   const handleSubmit = (event) => {
@@ -62,13 +62,13 @@ export default ({ children, properties, index, subheading = "Contact Us" }) => {
     var timestamp = `${today.getFullYear()}${today.getMonth()}${today.getDay()}${today.getHours()}${today.getMinutes()}${today.getSeconds()}`;
     var formJson = JSON.stringify({ ...formData, timestamp: timestamp });
 
-    console.log(today.getMonth());
+    
 
     var serverFilePath = `F:\\File Server\\WSM\\${
       properties.enquiryFolder ?? "websiteEnquiry"
     }\\${timestamp}_Enquriy.json`;
 
-    console.log(serverFilePath);
+  
 
     ExecuteFile({
       ActionName: "WriteFile",

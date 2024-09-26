@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import DynamicPage from "DynamicPage";
 
 const DynamicPageComponent = () => {
-  // console.log("url", window.location.pathname);
   return <DynamicPage />;
 };
 

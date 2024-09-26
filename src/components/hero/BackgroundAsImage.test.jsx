@@ -18,16 +18,16 @@ const renderComponent = () => <BackgroundAsImage properties={properties} />;
 const componentToBeInTheDocument = (componentName) => {
   const heading = document.getElementById("heading");
   const headingval = heading.innerHTML;
-  console.log(headingval);
+
   expect(headingval).toBeInTheDocument;
-}
+};
 
 describe("test the backgroundAsImage", () => {
   it("should present heading", () => {
     render(renderComponent());
     const heading = document.getElementById("heading");
     const headingval = heading.innerHTML;
-    console.log(headingval);
+
     expect(headingval).toBeInTheDocument;
   });
 
@@ -35,14 +35,13 @@ describe("test the backgroundAsImage", () => {
     render(renderComponent());
     const notification = document.getElementById("notification");
     const notificationval = notification.innerHTML;
-    console.log(notificationval);
     expect(notificationval).toBeInTheDocument;
   });
 
   it("should present button", () => {
     render(renderComponent());
     const herobtn = screen.getByRole("button", { name: /Book a Demo/i });
-    console.log(herobtn.innerHTML);
+
     expect(herobtn.value).toBeInTheDocument;
   });
 
@@ -54,7 +53,6 @@ describe("test the backgroundAsImage", () => {
     const herobtn = screen.getByRole("button", { name: /Book a Demo/i });
     fireEvent.click(herobtn);
 
-    console.log(mockClickHandler);
     expect(mockClickHandler).toHaveBeenCalledTimes(1);
     expect(mockClickHandler).toHaveBeenCalledWith(
       "https://calendly.com/contract-labour-management/demo?back=1&month=2024-05",

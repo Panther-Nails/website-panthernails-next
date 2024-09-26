@@ -3,7 +3,7 @@ import { CookieConsentValue, CookieValues } from "./CookieService";
 const cacheName = "myCache";
 
 export const trySetCache = (cacheKey, data) => {
-  console.log("cacheKey", cacheKey);
+  
 
   if (
     CookieConsentValue === CookieValues.Accepted ||
@@ -30,7 +30,7 @@ export const trySetCache = (cacheKey, data) => {
 };
 
 export const getCache = (cacheKey, resolverDelegate) => {
-  console.log("resolverDelegate", resolverDelegate);
+  
 
   const cacheData = caches
     .match(cacheKey)
@@ -42,7 +42,7 @@ export const getCache = (cacheKey, resolverDelegate) => {
 
   const promise = cacheData
     .then((result) => {
-      console.log("resolverDelegate result", result);
+      
       resolverDelegate(result);
     })
     .catch(function (error) {

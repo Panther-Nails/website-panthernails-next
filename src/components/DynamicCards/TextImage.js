@@ -47,7 +47,7 @@ export default ({ children }) => {
         if (child.HPJSON) {
           hpJson = JSON.parse(child.HPJSON);
         }
-        console.log("TextImageData", child.HPJSON);
+     
 
         return (
           <Card key={index} reversed={index % 2 === 1}>

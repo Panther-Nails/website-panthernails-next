@@ -33,7 +33,7 @@ const LinkIcon = styled.img`w-full h-full`;
 // ]);
 
 export default ({ data, properties, children, index }) => {
-  console.log(JSON.stringify(properties));
+
 
   var links =
     '[{"icon":"https://cdn-icons-png.flaticon.com/128/5968/5968771.png","link":"https://www.facebook.com/panthernails"},{"icon":"https://cdn-icons-png.flaticon.com/128/3991/3991775.png","link":"https://www.linkedin.com/company/panthernails/?viewAsMember=true"},{"icon":"https://cdn-icons-png.flaticon.com/128/2504/2504947.png","link":"https://x.com/panthernails"},{"icon":"https://cdn-icons-png.flaticon.com/128/2111/2111463.png","link":"https://www.instagram.com/panthernails_loyalty?igsh=aG5mMHVuMm5lOXNw"}]';

@@ -80,7 +80,6 @@ export function ExecuteCached(
         });
 
     if (cookieValue != null) {
-      console.log("inside cookie present");
       return getCacheAsync(cacheKey)
         .then((response) => response)
         .catch((error) => {
@@ -88,12 +87,10 @@ export function ExecuteCached(
           return response;
         });
     } else {
-      console.log("inside cookie absent");
       var response = ExecuteAndSetCacheCookie();
       return response;
     }
   } else {
-    console.log("When direct service call");
     return Execute(FormData);
   }
 }

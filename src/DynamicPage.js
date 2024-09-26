@@ -88,7 +88,7 @@ export default () => {
     document.title =
       response.items[0].HeadTitle +
       " - Panther Nails Technologies Private Limited.";
-    console.log(response);
+
     var existingMetaTagDescription = document.querySelector(
       'meta[name="description"]'
     );
@@ -108,8 +108,6 @@ export default () => {
   const getPageCacheKey = () =>
     "1BGeZoi3zs" + window.location.pathname.replace("/", "-");
 
-  // console.log(getPageCacheKey());
-
   useEffect(() => {
     ExecuteQuery(
       {
@@ -120,11 +118,9 @@ export default () => {
       },
       getPageCacheKey()
     ).then((response) => {
-      console.log("Response", response);
-
       if (response.message === "Successfull") {
         setMetaTitleDynamic(response);
-        // console.log("Data retrival success");
+
         var newData = response.items[0];
         setData({ ...data, ...newData });
       } else {
@@ -144,11 +140,9 @@ export default () => {
   }, [type, subtype, name]);
 
   useEffect(() => {
-    // console.log("dataset", data);
-    // console.log("length", data.Components);
     if (data.Components) {
       var c = JSON.parse(data.Components);
-      console.log("components ", c);
+
       setComponents(c);
     }
   }, [data]);
@@ -160,7 +154,6 @@ export default () => {
       PageName: name,
     };
 
-    // console.log("data check", data[0]);
     return (
       <>
         <Suspense fallback={<FallbackLoading />}>
@@ -190,7 +183,6 @@ export default () => {
       </>
     );
   } catch (e) {
-    console.log(e);
     return <div>Error: Component Not Found [{e.message}] </div>;
   }
 };

@@ -305,7 +305,6 @@ const BlocksRenderer = ({ blocks }) => {
   const [lastVisibleBlockIndex, setLastVisibleBlockIndex] = useState(0);
 
   const updateLastVisibleBlockIndex = (index) => {
-    console.log("LAST WAS ", lastVisibleBlockIndex);
     if (index > lastVisibleBlockIndex) setLastVisibleBlockIndex(index);
   };
 

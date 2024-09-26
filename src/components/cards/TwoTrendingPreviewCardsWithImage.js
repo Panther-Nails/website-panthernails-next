@@ -10,7 +10,6 @@ import { ProcessChildComponentsSeparately } from "DynamicPage";
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
 
-
 const Column = tw.div``;
 
 const ThreeColumn = styled(Column)((props) => [
@@ -31,7 +30,6 @@ const PrimaryLink = styled(PrimaryLinkBase)`
 `;
 
 export default ({ index, children, properties }) => {
-  console.log("properties.textOnLeft", properties.textOnLeft);
   return (
     <Container id="Products">
       <Content>

@@ -24,7 +24,6 @@ const HighlightedHeading = ({ children }) => {
   return (
     <>
       {children.split("`").map((chunk, index) => {
-        console.log(chunk);
         if (index % 2 === 0)
           return (
             <span key={index} tw="text-primary-900">
