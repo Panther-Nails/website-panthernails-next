@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export default function useSiteHeaderHelper() {
   const data = [
     {
@@ -62,7 +64,7 @@ export default function useSiteHeaderHelper() {
     },
   ];
 
-  const [menuData, setMenuData] = React.useState(data);
+  const [menuData, setMenuData] = useState(data);
 
   return { menuData, setMenuData };
 }

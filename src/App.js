@@ -57,15 +57,10 @@ export default function App() {
 
   return (
     <>
-      <SiteHeader isOpen={isOpen} setIsOpen={setIsOpen} />
-
-      <Routes>
-        <Route exact path="/" element={<Dashboard />} />
-        <Route exact path="/employee" element={<div>Employee</div>} />
-        <Route exact path="/data" element={<div>Data</div>} />
-        <Route exact path="/profile" element={<div>Profile</div>} />
-        <Route exact path="/RohanLearning" element={<RohanLearning />} />
-      </Routes>
+        <GlobalStyles/>
+        <Header links={headerLinks}/>
+        <ScrollUpButton/>
+        <RouterPaths/>
     </>
   );
 }
