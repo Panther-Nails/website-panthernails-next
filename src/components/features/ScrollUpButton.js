@@ -16,9 +16,10 @@ export default ({ properties }) => {
 
   const imageSrc = "https://cdn-icons-png.flaticon.com/128/892/892692.png";
 
-  const [scrollCounter, setScrollCounter] = useState(0);
   const [scroll, setScroll] = useState();
+  const [scrollCounter, setScrollCounter] = useState(0);
   const [scrollCondition, setScrollCondition] = useState(0);
+  
   const handleScroll = () => {
     const position = window.scrollY;
     setScrollCounter(position);

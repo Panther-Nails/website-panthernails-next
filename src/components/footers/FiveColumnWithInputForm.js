@@ -45,12 +45,12 @@ const CopywrightNotice = tw.p`text-center text-sm sm:text-base mt-8 md:mt-0 font
 
 const SocialLinksContainer = tw.div`mt-8 md:mt-0 flex`;
 const SocialLink = styled.a`
-  ${tw`cursor-pointer p-2 rounded-full bg-gray-900 text-gray-100 hover:bg-gray-700 transition duration-300 mr-4 last:mr-0`}
+  ${tw`cursor-pointer p-1 rounded  hover:bg-gray-700 transition duration-300 mr-4 `}
   svg {
     ${tw`w-4 h-4`}
   }
 `;
-const SocialImg = tw.img`w-8`;
+const SocialImg = tw.img`w-6`;
 
 const DecoratorBlobContainer = tw.div`absolute inset-0 overflow-hidden rounded-lg`;
 const DecoratorBlob1 = tw(

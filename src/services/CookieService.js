@@ -5,7 +5,7 @@ export const Duration = {
   Minute5: 5 * 60 * 1000,
   Minute10: 10 * 60 * 1000,
   Hour: 60 * 60 * 1000, //36000000
-  Day: 1, // 24 * 60 * 60 * 1000 = 24 * 3600000
+  Day:  24 * 60 * 60 * 1000 ,
   Week: 7,
   Month: 30,
   Year: 365,

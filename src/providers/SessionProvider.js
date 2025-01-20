@@ -11,7 +11,7 @@ export const SessionProvider = ({ children }) => {
   const [notificationText, setNotificationText] = useState("");
   const [notificationType, setNotificationType] = useState("none");
 
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(true);
 
   const setNotification = (notificationText, notificationType = "none") => {
     setNotificationText(notificationText);
@@ -32,6 +32,8 @@ export const SessionProvider = ({ children }) => {
         notificationText,
         setNotification,
         notificationType,
+        setShowPopup,
+        showPopup, 
       }}
     >
       {children}

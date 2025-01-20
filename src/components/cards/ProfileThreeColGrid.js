@@ -27,7 +27,7 @@ export default ({ index, children, properties }) => {
           {properties.heading && (
             <HighlightedHeading>{properties.heading}</HighlightedHeading>
           )}
-          {properties.description && (
+          {properties.description && ( 
             <Description>{properties.description}</Description>
           )}
         </HeadingContainer>

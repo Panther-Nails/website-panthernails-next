@@ -4,6 +4,8 @@ import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 import { ProcessChildComponentsSeparately } from "DynamicPage";
+import { useSession } from "providers/SessionProvider";
+import { getCookie } from "services/CookieService";
 
 // export const NotificationBarPullout = styled.div((props) => [
 //   tw`top-0 border-b z-50 flex justify-between items-center p-1 lg:px-20 font-semibold`,
@@ -32,12 +34,12 @@ import { ProcessChildComponentsSeparately } from "DynamicPage";
 // };
 
 const Popup = styled.div((props) => [
-  tw`fixed top-0 left-0 rounded  z-50 w-1/2 translate-x-1/2 translate-y-1/4 overflow-scroll`,
-  `background-color:${props.bgColor};
-  ::-webkit-scrollbar {
-      display: none;
-    }
-  `,
+  tw`fixed top-0 left-0 rounded  z-50 w-11/12 translate-x-5 lg:w-1/3 lg:translate-x-[100%] translate-y-10  pb-4 h-5/6  flex flex-col    `,
+  // `background-color:${props.bgColor};
+  // ::-webkit-scrollbar {
+  //     display: none;
+  //   }
+  // `,
 ]);
 
 // const Popup = styled.iframe((props) => [
@@ -46,19 +48,36 @@ const Popup = styled.div((props) => [
 //     }`,
 //   tw`fixed top-0 left-0 rounded  z-50 w-1/2 h-1/2 translate-x-1/2 translate-y-1/4 p-3 bg-white`,
 // ]);
+const Top = tw.div`w-full flex  justify-end h-6 z-10 `;
+const Bottom = tw.div`px-6 pb-6 h-full `;
 
 export default ({ properties, children, index }) => {
   const [showPopup, setShowPopup] = useState(false);
 
-  var startTime = properties.startTime
+  var startTime = properties?.startTime
     ? JSON.parse(properties.startTime)
     : 5000;
 
-  var endTime = properties.endTime ? JSON.parse(properties.endTime) : 1000000;
+  var endTime = properties?.endTime ? JSON.parse(properties.endTime) : 1000000;
+
+  const [chaildData] = children;
+  const { ComponentName, CPJSON, HPJSON } = chaildData;
+  const cpjsonData = CPJSON && JSON.parse(CPJSON);
+  const hpjsonData = HPJSON && JSON.parse(HPJSON);
+  const childControlData = { ...cpjsonData, ...hpjsonData };
+
+  const popupKeyVal = getCookie("Popupkey");
 
   useEffect(() => {
     const timerStart = setTimeout(() => {
-      setShowPopup(true);
+      if (
+        ComponentName === "PopupViewer" &&
+        popupKeyVal === childControlData.productEnquiryFor
+      ) {
+        setShowPopup(false);
+      } else {
+        setShowPopup(true);
+      }
     }, startTime);
 
     return () => clearTimeout(timerStart);
@@ -68,18 +87,19 @@ export default ({ properties, children, index }) => {
     const timerEnd = setTimeout(() => {
       setShowPopup(false);
     }, endTime);
-
     return () => clearTimeout(timerEnd);
   }, [showPopup]);
 
   return showPopup ? (
     <>
-      <Popup size="small" position="center" bgColor={properties.bgColor}>
-        <CloseIcon
-          tw="p-1 bg-red-500 rounded rounded-full hocus:bg-gray-600 fixed right-0 z-50 cursor-pointer"
-          onClick={() => setShowPopup(false)}
-        />
-        {ProcessChildComponentsSeparately(children)}
+      <Popup size="small" position="center" bgColor={"white"} id="PopupControl">
+        <Top>
+          <CloseIcon
+            tw="p-1 bg-red-500 rounded rounded-full hocus:bg-gray-600  right-0 z-50 cursor-pointer"
+            onClick={() => setShowPopup(false)}
+          />
+        </Top>
+        <Bottom>{ProcessChildComponentsSeparately(children)}</Bottom>
       </Popup>
     </>
   ) : (

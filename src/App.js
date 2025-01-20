@@ -18,6 +18,7 @@ export default function App() {
     { url: "/contact", text: "Contact Us" },
   ];
 
+
   return (
     <>
       <GlobalStyles />

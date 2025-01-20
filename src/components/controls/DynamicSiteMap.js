@@ -42,7 +42,7 @@ export default ({ plans = null, properties, children, index }) => {
       ParameterJSON: JSON.stringify(parameter),
     }).then((response) => {
       setSiteMapData(response.items);
-      console.log("siteMapData", response.items);
+      // console.log("siteMapData", response.items);
     });
   }, []);
 

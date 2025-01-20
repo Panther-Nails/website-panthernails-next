@@ -8,10 +8,13 @@ import { useSession } from "providers/SessionProvider";
 import FallbackLoading from "helpers/FallbackLoading";
 
 export const ImportDynamicComponent = (Section, ComponentName) => {
+  
   const Component = lazy(() =>
     import(`components/${Section}/${ComponentName}.js`)
       .then((module) => ({ default: module.default }))
       .catch((error) => {
+        console.log("error in compo");
+
         console.error(`Error loading component ${ComponentName}:`, error);
         return { default: () => <GetStarted /> }; // to be replaced with ErrorPage
       })
@@ -79,6 +82,7 @@ export const ProcessChildComponentsSeparately = (Components) => {
 };
 
 export default () => {
+  console.log("run....");
   const { type, subtype, name } = useParams();
   const { languageObject, setNotification } = useSession();
   const [data, setData] = useState({});
@@ -104,11 +108,12 @@ export default () => {
       response.items[0].HeadKeyWords
     );
   }
-
   const getPageCacheKey = () =>
     "1BGeZoi3zs" + window.location.pathname.replace("/", "-");
 
   useEffect(() => {
+
+    
     ExecuteQuery(
       {
         ActionName:
@@ -122,6 +127,7 @@ export default () => {
         setMetaTitleDynamic(response);
 
         var newData = response.items[0];
+        // console.log("response", JSON.parse(newData.Components));
         setData({ ...data, ...newData });
       } else {
         setNotification(
@@ -147,45 +153,53 @@ export default () => {
     }
   }, [data]);
 
-  try {
-    var parameter = {
-      GroupName: type,
-      SubGroupName: subtype,
-      PageName: name,
-    };
 
-    return (
-      <>
-        <Suspense fallback={<FallbackLoading />}>
-          <CookieConsent />
-          {components.map((component, index) => {
-            const Component = ImportDynamicComponent(
-              component.Section,
-              component.ComponentName
-            );
 
-            var children = [];
-            if (component.Children) {
-              children = component.Children;
-            }
-            var properties = getProperties(component);
 
-            return (
-              <Component
-                data={component}
-                children={children}
-                properties={properties}
-                key={index}
-              />
-            );
-          })}
-        </Suspense>
-      </>
-    );
-  } catch (e) {
-    return <div>Error: Component Not Found [{e.message}] </div>;
+
+    try {
+      var parameter = {
+        GroupName: type,
+        SubGroupName: subtype,
+        PageName: name,
+      };
+
+      
+  
+      return (
+        <>
+          <Suspense fallback={<FallbackLoading />}>
+            <CookieConsent />
+            {components.map((component, index) => {
+              const Component = ImportDynamicComponent(
+                component.Section,
+                component.ComponentName
+              );
+  
+              var children = [];
+              if (component.Children) {
+                children = component.Children;
+              }
+              var properties = getProperties(component);
+  
+              return (
+                <Component
+                  data={component}
+                  children={children}
+                  properties={properties}
+                  key={index}
+                />
+              );
+            })}
+          </Suspense>
+        </>
+      );
+    } catch (e) {
+      return <div>Error: Component Not Found [{e.message}] </div>;
+    }
   }
-};
+
+
 
 /*
 
