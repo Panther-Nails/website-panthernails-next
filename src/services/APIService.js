@@ -1,33 +1,9 @@
 import { getCacheAsync, trySetCache } from "./CacheService";
 import { Duration, getCookie, setCookie } from "./CookieService";
 import encrypted from "../session.json";
-import { decryptData } from "./EncryptionService";
+import { BS64PNE36Encryption } from "turbo/lib/cjs/Encryption";
 import { BS64PNE36 } from "./cipher";
-
-function setItemWithExpiry(key, value, expiryInMinutes) {
-  const now = new Date();
-  const item = {
-    value: value,
-    expiry: now.getTime() + expiryInMinutes * 60000,
-  };
-  localStorage.setItem(key, JSON.stringify(item));
-}
-function getItemWithExpiry(key) {
-  const itemStr = localStorage.getItem(key);
-
-  if (!itemStr) {
-    return null;
-  }
-
-  const item = JSON.parse(itemStr);
-  const now = new Date();
-
-  if (now.getTime() > item.expiry) {
-    localStorage.removeItem(key);
-    return null;
-  }
-  return item.value;
-}
+import moment from "moment";
 
 function GetAuthenticationToken(companyID) {
   var bs = new BS64PNE36();
@@ -41,27 +17,23 @@ function GetAuthenticationToken(companyID) {
     });
   } else {
 
-    https: return fetch(
-      `${encrypted.baseUrl}/Auth/GenerateToken?sKey=${companyID}`,
-      {
-        method: "get",
-      }
-    ).then((response) => {
-      if (!response.ok) {
-        return bs.encrypt(
-          JSON.stringify({
-            DataIsLoaded: false,
-            items: [],
-            message: response.Message || "Data retrival failed.",
-          })
-        );
-      }
-
-      response.text().then((t) => setItemWithExpiry("Token", t, 10));
-
-      return response.text().then((t) => t);
-    });
-  }
+  https: return fetch(
+    `${encrypted.baseUrl}/Auth/GenerateToken?sKey=${companyID}`,
+    {
+      method: "get",
+    }
+  ).then((response) => {
+    if (!response.ok) {
+      return bs.encrypt(
+        JSON.stringify({
+          DataIsLoaded: false,
+          items: [],
+          message: response.Message || "Data retrival failed.",
+        })
+      );
+    }
+    return response.text().then((t) => t);
+  });
 }
 
 // export function Execute(oFormData) {
@@ -93,7 +65,6 @@ function GetAuthenticationToken(companyID) {
 //   var formDataEncrypted = bs.encrypt(body);
 
 //   return GetAuthenticationToken(session.CompanyID).then((token) => {
-//     console.log("Token is ", token);
 //     return fetch(`${encrypted.baseUrl}/Device/safeexecute`, {
 //       method: "POST",
 //       headers: {
@@ -139,17 +110,17 @@ function GetAuthenticationToken(companyID) {
 // }
 
 export function Execute(oFormData) {
-  var decryptionKey = decryptData(
-    "U2FsdGVkX1+W8KoKL4/oI5HlgnvejSahTXl44m6BXuV/TfvRV+NVLObS6Puiq/pu",
-    "abcd12345"
-  );
-  var session = decryptData(encrypted.session, decryptionKey);
   var sessionData = {
-    CompanyID: session.CompanyID,
-    SubscriberID: session.SubscriberID,
-    AppID: session.AppID,
-    AppVersion: session.AppVersion,
-    AppPlatform: session.AppPlatform,
+    CompanyID: process.env.REACT_APP_COMPANY_ID,
+    SubscriberID: process.env.REACT_APP_SUBSCRIBER_ID,
+    AppID: process.env.REACT_APP_APP_ID,
+    AppVersion: process.env.REACT_APP_APP_VERSION,
+    AppPlatform: process.env.REACT_APP_APP_PLATFORM,
+    UserID: process.env.REACT_APP_USER_ID,
+    IsDeveloper: process.env.REACT_APP_ISDEVELOPER,
+    ServiceAccessToken: process.env.REACT_APP_SERVICE_ACCESS_TOKEN,
+    MenuID: process.env.REACT_APP_MENU_ID,
+    SessionID: process.env.REACT_APP_SESSION_ID,
   };
   var formData = {
     ...oFormData,
@@ -158,25 +129,69 @@ export function Execute(oFormData) {
       ...oFormData.SessionDataJSON,
     }),
   };
-  return fetch(`${encrypted.baseUrl}`, {
+
+  var bs = new BS64PNE36Encryption();
+
+  var body = JSON.stringify(formData);
+  var formDataEncrypted = bs.encrypt(body);
+
+  let now = moment().format("DD-MMM-YYYY HH:mm:ss");
+
+  let apiKey = bs.encrypt(
+    now +
+      process.env.REACT_APP_SECRET_API_ID +
+      process.env.REACT_APP_SECRET_API_KEY
+  );
+
+  let token = process.env.REACT_APP_SECRET_API_TOKEN + "";
+
+  let requestHeaders = {
+    Authorization: token,
+    "x-api-key": apiKey,
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers":
+      "Origin, X-Requested-With, Content-Type, Accept",
+  };
+  return fetch(`${process.env.REACT_APP_SECRET_API_URL}/Device/safeexecute2`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers":
-        "Origin, X-Requested-With, Content-Type, Accept",
-    },
-    body: JSON.stringify(formData),
+    headers: requestHeaders,
+    body: formDataEncrypted,
   })
-    .then((res) => res.json())
+    .then((response) => {
+      return response.text().then((t) => t);
+    })
+    .then((text) => bs.decrypt(text))
+    .then((res) => JSON.parse(res))
     .then((json) => {
-      return { DataIsLoaded: true, items: json.Data, message: json.Message };
+      if (json.Status === 200)
+        return {
+          DataIsLoaded: true,
+          errorID: json.ErrorID,
+          fieldJSON: json.FieldJSON,
+          status: json.Status,
+          items: json.Data,
+          message: json.Message,
+        };
+      else
+        return {
+          DataIsLoaded: false,
+          items: [],
+          message: json.Message || "Data retrival failed.",
+          errorID: null,
+          fieldJSON: null,
+          status: json.Status,
+        };
     })
     .catch((error) => {
+      // Handle errors
+      console.error("Fetch error:", error);
       return {
         DataIsLoaded: false,
         items: [],
         message: error.Message || "Data retrival failed.",
+        errorID: null,
+        fieldJSON: null,
+        status: 503,
       };
     });
 }
