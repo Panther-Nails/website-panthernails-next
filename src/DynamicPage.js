@@ -13,7 +13,7 @@ export const ImportDynamicComponent = (Section, ComponentName) => {
       .then((module) => ({ default: module.default }))
       .catch((error) => {
         console.error(`Error loading component ${ComponentName}:`, error);
-        return { default: () => <GetStarted /> }; // to be replaced with ErrorPage
+        return { default: () => <FallbackLoading /> }; // to be replaced with ErrorPage
       })
   );
   return Component;
@@ -84,11 +84,12 @@ export default () => {
   const [data, setData] = useState({});
   const [components, setComponents] = useState([]);
 
+  console.log("Calling");
+
   function setMetaTitleDynamic(response) {
     document.title =
       response.items[0].HeadTitle +
       " - Panther Nails Technologies Private Limited.";
-    console.log(response);
     var existingMetaTagDescription = document.querySelector(
       'meta[name="description"]'
     );
@@ -169,7 +170,6 @@ export default () => {
               component.Section,
               component.ComponentName
             );
-
             var children = [];
             if (component.Children) {
               children = component.Children;

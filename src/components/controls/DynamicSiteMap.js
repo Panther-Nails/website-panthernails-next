@@ -5,12 +5,12 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import { HighlightedHeading } from "components/misc/Headings.js";
 import { useEffect } from "react";
 import { ExecuteQuery } from "services/APIService";
-import { useSession } from "providers/SessionProvider";
 
 const Container = styled.div`bg-primary-900 text-gray-100 -mx-8 px-8 text-left`;
 const PlansContainer = styled.div`
   ${tw`flex flex-wrap justify-between lg:justify-start lg:items-start`}
 `;
+
 const Plan = styled.div`
   ${tw` max-w-sm bg-white rounded-lg  px-6 sm:px-10 lg:px-6 mx-3 flex flex-col text-left`}
 `;
@@ -28,13 +28,12 @@ const PlanFeatures = styled.ul`
   }
 `;
 
-export default ({ plans = null, properties, children, index }) => {
+export default ({ properties, children, index, data }) => {
   const [siteMapData, setSiteMapData] = useState([]);
 
-  //   var linkMaster = [];
   useEffect(() => {
     var parameter = {
-      WhereClause: "",
+      WhereClause: "And isnull(Deleted,0) = 0",
     };
 
     ExecuteQuery({
@@ -42,86 +41,85 @@ export default ({ plans = null, properties, children, index }) => {
       ParameterJSON: JSON.stringify(parameter),
     }).then((response) => {
       setSiteMapData(response.items);
-      console.log("siteMapData", response.items);
     });
   }, []);
 
-  var siteMapArray = [
-    {
-      module: "Personal",
-      name: "Shop",
-      link: "https://panthernails.com/",
-    },
-    {
-      module: "Personal",
-      name: "Store for Business",
-      link: "https://panthernails.com/",
-    },
-    {
-      module: "Personal",
-      name: "Store locations",
-      link: "https://panthernails.com/",
-    },
-    {
-      module: "Personal",
-      name: "Developer",
-      link: "https://panthernails.com/",
-    },
-    {
-      name: "Gift cards",
-      link: "https://panthernails.com/",
-    },
-    {
-      module: "Loyalty",
-      name: "2 Core Xeon CPU",
-      link: "https://panthernails.com/",
-    },
-    {
-      module: "Loyalty",
-      name: "4 Core Xeon CPU",
-      link: "https://panthernails.com/",
-    },
-    {
-      module: "Loyalty",
-      name: "99.9% Uptime",
-      link: "https://panthernails.com/",
-    },
-    {
-      module: "Loyalty",
-      name: "Unlimited Transfer",
-      link: "https://panthernails.com/",
-    },
-    {
-      module: "HRM",
-      name: "Free DNS Management",
-      link: "https://panthernails.com/",
-    },
-    {
-      module: "HRM",
-      name: "2 Core Xeon CPU",
-      link: "https://panthernails.com/",
-    },
-    {
-      module: "HRM",
-      name: "4 Core Xeon CPU",
-      link: "https://panthernails.com/",
-    },
-    {
-      module: "HRM",
-      name: "99.9% Uptime",
-      link: "https://panthernails.com/",
-    },
-    {
-      module: "HRM",
-      name: "Unlimited Transfer",
-      link: "https://panthernails.com/",
-    },
-    {
-      module: "HRM",
-      name: "Free DNS Management",
-      link: "https://panthernails.com/",
-    },
-  ];
+  // var siteMapArray = [
+  //   {
+  //     module: "Personal",
+  //     name: "Shop",
+  //     link: "https://panthernails.com/",
+  //   },
+  //   {
+  //     module: "Personal",
+  //     name: "Store for Business",
+  //     link: "https://panthernails.com/",
+  //   },
+  //   {
+  //     module: "Personal",
+  //     name: "Store locations",
+  //     link: "https://panthernails.com/",
+  //   },
+  //   {
+  //     module: "Personal",
+  //     name: "Developer",
+  //     link: "https://panthernails.com/",
+  //   },
+  //   {
+  //     name: "Gift cards",
+  //     link: "https://panthernails.com/",
+  //   },
+  //   {
+  //     module: "Loyalty",
+  //     name: "2 Core Xeon CPU",
+  //     link: "https://panthernails.com/",
+  //   },
+  //   {
+  //     module: "Loyalty",
+  //     name: "4 Core Xeon CPU",
+  //     link: "https://panthernails.com/",
+  //   },
+  //   {
+  //     module: "Loyalty",
+  //     name: "99.9% Uptime",
+  //     link: "https://panthernails.com/",
+  //   },
+  //   {
+  //     module: "Loyalty",
+  //     name: "Unlimited Transfer",
+  //     link: "https://panthernails.com/",
+  //   },
+  //   {
+  //     module: "HRM",
+  //     name: "Free DNS Management",
+  //     link: "https://panthernails.com/",
+  //   },
+  //   {
+  //     module: "HRM",
+  //     name: "2 Core Xeon CPU",
+  //     link: "https://panthernails.com/",
+  //   },
+  //   {
+  //     module: "HRM",
+  //     name: "4 Core Xeon CPU",
+  //     link: "https://panthernails.com/",
+  //   },
+  //   {
+  //     module: "HRM",
+  //     name: "99.9% Uptime",
+  //     link: "https://panthernails.com/",
+  //   },
+  //   {
+  //     module: "HRM",
+  //     name: "Unlimited Transfer",
+  //     link: "https://panthernails.com/",
+  //   },
+  //   {
+  //     module: "HRM",
+  //     name: "Free DNS Management",
+  //     link: "https://panthernails.com/",
+  //   },
+  // ];
 
   const groupedByModule = siteMapData.reduce((acc, item) => {
     const module = item.module || "Others";
@@ -139,7 +137,7 @@ export default ({ plans = null, properties, children, index }) => {
   return (
     <Container tw="bg-white flex flex-col gap-8 py-12">
       <HighlightedHeading tw="text-left text-black text-3xl font-serif pl-8 py-12">
-        Dynamic SiteMap
+        {properties.heading}
       </HighlightedHeading>
       <PlansContainer tw="md:flex justify-center gap-12">
         {groupedArray.map((plan, index) => (
