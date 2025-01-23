@@ -7,7 +7,6 @@ import "slick-carousel/slick/slick-theme.css";
 import Header from "components/headers/light";
 import RouterPaths from "RouterPaths";
 import ScrollUpButton from "components/features/ScrollUpButton";
-import Demo from "Demo";
 
 export default function App() {
   const headerLinks = [
@@ -18,7 +17,6 @@ export default function App() {
     { url: "/contact", text: "Contact Us" },
   ];
 
-
   return (
     <>
       <GlobalStyles />
@@ -26,7 +24,6 @@ export default function App() {
       <Header links={headerLinks} />
       <ScrollUpButton />
 
-      {/* <Demo /> */}
       <RouterPaths />
     </>
   );
