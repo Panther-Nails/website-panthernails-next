@@ -13,10 +13,12 @@ const Top = tw.div` h-[40%] text-center flex items-center `;
 const Middel = tw.div` h-[80%] flex items-center `;
 const Bottom = tw.div`h-[20%] flex items-end lg:items-center justify-center   `;
 const PopupViewImg = tw.img`w-full h-full rounded-xl`;
+
 const Text = styled.h1((props) => [
   tw`text-lg lg:text-2xl font-black   text-center`,
   `${props.themeColor === "CLM" ? `color:#1E90FF` : `color:#77255B`}`,
 ]);
+
 const GetBtn = styled.button((props) => [
   tw`text-lg lg:text-xl text-white border-2 border-black font-black h-auto py-2 px-3 rounded-full`,
   `  background-color: ${

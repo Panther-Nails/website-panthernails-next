@@ -48,7 +48,8 @@ const Popup = styled.div((props) => [
 ]);
 
 export default ({ properties, children, index }) => {
-  const [showPopup, setShowPopup] = useState(false);
+  const { showPopup, hidePopup, showModalPopup, showNonModalPopup } =
+    useSession();
 
   var startTime = properties?.startTime
     ? JSON.parse(properties.startTime)
@@ -58,6 +59,7 @@ export default ({ properties, children, index }) => {
 
   const [chaildData] = children;
   const { ComponentName, CPJSON, HPJSON } = chaildData;
+
   const cpjsonData = CPJSON && JSON.parse(CPJSON);
   const hpjsonData = HPJSON && JSON.parse(HPJSON);
   const childControlData = { ...cpjsonData, ...hpjsonData };
@@ -68,11 +70,9 @@ export default ({ properties, children, index }) => {
     const timerStart = setTimeout(() => {
       if (
         ComponentName === "PopupViewer" &&
-        popupKeyVal === childControlData.productEnquiryFor
+        popupKeyVal !== childControlData.productEnquiryFor
       ) {
-        setShowPopup(false);
-      } else {
-        setShowPopup(true);
+        showNonModalPopup(getPopupContent());
       }
     }, startTime);
 
@@ -81,24 +81,16 @@ export default ({ properties, children, index }) => {
 
   useEffect(() => {
     const timerEnd = setTimeout(() => {
-      setShowPopup(false);
+      hidePopup();
     }, endTime);
     return () => clearTimeout(timerEnd);
   }, [showPopup]);
 
-  return showPopup ? (
-    <>
-      <Popup size="small" position="center" bgColor={"white"} id="PopupControl">
-        <Top>
-          <CloseIcon
-            tw="p-1 bg-red-500 rounded rounded-full hocus:bg-gray-600  right-0 z-50 cursor-pointer"
-            onClick={() => setShowPopup(false)}
-          />
-        </Top>
-        <Bottom>{ProcessChildComponentsSeparately(children)}</Bottom>
-      </Popup>
-    </>
-  ) : (
-    <></>
+  const getPopupContent = () => (
+    <Popup size="small" position="center">
+      <Bottom>{ProcessChildComponentsSeparately(children)}</Bottom>
+    </Popup>
   );
+
+  return <></>;
 };

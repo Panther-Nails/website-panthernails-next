@@ -12,13 +12,32 @@ export const SessionProvider = ({ children }) => {
   const [notificationText, setNotificationText] = useState("");
   const [notificationType, setNotificationType] = useState("none");
 
-  const [showPopup, setShowPopup] = useState(true);
+  const [showPopup, setShowPopup] = useState(false);
+  const [shouldCloseOnOverlayClick, setShouldCloseOnOverlayClick] =
+    useState(false);
+
   const [cookieConsent, setCookieConsent] = useState(CookieConsentValue);
+
+  const [popupRenderer, setPopupRenderer] = useState(() => <></>);
 
   const setNotification = (notificationText, notificationType = "none") => {
     setNotificationText(notificationText);
     setNotificationType(notificationType);
   };
+
+  const showModalPopup = (popupContent) => {
+    setPopupRenderer(popupContent);
+    setShouldCloseOnOverlayClick(false);
+    setShowPopup(true);
+  };
+
+  const showNonModalPopup = (popupContent) => {
+    setPopupRenderer(popupContent);
+    setShouldCloseOnOverlayClick(true);
+    setShowPopup(true);
+  };
+
+  const hidePopup = () => setShowPopup(false);
 
   return (
     <SessionContext.Provider
@@ -38,6 +57,11 @@ export const SessionProvider = ({ children }) => {
         showPopup,
         cookieConsent,
         setCookieConsent,
+        popupRenderer,
+        shouldCloseOnOverlayClick,
+        showModalPopup,
+        showNonModalPopup,
+        hidePopup,
       }}
     >
       {children}

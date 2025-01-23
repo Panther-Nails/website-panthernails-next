@@ -1,7 +1,6 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
 import { useParams } from "react-router-dom";
 import { ExecuteQuery } from "services/APIService";
-import GetStarted from "components/cta/GetStarted";
 import CookieConsent from "components/controls/CookieConsent";
 import {
   getProperties,
