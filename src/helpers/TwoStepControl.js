@@ -3,27 +3,27 @@ import tw from "twin.macro";
 import styled from "styled-components";
 
 import { ExecuteCommand } from "services/APIService";
-import { Duration, setCookie } from "services/CookieService";
+import { CookieDuration, setCookie } from "services/CookieService";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ControlHeadingText = tw.p`mt-4  md:text-left text-sm  lg:text-base font-medium leading-relaxed text-[#4668C5]`;
 
-const Form = tw.form`mt-2  text-sm flex flex-col w-full mx-auto md:mx-0`;
+const Form = tw.form`mt-2 text-xs   lg:text-sm flex flex-col h-[100%] w-full mx-auto md:mx-0`;
 const Input = styled.input((props) => [
-  tw`mt-4 w-full first:mt-0 border-b-2 border-gray-400 py-3 focus:outline-none font-medium transition duration-300 hocus:border-primary-500`,
+  tw`mt-4 w-full first:mt-0 border-b-2 border-gray-400 py-2 lg:py-3 focus:outline-none font-medium transition duration-300 hocus:border-primary-500`,
   `&:hover {
     border-color: ${props.themeColor === "loyalty" ? "#69264F" : "#0067CC"};
    
   }`,
 ]);
 const Textarea = styled(Input).attrs({ as: "textarea" })`
-  ${tw`h-24`}
+  ${tw` h-12 lg:h-24 `}
 `;
 const Wraper = tw.div`first:mt-0 pt-3  `;
 const SubmitButton = styled.button((props) => [
-  tw`inline-block mt-8 px-8 py-3 font-bold rounded text-gray-100 focus:shadow-outline focus:outline-none transition duration-300`,
+  tw`inline-block mt-2 lg:mt-8 px-8 py-3 font-bold rounded text-gray-100 focus:shadow-outline focus:outline-none transition duration-300`,
   `
     background-color: ${props.themeColor === "loyalty" ? "#77255B" : "#1E90FF"};
     
@@ -461,7 +461,7 @@ export default ({ properties, subheading = "Contact Us" }) => {
   const closePopupForm = () => {
     if (element) {
       element.style.display = "none";
-      setCookie("Popupkey", properties.productEnquiryFor, Duration.Day);
+      setCookie("Popupkey", properties.productEnquiryFor, CookieDuration.Day);
     }
   };
 
@@ -479,7 +479,7 @@ export default ({ properties, subheading = "Contact Us" }) => {
   let formErrors = {};
   let valid = true;
 
-  const   validationFunction = (input, value) => {
+  const validationFunction = (input, value) => {
     if (
       input.type !== "checkbox" &&
       input.type !== "dropdown" &&
@@ -638,8 +638,7 @@ export default ({ properties, subheading = "Contact Us" }) => {
       inputs.length <= ShowFieldCount &&
       validateStepOne() &&
       globalValid
-    ) 
-    {
+    ) {
       console.log("Form submitted:", parameterJsonData());
       handleInsertSiteVisitorAndEnquiry(parameterJsonData());
     }
@@ -647,7 +646,6 @@ export default ({ properties, subheading = "Contact Us" }) => {
 
   var inputs = JSON.parse(properties.inputs);
 
-  console.log("inputs",inputs)
   const inputControls = (label) => {
     if (label.type.toUpperCase() === "CHECKBOX") {
       return (
@@ -723,6 +721,8 @@ export default ({ properties, subheading = "Contact Us" }) => {
       },
     });
   };
+
+  // console.log("two step form");
 
   return (
     <>

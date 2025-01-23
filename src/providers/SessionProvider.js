@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import { CookieConsentValue } from "services/CookieService";
 
 const SessionContext = createContext(null);
 
@@ -12,6 +13,7 @@ export const SessionProvider = ({ children }) => {
   const [notificationType, setNotificationType] = useState("none");
 
   const [showPopup, setShowPopup] = useState(true);
+  const [cookieConsent, setCookieConsent] = useState(CookieConsentValue);
 
   const setNotification = (notificationText, notificationType = "none") => {
     setNotificationText(notificationText);
@@ -33,7 +35,9 @@ export const SessionProvider = ({ children }) => {
         setNotification,
         notificationType,
         setShowPopup,
-        showPopup, 
+        showPopup,
+        cookieConsent,
+        setCookieConsent,
       }}
     >
       {children}

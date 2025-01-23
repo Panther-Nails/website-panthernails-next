@@ -6,19 +6,28 @@ import CookieConsent from "components/controls/CookieConsent";
 import { getProperties } from "services/JsonService";
 import { useSession } from "providers/SessionProvider";
 import FallbackLoading from "helpers/FallbackLoading";
+import { GetPageCacheKey } from "services/CookieService";
+
+// window.addEventListener('cookieChanged', (e) => {
+//   const { name, value } = e.detail;
+//   console.log(`Cookie changed: ${name} = ${value}`);
+//   if(name="cookie-consent"){
+
+//   }
+// });
 
 export const ImportDynamicComponent = (Section, ComponentName) => {
-  
   const Component = lazy(() =>
     import(`components/${Section}/${ComponentName}.js`)
       .then((module) => ({ default: module.default }))
       .catch((error) => {
         console.log("error in compo");
-
+        window.location.reload();
         console.error(`Error loading component ${ComponentName}:`, error);
         return { default: () => <GetStarted /> }; // to be replaced with ErrorPage
       })
   );
+
   return Component;
 };
 
@@ -38,24 +47,6 @@ export const getChildComponentName = (Components) => {
       section: childSection,
     };
   else return null;
-};
-
-export const ProcessChildComponents = (Components) => {
-  if (Components.length > 0) {
-    const component = getChildComponentName(Components);
-    const Component = ImportDynamicComponent(
-      component.section,
-      component.componentName
-    );
-    var properties = getProperties(Components[0]);
-    return (
-      <Suspense>
-        <Component children={Components} properties={properties} />
-      </Suspense>
-    );
-  } else {
-    return <></>;
-  }
 };
 
 export const ProcessChildComponentsSeparately = (Components) => {
@@ -82,7 +73,6 @@ export const ProcessChildComponentsSeparately = (Components) => {
 };
 
 export default () => {
-  console.log("run....");
   const { type, subtype, name } = useParams();
   const { languageObject, setNotification } = useSession();
   const [data, setData] = useState({});
@@ -108,12 +98,8 @@ export default () => {
       response.items[0].HeadKeyWords
     );
   }
-  const getPageCacheKey = () =>
-    "1BGeZoi3zs" + window.location.pathname.replace("/", "-");
 
   useEffect(() => {
-
-    
     ExecuteQuery(
       {
         ActionName:
@@ -121,7 +107,8 @@ export default () => {
         ParameterJSON: JSON.stringify(parameter),
         SessionDataJSON: { language: languageObject.code },
       },
-      getPageCacheKey()
+      GetPageCacheKey(window.location.pathname),
+      process.env.REACT_APP_COOKIE_DURATION
     ).then((response) => {
       if (response.message === "Successfull") {
         setMetaTitleDynamic(response);
@@ -153,35 +140,26 @@ export default () => {
     }
   }, [data]);
 
-
-
-
-
-    try {
-      var parameter = {
-        GroupName: type,
-        SubGroupName: subtype,
-        PageName: name,
-      };
-
-      
-  
-      return (
-        <>
-          <Suspense fallback={<FallbackLoading />}>
-            <CookieConsent />
-            {components.map((component, index) => {
+  try {
+    var parameter = {
+      GroupName: type,
+      SubGroupName: subtype,
+      PageName: name,
+    };
+    return (
+      <>
+        <Suspense fallback={<FallbackLoading />}>
+          {components &&
+            components.map((component, index) => {
               const Component = ImportDynamicComponent(
                 component.Section,
                 component.ComponentName
               );
-  
               var children = [];
               if (component.Children) {
                 children = component.Children;
               }
               var properties = getProperties(component);
-  
               return (
                 <Component
                   data={component}
@@ -191,15 +169,14 @@ export default () => {
                 />
               );
             })}
-          </Suspense>
-        </>
-      );
-    } catch (e) {
-      return <div>Error: Component Not Found [{e.message}] </div>;
-    }
+          <CookieConsent />
+        </Suspense>
+      </>
+    );
+  } catch (e) {
+    return <div>Error: Component Not Found [{e.message}] </div>;
   }
-
-
+};
 
 /*
 

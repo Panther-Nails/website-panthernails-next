@@ -1,40 +1,8 @@
-import { getCacheAsync, trySetCache } from "./CacheService";
-import { Duration, getCookie, setCookie } from "./CookieService";
+import { ClearCache, getCacheAsync, trySetCache } from "./CacheService";
+import { CookieDuration, getCookie, setCookie } from "./CookieService";
 import encrypted from "../session.json";
-import { BS64PNE36Encryption } from "turbo/lib/cjs/Encryption";
 import { BS64PNE36 } from "./cipher";
 import moment from "moment";
-
-function GetAuthenticationToken(companyID) {
-  var bs = new BS64PNE36();
-
-  const localStorageToken = getItemWithExpiry("Token");
-
-  if (localStorageToken) {
-  
-    return new Promise((resolve, reject) => {
-      resolve(localStorageToken);
-    });
-  } else {
-
-  https: return fetch(
-    `${encrypted.baseUrl}/Auth/GenerateToken?sKey=${companyID}`,
-    {
-      method: "get",
-    }
-  ).then((response) => {
-    if (!response.ok) {
-      return bs.encrypt(
-        JSON.stringify({
-          DataIsLoaded: false,
-          items: [],
-          message: response.Message || "Data retrival failed.",
-        })
-      );
-    }
-    return response.text().then((t) => t);
-  });
-}
 
 // export function Execute(oFormData) {
 //   var decryptionKey = decryptData(
@@ -130,7 +98,7 @@ export function Execute(oFormData) {
     }),
   };
 
-  var bs = new BS64PNE36Encryption();
+  var bs = new BS64PNE36();
 
   var body = JSON.stringify(formData);
   var formDataEncrypted = bs.encrypt(body);
@@ -199,7 +167,7 @@ export function Execute(oFormData) {
 export function ExecuteCached(
   FormData,
   cacheKey = null,
-  duration = Duration.Minute10
+  duration = CookieDuration.Minute10
 ) {
   if (cacheKey != null) {
     var cookieValue = getCookie(cacheKey);
@@ -210,8 +178,8 @@ export function ExecuteCached(
           if (trySetCache(cacheKey, response)) {
             setCookie(
               cacheKey,
-              "data",
-              duration == null ? Duration.Minute : duration
+              cacheKey,
+              duration === null ? CookieDuration.Minute10 : duration
             );
           }
           return response;
@@ -237,6 +205,7 @@ export function ExecuteCached(
       return response;
     }
   } else {
+    ClearCache();
     return Execute(FormData);
   }
 }
@@ -251,7 +220,7 @@ export function ExecuteCommand(FormData) {
 export function ExecuteQuery(
   FormData,
   cacheKey = null,
-  duration = Duration.Minute10
+  duration = CookieDuration.Minute10
 ) {
   var oFormData = { ...FormData };
   oFormData.OperationName = "Query";

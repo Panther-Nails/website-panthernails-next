@@ -33,23 +33,20 @@ import { getCookie } from "services/CookieService";
 //   none: tw``,
 // };
 
-const Popup = styled.div((props) => [
-  tw`fixed top-0 left-0 rounded  z-50 w-11/12 translate-x-5 lg:w-1/3 lg:translate-x-[100%] translate-y-10  pb-4 h-5/6  flex flex-col    `,
-  // `background-color:${props.bgColor};
-  // ::-webkit-scrollbar {
-  //     display: none;
-  //   }
-  // `,
-]);
 
-// const Popup = styled.iframe((props) => [
-//   `::-webkit-scrollbar {
-//       display: none;
-//     }`,
-//   tw`fixed top-0 left-0 rounded  z-50 w-1/2 h-1/2 translate-x-1/2 translate-y-1/4 p-3 bg-white`,
-// ]);
-const Top = tw.div`w-full flex  justify-end h-6 z-10 `;
-const Bottom = tw.div`px-6 pb-6 h-full `;
+    const Top = tw.div`w-full flex  justify-end h-6 z-10 `;
+    const Bottom = tw.div`px-6 pb-6 h-full `;
+   
+    const Popup = styled.div((props) => [
+      props.size === "small"
+        ? tw`fixed top-0 left-0 rounded  z-50 w-[90%] h-[60%] lg:h-[70%]  translate-x-[5%] translate-y-[20%] lg:translate-y-[10%] lg:w-[30%] lg:translate-x-[120%]   pb-4  flex flex-col    `
+        : tw`fixed top-0 left-0 rounded bg-red-500  z-50 w-[100%] h-[100%]  overflow-scroll`,
+      // `background-color:${props.bgColor};
+      // ::-webkit-scrollbar {
+      //     display: none;
+      //   }
+      // `,
+    ]);
 
 export default ({ properties, children, index }) => {
   const [showPopup, setShowPopup] = useState(false);

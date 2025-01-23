@@ -13,7 +13,7 @@ import {
 } from "components/misc/Headings.js";
 import appleIconImageSrc from "images/apple-icon.png";
 import googlePlayIconImageSrc from "images/google-play-icon.png";
-import { ProcessChildComponents } from "DynamicPage";
+import { ProcessChildComponentsSeparately } from "DynamicPage";
 
 const Container = tw(ContainerBase)`bg-primary-900 `;
 const Content = tw(ContentWithPaddingXl)``;
@@ -80,7 +80,7 @@ export default ({
             <img src={properties.imageSrc} alt="" tw="w-64" />
           </ImageContainer>
         </Row>
-        <Row>{ProcessChildComponents(children)}</Row>
+        <Row>{ProcessChildComponentsSeparately(children)}</Row>
         <DecoratorBlobContainer>
           <DecoratorBlob1 />
           <DecoratorBlob2 />

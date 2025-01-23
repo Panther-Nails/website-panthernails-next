@@ -1,37 +1,40 @@
+import { useSession } from "providers/SessionProvider";
 import { CookieConsentValue, CookieValues } from "./CookieService";
 
 const cacheName = "myCache";
 
 export const trySetCache = (cacheKey, data) => {
-  
-
-  if (
-    CookieConsentValue === CookieValues.Accepted ||
-    CookieConsentValue === CookieValues.AcceptedEssential
-  ) {
-    caches.open(cacheName).then((cache) => {
-      cache.delete(cacheKey).then((response) => {});
-    });
-
-    const jsonResponse = new Response(JSON.stringify(data), {
-      headers: {
-        "content-type": "application/json",
-      },
-    });
-
-    const promise = caches.open(cacheName).then((cache) => {
-      cache.put(cacheKey, jsonResponse);
-    });
-
-    return true;
-  } else {
+  if (CookieConsentValue === CookieValues.Rejected) {
+    ClearCache();
     return false;
   }
+
+  caches.open(cacheName).then((cache) => {
+    cache.delete(cacheKey).then((response) => {});
+  });
+
+  const jsonResponse = new Response(JSON.stringify(data), {
+    headers: {
+      "content-type": "application/json",
+    },
+  });
+
+  const promise = caches.open(cacheName).then((cache) => {
+    cache.put(cacheKey, jsonResponse);
+  });
+
+  return true;
+};
+
+export const ClearCache = () => {
+  caches.keys().then((cacheNames) => {
+    cacheNames.forEach((cacheName) => {
+      caches.delete(cacheName).then(() => {});
+    });
+  });
 };
 
 export const getCache = (cacheKey, resolverDelegate) => {
-  
-
   const cacheData = caches
     .match(cacheKey)
     .then((res) => {
@@ -42,7 +45,6 @@ export const getCache = (cacheKey, resolverDelegate) => {
 
   const promise = cacheData
     .then((result) => {
-      
       resolverDelegate(result);
     })
     .catch(function (error) {

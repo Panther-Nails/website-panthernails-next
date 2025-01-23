@@ -9124,13 +9124,6 @@ tsutils@^3.21.0:
   dependencies:
     tslib "^1.8.1"
 
-"turbo@file:../../../Public/React/turbo-1.0.1.tgz":
-  version "1.0.1"
-  resolved "file:../../../Public/React/turbo-1.0.1.tgz"
-  integrity sha512-P8duQs8Sy1+nzXDtidtzFfzIYkbRFqGrasfAuVo+O34p3wQAavetY3B86qQlS69rkcpl6nl+Gsmhb6vM1oWHQw==
-  dependencies:
-    buffer "^6.0.3"
-
 tween-functions@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/tween-functions/-/tween-functions-1.2.0.tgz"

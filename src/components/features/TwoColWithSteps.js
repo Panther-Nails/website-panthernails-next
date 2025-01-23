@@ -7,13 +7,14 @@ import {
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
-// import { ProcessChildComponents } from "DynamicPage";
 import { ProcessChildComponentsSeparately } from "DynamicPage";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 const Container = tw.div`relative `;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto pb-12 items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
-const ImageColumn = tw(Column)`md:w-6/12 flex flex-col relative items-center hidden lg:block`;
+const ImageColumn = tw(
+  Column
+)`md:w-6/12 flex flex-col relative items-center hidden lg:block`;
 const TextColumn = styled(Column)((props) => [
   tw`md:w-6/12 mt-16 md:mt-0`,
   // props.textOnLeft
