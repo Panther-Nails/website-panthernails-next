@@ -10,7 +10,7 @@ import {
 import { SectionDescription } from "components/misc/Typography.js";
 
 import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
-import { ProcessChildComponents } from "DynamicPage";
+import { ProcessChildComponentsSeparately } from "DynamicPage";
 
 const Container = tw.div`relative overflow-hidden`;
 
@@ -41,7 +41,7 @@ export default ({ HPJSON, CPJSON, children, data, properties }) => {
           <Description>{properties.description}</Description>
         )}
         <VerticalSpacer />
-        {ProcessChildComponents(children)}
+        {ProcessChildComponentsSeparately(children)}
       </ThreeColumnContainer>
       <DecoratorBlob />
     </Container>

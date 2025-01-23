@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
@@ -14,40 +14,54 @@ const positions = {
 };
 
 const StyledContainer = styled.div((props) => [
-  tw`fixed flex z-50 `,
+  tw`fixed flex z-50  `,
+
   positions[props.position],
 ]);
 
-const Link = tw.a`flex items-center w-12 h-12 p-4 rounded bg-white hocus:bg-gray-300 hocus:w-16 duration-200`;
+const Link = styled.a((props) => [
+  tw`flex items-center w-8 h-8 p-2 rounded   hocus:(w-12 h-12  ) duration-300 `,
+  props.show
+    ? tw`-translate-x-1/2 duration-500`
+    : tw`translate-x-full duration-700`,
+  positions[props.position],
+]);
+
 const LinkIcon = styled.img`w-full h-full`;
+const Rapper = tw.div`flex items-center w-12 h-12   `;
+export default ({ properties }) => {
+  const [show, setShow] = useState(false);
 
-// const StyledContainer = styled(Container) `
-//   ${tw`flex-col items-end right-0 bottom-1/2 translate-x-1`}
-// `;
-
-// const TextColumn = styled(Column)((props) => [
-//   tw`md:w-6/12 mt-8 md:mt-0`,
-//   props.textOnLeft === "true"
-//     ? tw`md:mr-8 lg:mr-16 md:order-first`
-//     : tw`md:ml-8 lg:ml-16 md:order-last`,
-// ]);
-
-export default ({ data, properties, children, index }) => {
-  // console.log(JSON.stringify(properties));
-
-  var links =
-    '[{"icon":"https://cdn-icons-png.flaticon.com/128/5968/5968771.png","link":"https://www.facebook.com/panthernails"},{"icon":"https://cdn-icons-png.flaticon.com/128/3991/3991775.png","link":"https://www.linkedin.com/company/panthernails/?viewAsMember=true"},{"icon":"https://cdn-icons-png.flaticon.com/128/2504/2504947.png","link":"https://x.com/panthernails"},{"icon":"https://cdn-icons-png.flaticon.com/128/2111/2111463.png","link":"https://www.instagram.com/panthernails_loyalty?igsh=aG5mMHVuMm5lOXNw"}]';
   var parsedChildren = JSON.parse(properties.links);
   return (
     <>
       <StyledContainer position={properties?.position || "bottom"}>
+        <Rapper
+          onMouseEnter={() => setShow(true)}
+          onClick={() => {
+            setShow(show ? false : true);
+          }}
+        >
+          <LinkIcon
+            src={
+              show
+                ? "https://cdn-icons-png.flaticon.com/128/8066/8066266.png"
+                : "https://img.freepik.com/free-vector/social-media-icons-globe_1057-1076.jpg?t=st=1727527607~exp=1727531207~hmac=16165a2fba57d24874a2c2ea7131ff5e63c5602a443446a5dc5deacd1e78e3a8&w=740"
+            }
+            onClick={() => {
+              setShow(true);
+            }}
+          ></LinkIcon>
+        </Rapper>
         {parsedChildren.map((item, index) => {
           return (
-            <>
-              <Link href={item.link} key={index}>
-                <LinkIcon src={item.icon}></LinkIcon>
-              </Link>
-            </>
+            <Link href={item.link} key={`${item.link}-${index}`} show={show}>
+              <LinkIcon
+                src={item.icon}
+                onMouseEnter={() => setShow(true)}
+                
+              ></LinkIcon>
+            </Link>
           );
         })}
       </StyledContainer>

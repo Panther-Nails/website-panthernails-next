@@ -19,14 +19,14 @@ export default function Demo() {
 
     var safeParameters = bs.encrypt(parameterJson);
 
-    console.log("safeParameters", safeParameters);
+    // console.log("safeParameters", safeParameters);
 
     let resultJson = bs.decrypt(safeParameters);
-    console.log("resultJson", resultJson);
+    // console.log("resultJson", resultJson);
 
     let result = JSON.parse(resultJson);
 
-    console.log("result", result);
+    // console.log("result", result);
 
     try {
       let response = fetch("https://localhost:7106/api/Device/safeexecute", {
@@ -50,18 +50,18 @@ export default function Demo() {
           }
 
           let text = response.text().then((t) => t);
-          console.log("1 text", text);
+          // console.log("1 text", text);
           return text;
         })
         .then((text) => {
           // Do something with the text data
-          console.log("2 test", text);
+          // console.log("2 test", text);
           var json = bs.decrypt(text);
           return json;
         })
         .then((res) => JSON.parse(res))
         .then((json) => {
-          console.log("3 json", json);
+          // console.log("3 json", json);
           return {
             DataIsLoaded: true,
             items: json.Data,

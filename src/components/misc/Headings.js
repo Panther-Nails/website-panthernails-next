@@ -19,10 +19,10 @@ export function HighlightedHeading(props) {
     <DynamicHeading>
       {props.children.split("`").map((chunk, index) => {
         if (index % 2 === 0)
-          return <HeadingText css={props.primaryColor}>{chunk}</HeadingText>;
+          return <HeadingText key={index} css={props.primaryColor}>{chunk}</HeadingText>;
         else
           return (
-            <HighlightedText css={props.highlightColor}>
+            <HighlightedText key={index} css={props.highlightColor}>
               {chunk}
             </HighlightedText>
           );

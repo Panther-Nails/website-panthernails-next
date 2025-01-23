@@ -27,6 +27,9 @@ const CardTitle = tw.h5`text-xl mt-4 font-bold`;
 const CardAction = tw(PrimaryButtonBase)`w-full mt-6`;
 
 export default ({ index, children, properties }) => {
+
+
+
   return (
     <CardColumn key={index} tw="bg-white">
       <Card tw="">

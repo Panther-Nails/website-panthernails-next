@@ -45,11 +45,12 @@ const CopywrightNotice = tw.p`text-center text-sm sm:text-base mt-8 md:mt-0 font
 
 const SocialLinksContainer = tw.div`mt-8 md:mt-0 flex`;
 const SocialLink = styled.a`
-  ${tw`cursor-pointer p-2 rounded-full bg-gray-900 text-gray-100 hover:bg-gray-700 transition duration-300 mr-4 last:mr-0`}
+  ${tw`cursor-pointer p-1 rounded  hover:bg-gray-700 transition duration-300 mr-4 `}
   svg {
     ${tw`w-4 h-4`}
   }
 `;
+const SocialImg = tw.img`w-6`;
 
 const DecoratorBlobContainer = tw.div`absolute inset-0 overflow-hidden rounded-lg`;
 const DecoratorBlob1 = tw(
@@ -60,18 +61,19 @@ const DecoratorBlob2 = tw(
 )`absolute bottom-0 right-0 w-80 h-80 transform  translate-x-32 translate-y-48 text-primary-700 opacity-50`;
 
 export default ({ index, children, properties }) => {
-  var sections = JSON.parse(properties.inputs);
+  var sections = JSON.parse(properties.inputs || "[]");
+  var socialLinks = JSON.parse(properties.socialLinks || "[]");
 
   return (
     <Container>
       <Content>
         <SixColumns>
-          {sections.map((footerMenu, index) => (
-            <Column>
-              <ColumnHeading>{footerMenu.title}</ColumnHeading>
+          {sections.map((section, index) => (
+            <Column key={index}>
+              <ColumnHeading  >{section.title}</ColumnHeading>
               <LinkList>
-                {footerMenu.menuLinks.map((menulink, index) => (
-                  <LinkListItem>
+                {section.menuLinks.map((menulink, index) => (
+                  <LinkListItem key={index}>
                     <Link href={menulink.link}>{menulink.title}</Link>
                   </LinkListItem>
                 ))}
@@ -111,21 +113,13 @@ export default ({ index, children, properties }) => {
             Ltd, All Rights Reserved.
           </CopywrightNotice>
           <SocialLinksContainer>
-            <SocialLink
-              href="https://www.facebook.com/panthernails"
-              target="_blank"
-            >
-              <FacebookIcon />
-            </SocialLink>
-            <SocialLink href="https://twitter.com/panthernails" target="_blank">
-              <TwitterIcon />
-            </SocialLink>
-            <SocialLink
-              href="https://www.youtube.com/channel/UCbPlErLDmqcwJlXvvilg_CA"
-              target="_blank"
-            >
-              <YoutubeIcon />
-            </SocialLink>
+            {socialLinks.map((socialLink, k) => {
+              return (
+                <SocialLink href={socialLink.link} key={k} target="_blank">
+                  <SocialImg src={socialLink.icon} />
+                </SocialLink>
+              );
+            })}
           </SocialLinksContainer>
         </ThreeColRow>
       </Content>

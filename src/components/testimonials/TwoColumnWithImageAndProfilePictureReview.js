@@ -18,7 +18,7 @@ import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-
 import "slick-carousel/slick/slick.css";
 import { getProperties } from "services/JsonService.js";
 
-const Container = tw.div`relative`;
+const Container = tw.div`relative overflow-hidden`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
 const TestimonialsContainer = tw.div`mt-16 lg:mt-0`;
 const Testimonials = styled.div``;
@@ -84,25 +84,8 @@ export default ({
    * You can modify the testimonials shown by modifying the array below or passing in the testimonials prop above
    * You can add or remove objects from the array as you need.
    */
-
-  const [data, setData] = useState([
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1512100356356-de1b84283e18?ixlib=rb-1.2.1&auto=format&fit=crop&w=1024&q=80",
-      profileImageSrc:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80",
-      quote:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-      customerName: "Charlotte Hale",
-      customerTitle: "CEO, Delos Inc.",
-    },
-  ]);
-
-  useEffect(() => {
-    setData([...children]);
-  }, [children]);
-
-  if (!testimonials || testimonials.length === 0) testimonials = data;
+  let data = JSON.parse(properties.inputs)
+  
 
   // useState is used instead of useRef below because we want to re-render when sliderRef becomes available (not null)
   const [imageSliderRef, setImageSliderRef] = useState(null);
@@ -113,7 +96,7 @@ export default ({
       <Content>
         <HeadingInfo
           tw="text-center lg:hidden"
-          subheading={properties.subheading}
+          subHeading={properties.subHeading}
           heading={properties.heading}
           description={properties.description}
         />
@@ -127,10 +110,10 @@ export default ({
                 fade={true}
               >
                 {data.map((testimonial, index) => {
-                  var properties = getProperties(testimonial);
+            
                   return (
                     <ImageAndControlContainer key={index}>
-                      <Image imageSrc={properties.imageSrc} />
+                      <Image imageSrc={testimonial.imageSrc} />
                       <ControlContainer>
                         <ControlButton onClick={imageSliderRef?.slickPrev}>
                           <ChevronLeftIcon />
@@ -146,7 +129,7 @@ export default ({
               <TextContainer textOnLeft={textOnLeft}>
                 <HeadingInfo
                   tw="hidden lg:block"
-                  subheading={properties.subheading}
+                  subheading={properties.subHeading}
                   heading={properties.heading}
                   description={properties.description}
                 />
@@ -157,28 +140,28 @@ export default ({
                   fade={true}
                 >
                   {data.map((testimonial, index) => {
-                    var properties = getProperties(testimonial);
+                   
 
                     return (
                       <TestimonialText key={index}>
                         <QuoteContainer>
                           <Quote>
                             <QuotesLeft />
-                            {properties.quote}
+                            {testimonial.quote}
                             <QuotesRight />
                           </Quote>
                         </QuoteContainer>
                         <CustomerInfo>
                           <CustomerProfilePicture
-                            src={properties.profileImageSrc}
-                            alt={properties.customerName}
+                            src={testimonial.profileImageSrc}
+                            alt={testimonial.customerName}
                           />
                           <CustomerTextInfo>
                             <CustomerName>
-                              {properties.customerName}
+                              {testimonial.customerName}
                             </CustomerName>
                             <CustomerTitle>
-                              {properties.customerTitle}
+                              {testimonial.customerTitle}
                             </CustomerTitle>
                           </CustomerTextInfo>
                         </CustomerInfo>
@@ -197,9 +180,9 @@ export default ({
   );
 };
 
-const HeadingInfo = ({ subheading, heading, description, ...props }) => (
+const HeadingInfo = ({ subHeading, heading, description, ...props }) => (
   <div {...props}>
-    {subheading ? <Subheading>{subheading}</Subheading> : null}
+    {subHeading ? <Subheading>{subHeading}</Subheading> : null}
     <HeadingTitle>{heading}</HeadingTitle>
     <Description>{description}</Description>
   </div>

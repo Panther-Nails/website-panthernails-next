@@ -1,29 +1,34 @@
-export const Duration = {
+export const CookieDuration = {
   Seconds10: 10 * 1000,
   Seconds30: 30 * 1000,
   Minute: 60 * 1000,
   Minute5: 5 * 60 * 1000,
   Minute10: 10 * 60 * 1000,
   Hour: 60 * 60 * 1000, //36000000
-  Day: 1, // 24 * 60 * 60 * 1000 = 24 * 3600000
+  Hour6: 6 * 60 * 60 * 1000,
+  Day: 24 * 60 * 60 * 1000,
   Week: 7,
   Month: 30,
   Year: 365,
-  Year2: 730,
-  Forever: 365 * 10, // Cookie is actually taking ~13 months duration
+  Forever: 400, // Maximum cookie duration
+};
+
+export const GetPageCacheKey = (pathname) => {
+  let path = pathname.replaceAll("/", "-");
+  let pathBase64 = btoa(path);
+  return getCookie(CookieKeys.CookieConsent) !== CookieValues.Rejected
+    ? pathBase64 + path
+    : null;
 };
 
 export const CookieKeys = {
   CookieConsent: "cookie-consent",
-  DataReceived: "data-received",
-  CachedData: "cached-data",
 };
 
 export const CookieValues = {
   Accepted: "cookie-accepted",
   AcceptedEssential: "cookie-accepted-essential",
   Rejected: "cookie-rejected",
-  CachedDataValue: "cached-data-value",
 };
 
 export function setCookie(name, value, duration) {
@@ -37,7 +42,7 @@ export function setCookie(name, value, duration) {
   document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
-function setCookieForDays(name, value, duration) {
+export function setCookieForDays(name, value, duration) {
   eraseCookie(name);
   var expires = "";
   if (duration) {
@@ -45,6 +50,7 @@ function setCookieForDays(name, value, duration) {
     date.setDate(date.getDate() + duration);
     expires = "; expires=" + date.toUTCString();
   }
+  console.log("cookie", name + "=" + (value || "") + expires + "; path=/");
   document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 

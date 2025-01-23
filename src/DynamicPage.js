@@ -6,16 +6,28 @@ import CookieConsent from "components/controls/CookieConsent";
 import { getProperties } from "services/JsonService";
 import { useSession } from "providers/SessionProvider";
 import FallbackLoading from "helpers/FallbackLoading";
+import { GetPageCacheKey } from "services/CookieService";
+
+// window.addEventListener('cookieChanged', (e) => {
+//   const { name, value } = e.detail;
+//   console.log(`Cookie changed: ${name} = ${value}`);
+//   if(name="cookie-consent"){
+
+//   }
+// });
 
 export const ImportDynamicComponent = (Section, ComponentName) => {
   const Component = lazy(() =>
     import(`components/${Section}/${ComponentName}.js`)
       .then((module) => ({ default: module.default }))
       .catch((error) => {
+        console.log("error in compo");
+        window.location.reload();
         console.error(`Error loading component ${ComponentName}:`, error);
         return { default: () => <GetStarted /> }; // to be replaced with ErrorPage
       })
   );
+
   return Component;
 };
 
@@ -37,24 +49,6 @@ export const getChildComponentName = (Components) => {
   else return null;
 };
 
-export const ProcessChildComponents = (Components) => {
-  if (Components.length > 0) {
-    const component = getChildComponentName(Components);
-    const Component = ImportDynamicComponent(
-      component.section,
-      component.componentName
-    );
-    var properties = getProperties(Components[0]);
-    return (
-      <Suspense>
-        <Component children={Components} properties={properties} />
-      </Suspense>
-    );
-  } else {
-    return <></>;
-  }
-};
-
 export const ProcessChildComponentsSeparately = (Components) => {
   if (Components.length > 0) {
     return Components.map((child, index) => {
@@ -64,7 +58,7 @@ export const ProcessChildComponentsSeparately = (Components) => {
         child.ComponentName
       );
       return (
-        <Suspense>
+        <Suspense key={index}>
           <Component
             properties={childProperties}
             children={child.Children ?? []}
@@ -88,6 +82,7 @@ export default () => {
     document.title =
       response.items[0].HeadTitle +
       " - Panther Nails Technologies Private Limited.";
+
     var existingMetaTagDescription = document.querySelector(
       'meta[name="description"]'
     );
@@ -104,11 +99,6 @@ export default () => {
     );
   }
 
-  const getPageCacheKey = () =>
-    "1BGeZoi3zs" + window.location.pathname.replace("/", "-");
-
-  // console.log(getPageCacheKey());
-
   useEffect(() => {
     ExecuteQuery(
       {
@@ -117,12 +107,14 @@ export default () => {
         ParameterJSON: JSON.stringify(parameter),
         SessionDataJSON: { language: languageObject.code },
       },
-      getPageCacheKey()
+      GetPageCacheKey(window.location.pathname),
+      process.env.REACT_APP_COOKIE_DURATION
     ).then((response) => {
       if (response.message === "Successfull") {
         setMetaTitleDynamic(response);
-        // console.log("Data retrival success");
+
         var newData = response.items[0];
+        // console.log("response", JSON.parse(newData.Components));
         setData({ ...data, ...newData });
       } else {
         setNotification(
@@ -141,10 +133,9 @@ export default () => {
   }, [type, subtype, name]);
 
   useEffect(() => {
-    // console.log("dataset", data);
-    // console.log("length", data.Components);
     if (data.Components) {
       var c = JSON.parse(data.Components);
+
       setComponents(c);
     }
   }, [data]);
@@ -155,37 +146,34 @@ export default () => {
       SubGroupName: subtype,
       PageName: name,
     };
-
     return (
       <>
         <Suspense fallback={<FallbackLoading />}>
+          {components &&
+            components.map((component, index) => {
+              const Component = ImportDynamicComponent(
+                component.Section,
+                component.ComponentName
+              );
+              var children = [];
+              if (component.Children) {
+                children = component.Children;
+              }
+              var properties = getProperties(component);
+              return (
+                <Component
+                  data={component}
+                  children={children}
+                  properties={properties}
+                  key={index}
+                />
+              );
+            })}
           <CookieConsent />
-          {components.map((component, index) => {
-            const Component = ImportDynamicComponent(
-              component.Section,
-              component.ComponentName
-            );
-
-            var children = [];
-            if (component.Children) {
-              children = component.Children;
-            }
-            var properties = getProperties(component);
-
-            return (
-              <Component
-                data={component}
-                children={children}
-                properties={properties}
-                key={index}
-              />
-            );
-          })}
         </Suspense>
       </>
     );
   } catch (e) {
-    console.log(e);
     return <div>Error: Component Not Found [{e.message}] </div>;
   }
 };

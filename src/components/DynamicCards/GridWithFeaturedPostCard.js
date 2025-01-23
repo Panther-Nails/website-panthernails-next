@@ -10,7 +10,7 @@ const PostImage = styled.div`
     `}
   ${tw`h-64 sm:h-80 bg-center bg-no-repeat bg-contain rounded-t`}
 `;
-//  ${tw`h-64 sm:h-80 bg-center bg-cover rounded-t`}
+
 
 const PostText = tw.div`flex-1 px-6 py-8`;
 const PostTitle = tw.h6`font-bold group-hocus:text-primary-500 transition duration-300 `;
