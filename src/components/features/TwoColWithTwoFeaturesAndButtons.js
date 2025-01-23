@@ -8,7 +8,7 @@ import {
 } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import TeamIllustrationSrc from "images/team-illustration-2.svg";
-import { ProcessChildComponentsSeparately } from "DynamicPage";
+import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;

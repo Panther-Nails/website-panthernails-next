@@ -5,7 +5,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading } from "components/misc/Headings.js";
 import { PrimaryLink as PrimaryLinkBase } from "components/misc/Links.js";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
-import { ProcessChildComponentsSeparately } from "DynamicPage";
+import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;

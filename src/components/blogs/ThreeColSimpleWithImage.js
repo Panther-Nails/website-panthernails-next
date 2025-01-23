@@ -1,7 +1,7 @@
 import React from "react";
 import tw from "twin.macro";
 import { SectionHeading } from "../misc/Headings.js";
-import { ProcessChildComponentsSeparately } from "DynamicPage.js";
+import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;

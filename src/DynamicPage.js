@@ -3,7 +3,10 @@ import { useParams } from "react-router-dom";
 import { ExecuteQuery } from "services/APIService";
 import GetStarted from "components/cta/GetStarted";
 import CookieConsent from "components/controls/CookieConsent";
-import { getProperties } from "services/JsonService";
+import {
+  getProperties,
+  ImportDynamicComponent,
+} from "services/ComponentService";
 import { useSession } from "providers/SessionProvider";
 import FallbackLoading from "helpers/FallbackLoading";
 import { GetPageCacheKey } from "services/CookieService";
@@ -15,62 +18,6 @@ import { GetPageCacheKey } from "services/CookieService";
 
 //   }
 // });
-
-export const ImportDynamicComponent = (Section, ComponentName) => {
-  const Component = lazy(() =>
-    import(`components/${Section}/${ComponentName}.js`)
-      .then((module) => ({ default: module.default }))
-      .catch((error) => {
-        console.log("error in compo");
-        window.location.reload();
-        console.error(`Error loading component ${ComponentName}:`, error);
-        return { default: () => <GetStarted /> }; // to be replaced with ErrorPage
-      })
-  );
-
-  return Component;
-};
-
-export const getChildComponentName = (Components) => {
-  var childComponentName = Components[0].ComponentName;
-  var childSection = Components[0].Section;
-  var isUnique = true;
-
-  Components.forEach((child) => {
-    if (childComponentName !== child.ComponentName) isUnique = false;
-    else childComponentName = child.ComponentName;
-  });
-
-  if (isUnique)
-    return {
-      componentName: childComponentName,
-      section: childSection,
-    };
-  else return null;
-};
-
-export const ProcessChildComponentsSeparately = (Components) => {
-  if (Components.length > 0) {
-    return Components.map((child, index) => {
-      var childProperties = getProperties(child);
-      const Component = ImportDynamicComponent(
-        child.Section,
-        child.ComponentName
-      );
-      return (
-        <Suspense key={index}>
-          <Component
-            properties={childProperties}
-            children={child.Children ?? []}
-            index={index}
-          />
-        </Suspense>
-      );
-    });
-  } else {
-    return <></>;
-  }
-};
 
 export default () => {
   const { type, subtype, name } = useParams();

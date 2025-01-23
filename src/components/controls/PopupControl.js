@@ -3,7 +3,7 @@ import styled from "styled-components"; //eslint-disable-line
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
-import { ProcessChildComponentsSeparately } from "DynamicPage";
+import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 import { useSession } from "providers/SessionProvider";
 import { getCookie } from "services/CookieService";
 
@@ -33,20 +33,19 @@ import { getCookie } from "services/CookieService";
 //   none: tw``,
 // };
 
+const Top = tw.div`w-full flex  justify-end h-6 z-10 `;
+const Bottom = tw.div`px-6 pb-6 h-full `;
 
-    const Top = tw.div`w-full flex  justify-end h-6 z-10 `;
-    const Bottom = tw.div`px-6 pb-6 h-full `;
-   
-    const Popup = styled.div((props) => [
-      props.size === "small"
-        ? tw`fixed top-0 left-0 rounded  z-50 w-[90%] h-[60%] lg:h-[70%]  translate-x-[5%] translate-y-[20%] lg:translate-y-[10%] lg:w-[30%] lg:translate-x-[120%]   pb-4  flex flex-col    `
-        : tw`fixed top-0 left-0 rounded bg-red-500  z-50 w-[100%] h-[100%]  overflow-scroll`,
-      // `background-color:${props.bgColor};
-      // ::-webkit-scrollbar {
-      //     display: none;
-      //   }
-      // `,
-    ]);
+const Popup = styled.div((props) => [
+  props.size === "small"
+    ? tw`fixed top-0 left-0 rounded  z-50 w-[90%] h-[60%] lg:h-[70%]  translate-x-[5%] translate-y-[20%] lg:translate-y-[10%] lg:w-[30%] lg:translate-x-[120%]   pb-4  flex flex-col    `
+    : tw`fixed top-0 left-0 rounded bg-red-500  z-50 w-[100%] h-[100%]  overflow-scroll`,
+  // `background-color:${props.bgColor};
+  // ::-webkit-scrollbar {
+  //     display: none;
+  //   }
+  // `,
+]);
 
 export default ({ properties, children, index }) => {
   const [showPopup, setShowPopup] = useState(false);

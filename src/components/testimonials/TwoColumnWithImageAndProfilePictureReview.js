@@ -16,7 +16,7 @@ import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-5.svg";
 
 import "slick-carousel/slick/slick.css";
-import { getProperties } from "services/JsonService.js";
+import { getProperties } from "services/ComponentService.js";
 
 const Container = tw.div`relative overflow-hidden`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
@@ -84,8 +84,7 @@ export default ({
    * You can modify the testimonials shown by modifying the array below or passing in the testimonials prop above
    * You can add or remove objects from the array as you need.
    */
-  let data = JSON.parse(properties.inputs)
-  
+  let data = JSON.parse(properties.inputs);
 
   // useState is used instead of useRef below because we want to re-render when sliderRef becomes available (not null)
   const [imageSliderRef, setImageSliderRef] = useState(null);
@@ -110,7 +109,6 @@ export default ({
                 fade={true}
               >
                 {data.map((testimonial, index) => {
-            
                   return (
                     <ImageAndControlContainer key={index}>
                       <Image imageSrc={testimonial.imageSrc} />
@@ -140,8 +138,6 @@ export default ({
                   fade={true}
                 >
                   {data.map((testimonial, index) => {
-                   
-
                     return (
                       <TestimonialText key={index}>
                         <QuoteContainer>
