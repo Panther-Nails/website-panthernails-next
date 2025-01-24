@@ -7,9 +7,8 @@ import "slick-carousel/slick/slick-theme.css";
 import Header from "components/headers/light";
 import RouterPaths from "RouterPaths";
 import ScrollUpButton from "components/features/ScrollUpButton";
-import FiveColumnWithInputForm from "components/footers/FiveColumnWithInputForm";
-import DockedButtons from "components/features/DockedButtons";
 import PopupModal from "helpers/PopupModal";
+import { useSession } from "providers/SessionProvider";
 
 export default function App() {
   const headerLinks = [
@@ -20,15 +19,14 @@ export default function App() {
     { url: "/contact", text: "Contact Us" },
   ];
 
+  const { popupRenderer } = useSession();
+
   return (
     <>
       <GlobalStyles />
-
       <Header links={headerLinks} />
       <ScrollUpButton />
-
       <PopupModal>{popupRenderer}</PopupModal>
-
       <RouterPaths />
     </>
   );

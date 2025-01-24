@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import DynamicPage from "DynamicPage";
 
 const DynamicPageComponent = () => {
- 
+  // Indexdb activity log
   return <DynamicPage />;
 };
 
