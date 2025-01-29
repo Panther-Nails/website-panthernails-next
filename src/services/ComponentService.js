@@ -1,5 +1,6 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
 import GetStarted from "components/cta/GetStarted";
+import PageNotFound from "helpers/PageNotFound";
 
 export const getProperties = (component) => {
   var properties = {};
@@ -19,10 +20,9 @@ export const ImportDynamicComponent = (Section, ComponentName) => {
     import(`components/${Section}/${ComponentName}.js`)
       .then((module) => ({ default: module.default }))
       .catch((error) => {
-        console.log("error in compo");
-        window.location.reload();
-        console.error(`Error loading component ${ComponentName}:`, error);
-        return { default: () => <GetStarted /> }; // to be replaced with ErrorPage
+        //can add error log in it
+        // console.error(`Error loading component ${ComponentName}:`, error);
+        return { default: () => <PageNotFound /> }; // to be replaced with ErrorPage
       })
   );
 

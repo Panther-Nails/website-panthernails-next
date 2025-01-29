@@ -50,7 +50,7 @@ export function setCookieForDays(name, value, duration) {
     date.setDate(date.getDate() + duration);
     expires = "; expires=" + date.toUTCString();
   }
-  console.log("cookie", name + "=" + (value || "") + expires + "; path=/");
+
   document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 

@@ -10,39 +10,28 @@ import { useSession } from "providers/SessionProvider";
 import FallbackLoading from "helpers/FallbackLoading";
 import { GetPageCacheKey } from "services/CookieService";
 
-// window.addEventListener('cookieChanged', (e) => {
-//   const { name, value } = e.detail;
-//   console.log(`Cookie changed: ${name} = ${value}`);
-//   if(name="cookie-consent"){
-
-//   }
-// });
 
 export default () => {
   const { type, subtype, name } = useParams();
   const { languageObject, setNotification } = useSession();
-  const [data, setData] = useState({});
+  const [pageData, setPageData] = useState({});
   const [components, setComponents] = useState([]);
 
-  function setMetaTitleDynamic(response) {
+  function setPageMetaData(metaData) {
     document.title =
-      response.items[0].HeadTitle +
-      " - Panther Nails Technologies Private Limited.";
+      metaData.HeadTitle + " - Panther Nails Technologies Private Limited.";
 
     var existingMetaTagDescription = document.querySelector(
       'meta[name="description"]'
     );
     existingMetaTagDescription.setAttribute(
       "Content",
-      response.items[0].HeadDescription
+      metaData.HeadDescription
     );
     var existingMetaTagKeyWord = document.querySelector(
       'meta[name="keywords"]'
     );
-    existingMetaTagKeyWord.setAttribute(
-      "Content",
-      response.items[0].HeadKeyWords
-    );
+    existingMetaTagKeyWord.setAttribute("Content", metaData.HeadKeyWords);
   }
 
   useEffect(() => {
@@ -57,17 +46,17 @@ export default () => {
       process.env.REACT_APP_COOKIE_DURATION
     ).then((response) => {
       if (response.message === "Successfull") {
-        setMetaTitleDynamic(response);
-
         var newData = response.items[0];
+        setPageMetaData(newData);
         // console.log("response", JSON.parse(newData.Components));
-        setData({ ...data, ...newData });
+
+        setPageData({ ...pageData, ...newData });
       } else {
         setNotification(
           "Please check your internet connection and try again",
           "info"
         );
-        setData({
+        setPageData({
           HeadTitle: "Home",
           HeadDescription: "home description\r\n",
           HeadKeyWords: "Home, Panther Nails, Techologies, ",
@@ -79,12 +68,12 @@ export default () => {
   }, [type, subtype, name]);
 
   useEffect(() => {
-    if (data.Components) {
-      var c = JSON.parse(data.Components);
+    if (pageData.Components) {
+      var c = JSON.parse(pageData.Components);
 
       setComponents(c);
     }
-  }, [data]);
+  }, [pageData]);
 
   try {
     var parameter = {
@@ -92,6 +81,7 @@ export default () => {
       SubGroupName: subtype,
       PageName: name,
     };
+
     return (
       <>
         <Suspense fallback={<FallbackLoading />}>

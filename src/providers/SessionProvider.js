@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+
 import { CookieConsentValue } from "services/CookieService";
 
 const SessionContext = createContext(null);
@@ -18,6 +19,8 @@ export const SessionProvider = ({ children }) => {
 
   const [cookieConsent, setCookieConsent] = useState(CookieConsentValue);
 
+  const [modalStyle, setModalStyle] = useState({});
+
   const [popupRenderer, setPopupRenderer] = useState(() => <></>);
 
   const setNotification = (notificationText, notificationType = "none") => {
@@ -25,16 +28,18 @@ export const SessionProvider = ({ children }) => {
     setNotificationType(notificationType);
   };
 
-  const showModalPopup = (popupContent) => {
+  const showModalPopup = (popupContent, size) => {
     setPopupRenderer(popupContent);
     setShouldCloseOnOverlayClick(false);
     setShowPopup(true);
+    setModalStyle({ size: size });
   };
 
-  const showNonModalPopup = (popupContent) => {
+  const showNonModalPopup = (popupContent, size) => {
     setPopupRenderer(popupContent);
     setShouldCloseOnOverlayClick(true);
     setShowPopup(true);
+    setModalStyle({ size: size });
   };
 
   const hidePopup = () => setShowPopup(false);
@@ -62,6 +67,8 @@ export const SessionProvider = ({ children }) => {
         showModalPopup,
         showNonModalPopup,
         hidePopup,
+        modalStyle,
+        setModalStyle,
       }}
     >
       {children}

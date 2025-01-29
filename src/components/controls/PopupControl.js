@@ -6,6 +6,7 @@ import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 import { useSession } from "providers/SessionProvider";
 import { getCookie } from "services/CookieService";
+import PopupModal, { ClosePopupControl } from "helpers/PopupModal";
 
 // export const NotificationBarPullout = styled.div((props) => [
 //   tw`top-0 border-b z-50 flex justify-between items-center p-1 lg:px-20 font-semibold`,
@@ -20,34 +21,17 @@ import { getCookie } from "services/CookieService";
 //   else return tw``;
 // };
 
-// const popupSizes = {
-//   big: tw`w-1/2 h-1/2 `,
-//   medium: tw`w-1/3 h-1/3`,
-//   small: tw`w-1/4 h-1/4`,
-//   none: tw``,
-// };
-
 // const popupPositions = {
 //   center: tw`translate-x-1/2 translate-y-1/4 `,
 //   leftTop: tw`translate-x-[400px] translate-y-24 `,
 //   none: tw``,
 // };
 
-const Top = tw.div`w-full flex  justify-end h-6 z-10 `;
-const Bottom = tw.div`px-6 pb-6 h-full `;
+const Container = tw.div` h-full w-full flex flex-col items-start    `;
+const PopupHeader = tw.div` w-full h-[5%] lg:h-[2%] flex items-center justify-end `;
+const PopupContent = tw.div`h-[95%] lg:h-[98%] w-full px-5`;
 
-const Popup = styled.div((props) => [
-  props.size === "small"
-    ? tw`fixed top-0 left-0 rounded  z-50 w-[90%] h-[60%] lg:h-[70%]  translate-x-[5%] translate-y-[20%] lg:translate-y-[10%] lg:w-[30%] lg:translate-x-[120%]   pb-4  flex flex-col    `
-    : tw`fixed top-0 left-0 rounded bg-red-500  z-50 w-[100%] h-[100%]  overflow-scroll`,
-  // `background-color:${props.bgColor};
-  // ::-webkit-scrollbar {
-  //     display: none;
-  //   }
-  // `,
-]);
-
-export default ({ properties, children, index }) => {
+export default ({ properties, children }) => {
   const { showPopup, hidePopup, showModalPopup, showNonModalPopup } =
     useSession();
 
@@ -58,7 +42,7 @@ export default ({ properties, children, index }) => {
   var endTime = properties?.endTime ? JSON.parse(properties.endTime) : 1000000;
 
   const [chaildData] = children;
-  const { ComponentName, CPJSON, HPJSON } = chaildData;
+  const { CPJSON, HPJSON } = chaildData;
 
   const cpjsonData = CPJSON && JSON.parse(CPJSON);
   const hpjsonData = HPJSON && JSON.parse(HPJSON);
@@ -68,11 +52,12 @@ export default ({ properties, children, index }) => {
 
   useEffect(() => {
     const timerStart = setTimeout(() => {
-      if (
-        ComponentName === "PopupViewer" &&
-        popupKeyVal !== childControlData.productEnquiryFor
-      ) {
-        showNonModalPopup(getPopupContent());
+      if (popupKeyVal !== childControlData.productEnquiryFor) {
+        if (properties.popupCloseOnOverlayClick === "true") {
+          showNonModalPopup(getPopupContent(), properties.popupSize);
+        } else {
+          showModalPopup(getPopupContent(), properties.popupSize);
+        }
       }
     }, startTime);
 
@@ -87,9 +72,12 @@ export default ({ properties, children, index }) => {
   }, [showPopup]);
 
   const getPopupContent = () => (
-    <Popup size="small" position="center">
-      <Bottom>{ProcessChildComponentsSeparately(children)}</Bottom>
-    </Popup>
+    <Container>
+      <PopupHeader>
+        <ClosePopupControl />
+      </PopupHeader>
+      <PopupContent>{ProcessChildComponentsSeparately(children)}</PopupContent>
+    </Container>
   );
 
   return <></>;
