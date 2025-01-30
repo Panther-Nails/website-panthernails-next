@@ -9,8 +9,6 @@ import {
 import { useSession } from "providers/SessionProvider";
 import FallbackLoading from "helpers/FallbackLoading";
 import { GetPageCacheKey } from "services/CookieService";
-
-
 export default () => {
   const { type, subtype, name } = useParams();
   const { languageObject, setNotification } = useSession();
@@ -35,6 +33,8 @@ export default () => {
   }
 
   useEffect(() => {
+    setComponents([]);
+
     ExecuteQuery(
       {
         ActionName:
@@ -70,6 +70,7 @@ export default () => {
   useEffect(() => {
     if (pageData.Components) {
       var c = JSON.parse(pageData.Components);
+      console.log("page useeffect");
 
       setComponents(c);
     }
@@ -84,9 +85,11 @@ export default () => {
 
     return (
       <>
-        <Suspense fallback={<FallbackLoading />}>
-          {components &&
-            components.map((component, index) => {
+        {components.length === 0 ? (
+          <FallbackLoading />
+        ) : (
+          <Suspense fallback={<FallbackLoading />}>
+            {components.map((component, index) => {
               const Component = ImportDynamicComponent(
                 component.Section,
                 component.ComponentName
@@ -105,8 +108,9 @@ export default () => {
                 />
               );
             })}
-          <CookieConsent />
-        </Suspense>
+            <CookieConsent />
+          </Suspense>
+        )}{" "}
       </>
     );
   } catch (e) {
