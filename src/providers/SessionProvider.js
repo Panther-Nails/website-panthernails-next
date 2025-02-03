@@ -69,7 +69,7 @@ export const SessionProvider = ({ children }) => {
         hidePopup,
         modalStyle,
         setModalStyle,
-        isErrorPageTrigger, setIsErrorPageTrigger
+        
       }}
     >
       {children}
