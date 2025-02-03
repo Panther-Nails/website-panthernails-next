@@ -6,8 +6,10 @@ const SessionContext = createContext(null);
 
 export const SessionProvider = ({ children }) => {
   const [theme, setTheme] = useState("light");
-  const [language, setLanguage] = useState("en-IN");
-  const [languageObject, setLanguageObject] = useState(Languages[0]);
+
+  const [languageObject, setLanguageObject] = useState(
+    JSON.parse(localStorage.getItem("lang")) || Languages[0]
+  );
   const [hasNotificationSeen, setHasNotificationSeen] = useState(false);
 
   const [notificationText, setNotificationText] = useState("");
@@ -49,8 +51,6 @@ export const SessionProvider = ({ children }) => {
       value={{
         theme,
         setTheme,
-        language,
-        setLanguage,
         hasNotificationSeen,
         setHasNotificationSeen,
         languageObject,
@@ -69,6 +69,7 @@ export const SessionProvider = ({ children }) => {
         hidePopup,
         modalStyle,
         setModalStyle,
+        isErrorPageTrigger, setIsErrorPageTrigger
       }}
     >
       {children}
@@ -183,6 +184,13 @@ export const Languages = [
     name: "german",
     nameUnicode: "Deutsch",
     code: "de",
+    logo: "",
+    textDirection: "ltr",
+  },
+  {
+    name: "Arabic",
+    nameUnicode: "عربي",
+    code: "ar",
     logo: "",
     textDirection: "ltr",
   },

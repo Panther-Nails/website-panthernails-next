@@ -8,7 +8,6 @@ import { CookieDuration, setCookie } from "services/CookieService";
 import { useSession } from "providers/SessionProvider";
 import { notify } from "components/controls/ToastNotifyControl";
 
-
 const ControlHeadingText = tw.p`mt-4  md:text-left text-sm  lg:text-base font-medium leading-relaxed text-[#4668C5]`;
 
 const Form = tw.form`mt-2 text-xs   lg:text-sm flex flex-col h-[100%] w-full mx-auto md:mx-0`;
@@ -24,13 +23,13 @@ const Textarea = styled(Input).attrs({ as: "textarea" })`
 `;
 const Wraper = tw.div`first:mt-0 pt-3  `;
 const SubmitButton = styled.button((props) => [
-  tw`inline-block mt-2 lg:mt-8 px-8 py-3 font-bold rounded text-gray-100 focus:shadow-outline focus:outline-none transition duration-300`,
+  tw`inline-block mt-2 lg:mt-8 px-8 py-3 font-bold rounded text-gray-100  focus:shadow-outline focus:outline-none transition duration-300`,
   `
-    background-color: ${props.themeColor === "loyalty" ? "#77255B" : "#1E90FF"};
+    background-color: ${props.themeColor === "loyalty" ? "#1E90FF" : "#1E90FF"};
     
     &:hover {
       background-color: ${
-        props.themeColor === "loyalty" ? "#69264F" : "#0067CC"
+        props.themeColor === "loyalty" ? "#0067CC" : "#0067CC"
       };
     }
   `,
@@ -394,7 +393,7 @@ const MultiSelectCheckbox = ({
 };
 
 export default ({ properties, subheading = "Contact Us" }) => {
-  const {hidePopup} = useSession();
+  const { hidePopup } = useSession();
 
   const [formData, setFormData] = useState({});
 
@@ -405,7 +404,6 @@ export default ({ properties, subheading = "Contact Us" }) => {
   const [radioError, setRadioError] = useState("");
 
   const [radioInputValidate, setRadioInputValidate] = useState(false);
-  
 
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState([]);
