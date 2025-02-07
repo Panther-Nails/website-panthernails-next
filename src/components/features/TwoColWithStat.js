@@ -18,7 +18,7 @@ const TextColumn = styled(Column)((props) => [
     : tw`md:ml-12 lg:ml-16 md:order-last`,
 ]);
 
-const TextContent = tw.div` text-center text-2xl font-bold `;
+const TextContent = tw.div` text-center text-2xl font-bold px-4 lg:px-0`;
 const NumberContent = styled.span`
   ${tw`text-center text-6xl md:text-8xl font-black`}
   background-color: #1e90ffff;
@@ -36,7 +36,7 @@ const Subheading = tw(SubheadingBase)`text-center text-red-500`;
 
 const Description = tw.p`mx-auto mt-4 px-4 lg:px-0 text-center text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
-export default ({ properties, children, index, data }) => {
+export default ({ data, children, properties, textOnLeft = true }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
   var statistics = JSON.parse(properties.statistics);
   return (

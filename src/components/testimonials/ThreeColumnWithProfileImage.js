@@ -9,6 +9,7 @@ import {
 } from "components/misc/Headings.js";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-7.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-8.svg";
+import { getProperties } from "services/ComponentService";
 const Subheading = tw(SubheadingBase)`text-center`;
 const Testimonials = tw.div`flex flex-col lg:flex-row items-center lg:items-stretch`;
 const TestimonialContainer = tw.div`mt-16 lg:w-1/3`;
@@ -35,15 +36,19 @@ export default ({ properties, children, index, data }) => {
           )}
           <HighlightedHeading>{properties.heading}</HighlightedHeading>
           <Testimonials>
-            {inputs.map((testimonial, index) => (
-              <TestimonialContainer key={index}>
-                <Testimonial>
-                  <CustomerName>{testimonial.heading}</CustomerName>
-                  <Image src={testimonial.imageSrc} />
-                  <Quote>"{testimonial.description}"</Quote>
-                </Testimonial>
-              </TestimonialContainer>
-            ))}
+            {children.map((child, index) => {
+              var childProperties = getProperties(child);
+
+              return (
+                <TestimonialContainer key={index}>
+                  <Testimonial>
+                    <CustomerName>{childProperties.heading}</CustomerName>
+                    <Image src={childProperties.imageSrc} />
+                    <Quote>"{childProperties.description}"</Quote>
+                  </Testimonial>
+                </TestimonialContainer>
+              );
+            })}
           </Testimonials>
         </ContentWithPaddingXl>
 

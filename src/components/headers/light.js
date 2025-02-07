@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useAnimation, useCycle } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { NavLink as RouterLink } from "react-router-dom";
+import { NavLink as RouterLink, useNavigate } from "react-router-dom";
 
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 
@@ -12,9 +12,13 @@ import pnlogo from "../../images/pnlogo.svg";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 
-import { Languages, useSession } from "providers/SessionProvider.js";
+import { useSession } from "providers/SessionProvider.js";
 
-const Container = tw.div` relative sticky top-0 z-50 bg-white`;
+
+
+const Container = styled.div((props) => [
+  tw`relative sticky top-0 z-50 bg-white text-sm`,
+]);
 
 const Header = tw.header`border-b flex justify-between items-center  `;
 
@@ -29,12 +33,17 @@ export const NavLink = styled(RouterLink)`
   border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
 `;
 
-export const NavLinkWrapper = tw.div`
-  inline-block
-  text-sm my-2 lg:mx-6 lg:my-0
-  font-semibold tracking-wide transition duration-300
-  border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
-`;
+export const NavLinkWrapper = styled.div((props) => [
+  tw` inline-block
+   my-2   lg:my-0 
+  font-semibold tracking-wide transition duration-700
+  border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500`,
+  (props = [
+    props.navPosition
+      ? tw`text-xs duration-700 lg:mx-8`
+      : tw`text-sm duration-700 lg:mx-5`,
+  ]),
+]);
 
 export const PrimaryLink = tw(NavLink)`
   lg:mx-0   px-8 py-3 rounded bg-primary-500 text-gray-100
@@ -46,13 +55,17 @@ export const LogoLink = styled(NavLink)`
   ${tw`flex items-center font-black border-b-0 text-2xl! ml-0!`};
 
   img {
-    ${tw`w-64 ml-5 lg:ml-20 mr-3 my-5 `}
+    ${(props) => [
+      props.navPosition
+        ? tw`w-40 ml-5 lg:ml-20 mr-3 my-2 duration-700`
+        : tw`w-64 ml-5 lg:ml-20 mr-3 my-3 duration-700`,
+    ]}
   }
 `;
 
-export const MobileNavLinksContainer = tw.nav`flex flex-1 items-center justify-between`;
+export const MobileNavLinksContainer = tw.nav`flex flex-1 items-center justify-between pt-2 `;
 export const NavToggle = tw.button`
-  lg:hidden mr-5 z-20 focus:outline-none hocus:text-primary-500 transition duration-300
+  lg:hidden pr-5 z-20 focus:outline-none hocus:text-primary-500 transition duration-300
 `;
 export const MobileNavLinks = motion(styled.div`
   ${tw`lg:hidden z-10 fixed top-0 inset-x-0 mx-4 my-6 p-8 border text-center rounded-lg text-gray-900 bg-white`}
@@ -62,7 +75,7 @@ export const MobileNavLinks = motion(styled.div`
 `);
 
 export const DesktopNavLinks = tw.nav`
-  hidden lg:flex flex-1 justify-between items-center lg:mr-20 
+  hidden lg:flex flex-1 justify-between items-center pr-0 lg:pr-20 
 `;
 
 export const NotificationBarPullout = styled.div((props) => [
@@ -92,7 +105,7 @@ const backgroundColor = {
   none: tw``,
 };
 
-const LanguageText = styled.div`font-bold hover:font-black`;
+const LanguageText = styled.div`font-bold hover:font-black `;
 
 export default ({
   logoLink,
@@ -103,9 +116,11 @@ export default ({
   const {
     hasNotificationSeen,
     setHasNotificationSeen,
-
+    languageObject,
+    setLanguageObject,
     notificationText,
     notificationType,
+    languages,
   } = useSession();
 
   /*
@@ -121,6 +136,29 @@ export default ({
    * changing the defaultLinks variable below below.
    * If you manipulate links here, all the styling on the links is already done for you. If you pass links yourself though, you are responsible for styling the links or use the helper styled components that are defined here (NavLink)
    */
+  const [scrollCounter, setScrollCounter] = useState(0);
+
+  const [isIncreasing, setIsIncreasing] = useState(false);
+
+  // console.log("isDecreasing",isDecreasing);
+  const handleScroll = () => {
+    const position = window.scrollY;
+    setScrollCounter(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    if (scrollCounter > 0) {
+      setIsIncreasing(true);
+    } else {
+      setIsIncreasing(false);
+    }
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll, { passive: true });
+    };
+  }, [scrollCounter]);
 
   const defaultLinks = [
     <NavLinks key={1}>
@@ -147,16 +185,34 @@ export default ({
     collapseBreakPointCssMap[collapseBreakpointClass];
 
   const defaultLogoLink = (
-    <LogoLink to="/">
+    <LogoLink to="/" navPosition={isIncreasing}>
       <img src={pnlogo} alt="logo" />
     </LogoLink>
   );
 
+  const headerLinks = [
+    { url: `/about`, text: "About Us" },
+    {
+      url: `/pages/products/loyalty`,  
+      text: "Rasik Loyalty Platform",
+    },
+    {
+      url: `/pages/products/clm`,
+      text: "Contract Labour Management",
+    },
+    //    { url: "/blog", text: "Blog" },
+    { url: `/contact`, text: "Contact Us" },
+  ];
+
   const menuLinks = (
     <NavLinks key={1}>
-      {links.map((link, index) => {
+      {headerLinks.map((link, index) => {
         return (
-          <NavLinkWrapper onClick={toggleNavbar} key={index}>
+          <NavLinkWrapper
+            onClick={toggleNavbar}
+            key={index}
+            navPosition={isIncreasing}
+          >
             <NavLink to={link.url}>{link.text}</NavLink>
           </NavLinkWrapper>
         );
@@ -171,13 +227,61 @@ export default ({
     setHasNotificationSeen(true);
   };
 
+  const SiteOptions = () => {
+    const { showSiteOptions, animation, toggleSiteOptions } =
+      useAnimatedSiteOptionsToggler();
+
+    const navigate = useNavigate();
+    return (
+      <SiteOptionsContainer>
+        <LanguageSelectionLinks
+          initial={{ x: "250%", display: "none" }}
+          animate={animation}
+        >
+          <NavLinks key={1}>
+            {languages?.map((lang, index) => {
+              return (
+                <NavLinkWrapper
+                  key={index}
+                  onClick={() => {
+                    setLanguageObject({ ...lang });
+                    //this navigate the same route with selected lanaguage
+                    navigate(
+                      `${window.location.pathname}?lang=${lang.LanguageNameUnicode}`
+                    );
+                    setLanguageObject(lang);
+                    toggleSiteOptions();
+                  }}
+                >
+                  {lang?.LanguageName?.toLocaleUpperCase()} (
+                  {lang?.LanguageNameUnicode})
+                </NavLinkWrapper>
+              );
+            })}
+          </NavLinks>
+        </LanguageSelectionLinks>
+        <SiteOptionToggleButton
+          onClick={toggleSiteOptions}
+          className={showSiteOptions ? "open" : "closed"}
+        >
+          <NavLinkWrapper>
+            <LanguageText title={languageObject?.LanguageNameUnicode}>
+              {languageObject?.LanguageNameUnicode}{" "}
+              {languageObject?.LanguageName}
+            </LanguageText>
+          </NavLinkWrapper>
+        </SiteOptionToggleButton>
+      </SiteOptionsContainer>
+    );
+  };
+
   return (
     <Container>
       <Header className={className || "header-light"}>
         <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
           {logoLink}
           {links}
-          {/* {siteOptions} */}
+          <SiteOptions />
         </DesktopNavLinks>
 
         <MobileNavLinksContainer
@@ -259,49 +363,3 @@ export function useAnimatedSiteOptionsToggler() {
 
   return { showSiteOptions, animation, toggleSiteOptions };
 }
-
-// eslint-disable-next-line
-const SiteOptions = (
-  language,
-  setLanguage,
-  languageObject,
-  setLanguageObject
-) => {
-  const { showSiteOptions, animation, toggleSiteOptions } =
-    useAnimatedSiteOptionsToggler();
-  return (
-    <SiteOptionsContainer>
-      <LanguageSelectionLinks
-        initial={{ x: "250%", display: "none" }}
-        animate={animation}
-      >
-        <NavLinks key={1}>
-          {Languages.map((lang, index) => {
-            return (
-              <NavLinkWrapper
-                key={index}
-                onClick={() => {
-                  setLanguage(lang.name);
-                  setLanguageObject({ ...lang });
-                  toggleSiteOptions();
-                }}
-              >
-                {lang.name?.toLocaleUpperCase()} ({lang.nameUnicode})
-              </NavLinkWrapper>
-            );
-          })}
-        </NavLinks>
-      </LanguageSelectionLinks>
-      <SiteOptionToggleButton
-        onClick={toggleSiteOptions}
-        className={showSiteOptions ? "open" : "closed"}
-      >
-        <NavLinkWrapper>
-          <LanguageText title={languageObject.nameUnicode}>
-            {languageObject.nameUnicode} {language}
-          </LanguageText>
-        </NavLinkWrapper>
-      </SiteOptionToggleButton>
-    </SiteOptionsContainer>
-  );
-};

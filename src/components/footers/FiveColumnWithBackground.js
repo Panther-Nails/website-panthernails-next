@@ -28,6 +28,8 @@ const ThreeColRow = tw.div`flex flex-col md:flex-row items-center justify-betwee
 const LogoContainer = tw.div`flex items-center justify-center md:justify-start`;
 const LogoImg = tw.img`w-48`;
 
+const SocialImg = tw.img`w-32`;
+
 const CopywrightNotice = tw.p`text-center text-sm sm:text-base mt-8 md:mt-0 font-medium text-gray-400`;
 
 const SocialLinksContainer = tw.div`mt-8 md:mt-0 flex`;
@@ -46,96 +48,30 @@ const DecoratorBlob2 = tw(
   SvgDecoratorBlob1
 )`absolute bottom-0 right-0 w-80 h-80 transform  translate-x-32 translate-y-48 text-primary-700 opacity-50`;
 
-export default () => {
+export default ({ index, properties, children }) => {
+  var sections = JSON.parse(properties.sections || "[]");
+  var socialLinks = JSON.parse(properties.socialLinks || "[]");
+
   return (
     <Container>
       <Content>
         <FiveColumns>
-          <Column>
-            <ColumnHeading>Main</ColumnHeading>
-            <LinkList>
-              <LinkListItem>
-                <Link href="#">Blog</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">FAQs</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Support</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">About Us</Link>
-              </LinkListItem>
-            </LinkList>
-          </Column>
-          <Column>
-            <ColumnHeading>Product</ColumnHeading>
-            <LinkList>
-              <LinkListItem>
-                <Link href="#">Log In</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Personal</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Business</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Team</Link>
-              </LinkListItem>
-            </LinkList>
-          </Column>
-          <Column>
-            <ColumnHeading>Press</ColumnHeading>
-            <LinkList>
-              <LinkListItem>
-                <Link href="#">Logos</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Events</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Stories</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Office</Link>
-              </LinkListItem>
-            </LinkList>
-          </Column>
-          <Column>
-            <ColumnHeading>Team</ColumnHeading>
-            <LinkList>
-              <LinkListItem>
-                <Link href="#">Career</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Founders</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Culture</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Onboarding</Link>
-              </LinkListItem>
-            </LinkList>
-          </Column>
-          <Column>
-            <ColumnHeading>Legal</ColumnHeading>
-            <LinkList>
-              <LinkListItem>
-                <Link href="#">GDPR</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Privacy Policy</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Terms of Service</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Disclaimer</Link>
-              </LinkListItem>
-            </LinkList>
-          </Column>
+          {sections.map((section, i) => {
+            return (
+              <Column key={i}>
+                <ColumnHeading>{section.heading}</ColumnHeading>
+                <LinkList>
+                  {section.links.map((link, j) => {
+                    return (
+                      <LinkListItem key={j}>
+                        <Link href={link.url}>{link.title}</Link>
+                      </LinkListItem>
+                    );
+                  })}
+                </LinkList>
+              </Column>
+            );
+          })}
         </FiveColumns>
         <Divider />
         <ThreeColRow>
@@ -143,19 +79,17 @@ export default () => {
             <LogoImg src={LogoImage} />
           </LogoContainer>
           <CopywrightNotice>
-            &copy; 2023 Panther Nails Technologies Pvt Ltd, All Rights
-            Reserved..
+            &copy; {new Date().getFullYear()} Panther Nails Technologies Private
+            Limited, All Rights Reserved.
           </CopywrightNotice>
           <SocialLinksContainer>
-            <SocialLink href="https://facebook.com">
-              <FacebookIcon />
-            </SocialLink>
-            <SocialLink href="https://twitter.com">
-              <TwitterIcon />
-            </SocialLink>
-            <SocialLink href="https://youtube.com">
-              <YoutubeIcon />
-            </SocialLink>
+            {socialLinks.map((socialLink, k) => {
+              return (
+                <SocialLink href={socialLink.url} key={k}>
+                  <SocialImg src={socialLink.imageUrl} />
+                </SocialLink>
+              );
+            })}
           </SocialLinksContainer>
         </ThreeColRow>
       </Content>

@@ -10,6 +10,7 @@ import {
 import { SectionDescription } from "components/misc/Typography.js";
 
 import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
+import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
 const Container = tw.div`relative overflow-hidden`;
 
@@ -67,16 +68,7 @@ export default ({ properties, children, index, data }) => {
           <Description>{properties.description}</Description>
         )}
         <VerticalSpacer />
-        {inputs.map((card, i) => (
-          <Column key={i}>
-            <Card>
-              <span className="textContainer">
-                <span className="title">{card.title}</span>
-                <p className="description">{card.description}</p>
-              </span>
-            </Card>
-          </Column>
-        ))}
+        {ProcessChildComponentsSeparately(children)}
       </ThreeColumnContainer>
       <DecoratorBlob />
     </Container>

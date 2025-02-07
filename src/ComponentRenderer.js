@@ -521,7 +521,7 @@ export default () => {
 
     throw new Error("Component Not Found");
   } catch (e) {
-    console.log(e);
+    
     return <div>Error: Component Not Found</div>;
   }
 };

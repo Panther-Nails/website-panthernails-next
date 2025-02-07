@@ -13,6 +13,7 @@ import {
 } from "components/misc/Headings.js";
 import appleIconImageSrc from "images/apple-icon.png";
 import googlePlayIconImageSrc from "images/google-play-icon.png";
+import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
 const Container = tw(ContainerBase)`bg-primary-900 `;
 const Content = tw(ContentWithPaddingXl)``;
@@ -86,6 +87,7 @@ export default ({ properties, children, index, data }) => {
             <img src={properties.imageSrc} alt="" tw="w-64" />
           </ImageContainer>
         </Row>
+        <Row>{ProcessChildComponentsSeparately(children)}</Row>
         <DecoratorBlobContainer>
           <DecoratorBlob1 />
           <DecoratorBlob2 />

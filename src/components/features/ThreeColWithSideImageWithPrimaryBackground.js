@@ -8,7 +8,7 @@ import {
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
-import { ProcessChildComponentsSeparately } from "DynamicPage";
+import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
 const Container = tw.div`relative bg-primary-900 -mx-8 px-8 text-gray-100`;
 

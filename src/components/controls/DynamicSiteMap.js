@@ -41,6 +41,7 @@ export default ({ properties, children, index, data }) => {
       ParameterJSON: JSON.stringify(parameter),
     }).then((response) => {
       setSiteMapData(response.items);
+      // console.log("siteMapData", response.items);
     });
   }, []);
 

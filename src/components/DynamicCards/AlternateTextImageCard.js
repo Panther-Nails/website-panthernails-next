@@ -17,7 +17,7 @@ const Description = tw.p`mt-2 text-lg leading-loose`;
 const CustomerInfo = tw.div`mt-6 flex flex-col sm:flex-row items-center justify-center lg:justify-start`;
 const CustomerProfilePicture = tw.img`rounded-full w-20 h-20 mb-2`;
 
-export default ({ properties, children, index }) => {
+export default ({ index, properties, children }) => {
 
   return (
     <Card key={index} reversed={index % 2 === 1}>

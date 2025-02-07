@@ -49,80 +49,54 @@ const CustomerName = tw.p`mt-4 font-bold`;
 const CustomerCompany = tw.p`mt-1 text-sm text-gray-500`;
 
 export default ({
-  heading = "Better, Faster and Cheaper Cloud.",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-  imageSrc = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-  imageDecoratorBlob = true,
-  primaryButtonUrl = "https://google.com",
-  primaryButtonText = "Get Started",
-  buttonRounded = true,
-  features = [
-    "Available in 7 Locations",
-    "Premium Internet Backbone",
-    "99.99% Uptime SLA",
-  ],
-  testimonial = {
-    quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    customerName: "Charlotte Hale",
-    customerCompany: "Delos Inc.",
-  },
-  links = [
-    { title: "About Us", href: "/AboutUs" },
-    { title: "Loyalty Platform", href: "/RasikLoyalty" },
-    { title: "Contract Labour Management", href: "/CLM" },
-    { title: "Blog", href: "/blog" },
-    { title: "Contact Us", href: "/contactus" },
-  ],
+  properties,
+  imageDecoratorBlob = properties.imageDecoratorBlob==="false" ? false :true,
+  buttonRounded = properties.buttonRounded==="false" ? false :true,
+ 
+ 
+  
 }) => {
   const buttonRoundedCss = buttonRounded && tw`rounded-full`;
 
+  let features = JSON.parse(properties.featured)
+
+
+
   return (
     <>
-      <Header
-        links={
-          <>
-            <NavLinks key={1}>
-              {links.map((link, index) => (
-                <NavLink to={link.href}>{link.title}</NavLink>
-              ))}
-            </NavLinks>
-            <NavLinks key={2}></NavLinks>
-          </>
-        }
-      />
+      
       <Container>
         <ContentWithVerticalPadding>
           <Row>
             <TextColumn>
-              <Heading>{heading}</Heading>
-              <Description>{description}</Description>
+              <Heading>{properties.heading}</Heading>
+              <Description>{properties.description}</Description>
               <PrimaryButton
                 as="a"
-                to={primaryButtonUrl}
+                to={properties.primaryButtonUrl}
                 css={buttonRoundedCss}
               >
-                {primaryButtonText}
+                {properties.primaryButtonText}
               </PrimaryButton>
               <FeatureList>
-                {features.map((feature, index) => (
+                {features.map((featured, index) => (
                   <Feature key={index}>
                     <FeatureIcon />
-                    <FeatureText>{feature}</FeatureText>
+                    <FeatureText>{featured.name}</FeatureText>
                   </Feature>
                 ))}
               </FeatureList>
             </TextColumn>
             <ImageColumn>
               <ImageContainer>
-                <Image src={imageSrc} />
+                <Image src={properties.imageSrc} />
                 {imageDecoratorBlob && <ImageDecoratorBlob />}
                 <Testimonial>
                   <QuotesLeftIcon />
-                  <Quote>{testimonial.quote}</Quote>
-                  <CustomerName>{testimonial.customerName}</CustomerName>
+                  <Quote>{properties.quote}</Quote>
+                  <CustomerName>{properties.customerName}</CustomerName>
                   <CustomerCompany>
-                    {testimonial.customerCompany}
+                    {properties.customerCompany}
                   </CustomerCompany>
                 </Testimonial>
               </ImageContainer>

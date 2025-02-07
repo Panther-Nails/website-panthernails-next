@@ -9,11 +9,10 @@ import { ReactComponent as TimeIcon } from "feather-icons/dist/icons/clock.svg";
 import { ReactComponent as TrendingIcon } from "feather-icons/dist/icons/trending-up.svg";
 
 const Column = tw.div``;
-const CardColumn = tw(Column)`w-full md:w-1/2 xl:w-1/3 mt-16 xl:mt-0`;
-const Card = tw.div`mx-auto xl:mx-0 xl:ml-auto max-w-sm md:max-w-xs lg:max-w-sm xl:max-w-xs`;
-const CardImage = styled.div((props) => [
-  `background-image: url("${props.imageSrc}");`,
-  tw`h-80 bg-cover bg-center rounded bg-black `,
+const CardColumn = tw(Column)`w-full md:w-1/2 xl:w-1/3 mt-16 xl:mt-0 `;
+const Card = tw.div`mx-auto xl:mx-0 xl:ml-auto max-w-sm md:max-w-xs lg:max-w-sm xl:max-w-xs flex  flex-col items-center`;
+const CardImage = styled.img((props) => [
+  tw`h-80 w-full bg-cover bg-center rounded  `,
 ]);
 
 const CardText = tw.div`mt-4`;
@@ -36,17 +35,18 @@ const CardMetaFeature = styled.div`
     ${tw`w-5 h-5 mr-1`}
   }
 `;
-const CardAction = tw(PrimaryButtonBase)`w-full mt-8`;
+const CardAction = tw(PrimaryButtonBase)`w-full text-center mt-8 `;
 export default ({ index, children, properties }) => {
   return (
     <CardColumn key={index}>
       <Card>
-        <CardImage imageSrc={properties.imageSrc} />
+        <CardImage src={properties.imageSrc} />
         <CardText>
           <CardHeader>
             <CardType>{properties.type}</CardType>
             <CardPrice>
-              <CardPriceAmount>{properties.pricingText}</CardPriceAmount>
+              <CardPriceAmount>{properties.pricingText} </CardPriceAmount>
+              <span>{properties.extraText}</span>
             </CardPrice>
           </CardHeader>
           <CardTitle>{properties.title}</CardTitle>
@@ -57,18 +57,18 @@ export default ({ index, children, properties }) => {
               <>{properties.trendingText}</>
             </CardMetaFeature>
             <CardMetaFeature>
-              {properties.trendingText ? <TimeIcon /> : <></>}
+              {properties.durationText ? <TimeIcon /> : <></>}
               <>{properties.durationText}</>
             </CardMetaFeature>
             <CardMetaFeature>
-              {properties.trendingText ? <LocationIcon /> : <></>}
+              {properties.locationText ? <LocationIcon /> : <></>}
               <>{properties.locationText}</>
             </CardMetaFeature>
           </CardMeta>
-          <CardAction as="a" href={properties.buttonUrl}>
-            {properties.buttonText}
-          </CardAction>
         </CardText>
+        <CardAction as="a" href={properties.buttonUrl}>
+          {properties.buttonText}
+        </CardAction>
       </Card>
     </CardColumn>
   );

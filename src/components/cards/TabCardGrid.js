@@ -69,36 +69,6 @@ export default ({ properties, children, index, data }) => {
    * To see what attributes are configurable of each object inside this array see the example above for "Starters".
    */
 
-  // var tab1 = properties.tab1 ? JSON.parse(properties.tab1) : [];
-  // var tab2 = properties.tab2 ? JSON.parse(properties.tab2) : [];
-  // var tab3 = properties.tab3 ? JSON.parse(properties.tab3) : [];
-  // var tab4 = properties.tab4 ? JSON.parse(properties.tab4) : [];
-
-  // var tab1Name = properties.tab1Name;
-  // var tab2Name = properties.tab2Name;
-  // var tab3Name = properties.tab3Name;
-  // var tab4Name = properties.tab4Name;
-
-  var tabs = {
-    [properties.tab1Name]: properties.tab1 ? JSON.parse(properties.tab1) : [],
-    [properties.tab2Name]: properties.tab2 ? JSON.parse(properties.tab2) : [],
-    [properties.tab3Name]: properties.tab3 ? JSON.parse(properties.tab3) : [],
-    [properties.tab4Name]: properties.tab4 ? JSON.parse(properties.tab4) : [],
-  };
-
-  //Below code for Access Keys from Children
-
-  // const groupedByTabName = children.reduce((child, item) => {
-  //   const tab = item.TabName || "Others";
-  //   if (!child[tab]) {
-  //     child[tab] = { name: tab, cards: [] };
-  //   }
-  //   child[tab].cards.push({ ...item });
-  //   return child;
-  // }, []);
-
-  // const groupedArray = Object.values(groupedByTabName);
-
   const tabsKeys = Object.keys(tabs);
   const [activeTab, setActiveTab] = useState(tabsKeys[0]);
 

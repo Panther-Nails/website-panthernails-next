@@ -9,7 +9,7 @@ import {
 import { SectionDescription } from "components/misc/Typography.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
-import { ProcessChildComponentsSeparately } from "DynamicPage";
+import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`text-center mx-auto `;

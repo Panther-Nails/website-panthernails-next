@@ -12,6 +12,7 @@ import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-6.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-7.svg";
 
+
 const HeaderContainer = tw.div`w-full flex flex-col items-center`;
 const Subheading = tw(SubheadingBase)`mb-4`;
 const Heading = tw(SectionHeading)`w-full`;
@@ -72,50 +73,17 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
 `;
 
 export default ({
-  subheading = "Pricing",
-  heading = "Flexible Plans.",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  plans = null,
-  primaryButtonText = "Buy Now",
-  planDurations = [
-    {
-      text: "Month",
-      switcherText: "Monthly",
-    },
-    {
-      text: "Year",
-      switcherText: "Yearly",
-    },
-  ],
-}) => {
-  const defaultPlans = [
-    {
-      name: "Free Plan",
-      durationPrices: ["$0", "$0"],
-      mainFeature: "For Personal Blogs",
-      features: [
-        "30 Templates",
-        "7 Landing Pages",
-        "12 Internal Pages",
-        "Basic Assistance",
-      ],
-    },
-    {
-      name: "Pro Plan",
-      durationPrices: ["$49", "$499"],
-      mainFeature: "Suited for Production Websites",
-      features: [
-        "60 Templates",
-        "8 Landing Pages",
-        "22 Internal Pages",
-        "Priority Assistance",
-        "Lifetime Updates",
-      ],
-      featured: true,
-    },
-  ];
+  children,
+  properties,
+  index,
 
-  if (!plans) plans = defaultPlans;
+}) => {
+  let inputs = JSON.parse(properties.planDurations);
+  let plans = JSON.parse(properties.plans)
+
+ 
+
+
 
   const [activeDurationIndex, setActiveDurationIndex] = useState(0);
 
@@ -123,11 +91,15 @@ export default ({
     <Container>
       <ContentWithPaddingXl>
         <HeaderContainer>
-          {subheading && <Subheading>{subheading}</Subheading>}
-          <Heading>{heading}</Heading>
-          {description && <Description>{description}</Description>}
+          {properties.subHeading && (
+            <Subheading>{properties.subHeading}</Subheading>
+          )}
+          <Heading>{properties.heading}</Heading>
+          {properties.description && (
+            <Description>{properties.description}</Description>
+          )}
           <PlanDurationSwitcher>
-            {planDurations.map((planDuration, index) => (
+            {inputs.map((planDuration, index) => (
               <SwitchButton
                 active={activeDurationIndex === index}
                 key={index}
@@ -148,7 +120,7 @@ export default ({
                   </span>
                   <span className="slash"> / </span>
                   <span className="duration">
-                    {planDurations[activeDurationIndex].text}
+                    {inputs[activeDurationIndex].text}
                   </span>
                 </span>
                 <span className="name">{plan.name}</span>
@@ -162,7 +134,7 @@ export default ({
                 ))}
               </PlanFeatures>
               <PlanAction>
-                <BuyNowButton>{primaryButtonText}</BuyNowButton>
+                <BuyNowButton>{properties.primaryButtonText}</BuyNowButton>
               </PlanAction>
             </Plan>
           ))}

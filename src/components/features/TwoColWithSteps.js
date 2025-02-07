@@ -7,8 +7,7 @@ import {
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
-// import { ProcessChildComponents } from "DynamicPage";
-import { ProcessChildComponentsSeparately } from "DynamicPage";
+import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 const Container = tw.div`relative `;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto pb-12 items-center`;
