@@ -12,9 +12,9 @@ import pnlogo from "../../images/pnlogo.svg";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 
-import { Languages, useSession } from "providers/SessionProvider.js";
+import { useSession } from "providers/SessionProvider.js";
 
-import { GlobScrollPosition } from "../../../src/components/features/ScrollUpButton.js";
+
 
 const Container = styled.div((props) => [
   tw`relative sticky top-0 z-50 bg-white text-sm`,
@@ -120,6 +120,7 @@ export default ({
     setLanguageObject,
     notificationText,
     notificationType,
+    languages,
   } = useSession();
 
   /*
@@ -190,17 +191,17 @@ export default ({
   );
 
   const headerLinks = [
-    { url: `/${languageObject.code}/about`, text: "About Us" },
+    { url: `/about`, text: "About Us" },
     {
-      url: `/${languageObject.code}/pages/products/loyalty`,
+      url: `/pages/products/loyalty`,  
       text: "Rasik Loyalty Platform",
     },
     {
-      url: `/${languageObject.code}/pages/products/clm`,
+      url: `/pages/products/clm`,
       text: "Contract Labour Management",
     },
     //    { url: "/blog", text: "Blog" },
-    { url: `/${languageObject.code}/contact`, text: "Contact Us" },
+    { url: `/contact`, text: "Contact Us" },
   ];
 
   const menuLinks = (
@@ -238,7 +239,7 @@ export default ({
           animate={animation}
         >
           <NavLinks key={1}>
-            {Languages?.map((lang, index) => {
+            {languages?.map((lang, index) => {
               return (
                 <NavLinkWrapper
                   key={index}
@@ -246,16 +247,14 @@ export default ({
                     setLanguageObject({ ...lang });
                     //this navigate the same route with selected lanaguage
                     navigate(
-                      `/${lang?.code}${window.location.pathname.replace(
-                        /^\/[^/]+/,
-                        ""
-                      )}`
+                      `${window.location.pathname}?lang=${lang.LanguageNameUnicode}`
                     );
-                    localStorage.setItem("lang", JSON.stringify(lang));
+                    setLanguageObject(lang);
                     toggleSiteOptions();
                   }}
                 >
-                  {lang?.name?.toLocaleUpperCase()} ({lang?.nameUnicode})
+                  {lang?.LanguageName?.toLocaleUpperCase()} (
+                  {lang?.LanguageNameUnicode})
                 </NavLinkWrapper>
               );
             })}
@@ -266,8 +265,9 @@ export default ({
           className={showSiteOptions ? "open" : "closed"}
         >
           <NavLinkWrapper>
-            <LanguageText title={languageObject.nameUnicode}>
-              {languageObject.nameUnicode} {languageObject.name}
+            <LanguageText title={languageObject?.LanguageNameUnicode}>
+              {languageObject?.LanguageNameUnicode}{" "}
+              {languageObject?.LanguageName}
             </LanguageText>
           </NavLinkWrapper>
         </SiteOptionToggleButton>
