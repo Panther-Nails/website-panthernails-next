@@ -1,14 +1,27 @@
-import React, { createContext, useContext, useState } from "react";
+import { useAnimatedSiteOptionsToggler } from "components/headers/light";
+import useLocalStorage from "hooks/useLocalStorage";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import { ExecuteQuery } from "services/APIService";
 
 import { CookieConsentValue } from "services/CookieService";
 
 const SessionContext = createContext(null);
 
+// [{"LanguageID":1,"LanguageName":"English","LanguageNameUnicode":"English","LanguageTranslationCode":"en_IN","LanguageVoiceNameCSV":"en-in-x-ahp-local,en-in-x-ahp-network"},{"LanguageID":2,"LanguageName":"Hindi","LanguageNameUnicode":"हिन्दी","LanguageTranslationCode":"hi_IN","LanguageVoiceNameCSV":"hi-in-x-hic-local,hi-in-x-hid-local"},{"LanguageID":3,"LanguageName":"Marathi","LanguageNameUnicode":"मराठी","LanguageTranslationCode":"mr_IN","LanguageVoiceNameCSV":null}]
+
 export const SessionProvider = ({ children }) => {
   const [theme, setTheme] = useState("light");
 
-  const [languageObject, setLanguageObject] = useState(
-    JSON.parse(localStorage.getItem("lang")) || Languages[0]
+  const [languages, setLanguages] = useLocalStorage("languages", []);
+  const [languageObject, setLanguageObject] = useLocalStorage(
+    "languageObject",
+    {}
   );
   const [hasNotificationSeen, setHasNotificationSeen] = useState(false);
 
@@ -69,7 +82,8 @@ export const SessionProvider = ({ children }) => {
         hidePopup,
         modalStyle,
         setModalStyle,
-        
+        languages,
+        setLanguages,
       }}
     >
       {children}
@@ -81,7 +95,7 @@ export const useSession = () => {
   return useContext(SessionContext);
 };
 
-export const Languages = [
+const Languages = [
   {
     name: "english",
     nameUnicode: "English",

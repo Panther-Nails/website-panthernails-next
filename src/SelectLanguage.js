@@ -1,26 +1,66 @@
-import { Languages, useSession } from "providers/SessionProvider";
+import { useSession } from "providers/SessionProvider";
 import { useEffect } from "react";
-import { Outlet, useNavigate, useParams } from "react-router-dom";
+import {
+  Navigate,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
+import { ExecuteQuery } from "services/APIService";
 
 export default () => {
-  const { languageObject, setLanguageObject } = useSession();
-  const navigate = useNavigate();
-  const { lang } = useParams();
-  console.log(lang);
+  const { languageObject, setLanguageObject, languages, setLanguages } =
+    useSession();
+  const { group, subgroup, name } = useParams();
 
-  const langIndex = Languages.findIndex((l) => l.code === lang);
+  const navigate = useNavigate();
+  const { search } = useLocation();
+
+  const queryParams = new URLSearchParams(search);
+  const langQuery = queryParams.get("lang");
 
   useEffect(() => {
-    console.log("Select Language");
+    if (languages.length == 0)
+      ExecuteQuery({
+        ActionName: "Core.GMst_SelectFewFromCompanyLanguagesAndMasters",
+        ParameterJSON: JSON.stringify({}),
+      }).then((response) => {
+        if (response.message === "Successfull") {
+          setLanguages(
+            response.items.map((lang) => ({ TextDirection: "ltr", ...lang }))
+          );
+
+          setLanguageObject({ TextDirection: "ltr", ...response.items[0] });
+        }
+      });
   }, []);
 
   useEffect(() => {
-    if (langIndex !== -1) {
-      setLanguageObject(Languages[langIndex]);
-    } else {
-      navigate(`/${languageObject?.code}${window.location.pathname}`);
+    if (languages.length > 0) {
+      const LangIndex = languages.findIndex(
+        (l) => l.LanguageTranslationCode === langQuery
+      );
+
+      if (LangIndex !== -1) {
+        setLanguageObject(languages[LangIndex]);
+      } else {
+        if (Object.keys(languageObject).length == 0)
+          setLanguageObject(languages[0]);
+      }
     }
-  }, [lang]);
+  }, [languages]);
+
+  useEffect(() => {
+    if (
+      languageObject.LanguageTranslationCode &&
+      langQuery !== languageObject.LanguageTranslationCode
+    ) {
+      navigate(
+        `${window.location.pathname}?lang=${languageObject.LanguageTranslationCode}`
+      );
+    }
+  }, [languageObject, group, subgroup, name, search]);
 
   return <Outlet />;
 };

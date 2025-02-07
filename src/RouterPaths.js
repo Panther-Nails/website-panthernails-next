@@ -13,25 +13,12 @@ const DynamicPageComponent = () => {
 export default () => {
   return (
     <Routes>
-      <Route
-        exact
-        path="/"
-        element={
-          <>
-            <SelectLanguage />
-            {DynamicPageComponent()}
-          </>
-        }
-      >
-        <Route path=":lang" element={DynamicPageComponent()} />
-        <Route path=":lang/:type" element={DynamicPageComponent()} />
-        <Route path=":lang/:type/:subtype" element={DynamicPageComponent()} />
-        <Route
-          path=":lang/:type/:subtype/:name"
-          element={DynamicPageComponent()}
-        />
+      <Route element={<SelectLanguage />}>
+        <Route path="/" element={DynamicPageComponent()} />
+        <Route path=":type" element={DynamicPageComponent()} />
+        <Route path=":type/:subtype" element={DynamicPageComponent()} />
+        <Route path=":type/:subtype/:name" element={DynamicPageComponent()} />
       </Route>
-      <Route path="*" element={<Navigate to={`/en`} />} />
     </Routes>
   );
 };
