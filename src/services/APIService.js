@@ -1,8 +1,8 @@
 import { ClearCache, getCacheAsync, trySetCache } from "./CacheService";
 import { CookieDuration, getCookie, setCookie } from "./CookieService";
 import encrypted from "../session.json";
-import { BS64PNE36 } from "./cipher";
 import moment from "moment";
+import { BS64PNE36Encryption } from "turbo/lib/cjs/Encryption/BS64PNE36Encryption";
 
 // export function Execute(oFormData) {
 //   var decryptionKey = decryptData(
@@ -81,14 +81,11 @@ export function Execute(oFormData) {
   var sessionData = {
     CompanyID: process.env.REACT_APP_COMPANY_ID,
     SubscriberID: process.env.REACT_APP_SUBSCRIBER_ID,
+    SessionID: process.env.REACT_APP_SESSION_ID,
     AppID: process.env.REACT_APP_APP_ID,
     AppVersion: process.env.REACT_APP_APP_VERSION,
     AppPlatform: process.env.REACT_APP_APP_PLATFORM,
-    UserID: process.env.REACT_APP_USER_ID,
-    IsDeveloper: process.env.REACT_APP_ISDEVELOPER,
     ServiceAccessToken: process.env.REACT_APP_SERVICE_ACCESS_TOKEN,
-    MenuID: process.env.REACT_APP_MENU_ID,
-    SessionID: process.env.REACT_APP_SESSION_ID,
   };
   var formData = {
     ...oFormData,
@@ -98,7 +95,7 @@ export function Execute(oFormData) {
     }),
   };
 
-  var bs = new BS64PNE36();
+  var bs = new BS64PNE36Encryption();
 
   var body = JSON.stringify(formData);
   var formDataEncrypted = bs.encrypt(body);

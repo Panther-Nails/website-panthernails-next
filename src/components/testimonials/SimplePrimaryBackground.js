@@ -10,7 +10,7 @@ import {
 import { SectionDescription } from "components/misc/Typography.js";
 
 import "slick-carousel/slick/slick.css";
-import { ProcessChildComponentsSeparately } from "DynamicPage";
+import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
 const PrimaryBackgroundContainer = tw(
   Container

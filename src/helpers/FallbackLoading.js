@@ -7,7 +7,7 @@ const Container = styled.div`
   ${(props) =>
     css`
       background-image: url(${props.backgroundImageUrl});
-      ${tw`relative -mx-8 -mt-8 bg-center bg-cover `}
+      ${tw`relative  bg-center bg-cover  h-screen w-full`}
     `}
 `;
 
@@ -25,7 +25,9 @@ const Heading = styled.h1`
 
 const Notification = tw.span`inline-block my-4 pl-3 py-1 text-gray-100  font-medium text-sm`;
 
-const PrimaryAction = tw.button`px-8 py-3 mt-10 text-sm sm:text-base sm:mt-16 sm:px-8 sm:py-4 bg-gray-100 text-primary-500 font-bold rounded shadow transition duration-300 hocus:bg-primary-500 hocus:text-gray-100 focus:shadow-outline`;
+const PrimaryAction = tw.button`px-8 py-3 mt-10 text-sm sm:text-base sm:mt-16 sm:px-8 sm:py-4 bg-gray-100 
+text-primary-500 font-bold rounded shadow transition duration-300 hocus:bg-primary-500 hocus:text-gray-100
+ focus:shadow-outline`;
 
 export default () => {
   return (
@@ -41,7 +43,7 @@ export default () => {
             </Heading>
             <PrimaryAction tw="bg-[#e3e3e3] w-24"></PrimaryAction>
           </LeftColumn>
-          <RightColumn tw="bg-[#cccccc] h-72 w-144 sm:m-12 lg:m-0 rounded-lg animate-pulse"></RightColumn>
+          <RightColumn tw="bg-[#cccccc] h-72 w-screen lg:w-144 sm:m-12 lg:m-0 rounded-lg animate-pulse"></RightColumn>
         </TwoColumn>
       </HeroContainer>
     </Container>

@@ -1,32 +1,56 @@
 import React, { createContext, useContext, useState } from "react";
+
 import { CookieConsentValue } from "services/CookieService";
 
 const SessionContext = createContext(null);
 
 export const SessionProvider = ({ children }) => {
   const [theme, setTheme] = useState("light");
-  const [language, setLanguage] = useState("en-IN");
-  const [languageObject, setLanguageObject] = useState(Languages[0]);
+
+  const [languageObject, setLanguageObject] = useState(
+    JSON.parse(localStorage.getItem("lang")) || Languages[0]
+  );
   const [hasNotificationSeen, setHasNotificationSeen] = useState(false);
 
   const [notificationText, setNotificationText] = useState("");
   const [notificationType, setNotificationType] = useState("none");
 
-  const [showPopup, setShowPopup] = useState(true);
+  const [showPopup, setShowPopup] = useState(false);
+  const [shouldCloseOnOverlayClick, setShouldCloseOnOverlayClick] =
+    useState(false);
+
   const [cookieConsent, setCookieConsent] = useState(CookieConsentValue);
+
+  const [modalStyle, setModalStyle] = useState({});
+
+  const [popupRenderer, setPopupRenderer] = useState(() => <></>);
 
   const setNotification = (notificationText, notificationType = "none") => {
     setNotificationText(notificationText);
     setNotificationType(notificationType);
   };
 
+  const showModalPopup = (popupContent, size) => {
+    setPopupRenderer(popupContent);
+    setShouldCloseOnOverlayClick(false);
+    setShowPopup(true);
+    setModalStyle({ size: size });
+  };
+
+  const showNonModalPopup = (popupContent, size) => {
+    setPopupRenderer(popupContent);
+    setShouldCloseOnOverlayClick(true);
+    setShowPopup(true);
+    setModalStyle({ size: size });
+  };
+
+  const hidePopup = () => setShowPopup(false);
+
   return (
     <SessionContext.Provider
       value={{
         theme,
         setTheme,
-        language,
-        setLanguage,
         hasNotificationSeen,
         setHasNotificationSeen,
         languageObject,
@@ -38,6 +62,14 @@ export const SessionProvider = ({ children }) => {
         showPopup,
         cookieConsent,
         setCookieConsent,
+        popupRenderer,
+        shouldCloseOnOverlayClick,
+        showModalPopup,
+        showNonModalPopup,
+        hidePopup,
+        modalStyle,
+        setModalStyle,
+        
       }}
     >
       {children}
@@ -152,6 +184,13 @@ export const Languages = [
     name: "german",
     nameUnicode: "Deutsch",
     code: "de",
+    logo: "",
+    textDirection: "ltr",
+  },
+  {
+    name: "Arabic",
+    nameUnicode: "عربي",
+    code: "ar",
     logo: "",
     textDirection: "ltr",
   },

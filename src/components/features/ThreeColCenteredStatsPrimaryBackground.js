@@ -10,7 +10,7 @@ import {
   ContentWithPaddingXl,
 } from "components/misc/Layouts";
 import { SectionDescription } from "components/misc/Typography";
-import { ProcessChildComponentsSeparately } from "DynamicPage";
+import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
 const Container = tw(
   ContainerBase
@@ -28,8 +28,6 @@ const StatKey = tw.div`text-xl font-medium`;
 const StatValue = tw.div`text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-black`;
 
 export default ({ children, properties }) => {
- 
-
   const localStats = () => {
     var stats = JSON.parse(properties.stats);
     return stats.map((stat, index) => {

@@ -3,20 +3,22 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import TwoStepControl from "helpers/TwoStepControl";
 
-const PopupView = styled.div((props) => [
+const PopupCardWithForm = styled.div((props) => [
   tw` w-full flex flex-col rounded-xl bg-white   h-full border px-4 py-2 border-black flex items-center justify-center  `,
 ]);
 
-const First = tw.div`w-full  lg:px-8 rounded-xl px-2 flex items-center`;
-const Second = tw.div` w-full h-full rounded-xl   `;
+const StepOne = tw.div` w-full h-full rounded-xl   `;
+const StepTwo = tw.div`w-full  lg:px-8 rounded-xl px-2 flex items-center`;
 const Top = tw.div` h-[40%] text-center flex items-center `;
-const Middel = tw.div` h-[80%] flex items-center `;
+const Middle = tw.div` h-[80%] flex items-center `;
 const Bottom = tw.div`h-[20%] flex items-end lg:items-center justify-center   `;
-const PopupViewImg = tw.img`w-full h-full rounded-xl`;
+const PopupImg = tw.img`w-[100%] h-[100%] rounded-xl cursor-pointer`;
+
 const Text = styled.h1((props) => [
   tw`text-lg lg:text-2xl font-black   text-center`,
   `${props.themeColor === "CLM" ? `color:#1E90FF` : `color:#77255B`}`,
 ]);
+
 const GetBtn = styled.button((props) => [
   tw`text-lg lg:text-xl text-white border-2 border-black font-black h-auto py-2 px-3 rounded-full`,
   `  background-color: ${
@@ -33,29 +35,32 @@ export default ({ properties }) => {
   const [checkFormOpen, setCheckFormOpen] = useState(false);
 
   const openTheForm = (e) => {
-    e.stopPropagation()
+    e.stopPropagation();
     setCheckFormOpen(true);
   };
+
   return (
-    <PopupView onClick={() => console.log("full popup click")}>
+    <PopupCardWithForm>
       {checkFormOpen ? (
-        <First>
+        <StepTwo>
           <TwoStepControl properties={properties} />
-        </First>
+        </StepTwo>
+      ) : properties.showImageOnly ? (
+        <PopupImg src={properties.imageSrc} onClick={openTheForm} />
       ) : (
-        <Second>
+        <StepOne>
           {properties.imageSrc && (
             <Top>
-              <PopupViewImg src={properties.imageSrc} />
+              <PopupImg src={properties.imageSrc} />
             </Top>
           )}
           <Wrapper>
             {properties.popupHeading && (
-              <Middel>
+              <Middle>
                 <Text themeColor={properties.productEnquiryFor}>
                   {properties.popupHeading}
                 </Text>
-              </Middel>
+              </Middle>
             )}
             {properties.btnText && (
               <Bottom>
@@ -68,8 +73,8 @@ export default ({ properties }) => {
               </Bottom>
             )}
           </Wrapper>
-        </Second>
+        </StepOne>
       )}
-    </PopupView>
+    </PopupCardWithForm>
   );
 };

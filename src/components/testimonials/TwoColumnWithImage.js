@@ -8,9 +8,8 @@ import { ReactComponent as ArrowLeftIcon } from "../../images/arrow-left-2-icon.
 import { ReactComponent as ArrowRightIcon } from "../../images/arrow-right-2-icon.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-4.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-5.svg";
-
 import "slick-carousel/slick/slick.css";
-import { ProcessChildComponentsSeparately } from "DynamicPage.js";
+import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
 const Container = tw.div`relative overflow-hidden`;
 const Content = tw.div`max-w-screen-xl mx-auto pt-20 lg:py-24`;

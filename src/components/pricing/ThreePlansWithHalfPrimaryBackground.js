@@ -11,7 +11,7 @@ import {
   Container as ContainerBase,
   ContentWithPaddingXl as ContentBase,
 } from "components/misc/Layouts.js";
-import { ProcessChildComponentsSeparately } from "DynamicPage";
+import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
 const Container = tw(ContainerBase)`bg-primary-900 text-gray-100 -mx-8 px-8`;
 const ContentWithPaddingXl = tw(

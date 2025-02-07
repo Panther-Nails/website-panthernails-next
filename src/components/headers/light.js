@@ -3,7 +3,7 @@ import { motion, useAnimation, useCycle } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { NavLink as RouterLink } from "react-router-dom";
+import { NavLink as RouterLink, useNavigate } from "react-router-dom";
 
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 
@@ -116,7 +116,8 @@ export default ({
   const {
     hasNotificationSeen,
     setHasNotificationSeen,
-
+    languageObject,
+    setLanguageObject,
     notificationText,
     notificationType,
   } = useSession();
@@ -188,9 +189,23 @@ export default ({
     </LogoLink>
   );
 
+  const headerLinks = [
+    { url: `/${languageObject.code}/about`, text: "About Us" },
+    {
+      url: `/${languageObject.code}/pages/products/loyalty`,
+      text: "Rasik Loyalty Platform",
+    },
+    {
+      url: `/${languageObject.code}/pages/products/clm`,
+      text: "Contract Labour Management",
+    },
+    //    { url: "/blog", text: "Blog" },
+    { url: `/${languageObject.code}/contact`, text: "Contact Us" },
+  ];
+
   const menuLinks = (
     <NavLinks key={1}>
-      {links.map((link, index) => {
+      {headerLinks.map((link, index) => {
         return (
           <NavLinkWrapper
             onClick={toggleNavbar}
@@ -211,13 +226,62 @@ export default ({
     setHasNotificationSeen(true);
   };
 
+  const SiteOptions = () => {
+    const { showSiteOptions, animation, toggleSiteOptions } =
+      useAnimatedSiteOptionsToggler();
+
+    const navigate = useNavigate();
+    return (
+      <SiteOptionsContainer>
+        <LanguageSelectionLinks
+          initial={{ x: "250%", display: "none" }}
+          animate={animation}
+        >
+          <NavLinks key={1}>
+            {Languages?.map((lang, index) => {
+              return (
+                <NavLinkWrapper
+                  key={index}
+                  onClick={() => {
+                    setLanguageObject({ ...lang });
+                    //this navigate the same route with selected lanaguage
+                    navigate(
+                      `/${lang?.code}${window.location.pathname.replace(
+                        /^\/[^/]+/,
+                        ""
+                      )}`
+                    );
+                    localStorage.setItem("lang", JSON.stringify(lang));
+                    toggleSiteOptions();
+                  }}
+                >
+                  {lang?.name?.toLocaleUpperCase()} ({lang?.nameUnicode})
+                </NavLinkWrapper>
+              );
+            })}
+          </NavLinks>
+        </LanguageSelectionLinks>
+        <SiteOptionToggleButton
+          onClick={toggleSiteOptions}
+          className={showSiteOptions ? "open" : "closed"}
+        >
+          <NavLinkWrapper>
+            <LanguageText title={languageObject.nameUnicode}>
+              {languageObject.nameUnicode} {languageObject.name}
+            </LanguageText>
+          </NavLinkWrapper>
+        </SiteOptionToggleButton>
+      </SiteOptionsContainer>
+    );
+  };
+
   return (
     <Container>
       <Header className={className || "header-light"}>
         <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
           {logoLink}
           {links}
-          {/* {siteOptions} */}
+          <SiteOptions />
         </DesktopNavLinks>
 
         <MobileNavLinksContainer
@@ -299,48 +363,3 @@ export function useAnimatedSiteOptionsToggler() {
 
   return { showSiteOptions, animation, toggleSiteOptions };
 }
-
-const SiteOptions = (
-  language,
-  setLanguage,
-  languageObject,
-  setLanguageObject
-) => {
-  const { showSiteOptions, animation, toggleSiteOptions } =
-    useAnimatedSiteOptionsToggler();
-  return (
-    <SiteOptionsContainer>
-      <LanguageSelectionLinks
-        initial={{ x: "250%", display: "none" }}
-        animate={animation}
-      >
-        <NavLinks key={1}>
-          {Languages.map((lang, index) => {
-            return (
-              <NavLinkWrapper
-                key={index}
-                onClick={() => {
-                  setLanguage(lang.name);
-                  setLanguageObject({ ...lang });
-                  toggleSiteOptions();
-                }}
-              >
-                {lang.name?.toLocaleUpperCase()} ({lang.nameUnicode})
-              </NavLinkWrapper>
-            );
-          })}
-        </NavLinks>
-      </LanguageSelectionLinks>
-      <SiteOptionToggleButton
-        onClick={toggleSiteOptions}
-        className={showSiteOptions ? "open" : "closed"}
-      >
-        <NavLinkWrapper>
-          <LanguageText title={languageObject.nameUnicode}>
-            {languageObject.nameUnicode} {language}
-          </LanguageText>
-        </NavLinkWrapper>
-      </SiteOptionToggleButton>
-    </SiteOptionsContainer>
-  );
-};

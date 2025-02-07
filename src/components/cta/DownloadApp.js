@@ -13,7 +13,7 @@ import {
 } from "components/misc/Headings.js";
 import appleIconImageSrc from "images/apple-icon.png";
 import googlePlayIconImageSrc from "images/google-play-icon.png";
-import { ProcessChildComponentsSeparately } from "DynamicPage";
+import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
 const Container = tw(ContainerBase)`bg-primary-900 `;
 const Content = tw(ContentWithPaddingXl)``;

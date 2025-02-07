@@ -5,8 +5,8 @@ import styled from "styled-components";
 import { ExecuteCommand } from "services/APIService";
 import { CookieDuration, setCookie } from "services/CookieService";
 
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useSession } from "providers/SessionProvider";
+import { notify } from "components/controls/ToastNotifyControl";
 
 const ControlHeadingText = tw.p`mt-4  md:text-left text-sm  lg:text-base font-medium leading-relaxed text-[#4668C5]`;
 
@@ -23,13 +23,13 @@ const Textarea = styled(Input).attrs({ as: "textarea" })`
 `;
 const Wraper = tw.div`first:mt-0 pt-3  `;
 const SubmitButton = styled.button((props) => [
-  tw`inline-block mt-2 lg:mt-8 px-8 py-3 font-bold rounded text-gray-100 focus:shadow-outline focus:outline-none transition duration-300`,
+  tw`inline-block mt-2 lg:mt-8 px-8 py-3 font-bold rounded text-gray-100  focus:shadow-outline focus:outline-none transition duration-300`,
   `
-    background-color: ${props.themeColor === "loyalty" ? "#77255B" : "#1E90FF"};
+    background-color: ${props.themeColor === "loyalty" ? "#1E90FF" : "#1E90FF"};
     
     &:hover {
       background-color: ${
-        props.themeColor === "loyalty" ? "#69264F" : "#0067CC"
+        props.themeColor === "loyalty" ? "#0067CC" : "#0067CC"
       };
     }
   `,
@@ -393,6 +393,8 @@ const MultiSelectCheckbox = ({
 };
 
 export default ({ properties, subheading = "Contact Us" }) => {
+  const { hidePopup } = useSession();
+
   const [formData, setFormData] = useState({});
 
   const [step, setStep] = useState(1);
@@ -402,38 +404,15 @@ export default ({ properties, subheading = "Contact Us" }) => {
   const [radioError, setRadioError] = useState("");
 
   const [radioInputValidate, setRadioInputValidate] = useState(false);
-  const [checkBoxInputValidate, setcheckBoxInputValidate] = useState();
 
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState([]);
   const [selectedRadioOption, setSelectedRadioOption] = useState("");
   const [checkBoxKey, setCheckBoxKey] = useState();
 
-  const [isPopupClose, setIsPopupClose] = useState(false);
-
   const resetForm = () => {
-    setIsPopupClose(false);
     document.getElementById("form").reset();
     setStep(1);
-  };
-
-  const AfterSubmitPopup = () => {
-    return (
-      <>
-        {isPopupClose && (
-          <FormSubmitPopup>
-            <FormSubmitPopupTop>
-              <FormSubmitPopupText>
-                Thank you for contact us our team contact you soon!
-              </FormSubmitPopupText>
-            </FormSubmitPopupTop>
-            <FormSubmitPopupBottom>
-              <PopupCloseBtn onClick={resetForm}>Close</PopupCloseBtn>
-            </FormSubmitPopupBottom>
-          </FormSubmitPopup>
-        )}
-      </>
-    );
   };
 
   const handleInsertSiteVisitorAndEnquiry = (parameterData, next) => {
@@ -447,8 +426,7 @@ export default ({ properties, subheading = "Contact Us" }) => {
         if (next !== "FinalStep") {
           resetForm();
 
-          notify();
-          setIsPopupClose(true);
+          afterpopupformsubmit();
         }
       } else {
         alert(response.message);
@@ -456,13 +434,9 @@ export default ({ properties, subheading = "Contact Us" }) => {
     });
   };
 
-  const element = document.getElementById("PopupControl");
-
   const closePopupForm = () => {
-    if (element) {
-      element.style.display = "none";
-      setCookie("Popupkey", properties.productEnquiryFor, CookieDuration.Day);
-    }
+    setCookie("Popupkey", properties.productEnquiryFor, CookieDuration.Day);
+    hidePopup();
   };
 
   const ShowFieldCount = properties.showFieldCount
@@ -609,11 +583,12 @@ export default ({ properties, subheading = "Contact Us" }) => {
         ...checkBoxKey,
         ...selectedRadioOption,
       },
-      ProductEnquiryFor: properties.productEnquiryFor
-        ? properties.productEnquiryFor
-        : finalProduct,
+      ProductEnquiryFor: finalProduct
+        ? finalProduct
+        : properties?.productEnquiryFor,
       RowsAffecting: "1",
     };
+
     return data;
   };
 
@@ -621,7 +596,6 @@ export default ({ properties, subheading = "Contact Us" }) => {
     e.preventDefault();
     if (validateStepOne() && globalValid) {
       const next = "FinalStep";
-      console.log("next", parameterJsonData());
 
       handleInsertSiteVisitorAndEnquiry(parameterJsonData(), next);
       setStep(2);
@@ -632,14 +606,12 @@ export default ({ properties, subheading = "Contact Us" }) => {
     e.preventDefault();
 
     if (step === 2 && validateStepTwo() && globalValid) {
-      console.log("Form submitted:", parameterJsonData());
       handleInsertSiteVisitorAndEnquiry(parameterJsonData());
     } else if (
       inputs.length <= ShowFieldCount &&
       validateStepOne() &&
       globalValid
     ) {
-      console.log("Form submitted:", parameterJsonData());
       handleInsertSiteVisitorAndEnquiry(parameterJsonData());
     }
   };
@@ -713,20 +685,13 @@ export default ({ properties, subheading = "Contact Us" }) => {
     }
   };
 
-  const notify = () => {
-    resetForm();
-    toast("Thank you for contact us our team contact you soon!", {
-      onClose: () => {
-        closePopupForm();
-      },
-    });
+  const afterpopupformsubmit = () => {
+    closePopupForm();
+    notify("Thank you for contact us our team contact you soon!", "success");
   };
-
-  // console.log("two step form");
 
   return (
     <>
-      <ToastContainer />
       <Form
         id="form"
         action={properties.formAction}
@@ -781,8 +746,6 @@ export default ({ properties, subheading = "Contact Us" }) => {
           </>
         )}
       </Form>
-      {/* 
-      <AfterSubmitPopup /> */}
     </>
   );
 };

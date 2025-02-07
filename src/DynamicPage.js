@@ -1,105 +1,40 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
 import { useParams } from "react-router-dom";
 import { ExecuteQuery } from "services/APIService";
-import GetStarted from "components/cta/GetStarted";
 import CookieConsent from "components/controls/CookieConsent";
-import { getProperties } from "services/JsonService";
+import {
+  getProperties,
+  ImportDynamicComponent,
+} from "services/ComponentService";
 import { useSession } from "providers/SessionProvider";
 import FallbackLoading from "helpers/FallbackLoading";
 import { GetPageCacheKey } from "services/CookieService";
-
-// window.addEventListener('cookieChanged', (e) => {
-//   const { name, value } = e.detail;
-//   console.log(`Cookie changed: ${name} = ${value}`);
-//   if(name="cookie-consent"){
-
-//   }
-// });
-
-export const ImportDynamicComponent = (Section, ComponentName) => {
-  const Component = lazy(() =>
-    import(`components/${Section}/${ComponentName}.js`)
-      .then((module) => ({ default: module.default }))
-      .catch((error) => {
-        console.log("error in compo");
-        window.location.reload();
-        console.error(`Error loading component ${ComponentName}:`, error);
-        return { default: () => <GetStarted /> }; // to be replaced with ErrorPage
-      })
-  );
-
-  return Component;
-};
-
-export const getChildComponentName = (Components) => {
-  var childComponentName = Components[0].ComponentName;
-  var childSection = Components[0].Section;
-  var isUnique = true;
-
-  Components.forEach((child) => {
-    if (childComponentName !== child.ComponentName) isUnique = false;
-    else childComponentName = child.ComponentName;
-  });
-
-  if (isUnique)
-    return {
-      componentName: childComponentName,
-      section: childSection,
-    };
-  else return null;
-};
-
-export const ProcessChildComponentsSeparately = (Components) => {
-  if (Components.length > 0) {
-    return Components.map((child, index) => {
-      var childProperties = getProperties(child);
-      const Component = ImportDynamicComponent(
-        child.Section,
-        child.ComponentName
-      );
-      return (
-        <Suspense key={index}>
-          <Component
-            properties={childProperties}
-            children={child.Children ?? []}
-            index={index}
-          />
-        </Suspense>
-      );
-    });
-  } else {
-    return <></>;
-  }
-};
-
 export default () => {
   const { type, subtype, name } = useParams();
   const { languageObject, setNotification } = useSession();
-  const [data, setData] = useState({});
+  const [pageData, setPageData] = useState({});
   const [components, setComponents] = useState([]);
 
-  function setMetaTitleDynamic(response) {
+  function setPageMetaData(metaData) {
     document.title =
-      response.items[0].HeadTitle +
-      " - Panther Nails Technologies Private Limited.";
+      metaData.HeadTitle + " - Panther Nails Technologies Private Limited.";
 
     var existingMetaTagDescription = document.querySelector(
       'meta[name="description"]'
     );
     existingMetaTagDescription.setAttribute(
       "Content",
-      response.items[0].HeadDescription
+      metaData.HeadDescription
     );
     var existingMetaTagKeyWord = document.querySelector(
       'meta[name="keywords"]'
     );
-    existingMetaTagKeyWord.setAttribute(
-      "Content",
-      response.items[0].HeadKeyWords
-    );
+    existingMetaTagKeyWord.setAttribute("Content", metaData.HeadKeyWords);
   }
 
   useEffect(() => {
+    setComponents([]);
+
     ExecuteQuery(
       {
         ActionName:
@@ -111,17 +46,17 @@ export default () => {
       process.env.REACT_APP_COOKIE_DURATION
     ).then((response) => {
       if (response.message === "Successfull") {
-        setMetaTitleDynamic(response);
-
         var newData = response.items[0];
+        setPageMetaData(newData);
         // console.log("response", JSON.parse(newData.Components));
-        setData({ ...data, ...newData });
+
+        setPageData({ ...pageData, ...newData });
       } else {
         setNotification(
           "Please check your internet connection and try again",
           "info"
         );
-        setData({
+        setPageData({
           HeadTitle: "Home",
           HeadDescription: "home description\r\n",
           HeadKeyWords: "Home, Panther Nails, Techologies, ",
@@ -133,12 +68,13 @@ export default () => {
   }, [type, subtype, name]);
 
   useEffect(() => {
-    if (data.Components) {
-      var c = JSON.parse(data.Components);
+    if (pageData.Components) {
+      var c = JSON.parse(pageData.Components);
+      console.log("page useeffect");
 
       setComponents(c);
     }
-  }, [data]);
+  }, [pageData]);
 
   try {
     var parameter = {
@@ -146,11 +82,14 @@ export default () => {
       SubGroupName: subtype,
       PageName: name,
     };
+
     return (
       <>
-        <Suspense fallback={<FallbackLoading />}>
-          {components &&
-            components.map((component, index) => {
+        {components.length === 0 ? (
+          <FallbackLoading />
+        ) : (
+          <Suspense fallback={<FallbackLoading />}>
+            {components.map((component, index) => {
               const Component = ImportDynamicComponent(
                 component.Section,
                 component.ComponentName
@@ -169,8 +108,9 @@ export default () => {
                 />
               );
             })}
-          <CookieConsent />
-        </Suspense>
+            <CookieConsent />
+          </Suspense>
+        )}{" "}
       </>
     );
   } catch (e) {

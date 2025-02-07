@@ -8,7 +8,7 @@ import {
   Subheading as SubheadingBase,
 } from "components/misc/Headings";
 import { SectionDescription } from "components/misc/Typography";
-import { ProcessChildComponentsSeparately } from "DynamicPage";
+import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
 const HeadingContainer = tw.div``;
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
@@ -27,7 +27,7 @@ export default ({ index, children, properties }) => {
           {properties.heading && (
             <HighlightedHeading>{properties.heading}</HighlightedHeading>
           )}
-          {properties.description && ( 
+          {properties.description && (
             <Description>{properties.description}</Description>
           )}
         </HeadingContainer>
