@@ -16,7 +16,7 @@ export const HighlightedText = tw.span`text-primary-500`;
 export function HighlightedHeading(props) {
   return (
     <DynamicHeading css={props.textPosition}>
-      {props.children.split("`").map((chunk, index) => {
+      {props?.children?.split("`").map((chunk, index) => {
         if (index % 2 === 0)
           return (
             <HeadingText key={index} css={props.primaryColor}>
