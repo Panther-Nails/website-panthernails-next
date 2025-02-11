@@ -20,9 +20,9 @@ export default () => {
     PageName: name,
   };
 
+  const LanguageID = languageObject?.LanguageID;
   const cacheKey =
-    `${window.location.pathname}-${languageObject?.LanguageID}` ||
-    `/-${languageObject?.LanguageID}`;
+    `${window.location.pathname}-${LanguageID}` || `/-${LanguageID}`;
 
   const { data, error } = useExecuteQuerySWR(`${cacheKey}`, {
     ActionName:
@@ -60,7 +60,7 @@ export default () => {
               component={component}
               index={index}
               key={index}
-              cacheKey={cacheKey}
+              cacheKey={LanguageID}
             />
           ))}
         </>

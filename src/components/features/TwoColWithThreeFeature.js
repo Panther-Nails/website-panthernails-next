@@ -85,7 +85,9 @@ export default ({ properties, children, index, data }) => {
                     <p className="description">{input.description}</p>
                     {properties.url && (
                       <span className="link">
-                        <span target="_blank" href={properties.url}>{linkText}</span>
+                        <span target="_blank" href={properties.url}>
+                          {properties.linkText}
+                        </span>
                         <ArrowRightIcon className="icon" />
                       </span>
                     )}

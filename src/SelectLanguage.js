@@ -8,12 +8,26 @@ import {
   useParams,
 } from "react-router-dom";
 import { ExecuteQuery } from "services/APIService";
+import { useExecuteQuerySWR } from "services/useExecuteQuerySWR";
 
 export default () => {
   const { languageObject, setLanguageObject, languages, setLanguages } =
     useSession();
   const { group, subgroup, name } = useParams();
-
+  // const { data } = useExecuteQuerySWR(
+  //   `Core.GMst_SelectFewFromCompanyLanguagesAndMasters`,
+  //   {
+  //     ActionName: "Core.GMst_SelectFewFromCompanyLanguagesAndMasters",
+  //     ParameterJSON: JSON.stringify({}),
+  //   },
+  //   {
+  //     revalidateIfStale: false,
+  //     revalidateOnMount: false,
+  //     revalidateOnReconnect: false,
+  //     revalidateOnFocus: false,
+  //     refreshInterval: 24 * 60 * 60 * 1000,
+  //   }
+  // );
   const navigate = useNavigate();
   const { search } = useLocation();
 

@@ -1,6 +1,7 @@
 import React, { lazy } from "react";
 import PageNotFound from "helpers/PageNotFound";
 import DynamicComponent from "providers/DynamicComponent";
+import { useSession } from "providers/SessionProvider";
 
 export const getProperties = (component) => {
   var properties = {};
@@ -28,10 +29,16 @@ export const ImportDynamicComponent = (Section, ComponentName) => {
 };
 
 export const ProcessChildComponentsSeparately = (Components) => {
+  const { languageObject } = useSession();
   if (Components.length > 0) {
     return Components.map((component, index) => {
       return (
-        <DynamicComponent component={component} index={index} key={index} />
+        <DynamicComponent
+          component={component}
+          index={index}
+          key={index}
+          cacheKey={languageObject?.LanguageID}
+        />
       );
     });
   } else {
