@@ -155,7 +155,6 @@ export default ({
                   </ImageAndControlContainer>
                 ))}
               </TestimonialImageSlider>
-
               <TextContainer textOnLeft={textOnLeft}>
                 <HeadingInfo
                   tw="hidden lg:block"

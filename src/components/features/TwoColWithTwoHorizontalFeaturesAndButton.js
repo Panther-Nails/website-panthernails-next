@@ -65,7 +65,7 @@ export default ({
             imageShadow={properties.imageShadow}
             imageRounded={properties.imageRounded}
           />
-          {showDecoratorBlob && <DecoratorBlob />}
+          {properties.showDecoratorBlob ? <DecoratorBlob /> : null}
         </ImageColumn>
         <TextColumn
           textOnLeft={properties.textOnLeft}

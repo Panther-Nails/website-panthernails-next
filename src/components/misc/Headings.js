@@ -1,7 +1,6 @@
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import styled from "styled-components";
-import { useEffect, useState } from "react";
+import styled from "styled-components"; //eslint-disable-line
 
 export const SectionHeading = tw.h1`text-4xl sm:text-5xl text-primary-900 tracking-wide text-center `;
 export const Subheading = tw.h5`font-bold text-primary-500`;
@@ -16,7 +15,7 @@ export const HighlightedText = tw.span`text-primary-500`;
 
 export function HighlightedHeading(props) {
   return (
-    <DynamicHeading>
+    <DynamicHeading css={props.textPosition}>
       {props.children.split("`").map((chunk, index) => {
         if (index % 2 === 0)
           return (

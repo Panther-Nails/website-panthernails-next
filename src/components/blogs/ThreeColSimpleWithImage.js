@@ -13,7 +13,7 @@ const Heading = tw(
   SectionHeading
 )`w-full mt-4 font-black text-2xl px-4 lg:px-0 md:text-4xl lg:text-5xl text-center leading-tight `;
 
-export default ({ index, properties, children }) => {
+export default ({ properties, children, index, data }) => {
   return (
     <Container>
       <Content>

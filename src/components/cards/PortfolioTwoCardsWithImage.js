@@ -2,11 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import {
-  HighlightedHeading,
-  SectionHeading,
-  Subheading,
-} from "components/misc/Headings.js";
+import { HighlightedHeading, Subheading } from "components/misc/Headings.js";
 import { PrimaryLink as PrimaryLinkBase } from "components/misc/Links.js";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
@@ -24,7 +20,6 @@ const HeadingColumn = styled(Column)((props) => [
 ]);
 
 const HeadingInfoContainer = tw.div`text-center xl:text-left max-w-lg xl:max-w-none mx-auto xl:mx-0`;
-const HeadingTitle = tw(SectionHeading)`mt-4 xl:text-left leading-tight`;
 const HeadingDescription = tw.p`text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100 mt-8`;
 const PrimaryLink = styled(PrimaryLinkBase)`
   ${tw`inline-flex justify-center xl:justify-start items-center mt-8 text-lg`}
@@ -33,7 +28,7 @@ const PrimaryLink = styled(PrimaryLinkBase)`
   }
 `;
 
-export default ({ index, children, properties }) => {
+export default ({ properties, children, index, data }) => {
   return (
     <Container tw="bg-white">
       <Content>
@@ -41,9 +36,11 @@ export default ({ index, children, properties }) => {
           <HeadingColumn textOnLeft={properties.textOnLeft}>
             <HeadingInfoContainer>
               <Subheading>{properties.subHeading}</Subheading>
-              <HighlightedHeading>{properties.heading}</HighlightedHeading>
+              <HighlightedHeading textPosition={tw`lg:text-left`}>
+                {properties.heading}
+              </HighlightedHeading>
               <HeadingDescription>{properties.description}</HeadingDescription>
-              <PrimaryLink>
+              <PrimaryLink href={properties.linkUrl}>
                 {properties.linkText} <ArrowRightIcon />
               </PrimaryLink>
             </HeadingInfoContainer>

@@ -29,7 +29,7 @@ const PrimaryButton = tw(
 )`mt-8 text-sm sm:text-base px-6 py-5 sm:px-10 sm:py-5 bg-primary-400 inline-block hocus:bg-primary-500`;
 const Image = tw.img`w-144 ml-auto`;
 
-export default ({ index, properties, children }) => {
+export default ({ properties, children, index, data }) => {
   return (
     <PrimaryBackgroundContainer>
       <Content2Xl>

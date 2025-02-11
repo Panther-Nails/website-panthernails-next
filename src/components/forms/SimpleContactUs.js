@@ -37,8 +37,8 @@ const SvgDotPattern1 = tw(
   SvgDotPatternIcon
 )`absolute bottom-0 right-0 transform translate-y-1/2 translate-x-1/2 -z-10 opacity-50 text-primary-500 fill-current w-24`;
 
-export default ({ index, properties, children }) => {
-  var inputs = JSON.parse(properties.inputs);
+export default ({ properties, children, index, data }) => {
+  var inputs = JSON.parse(properties.inputs || "[]");
   return (
     <Container>
       <Content>
@@ -62,7 +62,9 @@ export default ({ index, properties, children }) => {
                 </Column>
                 <Column>
                   <InputContainer tw="flex-1">
-                    <Label htmlFor="name-input">Your Message</Label>
+                    <Label htmlFor="name-input">
+                      {properties.inputMessage}
+                    </Label>
                     <TextArea
                       id="message-input"
                       name="message"
@@ -73,7 +75,7 @@ export default ({ index, properties, children }) => {
               </TwoColumn>
 
               <SubmitButton type="submit" value="Submit">
-                Submit
+                {properties.buttonText}
               </SubmitButton>
             </form>
           </div>

@@ -26,7 +26,7 @@ const ControlButton = styled.button`
 `;
 
 export default ({ children, properties, index }) => {
-  const [sliderRef, setSliderRef] = useState(null);
+  const [sliderRef, setSliderRef] = useState(null); //eslint-disable-line
 
   return (
     <>

@@ -48,13 +48,7 @@ const StyledModal = styled(ReactModalAdapter)`
 
 const CloseModalButton = tw.button`absolute top-0 right-0 mt-8 mr-8 hocus:text-primary-500`;
 
-export default ({
-  index,
-  properties,
-  children,
-  imageCss = null,
-  imageDecoratorBlob = false,
-}) => {
+export default ({ properties, children, index, data }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
   return (
@@ -73,13 +67,13 @@ export default ({
           <RightColumn>
             <IllustrationContainer>
               <img
-                css={imageCss}
+                css={properties.imageCss ? properties.imageCss : null}
                 src={
                   properties.imageSrc ? properties.imageSrc : DesignIllustration
                 }
                 alt="Hero"
               />
-              {imageDecoratorBlob && <DecoratorBlob2 />}
+              {properties.imageDecoratorBlob === true && <DecoratorBlob2 />}
             </IllustrationContainer>
           </RightColumn>
         </TwoColumn>

@@ -50,21 +50,15 @@ const CustomerCompany = tw.p`mt-1 text-sm text-gray-500`;
 
 export default ({
   properties,
-  imageDecoratorBlob = properties.imageDecoratorBlob==="false" ? false :true,
-  buttonRounded = properties.buttonRounded==="false" ? false :true,
- 
- 
-  
+  imageDecoratorBlob = properties.imageDecoratorBlob === "false" ? false : true,
+  buttonRounded = properties.buttonRounded === "false" ? false : true,
 }) => {
   const buttonRoundedCss = buttonRounded && tw`rounded-full`;
 
-  let features = JSON.parse(properties.featured)
-
-
+  let features = JSON.parse(properties.featured || "[]");
 
   return (
     <>
-      
       <Container>
         <ContentWithVerticalPadding>
           <Row>

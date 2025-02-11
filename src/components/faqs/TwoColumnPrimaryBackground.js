@@ -4,7 +4,6 @@ import tw from "twin.macro";
 import styled, { css } from "styled-components/macro"; //eslint-disable-line
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import {
-  SectionHeading,
   Subheading as SubheadingBase,
   HighlightedHeading,
 } from "components/misc/Headings.js";
@@ -17,7 +16,6 @@ const PrimaryBackgroundContainer = tw(
 
 const HeadingContainer = tw.div``;
 const Subheading = tw(SubheadingBase)`text-center text-gray-100 mb-4`;
-const Heading = tw.h1`text-white font-black text-4xl sm:text-5xl tracking-wide text-center `;
 const Description = tw(SectionDescription)`mx-auto text-center text-gray-300`;
 
 const FaqsContainer = tw.div`mt-10 sm:mt-16 w-full flex-1 lg:flex justify-between items-start max-w-screen-lg mx-auto`;
@@ -33,8 +31,8 @@ const QuestionToggleIcon = styled(motion.span)`
 `;
 const Answer = tw(motion.div)`hidden text-sm font-normal mt-4 text-gray-300`;
 
-export default ({ children, properties, index, subheading = "hello" }) => {
-  var faqs = JSON.parse(properties.inputs);
+export default ({ children, properties, index, data }) => {
+  var faqs = JSON.parse(properties.inputs || "[]");
   const faqCol1 = [];
   const faqCol2 = [];
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);

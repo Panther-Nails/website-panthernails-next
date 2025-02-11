@@ -11,8 +11,6 @@ import EmailIllustrationSrc from "images/email-illustration.svg";
 
 import TwoStepControl from "helpers/TwoStepControl";
 
-
-
 const Container = tw.div`relative `;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto pb-20 md:pb-24`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
@@ -41,12 +39,8 @@ const Input = tw.input`mt-6 w-full first:mt-0 border-b-2 border-gray-400 py-3 fo
 export default ({ properties }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
 
-
-
-
   return (
     <Container>
-     
       <TwoColumn>
         <ImageColumn>
           <Image
@@ -57,7 +51,9 @@ export default ({ properties }) => {
         </ImageColumn>
         <TextColumn textOnLeft={properties.textOnLeft}>
           <TextContent>
-            {properties.subheading && <Subheading>{properties.subheading}</Subheading>}
+            {properties.subheading && (
+              <Subheading>{properties.subheading}</Subheading>
+            )}
             <Heading>
               {properties.heading}
               <span tw="text-primary-500">{properties.highlightHeading}</span>
@@ -66,7 +62,7 @@ export default ({ properties }) => {
               <Description>{properties.description}</Description>
             )}
 
-            <TwoStepControl properties={properties}  />
+            <TwoStepControl properties={properties} />
           </TextContent>
         </TextColumn>
       </TwoColumn>

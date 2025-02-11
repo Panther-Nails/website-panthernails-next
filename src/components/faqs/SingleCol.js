@@ -40,8 +40,8 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
   ${tw`pointer-events-none -z-20 absolute left-0 bottom-0 h-64 w-64 opacity-15 transform -translate-x-2/3 text-primary-500`}
 `;
 
-export default ({ children, properties, index }) => {
-  var faqs = JSON.parse(properties.faqs);
+export default ({ children, properties, index, data }) => {
+  var faqs = JSON.parse(properties.faqs || "[]");
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
 
   const toggleQuestion = (questionIndex) => {

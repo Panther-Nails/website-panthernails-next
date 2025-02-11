@@ -11,18 +11,38 @@ import PopupModal from "helpers/PopupModal";
 import { useSession } from "providers/SessionProvider";
 
 import { ToastContainer } from "react-toastify";
+import { SWRConfig } from "swr";
 
 export default function App() {
   const { popupRenderer } = useSession();
 
+  function localStorageProvider() {
+    const map = new Map(JSON.parse(localStorage.getItem("app-cache") || "[]"));
+    console.log("map", Array.from(map.entries()));
+
+    window.addEventListener("beforeunload", () => {
+      const appCache = JSON.stringify(Array.from(map.entries()));
+      localStorage.setItem("app-cache", appCache);
+    });
+
+    return {
+      get: (key) => map.get(key),
+      set: (key, value) => map.set(key, value),
+      delete: (key) => map.delete(key),
+      keys: () => map.keys(),
+    };
+  }
+
   return (
     <>
-      <GlobalStyles />
-      <Header />
-      <ScrollUpButton />
-      <PopupModal>{popupRenderer}</PopupModal>
-      <RouterPaths />
-      <ToastContainer />
+      <SWRConfig value={{ provider: localStorageProvider }}>
+        <GlobalStyles />
+        <Header />
+        <ScrollUpButton />
+        <PopupModal>{popupRenderer}</PopupModal>
+        <RouterPaths />
+        <ToastContainer />
+      </SWRConfig>
     </>
   );
 }

@@ -84,9 +84,8 @@ export default ({
    * You can modify the testimonials shown by modifying the array below or passing in the testimonials prop above
    * You can add or remove objects from the array as you need.
    */
-  let data = JSON.parse(properties.inputs);
+  let data = JSON.parse(properties.inputs || "[]");
 
-  // useState is used instead of useRef below because we want to re-render when sliderRef becomes available (not null)
   const [imageSliderRef, setImageSliderRef] = useState(null);
   const [textSliderRef, setTextSliderRef] = useState(null);
 

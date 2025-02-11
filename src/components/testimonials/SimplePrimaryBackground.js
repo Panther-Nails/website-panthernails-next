@@ -34,8 +34,8 @@ const TestimonialsSlider = styled(Slider)`
   }
 `;
 
-export default ({ children, properties, index }) => {
-  const [sliderRef, setSliderRef] = useState(null);
+export default ({ children, properties, index, data }) => {
+  const [sliderRef, setSliderRef] = useState(null); //eslint-disable-line
   return (
     <PrimaryBackgroundContainer>
       <ContentWithPaddingXl>

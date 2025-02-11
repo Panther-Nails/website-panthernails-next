@@ -54,14 +54,7 @@ const Heading = tw(
   SectionHeading
 )`w-full mt-4 font-black px-4 lg:px-0 text-2xl sm:text-4xl lg:text-5xl text-center leading-tight `;
 
-export default ({
-  properties,
-  children,
-  index,
-  linkText = "Learn More",
-  imageContainerCss = null,
-  imageCss = null,
-}) => {
+export default ({ properties, children, index, data }) => {
   /*
    * This componets accepts a prop - `cards` which is an array of object denoting the cards. Each object in the cards array can have the following keys (Change it according to your need, you can also add more objects to have more cards in this feature component):
    *  1) imageSrc - the image shown at the top of the card
@@ -69,7 +62,7 @@ export default ({
    *  3) description - the description of the card
    *  4) url - the url that the card should goto on click
    */
-  var inputs = JSON.parse(properties.inputs);
+  var inputs = JSON.parse(properties.inputs || "[]");
   return (
     <Container>
       <TwoColumn>
@@ -82,8 +75,8 @@ export default ({
             <Column key={i}>
               <Card href={input.url} target="_blank" title={input.title}>
                 {properties.imageVisible === "true" && (
-                  <span className="imageContainer" css={imageContainerCss}>
-                    <img src={input.imageSrc} alt="" css={imageCss} />
+                  <span className="imageContainer">
+                    <img src={input.imageSrc} alt="" />
                   </span>
                 )}
                 {properties.textVisible === "true" && (
@@ -92,7 +85,9 @@ export default ({
                     <p className="description">{input.description}</p>
                     {properties.url && (
                       <span className="link">
-                        <span target="_blank" href={properties.url}>{linkText}</span>
+                        <span target="_blank" href={properties.url}>
+                          {properties.linkText}
+                        </span>
                         <ArrowRightIcon className="icon" />
                       </span>
                     )}

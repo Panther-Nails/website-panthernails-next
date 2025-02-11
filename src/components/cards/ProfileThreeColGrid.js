@@ -16,7 +16,7 @@ const Description = tw(SectionDescription)`mx-auto text-center`;
 
 const Cards = tw.div`flex flex-wrap flex-row justify-center sm:max-w-2xl lg:max-w-5xl mx-auto`;
 
-export default ({ index, children, properties }) => {
+export default ({ properties, children, index, data }) => {
   return (
     <Container>
       <ContentWithPaddingXl>

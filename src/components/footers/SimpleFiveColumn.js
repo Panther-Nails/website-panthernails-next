@@ -17,16 +17,12 @@ const WideColumn = tw(
 )`text-center md:text-left w-full md:w-2/5 mb-10 md:mb-0`;
 
 const ColumnHeading = tw.h5`font-bold`;
-
 const LinkList = tw.ul`mt-4 text-sm font-medium`;
 const LinkListItem = tw.li`mt-3`;
 const Link = tw.a`border-b-2 border-transparent hocus:text-primary-500 hocus:border-primary-500 pb-1 transition duration-300`;
-
 const LogoContainer = tw.div`flex items-center justify-center md:justify-start`;
 const LogoImg = tw.img`w-48`;
-
 const CompanyDescription = tw.p`mt-4 max-w-xs font-medium text-sm mx-auto md:mx-0 md:mr-4 `;
-
 const SocialLinksContainer = tw.div`mt-4 `;
 const SocialLink = styled.a`
   ${tw`cursor-pointer inline-block p-2 rounded-full bg-gray-700 text-gray-100 hover:bg-gray-900 transition duration-300 mr-4`}
@@ -35,81 +31,42 @@ const SocialLink = styled.a`
   }
 `;
 
-export default () => {
+export default ({ properties, children, index, data }) => {
+  var inputs = JSON.parse(properties.inputs || "[]");
   return (
     <Container>
       <FiveColumns>
         <WideColumn>
           <LogoContainer>
-            <LogoImg src={LogoImage} />
+            <LogoImg
+              src={properties.LogoImage ? properties.LogoImage : LogoImage}
+            />
           </LogoContainer>
-          <CompanyDescription>
-            Treact is an Internet Technology company providing design resources
-            such as website templates and themes.
-          </CompanyDescription>
+          <CompanyDescription>{properties.description}</CompanyDescription>
           <SocialLinksContainer>
-            <SocialLink href="https://facebook.com">
+            <SocialLink href={properties.facebookIconUrl}>
               <FacebookIcon />
             </SocialLink>
-            <SocialLink href="https://twitter.com">
+            <SocialLink href={properties.twitterIconUrl}>
               <TwitterIcon />
             </SocialLink>
-            <SocialLink href="https://youtube.com">
+            <SocialLink href={properties.youtubeIconUrl}>
               <YoutubeIcon />
             </SocialLink>
           </SocialLinksContainer>
         </WideColumn>
-        <Column>
-          <ColumnHeading>Quick Links</ColumnHeading>
-          <LinkList>
-            <LinkListItem>
-              <Link href="#">Blog</Link>
-            </LinkListItem>
-            <LinkListItem>
-              <Link href="#">FAQs</Link>
-            </LinkListItem>
-            <LinkListItem>
-              <Link href="#">Support</Link>
-            </LinkListItem>
-            <LinkListItem>
-              <Link href="#">About Us</Link>
-            </LinkListItem>
-          </LinkList>
-        </Column>
-        <Column>
-          <ColumnHeading>Product</ColumnHeading>
-          <LinkList>
-            <LinkListItem>
-              <Link href="#">Log In</Link>
-            </LinkListItem>
-            <LinkListItem>
-              <Link href="#">Personal</Link>
-            </LinkListItem>
-            <LinkListItem>
-              <Link href="#">Business</Link>
-            </LinkListItem>
-            <LinkListItem>
-              <Link href="#">Team</Link>
-            </LinkListItem>
-          </LinkList>
-        </Column>
-        <Column>
-          <ColumnHeading>Legal</ColumnHeading>
-          <LinkList>
-            <LinkListItem>
-              <Link href="#">GDPR</Link>
-            </LinkListItem>
-            <LinkListItem>
-              <Link href="#">Privacy Policy</Link>
-            </LinkListItem>
-            <LinkListItem>
-              <Link href="#">Terms of Service</Link>
-            </LinkListItem>
-            <LinkListItem>
-              <Link href="#">Disclaimer</Link>
-            </LinkListItem>
-          </LinkList>
-        </Column>
+        {inputs.map((footerMenu, index) => (
+          <Column>
+            <ColumnHeading>{footerMenu.title}</ColumnHeading>
+            <LinkList>
+              {footerMenu.menuLinks.map((menulink, index) => (
+                <LinkListItem>
+                  <Link href={menulink.link}>{menulink.title}</Link>
+                </LinkListItem>
+              ))}
+            </LinkList>
+          </Column>
+        ))}
       </FiveColumns>
     </Container>
   );

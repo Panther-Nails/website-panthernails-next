@@ -11,7 +11,7 @@ import { useSession } from "providers/SessionProvider.js";
 const Container = tw.div` bg-white`;
 
 export const NavLinks = tw.div`inline-block`;
- 
+
 export const NavLink = tw.a`
   text-sm my-1 lg:mx-6 lg:my-0
   font-semibold tracking-wide transition duration-300
@@ -57,6 +57,8 @@ export default ({ type = "info" }) => {
   const { hasNotificationSeen, setHasNotificationSeen } = useSession();
 
   const [notificationVisible, setNotificationVisible] = useState(true);
+
+  // eslint-disable-next-line
   const [notificationText, setNotificationText] = useState(
     "Safeguard photos, documents, phones, tablets, and computers with features designed to secure your digital life."
   );

@@ -39,7 +39,7 @@ const PrimaryButton = tw(
   PrimaryButtonBase
 )`mt-8 md:mt-10 text-sm inline-block mx-auto md:mx-0`;
 
-export default ({ properties, index, children }) => {
+export default ({ properties, children, index, data }) => {
   return (
     <Container>
       <TwoColumn>

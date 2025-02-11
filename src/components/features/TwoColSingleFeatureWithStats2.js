@@ -7,7 +7,6 @@ import {
   HighlightedHeading,
 } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
-import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
@@ -40,36 +39,34 @@ const PrimaryButton = tw(
   PrimaryButtonBase
 )`mt-8 md:mt-10 text-sm inline-block mx-auto md:mx-0`;
 
-const DecoratorBlob = styled(SvgDotPattern)((props) => [
-  tw`w-20 h-20 absolute right-0 bottom-0 transform translate-x-1/2 translate-y-1/2 fill-current text-primary-500 -z-10`,
-]);
-
-export default ({
-  properties,
-  children,
-  index,
-
-  imageCss = null,
-  imageContainerCss = null,
-  imageDecoratorBlob = false,
-  imageDecoratorBlobCss = null,
-  imageInsideDiv = true,
-}) => {
+export default ({ properties, children, index, data }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
   //Change the statistics variable as you like, add or delete objects
 
-  var statistics = JSON.parse(properties.statistics);
+  var statistics = JSON.parse(properties.statistics || "[]");
 
   return (
     <Container>
-      <TwoColumn css={!imageInsideDiv && tw`md:items-center`}>
-        <ImageColumn css={imageContainerCss}>
-          {imageInsideDiv ? (
-            <Image imageSrc={properties.imageSrc} css={imageCss} />
-          ) : (
-            <img src={properties.imageSrc} css={imageCss} alt="" />
-          )}
-          {imageDecoratorBlob && <DecoratorBlob css={imageDecoratorBlobCss} />}
+      <TwoColumn css={tw`md:items-center`}>
+        <ImageColumn
+          css={
+            properties.imageContainerCss ? properties.imageContainerCss : null
+          }
+        >
+          {
+            (properties.imageInsideDiv = "true" ? (
+              <Image
+                imageSrc={properties.imageSrc}
+                css={properties.imageCss ? properties.imageCss : null}
+              />
+            ) : (
+              <img
+                src={properties.imageSrc}
+                css={properties.imageCss ? properties.imageCss : null}
+                alt=""
+              />
+            ))
+          }
         </ImageColumn>
         <TextColumn textOnLeft={properties.textOnLeft}>
           <TextContent>

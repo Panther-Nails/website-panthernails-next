@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
-import { css } from "styled-components/macro";
+import { css } from "styled-components/macro"; //eslint-disable-line
 
 // const Container = tw.div`fixed left-0 bottom-1/2 w-12 z-50 -translate-x-1`;
 // const Link = tw.a`flex flex-row items-center justify-center w-12 h-12 p-4 rounded bg-white hocus:bg-gray-300 hocus:w-16 duration-200`;
@@ -32,7 +32,7 @@ const Rapper = tw.div`flex items-center w-12 h-12   `;
 export default ({ properties }) => {
   const [show, setShow] = useState(false);
 
-  var parsedChildren = JSON.parse(properties.links);
+  var parsedChildren = JSON.parse(properties.links || "[]");
   return (
     <>
       <StyledContainer position={properties?.position || "bottom"}>
@@ -59,7 +59,6 @@ export default ({ properties }) => {
               <LinkIcon
                 src={item.icon}
                 onMouseEnter={() => setShow(true)}
-                
               ></LinkIcon>
             </Link>
           );

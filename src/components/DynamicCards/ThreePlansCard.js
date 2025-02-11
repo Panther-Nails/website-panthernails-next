@@ -68,7 +68,7 @@ const BuyNowButton = styled(PrimaryButtonBase)`
 `;
 
 export default ({ children, properties, index }) => {
-  var childCard = JSON.parse(properties.features);
+  var childCard = JSON.parse(properties.features || "[]");
 
   const highlightGradientsCss = [
     css`

@@ -38,24 +38,7 @@ const Heading = tw(
 )`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
 const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
-export default ({
-  subheading = "Our Expertise",
-  heading = (
-    <>
-      Designed & Developed by <span tw="text-primary-500">Professionals.</span>
-    </>
-  ),
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-
-  imageSrc = TeamIllustrationSrc,
-  imageRounded = true,
-  imageBorder = false,
-  imageShadow = false,
-  imageCss = null,
-  imageDecoratorBlob = false,
-  imageDecoratorBlobCss = null,
-  textOnLeft = true,
-}) => {
+export default ({ properties, children, index, data }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
 
   return (
@@ -63,19 +46,39 @@ export default ({
       <TwoColumn>
         <ImageColumn>
           <Image
-            css={imageCss}
-            src={imageSrc}
-            imageBorder={imageBorder}
-            imageShadow={imageShadow}
-            imageRounded={imageRounded}
+            css={properties.imageCss ? properties.imageCss : null}
+            src={
+              properties.imageSrc ? properties.imageSrc : TeamIllustrationSrc
+            }
+            imageBorder={
+              properties.imageBorder ? properties.imageBorder : false
+            }
+            imageShadow={
+              properties.imageShadow ? properties.imageShadow : false
+            }
+            imageRounded={
+              properties.imageRounded ? properties.imageRounded : true
+            }
           />
-          {imageDecoratorBlob && <DecoratorBlob css={imageDecoratorBlobCss} />}
+          {
+            (properties.imageDecoratorBlob = true && (
+              <DecoratorBlob
+                css={
+                  properties.imageDecoratorBlobCss
+                    ? properties.imageDecoratorBlobCss
+                    : null
+                }
+              />
+            ))
+          }
         </ImageColumn>
-        <TextColumn textOnLeft={textOnLeft}>
+        <TextColumn
+          textOnLeft={properties.textOnLeft ? properties.textOnLeft : true}
+        >
           <TextContent>
-            <Subheading>{subheading}</Subheading>
-            <Heading>{heading}</Heading>
-            <Description>{description}</Description>
+            <Subheading>{properties.subheading}</Subheading>
+            <Heading>{properties.heading}</Heading>
+            <Description>{properties.description}</Description>
           </TextContent>
         </TextColumn>
       </TwoColumn>

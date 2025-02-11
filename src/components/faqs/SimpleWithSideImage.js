@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import {
   HighlightedHeading,
-  SectionHeading,
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
 import { ReactComponent as PlusIcon } from "feather-icons/dist/icons/plus.svg";
@@ -26,7 +25,6 @@ const Image = styled.div((props) => [
 
 const FAQContent = tw.div`lg:ml-12`;
 const Subheading = tw(SubheadingBase)`mb-4 text-center lg:text-left`;
-const Heading = tw(SectionHeading)`lg:text-left`;
 const Description = tw.p`max-w-xl text-center mx-auto lg:mx-0 lg:text-left lg:max-w-none leading-relaxed text-sm sm:text-base lg:text-lg font-medium mt-4 text-secondary-100`;
 
 const CheckIcon= tw.img`w-8 h-8`
@@ -44,18 +42,12 @@ const Answer = motion(
   tw.dd`pointer-events-none text-sm sm:text-base leading-relaxed`
 );
 
-export default ({
-  children,
-  properties,
-
-  imageContain = false,
-  imageShadow = true,
-}) => {
+export default ({ index, properties, children, data }) => {
   /*
    * You can modify FAQs either by modifying the below defaultFaqs array or by passing a custom array of FAQs using
    * the faqs prop
    */
-  var faqs = JSON.parse(properties.faqs);
+  var faqs = JSON.parse(properties.faqs || "[]");
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
 
   const toggleQuestion = (questionIndex) => {
@@ -69,8 +61,12 @@ export default ({
         <TwoColumn tw="md:flex items-center justify-center gap-12">
           <Column tw="hidden lg:block w-5/12 flex-shrink-0">
             <Image
-              imageContain={imageContain}
-              imageShadow={imageShadow}
+              imageContain={
+                properties.imageContain ? properties.imageContain : false
+              }
+              imageShadow={
+                properties.imageShadow ? properties.imageShadow : true
+              }
               imageSrc={properties.imageSrc}
             />
           </Column>

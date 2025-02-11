@@ -25,8 +25,8 @@ const TwoColumn = styled.div(() => [
   tw`md:flex items-center justify-center gap-8 `,
 ]);
 
-export default ({ properties, children, data }) => {
-  var inputs = JSON.parse(properties.inputs);
+export default ({ properties, children, index, data }) => {
+  var inputs = JSON.parse(properties.inputs || "[]");
   const HandleNavigation = (url) => {
     window.open(url);
   };

@@ -3,6 +3,7 @@ import { CookieDuration, getCookie, setCookie } from "./CookieService";
 import encrypted from "../session.json";
 import moment from "moment";
 import { BS64PNE36Encryption } from "turbo/lib/cjs/Encryption/BS64PNE36Encryption";
+import useSWR from "swr";
 
 // export function Execute(oFormData) {
 //   var decryptionKey = decryptData(
@@ -78,6 +79,10 @@ import { BS64PNE36Encryption } from "turbo/lib/cjs/Encryption/BS64PNE36Encryptio
 // }
 
 export function Execute(oFormData) {
+  var languageID = JSON.parse(
+    localStorage.getItem("languageObject")
+  )?.LanguageID;
+
   var sessionData = {
     CompanyID: process.env.REACT_APP_COMPANY_ID,
     SubscriberID: process.env.REACT_APP_SUBSCRIBER_ID,
@@ -86,7 +91,9 @@ export function Execute(oFormData) {
     AppVersion: process.env.REACT_APP_APP_VERSION,
     AppPlatform: process.env.REACT_APP_APP_PLATFORM,
     ServiceAccessToken: process.env.REACT_APP_SERVICE_ACCESS_TOKEN,
+    SessionDataLanguageID: languageID,
   };
+
   var formData = {
     ...oFormData,
     SessionDataJSON: JSON.stringify({
@@ -214,15 +221,39 @@ export function ExecuteCommand(FormData) {
   return Execute(oFormData);
 }
 
-export function ExecuteQuery(
-  FormData,
-  cacheKey = null,
-  duration = CookieDuration.Minute10
-) {
+export function ExecuteQuerySWR(url, FormData) {
+  console.log("Calling");
+
+  return useSWR(
+    url ? [url, FormData] : null,
+    async () => {
+      // Execute the query and handle the response
+      var oFormData = { ...FormData };
+      oFormData.OperationName = "Query";
+      const response = await ExecuteQuery(oFormData);
+      console.log("response", response);
+      if (response?.DataIsLoaded) {
+        return response;
+      } else {
+        throw new Error(response?.message || "Data retrieval failed.");
+      }
+    }
+    // {
+    //   revalidateIfStale: false,
+    //   revalidateOnFocus: false,
+    //   revalidateOnMount: false,
+    //   revalidateOnReconnect: false,
+    // }
+  );
+}
+
+export function ExecuteQuery(FormData) {
+  console.log("Calling ExecuteQuery");
+
   var oFormData = { ...FormData };
   oFormData.OperationName = "Query";
 
-  return ExecuteCached(oFormData, cacheKey, duration);
+  return Execute(oFormData);
 }
 
 export function ExecuteFile(FormData) {

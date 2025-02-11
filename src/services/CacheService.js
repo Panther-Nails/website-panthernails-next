@@ -43,6 +43,7 @@ export const getCache = (cacheKey, resolverDelegate) => {
     .then((r) => r.json())
     .then();
 
+  // eslint-disable-next-line
   const promise = cacheData
     .then((result) => {
       resolverDelegate(result);

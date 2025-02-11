@@ -69,7 +69,7 @@ export default ({ properties, children }) => {
       hidePopup();
     }, endTime);
     return () => clearTimeout(timerEnd);
-  }, [showPopup]);
+  }, [endTime]);
 
   const getPopupContent = () => (
     <Container>

@@ -29,37 +29,35 @@ const SocialLink = styled.a`
 `;
 
 const CopyrightText = tw.p`text-center mt-10 font-medium tracking-wide text-sm text-gray-600`;
-export default () => {
+export default ({ properties, children, index, data }) => {
+  var inputLinks = JSON.parse(properties.inputLinks || "[]");
   return (
     <Container>
       <Content>
         <Row>
           <LogoContainer>
-            <LogoImg src={logo} />
+            <LogoImg src={properties.logo ? properties.logo : logo} />
           </LogoContainer>
           <LinksContainer>
-            <Link href="#">Home</Link>
-            <Link href="#">About</Link>
-            <Link href="#">Contact Us</Link>
-            <Link href="#">Blog</Link>
-            <Link href="#">Reviews</Link>
+            {inputLinks.map((post, index) => (
+              <Link href={post.link} key={index}>
+                {post.title}
+              </Link>
+            ))}
           </LinksContainer>
           <Divider />
           <SocialLinksContainer>
-            <SocialLink href="https://www.facebook.com/panthernails">
+            <SocialLink href={properties.facebookIconUrl}>
               <FacebookIcon />
             </SocialLink>
-            <SocialLink href="https://twitter.com/panthernails">
+            <SocialLink href={properties.twitterIconUrl}>
               <TwitterIcon />
             </SocialLink>
-            <SocialLink href="https://www.youtube.com/channel/UCbPlErLDmqcwJlXvvilg_CA">
+            <SocialLink href={properties.youtubeIconUrl}>
               <YoutubeIcon />
             </SocialLink>
           </SocialLinksContainer>
-          <CopyrightText>
-            &copy; Copyright 2020, Panther Nails Technologies Pvt Ltd, All
-            Rights Reserved..
-          </CopyrightText>
+          <CopyrightText>{properties.copyrightText}</CopyrightText>
         </Row>
       </Content>
     </Container>

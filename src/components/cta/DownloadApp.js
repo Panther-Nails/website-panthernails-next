@@ -8,7 +8,7 @@ import {
   Container as ContainerBase,
 } from "components/misc/Layouts";
 import {
-  SectionHeading,
+  HighlightedHeading,
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
 import appleIconImageSrc from "images/apple-icon.png";
@@ -21,14 +21,11 @@ const Row = tw.div`px-8 flex items-center relative z-10 flex-col lg:flex-row tex
 
 const ColumnContainer = tw.div`max-w-2xl`;
 const TextContainer = tw(ColumnContainer)``;
-const Heading = tw(
-  SectionHeading
-)`text-gray-100 lg:text-left max-w-none text-3xl leading-snug font-bold  `;
 const Subheading = tw(SubheadingBase)`text-yellow-500 mb-4 tracking-wider`;
 
-const LinksContainer = tw.div`mt-8 lg:mt-16 flex flex-col items-center md:block sm:block gap-3 `;
+const LinksContainer = tw.div`mt-8 lg:mt-16 flex flex-col md:flex-row items-center justify-center  gap-3 md:gap-12 `;
 const Link = styled.a`
-  ${tw`w-56 p-3 sm:p-4 text-sm sm:text-base font-bold uppercase tracking-wider rounded-full md:flex lg:inline-flex justify-center items-center mt-6 first:mt-0 sm:mt-0 sm:ml-8 sm:my-2 bg-gray-100 hocus:bg-gray-300 text-gray-900 hocus:text-gray-900 shadow hover:shadow-lg focus:shadow-outline focus:outline-none transition duration-300`}
+  ${tw`w-56 p-3 sm:p-4 text-sm sm:text-base font-bold uppercase tracking-wider rounded-full md:flex lg:inline-flex justify-center items-center mt-6 first:mt-0 sm:mt-0  sm:my-2 bg-gray-100 hocus:bg-gray-300 text-gray-900 hocus:text-gray-900 shadow hover:shadow-lg focus:shadow-outline focus:outline-none transition duration-300 `}
   img {
     ${tw`inline-block h-8 mr-3`}
   }
@@ -48,14 +45,8 @@ const DecoratorBlob1 = tw(
 const DecoratorBlob2 = tw(
   SvgDecoratorBlob1
 )`absolute top-0 right-0 w-80 h-80 transform  translate-x-20 -translate-y-64 text-pink-800 opacity-50`;
-export default ({
-  index,
-  properties,
-  children,
 
-  link1IconSrc = appleIconImageSrc,
-  link2IconSrc = googlePlayIconImageSrc,
-}) => {
+export default ({ properties, children, index, data }) => {
   return (
     <Container>
       <Content>
@@ -64,14 +55,30 @@ export default ({
             {properties.subheading && (
               <Subheading>{properties.subheading}</Subheading>
             )}
-            <Heading tw="text-white">{properties.heading}</Heading>
+            <HighlightedHeading primaryColor={tw`text-white`}>
+              {properties.heading}
+            </HighlightedHeading>
             <LinksContainer>
               <Link href={properties.leftButtonUrl} target="_black">
-                <img src={link1IconSrc} alt="" />
+                <img
+                  src={
+                    properties.link1IconSrc
+                      ? properties.link1IconSrc
+                      : appleIconImageSrc
+                  }
+                  alt=""
+                />
                 <span>{properties.leftButtonText}</span>
               </Link>
               <Link href={properties.rightButtonUrl} target="_black">
-                <img src={link2IconSrc} alt="" />
+                <img
+                  src={
+                    properties.link2IconSrc
+                      ? properties.link2IconSrc
+                      : googlePlayIconImageSrc
+                  }
+                  alt=""
+                />
                 <span>{properties.rightButtonText}</span>
               </Link>
             </LinksContainer>

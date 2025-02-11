@@ -46,7 +46,7 @@ const Steps = tw.ul`mt-12`;
 const PrimaryButton = tw(
   PrimaryButtonBase
 )`mt-8 md:mt-10 text-sm inline-block mx-auto md:mx-0`;
-export default ({ properties, children }) => {
+export default ({ properties, children, index, data }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
 
   return (
