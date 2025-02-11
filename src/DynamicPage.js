@@ -39,7 +39,7 @@ export default () => {
       ExecuteQuery(
         {
           ActionName:
-            "WSM.GMst_SelectFewFromLinkComponentAndComponentPropertyWhereGroupNameSubGroupNamePageNameV",
+            "WSM.GMst_SelectFewFromLinkComponentAndComponentPropertyWhereGroupNameSubGroupNamePageName",
           ParameterJSON: JSON.stringify(parameter),
           SessionDataJSON: {
             SessionDataLanguageID: languageObject?.LanguageID,
@@ -74,7 +74,7 @@ export default () => {
   useEffect(() => {
     if (pageData.Components) {
       var c = JSON.parse(pageData.Components);
-     
+
       setComponents(c);
     }
   }, [pageData]);

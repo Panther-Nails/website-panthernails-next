@@ -90,10 +90,12 @@ export default ({
                   <>
                     <span className="title">{input.title}</span>
                     <p className="description">{input.description}</p>
-                    <span className="link">
-                      <span target="_blank">{linkText}</span>
-                      <ArrowRightIcon className="icon" />
-                    </span>
+                    {properties.url && (
+                      <span className="link">
+                        <span target="_blank" href={properties.url}>{linkText}</span>
+                        <ArrowRightIcon className="icon" />
+                      </span>
+                    )}
                   </>
                 )}
               </Card>

@@ -195,6 +195,8 @@ const MultiSelectDropdown = ({
   updateChosenValues,
   dropDownError,
   dropDownInput,
+  heading,
+  placeholder,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const options = dropDownInput;
@@ -211,7 +213,7 @@ const MultiSelectDropdown = ({
 
   return (
     <div>
-      <ControlHeadingText>Select product which we offer's</ControlHeadingText>
+      <ControlHeadingText>{heading}</ControlHeadingText>
       <div
         onClick={() => setIsOpen(!isOpen)}
         style={{
@@ -224,7 +226,7 @@ const MultiSelectDropdown = ({
         {selectedValues.length > 0 ? (
           selectedValues.join(", ")
         ) : (
-          <ControlLabel>Select product</ControlLabel>
+          <ControlLabel>{placeholder}</ControlLabel>
         )}
       </div>
       {isOpen && (
@@ -392,7 +394,7 @@ const MultiSelectCheckbox = ({
   );
 };
 
-export default ({ properties, subheading = "Contact Us" }) => {
+export default ({ properties }) => {
   const { hidePopup } = useSession();
 
   const [formData, setFormData] = useState({});
@@ -664,6 +666,8 @@ export default ({ properties, subheading = "Contact Us" }) => {
           updateChosenValues={setSelectedProduct} // Pass the setter function
           dropDownError={dropDownError}
           dropDownInput={label.selectValue}
+          heading={properties.dropdownHeading}
+          placeholder={properties.dropdownPlaceholder}
         />
       );
     } else {
@@ -707,7 +711,7 @@ export default ({ properties, subheading = "Contact Us" }) => {
               type="submit"
               themeColor={properties.productEnquiryFor}
             >
-              Submit
+              {properties.buttonText}
             </SubmitButton>
           </>
         ) : (
@@ -722,7 +726,7 @@ export default ({ properties, subheading = "Contact Us" }) => {
                   themeColor={properties.productEnquiryFor}
                   onClick={handleNext}
                 >
-                  Next
+                  {properties.nextButtonText}
                 </SubmitButton>
               </>
             )}
@@ -739,7 +743,7 @@ export default ({ properties, subheading = "Contact Us" }) => {
                   type="submit"
                   themeColor={properties.productEnquiryFor}
                 >
-                  Submit
+                  {properties.buttonText}
                 </SubmitButton>
               </>
             )}

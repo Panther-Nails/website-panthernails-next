@@ -13,8 +13,7 @@ import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 
 import { useSession } from "providers/SessionProvider.js";
-
-
+import LanguageDropdown from "./LanguageDropdown.js";
 
 const Container = styled.div((props) => [
   tw`relative sticky top-0 z-50 bg-white text-sm`,
@@ -193,7 +192,7 @@ export default ({
   const headerLinks = [
     { url: `/about`, text: "About Us" },
     {
-      url: `/pages/products/loyalty`,  
+      url: `/pages/products/loyalty`,
       text: "Rasik Loyalty Platform",
     },
     {
@@ -205,19 +204,22 @@ export default ({
   ];
 
   const menuLinks = (
-    <NavLinks key={1}>
-      {headerLinks.map((link, index) => {
-        return (
-          <NavLinkWrapper
-            onClick={toggleNavbar}
-            key={index}
-            navPosition={isIncreasing}
-          >
-            <NavLink to={link.url}>{link.text}</NavLink>
-          </NavLinkWrapper>
-        );
-      })}
-    </NavLinks>
+    <>
+      <NavLinks key={1}>
+        {headerLinks.map((link, index) => {
+          return (
+            <NavLinkWrapper
+              onClick={toggleNavbar}
+              key={index}
+              navPosition={isIncreasing}
+            >
+              <NavLink to={link.url}>{link.text}</NavLink>
+            </NavLinkWrapper>
+          );
+        })}
+      </NavLinks>
+      <LanguageDropdown />
+    </>
   );
 
   logoLink = logoLink || defaultLogoLink;
@@ -281,7 +283,6 @@ export default ({
         <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
           {logoLink}
           {links}
-          <SiteOptions />
         </DesktopNavLinks>
 
         <MobileNavLinksContainer
@@ -295,6 +296,7 @@ export default ({
           >
             {links}
           </MobileNavLinks>
+
           <NavToggle
             onClick={toggleNavbar}
             className={showNavLinks ? "open" : "closed"}
