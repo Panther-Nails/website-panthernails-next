@@ -1,6 +1,6 @@
-import React, { useEffect, useState, lazy, Suspense } from "react";
-import GetStarted from "components/cta/GetStarted";
+import React, { lazy } from "react";
 import PageNotFound from "helpers/PageNotFound";
+import DynamicComponent from "providers/DynamicComponent";
 
 export const getProperties = (component) => {
   var properties = {};
@@ -20,8 +20,6 @@ export const ImportDynamicComponent = (Section, ComponentName) => {
     import(`components/${Section}/${ComponentName}.js`)
       .then((module) => ({ default: module.default }))
       .catch((error) => {
-        //can add error log in it
-        // console.error(`Error loading component ${ComponentName}:`, error);
         return { default: () => <PageNotFound /> }; // to be replaced with ErrorPage
       })
   );
@@ -31,20 +29,9 @@ export const ImportDynamicComponent = (Section, ComponentName) => {
 
 export const ProcessChildComponentsSeparately = (Components) => {
   if (Components.length > 0) {
-    return Components.map((child, index) => {
-      var childProperties = getProperties(child);
-      const Component = ImportDynamicComponent(
-        child.Section,
-        child.ComponentName
-      );
+    return Components.map((component, index) => {
       return (
-        <Suspense key={index}>
-          <Component
-            properties={childProperties}
-            children={child.Children ?? []}
-            index={index}
-          />
-        </Suspense>
+        <DynamicComponent component={component} index={index} key={index} />
       );
     });
   } else {

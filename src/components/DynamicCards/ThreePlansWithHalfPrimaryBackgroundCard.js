@@ -55,8 +55,8 @@ const ActionButton = styled(PrimaryButtonBase)`
 `;
 
 export default ({ children, properties, index }) => {
-  var childCard = JSON.parse(properties.features);
-  var price = JSON.parse(properties.price);
+  var childCard = JSON.parse(properties.features || "[]");
+  var price = JSON.parse(properties.price || "[]");
 
   return (
     <>

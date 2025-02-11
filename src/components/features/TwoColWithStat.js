@@ -38,9 +38,7 @@ const Description = tw.p`mx-auto mt-4 px-4 lg:px-0 text-center text-sm md:text-b
 
 export default ({ data, children, properties, textOnLeft = true }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
-  var statistics = JSON.parse(properties.statistics);
-
-  
+  var statistics = JSON.parse(properties.statistics || "[]");
   return (
     <Container>
       <Subheading>{properties.subHeading}</Subheading>

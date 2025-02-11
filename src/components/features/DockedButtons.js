@@ -32,7 +32,7 @@ const Rapper = tw.div`flex items-center w-12 h-12   `;
 export default ({ properties }) => {
   const [show, setShow] = useState(false);
 
-  var parsedChildren = JSON.parse(properties.links);
+  var parsedChildren = JSON.parse(properties.links || "[]");
   return (
     <>
       <StyledContainer position={properties?.position || "bottom"}>

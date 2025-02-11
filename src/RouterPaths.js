@@ -1,13 +1,11 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import DynamicPage from "DynamicPage";
+import { Routes, Route } from "react-router-dom";
 import SelectLanguage from "SelectLanguage";
-import { useSession } from "providers/SessionProvider";
-import PageNotFound from "helpers/PageNotFound";
+import { SWRConfig } from "swr";
+import DynamicPageTest from "DynamicPageTest";
 
 const DynamicPageComponent = () => {
-  // Indexdb activity log
-  return <DynamicPage />;
+  return <DynamicPageTest />;
 };
 
 export default () => {

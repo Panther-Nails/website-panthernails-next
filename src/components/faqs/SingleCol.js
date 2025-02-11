@@ -41,7 +41,7 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
 `;
 
 export default ({ children, properties, index, data }) => {
-  var faqs = JSON.parse(properties.faqs);
+  var faqs = JSON.parse(properties.faqs || "[]");
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
 
   const toggleQuestion = (questionIndex) => {

@@ -30,7 +30,7 @@ const SocialLink = styled.a`
 
 const CopyrightText = tw.p`text-center mt-10 font-medium tracking-wide text-sm text-gray-600`;
 export default ({ properties, children, index, data }) => {
-  var inputLinks = JSON.parse(properties.inputLinks);
+  var inputLinks = JSON.parse(properties.inputLinks || "[]");
   return (
     <Container>
       <Content>

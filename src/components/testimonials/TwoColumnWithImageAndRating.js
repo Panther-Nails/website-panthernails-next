@@ -77,7 +77,7 @@ const ControlButton = styled.button`
 
 export default ({ properties, children, index, data }) => {
   const [sliderRef, setSliderRef] = useState(null);
-  var inputs = JSON.parse(properties.inputs);
+  var inputs = JSON.parse(properties.inputs || "[]");
   return (
     <Container>
       <ContentWithPaddingXl>

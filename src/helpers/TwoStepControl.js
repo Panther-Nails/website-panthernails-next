@@ -618,7 +618,7 @@ export default ({ properties }) => {
     }
   };
 
-  var inputs = JSON.parse(properties.inputs);
+  var inputs = JSON.parse(properties.inputs || "[]");
 
   const inputControls = (label) => {
     if (label.type.toUpperCase() === "CHECKBOX") {
@@ -704,7 +704,7 @@ export default ({ properties }) => {
       >
         {inputs.length <= ShowFieldCount ? (
           <>
-            {inputs.map((label, index) => (
+            {inputs?.map((label, index) => (
               <Wraper key={index}>{label && inputControls(label)}</Wraper>
             ))}
             <SubmitButton

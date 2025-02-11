@@ -32,7 +32,7 @@ const QuestionToggleIcon = styled(motion.span)`
 const Answer = tw(motion.div)`hidden text-sm font-normal mt-4 text-gray-300`;
 
 export default ({ children, properties, index, data }) => {
-  var faqs = JSON.parse(properties.inputs);
+  var faqs = JSON.parse(properties.inputs || "[]");
   const faqCol1 = [];
   const faqCol2 = [];
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);

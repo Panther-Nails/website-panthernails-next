@@ -35,7 +35,7 @@ const CardLinks = styled.div`
 `;
 
 export default ({  properties, index }) => {
-  var parsedChildren = JSON.parse(properties.links);
+  var parsedChildren = JSON.parse(properties.links || "[]");
   return (
     <Card key={index}>
       <CardImage imageSrc={properties.imageSrc} />

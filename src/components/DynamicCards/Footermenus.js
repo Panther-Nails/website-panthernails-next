@@ -8,7 +8,7 @@ const Column = tw.div`px-4 sm:px-0 sm:w-1/3 md:w-auto mt-12`;
 const ColumnHeading = tw.h5`uppercase font-bold`;
 
 export default ({ index, children, properties }) => {
-  var menuLinks = JSON.parse(properties.menuLinks);
+  var menuLinks = JSON.parse(properties.menuLinks || "[]");
 
   return (
     <Column>

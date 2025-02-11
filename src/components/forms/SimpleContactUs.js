@@ -38,7 +38,7 @@ const SvgDotPattern1 = tw(
 )`absolute bottom-0 right-0 transform translate-y-1/2 translate-x-1/2 -z-10 opacity-50 text-primary-500 fill-current w-24`;
 
 export default ({ properties, children, index, data }) => {
-  var inputs = JSON.parse(properties.inputs);
+  var inputs = JSON.parse(properties.inputs || "[]");
   return (
     <Container>
       <Content>

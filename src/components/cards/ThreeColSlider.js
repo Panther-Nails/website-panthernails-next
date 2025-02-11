@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Slider from "react-slick";
 import tw from "twin.macro";
 import styled from "styled-components";
-import { HighlightedHeading } from "components/misc/Headings";
+import { SectionHeading } from "components/misc/Headings";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons";
 import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chevron-left.svg";
 import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
@@ -34,7 +34,7 @@ const CardSlider = styled(Slider)`
 `;
 const Description = tw.p`text-sm leading-loose px-5 mt-2 sm:mt-4`;
 
-export default ({ properties, children, index, data }) => {
+export default ({ index, properties, children }) => {
   // useState is used instead of useRef below because we want to re-render when sliderRef becomes available (not null)
   const [sliderRef, setSliderRef] = useState(null);
   const sliderSettings = {
@@ -62,9 +62,7 @@ export default ({ properties, children, index, data }) => {
     <Container>
       <Content>
         <HeadingWithControl>
-          <HighlightedHeading textPosition={tw`md:text-left`}>
-            {properties.heading}
-          </HighlightedHeading>
+          <Heading>{properties.heading}</Heading>
           <Controls>
             <PrevButton onClick={sliderRef?.slickPrev}>
               <ChevronLeftIcon />

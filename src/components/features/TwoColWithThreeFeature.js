@@ -62,7 +62,7 @@ export default ({ properties, children, index, data }) => {
    *  3) description - the description of the card
    *  4) url - the url that the card should goto on click
    */
-  var inputs = JSON.parse(properties.inputs);
+  var inputs = JSON.parse(properties.inputs || "[]");
   return (
     <Container>
       <TwoColumn>

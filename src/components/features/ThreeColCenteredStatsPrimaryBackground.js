@@ -28,7 +28,7 @@ const StatValue = tw.div`text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-black
 
 export default ({ children, properties }) => {
   const localStats = () => {
-    var stats = JSON.parse(properties.stats);
+    var stats = JSON.parse(properties.stats || "[]");
     return stats.map((stat, index) => {
       return (
         <Stat key={index}>

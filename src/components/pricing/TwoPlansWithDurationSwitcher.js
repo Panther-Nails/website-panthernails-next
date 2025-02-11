@@ -12,7 +12,6 @@ import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-6.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-7.svg";
 
-
 const HeaderContainer = tw.div`w-full flex flex-col items-center`;
 const Subheading = tw(SubheadingBase)`mb-4`;
 const Heading = tw(SectionHeading)`w-full`;
@@ -72,18 +71,9 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
   ${tw`pointer-events-none -z-20 absolute right-0 top-0 h-64 w-64 opacity-25 transform translate-x-2/3 translate-y-1/2 fill-current text-teal-300`}
 `;
 
-export default ({
-  children,
-  properties,
-  index,
-
-}) => {
-  let inputs = JSON.parse(properties.planDurations);
-  let plans = JSON.parse(properties.plans)
-
- 
-
-
+export default ({ children, properties, index }) => {
+  let inputs = JSON.parse(properties.planDurations || "[]");
+  let plans = JSON.parse(properties.plans || "[]");
 
   const [activeDurationIndex, setActiveDurationIndex] = useState(0);
 

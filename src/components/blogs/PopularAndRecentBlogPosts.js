@@ -55,8 +55,8 @@ export default ({ properties, children, index, data }) => {
     },
   };
 
-  var popularPosts = JSON.parse(properties.popularPosts);
-  var recentPosts = JSON.parse(properties.recentPosts);
+  var popularPosts = JSON.parse(properties.popularPosts || "[]");
+  var recentPosts = JSON.parse(properties.recentPosts || "[]");
 
   return (
     <Container>

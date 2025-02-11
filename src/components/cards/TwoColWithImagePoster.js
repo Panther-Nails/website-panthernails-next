@@ -26,7 +26,7 @@ const TwoColumn = styled.div(() => [
 ]);
 
 export default ({ properties, children, index, data }) => {
-  var inputs = JSON.parse(properties.inputs);
+  var inputs = JSON.parse(properties.inputs || "[]");
   const HandleNavigation = (url) => {
     window.open(url);
   };

@@ -27,7 +27,7 @@ const PlanFeatures = styled.ul`
 `;
 
 export default ({ properties, children, index, data }) => {
-  var siteMapArray = JSON.parse(properties.siteMapJson);
+  var siteMapArray = JSON.parse(properties.siteMapJson || "[]");
 
   return (
     <Container tw="bg-white lg:flex lg:flex-col gap-8 py-12">

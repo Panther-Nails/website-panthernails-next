@@ -45,7 +45,7 @@ export default ({ properties, children, index, data }) => {
    *  If a key for a particular card is not provided, a default value is used
    */
 
-  var cards = JSON.parse(properties.inputs);
+  var cards = JSON.parse(properties.inputs || "[]");
 
   return (
     <Container>

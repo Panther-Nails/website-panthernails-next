@@ -37,7 +37,7 @@ const SocialLink = styled.a`
 
 const Divider = tw.div`my-8 border-b-2 border-gray-800`;
 export default ({ properties, children, index, data }) => {
-  var inputs = JSON.parse(properties.inputs);
+  var inputs = JSON.parse(properties.inputs || "[]");
 
   return (
     <Container>

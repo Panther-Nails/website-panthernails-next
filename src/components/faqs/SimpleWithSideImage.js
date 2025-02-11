@@ -47,7 +47,7 @@ export default ({ index, properties, children, data }) => {
    * You can modify FAQs either by modifying the below defaultFaqs array or by passing a custom array of FAQs using
    * the faqs prop
    */
-  var faqs = JSON.parse(properties.faqs);
+  var faqs = JSON.parse(properties.faqs || "[]");
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
 
   const toggleQuestion = (questionIndex) => {

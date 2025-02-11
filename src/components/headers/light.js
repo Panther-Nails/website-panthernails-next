@@ -13,6 +13,7 @@ import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 
 import { useSession } from "providers/SessionProvider.js";
+import { useExecuteQuerySWR } from "services/useExecuteQuerySWR.js";
 import LanguageDropdown from "./LanguageDropdown.js";
 
 const Container = styled.div((props) => [
@@ -135,9 +136,18 @@ export default ({
    * changing the defaultLinks variable below below.
    * If you manipulate links here, all the styling on the links is already done for you. If you pass links yourself though, you are responsible for styling the links or use the helper styled components that are defined here (NavLink)
    */
-  const [scrollCounter, setScrollCounter] = useState(0);
 
+  const [scrollCounter, setScrollCounter] = useState(0);
   const [isIncreasing, setIsIncreasing] = useState(false);
+  const { data } = useExecuteQuerySWR(`${languageObject?.LanguageID}`, {
+    ActionName: "WSM.GMst_SelectFewFromLinkAndLinkLanguages",
+    ParameterJSON: "{}",
+  });
+
+  console.log("data_Header", {
+    data: data,
+    LanguageID: languageObject?.LanguageID,
+  });
 
   // console.log("isDecreasing",isDecreasing);
   const handleScroll = () => {
@@ -206,14 +216,14 @@ export default ({
   const menuLinks = (
     <>
       <NavLinks key={1}>
-        {headerLinks.map((link, index) => {
+        {data?.items?.map((link, index) => {
           return (
             <NavLinkWrapper
               onClick={toggleNavbar}
               key={index}
               navPosition={isIncreasing}
             >
-              <NavLink to={link.url}>{link.text}</NavLink>
+              <NavLink to={link.LinkURL}>{link.LinkHeadingText}</NavLink>
             </NavLinkWrapper>
           );
         })}
