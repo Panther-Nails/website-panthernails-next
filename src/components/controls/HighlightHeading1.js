@@ -12,7 +12,7 @@ const Heading = tw(
 export default ({ properties, children, index }) => {
   return (
     <Heading>
-      {children.split("`").map((chunk, index) => {
+      {children?.split("`").map((chunk, index) => {
         if (index % 2 === 0)
           return (
             <span key={index} tw="text-primary-900">
