@@ -82,10 +82,9 @@ export default ({ index, children, properties }) => {
           ))}
           <SubscribeNewsletterColumn>
             <SubscribeNewsletterContainer>
-              <ColumnHeading>Subscribe to our Newsletter</ColumnHeading>
+              <ColumnHeading>{properties.newsLetterText}</ColumnHeading>
               <SubscribeText>
-                We deliver high quality blog posts written by professionals
-                weekly. And we promise no spam.
+                {properties.newsLetterSubText}
               </SubscribeText>
               <SubscribeForm
                 method="post"
@@ -94,9 +93,9 @@ export default ({ index, children, properties }) => {
                 <Input
                   type="email"
                   name="body"
-                  placeholder="Your Email Address"
+                  placeholder={properties.placeholderText}
                 />
-                <SubscribeButton type="submit">Subscribe</SubscribeButton>
+                <SubscribeButton type="submit">{properties.subscribeButtonText}</SubscribeButton>
               </SubscribeForm>
             </SubscribeNewsletterContainer>
           </SubscribeNewsletterColumn>

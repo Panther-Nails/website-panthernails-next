@@ -36,7 +36,7 @@ const Description = tw.p`mt-4  md:text-left text-sm md:text-base lg:text-lg font
 
 const Input = tw.input`mt-6 w-full first:mt-0 border-b-2 border-gray-400 py-3 focus:outline-none font-medium transition duration-300 hocus:border-primary-500`;
 
-export default ({ properties, subheading = "Contact Us" }) => {
+export default ({ properties }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
 
   return (
