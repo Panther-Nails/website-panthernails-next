@@ -3,6 +3,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 
 const Column = tw.div`xl:mr-12 xl:last:mr-0`;
 const CardColumn = tw(
@@ -28,8 +29,12 @@ const CardAction = tw(PrimaryButtonBase)`w-full mt-6`;
 
 export default ({ index, children, properties }) => {
 
+  const navigate = useNavigate(); // Use useNavigate hook
 
-
+  const _handleNavigation = (buttonUrl) => {
+    console.log("buttonUrl", buttonUrl);
+    navigate(buttonUrl); // Navigate to the given URL
+  };
   return (
     <CardColumn key={index} tw="bg-white">
       <Card tw="">
@@ -40,7 +45,9 @@ export default ({ index, children, properties }) => {
             <CardType>{properties.type}</CardType>
           </CardHeader>
           <CardTitle>{properties.title}</CardTitle>
-          <CardAction>{properties.buttonText}</CardAction>
+          <CardAction onClick={() => _handleNavigation(properties.buttonUrl)}>
+            {properties.buttonText}
+          </CardAction>
         </CardText>
       </Card>
     </CardColumn>

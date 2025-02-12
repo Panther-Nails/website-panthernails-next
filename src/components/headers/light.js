@@ -13,7 +13,10 @@ import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 
 import { useSession } from "providers/SessionProvider.js";
-import { useExecuteQuerySWR } from "services/useExecuteQuerySWR.js";
+import {
+  setPageMetaData,
+  useExecuteQuerySWR,
+} from "services/useExecuteQuerySWR.js";
 import LanguageDropdown from "./LanguageDropdown.js";
 
 const Container = styled.div((props) => [
@@ -105,8 +108,6 @@ const backgroundColor = {
   none: tw``,
 };
 
-const LanguageText = styled.div`font-bold hover:font-black `;
-
 export default ({
   logoLink,
   className,
@@ -144,12 +145,22 @@ export default ({
     ParameterJSON: "{}",
   });
 
-  console.log("data_Header", {
-    data: data,
-    LanguageID: languageObject?.LanguageID,
-  });
+  useEffect(() => {
+    if (data) {
+      const location = window.location.pathname;
+      const isCurrentLink = data.items.find((item) => {
+        return item.LinkURL.toUpperCase() === location.toUpperCase();
+      });
 
-  // console.log("isDecreasing",isDecreasing);
+      if (
+        isCurrentLink &&
+        isCurrentLink.LinkURL.toUpperCase() === location.toUpperCase()
+      ) {
+        setPageMetaData(isCurrentLink.HeadMetaJSON);
+      }
+    }
+  }, [data, window.location.pathname]);
+
   const handleScroll = () => {
     const position = window.scrollY;
     setScrollCounter(position);
@@ -199,32 +210,22 @@ export default ({
     </LogoLink>
   );
 
-  const headerLinks = [
-    { url: `/about`, text: "About Us" },
-    {
-      url: `/pages/products/loyalty`,
-      text: "Rasik Loyalty Platform",
-    },
-    {
-      url: `/pages/products/clm`,
-      text: "Contract Labour Management",
-    },
-    //    { url: "/blog", text: "Blog" },
-    { url: `/contact`, text: "Contact Us" },
-  ];
-
   const menuLinks = (
     <>
       <NavLinks key={1}>
         {data?.items?.map((link, index) => {
           return (
-            <NavLinkWrapper
-              onClick={toggleNavbar}
-              key={index}
-              navPosition={isIncreasing}
-            >
-              <NavLink to={link.LinkURL}>{link.LinkHeadingText}</NavLink>
-            </NavLinkWrapper>
+            <>
+              {link.LinkVisible && (
+                <NavLinkWrapper
+                  onClick={toggleNavbar}
+                  key={index}
+                  navPosition={isIncreasing}
+                >
+                  <NavLink to={link.LinkURL}>{link.LinkHeadingText}</NavLink>
+                </NavLinkWrapper>
+              )}
+            </>
           );
         })}
       </NavLinks>
@@ -237,54 +238,6 @@ export default ({
 
   const handleCloseNotification = (e) => {
     setHasNotificationSeen(true);
-  };
-
-  const SiteOptions = () => {
-    const { showSiteOptions, animation, toggleSiteOptions } =
-      useAnimatedSiteOptionsToggler();
-
-    const navigate = useNavigate();
-    return (
-      <SiteOptionsContainer>
-        <LanguageSelectionLinks
-          initial={{ x: "250%", display: "none" }}
-          animate={animation}
-        >
-          <NavLinks key={1}>
-            {languages?.map((lang, index) => {
-              return (
-                <NavLinkWrapper
-                  key={index}
-                  onClick={() => {
-                    setLanguageObject({ ...lang });
-                    //this navigate the same route with selected lanaguage
-                    navigate(
-                      `${window.location.pathname}?lang=${lang.LanguageNameUnicode}`
-                    );
-                    setLanguageObject(lang);
-                    toggleSiteOptions();
-                  }}
-                >
-                  {lang?.LanguageName?.toLocaleUpperCase()} (
-                  {lang?.LanguageNameUnicode})
-                </NavLinkWrapper>
-              );
-            })}
-          </NavLinks>
-        </LanguageSelectionLinks>
-        <SiteOptionToggleButton
-          onClick={toggleSiteOptions}
-          className={showSiteOptions ? "open" : "closed"}
-        >
-          <NavLinkWrapper>
-            <LanguageText title={languageObject?.LanguageNameUnicode}>
-              {languageObject?.LanguageNameUnicode}{" "}
-              {languageObject?.LanguageName}
-            </LanguageText>
-          </NavLinkWrapper>
-        </SiteOptionToggleButton>
-      </SiteOptionsContainer>
-    );
   };
 
   return (

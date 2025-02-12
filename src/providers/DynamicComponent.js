@@ -2,6 +2,7 @@ import FallbackLoading from "helpers/FallbackLoading";
 import React, { lazy, useEffect, useState } from "react";
 import { Suspense } from "react";
 import { useExecuteQuerySWR } from "services/useExecuteQuerySWR";
+import { useSession } from "./SessionProvider";
 
 const ImportDynamicComponent = (Section, ComponentName) => {
   const DynamicComponent = lazy(() =>
@@ -15,9 +16,10 @@ const ImportDynamicComponent = (Section, ComponentName) => {
   return DynamicComponent;
 };
 
-const DynamicComponent = ({ component, index, cacheKey }) => {
+const DynamicComponent = ({ component, index }) => {
+  const { languageObject } = useSession();
   const { data } = useExecuteQuerySWR(
-    `${component.LinkComponentHierarchyID}-${cacheKey}`,
+    `${component.LinkComponentHierarchyID}-${languageObject?.LanguageID}`,
     {
       ActionName:
         "WSM.GMst_SelectFewFromComponentHierarchyPropertyWhereLinkComponentHierarchyID",

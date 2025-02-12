@@ -221,34 +221,8 @@ export function ExecuteCommand(FormData) {
   return Execute(oFormData);
 }
 
-export function ExecuteQuerySWR(url, FormData) {
-  console.log("Calling");
-
-  return useSWR(
-    url ? [url, FormData] : null,
-    async () => {
-      // Execute the query and handle the response
-      var oFormData = { ...FormData };
-      oFormData.OperationName = "Query";
-      const response = await ExecuteQuery(oFormData);
-      console.log("response", response);
-      if (response?.DataIsLoaded) {
-        return response;
-      } else {
-        throw new Error(response?.message || "Data retrieval failed.");
-      }
-    }
-    // {
-    //   revalidateIfStale: false,
-    //   revalidateOnFocus: false,
-    //   revalidateOnMount: false,
-    //   revalidateOnReconnect: false,
-    // }
-  );
-}
-
 export function ExecuteQuery(FormData) {
-  console.log("Calling ExecuteQuery");
+  //console.log("Calling ExecuteQuery");
 
   var oFormData = { ...FormData };
   oFormData.OperationName = "Query";
