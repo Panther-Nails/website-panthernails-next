@@ -15,10 +15,10 @@ import { SWRConfig } from "swr";
 
 export default function App() {
   const { popupRenderer } = useSession();
-
   function localStorageProvider() {
-    const map = new Map(JSON.parse(localStorage.getItem("app-cache") || "[]"));
-    console.log("map", Array.from(map.entries()));
+    const test = JSON.parse(localStorage.getItem("app-cache") || "[]");
+    const map = new Map(test);
+    //console.log("map", Array.from(map.entries()));
 
     window.addEventListener("beforeunload", () => {
       const appCache = JSON.stringify(Array.from(map.entries()));

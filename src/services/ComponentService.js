@@ -29,7 +29,7 @@ export const ImportDynamicComponent = (Section, ComponentName) => {
 };
 
 export const ProcessChildComponentsSeparately = (Components) => {
-  const { languageObject } = useSession();
+  // const { languageObject } = useSession();
   if (Components.length > 0) {
     return Components.map((component, index) => {
       return (
@@ -37,7 +37,7 @@ export const ProcessChildComponentsSeparately = (Components) => {
           component={component}
           index={index}
           key={index}
-          cacheKey={languageObject?.LanguageID}
+          // cacheKey={languageObject?.LanguageID}
         />
       );
     });

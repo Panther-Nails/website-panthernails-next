@@ -40,9 +40,13 @@ export default ({ properties, children, index, data }) => {
                 {properties.heading}
               </HighlightedHeading>
               <HeadingDescription>{properties.description}</HeadingDescription>
-              <PrimaryLink href={properties.linkUrl}>
-                {properties.linkText} <ArrowRightIcon />
-              </PrimaryLink>
+              {properties.linkUrl && (
+                <>
+                  <PrimaryLink href={properties.linkUrl}>
+                    {properties.linkText} <ArrowRightIcon />
+                  </PrimaryLink>
+                </>
+              )}
             </HeadingInfoContainer>
           </HeadingColumn>
           {ProcessChildComponentsSeparately(children)}

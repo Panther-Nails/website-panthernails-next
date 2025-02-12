@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSession } from "providers/SessionProvider";
-import {
-  setPageMetaData,
-  useExecuteQuerySWR,
-} from "./services/useExecuteQuerySWR";
+import { useExecuteQuerySWR } from "./services/useExecuteQuerySWR";
 import DynamicComponent from "providers/DynamicComponent";
 import FallbackLoading from "helpers/FallbackLoading";
 
@@ -35,7 +32,6 @@ export default () => {
       if (data.message === "Successfull" && data.items.length > 0) {
         if (data.items.length > 0) {
           const newData = data.items[0];
-          setPageMetaData(newData);
           setPageData(newData);
         }
       }
@@ -56,12 +52,7 @@ export default () => {
       ) : (
         <>
           {components.map((component, index) => (
-            <DynamicComponent
-              component={component}
-              index={index}
-              key={index}
-              cacheKey={LanguageID}
-            />
+            <DynamicComponent component={component} index={index} key={index} />
           ))}
         </>
       )}

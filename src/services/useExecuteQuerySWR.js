@@ -8,8 +8,6 @@ export function useExecuteQuerySWR(key, formDataParams, swrValidations) {
   const isAvailableInCache = keys.includes(key) ? false : true;
 
   const fetcher = async () => {
-    console.log("Calling useExecuteQuerySWR");
-
     const formData = { ...formDataParams, OperationName: "Query" };
     const response = await ExecuteQuery(formData);
     if (response?.DataIsLoaded) {
@@ -36,15 +34,15 @@ export function useExecuteQuerySWR(key, formDataParams, swrValidations) {
 
 export function setPageMetaData(metaData) {
   document.title =
-    metaData?.HeadTitle + " - Panther Nails Technologies Private Limited.";
+    metaData?.Title + " - Panther Nails Technologies Private Limited.";
 
   const existingMetaTagDescription = document.querySelector(
     'meta[name="description"]'
   );
-  existingMetaTagDescription.setAttribute("content", metaData?.HeadDescription);
+  existingMetaTagDescription.setAttribute("content", metaData?.Description);
 
   const existingMetaTagKeywords = document.querySelector(
     'meta[name="keywords"]'
   );
-  existingMetaTagKeywords.setAttribute("content", metaData?.HeadKeyWords);
+  existingMetaTagKeywords.setAttribute("content", metaData?.Keywords);
 }
