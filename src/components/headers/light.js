@@ -159,7 +159,7 @@ export default ({
         setPageMetaData(isCurrentLink.HeadMetaJSON);
       }
     }
-  }, [data, window.location.pathname]);
+  }, [data, window.location.pathname, languageObject?.LanguageID]);
 
   const handleScroll = () => {
     const position = window.scrollY;

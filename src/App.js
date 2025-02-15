@@ -3,22 +3,23 @@ import GlobalStyles from "styles/GlobalStyles";
 import "react-toastify/dist/ReactToastify.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { ToastContainer } from "react-toastify";
+import { SWRConfig } from "swr";
 
-import Header from "components/headers/light";
 import RouterPaths from "RouterPaths";
+import Header from "components/headers/light";
 import ScrollUpButton from "components/features/ScrollUpButton";
 import PopupModal from "helpers/PopupModal";
 import { useSession } from "providers/SessionProvider";
 
-import { ToastContainer } from "react-toastify";
-import { SWRConfig } from "swr";
-
 export default function App() {
   const { popupRenderer } = useSession();
+
   function localStorageProvider() {
-    const test = JSON.parse(localStorage.getItem("app-cache") || "[]");
-    const map = new Map(test);
-    //console.log("map", Array.from(map.entries()));
+    const cacheFromLocalStorage = JSON.parse(
+      localStorage.getItem("app-cache") || "[]"
+    );
+    const map = new Map(cacheFromLocalStorage);
 
     window.addEventListener("beforeunload", () => {
       const appCache = JSON.stringify(Array.from(map.entries()));

@@ -1,11 +1,10 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import SelectLanguage from "SelectLanguage";
-import { SWRConfig } from "swr";
-import DynamicPageTest from "DynamicPageTest";
+import DynamicPageRenderer from "DynamicPageRenderer";
 
 const DynamicPageComponent = () => {
-  return <DynamicPageTest />;
+  return <DynamicPageRenderer />;
 };
 
 export default () => {

@@ -1,15 +1,18 @@
-import FallbackLoading from "helpers/FallbackLoading";
 import React, { lazy, useEffect, useState } from "react";
 import { Suspense } from "react";
+import { useSWRConfig } from "swr";
+
 import { useExecuteQuerySWR } from "services/useExecuteQuerySWR";
-import { useSession } from "./SessionProvider";
+import FallbackLoading from "helpers/FallbackLoading";
 
 const ImportDynamicComponent = (Section, ComponentName) => {
   const DynamicComponent = lazy(() =>
     import(`../components/${Section}/${ComponentName}.js`)
       .then((module) => ({ default: module.default }))
       .catch((error) => {
-        return { default: () => <h2>Page Not Found</h2> }; // to be replaced with ErrorPage
+        console.log("Error while importing component", error);
+
+        return { default: () => <FallbackLoading /> };
       })
   );
 
@@ -17,23 +20,41 @@ const ImportDynamicComponent = (Section, ComponentName) => {
 };
 
 const DynamicComponent = ({ component, index }) => {
-  const { languageObject } = useSession();
-  const { data } = useExecuteQuerySWR(
-    `${component.LinkComponentHierarchyID}-${languageObject?.LanguageID}`,
-    {
-      ActionName:
-        "WSM.GMst_SelectFewFromComponentHierarchyPropertyWhereLinkComponentHierarchyID",
-      ParameterJSON: JSON.stringify({
-        LinkComponentHierarchyID: component.LinkComponentHierarchyID,
-      }),
-    }
-  );
+  const appCache = useSWRConfig();
   const [properties, setProperties] = useState({});
+
+  const { data } = useExecuteQuerySWR(`${component.CacheKey}`, {
+    ActionName:
+      "WSM.GMst_SelectFewFromComponentHierarchyPropertyWhereLinkComponentHierarchyID",
+    ParameterJSON: JSON.stringify({
+      LinkComponentHierarchyID: component.LinkComponentHierarchyID,
+    }),
+  });
+
+  useEffect(() => {
+    const currentCacheKeys = Array.from(appCache.cache.keys()) || [];
+    const languageID = component?.CacheKey?.split("-")[1];
+
+    if (currentCacheKeys.length > 0) {
+      currentCacheKeys
+        .filter((key) =>
+          key.startsWith(`${component.LinkComponentHierarchyID}-${languageID}-`)
+        )
+        .forEach((key) => {
+          if (component.CacheKey === key) {
+            return;
+          } else {
+            appCache.cache.delete(key);
+          }
+        });
+    }
+  }, [component.LinkComponentHierarchyID]);
 
   useEffect(() => {
     if (data) {
       if (data.message === "Successfull" && data.items.length > 0) {
-        setProperties(JSON.parse(data.items[0]?.Properties));
+        const parseData = data?.items[0]?.Properties || "{}";
+        setProperties(JSON.parse(parseData));
       }
     }
   }, [data]);
@@ -43,8 +64,6 @@ const DynamicComponent = ({ component, index }) => {
     component.ComponentName
   );
 
-  const children = component.Children ? component.Children : [];
-
   return (
     <>
       {properties && Object.keys(properties).length > 0 && (
@@ -52,7 +71,7 @@ const DynamicComponent = ({ component, index }) => {
           {ImportedComponent && (
             <ImportedComponent
               data={component}
-              children={children}
+              children={component.Children ? component.Children : []}
               properties={properties}
               key={index}
             />
