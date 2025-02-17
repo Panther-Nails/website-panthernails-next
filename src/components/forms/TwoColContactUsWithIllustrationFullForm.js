@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
-
+import { HighlightedHeading } from "../misc/Headings.js";
 import {
   SectionHeading,
   Subheading as SubheadingBase,
@@ -54,10 +54,10 @@ export default ({ properties }) => {
             {properties.subheading && (
               <Subheading>{properties.subheading}</Subheading>
             )}
-            <Heading>
+            <HighlightedHeading textStyle={tw`text-left`}>
               {properties.heading}
-              <span tw="text-primary-500">{properties.highlightHeading}</span>
-            </Heading>
+              {/* <span tw="text-primary-500">{properties.highlightHeading}</span> */}
+            </HighlightedHeading>
             {properties.description && (
               <Description>{properties.description}</Description>
             )}

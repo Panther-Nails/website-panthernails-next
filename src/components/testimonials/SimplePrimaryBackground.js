@@ -4,6 +4,7 @@ import tw from "twin.macro";
 import styled, { css } from "styled-components/macro"; //eslint-disable-line
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import {
+  HighlightedHeading,
   SectionHeading,
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
@@ -14,7 +15,7 @@ import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
 const PrimaryBackgroundContainer = tw(
   Container
-)`-mx-8 px-8 bg-primary-900 text-gray-100`;
+)` px-8 bg-primary-900 text-gray-100`;
 
 const HeadingContainer = tw.div``;
 const Subheading = tw(SubheadingBase)`text-center text-gray-100 mb-4`;
@@ -41,7 +42,7 @@ export default ({ children, properties, index, data }) => {
       <ContentWithPaddingXl>
         <HeadingContainer>
           <Subheading>{properties.subheading}</Subheading>
-          <Heading>{properties.heading}</Heading>
+          <HighlightedHeading>{properties.heading}</HighlightedHeading>
           <Description>{properties.description}</Description>
         </HeadingContainer>
         <TestimonialsSlider arrows={false} ref={setSliderRef}>

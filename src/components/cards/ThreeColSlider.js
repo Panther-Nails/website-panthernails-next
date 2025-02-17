@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Slider from "react-slick";
 import tw from "twin.macro";
 import styled from "styled-components";
-import { SectionHeading } from "components/misc/Headings";
+import { HighlightedHeading, SectionHeading } from "components/misc/Headings";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons";
 import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chevron-left.svg";
 import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
@@ -62,7 +62,7 @@ export default ({ index, properties, children }) => {
     <Container>
       <Content>
         <HeadingWithControl>
-          <Heading>{properties.heading}</Heading>
+          <HighlightedHeading>{properties.heading}</HighlightedHeading>
           <Controls>
             <PrevButton onClick={sliderRef?.slickPrev}>
               <ChevronLeftIcon />

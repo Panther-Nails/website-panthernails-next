@@ -9,13 +9,15 @@ const DynamicHeading = tw(
   SectionHeading
 )`w-full mt-4 font-black px-4 lg:px-0 text-2xl sm:text-4xl lg:text-5xl text-center leading-tight `;
 
-export const HeadingText = tw.span`text-primary-900`;
-export const HighlightedText = tw.span`text-primary-500`;
+export const HeadingText = tw.span`text-primary-900 w-full`;
+export const HighlightedText = tw.span`text-primary-500 w-full`;
 //var HeadingText = styled.span((props) => [`${colors[props.color]}`]);
 
 export function HighlightedHeading(props) {
+  // console.log("heading Data",props.children);
+
   return (
-    <DynamicHeading css={props.textPosition}>
+    <DynamicHeading css={props.textStyle}>
       {props?.children?.split("`").map((chunk, index) => {
         if (index % 2 === 0)
           return (

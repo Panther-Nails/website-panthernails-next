@@ -8,8 +8,10 @@ import LogoImage from "images/pnlogo.svg";
 import { ReactComponent as FacebookIcon } from "images/facebook-icon.svg";
 import { ReactComponent as TwitterIcon } from "images/twitter-icon.svg";
 import { ReactComponent as YoutubeIcon } from "images/youtube-icon.svg";
+import { Container as ContainerBase } from "components/misc/Layouts";
 
-const Container = tw.div`relative bg-gray-900 text-gray-100 -mx-8 -mb-8 px-8`;
+const Container = tw(ContainerBase)`bg-gray-900 text-gray-100  px-8 `;
+
 const Content = tw.div`max-w-screen-xl mx-auto pt-16 pb-8`;
 const FiveColumns = tw.div`flex flex-wrap justify-between`;
 

@@ -17,11 +17,11 @@ const Image = styled(motion.div)((props) => [
   `background-image: url("${props.$imageSrc}");`,
   tw`h-64 bg-cover bg-center rounded`,
 ]);
-const Title = tw.h5`mt-6 text-xl font-bold transition duration-300 group-hover:text-primary-500`;
+const Title = tw.h5`text-xl font-bold transition duration-300 group-hover:text-primary-500 `;
 const Description = tw.p`mt-2 font-medium text-secondary-100 leading-loose text-sm`;
 const AuthorInfo = tw.div`mt-6 flex items-center`;
 const AuthorImage = tw.img`w-12 h-12 rounded-full`;
-const AuthorNameAndProfession = tw.div`ml-4`;
+const AuthorNameAndProfession = tw.div`mx-0`;
 const AuthorName = tw.h6`font-semibold text-lg`;
 const AuthorProfile = tw.p`text-secondary-100 text-sm`;
 
@@ -34,7 +34,7 @@ const RecentPostsContainer = styled.div`
     ${tw`flex justify-between mb-10 max-w-none w-full sm:w-1/2 lg:w-auto sm:odd:pr-12 lg:odd:pr-0 mr-0`}
   }
   ${Title} {
-    ${tw`text-base xl:text-lg mt-0 mr-4 lg:max-w-xs`}
+    ${tw`text-base xl:text-lg mt-0 mr-4 ml-0 lg:max-w-xs `}
   }
   ${AuthorName} {
     ${tw`mt-3 text-sm text-secondary-100 font-normal leading-none`}
@@ -63,7 +63,7 @@ export default ({ properties, children, index, data }) => {
       <ContentWithPaddingXl>
         <Row>
           <PopularPostsContainer>
-            <HighlightedHeading textPosition={tw`md:text-left`}>
+            <HighlightedHeading textStyle={tw`md:text-left`}>
               {properties.headingForPopularPost}
             </HighlightedHeading>
             <PostsContainer>
@@ -95,7 +95,7 @@ export default ({ properties, children, index, data }) => {
             </PostsContainer>
           </PopularPostsContainer>
           <RecentPostsContainer>
-            <HighlightedHeading textPosition={tw`md:text-left`}>
+            <HighlightedHeading textStyle={tw`md:text-left`}>
               {properties.headingForRecentPosts}
             </HighlightedHeading>
             <PostsContainer>

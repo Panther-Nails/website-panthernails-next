@@ -2,10 +2,10 @@ import React from "react";
 import tw from "twin.macro";
 import { ReactComponent as EmailNewsletterIconBase } from "../../images/email-newsletter-icon.svg";
 import { Container as ContainerBase } from "components/misc/Layouts.js";
-import { SectionHeading } from "components/misc/Headings.js";
+import { HighlightedHeading, SectionHeading } from "components/misc/Headings.js";
 import { PrimaryButton } from "components/misc/Buttons.js";
 
-const Container = tw(ContainerBase)`bg-secondary-800 -mx-8`;
+const Container = tw(ContainerBase)`bg-secondary-800 `;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
 
 const Row = tw.div`flex items-center justify-center flex-col lg:flex-row px-8`;
@@ -33,7 +33,7 @@ export default ({ properties, children, index, data }) => {
           <TextColumn>
             <EmailNewsletterIcon />
             <HeadingInfoContainer>
-              <Heading>{properties.heading}</Heading>
+              <HighlightedHeading>{properties.heading}</HighlightedHeading>
               <Description>{properties.description}</Description>
             </HeadingInfoContainer>
           </TextColumn>

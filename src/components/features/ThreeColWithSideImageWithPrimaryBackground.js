@@ -4,13 +4,15 @@ import tw from "twin.macro";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
 import {
+  HighlightedHeading,
   SectionHeading,
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
+import { Container as ContainerBase } from "components/misc/Layouts";
 
-const Container = tw.div`relative bg-primary-900 -mx-8 px-8 text-gray-100`;
+const Container = tw(ContainerBase)`bg-primary-900 text-gray-100 `;
 
 const ThreeColumnContainer = styled.div`
   ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-24`}
@@ -30,7 +32,7 @@ export default ({ properties, children, index, data }) => {
         {properties.subheading && (
           <Subheading>{properties.subheading}</Subheading>
         )}
-        <Heading>{properties.heading}</Heading>
+        <HighlightedHeading>{properties.heading}</HighlightedHeading>
         {properties.description && (
           <Description>{properties.description}</Description>
         )}

@@ -3,7 +3,7 @@ import { Container, ContentWithPaddingXl } from "components/misc/Layouts";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { SectionHeading } from "components/misc/Headings";
+import { HighlightedHeading, SectionHeading } from "components/misc/Headings";
 
 const HeadingRow = tw.div`flex`;
 const Heading = tw(SectionHeading)`text-gray-900 mb-10 font-black`;
@@ -40,7 +40,7 @@ export default ({ properties }) => {
       <Container>
         <ContentWithPaddingXl>
           <HeadingRow>
-            <Heading>{properties.heading}</Heading>
+            <HighlightedHeading>{properties.heading}</HighlightedHeading>
           </HeadingRow>
           <Text>
             <h1>TERMS OF USE</h1>

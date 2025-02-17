@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { SectionHeading } from "components/misc/Headings.js";
+import { HighlightedHeading, SectionHeading } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { Container } from "components/misc/Layouts.js";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
@@ -63,11 +63,16 @@ export default ({ properties, children, index, data }) => {
    *  4) url - the url that the card should goto on click
    */
   var inputs = JSON.parse(properties.inputs || "[]");
+
+
+
+  
   return (
     <Container>
       <TwoColumn>
         <TextColumn textOnLeft={properties.textOnLeft}>
-          <Heading>{properties.heading}</Heading>
+          <HighlightedHeading>{properties.heading}</HighlightedHeading>
+       
           <Description>{properties.description}</Description>
         </TextColumn>
         <ThreeColumnContainer>

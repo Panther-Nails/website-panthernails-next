@@ -5,6 +5,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import {
+  HighlightedHeading,
   SectionHeading,
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
@@ -104,7 +105,7 @@ export default ({ properties, children, index, data }) => {
             textOnLeft={properties.textOnLeft === "true" ? true : false}
           >
             <Subheading>{properties.subHeading}</Subheading>
-            <Heading>{properties.heading}</Heading>
+            <HighlightedHeading>{properties.heading}</HighlightedHeading>
             <Description>{properties.description}</Description>
             <TestimonialSlider arrows={false} ref={setSliderRef}>
               {inputs.map((testimonial, index) => (

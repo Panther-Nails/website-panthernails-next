@@ -14,7 +14,7 @@ import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
 const Container = tw(
   ContainerBase
-)`my-8 lg:my-10 bg-primary-900 text-gray-100 -mx-8 px-8`;
+)`my-8 lg:my-10 bg-primary-900 text-gray-100  px-8`;
 const HeadingContainer = tw.div``;
 const Subheading = tw(SubheadingBase)`text-gray-100 text-center`;
 const Description = tw(

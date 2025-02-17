@@ -3,6 +3,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
+import { HighlightedHeading } from "components/misc/Headings.js";
 
 const Container = styled.div`
   ${(props) =>
@@ -38,6 +39,9 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
 `;
 
 export default ({ properties, children, index, data }) => {
+
+  console.log();
+  
   return (
     <Container backgroundImageUrl={properties.backgroundImageUrl}>
       <OpacityOverlay />
@@ -45,10 +49,10 @@ export default ({ properties, children, index, data }) => {
         <TwoColumn>
           <LeftColumn>
             <Notification id="notification">{properties.notification}</Notification>
-            <Heading >
-              <span id="heading">{properties.heading}</span>
-              <br />
-            </Heading>
+            <HighlightedHeading textStyle={tw`text-center lg:text-left`} primaryColor={tw`text-white`}>
+              {properties.heading}
+             
+            </HighlightedHeading>
             <PrimaryAction
               onClick={() => {
                 window.open(`${properties.buttonUrl}`, "_blank");

@@ -8,8 +8,9 @@ import { HighlightedHeading } from "components/misc/Headings.js";
 import defaultCardImage from "images/shield-icon.svg";
 
 import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
+import { Container } from "components/misc/Layouts";
 
-const Container = tw.div`relative  w-full`;
+
 const Content = tw.div`max-w-screen-xl mx-auto py-10`;
 
 const ThreeColumnContainer = styled.div`

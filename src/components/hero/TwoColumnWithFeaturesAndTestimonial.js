@@ -3,7 +3,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import HeaderBase, { NavLinks, NavLink } from "components/headers/light.js";
-import { SectionHeading } from "components/misc/Headings.js";
+import { HighlightedHeading, SectionHeading } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import {
@@ -63,7 +63,7 @@ export default ({
         <ContentWithVerticalPadding>
           <Row>
             <TextColumn>
-              <Heading>{properties.heading}</Heading>
+              <HighlightedHeading>{properties.heading}</HighlightedHeading>
               <Description>{properties.description}</Description>
               <PrimaryButton
                 as="a"
