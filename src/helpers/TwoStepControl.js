@@ -60,7 +60,7 @@ let globalValid = true;
 
 const gEmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const gMobileRegex = /^[0-9+ ]{10,15}$/;
-const gNameRegex = /^[A-Za-z\s]+$/;
+const gNameRegex = /^[A-Za-z]+( [A-Za-z]+)*$/;
 
 const globalValidationFunction = (name, value, type) => {
   if (value?.length < 1) {
@@ -412,6 +412,10 @@ export default ({ properties }) => {
   const [selectedRadioOption, setSelectedRadioOption] = useState("");
   const [checkBoxKey, setCheckBoxKey] = useState();
 
+  let errorData = JSON.parse(properties.errorText || "[]");
+  // properties.errorText.length > 0 && JSON.parse(properties.errorText);
+  let errorMessage = errorData[0];
+
   const resetForm = () => {
     document.getElementById("form").reset();
     setStep(1);
@@ -462,13 +466,13 @@ export default ({ properties }) => {
       input.type !== "radio"
     ) {
       if (value === undefined || value === "") {
-        formErrors[input.name] = "Please fill the information first.";
+        formErrors[input.name] = errorMessage.info;
 
         valid = false;
       }
     }
     if (input.type === "text" && !gNameRegex.test(value)) {
-      formErrors[input.name] = "Name must contain only letters and spaces.";
+      formErrors[input.name] = errorMessage["onlyLettersAndSpaces"];
 
       valid = false;
     }
@@ -480,7 +484,7 @@ export default ({ properties }) => {
       value.length < 2 &&
       gNameRegex.test(value)
     ) {
-      formErrors[input.name] = "Your name is too short";
+      formErrors[input.name] = errorMessage.nameToShort;
 
       valid = false;
     }
@@ -491,19 +495,19 @@ export default ({ properties }) => {
       value.length > 30 &&
       gNameRegex.test(value)
     ) {
-      formErrors[input.name] = "Your name is too long";
+      formErrors[input.name] = errorMessage.nameToLong;
 
       valid = false;
     }
 
     if (input.type === "email" && value && !gEmailRegex.test(value)) {
-      formErrors[input.name] = "Invalid email format.";
+      formErrors[input.name] = errorMessage.email;
 
       valid = false;
     }
 
     if (input.type === "tel" && value && !gMobileRegex.test(value)) {
-      formErrors[input.name] = "Invalid mobile number.";
+      formErrors[input.name] = errorMessage.mobileNo;
 
       valid = false;
     }
@@ -514,21 +518,21 @@ export default ({ properties }) => {
   const controlValidation = (input, value) => {
     if (input.type === "checkbox") {
       if (selectedOptions?.length <= 0) {
-        setCheckBoxError("Please select option");
+        setCheckBoxError(errorMessage.selectOption);
 
         valid = false;
       }
     }
     if (input.type === "dropdown") {
       if (selectedProduct?.length <= 0) {
-        setDropDownError("please select option");
+        setDropDownError(errorMessage.selectOption);
 
         valid = false;
       }
     }
     if (input.type === "radio") {
       if (!selectedRadioOption[input.name]) {
-        setRadioError("Please select an option");
+        setRadioError(errorMessage.selectOption);
         valid = false;
       }
     }

@@ -41,7 +41,7 @@ export default ({ index, properties }) => {
           </Image>
           <Category>{properties.category}</Category>
           <Title>{properties.title}</Title>
-          {properties.buttonVisible === "true" && (
+          {properties.url && (
             <Link href={properties.url}>{properties.buttonText}</Link>
           )}
         </NewCard>
