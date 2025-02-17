@@ -3,6 +3,7 @@ import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9.svg";
 import { ContentWithPaddingXl, Container } from "components/misc/Layouts";
+import { HighlightedHeading } from "components/misc/Headings";
 
 const PrimaryBackgroundContainer = tw.div`py-16 lg:py-20 bg-primary-200 rounded-lg relative`;
 const Row = tw.div`px-4 sm:px-16 mx-auto flex justify-center items-center relative z-10 flex-col lg:flex-row text-center lg:text-left`;
@@ -42,7 +43,7 @@ export default ({ properties, children, index, data }) => {
               {properties.subheading && (
                 <Subheading>{properties.subheading}</Subheading>
               )}
-              <Heading>{properties.heading}</Heading>
+              <HighlightedHeading>{properties.heading}</HighlightedHeading>
             </TextContainer>
             <LinksContainer>
               {properties.leftButtonText && (

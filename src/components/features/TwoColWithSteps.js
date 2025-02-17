@@ -3,6 +3,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import {
+  HighlightedHeading,
   SectionHeading,
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
@@ -66,7 +67,7 @@ export default ({ properties, children, index, data }) => {
         <TextColumn textOnLeft={properties.textOnLeft}>
           <TextContent>
             <Subheading>{properties.subHeading}</Subheading>
-            <Heading>{properties.heading}</Heading>
+            <HighlightedHeading textStyle={tw`text-left`}>{properties.heading}</HighlightedHeading>
             <Steps>{ProcessChildComponentsSeparately(children)}</Steps>
             {properties.buttonText ? (
               <PrimaryButton as="a" href={properties.buttonUrl}>

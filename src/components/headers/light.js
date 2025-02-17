@@ -204,6 +204,8 @@ export default ({
   const collapseBreakpointCss =
     collapseBreakPointCssMap[collapseBreakpointClass];
 
+
+
   const defaultLogoLink = (
     <LogoLink to="/" navPosition={isIncreasing}>
       <img src={pnlogo} alt="logo" />

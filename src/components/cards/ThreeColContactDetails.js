@@ -4,6 +4,7 @@ import tw from "twin.macro";
 //eslint-disable-next-line
 import { css } from "styled-components/macro"; //eslint-disable-line
 import {
+  HighlightedHeading,
   SectionHeading,
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
@@ -63,7 +64,7 @@ export default ({ properties, children, index, data }) => {
         {properties.subheading && (
           <Subheading>{properties.subheading}</Subheading>
         )}
-        <Heading>{properties.heading}</Heading>
+        <HighlightedHeading>{properties.heading}</HighlightedHeading>
         {properties.description && (
           <Description>{properties.description}</Description>
         )}

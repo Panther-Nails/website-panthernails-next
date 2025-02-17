@@ -4,8 +4,9 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
 import { HighlightedHeading } from "components/misc/Headings.js";
+import { Container  } from "components/misc/Layouts";
 
-const Container = tw.div`relative -mx-8 -mt-8`;
+
 const TwoColumn = tw.div`flex flex-col lg:flex-row bg-gray-100`;
 const LeftColumn = tw.div`ml-8 mr-8 xl:pl-10 py-8`;
 const RightColumn = styled.div`

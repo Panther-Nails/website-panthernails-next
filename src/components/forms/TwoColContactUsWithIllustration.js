@@ -3,6 +3,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import {
+  HighlightedHeading,
   SectionHeading,
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
@@ -55,10 +56,7 @@ export default ({ properties, children, index, data }) => {
             {properties.subheading && (
               <Subheading>{properties.subheading}</Subheading>
             )}
-            <Heading>
-              {properties.heading}
-              <span tw="text-primary-500"> {properties.highlighHeading}</span>
-            </Heading>
+            <HighlightedHeading>{properties.heading}</HighlightedHeading>
             <Description>{properties.description}</Description>
             <Form
               action={properties.formAction ? properties.formAction : "#"}

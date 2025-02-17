@@ -2,7 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 import { SectionHeading } from "../misc/Headings.js";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
-
+import { HighlightedHeading } from "../misc/Headings.js";
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
 const ThreeColumn = tw.div`flex flex-col items-center lg:items-stretch lg:flex-row flex-wrap`;
@@ -18,7 +18,7 @@ export default ({ properties, children, index, data }) => {
     <Container>
       <Content>
         <HeadingInfoContainer>
-          <Heading>{properties.heading}</Heading>
+          <HighlightedHeading>{properties.heading}</HighlightedHeading>
           <HeadingDescription>{properties.description}</HeadingDescription>
         </HeadingInfoContainer>
         <ThreeColumn>{ProcessChildComponentsSeparately(children)}</ThreeColumn>

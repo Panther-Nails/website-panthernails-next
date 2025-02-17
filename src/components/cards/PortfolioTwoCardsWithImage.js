@@ -36,7 +36,7 @@ export default ({ properties, children, index, data }) => {
           <HeadingColumn textOnLeft={properties.textOnLeft}>
             <HeadingInfoContainer>
               <Subheading>{properties.subHeading}</Subheading>
-              <HighlightedHeading textPosition={tw`lg:text-left`}>
+              <HighlightedHeading textStyle={tw`lg:text-left`}>
                 {properties.heading}
               </HighlightedHeading>
               <HeadingDescription>{properties.description}</HeadingDescription>

@@ -8,7 +8,7 @@ import {
 } from "components/misc/Headings.js";
 import { Container } from "../misc/Layouts.js";
 
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto   items-center`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-2xl mx-auto  items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0 lg:py-40`;
 
 const TextColumn = styled(Column)((props) => [
@@ -36,13 +36,18 @@ const Subheading = tw(SubheadingBase)`text-center text-red-500`;
 
 const Description = tw.p`mx-auto mt-4 px-4 lg:px-0 text-center text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
+const HeadingContainer = tw.div` w-[90%] m-auto`;
 export default ({ data, children, properties, textOnLeft = true }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
   var statistics = JSON.parse(properties.statistics || "[]");
   return (
     <Container>
       <Subheading>{properties.subHeading}</Subheading>
-      <HighlightedHeading>{properties.heading}</HighlightedHeading>
+      <HeadingContainer>
+        <HighlightedHeading >
+          {properties.heading}
+        </HighlightedHeading>
+      </HeadingContainer>
       <Description>{properties.description}</Description>
       <TwoColumn>
         {statistics.map((stat, index) => (

@@ -54,7 +54,7 @@ const Card = styled.a`
 `;
 
 export default ({ properties, children, index, data }) => {
-  var inputs = JSON.parse(properties.inputs || "[]");
+  const inputs = JSON.parse(properties.inputs || "[]");
   return (
     <Container>
       <ContentWithPaddingXl>

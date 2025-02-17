@@ -12,7 +12,7 @@ import {
 } from "components/misc/Layouts.js";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
-const Container = tw(ContainerBase)`bg-primary-900 text-gray-100 -mx-8 px-8`;
+const Container = tw(ContainerBase)`bg-primary-900 text-gray-100 `;
 const ContentWithPaddingXl = tw(
   ContentBase
 )`relative z-10 mx-auto px-0 py-10 sm:px-6 md:px-8 lg:px-12 xl:px-24 sm:py-20 flex flex-col max-w-screen-xl`;

@@ -4,8 +4,9 @@ import { ReactComponent as SvgDotPatternIcon } from "../../images/dot-pattern.sv
 import { SectionHeading as HeadingTitle } from "../misc/Headings.js";
 
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
+import { Container } from "components/misc/Layouts";
 
-const Container = tw.div`relative`;
+
 
 const SingleColumn = tw.div`py-10`;
 

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
+import { HighlightedHeading } from "components/misc/Headings";
 const Container = styled.div`
   ${(props) =>
     css`
@@ -32,7 +33,7 @@ export default ({ properties, children, index, data }) => {
       <OpacityOverlay />
       <HeroContainer>
         <Content>
-          <Heading>{properties.heading}</Heading>
+          <HighlightedHeading>{properties.heading}</HighlightedHeading>
           <Paragraph>{properties.description}</Paragraph>
           <CardAction as="a" href={properties.buttonUrl}>
             {properties.buttonText}

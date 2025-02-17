@@ -7,8 +7,10 @@ import LogoImage from "../../images/pnlogo.svg";
 import { ReactComponent as FacebookIcon } from "../../images/facebook-icon.svg";
 import { ReactComponent as TwitterIcon } from "../../images/twitter-icon.svg";
 import { ReactComponent as YoutubeIcon } from "../../images/youtube-icon.svg";
+import { Container as ContainerBase } from "components/misc/Layouts.js";
 
-const Container = tw.div`relative bg-gray-200 -mx-8 -mb-8 px-8`;
+const Container = tw(ContainerBase)` bg-gray-200 `;
+
 const FiveColumns = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20 flex flex-wrap justify-between`;
 
 const Column = tw.div`md:w-1/5`;

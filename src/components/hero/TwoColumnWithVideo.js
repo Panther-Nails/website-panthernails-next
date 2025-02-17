@@ -6,7 +6,7 @@ import { css } from "styled-components/macro";
 
 import ReactModalAdapter from "../../helpers/ReactModalAdapter.js";
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
-
+import { HighlightedHeading } from "../misc/Headings.js";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/dot-pattern.svg";
@@ -56,7 +56,9 @@ export default ({ properties, children, index, data }) => {
       <Container tw="pt-12 md:pt-3 md:pb-8 ">
         <TwoColumn>
           <LeftColumn>
-            <Heading>{properties.heading}</Heading>
+            <HighlightedHeading textStyle={tw`text-center lg:text-left`}>
+              {properties.heading}
+            </HighlightedHeading>
             <Paragraph>{properties.description}</Paragraph>
             <Actions>
               <PrimaryButton href={properties.buttonUrl} target="_blank">

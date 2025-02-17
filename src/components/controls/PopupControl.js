@@ -41,8 +41,10 @@ export default ({ properties, children }) => {
 
   var endTime = properties?.endTime ? JSON.parse(properties.endTime) : 1000000;
 
+  
   const [chaildData] = children;
   const { CPJSON, HPJSON } = chaildData;
+
 
   const cpjsonData = CPJSON && JSON.parse(CPJSON);
   const hpjsonData = HPJSON && JSON.parse(HPJSON);

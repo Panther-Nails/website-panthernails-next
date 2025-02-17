@@ -7,12 +7,12 @@ import {
   ContentWithVerticalPadding,
   Content2Xl,
 } from "components/misc/Layouts.js";
-import { SectionHeading } from "components/misc/Headings.js";
+import { HighlightedHeading, SectionHeading } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import serverIllustrationImageSrc from "images/server-illustration-2.svg";
 
-const PrimaryBackgroundContainer = tw.div`-mx-8 px-8 bg-primary-900 text-gray-100`;
+const PrimaryBackgroundContainer = tw.div` px-8 bg-primary-900 text-gray-100`;
 const Container = tw(ContainerBase)``;
 const Row = tw.div`flex items-center flex-col lg:flex-row`;
 const Column = tw.div`lg:w-1/2`;
@@ -37,7 +37,7 @@ export default ({ properties, children, index, data }) => {
           <ContentWithVerticalPadding>
             <Row>
               <TextColumn>
-                <Heading>{properties.heading}</Heading>
+                <HighlightedHeading>{properties.heading}</HighlightedHeading>
                 <Description>{properties.description}</Description>
                 <PrimaryButton as="a" to={properties.buttonUrl}>
                   {properties.buttonText}

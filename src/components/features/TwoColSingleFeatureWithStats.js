@@ -2,7 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { SectionHeading } from "components/misc/Headings.js";
+import { HighlightedHeading, SectionHeading } from "components/misc/Headings.js";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
@@ -46,7 +46,7 @@ export default ({ properties, children, index, data }) => {
         </ImageColumn>
         <TextColumn textOnLeft={properties.textOnLeft}>
           <TextContent>
-            <Heading>{properties.heading}</Heading>
+            <HighlightedHeading>{properties.heading}</HighlightedHeading>
             <Description>{properties.description}</Description>
             <Statistics>
               {statistics.map((statistic, index) => (

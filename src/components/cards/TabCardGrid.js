@@ -151,7 +151,7 @@ export default ({
         url: "#",
       },
     ],
-    Main: data.ChildComponentJSON.map((item, index) => ({
+    Main: data.ChildComponentJSON?.map((item, index) => ({
       imageSrc:
         "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
       title: item.ComponentPropertyJSON.heading,
@@ -178,10 +178,10 @@ export default ({
     <Container>
       <ContentWithPaddingXl>
         <HeaderRow>
-          <Header>{data.ComponentPropertyJSON.heading}</Header>
-          <Subheading>{data.ComponentPropertyJSON.subHeading}</Subheading>
+          <Header>{data?.ComponentPropertyJSON?.heading}</Header>
+          <Subheading>{data?.ComponentPropertyJSON?.subHeading}</Subheading>
           <TabsControl>
-            {Object.keys(tabs).map((tabName, index) => (
+            {Object.keys(tabs)?.map((tabName, index) => (
               <TabControl
                 key={index}
                 active={activeTab === tabName}
@@ -193,7 +193,7 @@ export default ({
           </TabsControl>
         </HeaderRow>
 
-        {tabsKeys.map((tabKey, index) => (
+        {tabsKeys?.map((tabKey, index) => (
           <TabContent
             key={index}
             variants={{
@@ -212,7 +212,7 @@ export default ({
             initial={activeTab === tabKey ? "current" : "hidden"}
             animate={activeTab === tabKey ? "current" : "hidden"}
           >
-            {tabs[tabKey].map((card, index) => (
+            {tabs[tabKey]?.map((card, index) => (
               <CardContainer key={index}>
                 <Card
                   className="group"
