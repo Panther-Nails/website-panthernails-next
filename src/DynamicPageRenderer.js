@@ -12,6 +12,10 @@ export default () => {
   const { languageObject } = useSession();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [window.location.pathname]);
+
+  useEffect(() => {
     var parameter = {
       GroupName: type,
       SubGroupName: subtype,
@@ -28,7 +32,6 @@ export default () => {
           const newData = data.items[0];
           if (newData.Components) {
             const componentsList = JSON.parse(newData.Components);
-            console.log("componentsList", componentsList);
             setComponents(componentsList);
           }
         }

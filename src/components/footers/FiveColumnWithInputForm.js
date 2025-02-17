@@ -11,7 +11,9 @@ import { ReactComponent as YoutubeIcon } from "images/youtube-icon.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9.svg";
 import { Container as ContainerBase } from "components/misc/Layouts.js";
 
-const Container = tw(ContainerBase)`bg-siteColors-textColor text-gray-100  px-8 py-20 lg:py-24`;
+const Container = tw(
+  ContainerBase
+)`bg-siteColors-textColor text-gray-100  px-8 py-20 lg:py-24`;
 const Content = tw.div`max-w-screen-xl mx-auto relative z-10 `;
 const SixColumns = tw.div`flex flex-wrap text-center sm:text-left justify-center sm:justify-start md:justify-between -mt-12`;
 
@@ -61,7 +63,7 @@ const DecoratorBlob2 = tw(
   SvgDecoratorBlob1
 )`absolute bottom-0 right-0 w-80 h-80 transform  translate-x-32 translate-y-48 text-primary-700 opacity-50`;
 
-export default ({ index, children, properties }) => {
+export default ({ index, children, properties, data }) => {
   var sections = JSON.parse(properties.inputs || "[]");
   var socialLinks = JSON.parse(properties.socialLinks || "[]");
 
@@ -69,11 +71,11 @@ export default ({ index, children, properties }) => {
     <Container>
       <Content>
         <SixColumns>
-          {sections.map((section, index) => (
+          {sections?.map((section, index) => (
             <Column key={index}>
-              <ColumnHeading  >{section.title}</ColumnHeading>
+              <ColumnHeading>{section.title}</ColumnHeading>
               <LinkList>
-                {section.menuLinks.map((menulink, index) => (
+                {section?.menuLinks?.map((menulink, index) => (
                   <LinkListItem key={index}>
                     <Link href={menulink.link}>{menulink.title}</Link>
                   </LinkListItem>
@@ -84,9 +86,7 @@ export default ({ index, children, properties }) => {
           <SubscribeNewsletterColumn>
             <SubscribeNewsletterContainer>
               <ColumnHeading>{properties.newsLetterText}</ColumnHeading>
-              <SubscribeText>
-                {properties.newsLetterSubText}
-              </SubscribeText>
+              <SubscribeText>{properties.newsLetterSubText}</SubscribeText>
               <SubscribeForm
                 method="post"
                 action={"mailto:subscribe@panthernails.com?subject=Subscribe"}
@@ -96,7 +96,9 @@ export default ({ index, children, properties }) => {
                   name="body"
                   placeholder={properties.placeholderText}
                 />
-                <SubscribeButton type="submit">{properties.subscribeButtonText}</SubscribeButton>
+                <SubscribeButton type="submit">
+                  {properties.subscribeButtonText}
+                </SubscribeButton>
               </SubscribeForm>
             </SubscribeNewsletterContainer>
           </SubscribeNewsletterColumn>
@@ -113,7 +115,7 @@ export default ({ index, children, properties }) => {
             Ltd, All Rights Reserved.
           </CopywrightNotice>
           <SocialLinksContainer>
-            {socialLinks.map((socialLink, k) => {
+            {socialLinks?.map((socialLink, k) => {
               return (
                 <SocialLink href={socialLink.link} key={k} target="_blank">
                   <SocialImg src={socialLink.icon} />
