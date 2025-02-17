@@ -76,5 +76,5 @@ export default () => {
     }
   }, [languageObject, group, subgroup, name, search]);
 
-  return <Outlet />;
+  return languageObject.LanguageID && <Outlet />;
 };

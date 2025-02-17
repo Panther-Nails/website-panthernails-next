@@ -9,7 +9,26 @@
       "request": "launch",
       "name": "Launch Chrome against localhost",
       "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}"
+      "smartStep": true,
+      "webRoot": "${workspaceFolder}",
+      "skipFiles": [
+        "${workspaceFolder}/node_modules/**/*.js",
+        "${workspaceFolder}/node_modules/@babel/**/*.js",
+        "${workspaceFolder}/node_modules/webpack-dev-server/**/*.js",
+        "${workspaceFolder}/node_modules/core-js/**/*.js",
+        "${workspaceFolder}/node_modules/react-scripts/**/*.js",
+        "${workspaceFolder}/node_modules/jest/**/*.js",
+        "${workspaceFolder}/node_modules/mocha/**/*.js",
+        "${workspaceFolder}/node_modules/lodash/**/*.js",
+        "${workspaceFolder}/node_modules/axios/**/*.js",
+        "${workspaceFolder}/node_modules/styled-components/**/*.js",
+        "${workspaceFolder}/node_modules/bootstrap/**/*.js",
+        "${workspaceFolder}/node_modules/moment/**/*.js",
+        "${workspaceFolder}/**/webpack/**/*.js",
+        "${workspaceFolder}/**/runtime/**/*.js",
+        "${workspaceFolder}/**/*chunk*.js",
+        "<node_internals>/**"
+      ]
     }
   ]
 }
