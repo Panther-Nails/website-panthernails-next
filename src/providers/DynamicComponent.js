@@ -23,13 +23,16 @@ const DynamicComponent = ({ component, index }) => {
   const appCache = useSWRConfig();
   const [properties, setProperties] = useState({});
 
-  const { data } = useExecuteQuerySWR(`${component.CacheKey}`, {
-    ActionName:
-      "WSM.GMst_SelectFewFromComponentHierarchyPropertyWhereLinkComponentHierarchyID",
-    ParameterJSON: JSON.stringify({
-      LinkComponentHierarchyID: component.LinkComponentHierarchyID,
-    }),
-  });
+  const { data } = useExecuteQuerySWR(
+    component.CacheKey ? `${component.CacheKey}` : null,
+    {
+      ActionName:
+        "WSM.GMst_SelectFewFromComponentHierarchyPropertyWhereLinkComponentHierarchyID",
+      ParameterJSON: JSON.stringify({
+        LinkComponentHierarchyID: component.LinkComponentHierarchyID,
+      }),
+    }
+  );
 
   useEffect(() => {
     const currentCacheKeys = Array.from(appCache.cache.keys()) || [];

@@ -148,7 +148,7 @@ export default ({
   useEffect(() => {
     if (data) {
       const location = window.location.pathname;
-      const isCurrentLink = data.items.find((item) => {
+      const isCurrentLink = data?.items?.find((item) => {
         return item.LinkURL.toUpperCase() === location.toUpperCase();
       });
 
@@ -203,13 +203,20 @@ export default ({
   const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
   const collapseBreakpointCss =
     collapseBreakPointCssMap[collapseBreakpointClass];
+  const navigate = useNavigate();
 
+  const navigatToHome = () => {
+    console.log("Calling");
 
+    navigate("/");
+  };
 
   const defaultLogoLink = (
-    <LogoLink to="/" navPosition={isIncreasing}>
-      <img src={pnlogo} alt="logo" />
-    </LogoLink>
+    <div onClick={navigatToHome}>
+      <LogoLink navPosition={isIncreasing}>
+        <img src={pnlogo} alt="logo" />
+      </LogoLink>
+    </div>
   );
 
   const menuLinks = (

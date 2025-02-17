@@ -395,6 +395,7 @@ const MultiSelectCheckbox = ({
 };
 
 export default ({ properties }) => {
+
   const { hidePopup } = useSession();
 
   const [formData, setFormData] = useState({});
@@ -625,7 +626,7 @@ export default ({ properties }) => {
   var inputs = JSON.parse(properties.inputs || "[]");
 
   const inputControls = (label) => {
-    if (label.type.toUpperCase() === "CHECKBOX") {
+    if (label.type?.toUpperCase() === "CHECKBOX") {
       return (
         <MultiSelectCheckbox
           selectedOptions={selectedOptions}
@@ -636,7 +637,7 @@ export default ({ properties }) => {
           setCheckBoxKey={setCheckBoxKey}
         />
       );
-    } else if (label.type.toUpperCase() === "RADIO") {
+    } else if (label.type?.toUpperCase() === "RADIO") {
       return (
         <RadioButtonControl
           radioInput={label.selectValue}
@@ -649,7 +650,7 @@ export default ({ properties }) => {
           setRadioInputValidate={setRadioInputValidate}
         />
       );
-    } else if (label.type.toUpperCase() === "TEXTAREA") {
+    } else if (label.type?.toUpperCase() === "TEXTAREA") {
       return (
         <>
           <Textarea
@@ -663,7 +664,7 @@ export default ({ properties }) => {
           )}
         </>
       );
-    } else if (label.type.toUpperCase() === "DROPDOWN") {
+    } else if (label?.type?.toUpperCase() === "DROPDOWN") {
       return (
         <MultiSelectDropdown
           selectedValues={selectedProduct} // Pass the selected values
@@ -706,7 +707,7 @@ export default ({ properties }) => {
         method={properties.formMethod}
         onSubmit={handleSubmit}
       >
-        {inputs.length <= ShowFieldCount ? (
+        {inputs?.length <= ShowFieldCount ? (
           <>
             {inputs?.map((label, index) => (
               <Wraper key={index}>{label && inputControls(label)}</Wraper>
