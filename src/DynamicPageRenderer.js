@@ -32,6 +32,7 @@ export default () => {
           const newData = data.items[0];
           if (newData.Components) {
             const componentsList = JSON.parse(newData.Components);
+
             setComponents(componentsList);
           }
         }

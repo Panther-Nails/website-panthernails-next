@@ -8,7 +8,7 @@ import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
 const Container = tw.div`relative`;
-const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
+const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24 px-8 lg:px-0`;
 
 const ThreeColumn = tw.div`flex flex-wrap`;
 const Column = tw.div`xl:mr-12 xl:last:mr-0`;
