@@ -347,7 +347,9 @@ export default ({
           );
         })}
       </NavLinks>
-      <div css={tw`flex flex-col lg:flex-row lg:gap-5`}>
+      <div
+        css={tw`flex flex-col lg:flex-row lg:gap-5 items-center justify-center`}
+      >
         {!isSearchVisible && (
           <div
             onClick={() => setIsSearchVisible(true)}
