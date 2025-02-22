@@ -11,7 +11,6 @@ const ImportDynamicComponent = (Section, ComponentName) => {
       .then((module) => ({ default: module.default }))
       .catch((error) => {
         console.log("Error while importing component", error);
-
         return { default: () => <FallbackLoading /> };
       })
   );

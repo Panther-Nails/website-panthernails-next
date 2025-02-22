@@ -47,7 +47,13 @@ export default () => {
       ) : (
         <>
           {components.map((component, index) => (
-            <DynamicComponent component={component} index={index} key={index} />
+            <div id={component.CacheKey} key={index}>
+              <DynamicComponent
+                component={component}
+                index={index}
+                key={index}
+              />
+            </div>
           ))}
         </>
       )}
