@@ -11,9 +11,11 @@ export default () => {
   const [components, setComponents] = useState([]);
   const { languageObject } = useSession();
 
+  const path = window.location.pathname;
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [window.location.pathname]);
+  }, [path]);
 
   useEffect(() => {
     var parameter = {
@@ -32,13 +34,12 @@ export default () => {
           const newData = data.items[0];
           if (newData.Components) {
             const componentsList = JSON.parse(newData.Components);
-
             setComponents(componentsList);
           }
         }
       }
     });
-  }, [window.location.pathname, languageObject.LanguageID]);
+  }, [path, languageObject.LanguageID, type, subtype, name]);
 
   return (
     <>
@@ -48,11 +49,7 @@ export default () => {
         <>
           {components.map((component, index) => (
             <div id={component.CacheKey} key={index}>
-              <DynamicComponent
-                component={component}
-                index={index}
-                key={index}
-              />
+              <DynamicComponent component={component} index={index} />
             </div>
           ))}
         </>

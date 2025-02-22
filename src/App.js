@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import GlobalStyles from "styles/GlobalStyles";
 import "react-toastify/dist/ReactToastify.css";
 import "slick-carousel/slick/slick.css";
@@ -38,15 +38,15 @@ export default function App() {
     };
   }
 
-  const googleTranslateElementInit = () => {
-    new window.google.translate.TranslateElement(
-      {
-        pageLanguage: "en",
-        autoDisplay: false,
-      },
-      "google_translate_element"
-    );
-  };
+  // const googleTranslateElementInit = () => {
+  //   new window.google.translate.TranslateElement(
+  //     {
+  //       pageLanguage: "en",
+  //       autoDisplay: false,
+  //     },
+  //     "google_translate_element"
+  //   );
+  // };
 
   // useEffect(() => {
   //   var addScript = document.createElement("script");

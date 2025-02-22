@@ -222,8 +222,6 @@ export function ExecuteCommand(FormData) {
 }
 
 export function ExecuteQuery(FormData) {
-  console.count("Service Calling");
-
   var oFormData = { ...FormData };
   oFormData.OperationName = "Query";
 
