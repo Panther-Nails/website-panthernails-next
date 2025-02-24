@@ -11,20 +11,20 @@ import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3
 import { Container } from "components/misc/Layouts";
 
 
-const Content = tw.div`max-w-screen-xl mx-auto py-10`;
+const Content = tw.div`w-[90%] mx-auto py-10`;
 
 const ThreeColumnContainer = styled.div`
-  ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center py-5 md:items-center `}
+  ${tw`flex px-4 flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center py-5 md:items-center `}
 `;
 
 const VerticalSpacer = tw.div`mt-10 w-full`;
 
 const Column = styled.div`
-  ${tw`w-1/6  max-w-sm `}
+  ${tw`w-1/6  flex items-center justify-center `}
 `;
 
 const Card = styled.div`
-  ${tw`flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8`}
+  ${tw`flex flex-col sm:flex-row items-center  text-center sm:text-left h-full mx-4 px-2 py-8`}
   .imageContainer {
     ${tw` text-center flex-shrink-0 mx-auto `}
     img {

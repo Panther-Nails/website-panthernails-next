@@ -8,12 +8,12 @@ import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { ReactComponent as SvgDecoratorBlob } from "images/svg-decorator-blob-6.svg";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
 
-const HeaderContainer = tw.div`mt-10 w-full flex flex-col items-center`;
+const HeaderContainer = tw.div`mt-10 w-[90%] flex flex-col items-center m-auto`;
 const Description = tw(SectionDescription)`w-full text-center`;
 
-const PlansContainer = tw.div`flex justify-between flex-col lg:flex-row items-center relative gap-3`;
+const PlansContainer = tw.div`flex justify-between flex-col lg:flex-row items-center relative gap-2 px-4`;
 const Plan = styled.div`
-  ${tw`flex max-w-sm mt-3 text-center px-8 rounded-lg shadow relative pt-2  gap-3 text-gray-900 bg-white lg:w-1/4`}
+  ${tw`flex max-w-sm mt-3 px-2 text-center px-4 rounded-lg shadow relative pt-2  gap-3 text-gray-900 bg-white lg:w-1/4 flex flex-col items-center justify-center `}
   ${(props) =>
     props.bgColor &&
     css`
@@ -29,7 +29,7 @@ const DecoratorBlob = styled(SvgDecoratorBlob)`
 `;
 
 const Card = styled.a`
-  ${tw`flex flex-col items-center text-center h-full w-48 mx-4 px-4 py-8 rounded transition-transform duration-300 hover:cursor-pointer transform hover:scale-105 `}
+  ${tw`flex flex-col items-center text-center h-full w-48 mx-4 px-4 py-8 rounded transition-transform duration-300 hover:cursor-pointer transform hover:scale-105 m-auto `}
   .imageContainer {
     ${tw`text-center rounded-full p-2 bg-gray-100`}
     img {

@@ -11,7 +11,7 @@ import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { ReactComponent as SvgDecoratorBlob } from "images/svg-decorator-blob-6.svg";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
-const HeaderContainer = tw.div`mt-10 w-full flex flex-col items-center`;
+const HeaderContainer = tw.div`mt-10 w-full flex flex-col items-center w-[90%] m-auto`;
 const Subheading = tw(SubheadingBase)`mb-4`;
 const Description = tw(SectionDescription)`w-full text-center`;
 

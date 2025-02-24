@@ -6,6 +6,11 @@ import FallbackLoading from "helpers/FallbackLoading";
 import { ExecuteQuery } from "services/APIService";
 import { useSession } from "providers/SessionProvider";
 
+//test
+import tw from "twin.macro";
+import styled from "styled-components";
+import { css } from "styled-components";
+
 export default () => {
   const { type, subtype, name } = useParams();
   const [components, setComponents] = useState([]);
@@ -46,7 +51,13 @@ export default () => {
       ) : (
         <>
           {components.map((component, index) => (
-            <DynamicComponent component={component} index={index} key={index} />
+            <>
+              <DynamicComponent
+                component={component}
+                index={index}
+                key={index}
+              />
+            </>
           ))}
         </>
       )}

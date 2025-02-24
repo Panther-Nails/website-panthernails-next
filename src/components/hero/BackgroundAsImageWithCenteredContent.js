@@ -15,8 +15,8 @@ const Container = styled.div`
 
 const OpacityOverlay = tw.div`z-10 absolute inset-0 bg-black opacity-75`;
 
-const HeroContainer = tw.div`z-20 relative px-6 sm:px-8 mx-auto h-full flex flex-col`;
-const Content = tw.div`px-4 flex flex-1 flex-col justify-center items-center`;
+const HeroContainer = tw.div`z-20 relative px-6 sm:px-8 mx-auto h-full flex flex-col items-center`;
+const Content = tw.div`px-4 flex flex-1 flex-col justify-center items-center lg:px-10`;
 const Paragraph = tw.p`px-2 lg:px-12 my-4 lg:my-5 lg:my-8 sm:text-lg lg:text-base xl:text-lg text-gray-100 text-center leading-loose`;
 
 const Heading = styled.h1`
@@ -33,7 +33,7 @@ export default ({ properties, children, index, data }) => {
       <OpacityOverlay />
       <HeroContainer>
         <Content>
-          <HighlightedHeading>{properties.heading}</HighlightedHeading>
+          <HighlightedHeading primaryColor={tw`text-white`}>{properties.heading}</HighlightedHeading>
           <Paragraph>{properties.description}</Paragraph>
           <CardAction as="a" href={properties.buttonUrl}>
             {properties.buttonText}

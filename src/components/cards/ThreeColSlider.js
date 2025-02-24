@@ -7,12 +7,13 @@ import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons";
 import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chevron-left.svg";
 import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
+import { Container } from "components/misc/Layouts";
 
-const Container = tw.div`relative px-4`;
-const Content = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20`;
 
-const HeadingWithControl = tw.div` px-4 flex flex-col items-center sm:items-stretch sm:flex-row justify-between`;
-const Heading = tw(SectionHeading)``;
+const Content = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20 px-8`;
+
+const HeadingWithControl = tw.div` px-4 flex flex-col items-center sm:items-stretch md:gap-4 sm:flex-row justify-between`;
+
 const Controls = tw.div`flex items-center`;
 const ControlButton = styled(PrimaryButtonBase)`
   ${tw`mt-4 sm:mt-0 first:ml-0 ml-6 rounded-full p-2`}
@@ -32,8 +33,8 @@ const CardSlider = styled(Slider)`
     ${tw`h-auto flex justify-center mb-1`}
   }
 `;
-const Description = tw.p`text-sm leading-loose px-5 mt-2 sm:mt-4`;
 
+const Description = tw.p`mt-4 px-4  text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 export default ({ index, properties, children }) => {
   // useState is used instead of useRef below because we want to re-render when sliderRef becomes available (not null)
   const [sliderRef, setSliderRef] = useState(null);
@@ -62,7 +63,7 @@ export default ({ index, properties, children }) => {
     <Container>
       <Content>
         <HeadingWithControl>
-          <HighlightedHeading>{properties.heading}</HighlightedHeading>
+          <HighlightedHeading textStyle={tw`text-center md:text-left mt-0`}>{properties.heading}</HighlightedHeading>
           <Controls>
             <PrevButton onClick={sliderRef?.slickPrev}>
               <ChevronLeftIcon />

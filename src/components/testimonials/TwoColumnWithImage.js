@@ -10,10 +10,11 @@ import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-5.svg";
 import "slick-carousel/slick/slick.css";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
+import { Container } from "components/misc/Layouts.js";
 
-const Container = tw.div`relative overflow-hidden`;
+
 const Content = tw.div`max-w-screen-xl mx-auto pt-20 lg:py-24`;
-const HeadingInfoContainer = tw.div`flex flex-col items-center`;
+const HeadingInfoContainer = tw.div`flex flex-col items-center w-[90%] m-auto`;
 const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w-sm`;
 
 const TestimonialSliderContainer = tw.div`mt-8 px-8`;
@@ -57,7 +58,7 @@ export default ({ properties, children, index, data }) => {
       <Content>
         <HeadingInfoContainer>
           <HighlightedHeading>{properties.heading}</HighlightedHeading>
-          <HeadingDescription></HeadingDescription>
+          <HeadingDescription>{properties.description}</HeadingDescription>
         </HeadingInfoContainer>
         <TestimonialSliderContainer>
           <TestimonialSlider

@@ -26,14 +26,18 @@ const PlanFeatures = styled.ul`
   }
 `;
 
+const TextContainer = tw.div`w-[90%] m-auto`;
+
 export default ({ properties, children, index, data }) => {
   var siteMapArray = JSON.parse(properties.siteMapJson || "[]");
 
   return (
     <Container tw="bg-white lg:flex lg:flex-col gap-8 py-12">
-      <HighlightedHeading tw="text-left text-black text-3xl font-serif pl-8 py-12">
-        {properties.heading}
-      </HighlightedHeading>
+      <TextContainer>
+        <HighlightedHeading tw="text-left text-black text-3xl font-serif pl-8 py-12">
+          {properties.heading}
+        </HighlightedHeading>
+      </TextContainer>
       <PlansContainer tw="md:flex items-center justify-center">
         {siteMapArray.map((plan, index) => (
           <Plan key={index} featured={plan.featured}>

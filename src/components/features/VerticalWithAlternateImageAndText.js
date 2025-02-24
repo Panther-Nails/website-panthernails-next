@@ -1,18 +1,14 @@
 import React from "react";
 import tw from "twin.macro";
 import { ReactComponent as SvgDotPatternIcon } from "../../images/dot-pattern.svg";
-import { SectionHeading as HeadingTitle } from "../misc/Headings.js";
-
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 import { Container } from "components/misc/Layouts";
-
-
+import { HighlightedHeading } from "components/misc/Headings.js";
 
 const SingleColumn = tw.div`py-10`;
 
-const HeadingInfoContainer = tw.div`flex flex-col items-center`;
-const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w-sm`;
-
+const HeadingInfoContainer = tw.div`flex flex-col items-center justify-center m-auto w-[90%]`;
+const Description = tw.p`mt-4 px-4 lg:px-0 text-center text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 const Content = tw.div`mt-16`;
 
 const SvgDotPattern1 = tw(
@@ -33,8 +29,8 @@ export default ({ properties, children, index, data }) => {
     <Container>
       <SingleColumn>
         <HeadingInfoContainer>
-          <HeadingTitle>{properties.heading}</HeadingTitle>
-          <HeadingDescription>{properties.subheading}</HeadingDescription>
+          <HighlightedHeading>{properties.heading}</HighlightedHeading>
+          <Description>{properties.subheading}</Description>
         </HeadingInfoContainer>
         <Content>{ProcessChildComponentsSeparately(children)}</Content>
       </SingleColumn>

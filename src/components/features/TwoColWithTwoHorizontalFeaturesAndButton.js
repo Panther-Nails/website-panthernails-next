@@ -11,7 +11,7 @@ import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
 const Container = tw.div`relative`;
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between px-4 max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 
 const ImageColumn = styled(Column)((props) => [
@@ -40,7 +40,7 @@ const TextContent = tw.div`lg:py-8  text-center md:text-left `;
 
 const Subheading = tw(SubheadingBase)`text-center md:text-left`;
 
-const Description = tw.p`mt-8 px-6 lg:px-0  text-center  text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
+const Description = tw.p`mt-8 px-6 lg:px-0  text-center lg:text-left  text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
 const Features = tw.div`mx-auto md:mx-0 flex flex-col lg:flex-row max-w-xs lg:max-w-none`;
 const PrimaryButton = styled(PrimaryButtonBase)((props) => [
@@ -73,7 +73,7 @@ export default ({
         >
           <TextContent>
             <Subheading>{properties.subheading}</Subheading>
-            <HighlightedHeading tw="text-left">
+            <HighlightedHeading textStyle={tw`text-center lg:text-left `}>
               {properties.heading}
             </HighlightedHeading>
             <Description>{properties.description}</Description>

@@ -3,18 +3,19 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { HighlightedHeading, SectionHeading } from "components/misc/Headings.js";
+import { Container } from "components/misc/Layouts";
 
-const Container = tw.div`relative`;
+
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(
   Column
-)`md:w-6/12 lg:w-5/12 flex-shrink-0 h-80 md:h-auto`;
+)`md:w-6/12 lg:w-5/12 flex-shrink-0 h-80 md:h-auto px-4`;
 const TextColumn = styled(Column)((props) => [
   tw`md:w-6/12 mt-8 md:mt-0`,
   props.textOnLeft === "true"
-    ? tw`md:mr-8 lg:mr-16 md:order-first`
-    : tw`md:ml-8 lg:ml-16 md:order-last`,
+  ? tw`md:ml-12 lg:ml-16 md:order-first`
+  : tw`md:mr-12 lg:mr-16 md:order-last`,
 ]);
 
 const Image = styled.div((props) => [
@@ -28,7 +29,7 @@ const Heading = tw(
 )`mt-4 font-black text-left px-4 lg:px-0 text-2xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
 const Description = tw.p`text-center px-4 lg:px-0 md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100 mt-4`;
 
-const Statistics = tw.div`mt-6 lg:mt-8 xl:mt-16 flex flex-wrap`;
+const Statistics = tw.div`mt-6 lg:mt-8 xl:mt-16 flex flex-wrap px-4 lg:px-0`;
 const Statistic = tw.div`text-lg sm:text-2xl lg:text-3xl w-1/2 mt-4 lg:mt-10 text-center md:text-left`;
 const Value = tw.div`font-bold text-primary-500`;
 const Key = tw.div`font-medium text-gray-700`;
@@ -46,7 +47,7 @@ export default ({ properties, children, index, data }) => {
         </ImageColumn>
         <TextColumn textOnLeft={properties.textOnLeft}>
           <TextContent>
-            <HighlightedHeading>{properties.heading}</HighlightedHeading>
+            <HighlightedHeading textStyle={tw`text-center md:text-left`}>{properties.heading}</HighlightedHeading>
             <Description>{properties.description}</Description>
             <Statistics>
               {statistics.map((statistic, index) => (

@@ -7,7 +7,7 @@ export const Subheading = tw.h5`font-bold text-primary-500`;
 
 const DynamicHeading = tw(
   SectionHeading
-)`w-full mt-4 font-black px-4 lg:px-0 text-2xl sm:text-4xl lg:text-5xl text-center leading-tight `;
+)`w-full mt-4 font-black px-4 lg:px-0 text-2xl sm:text-4xl lg:text-5xl text-center leading-tight  `;
 
 export const HeadingText = tw.span`text-primary-900 w-full`;
 export const HighlightedText = tw.span`text-primary-500 w-full`;

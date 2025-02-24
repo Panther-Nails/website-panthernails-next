@@ -12,7 +12,7 @@ const ControlHeadingText = tw.p`mt-4  md:text-left text-sm  lg:text-base font-me
 
 const Form = tw.form`mt-2 text-xs   lg:text-sm flex flex-col h-[100%] w-full mx-auto md:mx-0`;
 const Input = styled.input((props) => [
-  tw`mt-4 w-full first:mt-0 border-b-2 border-gray-400 py-2 lg:py-3 focus:outline-none font-medium transition duration-300 hocus:border-primary-500`,
+  tw`mt-4 pl-2 w-full first:mt-0 border-b-2 border-gray-400 py-2 lg:py-3 focus:outline-none font-medium transition duration-300 hocus:border-primary-500`,
   `&:hover {
     border-color: ${props.themeColor === "loyalty" ? "#69264F" : "#0067CC"};
    

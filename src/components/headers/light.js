@@ -108,7 +108,7 @@ const backgroundColor = {
   none: tw``,
 };
 
-export default ({
+export default  ({
   logoLink,
   className,
   collapseBreakpointClass = "lg",
@@ -118,10 +118,8 @@ export default ({
     hasNotificationSeen,
     setHasNotificationSeen,
     languageObject,
-    setLanguageObject,
     notificationText,
     notificationType,
-    languages,
   } = useSession();
 
   /*
@@ -137,9 +135,29 @@ export default ({
    * changing the defaultLinks variable below below.
    * If you manipulate links here, all the styling on the links is already done for you. If you pass links yourself though, you are responsible for styling the links or use the helper styled components that are defined here (NavLink)
    */
+console.log("header");
 
-  const [scrollCounter, setScrollCounter] = useState(0);
   const [isIncreasing, setIsIncreasing] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > 50) {
+        setIsIncreasing(true);
+      } else if (currentScrollY === 0) {
+        setIsIncreasing(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+
+
   const { data } = useExecuteQuerySWR(`${languageObject?.LanguageID}`, {
     ActionName: "WSM.GMst_SelectFewFromLinkAndLinkLanguages",
     ParameterJSON: "{}",
@@ -160,25 +178,6 @@ export default ({
       }
     }
   }, [data, window.location.pathname, languageObject?.LanguageID]);
-
-  const handleScroll = () => {
-    const position = window.scrollY;
-    setScrollCounter(position);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    if (scrollCounter > 0) {
-      setIsIncreasing(true);
-    } else {
-      setIsIncreasing(false);
-    }
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll, { passive: true });
-    };
-  }, [scrollCounter]);
 
   const defaultLinks = [
     <NavLinks key={1}>

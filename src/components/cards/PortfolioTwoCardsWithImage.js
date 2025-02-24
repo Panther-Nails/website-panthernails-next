@@ -6,8 +6,9 @@ import { HighlightedHeading, Subheading } from "components/misc/Headings.js";
 import { PrimaryLink as PrimaryLinkBase } from "components/misc/Links.js";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
+import { Container } from "components/misc/Layouts";
 
-const Container = tw.div`relative`;
+
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
 
 const ThreeColumn = tw.div`flex flex-wrap`;
@@ -30,13 +31,13 @@ const PrimaryLink = styled(PrimaryLinkBase)`
 
 export default ({ properties, children, index, data }) => {
   return (
-    <Container tw="bg-white">
+    <Container >
       <Content>
         <ThreeColumn>
           <HeadingColumn textOnLeft={properties.textOnLeft}>
             <HeadingInfoContainer>
               <Subheading>{properties.subHeading}</Subheading>
-              <HighlightedHeading textStyle={tw`lg:text-left`}>
+              <HighlightedHeading textStyle={tw`text-center lg:text-left`}>
                 {properties.heading}
               </HighlightedHeading>
               <HeadingDescription>{properties.description}</HeadingDescription>

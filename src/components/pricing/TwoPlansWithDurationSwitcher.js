@@ -71,6 +71,7 @@ const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
 const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
   ${tw`pointer-events-none -z-20 absolute right-0 top-0 h-64 w-64 opacity-25 transform translate-x-2/3 translate-y-1/2 fill-current text-teal-300`}
 `;
+const TextContainer = tw.div`w-[90%] m-auto flex flex-col items-center`;
 
 export default ({ children, properties, index }) => {
   let inputs = JSON.parse(properties.planDurations || "[]");
@@ -82,13 +83,15 @@ export default ({ children, properties, index }) => {
     <Container>
       <ContentWithPaddingXl>
         <HeaderContainer>
-          {properties.subHeading && (
-            <Subheading>{properties.subHeading}</Subheading>
-          )}
-          <HighlightedHeading>{properties.heading}</HighlightedHeading>
-          {properties.description && (
-            <Description>{properties.description}</Description>
-          )}
+          <TextContainer>
+            {properties.subHeading && (
+              <Subheading>{properties.subHeading}</Subheading>
+            )}
+            <HighlightedHeading>{properties.heading}</HighlightedHeading>
+            {properties.description && (
+              <Description>{properties.description}</Description>
+            )}
+          </TextContainer>
           <PlanDurationSwitcher>
             {inputs.map((planDuration, index) => (
               <SwitchButton

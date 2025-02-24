@@ -7,23 +7,24 @@ import {
   HighlightedHeading,
 } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
+import { Container } from "components/misc/Layouts";
 
-const Container = tw.div`relative`;
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
-const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
+
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl gap-4 mx-auto py-20 md:py-24`;
+const Column = tw.div`w-full  max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(
   Column
-)`md:w-5/12 flex-shrink-0 h-80 md:h-auto relative hidden lg:block`;
+)`md:w-6/12 lg:w-5/12 flex-shrink-0 h-80 md:h-auto  hidden md:block px-4`;
 const TextColumn = styled(Column)((props) => [
   tw`md:w-7/12 mt-16 md:mt-0`,
   props.textOnLeft === "true"
-    ? tw`md:mr-12 lg:mr-16 md:order-first`
-    : tw`md:ml-12 lg:ml-16 md:order-last`,
+    ? tw`md:ml-12 lg:ml-16 md:order-first`
+    : tw`md:mr-12 lg:mr-16 md:order-last`,
 ]);
 
 const Image = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
-  tw`rounded bg-contain bg-no-repeat bg-center h-full`,
+  tw`rounded bg-cover bg-center h-full`,
 ]);
 const TextContent = tw.div`lg:py-8 text-center md:text-left`;
 
@@ -47,7 +48,7 @@ export default ({ properties, children, index, data }) => {
 
   return (
     <Container>
-      <TwoColumn css={tw`md:items-center`}>
+      <TwoColumn >
         <ImageColumn
           css={
             properties.imageContainerCss ? properties.imageContainerCss : null
@@ -68,12 +69,12 @@ export default ({ properties, children, index, data }) => {
             ))
           }
         </ImageColumn>
-        <TextColumn textOnLeft={properties.textOnLeft}>
+        <TextColumn textOnLeft={"properties.textOnLeft"}>
           <TextContent>
             {properties.subheading && (
               <Subheading>{properties.subheading}</Subheading>
             )}
-            <HighlightedHeading>{properties.heading}</HighlightedHeading>
+            <HighlightedHeading textStyle={tw`text-center md:text-left`}>{properties.heading}</HighlightedHeading>
             <Description>{properties.description}</Description>
             <Statistics>
               {statistics.map((statistic, index) => (

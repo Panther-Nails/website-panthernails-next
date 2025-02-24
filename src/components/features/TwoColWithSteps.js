@@ -10,26 +10,29 @@ import {
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
-const Container = tw.div`relative `;
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto pb-12 items-center`;
-const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
+import { Container } from "components/misc/Layouts";
+
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between gap-4 max-w-screen-xl  py-12  items-center`;
+const Column = tw.div`w-full max-w-md  md:max-w-none md:mx-0`;
 const ImageColumn = tw(
   Column
-)`md:w-6/12 flex flex-col relative items-center hidden lg:block`;
+)`md:w-6/12 flex flex-col relative items-center  hidden md:block px-4`;
 const TextColumn = styled(Column)((props) => [
   tw`md:w-6/12 mt-16 md:mt-0`,
   // props.textOnLeft
   //   ? tw`md:mr-12 lg:mr-16 md:order-first`
   //   : tw`md:ml-12 lg:ml-16 md:order-last`,
   props.textOnLeft === "true"
-    ? tw`md:pl-20 md:order-first`
-    : tw`  md:order-last`,
+    ? tw`md:mr-12  lg:mr-16 flex-row-reverse `
+    : tw`md:ml-12  lg:ml-16 md:order-first`,
 ]);
 
 const Image = styled.img((props) => [
   props.imageRounded && tw`rounded`,
   props.imageBorder && tw`border`,
   props.imageShadow && tw`shadow`,
+  tw` mx-auto`
+
 ]);
 
 const DecoratorBlob = styled(SvgDotPattern)(() => [
@@ -67,7 +70,7 @@ export default ({ properties, children, index, data }) => {
         <TextColumn textOnLeft={properties.textOnLeft}>
           <TextContent>
             <Subheading>{properties.subHeading}</Subheading>
-            <HighlightedHeading textStyle={tw`text-left`}>{properties.heading}</HighlightedHeading>
+            <HighlightedHeading textStyle={tw`text-center md:text-left`}>{properties.heading}</HighlightedHeading>
             <Steps>{ProcessChildComponentsSeparately(children)}</Steps>
             {properties.buttonText ? (
               <PrimaryButton as="a" href={properties.buttonUrl}>
