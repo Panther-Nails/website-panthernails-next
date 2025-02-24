@@ -4,20 +4,19 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { NavLink as RouterLink, useNavigate } from "react-router-dom";
+import feather from "feather-icons";
 
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
-
 import pnlogo from "../../images/pnlogo.svg";
-
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
-
 import { useSession } from "providers/SessionProvider.js";
 import {
   setPageMetaData,
   useExecuteQuerySWR,
 } from "services/useExecuteQuerySWR.js";
 import LanguageDropdown from "./LanguageDropdown.js";
+import SearchBoxControl from "../../providers/SearchBoxControl.js";
 
 const Container = styled.div((props) => [
   tw`relative sticky top-0 z-50 bg-white text-sm`,
@@ -78,7 +77,7 @@ export const MobileNavLinks = motion(styled.div`
 `);
 
 export const DesktopNavLinks = tw.nav`
-  hidden lg:flex flex-1 justify-between items-center pr-0 lg:pr-20 
+  hidden lg:flex flex-1 justify-between items-center pr-0 lg:pr-20
 `;
 
 export const NotificationBarPullout = styled.div((props) => [
@@ -99,6 +98,59 @@ export const LanguageSelectionLinks = motion(styled.div`
     ${tw`flex flex-col items-center`}
   }
 `);
+
+export const DropdownMenu = styled.div`
+  ${tw`absolute bg-white shadow-lg rounded-lg z-10 w-auto px-4 py-4 overflow-scroll gap-4 pr-0`}
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ); /* For larger screens, 4 items in a row */
+
+  transform: translateX(-40%);
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(
+      1,
+      1fr
+    ); /* For mobile devices, 2 items in a row */
+  }
+  &::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for WebKit browsers */
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+  }
+`;
+
+// Wrapper for the individual product item with responsive layout
+export const DropdownItem = styled.div`
+  ${tw`flex flex-col items-center gap-2 p-2 hover:bg-gray-100 cursor-pointer transition-all duration-200 ease-in-out rounded-lg border-2 border-gray-300 md:w-40 text-center justify-between`}
+
+  &:hover {
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  }
+`;
+
+export const DropdownItemImage = styled.img`
+  ${tw`w-32 h-32 object-cover rounded-lg transition-transform duration-300 ease-in-out`}
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
+export const DropdownItemText = styled.p`
+  ${tw`font-semibold text-sm text-gray-800 transition-all duration-200 ease-in-out hover:text-primary-500`}
+`;
+
+// Motion wrapper for animation
+const DropdownWrapper = motion(DropdownMenu);
 
 const backgroundColor = {
   success: tw`bg-green-500`,
@@ -137,13 +189,19 @@ export default ({
    * changing the defaultLinks variable below below.
    * If you manipulate links here, all the styling on the links is already done for you. If you pass links yourself though, you are responsible for styling the links or use the helper styled components that are defined here (NavLink)
    */
-
+  const [hoveredLinkIndex, setHoveredLinkIndex] = useState(null);
+  const [dropdownContent, setDropdownContent] = useState(null);
   const [scrollCounter, setScrollCounter] = useState(0);
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [isIncreasing, setIsIncreasing] = useState(false);
   const { data } = useExecuteQuerySWR(`${languageObject?.LanguageID}`, {
     ActionName: "WSM.GMst_SelectFewFromLinkAndLinkLanguages",
     ParameterJSON: "{}",
   });
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  useEffect(() => {
+    feather.replace();
+  }, []);
 
   useEffect(() => {
     if (data) {
@@ -161,24 +219,24 @@ export default ({
     }
   }, [data, window.location.pathname, languageObject?.LanguageID]);
 
-  const handleScroll = () => {
-    const position = window.scrollY;
-    setScrollCounter(position);
-  };
+  // const handleScroll = () => {
+  //   const position = window.scrollY;
+  //   setScrollCounter(position);
+  // };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll, { passive: true });
 
-    if (scrollCounter > 0) {
-      setIsIncreasing(true);
-    } else {
-      setIsIncreasing(false);
-    }
+  //   if (scrollCounter > 0) {
+  //     setIsIncreasing(true);
+  //   } else {
+  //     setIsIncreasing(false);
+  //   }
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll, { passive: true });
-    };
-  }, [scrollCounter]);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll, { passive: true });
+  //   };
+  // }, [scrollCounter]);
 
   const defaultLinks = [
     <NavLinks key={1}>
@@ -205,40 +263,106 @@ export default ({
     collapseBreakPointCssMap[collapseBreakpointClass];
   const navigate = useNavigate();
 
-  const navigatToHome = () => {
-    console.log("Calling");
-
-    navigate("/");
+  const _redirect = (navigateURL) => {
+    navigate(navigateURL);
   };
 
   const defaultLogoLink = (
-    <div onClick={navigatToHome}>
+    <div onClick={() => _redirect("/")}>
       <LogoLink navPosition={isIncreasing}>
         <img src={pnlogo} alt="logo" />
       </LogoLink>
     </div>
   );
 
+  const handleMouseEnter = (link, index) => {
+    if (link.LinkJSON) {
+      setDropdownContent(link.LinkJSON);
+      setHoveredLinkIndex(index);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setDropdownContent(null);
+    setHoveredLinkIndex(null);
+  };
+
   const menuLinks = (
     <>
-      <NavLinks key={1}>
+      <NavLinks key={1} style={{ display: "flex" }}>
         {data?.items?.map((link, index) => {
           return (
             <>
               {link.LinkVisible && (
-                <NavLinkWrapper
-                  onClick={toggleNavbar}
+                <div
                   key={index}
-                  navPosition={isIncreasing}
+                  onMouseEnter={() =>
+                    !isMobile && handleMouseEnter(link, index)
+                  }
+                  onMouseLeave={handleMouseLeave}
+                  style={{ position: "relative" }}
                 >
-                  <NavLink to={link.LinkURL}>{link.LinkHeadingText}</NavLink>
-                </NavLinkWrapper>
+                  <NavLinkWrapper
+                    onClick={() => {
+                      toggleNavbar();
+                      handleMouseLeave();
+                    }}
+                    navPosition={isIncreasing}
+                  >
+                    <NavLink to={link.LinkURL}>{link.LinkHeadingText}</NavLink>
+                  </NavLinkWrapper>
+
+                  {dropdownContent && hoveredLinkIndex === index && (
+                    <DropdownWrapper
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {dropdownContent.map((subLink, subIndex) => {
+                        const properties = JSON.parse(subLink.LinkPropertyJSON);
+                        return (
+                          <DropdownItem
+                            key={subIndex}
+                            onClick={() => {
+                              _redirect(subLink.LinkURL);
+                              handleMouseLeave();
+                            }}
+                          >
+                            <DropdownItemImage
+                              src={properties?.productResource.imageSrc}
+                              alt={subLink.LinkHeadingText}
+                            />
+                            <DropdownItemText>
+                              {subLink.LinkHeadingText}
+                            </DropdownItemText>
+                          </DropdownItem>
+                        );
+                      })}
+                    </DropdownWrapper>
+                  )}
+                </div>
               )}
             </>
           );
         })}
       </NavLinks>
-      <LanguageDropdown />
+      <div
+        css={tw`flex flex-col lg:flex-row lg:gap-5 items-center justify-center`}
+      >
+        {!isSearchVisible && (
+          <div
+            onClick={() => setIsSearchVisible(true)}
+            css={tw`relative m-auto flex items-center justify-center`}
+          >
+            <i data-feather="search"></i>
+          </div>
+        )}
+        {isSearchVisible && <SearchBoxControl />}
+        <div css={tw`relative flex items-center justify-center`}>
+          <LanguageDropdown />
+        </div>
+      </div>
     </>
   );
 

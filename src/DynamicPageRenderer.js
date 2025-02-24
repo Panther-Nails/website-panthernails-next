@@ -11,9 +11,11 @@ export default () => {
   const [components, setComponents] = useState([]);
   const { languageObject } = useSession();
 
+  const path = window.location.pathname;
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [window.location.pathname]);
+  }, [path]);
 
   useEffect(() => {
     var parameter = {
@@ -37,7 +39,7 @@ export default () => {
         }
       }
     });
-  }, [window.location.pathname, languageObject.LanguageID]);
+  }, [path, languageObject.LanguageID, type, subtype, name]);
 
   return (
     <>
@@ -46,7 +48,9 @@ export default () => {
       ) : (
         <>
           {components.map((component, index) => (
-            <DynamicComponent component={component} index={index} key={index} />
+            <div id={component.CacheKey} key={index}>
+              <DynamicComponent component={component} index={index} />
+            </div>
           ))}
         </>
       )}

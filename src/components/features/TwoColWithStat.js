@@ -36,7 +36,7 @@ const Subheading = tw(SubheadingBase)`text-center text-red-500`;
 
 const Description = tw.p`mx-auto mt-4 px-4 lg:px-0 text-center text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
-const HeadingContainer = tw.div` w-[90%] m-auto`;
+const HeadingContainer = tw.div`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-xl mx-auto md:py-20`;
 export default ({ data, children, properties, textOnLeft = true }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
   var statistics = JSON.parse(properties.statistics || "[]");
@@ -44,25 +44,23 @@ export default ({ data, children, properties, textOnLeft = true }) => {
     <Container>
       <Subheading>{properties.subHeading}</Subheading>
       <HeadingContainer>
-        <HighlightedHeading >
-          {properties.heading}
-        </HighlightedHeading>
+        <HighlightedHeading>{properties.heading}</HighlightedHeading>
+        <Description>{properties.description}</Description>
+        <TwoColumn>
+          {statistics.map((stat, index) => (
+            <TextColumn
+              textOnLeft={properties.textOnLeft ? properties.textOnLeft : true}
+              key={index}
+            >
+              <NumberContent imageSrc={properties.imageSrc}>
+                {stat.number}
+              </NumberContent>
+              <NumberDecorator>{stat.decorator}</NumberDecorator>
+              <TextContent>{stat.description}</TextContent>
+            </TextColumn>
+          ))}
+        </TwoColumn>
       </HeadingContainer>
-      <Description>{properties.description}</Description>
-      <TwoColumn>
-        {statistics.map((stat, index) => (
-          <TextColumn
-            textOnLeft={properties.textOnLeft ? properties.textOnLeft : true}
-            key={index}
-          >
-            <NumberContent imageSrc={properties.imageSrc}>
-              {stat.number}
-            </NumberContent>
-            <NumberDecorator>{stat.decorator}</NumberDecorator>
-            <TextContent>{stat.description}</TextContent>
-          </TextColumn>
-        ))}
-      </TwoColumn>
     </Container>
   );
 };

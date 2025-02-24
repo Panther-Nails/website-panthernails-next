@@ -1,14 +1,7 @@
 import { useSession } from "providers/SessionProvider";
 import { useEffect } from "react";
-import {
-  Navigate,
-  Outlet,
-  useLocation,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import { ExecuteQuery } from "services/APIService";
-import { useExecuteQuerySWR } from "services/useExecuteQuerySWR";
 
 export default () => {
   const { languageObject, setLanguageObject, languages, setLanguages } =
@@ -35,7 +28,7 @@ export default () => {
   const langQuery = queryParams.get("lang");
 
   useEffect(() => {
-    if (languages.length == 0)
+    if (languages.length === 0)
       ExecuteQuery({
         ActionName: "Core.GMst_SelectFewFromCompanyLanguagesAndMasters",
         ParameterJSON: JSON.stringify({}),
@@ -59,7 +52,7 @@ export default () => {
       if (LangIndex !== -1) {
         setLanguageObject(languages[LangIndex]);
       } else {
-        if (Object.keys(languageObject).length == 0)
+        if (Object.keys(languageObject).length === 0)
           setLanguageObject(languages[0]);
       }
     }

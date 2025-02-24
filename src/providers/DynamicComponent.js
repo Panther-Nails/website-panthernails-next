@@ -11,8 +11,7 @@ const ImportDynamicComponent = (Section, ComponentName) => {
       .then((module) => ({ default: module.default }))
       .catch((error) => {
         console.log("Error while importing component", error);
-
-        return { default: () => <FallbackLoading /> };
+        return { default: () => <FallbackLoading /> }; // If the component is not import dynamically then Show the loading component or something.
       })
   );
 
@@ -76,7 +75,7 @@ const DynamicComponent = ({ component, index }) => {
               data={component}
               children={component.Children ? component.Children : []}
               properties={properties}
-              key={index}
+              index={index}
             />
           )}
         </Suspense>
