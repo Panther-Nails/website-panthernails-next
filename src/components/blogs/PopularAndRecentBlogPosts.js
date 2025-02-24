@@ -6,7 +6,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import { HighlightedHeading } from "components/misc/Headings.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 
-const Row = tw.div`flex flex-col lg:flex-row -mb-10`;
+const Row = tw.div`flex flex-col lg:flex-row -mb-10 px-4`;
 
 const PopularPostsContainer = tw.div`lg:w-2/3`;
 const PostsContainer = tw.div`mt-12 flex flex-col sm:flex-row sm:justify-between lg:justify-start`;

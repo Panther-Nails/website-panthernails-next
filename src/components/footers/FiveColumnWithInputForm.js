@@ -39,16 +39,16 @@ const SubscribeNewsletterColumn = tw(
 const SubscribeNewsletterContainer = tw.div`max-w-sm mx-auto lg:mx-0 `;
 const SubscribeText = tw.p`mt-2 lg:mt-6 text-sm font-medium text-gray-600`;
 const SubscribeForm = tw.form`mt-4 lg:mt-6 text-sm sm:flex max-w-xs sm:max-w-none mx-auto sm:mx-0`;
-const Input = tw.input`bg-gray-300 px-6 placeholder-black py-3 rounded sm:rounded-r-none border-2 sm:border-r-0 border-gray-400 hover:border-primary-500 focus:outline-none transition duration-300 w-full`;
+const Input = tw.input`bg-gray-300 text-black px-6 placeholder-gray-600 py-3 rounded sm:rounded-r-none border-2 sm:border-r-0 border-gray-400 hover:border-primary-500 focus:outline-none transition duration-300 w-full`;
 const SubscribeButton = tw(
   PrimaryButtonBase
-)`mt-4 sm:mt-0 w-full sm:w-auto rounded sm:rounded-l-none px-8 py-3`;
+)`mt-4 sm:mt-0 w-full sm:w-auto rounded bg-blue-700 sm:rounded-l-none px-8 py-3`;
 
 const CopywrightNotice = tw.p`text-center text-sm sm:text-base mt-8 md:mt-0 font-medium text-gray-500`;
 
 const SocialLinksContainer = tw.div`mt-8 md:mt-0 flex`;
 const SocialLink = styled.a`
-  ${tw`cursor-pointer p-1 rounded  hover:bg-gray-700 transition duration-300 mr-4 `}
+  ${tw`cursor-pointer p-1 rounded  hover:bg-gray-700 transition duration-300`}
   svg {
     ${tw`w-4 h-4`}
   }

@@ -27,37 +27,18 @@ export const SessionProvider = ({ children }) => {
 
   const [notificationText, setNotificationText] = useState("");
   const [notificationType, setNotificationType] = useState("none");
-
-  const [showPopup, setShowPopup] = useState(false);
-  const [shouldCloseOnOverlayClick, setShouldCloseOnOverlayClick] =
-    useState(false);
-
   const [cookieConsent, setCookieConsent] = useState(CookieConsentValue);
 
-  const [modalStyle, setModalStyle] = useState({});
-
-  const [popupRenderer, setPopupRenderer] = useState(() => <></>);
+  const [ClosePopupOnSubmit, setClosePopupOnSubmit] = useState(false);
 
   const setNotification = (notificationText, notificationType = "none") => {
     setNotificationText(notificationText);
     setNotificationType(notificationType);
   };
 
-  const showModalPopup = (popupContent, size) => {
-    setPopupRenderer(popupContent);
-    setShouldCloseOnOverlayClick(false);
-    setShowPopup(true);
-    setModalStyle({ size: size });
+  const hidePopup = () => {
+    setClosePopupOnSubmit(true);
   };
-
-  const showNonModalPopup = (popupContent, size) => {
-    setPopupRenderer(popupContent);
-    setShouldCloseOnOverlayClick(true);
-    setShowPopup(true);
-    setModalStyle({ size: size });
-  };
-
-  const hidePopup = () => setShowPopup(false);
 
   return (
     <SessionContext.Provider
@@ -71,17 +52,11 @@ export const SessionProvider = ({ children }) => {
         notificationText,
         setNotification,
         notificationType,
-        setShowPopup,
-        showPopup,
+        ClosePopupOnSubmit,
+        setClosePopupOnSubmit,
         cookieConsent,
         setCookieConsent,
-        popupRenderer,
-        shouldCloseOnOverlayClick,
-        showModalPopup,
-        showNonModalPopup,
         hidePopup,
-        modalStyle,
-        setModalStyle,
         languages,
         setLanguages,
       }}

@@ -6,21 +6,20 @@ import {
   Subheading as SubheadingBase,
   HighlightedHeading,
 } from "components/misc/Headings.js";
-import { Container } from "../misc/Layouts.js";
+import { Container as LocalContainer } from "../misc/Layouts.js";
 
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-2xl mx-auto  items-center`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl  flex-wrap  px-4  items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0 lg:py-40`;
 
+const Container = tw(LocalContainer)`py-10`;
 const TextColumn = styled(Column)((props) => [
-  tw`md:w-6/12 md:mt-0 text-center md:py-20`,
-  props.textOnLeft
-    ? tw`md:mr-12 lg:mr-16 md:order-first`
-    : tw`md:ml-12 lg:ml-16 md:order-last`,
+  tw` md:mt-0 text-center md:py-4`,
+  props.statLength > 3 ? tw`md:w-1/2` : tw`w-1/2 md:w-1/3`,
 ]);
 
-const TextContent = tw.div` text-center text-2xl font-bold px-4 lg:px-0`;
+const TextContent = tw.div` text-center text-xl lg:text-2xl font-bold px-4 `;
 const NumberContent = styled.span`
-  ${tw`text-center text-6xl md:text-8xl font-black`}
+  ${tw`text-center text-5xl md:text-6xl lg:text-7xl font-black `}
   background-color: #1e90ffff;
   background-image: url("${(props) => props.imageSrc}");
   background-size: cover;
@@ -40,27 +39,31 @@ const HeadingContainer = tw.div`flex flex-col items-center md:items-stretch md:f
 export default ({ data, children, properties, textOnLeft = true }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
   var statistics = JSON.parse(properties.statistics || "[]");
+
+  console.log("statistics", statistics);
+
   return (
     <Container>
-      <Subheading>{properties.subHeading}</Subheading>
       <HeadingContainer>
+        <Subheading>{properties.subHeading}</Subheading>
         <HighlightedHeading>{properties.heading}</HighlightedHeading>
         <Description>{properties.description}</Description>
-        <TwoColumn>
-          {statistics.map((stat, index) => (
-            <TextColumn
-              textOnLeft={properties.textOnLeft ? properties.textOnLeft : true}
-              key={index}
-            >
-              <NumberContent imageSrc={properties.imageSrc}>
-                {stat.number}
-              </NumberContent>
-              <NumberDecorator>{stat.decorator}</NumberDecorator>
-              <TextContent>{stat.description}</TextContent>
-            </TextColumn>
-          ))}
-        </TwoColumn>
       </HeadingContainer>
+      <TwoColumn>
+        {statistics.map((stat, index) => (
+          <TextColumn
+            statLength={statistics.length}
+            textOnLeft={properties.textOnLeft ? properties.textOnLeft : true}
+            key={index}
+          >
+            <NumberContent imageSrc={properties.imageSrc}>
+              {stat.number}
+            </NumberContent>
+            <NumberDecorator>{stat.decorator}</NumberDecorator>
+            <TextContent>{stat.description}</TextContent>
+          </TextColumn>
+        ))}
+      </TwoColumn>
     </Container>
   );
 };

@@ -5,12 +5,13 @@ import { HighlightedHeading, SectionHeading, Subheading } from "components/misc/
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-3.svg";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
+import { Container } from "components/misc/Layouts";
 
-const Container = tw.div`relative overflow-hidden`;
+
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
 const ThreeColumn = tw.div`flex flex-col items-center lg:items-stretch lg:flex-row flex-wrap`;
 
-const HeadingInfoContainer = tw.div`flex flex-col items-center`;
+const HeadingInfoContainer = tw.div`flex flex-col items-center w-[90%] m-auto`;
 const HeadingDescription = tw.p`mt-4 px-4 lg:px-0 font-medium text-gray-600 text-center md:px-20`;
 
 const Heading = tw(

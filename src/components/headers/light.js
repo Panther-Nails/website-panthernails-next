@@ -170,10 +170,8 @@ export default ({
     hasNotificationSeen,
     setHasNotificationSeen,
     languageObject,
-    setLanguageObject,
     notificationText,
     notificationType,
-    languages,
   } = useSession();
 
   /*
@@ -194,6 +192,24 @@ export default ({
   const [scrollCounter, setScrollCounter] = useState(0);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [isIncreasing, setIsIncreasing] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > 50) {
+        setIsIncreasing(true);
+      } else if (currentScrollY === 0) {
+        setIsIncreasing(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const { data } = useExecuteQuerySWR(`${languageObject?.LanguageID}`, {
     ActionName: "WSM.GMst_SelectFewFromLinkAndLinkLanguages",
     ParameterJSON: "{}",

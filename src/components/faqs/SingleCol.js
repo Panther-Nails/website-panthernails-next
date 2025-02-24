@@ -16,13 +16,13 @@ import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-8
 const Subheading = tw(SubheadingBase)`mb-4 text-center`;
 const Description = tw(SectionDescription)`w-full text-center`;
 
-const Column = tw.div`flex flex-col items-center`;
-const HeaderContent = tw.div``;
+const Column = tw.div`flex flex-col items-center px-8`;
+const HeaderContent = tw.div` w-[90%] m-auto flex flex-col items-center `;
 
 const FAQSContainer = tw.dl`mt-12 max-w-4xl relative`;
 const FAQ = tw.div`cursor-pointer select-none mt-5 px-8 sm:px-10 py-5 sm:py-4 rounded-lg text-gray-800 hover:text-gray-900 bg-gray-200 hover:bg-gray-300 transition duration-300`;
 const Question = tw.dt`flex justify-between items-center`;
-const QuestionText = tw.span`text-lg lg:text-xl font-semibold`;
+const QuestionText = tw.span`text-base lg:text-xl font-semibold`;
 const QuestionToggleIcon = motion(styled.span`
   ${tw`ml-2 transition duration-300`}
   svg {

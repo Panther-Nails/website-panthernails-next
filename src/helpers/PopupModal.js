@@ -40,8 +40,10 @@ const StyledModal = styled(ReactModalAdapter)`
 
 const CloseModalButton = tw.button`   hocus:text-primary-500 hocus:bg-red-500 `;
 
-export const ClosePopupControl = () => {
-  const { hidePopup } = useSession();
+export const ClosePopupControl = ({ setShowPopup }) => {
+  const hidePopup = () => {
+    setShowPopup(false);
+  };
 
   return (
     <CloseModalButton onClick={hidePopup}>
@@ -50,19 +52,28 @@ export const ClosePopupControl = () => {
   );
 };
 
-export default ({ children }) => {
-  const { showPopup, setShowPopup, shouldCloseOnOverlayClick, modalStyle } =
-    useSession();
+export default ({
+  children,
+  closeOnOverlay,
+  showPopup,
+  size,
+  setShowPopup,
+}) => {
+  const { ClosePopupOnSubmit } = useSession();
   const toggleModal = () => setShowPopup(!showPopup);
+
+  if (ClosePopupOnSubmit) {
+    setShowPopup(false);
+  }
 
   return (
     <StyledModal
-      size={modalStyle.size}
-      backgroundBlur={shouldCloseOnOverlayClick}
+      size={size}
+      backgroundBlur={closeOnOverlay}
       closeTimeoutMS={300}
       className="popupModal"
       isOpen={showPopup}
-      shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
+      shouldCloseOnOverlayClick={closeOnOverlay}
       onRequestClose={toggleModal}
     >
       {children}

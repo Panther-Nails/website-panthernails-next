@@ -10,11 +10,12 @@ import {
 import EmailIllustrationSrc from "images/email-illustration.svg";
 
 import TwoStepControl from "helpers/TwoStepControl";
+import { Container } from "components/misc/Layouts.js";
 
-const Container = tw.div`relative `;
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto pb-20 md:pb-24`;
+
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto pb-20 md:pb-24 px-4`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
-const ImageColumn = tw(Column)`md:w-7/12 flex-shrink-0 h-80 md:h-auto`;
+const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 h-80 md:h-auto`;
 const TextColumn = styled(Column)((props) => [
   tw`px-8 lg:px-0 md:w-5/12 mt-16 md:mt-0`,
   props.textOnLeft === "true"

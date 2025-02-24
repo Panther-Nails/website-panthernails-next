@@ -14,7 +14,8 @@ import PopupModal from "helpers/PopupModal";
 import { useSession } from "providers/SessionProvider";
 
 export default function App() {
-  const { popupRenderer } = useSession();
+  // const { popupRenderer } = useSession();
+console.log("app");
 
   function localStorageProvider() {
     var bs = new BS64PNE36Encryption();
@@ -64,7 +65,7 @@ export default function App() {
         <GlobalStyles />
         <Header />
         <ScrollUpButton />
-        <PopupModal>{popupRenderer}</PopupModal>
+        {/* <PopupModal>{popupRenderer}</PopupModal> */}
         <RouterPaths />
         <ToastContainer />
       </SWRConfig>

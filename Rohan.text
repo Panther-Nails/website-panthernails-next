@@ -1,0 +1,6 @@
+---24-Feb-2025 18:01---
+1) Two Trending preview cards with image heading -- alignment not proper
+2)ThreeColContactDetails - Check width 
+3)TabCardGrid - ondesktop the alignment should be center
+4)TwoColContactUsWithIllustration - the heading alignment should be left
+5)TwoPlansWithDurationSwitcher - height of the component should remain consistent for all box

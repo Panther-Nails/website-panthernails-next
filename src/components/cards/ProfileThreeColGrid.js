@@ -10,7 +10,7 @@ import {
 import { SectionDescription } from "components/misc/Typography";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
-const HeadingContainer = tw.div``;
+const HeadingContainer = tw.div`w-[90%] m-auto`;
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`mx-auto text-center`;
 

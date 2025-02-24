@@ -67,36 +67,37 @@ export default ({ properties, children, index, data }) => {
   ];
 
   return (
-    <Container tw="gap-8">
-      <HighlightedHeading>{properties.heading}</HighlightedHeading>
-      <PlansContainer>
-        <thead>
-          <Plan>
-            {dynamicLinksHeadings.map((link, index) => (
-              <th className="tableHeading" key={index}>
-                {link}
-              </th>
-            ))}
-          </Plan>
-        </thead>
-        <tbody>
-          {siteMapData.map((link, index) => (
-            <Plan key={index}>
-              {/* <PlanCell>{link.LinkURL}</PlanCell> */}
-              <PlanCell>{link.LinkName}</PlanCell>
-              <PlanCell>{link.GroupName}</PlanCell>
-              <PlanCell>{link.SubGroupName}</PlanCell>
-              <PlanCell>{link.PageName}</PlanCell>
+    <></>
+    // <Container tw="gap-8">
+    //   <HighlightedHeading>{properties.heading}</HighlightedHeading>
+    //   <PlansContainer>
+    //     <thead>
+    //       <Plan>
+    //         {dynamicLinksHeadings.map((link, index) => (
+    //           <th className="tableHeading" key={index}>
+    //             {link}
+    //           </th>
+    //         ))}
+    //       </Plan>
+    //     </thead>
+    //     <tbody>
+    //       {siteMapData.map((link, index) => (
+    //         <Plan key={index}>
+    //           {/* <PlanCell>{link.LinkURL}</PlanCell> */}
+    //           <PlanCell>{link.LinkName}</PlanCell>
+    //           <PlanCell>{link.GroupName}</PlanCell>
+    //           <PlanCell>{link.SubGroupName}</PlanCell>
+    //           <PlanCell>{link.PageName}</PlanCell>
 
-              <PlanCell>
-                <CopyButton onClick={() => copyToClipboard(link.LinkURL)}>
-                  Copy
-                </CopyButton>
-              </PlanCell>
-            </Plan>
-          ))}
-        </tbody>
-      </PlansContainer>
-    </Container>
+    //           <PlanCell>
+    //             <CopyButton onClick={() => copyToClipboard(link.LinkURL)}>
+    //               Copy
+    //             </CopyButton>
+    //           </PlanCell>
+    //         </Plan>
+    //       ))}
+    //     </tbody>
+    //   </PlansContainer>
+    // </Container>
   );
 };

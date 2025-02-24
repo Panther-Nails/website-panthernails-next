@@ -8,7 +8,7 @@ import {
 // export const Container = tw.div`relative`;
 
 export const Container = styled.div`
-  ${tw`relative overflow-hidden `}
+  ${tw`relative overflow-hidden  `}
 
   h2 {
     ${tw`text-5xl font-black tracking-wide mt-4 text-center leading-tight `}

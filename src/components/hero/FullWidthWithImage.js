@@ -8,7 +8,7 @@ import { Container  } from "components/misc/Layouts";
 
 
 const TwoColumn = tw.div`flex flex-col lg:flex-row bg-gray-100`;
-const LeftColumn = tw.div`ml-8 mr-8 xl:pl-10 py-8`;
+const LeftColumn = tw.div`ml-8 mr-8 lg:pl-10 py-8`;
 const RightColumn = styled.div`
   ${(props) =>
     css`
@@ -18,7 +18,7 @@ const RightColumn = styled.div`
 `;
 
 const Content = tw.div`mt-24 lg:mt-24 lg:mb-24 flex flex-col sm:items-center lg:items-stretch`;
-const Paragraph = tw.p`max-w-md my-8 lg:my-5 lg:my-8 sm:text-lg lg:text-base xl:text-lg leading-loose`;
+const Paragraph = tw.p` text-center lg:text-left max-w-md my-8 lg:my-5 lg:my-8 sm:text-lg lg:text-base xl:text-lg leading-loose`;
 
 const Actions = styled.div`
   ${tw`mb-8 lg:mb-0`}

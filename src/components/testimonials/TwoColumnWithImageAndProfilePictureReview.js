@@ -4,6 +4,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import {
+  HighlightedHeading,
   SectionHeading,
   Subheading as SubheadingBase,
 } from "../misc/Headings.js";
@@ -17,9 +18,10 @@ import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-
 
 import "slick-carousel/slick/slick.css";
 import { getProperties } from "services/ComponentService.js";
+import { Container } from "components/misc/Layouts.js";
 
-const Container = tw.div`relative overflow-hidden`;
-const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
+
+const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24 px-4`;
 const TestimonialsContainer = tw.div`mt-16 lg:mt-0`;
 const Testimonials = styled.div``;
 const Testimonial = tw.div`max-w-md lg:max-w-none mx-auto lg:mx-0 flex flex-col items-center lg:items-stretch lg:flex-row`;
@@ -44,7 +46,7 @@ const ControlButton = styled(PrimaryButton)`
 
 const TextContainer = styled.div((props) => [
   tw`flex flex-col w-full lg:w-7/12`,
-  props.textOnLeft ? tw`lg:pr-12 lg:order-first` : tw`lg:pl-12 lg:order-last`,
+  props.textOnLeft ? tw`lg:pr-6 lg:order-first` : tw`lg:pl-6 lg:order-last`,
 ]);
 
 const Subheading = tw(SubheadingBase)`mb-4`;
@@ -176,9 +178,9 @@ export default ({
 };
 
 const HeadingInfo = ({ subHeading, heading, description, ...props }) => (
-  <div {...props}>
+  <div {...props} tw="w-[90%] m-auto lg:m-0">
     {subHeading ? <Subheading>{subHeading}</Subheading> : null}
-    <HeadingTitle>{heading}</HeadingTitle>
+    <HighlightedHeading textStyle={tw`text-center lg:text-left`}>{heading}</HighlightedHeading>
     <Description>{description}</Description>
   </div>
 );

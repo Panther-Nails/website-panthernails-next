@@ -6,10 +6,11 @@ import { css } from "styled-components/macro";
 
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
 import { HighlightedHeading } from "components/misc/Headings.js";
+import { Container } from "components/misc/Layouts";
 
-const Container = tw.div`relative`;
-const Content = tw.div`mt-24 lg:mt-24 lg:mb-10 flex flex-col sm:items-center lg:items-stretch text-center`;
 
+const Content = tw.div`mt-24  lg:mb-10 flex flex-col items-center text-center  `;
+const HeadingWrapper = tw.div`px-1  w-[90%]`;
 const Paragraph = tw.p`my-5 lg:my-8 text-base xl:text-lg`;
 
 // Random Decorator Blobs (shapes that you see in background)
@@ -22,7 +23,9 @@ export default ({ properties, children, index, data }) => {
     <>
       <Container>
         <Content>
-          <HighlightedHeading>{properties.heading}</HighlightedHeading>
+          <HeadingWrapper>
+            <HighlightedHeading>{properties.heading}</HighlightedHeading>
+          </HeadingWrapper>
           <Paragraph>{properties.description}</Paragraph>
         </Content>
         <DecoratorBlob1 />

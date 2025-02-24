@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { HighlightedHeading, SectionHeading } from "components/misc/Headings";
 
-const HeadingRow = tw.div`flex`;
+const HeadingRow = tw.div`flex w-[90%] m-auto`;
 const Heading = tw(SectionHeading)`text-gray-900 mb-10 font-black`;
 const Text = styled.div`
   ${tw`text-lg  text-gray-800`}

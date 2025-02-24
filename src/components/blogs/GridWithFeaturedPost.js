@@ -7,8 +7,8 @@ import { SectionDescription } from "components/misc/Typography";
 import { ReactComponent as SvgDotPatternIcon } from "images/dot-pattern.svg";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
-const ContentWithPaddingXl = tw.div`max-w-screen-xl mx-auto pb-20 lg:py-24`;
-const HeadingContainer = tw.div`text-center`;
+const ContentWithPaddingXl = tw.div`max-w-screen-xl mx-auto pb-20 lg:py-24 px-4`;
+const HeadingContainer = tw.div`text-center w-[90%] m-auto`;
 const Description = tw(SectionDescription)`mx-auto`;
 const Posts = tw.div`mt-12 flex flex-wrap -mr-3 relative`;
 const DecoratorBlob1 = tw(
