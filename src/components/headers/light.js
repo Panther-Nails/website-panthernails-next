@@ -274,8 +274,6 @@ export default ({
   );
 
   const handleMouseEnter = (link, index) => {
-    console.log("link.LinkJSON", link.LinkJSON);
-
     if (link.LinkJSON) {
       setDropdownContent(link.LinkJSON);
       setHoveredLinkIndex(index);
@@ -365,7 +363,9 @@ export default ({
           )}
           <div css={tw`relative m-auto flex items-center justify-center`}>
             {isSearchVisible ? (
-              <CloseIcon onClick={() => setIsSearchVisible(false)} />
+              <motion.div whileTap={{ scale: 0.9 }} css={tw`cursor-pointer`}>
+                <CloseIcon onClick={() => setIsSearchVisible(false)} />
+              </motion.div>
             ) : (
               <motion.div whileTap={{ scale: 0.9 }} css={tw`cursor-pointer`}>
                 <SearchIcon onClick={() => setIsSearchVisible(true)} />
