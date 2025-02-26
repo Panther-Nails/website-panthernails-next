@@ -351,15 +351,25 @@ export default ({
         css={tw`flex flex-col lg:flex-row lg:gap-5 items-center justify-center`}
       >
         <>
-          <AnimatePresence>
-            {isSearchVisible && <SearchBoxControl />}
-          </AnimatePresence>
+          {isSearchVisible && (
+            <AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                <SearchBoxControl />
+              </motion.div>
+            </AnimatePresence>
+          )}
           <div css={tw`relative m-auto flex items-center justify-center`}>
-            {/* <i data-feather="search"></i> */}
             {isSearchVisible ? (
               <CloseIcon onClick={() => setIsSearchVisible(false)} />
             ) : (
-              <SearchIcon onClick={() => setIsSearchVisible(true)} />
+              <motion.div whileTap={{ scale: 0.9 }} css={tw`cursor-pointer`}>
+                <SearchIcon onClick={() => setIsSearchVisible(true)} />
+              </motion.div>
             )}
           </div>
         </>

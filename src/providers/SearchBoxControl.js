@@ -52,7 +52,6 @@ const SearchBoxControl = () => {
     if (pageURL !== window.location.pathname) {
       navigate(`${pageURL}`);
       setTimeout(() => navigateToComponent(cacheKey), 1000);
-      console.log("Calling");
     }
     navigateToComponent(cacheKey);
   };

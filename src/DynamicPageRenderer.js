@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { ExecuteQuery } from "services/APIService";
 import { useSession } from "providers/SessionProvider";
 
-const CookieConsent = lazy(() => import("./components/legal/CookieConsent"));
 const DynamicComponent = lazy(() => import("./providers/DynamicComponent"));
 const FallbackLoading = lazy(() => import("./helpers/FallbackLoading"));
 
@@ -58,15 +57,6 @@ export default () => {
           ))}
         </>
       )}
-      {/* <CookieConsent
-        properties={{
-          consentDisplayVariant: "",
-          consentDisplayPosition: "",
-          consentHeading: "Cookie Settings",
-          consentDescription:
-            "We use cookies to enhance your browsing experience and analyze our traffic. Please select your preferences below.",
-        }}
-      /> */}
     </>
   );
 };
