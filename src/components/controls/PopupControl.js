@@ -52,8 +52,7 @@ export default ({ properties, children }) => {
   useEffect(() => {
     const timerStart = setTimeout(() => {
       if (popupKeyVal !== chaildProperty?.productEnquiryFor) {
-        console.log("popupKeyVal", popupKeyVal);
-
+ 
         if (properties.popupCloseOnOverlayClick === "true") {
           setShowPopup(true);
           setShouldCloseOnOverlayClick(true);

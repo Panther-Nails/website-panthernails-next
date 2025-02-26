@@ -11,11 +11,9 @@ const DynamicHeading = tw(
 
 export const HeadingText = tw.span`text-primary-900 w-full`;
 export const HighlightedText = tw.span`text-primary-500 w-full`;
-//var HeadingText = styled.span((props) => [`${colors[props.color]}`]);
-
+ 
 export function HighlightedHeading(props) {
-  // console.log("heading Data",props.children);
-
+ 
   return (
     <DynamicHeading css={props.textStyle}>
       {props?.children?.split("`").map((chunk, index) => {

@@ -5,17 +5,16 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { NavLink as RouterLink, useNavigate } from "react-router-dom";
 
-import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
-import pnlogo from "../../images/pnlogo.svg";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 import { ReactComponent as SearchIcon } from "feather-icons/dist/icons/search.svg";
 
 import { useSession } from "providers/SessionProvider.js";
-import {
-  setPageMetaData,
-  useExecuteQuerySWR,
-} from "services/useExecuteQuerySWR.js";
+import { setPageMetaData } from "services/useExecuteQuerySWR.js";
+import { ExecuteQuery } from "services/APIService.js";
+
+import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
+import pnlogo from "../../images/pnlogo.svg";
 import LanguageDropdown from "./LanguageDropdown.js";
 import SearchBoxControl from "../../providers/SearchBoxControl.js";
 
@@ -190,7 +189,7 @@ export default ({
    */
   const [hoveredLinkIndex, setHoveredLinkIndex] = useState(null);
   const [dropdownContent, setDropdownContent] = useState(null);
-  const [scrollCounter, setScrollCounter] = useState(0);
+  const [data, setData] = useState([]);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [isIncreasing, setIsIncreasing] = useState(false);
 
@@ -211,10 +210,17 @@ export default ({
     };
   }, []);
 
-  const { data } = useExecuteQuerySWR(`${languageObject?.LanguageID}`, {
-    ActionName: "WSM.GMst_SelectFewFromLinkAndLinkLanguages",
-    ParameterJSON: "{}",
-  });
+  useEffect(() => {
+    ExecuteQuery({
+      ActionName: "WSM.GMst_SelectFewFromLinkAndLinkLanguages",
+      ParameterJSON: "{}",
+    }).then((response) => {
+      if (response.message === "Successfull") {
+         setData(response);
+      }
+    });
+  }, [languageObject.LanguageID]);
+
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
   useEffect(() => {
@@ -232,25 +238,6 @@ export default ({
       }
     }
   }, [data, window.location.pathname, languageObject?.LanguageID]);
-
-  // const handleScroll = () => {
-  //   const position = window.scrollY;
-  //   setScrollCounter(position);
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener("scroll", handleScroll, { passive: true });
-
-  //   if (scrollCounter > 0) {
-  //     setIsIncreasing(true);
-  //   } else {
-  //     setIsIncreasing(false);
-  //   }
-
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll, { passive: true });
-  //   };
-  // }, [scrollCounter]);
 
   const defaultLinks = [
     <NavLinks key={1}>

@@ -65,8 +65,7 @@ export default ({ properties, data, index, children }) => {
         KeyPointIDCSV: "37,38,39",
       }),
     }).then((response) => {
-      console.log("cookie", response.items);
-      if (response.message === "Successfull") {
+       if (response.message === "Successfull") {
         setCookieOptions(response.items);
         setSelectedOptions(
           response.items

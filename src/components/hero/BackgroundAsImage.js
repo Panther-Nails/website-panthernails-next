@@ -38,8 +38,7 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
 `;
 
 export default ({ properties, children, index, data }) => {
-  console.log();
-
+ 
   return (
     <Container backgroundImageUrl={properties.backgroundImageUrl}>
       <OpacityOverlay />

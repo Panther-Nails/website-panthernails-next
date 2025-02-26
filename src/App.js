@@ -7,19 +7,13 @@ import { ToastContainer } from "react-toastify";
 import { SWRConfig } from "swr";
 import { BS64PNE36Encryption } from "turbo/lib/cjs/Encryption/BS64PNE36Encryption";
 
-import { useSession } from "providers/SessionProvider";
-
 const RouterPaths = lazy(() => import("./RouterPaths"));
 const Header = lazy(() => import("./components/headers/light"));
-const PopupModal = lazy(() => import("./helpers/PopupModal"));
 const ScrollUpButton = lazy(() =>
   import("./components/features/ScrollUpButton")
 );
 
 export default function App() {
-  // const { popupRenderer } = useSession();
-console.log("app");
-
   function localStorageProvider() {
     var bs = new BS64PNE36Encryption();
 
@@ -42,6 +36,7 @@ console.log("app");
     };
   }
 
+  // For google translsate
   // const googleTranslateElementInit = () => {
   //   new window.google.translate.TranslateElement(
   //     {
@@ -68,7 +63,6 @@ console.log("app");
         <GlobalStyles />
         <Header />
         <ScrollUpButton />
-        {/* <PopupModal>{popupRenderer}</PopupModal> */}
         <RouterPaths />
         <ToastContainer />
       </SWRConfig>

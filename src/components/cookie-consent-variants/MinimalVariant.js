@@ -21,8 +21,7 @@ const MinimalVariant = ({
   handleSubmit,
   setIsOpen,
 }) => {
-  console.log("Calling minimal");
-
+ 
   return (
     <Container>
       <Header>
