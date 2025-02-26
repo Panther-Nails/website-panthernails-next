@@ -6,7 +6,7 @@ import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9
 import { ContentWithPaddingXl, Container } from "components/misc/Layouts";
 import { HighlightedHeading } from "components/misc/Headings";
 
-const PrimaryBackgroundContainer = tw.div`py-4 lg:py-8 bg-secondary-500 rounded-lg relative`;
+const PrimaryBackgroundContainer = tw.div`py-4 lg:py-8 bg-secondary-500 rounded-lg relative w-[95%] m-auto`;
 const Row = tw.div`px-8 max-w-screen-lg mx-auto flex items-center relative z-10 flex-col lg:flex-row text-center lg:text-left`;
 const ColumnContainer = tw.div`lg:w-1/2 max-w-lg`;
 const TextContainer = tw(ColumnContainer)``;

@@ -2,12 +2,15 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { SectionHeading } from "components/misc/Headings.js";
+import {
+  HighlightedHeading,
+  SectionHeading,
+} from "components/misc/Headings.js";
 import { PrimaryLink as PrimaryLinkBase } from "components/misc/Links.js";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
+import { Container } from "components/misc/Layouts";
 
-const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
 
 const Column = tw.div``;
@@ -20,8 +23,8 @@ const ThreeColumn = styled(Column)((props) => [
 const HeadingColumn = tw(Column)`w-full xl:w-1/3`;
 
 const HeadingInfoContainer = tw.div`text-center xl:text-left max-w-lg xl:max-w-none mx-auto xl:mx-0`;
-const HeadingTitle = tw(SectionHeading)`xl:text-left leading-tight`;
-const HeadingDescription = tw.p`text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100 mt-8`;
+
+const HeadingDescription = tw.p` px-2 text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100 mt-8`;
 const PrimaryLink = styled(PrimaryLinkBase)`
   ${tw`inline-flex justify-center xl:justify-start items-center mt-8 text-lg`}
   svg {
@@ -36,7 +39,7 @@ export default ({ index, children, properties }) => {
         <ThreeColumn textOnLeft={properties.textOnLeft}>
           <HeadingColumn>
             <HeadingInfoContainer>
-              <HeadingTitle>{properties.heading}</HeadingTitle>
+              <HighlightedHeading>{properties.heading}</HighlightedHeading>
               <HeadingDescription>{properties.description}</HeadingDescription>
               {properties.linkUrl ? (
                 <PrimaryLink href={properties.linkUrl} target="_blank">

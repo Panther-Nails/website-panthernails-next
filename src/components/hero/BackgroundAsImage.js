@@ -16,8 +16,8 @@ const Container = styled.div`
 const OpacityOverlay = tw.div`z-10 absolute inset-0 bg-black opacity-50`;
 const HeroContainer = tw.div`z-20 relative px-4 sm:px-8 max-w-screen-xl mx-auto`;
 const TwoColumn = tw.div`pt-24 pb-32 px-4 flex justify-between items-center flex-col lg:flex-row`;
-const LeftColumn = tw.div`flex flex-col items-center lg:block`;
-const RightColumn = tw.div`w-full sm:w-5/6 lg:w-1/2 mt-16 lg:mt-0 lg:pl-8 hidden lg:block`;
+const LeftColumn = tw.div`flex flex-col items-center lg:block lg:w-1/2`;
+const RightColumn = tw.div` sm:w-5/6 lg:w-1/2 mt-16 lg:mt-0 lg:pl-8 hidden lg:block`;
 
 const Heading = styled.h1`
   ${tw`text-3xl text-center lg:text-left sm:text-4xl lg:text-5xl xl:text-6xl font-black text-gray-100 leading-none`}
@@ -30,28 +30,31 @@ const Notification = tw.span`inline-block  my-4 pl-3 py-1 text-gray-100 border-l
 export const PrimaryAction = tw.button`px-8 py-3 mt-10 text-sm sm:text-base sm:mt-16 sm:px-8 sm:py-4 bg-gray-100 text-primary-500 font-bold rounded shadow transition duration-300 hocus:bg-primary-500 hocus:text-gray-100 focus:shadow-outline`;
 
 const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
-  padding-bottom: 56.25% !important;
   padding-top: 0px !important;
   ${tw`rounded`}
   iframe {
-    ${tw`rounded bg-black shadow-xl`}
+    ${tw`rounded bg-black shadow-xl w-[100%] `}
   }
 `;
 
 export default ({ properties, children, index, data }) => {
-
   console.log();
-  
+
   return (
     <Container backgroundImageUrl={properties.backgroundImageUrl}>
       <OpacityOverlay />
       <HeroContainer>
         <TwoColumn>
           <LeftColumn>
-            <Notification id="notification">{properties.notification}</Notification>
-            <HighlightedHeading textStyle={tw`text-center lg:text-left`} primaryColor={tw`text-white`}>
+            <Notification id="notification">
+              {properties.notification}
+            </Notification>
+
+            <HighlightedHeading
+              textStyle={tw`text-center lg:text-left`}
+              primaryColor={tw`text-white`}
+            >
               {properties.heading}
-             
             </HighlightedHeading>
             <PrimaryAction
               onClick={() => {

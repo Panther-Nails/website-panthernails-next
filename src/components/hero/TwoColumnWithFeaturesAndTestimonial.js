@@ -3,7 +3,10 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import HeaderBase, { NavLinks, NavLink } from "components/headers/light.js";
-import { HighlightedHeading, SectionHeading } from "components/misc/Headings.js";
+import {
+  HighlightedHeading,
+  SectionHeading,
+} from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import {
@@ -15,11 +18,11 @@ import { ReactComponent as QuotesLeftIconBase } from "images/quotes-l.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/dot-pattern.svg";
 
 const Header = tw(HeaderBase)`max-w-none`;
-const Row = tw.div`flex flex-col lg:flex-row justify-between items-center lg:pt-16 max-w-screen-2xl mx-auto sm:px-8`;
+const Row = tw.div`flex flex-col md:flex-row justify-between items-center lg:pt-16 max-w-screen-2xl mx-auto sm:px-8`;
 const Column = tw.div``;
 const TextColumn = tw(
   Column
-)`mr-auto lg:mr-0 max-w-lg lg:max-w-xl xl:max-w-2xl`;
+)`lg:mr-0 max-w-lg lg:max-w-xl xl:max-w-2xl flex flex-col items-center md:items-start text-center lg:text-left md:px-10`;
 const Heading = tw(
   SectionHeading
 )`text-left text-primary-900 leading-snug xl:text-6xl`;
@@ -33,7 +36,7 @@ const FeatureList = tw.ul`mt-12 leading-loose`;
 const Feature = tw.li`flex items-center`;
 const FeatureIcon = tw(CheckboxIcon)`w-5 h-5 text-primary-500`;
 const FeatureText = tw.p`ml-2 font-medium text-gray-700`;
-const ImageColumn = tw(Column)`ml-auto lg:mr-0 relative mt-16 lg:mt-0 lg:ml-32`;
+const ImageColumn = tw(Column)` lg:mr-0 relative mt-16 lg:mt-0 lg:ml-32`;
 const ImageContainer = tw.div`relative z-40 transform xl:-translate-x-24 xl:-translate-y-16`;
 const Image = tw.img`max-w-full w-96 rounded-t sm:rounded relative z-20`;
 const Offsetbackground = tw.div`absolute inset-0 bg-gray-300 rounded xl:-mb-8`;
@@ -47,7 +50,7 @@ const QuotesLeftIcon = tw(
 const Quote = tw.blockquote``;
 const CustomerName = tw.p`mt-4 font-bold`;
 const CustomerCompany = tw.p`mt-1 text-sm text-gray-500`;
-
+const HeadingWrapper = tw.div`w-[90%] lg:w-[100%]  `;
 export default ({
   properties,
   imageDecoratorBlob = properties.imageDecoratorBlob === "false" ? false : true,
@@ -63,7 +66,11 @@ export default ({
         <ContentWithVerticalPadding>
           <Row>
             <TextColumn>
-              <HighlightedHeading>{properties.heading}</HighlightedHeading>
+              <HeadingWrapper>
+                <HighlightedHeading textStyle={tw`lg:text-left`}>
+                  {properties.heading}
+                </HighlightedHeading>
+              </HeadingWrapper>
               <Description>{properties.description}</Description>
               <PrimaryButton
                 as="a"

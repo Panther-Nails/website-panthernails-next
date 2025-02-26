@@ -15,14 +15,14 @@ import { ReactComponent as StarIconBase } from "images/star-icon.svg";
 import { ReactComponent as ArrowLeftIcon } from "images/arrow-left-3-icon.svg";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-3-icon.svg";
 
-const Row = tw.div`flex flex-col md:flex-row justify-between items-center`;
+const Row = tw.div`flex flex-col md:flex-row justify-between items-center px-4`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(Column)`md:w-5/12 xl:w-6/12 flex-shrink-0 relative`;
 const TextColumn = styled(Column)((props) => [
   tw`md:w-7/12 xl:w-6/12 mt-16 md:mt-0`,
   props.textOnLeft
-    ? tw`md:pr-12 lg:pr-16 md:order-first`
-    : tw`md:pl-12 lg:pl-16 md:order-last`,
+    ? tw`md:pr-6 lg:pr-8 md:order-first`
+    : tw`md:pl-6 lg:pl-8 md:order-last`,
 ]);
 
 const Image = styled.img((props) => [
@@ -31,7 +31,7 @@ const Image = styled.img((props) => [
   props.imageShadow && tw`shadow`,
 ]);
 
-const Subheading = tw(SubheadingBase)`text-center md:text-left`;
+const Subheading = tw(SubheadingBase)`text-center md:text-left `;
 const Heading = tw(
   SectionHeading
 )`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
@@ -61,7 +61,7 @@ const CustomerInfo = tw.div`flex flex-col sm:flex-row items-center justify-cente
 const CustomerProfilePicture = tw.img`rounded-full w-16 h-16 sm:w-20 sm:h-20`;
 const CustomerTextInfo = tw.div`text-center md:text-left sm:ml-6 mt-2 sm:mt-0`;
 const CustomerName = tw.h5`font-bold text-xl`;
-const CustomerTitle = tw.p`font-medium text-secondary-100`;
+const CustomerTitle = tw.p`font-medium text-secondary-100 sm:ml-6`;
 
 const Controls = styled.div`
   ${tw`flex mt-8 sm:mt-0`}
@@ -105,7 +105,7 @@ export default ({ properties, children, index, data }) => {
             textOnLeft={properties.textOnLeft === "true" ? true : false}
           >
             <Subheading>{properties.subHeading}</Subheading>
-            <HighlightedHeading>{properties.heading}</HighlightedHeading>
+            <HighlightedHeading textStyle={tw`text-center lg:text-left`}>{properties.heading}</HighlightedHeading>
             <Description>{properties.description}</Description>
             <TestimonialSlider arrows={false} ref={setSliderRef}>
               {inputs.map((testimonial, index) => (

@@ -32,7 +32,7 @@ export default ({ properties, children, index, data }) => {
         {properties.subheading && (
           <Subheading>{properties.subheading}</Subheading>
         )}
-        <HighlightedHeading>{properties.heading}</HighlightedHeading>
+        <HighlightedHeading primaryColor={tw`text-white`} >{properties.heading}</HighlightedHeading>
         {properties.description && (
           <Description>{properties.description}</Description>
         )}

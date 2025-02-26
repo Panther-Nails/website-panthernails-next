@@ -10,24 +10,18 @@ import {
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
+import { Container } from "components/misc/Layouts";
 
-const Container = styled.div`
-  ${tw`relative py-8 px-4 lg:py-16 lg:px-8`}
-`;
-const TwoColumn = styled.div`
-  ${tw`flex flex-col lg:flex-row justify-between max-w-screen-xl mx-auto pb-12 items-center`}
-`;
-const Column = styled.div`
-  ${tw`w-full max-w-md mx-auto md:max-w-none md:mx-0`}
-`;
-const ImageColumn = styled(Column)`
-  ${tw`lg:w-6/12 flex flex-col relative items-center hidden lg:block`}
-`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between gap-4 max-w-screen-xl  py-12  items-center`;
+const Column = tw.div`w-full max-w-md  md:max-w-none md:mx-0`;
+const ImageColumn = tw(
+  Column
+)`md:w-6/12 flex flex-col relative items-center  hidden md:block px-4`;
 const TextColumn = styled(Column)((props) => [
   tw`lg:w-6/12 mt-16 lg:mt-0`,
   props.textOnLeft === "true"
-    ? tw`lg:pr-8 lg:order-first`
-    : tw`lg:pl-8 lg:order-last`,
+    ? tw`md:mr-12  lg:mr-16 flex-row-reverse `
+    : tw`md:ml-12  lg:ml-16 md:order-first`,
 ]);
 
 // Image with optional styling props
@@ -35,6 +29,7 @@ const Image = styled.img((props) => [
   props.imageRounded && tw`rounded`,
   props.imageBorder && tw`border`,
   props.imageShadow && tw`shadow`,
+  tw` mx-auto`,
 ]);
 
 const DecoratorBlob = styled(SvgDotPattern)(() => [

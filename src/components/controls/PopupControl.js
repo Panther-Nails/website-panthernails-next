@@ -7,6 +7,7 @@ import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 import { useSession } from "providers/SessionProvider";
 import { getCookie } from "services/CookieService";
 import PopupModal, { ClosePopupControl } from "helpers/PopupModal";
+import { useSWRConfig } from "swr";
 
 // export const NotificationBarPullout = styled.div((props) => [
 //   tw`top-0 border-b z-50 flex justify-between items-center p-1 lg:px-20 font-semibold`,
@@ -32,55 +33,64 @@ const PopupHeader = tw.div` w-full h-[5%] lg:h-[2%] flex items-center justify-en
 const PopupContent = tw.div`h-[95%] lg:h-[98%] w-full px-5`;
 
 export default ({ properties, children }) => {
-  const { showPopup, hidePopup, showModalPopup, showNonModalPopup } =
-    useSession();
-
+  const [showPopup, setShowPopup] = useState(false);
+  const [shouldCloseOnOverlayClick, setShouldCloseOnOverlayClick] =
+    useState(false);
+  const swrConfig = useSWRConfig();
   var startTime = properties?.startTime
     ? JSON.parse(properties.startTime)
     : 5000;
 
   var endTime = properties?.endTime ? JSON.parse(properties.endTime) : 1000000;
 
-  
-  const [chaildData] = children;
-  const { CPJSON, HPJSON } = chaildData;
+  const chaildData = swrConfig.cache.get(children[0].CacheKey)?.data?.items[0];
 
-
-  const cpjsonData = CPJSON && JSON.parse(CPJSON);
-  const hpjsonData = HPJSON && JSON.parse(HPJSON);
-  const childControlData = { ...cpjsonData, ...hpjsonData };
+  const chaildProperty = JSON.parse(chaildData?.Properties || "[]");
 
   const popupKeyVal = getCookie("Popupkey");
 
   useEffect(() => {
     const timerStart = setTimeout(() => {
-      if (popupKeyVal !== childControlData.productEnquiryFor) {
+      if (popupKeyVal !== chaildProperty?.productEnquiryFor) {
+        console.log("popupKeyVal", popupKeyVal);
+
         if (properties.popupCloseOnOverlayClick === "true") {
-          showNonModalPopup(getPopupContent(), properties.popupSize);
+          setShowPopup(true);
+          setShouldCloseOnOverlayClick(true);
         } else {
-          showModalPopup(getPopupContent(), properties.popupSize);
+          setShowPopup(true);
+          setShouldCloseOnOverlayClick(false);
         }
+      } else {
+        setShowPopup(false);
       }
     }, startTime);
 
     return () => clearTimeout(timerStart);
-  }, [startTime]);
+  }, []);
 
   useEffect(() => {
     const timerEnd = setTimeout(() => {
-      hidePopup();
+      setShowPopup(false);
     }, endTime);
     return () => clearTimeout(timerEnd);
   }, [endTime]);
 
-  const getPopupContent = () => (
-    <Container>
-      <PopupHeader>
-        <ClosePopupControl />
-      </PopupHeader>
-      <PopupContent>{ProcessChildComponentsSeparately(children)}</PopupContent>
-    </Container>
+  return (
+    <PopupModal
+      size={properties?.popupSize}
+      showPopup={showPopup}
+      closeOnOverlay={shouldCloseOnOverlayClick}
+      setShowPopup={setShowPopup}
+    >
+      <Container>
+        <PopupHeader>
+          <ClosePopupControl setShowPopup={setShowPopup} />
+        </PopupHeader>
+        <PopupContent>
+          {ProcessChildComponentsSeparately(children)}
+        </PopupContent>
+      </Container>
+    </PopupModal>
   );
-
-  return <></>;
 };

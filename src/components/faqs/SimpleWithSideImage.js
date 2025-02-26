@@ -9,9 +9,9 @@ import {
 } from "components/misc/Headings.js";
 import { ReactComponent as PlusIcon } from "feather-icons/dist/icons/plus.svg";
 import { ReactComponent as MinusIcon } from "feather-icons/dist/icons/minus.svg";
+import { Container } from "components/misc/Layouts";
 
-const Container = tw.div`relative`;
-const Content = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20`;
+const Content = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20 px-4`;
 
 const TwoColumn = tw.div`flex`;
 const Column = tw.div``;
@@ -23,15 +23,15 @@ const Image = styled.div((props) => [
   tw`hidden lg:block rounded h-144 bg-center`,
 ]);
 
-const FAQContent = tw.div`lg:ml-12`;
+const FAQContent = tw.div`lg:ml-4`;
 const Subheading = tw(SubheadingBase)`mb-4 text-center lg:text-left`;
-const Description = tw.p`max-w-xl text-center mx-auto lg:mx-0 lg:text-left lg:max-w-none leading-relaxed text-sm sm:text-base lg:text-lg font-medium mt-4 text-secondary-100`;
+const Description = tw.p`max-w-xl px-4 lg:px-0 lg:mx-0 text-left lg:max-w-none leading-relaxed text-sm sm:text-base lg:text-lg font-medium mt-4 text-secondary-100`;
 
-const CheckIcon= tw.img`w-8 h-8`
+const CheckIcon = tw.img`w-6 h-6 lg:h-8 lg:w-8`;
 const FAQSContainer = tw.dl`mt-12`;
-const FAQ = tw.div` mt-8 select-none   px-8 py-4 lg:p-0 rounded-lg lg:rounded-none`;
+const FAQ = tw.div` lg:mt-8 select-none   px-8 py-4 lg:p-0 rounded-lg lg:rounded-none`;
 const Question = tw.dt`flex justify-start  items-center`;
-const QuestionText = tw.span`text-lg ml-3 lg:text-xl font-semibold`;
+const QuestionText = tw.span`text-base ml-3 lg:text-xl font-semibold`;
 const QuestionToggleIcon = styled.span`
   ${tw`ml-2 bg-primary-500 text-gray-100 p-1 rounded-full group-hover:bg-primary-700 group-hover:text-gray-200 transition duration-300`}
   svg {
@@ -41,7 +41,7 @@ const QuestionToggleIcon = styled.span`
 const Answer = motion(
   tw.dd`pointer-events-none text-sm sm:text-base leading-relaxed`
 );
-
+const TextContainer = tw.div`w-[90%] px-8 lg:px-0`;
 export default ({ index, properties, children, data }) => {
   /*
    * You can modify FAQs either by modifying the below defaultFaqs array or by passing a custom array of FAQs using
@@ -58,7 +58,7 @@ export default ({ index, properties, children, data }) => {
   return (
     <Container id="faq">
       <Content>
-        <TwoColumn tw="md:flex items-center justify-center gap-12">
+        <TwoColumn tw="md:flex items-center justify-center gap-4">
           <Column tw="hidden lg:block w-5/12 flex-shrink-0">
             <Image
               imageContain={
@@ -72,11 +72,15 @@ export default ({ index, properties, children, data }) => {
           </Column>
           <Column>
             <FAQContent>
-              {properties.subheading ? (
-                <Subheading>{properties.subheading}</Subheading>
-              ) : null}
-              <HighlightedHeading>{properties.heading}</HighlightedHeading>
-              <Description>{properties.description}</Description>
+              <TextContainer>
+                {properties.subheading ? (
+                  <Subheading>{properties.subheading}</Subheading>
+                ) : null}
+                <HighlightedHeading textStyle={tw`text-left`}>
+                  {properties.heading}
+                </HighlightedHeading>
+                <Description>{properties.description}</Description>
+              </TextContainer>
               <FAQSContainer>
                 {faqs.map((faq, index) => (
                   <FAQ
@@ -87,7 +91,10 @@ export default ({ index, properties, children, data }) => {
                     className="group"
                   >
                     <Question>
-                      <CheckIcon src="https://cdn-icons-png.flaticon.com/128/8367/8367487.png" alt="Check Icon"/>
+                      <CheckIcon
+                        src="https://cdn-icons-png.flaticon.com/128/8367/8367487.png"
+                        alt="Check Icon"
+                      />
                       <QuestionText>{faq.question}</QuestionText>
                       {faqs.Answer != null ? (
                         <QuestionToggleIcon>

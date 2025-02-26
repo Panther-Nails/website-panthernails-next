@@ -13,6 +13,8 @@ import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`text-center mx-auto `;
+const Content = tw.div`w-[100%] flex flex-col items-center `;
+const TextContainer = tw.div`max-w-screen-lg flex flex-col items-center justify-center`;
 const ThreeColumnContainer = styled.div`
   ${tw`mt-10 flex flex-col items-center lg:items-stretch lg:flex-row flex-wrap lg:justify-center max-w-screen-lg mx-auto`}
 `;
@@ -25,20 +27,24 @@ export default ({ properties, children, index, data }) => {
   return (
     <Container>
       <ContentWithPaddingXl>
-        {properties.subheading && (
-          <Subheading>{properties.subheading}</Subheading>
-        )}
-        {properties.heading && (
-          <HighlightedHeading color="text-primary-500">
-            {properties.heading}
-          </HighlightedHeading>
-        )}
-        {properties.description && (
-          <Description>{properties.description}</Description>
-        )}
-        <ThreeColumnContainer>
-          {ProcessChildComponentsSeparately(children)}
-        </ThreeColumnContainer>
+        <Content>
+          <TextContainer>
+            {properties.subheading && (
+              <Subheading>{properties.subheading}</Subheading>
+            )}
+            {properties.heading && (
+              <HighlightedHeading color="text-primary-500">
+                {properties.heading}
+              </HighlightedHeading>
+            )}
+            {properties.description && (
+              <Description>{properties.description}</Description>
+            )}
+          </TextContainer>
+          <ThreeColumnContainer>
+            {ProcessChildComponentsSeparately(children)}
+          </ThreeColumnContainer>
+        </Content>
       </ContentWithPaddingXl>
       <DecoratorBlob />
     </Container>

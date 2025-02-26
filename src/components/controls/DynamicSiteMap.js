@@ -133,12 +133,14 @@ export default ({ properties, children, index, data }) => {
     return acc;
   }, []);
   const groupedArray = Object.values(groupedByModule);
-
+  const TextContainer = tw.div`w-[90%] m-auto`;
   return (
     <Container tw="bg-white flex flex-col gap-8 py-12">
-      <HighlightedHeading tw="text-left text-black text-3xl font-serif pl-8 py-12">
-        {properties.heading}
-      </HighlightedHeading>
+      <TextContainer>
+        <HighlightedHeading tw="text-left text-black text-3xl font-serif pl-8 py-12">
+          {properties.heading}
+        </HighlightedHeading>
+      </TextContainer>
       <PlansContainer tw="md:flex justify-center gap-12">
         {groupedArray.map((plan, index) => (
           <Plan key={index} featured={plan.featured}>

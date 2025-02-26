@@ -4,7 +4,11 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
-import { SectionHeading, Subheading } from "components/misc/Headings.js";
+import {
+  HighlightedHeading,
+  SectionHeading,
+  Subheading,
+} from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import { ReactComponent as StarIcon } from "images/star-icon.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-5.svg";
@@ -170,16 +174,21 @@ export default ({
    * as the key and value of the key will be its content (as an array of objects).
    * To see what attributes are configurable of each object inside this array see the example above for "Starters".
    */
+console.log(data);
 
   const tabsKeys = Object.keys(tabs);
   const [activeTab, setActiveTab] = useState(tabsKeys[0]);
-
+  const TextComponent = tw.div`w-[90%] m-auto`;
   return (
     <Container>
       <ContentWithPaddingXl>
         <HeaderRow>
-          <Header>{data?.ComponentPropertyJSON?.heading}</Header>
-          <Subheading>{data?.ComponentPropertyJSON?.subHeading}</Subheading>
+          <TextComponent>
+            <HighlightedHeading>
+              {data?.ComponentPropertyJSON?.heading}
+            </HighlightedHeading>
+            <Subheading>{data?.ComponentPropertyJSON?.subHeading}</Subheading>
+          </TextComponent>
           <TabsControl>
             {Object.keys(tabs)?.map((tabName, index) => (
               <TabControl

@@ -15,6 +15,7 @@ export default () => {
   const [pageData, setPageData] = useState({});
   const [components, setComponents] = useState([]);
 
+
   function setPageMetaData(metaData) {
     document.title =
       metaData?.HeadTitle + " - Panther Nails Technologies Private Limited.";
