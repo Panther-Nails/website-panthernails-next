@@ -9,7 +9,7 @@ const MenuItem = tw.li`px-4 py-2 hover:bg-gray-100 cursor-pointer`;
 const IconButton = tw.button`my-2 transition flex items-center justify-center`;
 const GlobeIcon = tw(RadioIcon)`w-5`;
 
-export default function CustomDropdown({ onSelect }) {
+export default function CustomDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
   const { languages, setLanguageObject } = useSession();

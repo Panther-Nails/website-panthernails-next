@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { motion, useAnimation, useCycle } from "framer-motion";
+import { motion, useAnimation, useCycle, AnimatePresence } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { NavLink as RouterLink, useNavigate } from "react-router-dom";
-import feather from "feather-icons";
 
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 import pnlogo from "../../images/pnlogo.svg";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
+import { ReactComponent as SearchIcon } from "feather-icons/dist/icons/search.svg";
+
 import { useSession } from "providers/SessionProvider.js";
 import {
   setPageMetaData,
@@ -199,9 +200,6 @@ export default ({
     ParameterJSON: "{}",
   });
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  useEffect(() => {
-    feather.replace();
-  }, []);
 
   useEffect(() => {
     if (data) {
@@ -276,6 +274,8 @@ export default ({
   );
 
   const handleMouseEnter = (link, index) => {
+    console.log("link.LinkJSON", link.LinkJSON);
+
     if (link.LinkJSON) {
       setDropdownContent(link.LinkJSON);
       setHoveredLinkIndex(index);
@@ -350,15 +350,19 @@ export default ({
       <div
         css={tw`flex flex-col lg:flex-row lg:gap-5 items-center justify-center`}
       >
-        {!isSearchVisible && (
-          <div
-            onClick={() => setIsSearchVisible(true)}
-            css={tw`relative m-auto flex items-center justify-center`}
-          >
-            <i data-feather="search"></i>
+        <>
+          <AnimatePresence>
+            {isSearchVisible && <SearchBoxControl />}
+          </AnimatePresence>
+          <div css={tw`relative m-auto flex items-center justify-center`}>
+            {/* <i data-feather="search"></i> */}
+            {isSearchVisible ? (
+              <CloseIcon onClick={() => setIsSearchVisible(false)} />
+            ) : (
+              <SearchIcon onClick={() => setIsSearchVisible(true)} />
+            )}
           </div>
-        )}
-        {isSearchVisible && <SearchBoxControl />}
+        </>
         <div css={tw`relative flex items-center justify-center`}>
           <LanguageDropdown />
         </div>

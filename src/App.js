@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy } from "react";
 import GlobalStyles from "styles/GlobalStyles";
 import "react-toastify/dist/ReactToastify.css";
 import "slick-carousel/slick/slick.css";
@@ -7,11 +7,14 @@ import { ToastContainer } from "react-toastify";
 import { SWRConfig } from "swr";
 import { BS64PNE36Encryption } from "turbo/lib/cjs/Encryption/BS64PNE36Encryption";
 
-import RouterPaths from "RouterPaths";
-import Header from "components/headers/light";
-import ScrollUpButton from "components/features/ScrollUpButton";
-import PopupModal from "helpers/PopupModal";
 import { useSession } from "providers/SessionProvider";
+
+const RouterPaths = lazy(() => import("./RouterPaths"));
+const Header = lazy(() => import("./components/headers/light"));
+const PopupModal = lazy(() => import("./helpers/PopupModal"));
+const ScrollUpButton = lazy(() =>
+  import("./components/features/ScrollUpButton")
+);
 
 export default function App() {
   const { popupRenderer } = useSession();
