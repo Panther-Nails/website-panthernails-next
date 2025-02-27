@@ -5,7 +5,7 @@ import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 import { HighlightedHeading } from "../misc/Headings.js";
 import { Container } from "components/misc/Layouts.js";
 
-const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
+const Content = tw.div`max-w-screen-xl mx-auto py-6`;
 const ThreeColumn = tw.div`flex flex-col items-center lg:items-stretch lg:flex-row flex-wrap`;
 
 const HeadingInfoContainer = tw.div`flex flex-col items-center w-[90%] m-auto`;

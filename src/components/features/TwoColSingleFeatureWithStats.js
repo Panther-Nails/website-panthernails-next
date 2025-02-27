@@ -22,6 +22,11 @@ const Image = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
   tw`rounded bg-cover bg-center h-full`,
 ]);
+
+//show and hide absolute image 
+// const Img = tw.img`h-96 relative object-cover`;
+// const Img1 = tw.img`h-96 absolute opacity-0 hover:opacity-100 duration-700 hover:scale-[101%] scale-[100%] transition-all object-cover`;
+
 const TextContent = tw.div`lg:py-8`;
 
 const Heading = tw(

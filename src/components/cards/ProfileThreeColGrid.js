@@ -1,7 +1,7 @@
 import React from "react";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
+import { Container, ContentWithPaddingXl as ContentWithPadding } from "components/misc/Layouts.js";
 import { SectionHeading as HeadingBase } from "components/misc/Headings";
 import {
   HighlightedHeading,
@@ -13,8 +13,8 @@ import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 const HeadingContainer = tw.div`w-[90%] m-auto`;
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`mx-auto text-center`;
-
-const Cards = tw.div`flex flex-wrap flex-row justify-center sm:max-w-2xl lg:max-w-5xl mx-auto`;
+const ContentWithPaddingXl = tw(ContentWithPadding)`py-6`;
+const Cards = tw.div`flex flex-wrap flex-row justify-center sm:max-w-2xl lg:max-w-5xl mx-auto gap-0`;
 
 export default ({ properties, children, index, data }) => {
   return (

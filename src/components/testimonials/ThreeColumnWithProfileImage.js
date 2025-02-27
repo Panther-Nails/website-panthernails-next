@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 
-import { ContentWithPaddingXl, Container } from "components/misc/Layouts.js";
+import { ContentWithPaddingXl as ContentWithPadding, Container } from "components/misc/Layouts.js";
 import {
   Subheading as SubheadingBase,
   HighlightedHeading,
@@ -12,7 +12,7 @@ import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-8
 import { ProcessChildComponentsSeparately } from "services/ComponentService";
 const Subheading = tw(SubheadingBase)`text-center`;
 const Testimonials = tw.div`flex flex-col lg:flex-row items-center lg:items-stretch`;
-
+const ContentWithPaddingXl = tw(ContentWithPadding)`pt-4`;
 const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
   ${tw`pointer-events-none -z-20 absolute left-0 top-0 h-56 w-56 opacity-15 transform -translate-x-2/3 -translate-y-12 text-teal-400`}
 `;

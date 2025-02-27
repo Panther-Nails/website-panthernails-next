@@ -11,7 +11,7 @@ import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 import { Container } from "components/misc/Layouts";
 
 const ThreeColumnContainer = styled.div`
-  ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-xl mx-auto py-20 md:py-24`}
+  ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-xl mx-auto py-6`}
 `;
 
 const DecoratorBlob = styled(SvgDecoratorBlob3)`

@@ -11,7 +11,7 @@ import { ReactComponent as PlusIcon } from "feather-icons/dist/icons/plus.svg";
 import { ReactComponent as MinusIcon } from "feather-icons/dist/icons/minus.svg";
 import { Container } from "components/misc/Layouts";
 
-const Content = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20 px-4`;
+const Content = tw.div`max-w-screen-xl mx-auto py-10 px-4`;
 
 const TwoColumn = tw.div`flex`;
 const Column = tw.div``;
@@ -69,8 +69,8 @@ export default ({ index, properties, children, data }) => {
               }
               imageSrc={properties.imageSrc}
             />
-          </Column>
-          <Column>
+          </Column >
+          <Column tw="  md:w-7/12 lg:w-5/12">
             <FAQContent>
               <TextContainer>
                 {properties.subheading ? (

@@ -16,9 +16,9 @@ const ImageContainer = styled.div`
 const TextContainer = tw.div`md:mx-3 lg:mx-6 md:w-6/12 py-4 flex flex-col `;
 const QuoteContainer = tw.div`relative p-6 md:p-8 lg:p-10 mt-4 md:mt-0`;
 const Quote = tw.blockquote`text-center md:text-left font-medium text-xl lg:text-2xl xl:text-3xl`;
-const CustomerInfo = tw.div`px-5 lg:px-10 text-center md:text-left  md:mt-0`;
+const CustomerInfo = tw.div`px-6  text-center md:text-left  md:mt-0`;
 const CustomerName = tw.h5`font-bold text-lg lg:text-xl xl:text-2xl text-primary-500`;
-const CustomerTitle = tw.p`font-medium text-sm`;
+const CustomerTitle = tw.p`font-medium text-sm mx-4`;
 
 const QuotesLeft = tw(
   QuotesLeftIcon

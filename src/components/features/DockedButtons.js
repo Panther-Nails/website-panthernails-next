@@ -27,8 +27,8 @@ const Link = styled.a((props) => [
   positions[props.position],
 ]);
 
-const LinkIcon = styled.img`w-full h-full`;
-const Rapper = tw.div`flex items-center w-12 h-12   `;
+const LinkIcon = styled.img`w-full h-full p-2 `;
+const Rapper = tw.div`flex items-center w-12 h-12  mr-2 `;
 export default ({ properties }) => {
   const [show, setShow] = useState(false);
 
@@ -46,7 +46,7 @@ export default ({ properties }) => {
             src={
               show
                 ? "https://cdn-icons-png.flaticon.com/128/8066/8066266.png"
-                : "https://img.freepik.com/free-vector/social-media-icons-globe_1057-1076.jpg?t=st=1727527607~exp=1727531207~hmac=16165a2fba57d24874a2c2ea7131ff5e63c5602a443446a5dc5deacd1e78e3a8&w=740"
+                :properties.imageSrc
             }
             onClick={() => {
               setShow(true);

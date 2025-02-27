@@ -5,13 +5,13 @@ import { css } from "styled-components/macro";
 // import { ReactComponent as LinkedinIcon } from "images/linkedin-icon.svg";
 const Link = tw.a`flex items-center w-12 h-12 p-4 rounded bg-white hocus:bg-gray-300 hocus:w-16 duration-200`;
 const LinkIcon = styled.img`w-full h-full`;
-const Card = tw.div`mt-24 w-full sm:w-1/2 lg:w-1/4 flex flex-col items-center`;
+const Card = tw.div`mt-12 lg:my-12 w-full sm:w-1/2 lg:w-1/4 flex flex-col items-center `;
 const CardImage = styled.div`
   ${(props) =>
     css`
       background-image: url("${props.imageSrc}");
     `}
-  ${tw`w-64 h-64 bg-contain bg-center rounded`}
+  ${tw`w-64 h-64 bg-contain bg-center rounded `}
 `;
 const CardContent = styled.div`
   ${tw`flex flex-col items-center mt-6`}

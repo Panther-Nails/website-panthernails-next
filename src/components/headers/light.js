@@ -17,6 +17,7 @@ import {
 } from "services/useExecuteQuerySWR.js";
 import LanguageDropdown from "./LanguageDropdown.js";
 import SearchBoxControl from "../../providers/SearchBoxControl.js";
+import { ExecuteQuery } from "services/APIService.js";
 
 const Container = styled.div((props) => [
   tw`relative sticky top-0 z-50 bg-white text-sm`,
@@ -210,12 +211,19 @@ export default ({
     };
   }, []);
 
-  const { data } = useExecuteQuerySWR(`${languageObject?.LanguageID}`, {
-    ActionName: "WSM.GMst_SelectFewFromLinkAndLinkLanguages",
-    ParameterJSON: "{}",
-  });
+  const [data, setData] = useState([]);
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
   useEffect(() => {
+    ExecuteQuery({
+      ActionName: "WSM.GMst_SelectFewFromLinkAndLinkLanguages",
+      ParameterJSON: "{}",
+    }).then((response) => {
+      if (response) {
+        if (response.message === "Successfull" && response.items.length > 0) {
+          setData(response);
+        }
+      }
+    });
     feather.replace();
   }, []);
 

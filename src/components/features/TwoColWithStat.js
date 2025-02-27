@@ -8,12 +8,12 @@ import {
 } from "components/misc/Headings.js";
 import { Container as LocalContainer } from "../misc/Layouts.js";
 
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl  flex-wrap  px-4  items-center`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-center max-w-screen-xl mx-auto  flex-wrap  px-12  items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0 lg:py-40`;
 
 const Container = tw(LocalContainer)`py-10`;
 const TextColumn = styled(Column)((props) => [
-  tw` md:mt-0 text-center md:py-4`,
+  tw` md:mt-0 text-center md:py-4 `,
   props.statLength > 3 ? tw`md:w-1/2` : tw`w-1/2 md:w-1/3`,
 ]);
 
@@ -35,12 +35,11 @@ const Subheading = tw(SubheadingBase)`text-center text-red-500`;
 
 const Description = tw.p`mx-auto mt-4 px-4 lg:px-0 text-center text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
-const HeadingContainer = tw.div`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-xl mx-auto md:py-20`;
+const HeadingContainer = tw.div`flex w-[90%] flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-xl mx-auto md:pb-6`;
 export default ({ data, children, properties, textOnLeft = true }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
   var statistics = JSON.parse(properties.statistics || "[]");
 
-  console.log("statistics", statistics);
 
   return (
     <Container>

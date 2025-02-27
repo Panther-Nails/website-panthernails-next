@@ -47,12 +47,14 @@ export default ({ properties, children }) => {
 
   const chaildProperty = JSON.parse(chaildData?.Properties || "[]");
 
-  const popupKeyVal = getCookie("Popupkey");
+  const popupKeyVal = getCookie(chaildProperty?.productEnquiryFor);
+
+
 
   useEffect(() => {
     const timerStart = setTimeout(() => {
       if (popupKeyVal !== chaildProperty?.productEnquiryFor) {
-        console.log("popupKeyVal", popupKeyVal);
+        
 
         if (properties.popupCloseOnOverlayClick === "true") {
           setShowPopup(true);

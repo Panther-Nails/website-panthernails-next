@@ -13,30 +13,34 @@ import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 import { Container } from "components/misc/Layouts.js";
 
 
-const Content = tw.div`max-w-screen-xl mx-auto pt-20 lg:py-24`;
+const Content = tw.div`max-w-screen-xl mx-auto pt-6 pb-6`;
 const HeadingInfoContainer = tw.div`flex flex-col items-center w-[90%] m-auto`;
 const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w-sm`;
 
-const TestimonialSliderContainer = tw.div`mt-8 px-8`;
-const TestimonialSlider = styled(Slider)``;
+const TestimonialSliderContainer = tw.div`mt-8 px-12`;
+const TestimonialSlider = styled(Slider)`bg-red-500`;
 
 const SliderControlButtonContainer = styled.div`
-  ${tw`absolute top-0 h-full flex items-end md:items-center z-20`}
+  ${tw`absolute top-0 h-full flex items-end  z-20`}
   button {
-    ${tw`text-secondary-500 hover:text-primary-500 focus:outline-none transition duration-300 transform hover:scale-125 transform -translate-y-2/3 md:translate-y-0`}
+    ${tw`  transition duration-300 transform scale-100 hover:scale-125 transform -translate-y-2/3 `}
     svg {
-      ${tw` w-4 h-4  lg:(w-8 h-8)`}
+      ${tw` w-4 h-4  lg:(w-8 h-8) text-secondary-500 hover:text-primary-500`}
     }
   }
 `;
 
-const NextArrow = ({ currentSlide, slideCount, ...props }) => (
+const NextArrow = ({ currentSlide, slideCount, ...props }) =>{
+  console.log({...props} )
+   return(
+  
+  
   <SliderControlButtonContainer tw="right-0">
     <button {...props}>
-      <ArrowRightIcon tw=" " />
+      <ArrowRightIcon tw="block " />
     </button>
   </SliderControlButtonContainer>
-);
+)};
 const PreviousArrow = ({ currentSlide, slideCount, ...props }) => (
   <SliderControlButtonContainer tw="left-0">
     <button {...props}>

@@ -442,7 +442,9 @@ export default ({ properties }) => {
   };
 
   const closePopupForm = () => {
-    setCookie("Popupkey", properties.productEnquiryFor, CookieDuration.Day);
+    setCookie(properties.productEnquiryFor, properties.productEnquiryFor, CookieDuration.Day);
+   
+    
     hidePopup();
   };
 
