@@ -31,7 +31,6 @@ const SliderControlButtonContainer = styled.div`
 `;
 
 const NextArrow = ({ currentSlide, slideCount, ...props }) =>{
-  console.log({...props} )
    return(
   
   
