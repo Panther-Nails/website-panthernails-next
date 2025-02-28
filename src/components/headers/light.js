@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { motion, useAnimation, useCycle } from "framer-motion";
+import { motion, useAnimation, useCycle, AnimatePresence } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { NavLink as RouterLink, useNavigate } from "react-router-dom";
-import feather from "feather-icons";
+
+import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
+import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
+import { ReactComponent as SearchIcon } from "feather-icons/dist/icons/search.svg";
+
+import { useSession } from "providers/SessionProvider.js";
+import { setPageMetaData } from "services/useExecuteQuerySWR.js";
+import { ExecuteQuery } from "services/APIService.js";
 
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 import pnlogo from "../../images/pnlogo.svg";
-import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
-import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
-import { useSession } from "providers/SessionProvider.js";
-import {
-  setPageMetaData,
-  useExecuteQuerySWR,
-} from "services/useExecuteQuerySWR.js";
 import LanguageDropdown from "./LanguageDropdown.js";
 import SearchBoxControl from "../../providers/SearchBoxControl.js";
 import { ExecuteQuery } from "services/APIService.js";
@@ -190,7 +190,7 @@ export default ({
    */
   const [hoveredLinkIndex, setHoveredLinkIndex] = useState(null);
   const [dropdownContent, setDropdownContent] = useState(null);
-  const [scrollCounter, setScrollCounter] = useState(0);
+  const [data, setData] = useState([]);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [isIncreasing, setIsIncreasing] = useState(false);
 
@@ -244,25 +244,6 @@ export default ({
       }
     }
   }, [data, window.location.pathname, languageObject?.LanguageID]);
-
-  // const handleScroll = () => {
-  //   const position = window.scrollY;
-  //   setScrollCounter(position);
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener("scroll", handleScroll, { passive: true });
-
-  //   if (scrollCounter > 0) {
-  //     setIsIncreasing(true);
-  //   } else {
-  //     setIsIncreasing(false);
-  //   }
-
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll, { passive: true });
-  //   };
-  // }, [scrollCounter]);
 
   const defaultLinks = [
     <NavLinks key={1}>
@@ -376,15 +357,31 @@ export default ({
       <div
         css={tw`flex flex-col lg:flex-row lg:gap-5 items-center justify-center`}
       >
-        {!isSearchVisible && (
-          <div
-            onClick={() => setIsSearchVisible(true)}
-            css={tw`relative m-auto flex items-center justify-center`}
-          >
-            <i data-feather="search"></i>
+        <>
+          {isSearchVisible && (
+            <AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                <SearchBoxControl />
+              </motion.div>
+            </AnimatePresence>
+          )}
+          <div css={tw`relative m-auto flex items-center justify-center`}>
+            {isSearchVisible ? (
+              <motion.div whileTap={{ scale: 0.9 }} css={tw`cursor-pointer`}>
+                <CloseIcon onClick={() => setIsSearchVisible(false)} />
+              </motion.div>
+            ) : (
+              <motion.div whileTap={{ scale: 0.9 }} css={tw`cursor-pointer`}>
+                <SearchIcon onClick={() => setIsSearchVisible(true)} />
+              </motion.div>
+            )}
           </div>
-        )}
-        {isSearchVisible && <SearchBoxControl />}
+        </>
         <div css={tw`relative flex items-center justify-center`}>
           <LanguageDropdown />
         </div>

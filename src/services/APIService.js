@@ -1,9 +1,7 @@
 import { ClearCache, getCacheAsync, trySetCache } from "./CacheService";
 import { CookieDuration, getCookie, setCookie } from "./CookieService";
-import encrypted from "../session.json";
 import moment from "moment";
 import { BS64PNE36Encryption } from "turbo/lib/cjs/Encryption/BS64PNE36Encryption";
-import useSWR from "swr";
 
 // export function Execute(oFormData) {
 //   var decryptionKey = decryptData(

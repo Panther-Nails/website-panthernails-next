@@ -3,7 +3,8 @@ import { Suspense } from "react";
 import { useSWRConfig } from "swr";
 
 import { useExecuteQuerySWR } from "services/useExecuteQuerySWR";
-import FallbackLoading from "helpers/FallbackLoading";
+
+const FallbackLoading = lazy(() => import("../helpers/FallbackLoading"));
 
 const ImportDynamicComponent = (Section, ComponentName) => {
   const DynamicComponent = lazy(() =>
@@ -11,7 +12,7 @@ const ImportDynamicComponent = (Section, ComponentName) => {
       .then((module) => ({ default: module.default }))
       .catch((error) => {
         console.log("Error while importing component", error);
-        return { default: () => <FallbackLoading /> }; // If the component is not import dynamically then Show the loading component or something.
+        return { default: () => <FallbackLoading /> };
       })
   );
 
@@ -59,6 +60,10 @@ const DynamicComponent = ({ component, index }) => {
         setProperties(JSON.parse(parseData));
       }
     }
+
+    // if (component.ComponentName === "CookieConsent") {
+    //   setProperties({ test: "Welcome" });
+    // }
   }, [data]);
 
   const ImportedComponent = ImportDynamicComponent(

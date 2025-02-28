@@ -49,8 +49,7 @@ export default () => {
         GetPageCacheKey(window.location.pathname),
         process.env.REACT_APP_COOKIE_DURATION
       ).then((response) => {
-        // console.log("response", response);
-        if (response.message === "Successfull") {
+         if (response.message === "Successfull") {
           var newData = response.items[0];
           setPageMetaData(newData);
 

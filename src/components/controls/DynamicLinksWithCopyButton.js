@@ -47,8 +47,7 @@ export default ({ properties, children, index, data }) => {
       ActionName: "WSM.GMst_SelectAllFromLinkWhereCustom",
       ParameterJSON: JSON.stringify(parameter),
     }).then((response) => {
-      console.log("sitemap from DynamicLinksWithCopyButton", response.items);
-      setSiteMapData(response.items);
+       setSiteMapData(response.items);
     });
   }, []);
 
@@ -57,8 +56,7 @@ export default ({ properties, children, index, data }) => {
     alert(`${value} is copied`);
   };
 
-  console.log(dynamicLinksHeadings);
-  var dynamicLinksHeadings = [
+   var dynamicLinksHeadings = [
     "Link Name",
     "GroupName",
     "SubGroupName",

@@ -33,8 +33,7 @@ export default ({ index, children, properties }) => {
   const navigate = useNavigate(); // Use useNavigate hook
 
   const _handleNavigation = (buttonUrl) => {
-    console.log("buttonUrl", buttonUrl);
-    navigate(buttonUrl); // Navigate to the given URL
+     navigate(buttonUrl); // Navigate to the given URL
   };
   console.log(properties.imageSrc);
 
