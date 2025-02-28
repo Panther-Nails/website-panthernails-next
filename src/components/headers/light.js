@@ -17,7 +17,6 @@ import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 import pnlogo from "../../images/pnlogo.svg";
 import LanguageDropdown from "./LanguageDropdown.js";
 import SearchBoxControl from "../../providers/SearchBoxControl.js";
-import { ExecuteQuery } from "services/APIService.js";
 
 const Container = styled.div((props) => [
   tw`relative sticky top-0 z-50 bg-white text-sm`,
@@ -223,7 +222,6 @@ export default ({
         }
       }
     });
-    feather.replace();
   }, [languageObject?.LanguageID]);
 
   useEffect(() => {
