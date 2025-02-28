@@ -219,13 +219,15 @@ export default ({
       ParameterJSON: "{}",
     }).then((response) => {
       if (response) {
+        console.log("response", response);
+
         if (response.message === "Successfull" && response.items.length > 0) {
           setData(response);
         }
       }
     });
     feather.replace();
-  }, []);
+  }, [languageObject?.LanguageID]);
 
   useEffect(() => {
     if (data) {
