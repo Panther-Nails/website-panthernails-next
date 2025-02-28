@@ -15,7 +15,7 @@ import { Container } from "components/misc/Layouts.js";
 
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-end items-center  pb-6 px-4`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
-const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 h-80 md:h-auto `;
+const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 h-80 md:h-auto pt-12 `;
 const TextColumn = styled(Column)((props) => [
   tw`px-8 lg:px-0 md:w-5/12 lg:mt-16 md:mt-0 `,
   props.textOnLeft === "true"
@@ -25,7 +25,7 @@ const TextColumn = styled(Column)((props) => [
 
 const Image = styled.img((props) => [
   
-  tw`rounded bg-contain bg-no-repeat bg-center h-full`,
+  tw`rounded bg-contain bg-no-repeat bg-center h-full m-auto md:m-0`,
 ]);
 const TextContent = tw.div`lg:py-8  md:text-left `;
 
@@ -55,7 +55,7 @@ export default ({ properties }) => {
             {properties.subheading && (
               <Subheading>{properties.subheading}</Subheading>
             )}
-            <HighlightedHeading textStyle={tw`text-center md:text-left px-0 `}>
+            <HighlightedHeading textStyle={tw`text-left px-0 `}>
               {properties.heading}
               {/* <span tw="text-primary-500">{properties.highlightHeading}</span> */}
             </HighlightedHeading>
