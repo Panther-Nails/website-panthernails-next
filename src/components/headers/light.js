@@ -193,6 +193,7 @@ export default ({
   const [data, setData] = useState([]);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [isIncreasing, setIsIncreasing] = useState(false);
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -211,16 +212,12 @@ export default ({
     };
   }, []);
 
-  const [data, setData] = useState([]);
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
   useEffect(() => {
     ExecuteQuery({
       ActionName: "WSM.GMst_SelectFewFromLinkAndLinkLanguages",
       ParameterJSON: "{}",
     }).then((response) => {
       if (response) {
-        console.log("response", response);
-
         if (response.message === "Successfull" && response.items.length > 0) {
           setData(response);
         }
