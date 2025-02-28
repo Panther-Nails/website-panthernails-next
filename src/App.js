@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import GlobalStyles from "styles/GlobalStyles";
 import "react-toastify/dist/ReactToastify.css";
 import "slick-carousel/slick/slick.css";
@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { ToastContainer } from "react-toastify";
 import { SWRConfig } from "swr";
 import { BS64PNE36Encryption } from "turbo/lib/cjs/Encryption/BS64PNE36Encryption";
+import FallbackLoading from "helpers/FallbackLoading";
 
 const RouterPaths = lazy(() => import("./RouterPaths"));
 const Header = lazy(() => import("./components/headers/light"));
@@ -59,13 +60,15 @@ export default function App() {
 
   return (
     <>
-      <SWRConfig value={{ provider: localStorageProvider }}>
-        <GlobalStyles />
-        <Header />
-        <ScrollUpButton />
-        <RouterPaths />
-        <ToastContainer />
-      </SWRConfig>
+      <Suspense fallback={<FallbackLoading />}>
+        <SWRConfig value={{ provider: localStorageProvider }}>
+          <GlobalStyles />
+          <Header />
+          <ScrollUpButton />
+          <RouterPaths />
+          <ToastContainer />
+        </SWRConfig>
+      </Suspense>
     </>
   );
 }

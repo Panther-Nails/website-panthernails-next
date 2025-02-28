@@ -42,7 +42,7 @@ const SubscribeForm = tw.form`mt-4 lg:mt-6 text-sm sm:flex max-w-xs sm:max-w-non
 const Input = tw.input`bg-gray-300 text-black px-6 placeholder-gray-600 py-3 rounded sm:rounded-r-none border-2 sm:border-r-0 border-gray-400 hover:border-primary-500 focus:outline-none transition duration-300 w-full`;
 const SubscribeButton = tw(
   PrimaryButtonBase
-)`mt-4 sm:mt-0 w-full sm:w-auto rounded bg-blue-700 sm:rounded-l-none px-8 py-3`;
+)`mt-4 sm:mt-0 w-full sm:w-auto bg-blue-700 sm:rounded-l-none px-8 py-3`;
 
 const CopywrightNotice = tw.p`text-center text-sm sm:text-base mt-8 md:mt-0 font-medium text-gray-500`;
 

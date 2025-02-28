@@ -13,11 +13,11 @@ import TwoStepControl from "helpers/TwoStepControl";
 import { Container } from "components/misc/Layouts.js";
 
 
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto pb-6 px-4`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-end items-center  pb-6 px-4`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
-const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 h-80 md:h-auto flex items-center justify-center md:justify-start`;
+const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 h-80 md:h-auto `;
 const TextColumn = styled(Column)((props) => [
-  tw`px-8 lg:px-0 md:w-5/12 mt-16 md:mt-0`,
+  tw`px-8 lg:px-0 md:w-5/12 lg:mt-16 md:mt-0 `,
   props.textOnLeft === "true"
     ? tw`md:mr-12 lg:mr-16 md:order-first`
     : tw`md:ml-12 lg:ml-16 md:order-last`,
@@ -27,7 +27,7 @@ const Image = styled.img((props) => [
   
   tw`rounded bg-contain bg-no-repeat bg-center h-full`,
 ]);
-const TextContent = tw.div`lg:py-8  md:text-left`;
+const TextContent = tw.div`lg:py-8  md:text-left `;
 
 const Subheading = tw(SubheadingBase)`text-center md:text-left`;
 const Heading = tw(
@@ -55,7 +55,7 @@ export default ({ properties }) => {
             {properties.subheading && (
               <Subheading>{properties.subheading}</Subheading>
             )}
-            <HighlightedHeading textStyle={tw`text-left`}>
+            <HighlightedHeading textStyle={tw`text-center md:text-left px-0 `}>
               {properties.heading}
               {/* <span tw="text-primary-500">{properties.highlightHeading}</span> */}
             </HighlightedHeading>

@@ -12,7 +12,7 @@ import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import { Container } from "components/misc/Layouts";
 
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between gap-4 max-w-screen-xl  py-8  items-center`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-center gap-4 max-w-screen-xl   py-8  items-center`;
 const Column = tw.div`w-full max-w-md  md:max-w-none md:mx-0`;
 const ImageColumn = tw(
   Column

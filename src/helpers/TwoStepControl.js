@@ -23,7 +23,7 @@ const Textarea = styled(Input).attrs({ as: "textarea" })`
 `;
 const Wraper = tw.div`first:mt-0 pt-3  `;
 const SubmitButton = styled.button((props) => [
-  tw`inline-block mt-2 lg:mt-8 px-8 py-3 font-bold rounded text-gray-100  focus:shadow-outline focus:outline-none transition duration-300`,
+  tw`inline-block mt-2 lg:mt-8 px-8 py-3 font-bold rounded text-gray-100   transition duration-300`,
   `
     background-color: ${props.themeColor === "loyalty" ? "#1E90FF" : "#1E90FF"};
     
@@ -37,23 +37,6 @@ const SubmitButton = styled.button((props) => [
 const ControlLabel = tw.span`pl-2 text-xs lg:text-sm`;
 const Warnings = tw.p`text-red-800`;
 
-const FormSubmitPopup = styled.div((props) => [
-  tw`w-11/12 lg:w-1/2 h-1/2  rounded-xl bg-red-600 fixed top-0  -translate-x-4    lg:translate-x-1/2 translate-y-1/4  z-50 flex flex-col `,
-]);
-
-const FormSubmitPopupTop = styled.div((props) => [
-  tw`w-full h-3/4  bg-[#BFBCCB] flex items-center rounded-t-xl justify-center `,
-]);
-const FormSubmitPopupText = styled.h1((props) => [
-  tw`text-2xl lg:text-4xl font-black text-black text-center px-2  `,
-]);
-
-const FormSubmitPopupBottom = styled.div((props) => [
-  tw`w-full h-1/4 bg-[#B399A2] flex items-center justify-center rounded-b-xl`,
-]);
-const PopupCloseBtn = styled.button((props) => [
-  tw`rounded-full bg-[#784F41] text-white text-xl  px-3 py-2 text-center`,
-]);
 
 let gFormErrors = {};
 let globalValid = true;

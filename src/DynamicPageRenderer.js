@@ -1,4 +1,4 @@
-import React, { lazy, useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { ExecuteQuery } from "services/APIService";
@@ -46,17 +46,19 @@ export default () => {
 
   return (
     <>
-      {components.length === 0 ? (
-        <FallbackLoading />
-      ) : (
-        <>
-          {components.map((component, index) => (
-            <div id={component.CacheKey} key={index}>
-              <DynamicComponent component={component} index={index} />
-            </div>
-          ))}
-        </>
-      )}
+      <Suspense fallback={<FallbackLoading />}>
+        {components.length === 0 ? (
+          <FallbackLoading />
+        ) : (
+          <>
+            {components.map((component, index) => (
+              <div id={component.CacheKey} key={index}>
+                <DynamicComponent component={component} index={index} />
+              </div>
+            ))}
+          </>
+        )}
+      </Suspense>
     </>
   );
 };
