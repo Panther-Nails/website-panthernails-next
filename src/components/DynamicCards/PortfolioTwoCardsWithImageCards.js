@@ -36,7 +36,6 @@ export default ({ index, children, properties }) => {
   const _handleNavigation = (buttonUrl) => {
     navigate(buttonUrl); // Navigate to the given URL
   };
-  console.log(properties.imageSrc);
 
   return (
     <CardColumn key={index} tw="bg-white">

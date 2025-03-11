@@ -9,7 +9,7 @@ const Container = styled.div`
   ${(props) =>
     css`
       background-image: url(${props.backgroundImageUrl});
-      ${tw`relative  -mt-8 bg-center bg-cover lg:h-screen `}
+      ${tw`relative  -mt-8 bg-center bg-cover lg:h-screen 2xl:h-[60%]`}
     `}
 `;
 

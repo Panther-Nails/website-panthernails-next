@@ -16,9 +16,9 @@ const Plan = styled.div`
 `;
 
 const PlanFeatures = styled.ul`
-  ${tw` flex-1  lg:-mx-6 -mx-6 sm:-mx-10  px-6 sm:px-10 lg:p-6 xl:-mx-10 xl:p-10`}
+  ${tw` flex-1  lg:-mx-6 -mx-6 sm:-mx-10 text-center  px-6 sm:px-10 lg:p-6 xl:-mx-10 xl:p-10`}
   .feature {
-    ${tw`flex items-start mt-6 first:mt-0 hover:underline `}
+    ${tw`  mt-6 first:mt-0 hover:underline text-center `}
     .icon {
       ${tw`w-6 h-6 text-primary-500 flex-shrink-0`}
     }
@@ -146,7 +146,7 @@ export default ({ properties, children, index, data }) => {
           <Plan key={index} featured={plan.featured}>
             <PlanFeatures>
               <span className="nameAndFeaturedContainer">
-                <span tw="lg:text-xl xl:text-xl font-bold uppercase tracking-wider text-black">
+                <span tw="lg:text-xl xl:text-xl font-bold uppercase tracking-wider text-black text-center">
                   {plan.name}
                 </span>
               </span>

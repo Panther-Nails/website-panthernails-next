@@ -2,7 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { HighlightedHeading, SectionHeading } from "components/misc/Headings.js";
+import {
+  HighlightedHeading,
+  SectionHeading,
+} from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { Container } from "components/misc/Layouts.js";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
@@ -64,43 +67,41 @@ export default ({ properties, children, index, data }) => {
    */
   var inputs = JSON.parse(properties.inputs || "[]");
 
-
-
-  
   return (
     <Container>
       <TwoColumn>
         <TextColumn textOnLeft={properties.textOnLeft}>
           <HighlightedHeading>{properties.heading}</HighlightedHeading>
-       
+
           <Description>{properties.description}</Description>
         </TextColumn>
         <ThreeColumnContainer>
-          {inputs.map((input, i) => (
-            <Column key={i}>
-              <Card href={input.url} target="_blank" title={input.title}>
-                {properties.imageVisible === "true" && (
-                  <span className="imageContainer">
-                    <img src={input.imageSrc} alt="" />
-                  </span>
-                )}
-                {properties.textVisible === "true" && (
-                  <>
-                    <span className="title">{input.title}</span>
-                    <p className="description">{input.description}</p>
-                    {properties.url && (
-                      <span className="link">
-                        <span target="_blank" href={properties.url}>
-                          {properties.linkText}
+          {properties.textVisible && properties.imageVisible &&
+            inputs.map((input, i) => (
+              <Column key={i}>
+                <Card href={input.url} target="_blank" title={input.title}>
+                  {properties.imageVisible === "true" && (
+                    <span className="imageContainer">
+                      <img src={input.imageSrc} alt="" />
+                    </span>
+                  )}
+                  {properties.textVisible === "true" && (
+                    <>
+                      <span className="title">{input.title}</span>
+                      <p className="description">{input.description}</p>
+                      {properties.url && (
+                        <span className="link">
+                          <span target="_blank" href={properties.url}>
+                            {properties.linkText}
+                          </span>
+                          <ArrowRightIcon className="icon" />
                         </span>
-                        <ArrowRightIcon className="icon" />
-                      </span>
-                    )}
-                  </>
-                )}
-              </Card>
-            </Column>
-          ))}
+                      )}
+                    </>
+                  )}
+                </Card>
+              </Column>
+            ))}
         </ThreeColumnContainer>
       </TwoColumn>
       <DecoratorBlob />

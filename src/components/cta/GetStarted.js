@@ -33,7 +33,7 @@ const DecoratorBlob2 = tw(
 export default ({ properties, children, index, data }) => {
   return (
     <Container>
-      <ContentWithPaddingXl tw="py-0">
+      <ContentWithPaddingXl tw="pb-4">
         <PrimaryBackgroundContainer>
           <Row>
             <TextContainer>

@@ -34,6 +34,7 @@ const Wrapper = tw.div`h-[60%] flex flex-col justify-between `;
 export default ({ properties }) => {
   const [checkFormOpen, setCheckFormOpen] = useState(false);
 
+
   const openTheForm = (e) => {
     e.stopPropagation();
     setCheckFormOpen(true);

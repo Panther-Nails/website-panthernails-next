@@ -378,7 +378,7 @@ const MultiSelectCheckbox = ({
 };
 
 export default ({ properties }) => {
-
+ 
   const { hidePopup } = useSession();
 
   const [formData, setFormData] = useState({});
@@ -424,9 +424,10 @@ export default ({ properties }) => {
     });
   };
 
+
   const closePopupForm = () => {
-    setCookie(properties.productEnquiryFor, properties.productEnquiryFor, CookieDuration.Day);
-   
+    setCookie(properties.keyName, properties.productEnquiryFor, CookieDuration.Day);
+    console.log(properties.keyName);
     
     hidePopup();
   };
