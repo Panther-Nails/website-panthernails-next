@@ -56,7 +56,7 @@ export default ({ properties, children, index, data }) => {
             {properties.subheading && (
               <Subheading>{properties.subheading}</Subheading>
             )}
-            <HighlightedHeading>{properties.heading}</HighlightedHeading>
+            <HighlightedHeading textStyle={tw`lg:text-left`}>{properties.heading}</HighlightedHeading>
             <Description>{properties.description}</Description>
             <Form
               action={properties.formAction ? properties.formAction : "#"}

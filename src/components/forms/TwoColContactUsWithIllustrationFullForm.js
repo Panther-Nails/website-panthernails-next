@@ -13,13 +13,13 @@ import TwoStepControl from "helpers/TwoStepControl";
 import { Container } from "components/misc/Layouts.js";
 
 
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-end items-center  pb-6 px-4`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-center items-center mx-auto pb-6 px-4 xl:ml-32 2xl:ml-16`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
-const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 h-80 md:h-auto pt-12 `;
+const ImageColumn = tw(Column)`md:w-6/12 2xl:w-4/12 flex-shrink-0 h-80 md:h-auto pt-12 flex 2xl:justify-end`;
 const TextColumn = styled(Column)((props) => [
-  tw`px-8 lg:px-0 md:w-5/12 lg:mt-16 md:mt-0 `,
+  tw`px-8 lg:px-0 md:w-7/12 lg:w-5/12 2xl:w-5/12 lg:mt-16 md:mt-0 2xl:px-8 `,
   props.textOnLeft === "true"
-    ? tw`md:mr-12 lg:mr-16 md:order-first`
+    ? tw`md:mr-0 lg:mr-16 xl:mr-0 md:order-first`
     : tw`md:ml-12 lg:ml-16 md:order-last`,
 ]);
 

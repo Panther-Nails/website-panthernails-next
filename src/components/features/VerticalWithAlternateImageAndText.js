@@ -5,7 +5,7 @@ import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 import { Container } from "components/misc/Layouts";
 import { HighlightedHeading } from "components/misc/Headings.js";
 
-const SingleColumn = tw.div`py-10`;
+const SingleColumn = tw.div`py-4`;
 
 const HeadingInfoContainer = tw.div`flex flex-col items-center justify-center m-auto w-[90%]`;
 const Description = tw.p`mt-4 px-4 lg:px-0 text-center text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
@@ -28,10 +28,12 @@ export default ({ properties, children, index, data }) => {
   return (
     <Container>
       <SingleColumn>
-        <HeadingInfoContainer>
-          <HighlightedHeading>{properties.heading}</HighlightedHeading>
-          <Description>{properties.subheading}</Description>
-        </HeadingInfoContainer>
+        {properties.heading && (
+          <HeadingInfoContainer>
+            <HighlightedHeading>{properties.heading}</HighlightedHeading>
+            <Description>{properties.subheading}</Description>
+          </HeadingInfoContainer>
+        )}
         <Content>{ProcessChildComponentsSeparately(children)}</Content>
       </SingleColumn>
       <SvgDotPattern1 />

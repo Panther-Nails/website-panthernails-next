@@ -7,7 +7,7 @@ import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto `;
 const Column = tw.div``;
-const CardColumn = tw(Column)`md:w-72 `;
+const CardColumn = tw(Column)`md:w-72 py-2 lg:py-1 `;
 
 const Card = tw.div``;
 const CardImage = styled.div((props) => [
@@ -16,7 +16,7 @@ const CardImage = styled.div((props) => [
 ]);
 
 const CardText = tw.div`mt-4`;
-const CardTitle = tw.h5`text-xl mt-4 font-bold`;
+const CardTitle = tw.h5`text-base h-8 lg:text-lg font-bold flex-grow`;
 const CardAction = tw(PrimaryButtonBase)`w-full mt-6`;
 const TwoColumn = styled.div(() => [
   `::-webkit-scrollbar {

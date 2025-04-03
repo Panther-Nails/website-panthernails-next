@@ -11,7 +11,7 @@ import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 import { Container } from "components/misc/Layouts";
 
-const Subheading = tw(SubHeading)`ml-12 `;
+const Subheading = tw(SubHeading)` `;
 const Content = tw.div`max-w-screen-xl mx-auto p-6`;
 
 const ThreeColumn = tw.div`flex flex-wrap`;

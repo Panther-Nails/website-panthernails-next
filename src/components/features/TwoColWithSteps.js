@@ -12,13 +12,13 @@ import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import { Container } from "components/misc/Layouts";
 
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-center gap-4 max-w-screen-xl   py-8  items-center`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-center gap-4 max-w-screen-xl  mx-auto  py-8  items-center`;
 const Column = tw.div`w-full max-w-md  md:max-w-none md:mx-0`;
 const ImageColumn = tw(
   Column
-)`md:w-6/12 flex flex-col relative items-center  hidden md:block px-4`;
+)`md:w-6/12 xl:w-4/12 flex flex-col relative items-center  hidden md:block px-4`;
 const TextColumn = styled(Column)((props) => [
-  tw`lg:w-6/12 mt-16 lg:mt-0`,
+  tw`lg:w-6/12  lg:mt-0`,
   props.textOnLeft === "true"
     ? tw`md:mr-12  lg:mr-16 flex-row-reverse `
     : tw`md:ml-12  lg:ml-32 md:order-first`,

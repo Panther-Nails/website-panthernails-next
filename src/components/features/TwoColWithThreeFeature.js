@@ -2,7 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { HighlightedHeading, SectionHeading } from "components/misc/Headings.js";
+import {
+  HighlightedHeading,
+  SectionHeading,
+} from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { Container } from "components/misc/Layouts.js";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-icon.svg";
@@ -41,13 +44,18 @@ const Card = styled.a`
 const DecoratorBlob = styled(SvgDecoratorBlob3)`
   ${tw`pointer-events-none absolute right-0 bottom-0 w-64 opacity-25 transform translate-x-32 translate-y-40`}
 `;
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto pb-12 items-center`;
+const TwoColumn = tw.div`flex flex-col lg:flex-row justify-between max-w-screen-xl mx-auto lg:pb-12 items-center`;
+
+const BaseTwoColumn = styled(TwoColumn)`
+  ${(props) => (props.textOnLeft === "true" ? tw`` : tw`md:flex-col-reverse lg:flex-row`)};
+`;
+
 const Column = tw.div` max-w-md mx-auto md:max-w-none md:mx-0 `;
 const TextColumn = styled(Column)((props) => [
-  tw`md:w-1/3 mt-16 md:mt-0 `,
+  tw` w-[90%] lg:w-1/3 mt-16 md:mt-0 `,
 
   props.textOnLeft === "true"
-    ? tw`md:pl-20 md:order-first`
+    ? tw`lg:pl-20 md:order-first `
     : tw`  md:order-last`,
 ]);
 const Heading = tw(
@@ -64,45 +72,44 @@ export default ({ properties, children, index, data }) => {
    */
   var inputs = JSON.parse(properties.inputs || "[]");
 
-
-
-  
   return (
     <Container>
-      <TwoColumn>
+      <BaseTwoColumn textOnLeft={properties.textOnLeft}>
         <TextColumn textOnLeft={properties.textOnLeft}>
           <HighlightedHeading>{properties.heading}</HighlightedHeading>
-       
+
           <Description>{properties.description}</Description>
         </TextColumn>
         <ThreeColumnContainer>
-          {inputs.map((input, i) => (
-            <Column key={i}>
-              <Card href={input.url} target="_blank" title={input.title}>
-                {properties.imageVisible === "true" && (
-                  <span className="imageContainer">
-                    <img src={input.imageSrc} alt="" />
-                  </span>
-                )}
-                {properties.textVisible === "true" && (
-                  <>
-                    <span className="title">{input.title}</span>
-                    <p className="description">{input.description}</p>
-                    {properties.url && (
-                      <span className="link">
-                        <span target="_blank" href={properties.url}>
-                          {properties.linkText}
+          {properties.textVisible &&
+            properties.imageVisible &&
+            inputs.map((input, i) => (
+              <Column key={i}>
+                <Card href={input.url} target="_blank" title={input.title}>
+                  {properties.imageVisible === "true" && (
+                    <span className="imageContainer">
+                      <img src={input.imageSrc} alt="" />
+                    </span>
+                  )}
+                  {properties.textVisible === "true" && (
+                    <>
+                      <span className="title">{input.title}</span>
+                      <p className="description">{input.description}</p>
+                      {properties.url && (
+                        <span className="link">
+                          <span target="_blank" href={properties.url}>
+                            {properties.linkText}
+                          </span>
+                          <ArrowRightIcon className="icon" />
                         </span>
-                        <ArrowRightIcon className="icon" />
-                      </span>
-                    )}
-                  </>
-                )}
-              </Card>
-            </Column>
-          ))}
+                      )}
+                    </>
+                  )}
+                </Card>
+              </Column>
+            ))}
         </ThreeColumnContainer>
-      </TwoColumn>
+      </BaseTwoColumn>
       <DecoratorBlob />
     </Container>
   );

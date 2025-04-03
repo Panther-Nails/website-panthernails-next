@@ -6,7 +6,7 @@ import { HighlightedHeading } from "components/misc/Headings.js";
 import { Container } from "../misc/Layouts.js";
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0 `;
 const Image = styled.img((props) => [
-  tw` mx-auto `,
+  tw` mx-auto h-auto  py-6`,
   props.imageRounded && tw`rounded`,
   props.imageBorder && tw`border`,
   props.imageShadow && tw`shadow`,

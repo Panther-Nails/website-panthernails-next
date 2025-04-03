@@ -17,7 +17,10 @@ import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 import pnlogo from "../../images/pnlogo.svg";
 import LanguageDropdown from "./LanguageDropdown.js";
 import SearchBoxControl from "../../providers/SearchBoxControl.js";
+import TabViewOnHover from "./TabViewOnHover.js";
 
+import { ChevronDown, ChevronUp } from "lucide-react";
+import MobileViewDropdown from "./MobileViewDropdown.js";
 const Container = styled.div((props) => [
   tw`relative sticky top-0 z-50 bg-white text-sm`,
 ]);
@@ -36,13 +39,13 @@ export const NavLink = styled(RouterLink)`
 `;
 
 export const NavLinkWrapper = styled.div((props) => [
-  tw` inline-block
-   my-2   lg:my-0 
+  tw`flex  lg:inline-block gap-2 ml-3  lg:ml-0
+   my-1   lg:my-0 
   font-semibold tracking-wide transition duration-700
-  border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500`,
+  border-b-2 border-transparent  lg:hocus:text-primary-500`,
   (props = [
-    props.navPosition
-      ? tw`text-xs duration-700 lg:mx-8`
+    props.navposition == "true"
+      ? tw`text-sm lg:text-xs duration-700 lg:mx-8`
       : tw`text-sm duration-700 lg:mx-5`,
   ]),
 ]);
@@ -58,7 +61,7 @@ export const LogoLink = styled(NavLink)`
 
   img {
     ${(props) => [
-      props.navPosition
+      props.navposition === "true"
         ? tw`w-40 ml-5 lg:ml-20 mr-3 my-2 duration-700`
         : tw`w-64 ml-5 lg:ml-20 mr-3 my-3 duration-700`,
     ]}
@@ -99,6 +102,35 @@ export const LanguageSelectionLinks = motion(styled.div`
   }
 `);
 
+// Wrapper for the individual product item with responsive layout
+
+// export const DropdownMenu = styled.div`
+//   ${tw`fixed inset-x-0 bg-white shadow-lg z-50 w-[70%] xl:w-[50%]  min-h-[20%] max-h-[40%] px-4 py-4  mx-auto `}
+
+//   display: grid;
+//   grid-template-columns: repeat(
+//     auto-fit,
+//     minmax(150px, 1fr)
+//   ); /* Responsive grid */
+//   align-items: center;
+//   justify-items: center;
+
+//   &::-webkit-scrollbar {
+//     display: none;
+//   }
+
+//   &:before {
+//     content: "";
+//     position: absolute;
+//     top: 10px;
+//     left: 50%;
+//     transform: translateX(-50%);
+//     border-width: 10px;
+//     border-style: solid;
+//     border-color: transparent transparent white transparent;
+//   }
+// `;
+const NavTempContainer = tw.div`w-[100%] lg:w-auto `;
 export const DropdownMenu = styled.div`
   ${tw`absolute bg-white shadow-lg rounded-lg z-10 w-auto px-4 py-4 overflow-scroll gap-4 pr-0`}
   display: grid;
@@ -127,8 +159,6 @@ export const DropdownMenu = styled.div`
     border-color: transparent transparent white transparent;
   }
 `;
-
-// Wrapper for the individual product item with responsive layout
 export const DropdownItem = styled.div`
   ${tw`flex flex-col items-center gap-2 p-2 hover:bg-gray-100 cursor-pointer transition-all duration-200 ease-in-out rounded-lg border-2 border-gray-300 md:w-40 text-center justify-between`}
 
@@ -159,7 +189,7 @@ const backgroundColor = {
   info: tw`bg-primary-400 text-white `,
   none: tw``,
 };
-
+const NavLinkContainer = tw.div`w-[100%]  lg:w-auto`;
 export default ({
   logoLink,
   className,
@@ -193,7 +223,9 @@ export default ({
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [isIncreasing, setIsIncreasing] = useState(false);
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
+  const isTablet = window.matchMedia(
+    "(min-width: 768px) and (max-width: 1008px)"
+  ).matches;
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -263,6 +295,7 @@ export default ({
   const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
   const collapseBreakpointCss =
     collapseBreakPointCssMap[collapseBreakpointClass];
+
   const navigate = useNavigate();
 
   const _redirect = (navigateURL) => {
@@ -271,7 +304,7 @@ export default ({
 
   const defaultLogoLink = (
     <div onClick={() => _redirect("/")}>
-      <LogoLink navPosition={isIncreasing}>
+      <LogoLink navposition={isIncreasing.toString()}>
         <img src={pnlogo} alt="logo" />
       </LogoLink>
     </div>
@@ -289,70 +322,107 @@ export default ({
     setHoveredLinkIndex(null);
   };
 
+  const mobileStyle = isMobile
+    ? {
+        display: "flex",
+        justifyItems: "center",
+        alignItems: "center",
+        gap: "5px",
+      }
+    : {};
+
   const menuLinks = (
     <>
-      <NavLinks key={1} style={{ display: "flex" }}>
+      <NavLinks style={{ display: "flex" }}>
         {data?.items?.map((link, index) => {
           return (
-            <>
+            <NavTempContainer key={index}>
               {link.LinkVisible && (
-                <div
+                <NavLinkContainer
+                  tw="w-[100%] lg:w-auto"
                   key={index}
-                  onMouseEnter={() =>
-                    !isMobile && handleMouseEnter(link, index)
-                  }
+                  onMouseEnter={() => {
+                    if (!isMobile && !isTablet) {
+                      handleMouseEnter(link, index);
+                    }
+                  }}
                   onMouseLeave={handleMouseLeave}
-                  style={{ position: "relative" }}
+                  style={{
+                    position: "relative",
+
+                    // ...mobileStyle,
+                  }}
                 >
-                  <NavLinkWrapper
-                    onClick={() => {
-                      toggleNavbar();
-                      handleMouseLeave();
-                    }}
-                    navPosition={isIncreasing}
-                  >
-                    <NavLink to={link.LinkURL}>{link.LinkHeadingText}</NavLink>
-                  </NavLinkWrapper>
+                  {(link?.LinkJSON?.length > 0 && isTablet) ||
+                  (link?.LinkJSON?.length > 0 && isMobile) ? (
+                    <MobileViewDropdown
+                      navbarHeight={isIncreasing}
+                      dropdownContent={link}
+                      toggleNavbar={toggleNavbar}
+                    />
+                  ) : (
+                    <NavLinkWrapper
+                      onClick={() => {
+                        toggleNavbar();
+                        handleMouseLeave();
+                      }}
+                      navposition={isIncreasing}
+                    >
+                      <NavLink to={link.LinkURL}>
+                        {link.LinkHeadingText}
+                      </NavLink>
+                    </NavLinkWrapper>
+                  )}
 
                   {dropdownContent && hoveredLinkIndex === index && (
-                    <DropdownWrapper
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {dropdownContent.map((subLink, subIndex) => {
-                        const properties = JSON.parse(subLink.LinkPropertyJSON);
-                        return (
-                          <DropdownItem
-                            key={subIndex}
-                            onClick={() => {
-                              _redirect(subLink.LinkURL);
-                              handleMouseLeave();
-                            }}
-                          >
-                            <DropdownItemImage
-                              src={properties?.productResource.imageSrc}
-                              alt={subLink.LinkHeadingText}
-                            />
-                            <DropdownItemText>
-                              {subLink.LinkHeadingText}
-                            </DropdownItemText>
-                          </DropdownItem>
-                        );
-                      })}
-                    </DropdownWrapper>
+                    <>
+                      <DropdownWrapper
+                        // initial={{ opacity: 0, scale: 0.9 }}
+                        // animate={{ opacity: 1, scale: 1 }}
+                        // exit={{ opacity: 0, scale: 0.9 }}
+                        // transition={{ duration: 0.3 }}
+                        key={index}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {/* <TabViewOnHover /> */}
+                        {dropdownContent.map((subLink, subIndex) => {
+                          const properties = JSON.parse(
+                            subLink.LinkPropertyJSON
+                          );
+                          return (
+                            <DropdownItem
+                              key={subIndex}
+                              onClick={() => {
+                                _redirect(subLink.LinkURL);
+                                handleMouseLeave();
+                              }}
+                            >
+                              <DropdownItemImage
+                                src={properties?.productResource.imageSrc}
+                                alt={subLink.LinkHeadingText}
+                              />
+                              <DropdownItemText>
+                                {subLink.LinkHeadingText}
+                              </DropdownItemText>
+                            </DropdownItem>
+                          );
+                        })}
+                      </DropdownWrapper>
+                    </>
                   )}
-                </div>
+                </NavLinkContainer>
               )}
-            </>
+            </NavTempContainer>
           );
         })}
       </NavLinks>
       <div
-        css={tw`flex flex-col lg:flex-row lg:gap-5 items-center justify-center`}
+        css={tw`  flex flex-col lg:flex-row lg:gap-5 items-center justify-center `}
       >
-        <>
+        <div tw="w-[100%] flex">
           {isSearchVisible && (
             <AnimatePresence>
               <motion.div
@@ -361,25 +431,49 @@ export default ({
                 exit={{ opacity: 0, x: 10 }}
                 transition={{ duration: 0.3 }}
               >
-                <SearchBoxControl />
+                <SearchBoxControl
+                  setIsSearchVisible={setIsSearchVisible}
+                  toggleNavbar={toggleNavbar}
+                />
               </motion.div>
             </AnimatePresence>
           )}
-
-          <div css={tw`relative m-auto flex items-center justify-center`}>
+          <div
+            css={tw`relative flex flex items-center  justify-start lg:justify-center `}
+          >
             {isSearchVisible ? (
-              <motion.div whileTap={{ scale: 0.9 }} css={tw`cursor-pointer`}>
+              <motion.div whileTap={{ scale: 0.9 }} css={tw`cursor-pointer `}>
                 <CloseIcon onClick={() => setIsSearchVisible(false)} />
               </motion.div>
             ) : (
-              <motion.div whileTap={{ scale: 0.9 }} css={tw`cursor-pointer`}>
-                <SearchIcon onClick={() => setIsSearchVisible(true)} />
+              <motion.div
+                whileTap={{ scale: 0.9 }}
+                css={tw`cursor-pointer flex items-center  gap-2 lg:gap-0`}
+              >
+                {isMobile && (
+                  <NavLinkWrapper
+                    navposition={isIncreasing}
+                    onClick={() => setIsSearchVisible(true)}
+                  >
+                    Search
+                  </NavLinkWrapper>
+                )}
+                {isMobile ? (
+                  <SearchIcon
+                    tw="w-5 h-5"
+                    onClick={() => setIsSearchVisible(true)}
+                  />
+                ) : (
+                  <SearchIcon onClick={() => setIsSearchVisible(true)} />
+                )}
               </motion.div>
             )}
           </div>
-        </>
-        <div css={tw`relative flex items-center justify-center`}>
-          <LanguageDropdown />
+        </div>
+        <div
+          css={tw`relative w-[100%] flex items-center justify-start lg:justify-center gap-2`}
+        >
+          <LanguageDropdown navbarHeight={isIncreasing} />
         </div>
       </div>
     </>

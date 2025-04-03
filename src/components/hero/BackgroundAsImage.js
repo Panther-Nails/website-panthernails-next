@@ -4,14 +4,14 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
 import { HighlightedHeading } from "components/misc/Headings.js";
+import { Container } from "components/misc/Layouts";
 
-const Container = styled.div`
-  ${(props) =>
-    css`
-      background-image: url(${props.backgroundImageUrl});
-      ${tw`relative  -mt-8 bg-center bg-cover lg:h-screen `}
-    `}
+const BaseContainer = styled(Container)`
+  background-image: ${(props) =>
+    props.backgroundImageUrl ? `url(${props.backgroundImageUrl})` : "none"};
+  ${tw`flex relative bg-center bg-cover max-h-screen min-h-144 2xl:max-w-screen-xl mx-auto 2xl:h-[70vh]`}
 `;
+
 
 const OpacityOverlay = tw.div`z-10 absolute inset-0 bg-black opacity-50`;
 const HeroContainer = tw.div`z-20 relative px-4 sm:px-8 max-w-screen-xl mx-auto`;
@@ -37,10 +37,10 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
   }
 `;
 
-export default ({ properties, children, index, data }) => {
+export default ({ properties }) => {
  
   return (
-    <Container backgroundImageUrl={properties.backgroundImageUrl}>
+    <BaseContainer backgroundImageUrl={properties.backgroundImageUrl}>
       <OpacityOverlay />
       <HeroContainer>
         <TwoColumn>
@@ -73,6 +73,6 @@ export default ({ properties, children, index, data }) => {
           </RightColumn>
         </TwoColumn>
       </HeroContainer>
-    </Container>
+    </BaseContainer>
   );
 };

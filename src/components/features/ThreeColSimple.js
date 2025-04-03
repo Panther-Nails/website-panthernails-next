@@ -20,7 +20,7 @@ const Description = tw(SectionDescription)`text-center mx-auto `;
 const Content = tw.div`w-[100%] flex flex-col items-center `;
 const TextContainer = tw.div`max-w-screen-lg flex flex-col items-center justify-center`;
 const ThreeColumnContainer = styled.div`
-  ${tw`mt-10 flex flex-col items-center lg:items-stretch lg:flex-row flex-wrap lg:justify-center max-w-screen-lg mx-auto`}
+  ${tw`mt-10 flex flex-row items-center lg:items-stretch lg:flex-row flex-wrap justify-center max-w-screen-lg mx-auto`}
 `;
 
 const DecoratorBlob = styled(SvgDecoratorBlob3)`

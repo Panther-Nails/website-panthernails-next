@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
@@ -13,13 +13,14 @@ import { Container as ContainerBase } from "components/misc/Layouts.js";
 
 const Container = tw(
   ContainerBase
-)`bg-siteColors-textColor text-gray-100  px-8 py-20 lg:py-24`;
+)`bg-siteColors-textColor text-gray-100  px-8 py-10 lg:py-12`;
 const Content = tw.div`max-w-screen-xl mx-auto relative z-10 `;
 const SixColumns = tw.div`flex flex-wrap text-center sm:text-left justify-center sm:justify-start md:justify-between -mt-12`;
 
 const Column = tw.div`px-4 sm:px-0 sm:w-1/3 md:w-auto mt-12`;
 
 const ColumnHeading = tw.h5`uppercase font-bold`;
+const ColumnHeadingText = tw.p`uppercase font-bold text-primary-500`;
 
 const LinkList = tw.ul`mt-6 text-sm font-medium`;
 const LinkListItem = tw.li`mt-3`;
@@ -28,7 +29,7 @@ const LogoLink = tw.a`border-transparent transition duration-300`;
 
 const Divider = tw.div`my-16 border-b-2 border-primary-400 w-full`;
 
-const ThreeColRow = tw.div`flex flex-col md:flex-row items-center justify-between mb-10`;
+const ThreeColRow = tw.div`flex flex-col gap-4 lg:gap-0 lg:flex-row items-center justify-between mb-10`;
 
 const LogoContainer = tw.div`flex items-center justify-center md:justify-start`;
 const LogoImg = tw.img`w-80`;
@@ -63,9 +64,35 @@ const DecoratorBlob2 = tw(
   SvgDecoratorBlob1
 )`absolute bottom-0 right-0 w-80 h-80 transform  translate-x-32 translate-y-48 text-primary-700 opacity-50`;
 
+const IconContainer = styled.div`
+  ${tw`text-center  `}
+`;
 export default ({ index, children, properties, data }) => {
   var sections = JSON.parse(properties.inputs || "[]");
   var socialLinks = JSON.parse(properties.socialLinks || "[]");
+
+  useEffect(() => {
+    // Load the Facebook SDK script dynamically
+    const fbScript = document.createElement("script");
+    fbScript.src =
+      "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0";
+    fbScript.async = true;
+    fbScript.defer = true;
+    document.body.appendChild(fbScript);
+
+    const linkedinScript = document.createElement("script");
+    linkedinScript.src = "https://platform.linkedin.com/in.js";
+    linkedinScript.type = "text/javascript";
+    linkedinScript.text = "lang: en_US";
+    document.body.appendChild(linkedinScript);
+    // Load the LinkedIn SDK script dynamically
+
+    // Cleanup the scripts when the component unmounts
+    return () => {
+      document.body.removeChild(fbScript);
+      document.body.removeChild(linkedinScript);
+    };
+  }, []);
 
   return (
     <Container>
@@ -73,7 +100,7 @@ export default ({ index, children, properties, data }) => {
         <SixColumns>
           {sections?.map((section, index) => (
             <Column key={index}>
-              <ColumnHeading>{section.title}</ColumnHeading>
+              <ColumnHeadingText>{section.title}</ColumnHeadingText>
               <LinkList>
                 {section?.menuLinks?.map((menulink, index) => (
                   <LinkListItem key={index}>
@@ -85,7 +112,7 @@ export default ({ index, children, properties, data }) => {
           ))}
           <SubscribeNewsletterColumn>
             <SubscribeNewsletterContainer>
-              <ColumnHeading>{properties.newsLetterText}</ColumnHeading>
+              <ColumnHeadingText>{properties.newsLetterText}</ColumnHeadingText>
               <SubscribeText>{properties.newsLetterSubText}</SubscribeText>
               <SubscribeForm
                 method="post"
@@ -114,6 +141,17 @@ export default ({ index, children, properties, data }) => {
             &copy; {new Date().getFullYear()} Panther Nails Technologies Pvt
             Ltd, All Rights Reserved.
           </CopywrightNotice>
+          <IconContainer >
+          {/* <div className="fb-like" 
+           data-share="true" 
+           data-width="450" 
+           data-show-faces="true"></div> */}
+        <script
+          type="IN/FollowCompany"
+          data-id="31082455"
+          data-counter="right"
+        ></script>
+      </IconContainer>
           <SocialLinksContainer>
             {socialLinks?.map((socialLink, k) => {
               return (
@@ -124,6 +162,7 @@ export default ({ index, children, properties, data }) => {
             })}
           </SocialLinksContainer>
         </ThreeColRow>
+      
       </Content>
       <DecoratorBlobContainer>
         <DecoratorBlob1 />

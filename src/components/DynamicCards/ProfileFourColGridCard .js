@@ -3,28 +3,30 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
 // import { ReactComponent as LinkedinIcon } from "images/linkedin-icon.svg";
-const Link = tw.a`flex items-center w-12 h-12 p-4 rounded bg-white hocus:bg-gray-300 hocus:w-16 duration-200`;
+const Link = tw.a`flex items-center w-10 h-10 p-2 mt-3 rounded bg-white hocus:bg-gray-300 hocus:scale-[130%] duration-200`;
 const LinkIcon = styled.img`w-full h-full`;
-const Card = tw.div`mt-4 lg:my-4 w-full sm:w-1/2 lg:w-1/3 flex flex-col items-center `;
+const Card = tw.div`mt-12 lg:my-12 w-[full] sm:w-1/2 lg:w-1/4 flex flex-col items-center  `;
+const InnerCard = tw.div`flex flex-col items-center text-center h-16 px-5 `;
+const ImageWrapper = tw.div`w-64 h-64 px-1 rounded`;
 const CardImage = styled.div`
   ${(props) =>
     css`
       background-image: url("${props.imageSrc}");
     `}
-  ${tw`w-56 h-56 bg-contain bg-center rounded `}
+  ${tw`w-[100%] h-[100%] bg-contain bg-center rounded bg-no-repeat  `}
 `;
 const CardContent = styled.div`
-  ${tw`flex flex-col items-center mt-3 px-6 w-[70%] lg:w-[80%]`}
+  ${tw`flex flex-col items-center `}
   .position {
-    ${tw`uppercase font-bold tracking-widest text-xs text-primary-500`}
+    ${tw`uppercase mt-2 font-bold tracking-widest text-xs text-primary-500`}
   }
   .name {
-    ${tw`mt-1 text-base lg:text-xl font-medium text-gray-900`}
+    ${tw`mt-1 text-xl font-medium text-gray-900`}
   9
 `;
-const Heading = tw.span`text-base lg:text-xl h-12 font-bold text-gray-900  text-center`;
+
 const CardLinks = styled.div`
-  ${tw`mt-6 flex`}
+  ${tw`mt-3 flex `}
   .link {
     ${tw`mr-8 last:mr-0 text-gray-400 hocus:text-primary-500 transition duration-300`}
     .icon {
@@ -36,18 +38,19 @@ const CardLinks = styled.div`
 export default ({ index, properties }) => {
   var links = JSON.parse(properties.inputs || "[]");
 
-
-  
-
   return (
     <Card key={index}>
-      <CardImage imageSrc={properties.imageSrc} />
+      <ImageWrapper>
+        <CardImage imageSrc={properties.imageSrc} />
+      </ImageWrapper>
       <CardContent>
-        {properties.position && (
-          <span className="position">{properties.position}</span>
-        )}
-        <Heading>{properties.name}</Heading>
-        {/* {links.length > 0 && (
+        <InnerCard>
+          <span className="name">{properties.name}</span>
+          {properties.position && (
+            <span className="position">{properties.position}</span>
+          )}
+        </InnerCard>
+        {links.length > 0 && (
           <CardLinks>
             {links.map((item, index) => {
               return (
@@ -57,7 +60,7 @@ export default ({ index, properties }) => {
               );
             })}
           </CardLinks>
-        )} */}
+        )}
       </CardContent>
     </Card>
   );
