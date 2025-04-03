@@ -44,13 +44,18 @@ const Card = styled.a`
 const DecoratorBlob = styled(SvgDecoratorBlob3)`
   ${tw`pointer-events-none absolute right-0 bottom-0 w-64 opacity-25 transform translate-x-32 translate-y-40`}
 `;
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto pb-12 items-center`;
+const TwoColumn = tw.div`flex flex-col lg:flex-row justify-between max-w-screen-xl mx-auto lg:pb-12 items-center`;
+
+const BaseTwoColumn = styled(TwoColumn)`
+  ${(props) => (props.textOnLeft === "true" ? tw`` : tw`md:flex-col-reverse lg:flex-row`)};
+`;
+
 const Column = tw.div` max-w-md mx-auto md:max-w-none md:mx-0 `;
 const TextColumn = styled(Column)((props) => [
-  tw`md:w-1/3 mt-16 md:mt-0 `,
+  tw` w-[90%] lg:w-1/3 mt-16 md:mt-0 `,
 
   props.textOnLeft === "true"
-    ? tw`md:pl-20 md:order-first`
+    ? tw`lg:pl-20 md:order-first `
     : tw`  md:order-last`,
 ]);
 const Heading = tw(
@@ -69,14 +74,15 @@ export default ({ properties, children, index, data }) => {
 
   return (
     <Container>
-      <TwoColumn>
+      <BaseTwoColumn textOnLeft={properties.textOnLeft}>
         <TextColumn textOnLeft={properties.textOnLeft}>
           <HighlightedHeading>{properties.heading}</HighlightedHeading>
 
           <Description>{properties.description}</Description>
         </TextColumn>
         <ThreeColumnContainer>
-          {properties.textVisible && properties.imageVisible &&
+          {properties.textVisible &&
+            properties.imageVisible &&
             inputs.map((input, i) => (
               <Column key={i}>
                 <Card href={input.url} target="_blank" title={input.title}>
@@ -103,7 +109,7 @@ export default ({ properties, children, index, data }) => {
               </Column>
             ))}
         </ThreeColumnContainer>
-      </TwoColumn>
+      </BaseTwoColumn>
       <DecoratorBlob />
     </Container>
   );

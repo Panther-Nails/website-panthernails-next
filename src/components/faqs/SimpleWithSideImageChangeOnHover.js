@@ -25,8 +25,8 @@ const Description = tw.p`max-w-xl px-4 lg:px-0 lg:mx-0 text-left lg:max-w-none l
 const CheckIcon = tw.img`w-6 h-6 lg:h-8 lg:w-8`;
 const FAQSContainer = tw.dl`mt-8`;
 const FAQ = tw.div` lg:mt-6 px-8 py-4 lg:p-0 ml-4 lg:ml-0 rounded-lg lg:rounded-none`;
-const Question = tw.dt`flex justify-start  items-center`;
-const QuestionText = tw.span`text-base cursor-pointer ml-3 lg:text-xl font-semibold hover:text-primary-500`;
+const Question = tw.dt`flex justify-start  items-center  lg:hover:scale-105 transition duration-300 ease-in-out rounded-lg lg:rounded-none cursor-pointer`;
+const QuestionText = tw.span`text-base cursor-pointer ml-3 lg:text-xl font-semibold `;
 const QuestionToggleIcon = styled.span`
   ${tw`ml-2 bg-primary-500 text-gray-100 p-1 rounded-full group-hover:bg-primary-700 group-hover:text-gray-200 transition duration-300`}
   svg {
@@ -34,7 +34,7 @@ const QuestionToggleIcon = styled.span`
   }
 `;
 const Answer = motion(tw.dd` text-sm sm:text-base leading-relaxed`);
-const TextContainer = tw.div`w-[90%] px-8 lg:px-0`;
+const TextContainer = tw.div`w-[95%] pl-12 lg:px-0`;
 export default ({ properties }) => {
   const [activeQuestionIndex, setActiveQuestionIndex] = useState();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -43,8 +43,8 @@ export default ({ properties }) => {
     else setActiveQuestionIndex(questionIndex);
   };
 
-  const listText = JSON.parse(properties.listText);
-  const listImages = JSON.parse(properties.images);
+  const listText = JSON.parse(properties.listText || "[]");
+  const listImages = JSON.parse(properties.images || "[]");
 
   return (
     <Container id="faq">
@@ -59,7 +59,7 @@ export default ({ properties }) => {
                 {properties?.subheading ? (
                   <Subheading>{properties.subheading}</Subheading>
                 ) : null}
-                <HighlightedHeading textStyle={tw`text-left`}>
+                <HighlightedHeading textStyle={tw`text-left px-0`}>
                   {properties.heading}
                 </HighlightedHeading>
                 <Description>{properties?.description}</Description>
@@ -73,13 +73,13 @@ export default ({ properties }) => {
                     }}
                     className="group"
                   >
-                    <Question>
+                    <Question  onMouseEnter={() => setActiveImageIndex(index)}>
                       <CheckIcon
                         src={properties.listBulletIcon}
                         alt="Check Icon"
                       />
                       <QuestionText
-                        onMouseEnter={() => setActiveImageIndex(index)}
+                       
                       >
                         {list}
                       </QuestionText>
@@ -93,22 +93,32 @@ export default ({ properties }) => {
                         </QuestionToggleIcon>
                       ) : null}
                     </Question>
-                    <Answer
-                      variants={{
-                        open: { opacity: 1, height: "auto", marginTop: "16px" },
-                        collapsed: { opacity: 0, height: 0, marginTop: "0px" },
-                      }}
-                      initial="collapsed"
-                      animate={
-                        activeQuestionIndex === index ? "open" : "collapsed"
-                      }
-                      transition={{
-                        duration: 0.3,
-                        ease: [0.04, 0.62, 0.23, 0.98],
-                      }}
-                    >
-                      {list.answer}
-                    </Answer>
+                    {list.Answer && (
+                      <Answer
+                        variants={{
+                          open: {
+                            opacity: 1,
+                            height: "auto",
+                            marginTop: "16px",
+                          },
+                          collapsed: {
+                            opacity: 0,
+                            height: 0,
+                            marginTop: "0px",
+                          },
+                        }}
+                        initial="collapsed"
+                        animate={
+                          activeQuestionIndex === index ? "open" : "collapsed"
+                        }
+                        transition={{
+                          duration: 0.3,
+                          ease: [0.04, 0.62, 0.23, 0.98],
+                        }}
+                      >
+                        {list.answer}
+                      </Answer>
+                    )}
                   </FAQ>
                 ))}
               </FAQSContainer>

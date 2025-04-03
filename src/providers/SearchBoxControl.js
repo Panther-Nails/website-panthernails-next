@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSWRConfig } from "swr";
 
-const SearchBoxControl = () => {
+const SearchBoxControl = ({setIsSearchVisible,toggleNavbar}) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const [filteredComponents, setFilteredComponents] = useState([]);
@@ -135,7 +135,9 @@ const SearchBoxControl = () => {
                       key={index}
                       onClick={() => {
                         handleResultClick(component.key);
+                        setIsSearchVisible(false)
                         setSearchTerm("");
+                        toggleNavbar()
                       }}
                       style={{
                         padding: "10px",

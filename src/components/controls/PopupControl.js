@@ -31,10 +31,13 @@ export default ({ properties, children }) => {
   useEffect(() => {
     const timerStart = setTimeout(() => {
       if (popupKeyVal !== childProperty?.productEnquiryFor && showOnce===null) {
-        if (properties.popupShowOnce) {
+
+       
+        
+        if (properties.popupShowOnce==="true") {
           setCookie(
             `${properties.pageKey}-once`,
-            properties.pageKey,
+            properties.pageKey, 
             CookieDuration.Day
           );
         }

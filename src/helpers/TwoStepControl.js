@@ -427,7 +427,6 @@ export default ({ properties }) => {
 
   const closePopupForm = () => {
     setCookie(properties.keyName, properties.productEnquiryFor, CookieDuration.Day);
-    console.log(properties.keyName);
     
     hidePopup();
   };

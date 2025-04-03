@@ -2,35 +2,31 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
-import { css } from "styled-components/macro"; //eslint-disable-line
-import { Container } from "components/misc/Layouts.js";
-import { HighlightedHeading, Subheading } from "components/misc/Headings.js";
-import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-5.svg";
-import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-7.svg";
+
 
 const HeaderRow = tw.div`flex justify-between  items-center flex-col `;
-const TabsControl = tw.div`flex  py-2 rounded leading-none  xl:mt-0`;
+const TabsControl = tw.div`flex  py-2 rounded   xl:mt-0`;
 const ContentWithPaddingXl = tw.div` relative w-full h-full`;
 const TabControl = styled.div`
-  ${tw`cursor-pointer px-4 py-1 mt-2 sm:mt-0 sm:mr-2 last:mr-0 text-gray-600 font-medium rounded-sm transition duration-300 text-xs w-1/2 sm:w-auto text-center`}
+  ${tw`cursor-pointer px-4 py-2 mt-2 sm:mt-0 sm:mr-2 last:mr-0 text-gray-600 font-medium rounded-sm transition duration-300 text-sm 2xl:text-base w-1/2 sm:w-auto text-center`}
   &:hover {
     ${tw`bg-gray-300 text-gray-700`}
   }
   ${(props) => props.active && tw`bg-primary-500! text-gray-100!`}
   }
-`;
+`;   
 
-const TabContent = tw(motion.div)` flex flex-wrap `;
-const CardContainer = tw.div` w-full sm:w-1/2 md:w-1/3 lg:w-1/4  text-center `;
+const TabContent = tw(motion.div)` h-[70%] flex flex-wrap  overflow-auto   `;
+const CardContainer = tw.div` w-full sm:w-1/2 md:w-1/3 lg:w-1/3  `;
 const Card = tw(
   motion.a
-)`rounded-b block max-w-xs flex flex-col items-center scale-90 hover:scale-100 duration-300 sm:max-w-none sm:mx-0`;
+)` block max-w-xs flex  items-center scale-90 hover:scale-100 duration-300 sm:mx-0`;
 const CardImage = tw.img`
-h-16 bg-center bg-cover mx-auto relative 
+h-16 bg-center bg-cover relative 
 `;
 
-const CardText = tw.div`px-4 text-gray-900 min-h-12  flex flex-col justify-between items-center`;
-const CardTitle = tw.h5`text-xs font-semibold group-hover:text-primary-500 `;
+const CardText = tw.div` text-gray-900 min-h-12 flex flex-col justify-center items-center `;
+const CardTitle = tw.h5`text-sm 2xl:text-base font-semibold group-hover:text-primary-500 `;
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
 const testData = [
   {

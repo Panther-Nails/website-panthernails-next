@@ -3,10 +3,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9.svg";
-import {
-  ContentWithPaddingXl,
-  Container as ContainerBase,
-} from "components/misc/Layouts";
+import { ContentWithPaddingXl } from "components/misc/Layouts";
 import {
   HighlightedHeading,
   Subheading as SubheadingBase,
@@ -15,9 +12,15 @@ import appleIconImageSrc from "images/apple-icon.png";
 import googlePlayIconImageSrc from "images/google-play-icon.png";
 import { ProcessChildComponentsSeparately } from "services/ComponentService.js";
 
-const Container = tw(ContainerBase)`bg-primary-900 `;
-const Content = tw(ContentWithPaddingXl)``;
-const Row = tw.div`px-8 flex items-center relative z-10 flex-col lg:flex-row text-center lg:text-left justify-center`;
+import { Container } from "components/misc/Layouts";
+
+const BaseContainer = styled(Container)`
+  background-image: ${(props) =>
+    props.backgroundImageUrl ? `url(${props.backgroundImageUrl})` : "none"};
+  ${tw`bg-primary-900 flex  relative bg-center bg-cover max-h-[screen] min-h-144 2xl:max-w-screen-xl mx-auto 2xl:h-[50vh]`}
+`;
+const Content = tw(ContentWithPaddingXl)`py-8`;
+const Row = tw.div`px-8   flex items-center  justify-center relative  z-10 flex-col lg:flex-row text-center lg:text-left`;
 
 const ColumnContainer = tw.div`max-w-2xl`;
 const TextContainer = tw(ColumnContainer)``;
@@ -36,7 +39,7 @@ const Link = styled.a`
 
 const ImageContainer = tw(
   ColumnContainer
-)`mt-16 lg:mt-0 lg:ml-16 flex justify-end`;
+)`mt-6 lg:mt-0 lg:ml-16 flex justify-end  w-[45%] h-[100%] `;
 
 const DecoratorBlobContainer = tw.div`absolute inset-0 overflow-hidden rounded-lg`;
 const DecoratorBlob1 = tw(
@@ -48,7 +51,7 @@ const DecoratorBlob2 = tw(
 
 export default ({ properties, children, index, data }) => {
   return (
-    <Container>
+    <BaseContainer>
       <Content>
         <Row>
           <TextContainer>
@@ -87,12 +90,12 @@ export default ({ properties, children, index, data }) => {
             <img src={properties.imageSrc} alt="" tw="w-64" />
           </ImageContainer>
         </Row>
-        <Row>{ProcessChildComponentsSeparately(children)}</Row>
+       
         <DecoratorBlobContainer>
           <DecoratorBlob1 />
           <DecoratorBlob2 />
         </DecoratorBlobContainer>
       </Content>
-    </Container>
+    </BaseContainer>
   );
 };

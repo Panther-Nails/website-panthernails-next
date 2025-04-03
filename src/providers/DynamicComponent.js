@@ -70,10 +70,10 @@ const DynamicComponent = ({ component, index }) => {
     component.Section,
     component.ComponentName
   );
-
+ 
   return (
     <>
-      {properties && Object.keys(properties).length > 0 && (
+      {properties && Object.keys(properties).length > 0 ? (
         <Suspense fallback={<FallbackLoading />}>
           {ImportedComponent && (
             <ImportedComponent
@@ -84,6 +84,8 @@ const DynamicComponent = ({ component, index }) => {
             />
           )}
         </Suspense>
+      ) : (
+        <FallbackLoading />  
       )}
     </>
   );

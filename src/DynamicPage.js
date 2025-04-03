@@ -35,8 +35,7 @@ export default () => {
 
   useEffect(() => {
     setComponents([]);
-    if (languageObject !== undefined) {
-      // console.log("languageObject", languageObject?.LanguageID);
+    if (languageObject !== undefined) {     
       ExecuteQuery(
         {
           ActionName:

@@ -12,7 +12,7 @@ import { useSession } from "providers/SessionProvider.js";
 const modelSizes = {
   large: tw`  bg-white z-50 w-[100vw] h-[100vh]  px-4 py-4  `,
   medium: tw`  w-[100%]  z-50 lg:w-[60%] h-[80%]   `,
-  small: tw`    w-[80%] h-[70%] lg:h-[80%]  lg:w-[30%]   `,
+  small: tw`    w-[70%] h-[50%] md:w-[50%] md:h-[55%] lg:h-[80%]  lg:w-[30%]   `,
 };
 
 const StyledModal = styled(ReactModalAdapter)`

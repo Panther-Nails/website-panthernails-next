@@ -24,7 +24,7 @@ export default () => {
       SubGroupName: subtype,
       PageName: name,
     };
-
+    setComponents([]);
     ExecuteQuery({
       ActionName:
         "WSM.GMst_SelectFewFromLinkComponentAndComponentPropertyWhereGroupNameSubGroupNamePageName",
@@ -46,19 +46,23 @@ export default () => {
 
   return (
     <>
-      <Suspense fallback={<FallbackLoading />}>
-        {components.length === 0 ? (
-          <FallbackLoading />
-        ) : (
-          <>
-            {components.map((component, index) => (
-              <div id={component.CacheKey} key={index}>
-                <DynamicComponent component={component} index={index} />
-              </div>
-            ))}
-          </>
-        )}
-      </Suspense>
+      {components?.length === 0 ? (
+        <FallbackLoading />
+      ) : (
+        <Suspense fallback={<FallbackLoading />}>
+          {components.length === 0 ? (
+            <FallbackLoading />
+          ) : (
+            <>
+              {components.map((component, index) => (
+                <div id={component.CacheKey} key={index}>
+                  <DynamicComponent component={component} index={index} />
+                </div>
+              ))}
+            </>
+          )}
+        </Suspense>
+      )}
     </>
   );
 };

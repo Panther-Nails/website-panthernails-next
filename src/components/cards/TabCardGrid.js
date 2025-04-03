@@ -58,7 +58,7 @@ const CardButton = tw(PrimaryButtonBase)`text-sm`;
 const CardReview = tw.div`font-medium text-xs text-gray-600`;
 
 const CardText = tw.div`p-4 text-gray-900`;
-const CardTitle = tw.h5`text-lg font-semibold group-hover:text-primary-500`;
+const CardTitle = tw.h5`text-lg font-semibold group-hover:text-primary-500  h-12`;
 const CardContent = tw.p`mt-1 text-sm font-medium text-gray-600`;
 const CardPrice = tw.p`mt-4 text-xl font-bold`;
 
@@ -72,27 +72,18 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
 export default ({
   properties,
   tabs = {
-    [properties.tab1Name]: JSON.parse(properties.tab1),
-    [properties.tab2Name]: JSON.parse(properties.tab2),
-    [properties.tab3Name]: JSON.parse(properties.tab3),
-    [properties.tab4Name]: JSON.parse(properties.tab4),
+    [properties.tab1Name]: properties.tab1 ? JSON.parse(properties.tab1) : null,
+    [properties.tab2Name]: properties.tab2 ? JSON.parse(properties.tab2) : null,
+    [properties.tab3Name]: properties.tab3 ? JSON.parse(properties.tab3) : null,
+    [properties.tab4Name]: properties.tab4 ? JSON.parse(properties.tab4) : null,
   },
 }) => {
-  /*
-   * To customize the tabs, pass in data using the `tabs` prop. It should be an object which contains the name of the tab
-   * as the key and value of the key will be its content (as an array of objects).
-   * To see what attributes are configurable of each object inside this array see the example above for "Starters".
-   */
-  const getRandomCards = () => {
-    const cards = JSON.parse(properties.tab1);
-
-    // Shuffle array
-    return cards.sort(() => Math.random() - 0.5);
-  };
-
-  const tabsKeys = Object.keys(tabs);
+  const validTabs = Object.entries(tabs).filter(([key, value]) => value && key);
+  const tabsKeys = validTabs.map(([key]) => key);
   const [activeTab, setActiveTab] = useState(tabsKeys[0]);
+
   const TextComponent = tw.div`w-[90%] m-auto`;
+
   return (
     <Container>
       <ContentWithPaddingXl>
@@ -102,7 +93,7 @@ export default ({
             <Subheading>{properties.subHeading}</Subheading>
           </TextComponent>
           <TabsControl>
-            {Object.keys(tabs)?.map((tabName, index) => (
+            {tabsKeys.map((tabName, index) => (
               <TabControl
                 key={index}
                 active={activeTab === tabName}
@@ -143,13 +134,17 @@ export default ({
                   animate="rest"
                 >
                   <CardImageContainer imageSrc={card.imageSrc}>
-                    <CardRatingContainer>
-                      <CardRating>
-                        <StarIcon />
-                        {card.rating}
-                      </CardRating>
-                      <CardReview>({card.reviews})</CardReview>
-                    </CardRatingContainer>
+                    {card.rating && (
+                      <CardRatingContainer>
+                        {
+                          <CardRating>
+                            <StarIcon />
+                            {card.rating}
+                          </CardRating>
+                        }
+                        {<CardReview>{card.reviews}</CardReview>}
+                      </CardRatingContainer>
+                    )}
                     <CardHoverOverlay
                       variants={{
                         hover: {

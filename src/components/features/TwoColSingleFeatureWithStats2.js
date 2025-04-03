@@ -10,7 +10,7 @@ import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import { Container } from "components/misc/Layouts";
 
 
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl gap-4 mx-auto py-20 md:py-24`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl gap-4 mx-auto py-10 md:py-8`;
 const Column = tw.div`w-full  max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(
   Column
@@ -22,19 +22,18 @@ const TextColumn = styled(Column)((props) => [
     : tw`md:mr-12 lg:mr-16 md:order-last`,
 ]);
 
-const Image = styled.div((props) => [
-  `background-image: url("${props.imageSrc}");`,
-  tw`rounded bg-cover bg-center h-full`,
-]);
+const Image = tw.img`
+  rounded bg-cover bg-center h-144 m-auto`;
 const TextContent = tw.div`lg:py-8 text-center md:text-left`;
 
 const Subheading = tw(SubheadingBase)`text-center md:text-left`;
 const Description = tw.p`mt-4 px-4 lg:px-0 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
-const Statistics = tw.div`flex flex-col items-center sm:block text-center md:text-left mt-4`;
-const Statistic = tw.div`text-left sm:inline-block sm:mr-12 last:mr-0 mt-4`;
-const Value = tw.div`font-bold text-center lg:text-left text-xl sm:text-2xl lg:text-3xl text-secondary-500 tracking-wide`;
-const Key = tw.div`font-medium text-center  text-primary-700`;
+const Statistics = tw.div`flex flex-wrap  text-center md:text-left mt-4 `;
+const Statistic = tw.div`text-left w-1/2 md:w-1/3 last:mr-0 mt-4 `;
+
+const Value = tw.div`font-bold  text-xl sm:text-2xl lg:text-3xl text-secondary-500 tracking-wide`;
+const Key = tw.div`font-medium  text-primary-700`;
 
 const PrimaryButton = tw(
   PrimaryButtonBase
@@ -57,7 +56,7 @@ export default ({ properties, children, index, data }) => {
           {
             (properties.imageInsideDiv = "true" ? (
               <Image
-                imageSrc={properties.imageSrc}
+                src={properties.imageSrc}
                 css={properties.imageCss ? properties.imageCss : null}
               />
             ) : (
@@ -69,7 +68,7 @@ export default ({ properties, children, index, data }) => {
             ))
           }
         </ImageColumn>
-        <TextColumn textOnLeft={"properties.textOnLeft"}>
+        <TextColumn textOnLeft={properties.textOnLeft}>
           <TextContent>
             {properties.subheading && (
               <Subheading>{properties.subheading}</Subheading>

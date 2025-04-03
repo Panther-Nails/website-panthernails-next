@@ -44,7 +44,7 @@ export const NavLinkWrapper = styled.div((props) => [
   font-semibold tracking-wide transition duration-700
   border-b-2 border-transparent  lg:hocus:text-primary-500`,
   (props = [
-    props.navPosition
+    props.navposition == "true"
       ? tw`text-sm lg:text-xs duration-700 lg:mx-8`
       : tw`text-sm duration-700 lg:mx-5`,
   ]),
@@ -61,7 +61,7 @@ export const LogoLink = styled(NavLink)`
 
   img {
     ${(props) => [
-      props.navPosition
+      props.navposition === "true"
         ? tw`w-40 ml-5 lg:ml-20 mr-3 my-2 duration-700`
         : tw`w-64 ml-5 lg:ml-20 mr-3 my-3 duration-700`,
     ]}
@@ -104,28 +104,57 @@ export const LanguageSelectionLinks = motion(styled.div`
 
 // Wrapper for the individual product item with responsive layout
 
-export const DropdownMenu = styled.div`
-  ${tw`fixed inset-x-0 bg-white shadow-lg z-50 w-[50%] h-[40%] px-4 py-4 overflow-scroll mx-auto `}
+// export const DropdownMenu = styled.div`
+//   ${tw`fixed inset-x-0 bg-white shadow-lg z-50 w-[70%] xl:w-[50%]  min-h-[20%] max-h-[40%] px-4 py-4  mx-auto `}
 
+//   display: grid;
+//   grid-template-columns: repeat(
+//     auto-fit,
+//     minmax(150px, 1fr)
+//   ); /* Responsive grid */
+//   align-items: center;
+//   justify-items: center;
+
+//   &::-webkit-scrollbar {
+//     display: none;
+//   }
+
+//   &:before {
+//     content: "";
+//     position: absolute;
+//     top: 10px;
+//     left: 50%;
+//     transform: translateX(-50%);
+//     border-width: 10px;
+//     border-style: solid;
+//     border-color: transparent transparent white transparent;
+//   }
+// `;
+const NavTempContainer = tw.div`w-[100%] lg:w-auto `;
+export const DropdownMenu = styled.div`
+  ${tw`absolute bg-white shadow-lg rounded-lg z-10 w-auto px-4 py-4 overflow-scroll gap-4 pr-0`}
   display: grid;
   grid-template-columns: repeat(
-    auto-fit,
-    minmax(150px, 1fr)
-  ); /* Responsive grid */
-  align-items: center;
-  justify-items: center;
+    4,
+    1fr
+  ); /* For larger screens, 4 items in a row */
 
-  &::-webkit-scrollbar {
-    display: none;
+  transform: translateX(-40%);
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(
+      1,
+      1fr
+    ); /* For mobile devices, 2 items in a row */
   }
-
+  &::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for WebKit browsers */
+  }
   &:before {
     content: "";
     position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 10px;
+    top: -10px;
+    left: 20px;
+    border-width: 5px;
     border-style: solid;
     border-color: transparent transparent white transparent;
   }
@@ -160,7 +189,7 @@ const backgroundColor = {
   info: tw`bg-primary-400 text-white `,
   none: tw``,
 };
-
+const NavLinkContainer = tw.div`w-[100%]  lg:w-auto`;
 export default ({
   logoLink,
   className,
@@ -194,7 +223,9 @@ export default ({
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [isIncreasing, setIsIncreasing] = useState(false);
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
+  const isTablet = window.matchMedia(
+    "(min-width: 768px) and (max-width: 1008px)"
+  ).matches;
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -264,6 +295,7 @@ export default ({
   const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
   const collapseBreakpointCss =
     collapseBreakPointCssMap[collapseBreakpointClass];
+
   const navigate = useNavigate();
 
   const _redirect = (navigateURL) => {
@@ -272,7 +304,7 @@ export default ({
 
   const defaultLogoLink = (
     <div onClick={() => _redirect("/")}>
-      <LogoLink navPosition={isIncreasing}>
+      <LogoLink navposition={isIncreasing.toString()}>
         <img src={pnlogo} alt="logo" />
       </LogoLink>
     </div>
@@ -301,17 +333,19 @@ export default ({
 
   const menuLinks = (
     <>
-      <NavLinks key={1} style={{ display: "flex" }}>
+      <NavLinks style={{ display: "flex" }}>
         {data?.items?.map((link, index) => {
           return (
-            <>
+            <NavTempContainer key={index}>
               {link.LinkVisible && (
-                <div
+                <NavLinkContainer
                   tw="w-[100%] lg:w-auto"
                   key={index}
-                  onMouseEnter={() =>
-                    !isMobile && handleMouseEnter(link, index)
-                  }
+                  onMouseEnter={() => {
+                    if (!isMobile && !isTablet) {
+                      handleMouseEnter(link, index);
+                    }
+                  }}
                   onMouseLeave={handleMouseLeave}
                   style={{
                     position: "relative",
@@ -319,15 +353,20 @@ export default ({
                     // ...mobileStyle,
                   }}
                 >
-                  {link?.LinkJSON?.length > 0 && isMobile ? (
-                    <MobileViewDropdown navbarHeight={isIncreasing} />
+                  {(link?.LinkJSON?.length > 0 && isTablet) ||
+                  (link?.LinkJSON?.length > 0 && isMobile) ? (
+                    <MobileViewDropdown
+                      navbarHeight={isIncreasing}
+                      dropdownContent={link}
+                      toggleNavbar={toggleNavbar}
+                    />
                   ) : (
                     <NavLinkWrapper
                       onClick={() => {
                         toggleNavbar();
                         handleMouseLeave();
                       }}
-                      navPosition={isIncreasing}
+                      navposition={isIncreasing}
                     >
                       <NavLink to={link.LinkURL}>
                         {link.LinkHeadingText}
@@ -338,18 +377,45 @@ export default ({
                   {dropdownContent && hoveredLinkIndex === index && (
                     <>
                       <DropdownWrapper
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.9 }}
+                        // initial={{ opacity: 0, scale: 0.9 }}
+                        // animate={{ opacity: 1, scale: 1 }}
+                        // exit={{ opacity: 0, scale: 0.9 }}
+                        // transition={{ duration: 0.3 }}
+                        key={index}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <TabViewOnHover />
+                        {/* <TabViewOnHover /> */}
+                        {dropdownContent.map((subLink, subIndex) => {
+                          const properties = JSON.parse(
+                            subLink.LinkPropertyJSON
+                          );
+                          return (
+                            <DropdownItem
+                              key={subIndex}
+                              onClick={() => {
+                                _redirect(subLink.LinkURL);
+                                handleMouseLeave();
+                              }}
+                            >
+                              <DropdownItemImage
+                                src={properties?.productResource.imageSrc}
+                                alt={subLink.LinkHeadingText}
+                              />
+                              <DropdownItemText>
+                                {subLink.LinkHeadingText}
+                              </DropdownItemText>
+                            </DropdownItem>
+                          );
+                        })}
                       </DropdownWrapper>
                     </>
                   )}
-                </div>
+                </NavLinkContainer>
               )}
-            </>
+            </NavTempContainer>
           );
         })}
       </NavLinks>
@@ -365,7 +431,10 @@ export default ({
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
               >
-                <SearchBoxControl />
+                <SearchBoxControl
+                  setIsSearchVisible={setIsSearchVisible}
+                  toggleNavbar={toggleNavbar}
+                />
               </motion.div>
             </AnimatePresence>
           )}
@@ -383,7 +452,7 @@ export default ({
               >
                 {isMobile && (
                   <NavLinkWrapper
-                    navPosition={isIncreasing}
+                    navposition={isIncreasing}
                     onClick={() => setIsSearchVisible(true)}
                   >
                     Search

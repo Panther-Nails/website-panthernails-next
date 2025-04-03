@@ -10,7 +10,7 @@ const MenuItem = tw.li`px-4 py-2 hover:bg-gray-100 cursor-pointer`;
 const IconButton = tw.button` transition flex items-center justify-center gap-2`;
 const GlobeIcon = tw(RadioIcon)`w-5`;
 
-export default function CustomDropdown({navbarHeight}) {
+export default function CustomDropdown({ navbarHeight }) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
   const { languages, setLanguageObject } = useSession();
@@ -30,12 +30,19 @@ export default function CustomDropdown({navbarHeight}) {
     setIsOpen(false);
   }
 
+
   return (
     <Container ref={menuRef}>
-      <IconButton onClick={() => setIsOpen(!isOpen)} title="Language">
-        {isMobile && <NavLinkWrapper  navPosition={navbarHeight}>Languages</NavLinkWrapper>}
-        <GlobeIcon />
-      </IconButton>
+      {languages.length > 1 && (
+        <IconButton onClick={() => setIsOpen(!isOpen)} title="Language">
+          {isMobile && (
+            <NavLinkWrapper navposition={navbarHeight}>
+              Languages
+            </NavLinkWrapper>
+          )}
+          <GlobeIcon />
+        </IconButton>
+      )}
       {isOpen && (
         <Menu>
           {languages.map((lang, index) => (

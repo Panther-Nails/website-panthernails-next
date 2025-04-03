@@ -4,7 +4,18 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as ChevronDownIcon } from "feather-icons/dist/icons/chevron-down.svg";
-import { NavLinkWrapper as TabText } from "./light";
+
+const TabText = styled.div((props) => [
+  tw`flex  lg:inline-block gap-2 ml-3  lg:ml-0  cursor-pointer
+     lg:my-0 
+  font-semibold tracking-wide transition duration-700
+  border-b-2 border-transparent  lg:hocus:text-primary-500`,
+  (props = [
+    props.navPosition
+      ? tw`text-sm lg:text-xs duration-700 lg:mx-8`
+      : tw`text-sm duration-700 lg:mx-5`,
+  ]),
+]);
 
 const Column = tw.div`flex flex-col  `;
 const FAQSContainer = tw.dl` relative`;
@@ -179,12 +190,12 @@ const data = [
   },
 ];
 
-const ChildTab = ({ data, navbarHeight }) => {
+const ChildTab = ({ data, navbarHeight, toggleNavbar }) => {
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
   const navigate = useNavigate();
-
   const handleNavigate = (url) => {
     if (url) navigate(url);
+    toggleNavbar();
   };
 
   const toggleQuestion = (index) => {
@@ -195,43 +206,57 @@ const ChildTab = ({ data, navbarHeight }) => {
       <FAQSContainer>
         {data?.map((faq, index) => (
           <FAQ key={index}>
-            <Question onClick={() => toggleQuestion(index)}>
-              <TabText navPosition={navbarHeight}>
+            {faq.LinkJSON ? (
+              <Question onClick={() => toggleQuestion(index)}>
+                <TabText navPosition={navbarHeight}>
+                  <SubTabText>{faq.LinkHeadingText}</SubTabText>
+                </TabText>
+
+                <QuestionToggleIcon
+                  variants={{
+                    collapsed: { rotate: 0 },
+                    open: { rotate: -180 },
+                  }}
+                  initial="collapsed"
+                  animate={activeQuestionIndex === index ? "open" : "collapsed"}
+                  transition={{ duration: 0 }}
+                >
+                  <ChevronDownIcon />
+                </QuestionToggleIcon>
+              </Question>
+            ) : (
+              <TabText
+                navPosition={navbarHeight}
+                onClick={() => {
+                  handleNavigate(faq.LinkURL);
+                }}
+              >
                 <SubTabText>{faq.LinkHeadingText}</SubTabText>
               </TabText>
-              <QuestionToggleIcon
+            )}
+            {faq.LinkJSON && (
+              <Answer
+                $isOpen={activeQuestionIndex === index}
                 variants={{
-                  collapsed: { rotate: 0 },
-                  open: { rotate: -180 },
+                  open: { opacity: 1, height: "auto", marginTop: "4px" },
+                  collapsed: { opacity: 0, height: 0, marginTop: "0px" },
                 }}
                 initial="collapsed"
                 animate={activeQuestionIndex === index ? "open" : "collapsed"}
-                transition={{ duration: 0 }}
+                transition={{ duration: 0, ease: [0.04, 0.62, 0.23, 0.98] }}
               >
-                <ChevronDownIcon />
-              </QuestionToggleIcon>
-            </Question>
-            <Answer
-              $isOpen={activeQuestionIndex === index}
-              variants={{
-                open: { opacity: 1, height: "auto", marginTop: "4px" },
-                collapsed: { opacity: 0, height: 0, marginTop: "0px" },
-              }}
-              initial="collapsed"
-              animate={activeQuestionIndex === index ? "open" : "collapsed"}
-              transition={{ duration: 0, ease: [0.04, 0.62, 0.23, 0.98] }}
-            >
-              {faq?.LinkJSON.map((link, subIndex) => (
-                <TabText navPosition={navbarHeight}>
-                  <SubTabText
-                    key={subIndex}
-                    onClick={() => handleNavigate(link.LinkURL)}
-                  >
-                    <SubTabText >{link.LinkHeadingText}</SubTabText>
-                  </SubTabText>
-                </TabText>
-              ))}
-            </Answer>
+                {faq?.LinkJSON.map((link, subIndex) => (
+                  <TabText navPosition={navbarHeight}>
+                    <SubTabText
+                      key={subIndex}
+                      onClick={() => handleNavigate(link.LinkURL)}
+                    >
+                      <SubTabText>{link.LinkHeadingText}</SubTabText>
+                    </SubTabText>
+                  </TabText>
+                ))}
+              </Answer>
+            )}
           </FAQ>
         ))}
       </FAQSContainer>
@@ -239,18 +264,12 @@ const ChildTab = ({ data, navbarHeight }) => {
   );
 };
 
-export default ({ navbarHeight }) => {
+export default ({ navbarHeight, dropdownContent, toggleNavbar }) => {
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
-  const navigate = useNavigate();
-
-  const handleNavigate = (url) => {
-    if (url) navigate(url);
-  };
-
   const toggleQuestion = (index) => {
     setActiveQuestionIndex(activeQuestionIndex === index ? null : index);
   };
-
+  const data = [dropdownContent];
   return (
     <Column>
       <FAQSContainer>
@@ -283,7 +302,11 @@ export default ({ navbarHeight }) => {
               animate={activeQuestionIndex === index ? "open" : "collapsed"}
               transition={{ duration: 0, ease: [0.04, 0.62, 0.23, 0.98] }}
             >
-              <ChildTab data={faq.LinkJSON} navbarHeight={navbarHeight} />
+              <ChildTab
+                data={faq.LinkJSON}
+                navbarHeight={navbarHeight}
+                toggleNavbar={toggleNavbar}
+              />
             </Answer>
           </FAQ>
         ))}

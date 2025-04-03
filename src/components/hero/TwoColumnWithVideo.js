@@ -12,6 +12,8 @@ import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/dot-pattern.svg";
 import DesignIllustration from "../../images/design-illustration.svg";
 import { Container } from "../misc/Layouts.js";
+import { useNavigate } from "react-router-dom";
+import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 
 const TwoColumn = tw.div`flex flex-col lg:flex-row md:items-center max-w-screen-xl mx-auto px-12 lg:py-8`;
 const LeftColumn = tw.div`relative lg:w-6/12 lg:pr-12 flex-shrink-0 text-center lg:text-left`;
@@ -47,10 +49,13 @@ const StyledModal = styled(ReactModalAdapter)`
 `;
 
 const CloseModalButton = tw.button`absolute top-0 right-0 mt-8 mr-8 hocus:text-primary-500`;
-
-export default ({ properties, children, index, data }) => {
+const Link = styled(PrimaryButtonBase).attrs({ as: "a" })`
+  ${tw`inline-block mt-4 text-base font-semibold`}
+`;
+export default ({ properties }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
+  const navigate = useNavigate();
   return (
     <>
       <Container tw="pt-12 md:pt-3 md:pb-8 ">
@@ -61,9 +66,7 @@ export default ({ properties, children, index, data }) => {
             </HighlightedHeading>
             <Paragraph>{properties.description}</Paragraph>
             <Actions>
-              <PrimaryButton href={properties.buttonUrl} target="_blank">
-                {properties.buttonText}
-              </PrimaryButton>
+              <Link href={properties.buttonUrl}>{properties.buttonText}</Link>
             </Actions>
           </LeftColumn>
           <RightColumn>
