@@ -37,7 +37,6 @@ const SubmitButton = styled.button((props) => [
 const ControlLabel = tw.span`pl-2 text-xs lg:text-sm`;
 const Warnings = tw.p`text-red-800`;
 
-
 let gFormErrors = {};
 let globalValid = true;
 
@@ -378,7 +377,6 @@ const MultiSelectCheckbox = ({
 };
 
 export default ({ properties }) => {
- 
   const { hidePopup } = useSession();
 
   const [formData, setFormData] = useState({});
@@ -424,10 +422,13 @@ export default ({ properties }) => {
     });
   };
 
-
   const closePopupForm = () => {
-    setCookie(properties.keyName, properties.productEnquiryFor, CookieDuration.Day);
-    
+    setCookie(
+      properties.keyName,
+      properties.productEnquiryFor,
+      CookieDuration.Day
+    );
+
     hidePopup();
   };
 
@@ -681,7 +682,10 @@ export default ({ properties }) => {
 
   const afterpopupformsubmit = () => {
     closePopupForm();
-    notify("Thank you for contact us our team contact you soon!", "success");
+    notify(
+      properties.notifyMsg,
+      "success"
+    );
   };
 
   return (
