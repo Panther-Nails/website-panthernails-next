@@ -41,8 +41,8 @@ let gFormErrors = {};
 let globalValid = true;
 
 const gEmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const gMobileRegex = /^[0-9+ ]{10,15}$/;
-const gNameRegex = /^[A-Za-z]+( [A-Za-z]+)*$/;
+const gMobileRegex = /^(?=\d)(\d{10})$/;
+const gNameRegex = /^(?=.*[A-Za-z])[A-Za-z ]+$/;
 
 const globalValidationFunction = (name, value, type) => {
   if (value?.length < 1) {
@@ -62,7 +62,7 @@ const globalValidationFunction = (name, value, type) => {
   }
 
   if (type === "text" && !gNameRegex.test(value) && value) {
-    gFormErrors[name] = "Name must contain only letters and spaces.";
+    gFormErrors[name] = "Name must contain only letters with spaces.";
 
     globalValid = false;
   }
@@ -100,6 +100,11 @@ const globalValidationFunction = (name, value, type) => {
     gFormErrors[name] = "Invalid mobile number.";
 
     globalValid = false;
+  }
+
+  if(type==="selectNo"){
+    globalValid = true;
+    gFormErrors[name] = "";
   }
 
   return globalValid;
@@ -146,7 +151,7 @@ const RadioButtonControl = ({
               />
               <ControlLabel>{option.showVal}</ControlLabel>
             </label>
-            {option.radioWithTextBox === "true" &&
+            {option.radioWithTextBox === "true" ?
               answers[radioExtraData.name] === option.showVal && (
                 <>
                   <Input
@@ -160,7 +165,7 @@ const RadioButtonControl = ({
                   {globalValidationFunction("radioText", inputValue, "text")}
                   {error ? <Warnings>{error.radioText}</Warnings> : <></>}
                 </>
-              )}
+              ):<>{globalValidationFunction("radioText", inputValue, "selectNo")}</>}
           </div>
         ))}
       {Object.keys(answers).length <= 0 ? (
@@ -355,7 +360,7 @@ const MultiSelectCheckbox = ({
               >
                 {option}
               </ControlLabel>
-              {option === "Other" && selectedOptions.includes("Other") && (
+              {option === "Other" && selectedOptions.includes("Other") ? (
                 <>
                   <Input
                     type="text"
@@ -366,7 +371,7 @@ const MultiSelectCheckbox = ({
                   {globalValidationFunction("radioText", otherText, "text")}
                   {error ? <Warnings>{error.radioText}</Warnings> : <></>}
                 </>
-              )}
+              ):<>{globalValidationFunction("radioText", otherText, "selectNo")}</>}
             </div>
           )}
         </div>
